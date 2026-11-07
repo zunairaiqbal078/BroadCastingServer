@@ -1,0 +1,42 @@
+# CastPanel - local development stack (panel UI + database only)
+#
+# Streaming services (SHOUTcast, Icecast, Liquidsoap, castpanel-ctl daemon)
+# are NOT included here. Those need a real Linux server or VM (install.sh).
+#
+#   cd dev && docker compose up -d --build
+#   open http://localhost:8080     login: admin / password  (clients: demo1, demo2 / demo123)
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ..:/var/www/html
+      # Local config is mounted over the placeholder config, so the
+      # client's config/database.php stays untouched.
+      - ./database.local.php:/var/www/html/config/database.php:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mariadb:10.11
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: castpanel
+      MARIADB_USER: castpanel
+      MARIADB_PASSWORD: castpanel
+    ports:
+      - "3307:3306"
+    volumes:
+      - ../install/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 30
+
+volumes:
+  dbdata:
