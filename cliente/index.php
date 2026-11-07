@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             $resultado = restartStation($estacion);
         }
 
+        clearStreamStatusCache((int)$estacion['id']);
         if ($resultado['success']) {
             setFlash('success', "Estaci&oacute;n: $cmd ejecutado correctamente.");
         } else {

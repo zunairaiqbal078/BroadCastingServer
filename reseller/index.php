@@ -29,13 +29,14 @@ $stmt = $db->prepare("
 $stmt->execute([$resellerId]);
 $totalEstaciones = (int)$stmt->fetchColumn();
 
+// Online = stream server has a live source (live DJ or AutoDJ), not only AutoDJ
 $stmt = $db->prepare("
-    SELECT COUNT(*) FROM estaciones e
+    SELECT e.* FROM estaciones e
     JOIN usuarios u ON u.id = e.usuario_id
-    WHERE u.reseller_id = ? AND e.autodj_estado = 'online'
+    WHERE u.reseller_id = ? AND e.activa = 1
 ");
 $stmt->execute([$resellerId]);
-$estacionesOnline = (int)$stmt->fetchColumn();
+$estacionesOnline = countOnlineStations($stmt->fetchAll());
 
 // Oyentes totales de mis estaciones
 $stmt = $db->prepare("
@@ -52,7 +53,7 @@ foreach ($misEstaciones as $e) {
     if ($e['server_type'] === 'icecast') {
         $oyentesTotales += $allListeners[$e['icecast_mount']]['oyentes'] ?? 0;
     } else {
-        $sc = getStreamStatus($e);
+        $sc = getStreamStatusCached($e);
         $oyentesTotales += $sc['oyentes'];
     }
 }
@@ -211,7 +212,7 @@ $estacionesRecientes = $stmt->fetchAll();
                                     </td>
                                     <td><?= htmlspecialchars($e['username']) ?></td>
                                     <td>
-                                        <?= $e['autodj_estado'] === 'online'
+                                        <?= isStationOnline($e)
                                             ? '<span class="badge badge-success">Online</span>'
                                             : '<span class="badge">Offline</span>' ?>
                                     </td>
@@ -219,7 +220,7 @@ $estacionesRecientes = $stmt->fetchAll();
                                         if ($e['server_type'] === 'icecast') {
                                             echo $allListeners[$e['icecast_mount']]['oyentes'] ?? 0;
                                         } else {
-                                            $sc = getStreamStatus($e);
+                                            $sc = getStreamStatusCached($e);
                                             echo $sc['oyentes'];
                                         }
                                     ?></td>

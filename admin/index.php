@@ -25,7 +25,8 @@ $_dbErrors = [];
 
 try { $totalUsuarios = (int)$db->query("SELECT COUNT(*) FROM usuarios")->fetchColumn(); } catch (PDOException $e) { $_dbErrors[] = 'usuarios'; }
 try { $totalEstaciones = (int)$db->query("SELECT COUNT(*) FROM estaciones")->fetchColumn(); } catch (PDOException $e) { $_dbErrors[] = 'estaciones'; }
-try { $estacionesOnline = (int)$db->query("SELECT COUNT(*) FROM estaciones WHERE autodj_estado = 'online'")->fetchColumn(); } catch (PDOException $e) {}
+// Online = stream server has a live source (live DJ or AutoDJ), not only AutoDJ
+try { $estacionesOnline = countOnlineStations($db->query("SELECT * FROM estaciones WHERE activa = 1")->fetchAll()); } catch (PDOException $e) {}
 try { $totalCanciones = (int)$db->query("SELECT COUNT(*) FROM canciones")->fetchColumn(); } catch (PDOException $e) { $_dbErrors[] = 'canciones'; }
 try { $totalAnuncios = (int)$db->query("SELECT COUNT(*) FROM anuncios")->fetchColumn(); } catch (PDOException $e) { $_dbErrors[] = 'anuncios'; }
 try { $totalDJ = (int)$db->query("SELECT COUNT(*) FROM cuentas_dj")->fetchColumn(); } catch (PDOException $e) { $_dbErrors[] = 'cuentas_dj'; }

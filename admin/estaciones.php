@@ -377,7 +377,8 @@ $sslDomain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['SERVER_NAME'] ?? 'l
                             <td><?= strtoupper($e['codec']) ?> <?= $e['bitrate'] ?>k</td>
                             <td>
                                 <?php if ($e['activa']): ?>
-                                    <?php $adjEstado = $e['autodj_estado'] ?? 'offline'; ?>
+                                    <?php // real on-air status (live DJ or AutoDJ), not only AutoDJ
+                                          $adjEstado = isStationOnline($e) ? 'online' : 'offline'; ?>
                                     <?= $adjEstado === 'online'
                                         ? '<span class="badge badge-success">Online</span>'
                                         : '<span class="badge badge-warning">Offline</span>' ?>
@@ -390,7 +391,7 @@ $sslDomain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['SERVER_NAME'] ?? 'l
                                     echo $allListeners[$e['icecast_mount']]['oyentes'] ?? 0;
                                 } else {
                                     try {
-                                        $sc = getStreamStatus($e);
+                                        $sc = getStreamStatusCached($e);
                                         echo $sc['oyentes'];
                                     } catch (Exception $ex) { echo 0; }
                                 }

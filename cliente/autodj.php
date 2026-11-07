@@ -90,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                 $resultado = restartLiquidsoapService($estacion);
             }
 
+            clearStreamStatusCache((int)$estacion['id']);
             if ($resultado['success']) {
                 setFlash('success', "AutoDJ: $cmd ejecutado correctamente.");
             } else {

@@ -242,8 +242,14 @@ function getShoutcastV2Status(string $host, int $port, string $password, int $si
 function getStreamStatus(array $estacion): array {
     $serverType = $estacion['server_type'] ?? 'icecast';
 
-    // Puerto: icecast_port → puerto_stream → default
-    $port = (int)($estacion['icecast_port'] ?? $estacion['puerto_stream'] ?? ICECAST_PORT);
+    // SHOUTcast listens on the station's own port (puerto_stream). icecast_port
+    // has a DB default of 8000 (the Icecast port), so it must not win here,
+    // otherwise SHOUTcast stations are checked on the wrong port.
+    if (in_array($serverType, ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'], true)) {
+        $port = (int)($estacion['puerto_stream'] ?? 0) ?: (int)($estacion['icecast_port'] ?? 0);
+    } else {
+        $port = (int)($estacion['icecast_port'] ?? $estacion['puerto_stream'] ?? ICECAST_PORT);
+    }
     if ($port <= 0) $port = ICECAST_PORT;
 
     $host = defined('ICECAST_HOST') ? ICECAST_HOST : '127.0.0.1';
@@ -284,6 +290,56 @@ function getStreamStatus(array $estacion): array {
         'titulo'    => $raw['titulo'] ?? '',
         'pico_oyentes' => (int)($raw['pico_oyentes'] ?? 0),
     ];
+}
+
+/**
+ * Is the station really on air? Checks the stream server (SHOUTcast/Icecast)
+ * instead of autodj_estado, which only Liquidsoap updates and so is always
+ * 'offline' for live-only stations (no AutoDJ) even when a DJ is broadcasting.
+ * Results are cached for $ttl seconds so list pages and dashboards with many
+ * stations stay fast.
+ */
+function getStreamStatusCached(array $estacion, int $ttl = 30): array {
+    static $mem = [];
+    $id = (int)($estacion['id'] ?? 0);
+    if (isset($mem[$id])) return $mem[$id];
+
+    $file = sys_get_temp_dir() . '/castpanel_stream_status.json';
+    $cache = @json_decode((string)@file_get_contents($file), true) ?: [];
+    if ($id && isset($cache[$id]) && (time() - ($cache[$id]['t'] ?? 0)) < $ttl) {
+        return $mem[$id] = $cache[$id]['s'];
+    }
+
+    $status = getStreamStatus($estacion);
+    if ($id) {
+        $cache[$id] = ['t' => time(), 's' => $status];
+        @file_put_contents($file, json_encode($cache), LOCK_EX);
+    }
+    return $mem[$id] = $status;
+}
+
+/** Forget cached on-air status (after start/stop) so lists update at once */
+function clearStreamStatusCache(?int $estacionId = null): void {
+    $file = sys_get_temp_dir() . '/castpanel_stream_status.json';
+    if ($estacionId === null) { @unlink($file); return; }
+    $cache = @json_decode((string)@file_get_contents($file), true) ?: [];
+    unset($cache[$estacionId]);
+    @file_put_contents($file, json_encode($cache), LOCK_EX);
+}
+
+/** true when the station is active and its stream server reports a live source */
+function isStationOnline(array $estacion): bool {
+    if (isset($estacion['activa']) && !$estacion['activa']) return false;
+    return !empty(getStreamStatusCached($estacion)['online']);
+}
+
+/** Number of stations on air among the given rows (each row needs the station columns) */
+function countOnlineStations(array $estaciones): int {
+    $n = 0;
+    foreach ($estaciones as $e) {
+        if (isStationOnline($e)) $n++;
+    }
+    return $n;
 }
 
 /**
