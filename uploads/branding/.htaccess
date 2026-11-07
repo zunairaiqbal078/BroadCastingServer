@@ -1,0 +1,5 @@
+# Permitir acceso a imágenes de branding
+Options -Indexes
+<FilesMatch "\.(png|jpg|jpeg|gif|svg|ico)$">
+    Allow from all
+</FilesMatch>

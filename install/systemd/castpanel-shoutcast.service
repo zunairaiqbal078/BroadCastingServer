@@ -1,0 +1,13 @@
+[Unit]
+Description=CastPanel SHOUTcast Auto-Start
+Documentation=https://castpanel.com
+After=network.target docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/shoutcast/start-all.sh
+ExecStop=/opt/shoutcast/stop-all.sh
+
+[Install]
+WantedBy=multi-user.target
