@@ -1,0 +1,1643 @@
+
+
+
+
+
+
+Google Maps API ključ je sačuvan
+
+
+CastPanel API
+API je isključen
+Otvori
+Otvori port
+Otvori port u firewall-u
+
+Pristup odbijen
+Nepoznata akcija:
+Neispravna akcija
+Akcije
+Akcija nije prepoznata. Važeće akcije: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Neispravna akcija
+Aktivna
+Uključite procesor da bi vaš prenos zvučao jače i profesionalnog kvaliteta
+Uključi AGC
+Uključi kompresor
+Uključi ekvilajzer
+Uključi limiter
+Aktivne
+Aktivan
+Aktivan (
+Aktivan · Isključen
+Trenutno
+Ažuriraj
+
+Upravljanje servisima
+Upravljanje servisima - CastPanel
+Upravljaj AutoDJ-em
+Upravljaj AutoDJ-em - CastPanel
+Upravljaj nalogom
+Upravljaj nalogom — CastPanel DJ
+Upravljaj listama
+Upravljaj radiom
+Upravljaj serverom i servisima
+Upravljajte SSL sertifikatima i domenima servera.
+
+Dodaj SSL sertifikat
+Dodaj radio paket
+Dodaj paket preprodavca
+Konačno podešavanje jačine prenosa
+Prilagođena podešavanja
+Ručna podešavanja korisnika
+Nasumično
+Skl.
+Skladište
+AutoDJ skladište
+Maksimalno skladište
+Skladište:
+Visoka
+Visoki - Frekvencija
+Visoki - Pojačanje
+Propusni opseg strimovanja
+Propusni opseg po stanici
+Animacija prikazana preko pozadinske slike plejera.
+Reklama obrisana.
+
+
+
+
+Kompatibilne aplikacije
+Android/iOS aplikacije
+M3U fajl (za desktop plejere)
+PLS fajl (kompatibilan sa Winamp, VLC itd.)
+Fajl je prevelik
+Fajl je prevelik (server)
+Fajl je delimično otpremljen
+Privremeni fajlovi
+Muzički fajlovi
+Fajlovi strima
+Fajlovi prevoda:
+Arhitektura
+Prevucite fajlove ovde
+Izvođač
+Izvođač trenutne pesme
+Tema
+Napad
+Audio strimovanje
+Platforma za audio strimovanje
+Platforma za audio strimovanje
+Proširuje stereo sliku
+Automatski kreiraj nove naloge
+Automatski suspenduj zbog neplaćanja
+Automatski ugasi otkazane naloge
+Samopotpisan
+Automatsko pokretanje
+Automatsko osvežavanje:
+
+Status AutoDJ-a:
+AutoDJ zaustavljen
+AutoDJ pokrenut
+Registrovani AutoDJ-evi (2)
+Automatizacija
+Još nema zabeleženih podataka o slušaocima.
+Trenutni opseg
+Niska
+Basovi - Frekvencija
+Basovi - Pojačanje
+Traka
+Bočna traka panela vaših klijenata. PNG 140×40px.
+Audio trake
+Baza podataka:
+Glavna baza podataka panela. Restartujte ako postoje problemi sa vezom ka bazi.
+Baza podataka:
+Osnovni
+Muzička biblioteka
+Muzička biblioteka - CastPanel
+Dobrodošlica
+
+Maksimalni bitrate
+Bitrate prenosa u kbps
+Podrazumevani bitrate
+
+Obriši poruku
+
+Brending / White Label
+Brending / White-Label
+Brending / White-Label - CastPanel
+White-Label brending
+Brending ažuriran. Vaši klijenti će videti izmene nakon osvežavanja stranice.
+Kašnjenje DJ bafera (s)
+Pretraga
+Pretraži paket...
+Pretraži po naslovu, izvođaču...
+Pretraga...
+Business ili Creator
+CORS uključen
+KRITIČNO
+Svaki DJ koristi svoju lozinku (dodeljenu pri kreiranju naloga). Na mobilnom koristite format
+Kvalitet snimanja
+Promeni lozinku
+Promeni jezik
+Promeni jezik - CastPanel
+Promeni ime hosta
+Promeni ime hosta - CastPanel
+Promeni pozadinsku sliku
+Promeni omot
+Promenite jezik svog CastPanel-a.
+Polje
+Kanali
+Otkaži
+Pesme
+Pesme sortirane po n
+Pesme sortirane po brojevima.
+Pesme sortirane po prefiksu.
+Trenutna pesma
+Pesma ažurirana.
+Pesma obrisana.
+Pesma premeštena.
+Količina
+Učitavanje podataka...
+Učitavanje istorije...
+Učitavanje...
+Kontrolni centar
+DJ kontrolni centar
+DJ kontrolni centar - CastPanel
+Odjava
+Prilagođeni sertifikat
+Sertifikat uklonjen iz registra
+
+Zvezdano nebo
+Ključ za prenos je obavezan
+Osnovni ključevi (ES):
+
+Klijent
+Klijent ažuriran
+Klijent obrisan (zajedno sa svim stanicama)
+Klijent nije pronađen
+Neispravan klijent
+Klijenti
+
+Kodek / Bitrate / Frekvencija uzorkovanja
+Podrazumevani kodek
+Red fajlova
+
+Primarna boja
+Boja akcenta:
+Boja pozadine bočne trake
+Boja teksta:
+Boja bočne trake
+Glavna boja dugmadi i akcenata
+Boje
+Komanda nije prepoznata
+Korisne komande (SSH)
+Podelite ovaj link sa slušaocima. To je javna stranica plejera sa omotima, istorijom pesama i prilagodljivim vizuelnim efektima.
+Agresivna kompresija, istaknuti srednji tonovi, punch
+Blaga kompresija, idealna za klasičnu muziku i džez
+Kompresor dinamike
+Sa AutoDJ-em
+Veze u realnom vremenu
+Generisana Liquidsoap konfiguracija:
+AutoDJ konfiguracija sačuvana
+Konfiguracija sačuvana
+CastPanel konfiguracija
+Globalna konfiguracija
+Globalna konfiguracija - CastPanel
+Google Maps konfiguracija
+
+Liquidsoap konfiguracija
+Konfiguracija SSL porta
+Konfiguracija SSL porta - CastPanel
+RadioCaster konfiguracija
+SMTP konfiguracija
+SMTP konfiguracija - CastPanel
+SMTP konfiguracija je uspešno sačuvana
+Konfiguracija API/naplate sačuvana
+Konfiguracija fajlova
+Konfiguracija brendinga sačuvana. Osvežite stranicu da vidite izmene.
+Konfiguracija SSL domena sačuvana
+Konfiguracija SSL portova sačuvana. Restartujte Apache da primenite izmene.
+Konfiguracija servera
+Konfiguracija sajta
+Konfiguracija plejera je uspešno sačuvana.
+Konfiguracija je uspešno sačuvana
+Prilagođena konfiguracija sačuvana. Stanica će se restartovati da primeni izmene.
+Prilagođena konfiguracija sačuvana. Primeniće se kada se uključi AutoDJ.
+Podesi ime hosta i domen
+Podesi SMTP / e-poštu
+Podesi SSL u Apache-u (SSH)
+Podesite mejl server za obaveštenja.
+Podesite globalne opcije panela i servisa za strimovanje.
+Podesite gore Google Maps API ključ da biste videli mapu slušalaca.
+Potvrdite novu lozinku:
+Upit sa bilo kog domena ili mobilne aplikacije
+Sadržaj poruke:
+Lozinka
+Administratorska lozinka
+Lozinka radija
+Lozinka
+Lozinka (user:pass):
+Lozinka *
+Trenutna lozinka:
+Administratorska lozinka
+DJ lozinka
+DJ lozinka:
+SMTP lozinka
+Source / DJ lozinka
+Source / DJ lozinka:
+Lozinka je uspešno ažurirana
+Lozinka za povezivanje:
+Lozinka:
+Automatska kontrola pojačanja (AGC)
+Masovna kontrola radija
+Višestruka kontrola
+Višestruka kontrola - CastPanel
+Brza kontrola
+Kontrola AutoDJ-a
+Kontrola radija
+Kopirajte kod vidžeta koji želite i nalepite ga na svoj sajt kako bi posetioci mogli da slušaju
+Kopiraj
+Kopirajte
+
+
+Kreirajte relej pomoću obrasca levo.
+Kreirajte je pomoću obrasca levo.
+Kreirajte rotaciju pomoću obrasca levo.
+Kreirana
+Kreiraj klijenta
+Kreiraj DJ nalog
+Kreiraj stanicu
+Kreiraj listu
+Kreiraj deljenu listu
+Kreiraj novog preprodavca
+Kreiraj paket
+Kreiraj paket preprodavca
+Kreiraj prvi nalog
+Kreiraj radio
+Kreiraj relej
+Kreiraj preprodavca
+Kreiraj rotaciju
+Kreiraj korisnika
+Kreiraj novog preprodavca
+Kreiraj je
+Kreiraj DJ nalog
+Kreirajte novi radio i nalog klijenta. Klijenti mogu upravljati svojim radijima iz panela klijenta.
+Automatski kreiraj i aktiviraj stanicu nakon uplate
+Neispravni API podaci
+API podaci su obavezni
+Neispravni DJ podaci
+Neispravni podaci za prijavu
+Kreirajte paket sa ograničenjima naloga i radija za svoje klijente.
+Kreirajte i upravljajte API ključevima, preuzmite module za softver za naplatu.
+
+
+Crossfade (sekunde)
+Kritično
+Nalog
+DJ nalog
+DJ nalog ažuriran.
+DJ nalog obrisan
+DJ nalog obrisan.
+DJ nalog nije pronađen
+Nalog ponovo aktiviran
+Nalog suspendovan
+Nalog obrisan
+Nalog potpuno obrisan
+Nalog ponovo aktiviran
+Nalog suspendovan
+Nalog i stanica
+Nalozi
+DJ nalozi
+DJ nalozi - CastPanel
+Maksimalno DJ naloga
+Registrovani DJ nalozi
+HTML kod
+Popup kod (dugme koje otvara prozor)
+Kod sa prilagođenom širinom (npr. 500px)
+Iframe kod
+Iframe kod (za ugradnju na sajt)
+Kako dodati jezik:
+
+
+DJ može promeniti svoju lozinku
+DJ može promeniti svoju lozinku:
+DJ se može prijaviti na DJ panel
+DJ se može prijaviti na DJ panel:
+DJ može pokrenuti/zaustaviti AutoDJ
+DJ može pokrenuti/zaustaviti AutoDJ:
+DJ može pokrenuti/zaustaviti radio
+DJ može pokrenuti/zaustaviti radio:
+DJ može puštati džinglove/ID-ove (u etru)
+DJ može puštati džinglove/ID-ove (u etru):
+DJ može preskočiti pesmu (AutoDJ)
+DJ može preskočiti pesmu (AutoDJ):
+DJ može otpremiti profilnu fotografiju
+DJ može otpremiti profilnu fotografiju:
+DJ može emitovati muziku
+DJ može emitovati muziku:
+DJ može koristiti Voice Pro (u etru)
+DJ može koristiti Voice Pro (u etru):
+
+Aktivni DJ-evi
+
+Podaci se ažuriraju pri svakom zahtevu informacijama uživo
+
+Određuje posle koliko pesama se ubacuju reklamni blokovi. Možete kreirati više pravila sa različitom učestalošću i terminima.
+Isključeno
+Isključi
+Nepovezana
+Opis
+Opcioni opis
+Zamućenje (blur):
+Isključena
+Isključen
+Detalji stanica (2)
+Zaustavi
+Zaustavi AutoDJ
+Zaustavi radio
+Zaustavi sve radije
+Zaustavi sve AutoDJ-eve
+Zaustavite reemitovanje pre izmene
+Zaustavlja sve Liquidsoap kontejnere
+
+Direktorijum
+Direktorijum medija
+Glavni direktorijumi
+Isključen
+Disk
+Ukupno disk
+Dostupno
+Raspodela po tipu servera
+
+
+
+Dokumentacija polja
+Ned
+Domen
+SSL domen
+Glavni SSL domen
+Domen panela
+Domen panela (SSL_DOMAIN)
+Domen koji se koristi za URL-ove panela i strimova
+Domeni / SSL sertifikati
+Domeni / SSL sertifikati - CastPanel
+Prevucite sliku ovde za otpremanje ili kliknite.
+Trajanje
+Ukupno trajanje
+Ukupno trajanje:
+Aktivni dani
+Dani u nedelji
+
+
+
+Ekvilajzer
+Ekvilajzer sa 3 opsega
+Izmeni
+Izmeni pesmu
+Izmeni klijenta
+Izmeni DJ nalog
+Izmeni DJ-a:
+Izmeni stanicu
+Izmeni paket
+Izmeni radio paket
+Izmeni pakete preprodavca
+Izmeni pakete preprodavca - CastPanel
+Izmeni relej
+Izmeni preprodavca
+Izmeni rotaciju
+Izmeni korisnika
+Izmeni/ažuriraj radije
+Izmeni/prikaži pakete
+Izmeni/prikaži pakete (4)
+Izmeni/prikaži pakete - CastPanel
+Vizuelni efekat pozadine
+Npr.: Božićna muzika
+Npr.: Jutarnja muzika
+Npr.: Nacionalni radio FM
+Npr.: Reklamni spotovi
+Npr.: Aktuelni hitovi
+Pokrenite na serveru preko SSH-a za upravljanje Let's Encrypt sertifikatima:
+Primer
+Primer integracije (JavaScript)
+Ovaj
+Propusni opseg po stanici je procena na osnovu trenutnih slušalaca × bitrate. Podaci mrežnih interfejsa se sabiraju od poslednjeg restarta servera.
+Fajl ne sme biti veći od 2MB
+Fajl ne može biti veći od 3MB
+Glavni domen preko kog se pristupa panelu
+Jezik će se pojaviti automatski
+Korisničko ime već postoji
+Naziv paketa je obavezan
+Naziv je obavezan
+Naziv je obavezan.
+Audio procesor radi i u AutoDJ režimu i kada je DJ uživo. Pri čuvanju izmena stanica će se kratko restartovati da primeni novu konfiguraciju. Procesor koristi profesionalni lanac: AGC → Kompresor → Ekvilajzer → Limiter → Izlazno pojačanje.
+Audio procesor poboljšava kvalitet prenosa profesionalnom kompresijom, ekvilizacijom i limiterom. Izaberite preset koji odgovara stilu vašeg sadržaja.
+Korisničko ime ili e-pošta već postoji
+Korisnik već postoji
+Obriši
+Obriši izabrane
+Obriši stanicu pri otkazivanju usluge
+
+E-pošta administratora
+E-pošta pošiljaoca (From)
+Odredišna e-pošta
+Neispravna e-pošta
+
+Stanica aktivna
+Emitovano danas:
+Firma
+
+Na svim stanicama
+Uživo
+
+Šifrovanje
+
+API endpoint:
+JSON endpoint za programere. Vraća metapodatke uživo: trenutnu pesmu, slušaoce, status servera. Koristan za integracije i prilagođene aplikacije.
+Javni endpoint · Bez autentifikacije · JSON · CORS uključen
+
+
+JSON API link
+M3U link (za plejere)
+PLS link (za WinAmp, VLC itd.)
+XSPF link
+Direktan link (za deljenje na mrežama, sajtovima itd.)
+Direktni linkovi strima
+SSL linkovi/Pusti
+Linkovi za SSL strimovanje
+Linkovi za SSL strimovanje - CastPanel
+Stereo proširenje
+Unesite Facebook ključ
+Unesite Instagram ključ
+Unesite TikTok ključ
+Unesite Youtube ključ
+Poslato (TX)
+Pošalji probnu e-poštu
+Pošalji probu
+Greška baze:
+Greška pri ažuriranju:
+Greška pri primeni preseta.
+Greška pri slanju probne e-pošte. Proverite SMTP konfiguraciju.
+Greška pri čuvanju fajla
+Greška pri čuvanju konfiguracije.
+Greška pri čuvanju konfiguracije:
+Greška pri čuvanju:
+Greška pri pokretanju
+Greška pri premeštanju fajla
+Greška pri preuzimanju konfiguracije:
+Greška pri restartu
+Greška pri sinhronizaciji proxy pravila. Proverite dozvole fajla /etc/httpd/shoutcast-proxy-rules.inc
+Greška pri otpremanju
+Greška pri otpremanju fajla (kod:
+Greška pri otpremanju fotografije
+Greška baze podataka:
+Greška veze
+Greška pri otpremanju
+Greška pri otpremanju:
+Nepoznata greška
+Nepoznata greška pri kreiranju radija
+Greška u operaciji:
+Greška u operaciji:
+Otpremanje nije uspelo
+Greška pri restartu firewall-a:
+Ovde napišite poruku koju će DJ-evi videti pri ulasku u panel...
+Slobodan prostor
+
+Dnevna procena
+Stanica
+Stanica kreirana
+Stanica zaustavljena
+Stanica obrisana i uklonjena
+Stanica pokrenuta
+
+Stanica ponovo aktivirana
+Stanica restartovana
+Stanica suspendovana
+Stanica:
+Stanice
+Aktivne stanice
+Dodeljene stanice
+Offline stanice
+Online stanice
+Ukupno stanica
+Stanice dodeljene deljenoj listi
+Stanice klijenata
+Stanice klijenata - CastPanel
+Stanica
+Stanica kreirana
+Stanica ažurirana
+Stanica obrisana
+
+Stanica ne emituje
+Status
+Status radija
+Status ažuriran
+Status naloga
+Status radija
+Status radija:
+Status servisa
+Status radija
+Status servera
+Status servera - CastPanel
+Status servera uživo
+
+Statistika
+Statistika - CastPanel
+Statistika uživo
+Statistika uživo - CastPanel
+Potpuna statistika
+Statistika radija
+Statistika radija - CastPanel
+Statistika uživo
+Brza statistika (slušaoci, status, naslov)
+Statistika i nalog
+Ovo je KRITIČAN servis.
+Ova poruka se prikazuje DJ-evima kada se prijave na svoj panel. Može sadržati uputstva, rasporede, pravila ili druge važne informacije. Podržan je osnovni HTML za formatiranje.
+Ovo će pokrenuti:
+Zvezde
+Standardno
+Stereo
+Dozvoljene ekstenzije
+Učitane ekstenzije
+
+
+
+
+Facebook može ograničiti vaš nalog ili stranicu ako vaš radio tokom prenosa uživo pušta muziku zaštićenu autorskim pravima.
+
+Naplata i API
+Naplata i API - CastPanel
+Naplata i automatizacija (API)
+
+
+
+Datum
+Jedan datum
+Datum/vreme upita ISO 8601
+Redovi
+
+
+Firewall servera. Restartujte ako postoje problemi sa pristupom portovima.
+Firewall ponovo učitan
+Firewall restartovan. Otvoreni portovi:
+
+Neispravan format pozadinske slike. Koristite JPG, PNG, WebP ili GIF.
+Neispravan format omota. Koristite JPG, PNG ili WebP.
+Neispravan format
+Formati: MP3, OGG, AAC, M4A, WAV, FLAC — Maks. 50 MB po fajlu
+Fotografija je uspešno ažurirana
+Profilna fotografija
+Profilna fotografija ažurirana
+Fotografija obrisana
+
+
+Izvor
+Konačno pojačanje
+Maks. pojačanje
+Min. pojačanje
+Izlazno pojačanje i dodaci
+Kompenzaciono pojačanje
+Generiši novi ključ
+Žanr
+Geolocirani
+Upravljaj stanicama
+Upravljaj stanicama - CastPanel
+Upravljaj korisnicima
+Upravljaj korisnicima - CastPanel
+Upravljanje reklamama
+Upravljanje reklamama - CastPanel
+Upravljanje AutoDJ-em
+Google Maps API ključ
+Animirane kapi kiše
+DJ snimanje:
+Snimaj DJ-a
+Sačuvaj
+Sačuvaj izmene
+Sačuvaj AutoDJ izmene
+Sačuvaj konfiguraciju
+Sačuvaj prilagođenu konfiguraciju
+Sačuvaj jezik
+Sačuvaj ključ
+Sačuvaj poruku
+Sačuvaj celu konfiguraciju
+
+Uključeno
+Uključi REST API
+Uključi slanje SMTP e-pošte
+Istorija
+Istorija pesama
+Istorija nedavnih pesama
+Vreme završetka
+Vreme početka
+Vreme servera
+
+Liquidsoap host
+
+
+Trenutno ime hosta
+Ime hosta servera
+Neispravno ime hosta: samo slova, brojevi, crtice i tačke.
+Ime hosta nije moglo biti promenjeno:
+Neispravan ID stanice
+Neispravan ID
+ID je obavezan
+IP za povezivanje strima:
+IP za povezivanje:
+IP radija
+IP servera
+Neovlašćena IP adresa
+Jedinstvene IP adrese
+
+
+
+
+
+
+
+Ikonica kartice pregledača. Preporučeno: 32×32px ili 64×64px, ICO ili PNG.
+Ikonica pregledača za vaše klijente. ICO/PNG 32×32px.
+Jedinstveni identifikator stanice
+Aktivni jezik:
+Jezik panela
+Pozadinska slika
+Pozadinska slika obrisana.
+Slika obrisana.
+Slika je prevelika (maks 5MB)
+Slika koja se prikazuje kao omot kada pesma nema svoj. Preporučeno: 500x500px, kvadratna.
+Slika koja se prikazuje kao pozadina celog plejera. Preporučeno: 1920x1080px ili veća.
+Slika je uspešno otpremljena.
+Neaktivan
+Neaktivan · Isključen
+Informacije preuzete
+Info o radiju
+Info o serveru
+Tehničke informacije
+Potpune informacije o stanici i trenutnoj pesmi
+Informacije o nalogu
+Informacije o DJ-u
+Informacije o serveru
+Informacije o serveru - CastPanel
+Društvene informacije ažurirane
+Informacije:
+Unesite RTMP URL bilo kog kompatibilnog servera
+Unesite ime
+Unesite korisničko ime
+Prvo unesite ključ za prenos.
+Unesite lozinku
+Unesite korisničko ime
+Unesite korisničko ime i lozinku
+Pokreće zaustavljene radije
+Pokreni
+Pokreni AutoDJ
+Pokreni radio
+Prijava
+Prijava - CastPanel
+Prijavi se kao korisnik
+Prijavi se u korisnika
+Prijava
+Pokreni sve radije
+Početna
+Pokretanje svih radija izvršeno
+Početna — CastPanel DJ
+
+
+
+Instagram može ograničiti vaš nalog ako vaš radio tokom prenosa uživo pušta muziku zaštićenu autorskim pravima.
+
+Ručna instalacija (AlmaLinux 8):
+Instalirano (aktivno)
+Integracije i API
+Mrežni interfejsi
+Interfejs
+
+JPG, PNG ili WebP - kvadrat 500x500
+JPG, PNG, WebP ili animirani GIF
+Standardni JSON
+
+Marko Marković
+Čet
+
+
+Ova
+Trenutna lozinka nije ispravna
+Lozinka mora imati najmanje 6 znakova
+Funkcija prenosa uživo na Facebook-u emituje muziku vašeg radija na Facebook Live. Idite na
+Funkcija prenosa uživo na Facebook-u emituje muziku vašeg radija na Facebook Live. Idite na Facebook Live Producer, kreirajte video uživo i kopirajte „Ključ za prenos“. Nalepite ključ u polje ispod. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa. Facebook koristi RTMPS (šifrovano).
+Funkcija prenosa uživo na Instagram-u emituje muziku vašeg radija na Instagram Live. Potreban je nalog tipa
+Funkcija prenosa uživo na Instagram-u emituje muziku vašeg radija na Instagram Live. Potreban je Business ili Creator nalog. Ključ za prenos preuzmite iz podešavanja Instagram Live. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa. Instagram koristi RTMPS (šifrovano).
+Funkcija prenosa uživo na TikTok-u emituje muziku vašeg radija na TikTok Live. Potrebno je najmanje
+Funkcija prenosa uživo na TikTok-u emituje muziku vašeg radija na TikTok Live. Za prenos uživo potrebno je najmanje 1.000 pratilaca. Ključ za prenos preuzmite iz TikTok Live Studio ili mobilne aplikacije. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa.
+Funkcija prenosa uživo na Youtube-u emituje muziku vašeg radija na Youtube Live. Postoji
+Snimanje je automatsko ako je uključeno. Da biste uključili/isključili snimanje DJ emisija uživo, koristite konfiguraciju stanice. Fajlovi koriste vaš dostupni hosting prostor.
+Lozinke se ne podudaraju
+Plejlistama se upravlja iz panela korisnika. Koristite „Prijavi se u korisnika“ za pristup.
+Let's Encrypt (besplatno)
+Limiter vrhova
+Ograničenje slušalaca
+
+Liquidsoap nije potreban (AutoDJ isključen)
+Liquidsoap preskočen (AutoDJ isključen)
+Lista
+Zakazana lista
+Deljena lista obrisana
+Odredišna plejlista
+Lista reklama obrisana.
+Lista reklama nije navedena
+Plejlista
+Odredišna lista
+Lista obrisana. Pesme su ostale bez dodeljene liste.
+Lista preimenovana.
+Prikaži / izmeni radije
+Prikaži AutoDJ-eve
+Prikaži AutoDJ-eve - CastPanel
+Prikaži/preuzmi DJ emisije
+Prikaži/izmeni DJ naloge
+Prikaži/izmeni radije (2)
+Prikaži/izmeni preprodavce
+Prikaži/izmeni preprodavce - CastPanel
+Liste
+Aktivne liste
+Deljene liste
+Deljene liste (0)
+Liste reklama (0)
+Plejliste
+Plejliste
+Plejliste - CastPanel
+Deljene plejliste
+Deljene plejliste - CastPanel
+
+Kiša
+
+Logo za prijavu
+Logo plejera
+Logo bočne trake
+Logo obrisan. Biće vraćen podrazumevani CastPanel logo.
+Logo obrisan. Koristiće se podrazumevani logo panela.
+Logo za javni radio plejer. Preporučeno: 200×200px, PNG.
+Mali logo u bočnoj traci panela. Preporučeno: 140×40px, providan PNG.
+Logo je uspešno otpremljen.
+Logoi i favicon
+Sistemski logovi
+Logovi nisu dostupni iz veb panela. Da vidite poslednje SSH pristupe, pokrenite u terminalu: last -n 10
+DJ-evi moraju izabrati protokol
+DJ-evi moraju uvek izabrati protokol
+Podešavanja procesora čuvaju se u bazi podataka. Za obradu u realnom vremenu uključite AutoDJ u paketu ove stanice. Nakon uključivanja, Liquidsoap će automatski primeniti lanac obrade. Procesor koristi profesionalni lanac: AGC → Kompresor → Ekvilajzer → Limiter → Izlazno pojačanje.
+Servisi označeni kao
+Ikonice će se prikazivati u javnom plejeru. Ostavite prazno da ih sakrijete.
+Pon
+Ograničenja radija
+
+
+Kompenzaciono pojačanje
+Mapa slušalaca
+Uto
+Maks. bitrate
+Najviše 10 reemitovanja po stanici
+
+Mediji (muzika)
+Srednji - Frekvencija
+Srednji - Pojačanje
+Srednji - Q faktor
+Poruka DJ panela
+Poruka DJ panela - CastPanel
+Poruka je uspešno ažurirana.
+Poruka DJ panela ažurirana
+Poruka za DJ panel
+Metod nije dozvoljen
+Moj brending
+Moj brending - CastPanel
+Moji klijenti
+Moji klijenti - CastPanel
+Sre
+Režim održavanja
+Režim reprodukcije
+Prikaži naslove
+Prikaži trake ekvilajzera
+Prikaži broj slušalaca
+Prikaži istoriju pesama
+Kontejnerski engine za AutoDJ (Liquidsoap). Restartujte ako AutoDJ-evi ne rade.
+Engine:
+
+
+
+Tačka montiranja
+
+Premesti
+Premesti u listu
+Najpopularnija (0 slušalaca)
+Maks. dozvoljeno
+Maks. na jednom radiju
+Maksimalna snaga i jačina, zvuk komercijalnog FM-a
+Maksimalno dozvoljeno
+Maksimum u poslednja 24h
+Mesečni maksimum
+Nedeljni maksimum
+Metod
+Metod nije dozvoljen
+Muzika
+Veb pregledači
+Potreban vam je Google Maps API ključ sa uključenim Maps JavaScript API-jem.
+Sneg
+Nijedna
+Nijedan
+Ciljni nivo
+Nivo od kog počinje kompresija
+Maksimalni dozvoljeni nivo pre ograničavanja
+Ne
+Niste prijavljeni
+Niste ovlašćeni za ovu stanicu
+Nije podešeno
+Ne kreirajte DJ nalog sa svim dozvolama osim ako toj osobi potpuno verujete.
+Nije dostupno
+Nije pronađena
+U biblioteci nema pesama.
+Nema kreiranih DJ naloga.
+Nema deljenih lista
+Nema kreiranih lista. Kreirajte jednu pomoću obrasca iznad.
+Nema lista reklama.
+Nema kreiranih paketa
+Nema dodatnih otvorenih portova (samo podrazumevani servisi)
+Nema dostupnih telnet portova
+Još nema zapisa o emitovanju.
+Nema podešenih pravila za reklame.
+Nema podešenih releja.
+Nema registrovanih preprodavaca
+Nema podešenih rotacija.
+Nema snimljenih emisija za ovu stanicu.
+Nije instalirano
+Ne možete deaktivirati svoj nalog
+Ne možete obrisati svoj nalog
+Nije potrebno (SHOUTcast protokol)
+Nisu pronađeni ispravni audio fajlovi
+Ključ za prenos nije podešen
+Povezivanje sa SHOUTcast serverom nije uspelo
+Zaustavljanje AutoDJ-a nije uspelo
+Zaustavljanje radija nije uspelo
+Upisivanje IPC komande nije uspelo
+Čuvanje fajla nije uspelo
+Pokretanje Liquidsoap-a nije uspelo:
+Pokretanje AutoDJ-a nije uspelo
+Pokretanje FFmpeg procesa nije uspelo
+Pokretanje radija nije uspelo
+Brisanje nije moguće: preprodavac ima klijente sa aktivnim stanicama
+Brisanje nije moguće: postoje stanice koje koriste ovaj paket
+Brisanje nije moguće: postoje preprodavci koji koriste ovaj paket
+Nijedan fajl nije primljen
+Fajl nije primljen
+Fajl nije primljen
+Nemate dozvolu za ovu stanicu
+Nemate dodeljenu stanicu. Obratite se administratoru.
+
+Naziv
+Puno ime
+Puno ime:
+Naziv stanice
+
+Korisničko ime *
+Naziv liste
+Naziv rotacije *
+Naziv stanice
+Naziv releja *
+Ime pošiljaoca
+Naziv sajta
+Naziv prikazan u bočnoj traci i naslovu pregledača
+Naziv je obavezan
+Naziv je obavezan.
+Naziv i URL su obavezni.
+Naziv i slug su obavezni
+Normalno (redom)
+Napomena:
+Vesti / Govor
+Sada svira po ID-u stanice
+Generisan novi API ključ:
+Nova lozinka (ostavite prazno da zadržite)
+Nova lozinka:
+Novi DJ nalog
+Nova stanica
+Nova lista reklama
+Novo pravilo reklama
+Nova rotacija
+Novo
+Novi klijent
+Novi relej
+Novi korisnik
+
+
+Preuzmi ključ
+
+Okeanski talasi
+Talasi
+
+Trenutno online
+Dozvoljeni su samo .jpg ili .png! Maks 3MB.
+Opcije plejera
+Optimizovano za govor, maks. jasnoća
+Optimizovano za govor, maksimalna jasnoća
+Zatamnjenje sloja:
+Slušaoci
+Slušaoci (Google Maps)
+Aktivni slušaoci
+Slušaoci sada
+Povezani slušaoci
+Maksimalno slušalaca
+Ukupno slušalaca
+Ukupno slušalaca sada
+Trenutni slušaoci
+Trenutno povezani slušaoci
+Grafikon slušalaca radija (uživo)
+Slušaoci na mapi
+Slušaoci na mapi - CastPanel
+Slušaoci u poslednja 24 sata
+
+
+
+Stranica radija
+Glavni panel
+Panel preprodavca
+Panel preprodavca - CastPanel
+Administratorski panel
+Administratorski panel - CastPanel
+Kontrolni panel
+Kontrolni panel - CastPanel
+Paket
+Paket ažuriran
+Paket obrisan
+Paket nije pronađen
+Paket nije pronađen ili je neaktivan
+Paketi
+Paketi preprodavca (0)
+Paketi prikazani
+Za napredna podešavanja (AGC, kompresor, EQ, limiter) obratite se administratoru stanice.
+
+Ukupni vrh
+Nalepite ključ za prenos ovde...
+Na čekanju
+Dozvole
+DJ dozvole (oprezno)
+Prilagodite logo, naziv i boje svog panela.
+Prilagodite logoe, naslove i favicone svog panela. Otpremljene slike zameniće podrazumevane vrednosti. Brisanjem slike vratiće se podrazumevani CastPanel logo. Preprodavci mogu podesiti sopstveni brending iz svog panela za svoje klijente.
+Prilagođeno
+Prilagodi plejer
+Prilagodi plejer - CastPanel
+
+Vrh u 24 sata
+Vrh 24h
+Vrh u 30 dana
+Vrh u 7 dana
+Prilagođeno podnožje
+Numere
+Šablon je uspešno ažuriran
+Šabloni e-pošte
+Šabloni e-pošte (6)
+Šabloni e-pošte - CastPanel
+Podrazumevani šabloni inicijalizovani
+Neispravna platforma
+Plejlista
+Plejlista 'General' kreirana
+Aktivna plejlista
+Intervali plejliste
+Plejliste
+Omot obrisan.
+Podrazumevani omot
+DJ portal
+
+Postfix (pošta)
+Postfix mejl server
+Postfix mejl server. Restartujte ako se e-pošta ne šalje.
+Snažno
+Pažnja:
+
+Preset „
+Neispravan preset
+Brzi preseti
+Pregled
+Prvo kreirajte
+Prvo kreirajte
+Prioritet
+Testiraj
+Testiraj signal
+Procesor
+Procesor uključen
+Procesor aktivan
+Procesor isključen
+Audio procesor
+Audio procesor - CastPanel
+Uravnotežena obrada za opšti radio
+Raspored
+Raspored reklama kreiran.
+Raspored obrisan.
+Zakaži reklame
+Zakaži reklame - CastPanel
+
+
+Vlasnik
+Protokol
+
+SHOUTcast v1 protokol — Povezivanje preko Liquidsoap Harbor-a (AutoDJ aktivan). Svaki DJ koristi svoje podatke za prijavu.
+SHOUTcast v1 protokol — Direktno povezivanje sa SHOUTcast serverom (bez AutoDJ-a). U RadioCaster-u uvek koristite SHOUTcast v1 protokol.
+Protokol:
+CastPanel test e-pošteAko ste primili ovu poruku, SMTP konfiguracija radi ispravno.
+Port
+DJ port
+HTTP port
+HTTPS port
+
+SSL port
+Administratorski SSL port
+SSL port za strimovanje
+SSL port panela (HTTPS)
+Telnet port
+Port za DJ povezivanje:
+Port za povezivanje:
+Port za emitovanje
+Port radija
+Administratorski port (podrazumevano: 2087)
+Standardni HTTPS port (podrazumevano: 443)
+Port nije dodeljen
+Port za zaštićene strimove (podrazumevano: 8443)
+Port:
+Otvoreni portovi
+SSL portovi
+Tačka montiranja
+Tačka montiranja (Mount)
+Tačka montiranja (Mount):
+Strana 1 od 1 · 0 fajlova
+Strana 1 od 1 · 2 fajla
+Stranica za prijavu vaših klijenata. PNG 200×60px.
+Javno i besplatno. Ne treba vam API ključ ni tokeni
+Radio je uspešno zaustavljen
+Radio je uspešno pokrenut
+
+RadioCaster: Protokol
+RadioCaster: Icecast protokol, server:
+RadioCaster: SHOUTcast v1 protokol, server:
+RadioCaster: Izaberite protokol
+RadioCaster: Izaberite SHOUTcast v1 protokol. Server:
+Radiji i nalozi
+Rang lista — Top 50 radija po slušaocima
+
+Ponovna aktivacija
+Ponovo aktiviraj
+Izvodi potpuni restart SSH servisa uključujući Fail2ban. Korisno kada ima mnogo blokiranih pokušaja pristupa ili stalnih problema sa vezom.
+Ponovo učitaj firewall
+Primljeno (RX)
+Mreža
+Društvene mreže
+Ponovo pošalji poruku dobrodošlice
+Osveži
+Ponovo generiši Apache proxy pravila
+Registruj sertifikat
+Registracija
+Javna registracija uključena
+Aktivna pravila (0)
+
+Restartuje servis za strimovanje svake aktivne stanice
+Restartuje sve Liquidsoap kontejnere
+Restartuj
+Restartuj AutoDJ
+Restartuj Fail2ban (briše privremene zabrane)
+Restartuj radio
+Restartuj servise
+Restartuj servise - CastPanel
+Restartuj sve radije
+Restartuj sve AutoDJ-eve
+Restartuj SSHD servis
+Restart kritičnih servisa može izazvati privremene prekide. Servisi označeni kao kritični uticaće na panel i/ili strimovanje pri restartu.
+Restartujte servise za strimovanje na serveru.
+Restart svih radija izvršen
+Restart svih AutoDJ-eva izvršen
+
+Preusmeravanje releja
+Preusmeravanje releja - CastPanel
+Relej ažuriran.
+Relej obrisan.
+Podešeni releji
+
+Sada svira: nema informacija
+Sada svira:
+Pusti
+Kompaktni plejer (iframe)
+Plejer preko cele stranice (sa vizuelnim efektima)
+Javni plejer
+Samostalni plejer kome nije potreban iframe. Samo kopirajte i nalepite kod u svoj HTML.
+Kompaktni plejer visine
+Profesionalni plejer preko cele stranice sa animacijama pozadine, omotom, istorijom pesama i naprednim kontrolama. Idealan kao
+Javni plejer za radije vaših klijenata. PNG 200×200px.
+
+
+JSON odgovor
+Strukturiran i dokumentovan JSON odgovor
+Neispravan JSON odgovor
+Resetuj lozinku
+Resetuj lozinku
+Resetujte svoju lozinku
+Potpuni SSH reset
+Rezultati
+Pregled sadržaja
+Pregled naloga (uživo)
+Pregled servera
+Preprodavac ažuriran
+Preprodavac obrisan
+Preprodavci
+Registrovani preprodavci (0)
+
+Uloga
+Podešene rotacije
+Rotacija ažurirana.
+Rotacija foldera
+Rotacija foldera - CastPanel
+Rotacija obrisana.
+Putanja
+
+
+SHOUTcast binarni fajl nije pronađen u
+
+
+
+
+SSH server
+SSH potpuno restartovan
+SSL uključen
+SSL uključen (HTTPS)
+SSL i domen
+
+Podrazumevana frekvencija uzorkovanja
+Primenjuje se automatski na serveru preko castpanel-ctl
+Šalje se pri kreiranju novog naloga
+Šalje se pri kreiranju nove stanice
+Šalje se pri ponovnoj aktivaciji korisničkog naloga
+Šalje se pri zahtevu za reset lozinke
+Šalje se pri suspendovanju korisničkog naloga
+Generiše se automatski. Možete je promeniti.
+Prikazuje se na stranici za prijavu. Preporučeno: 200×60px, providan PNG.
+Redosled plejlista
+Bezbednost i firewall
+Bezbednost i firewall - CastPanel
+Izaberite pesme poljima za potvrdu za masovne radnje
+Izaberite vizuelni efekat:
+Izaberite preset da uključite obradu zvuka
+Izaberite stanicu da upravljate njenim DJ nalozima.
+Izaberite plejlistu
+Izaberite plejlistu iz padajućeg menija da vidite i upravljate njenim pesmama.
+Odvojeno zarezima
+Servis
+Liquidsoap servis zaustavljen
+Liquidsoap servis pokrenut (Docker: liquidsoap-
+SHOUTcast servis zaustavljen
+SSH servis za udaljeni pristup. Restartujte ako postoje problemi sa udaljenom vezom.
+Sistemski servisi
+Server
+Server / Host
+SMTP server
+SSH server
+Mejl server
+
+Veb server panela. Restartujte ako se panel ne učitava.
+Server:
+
+
+
+
+
+DJ emisije
+DJ emisije - CastPanel
+Ako stanica emituje
+Bez autentifikacije
+Bez AutoDJ-a
+Nema podataka
+Bez efekta
+Nema prostora za skladištenje
+Nema stanice
+Nije izabrana stanica
+Nema stanica.
+Nije dodeljena stanica.
+Nema informacija
+Bez liste
+Nije dodeljena lista
+Bez prilagođenog logoa
+Bez naziva
+Bez paketa
+Nema dozvole za AutoDJ
+Nema dozvole za promenu lozinke
+Nema dozvole za kreiranje
+Nema dozvole za brisanje
+Nema dozvole za pokretanje/zaustavljanje
+Nema dozvole za čitanje
+Nema dozvole za izmenu
+Nema dozvole za ponovnu aktivaciju
+Nema dozvole za otpremanje fotografije
+Nema dozvole za suspendovanje
+Nema dozvola
+Bez obrade, originalni zvuk
+Bez naslova
+Sistem
+Operativni sistem
+Sistem naplate
+Radio sistem
+Sistem prevoda
+
+
+
+Samo JPG, PNG ili WebP
+Samo slova, brojevi, crtice i donje crte
+Dozvoljeni su samo JPG ili PNG fajlovi
+
+
+
+
+
+HTTP strim (bez SSL-a)
+Glavni HTTPS strim
+Blago
+Prvo otpremite sliku omota
+Otpremi reklame
+Otpremi audio fajlove
+Otpremi muziku
+Otpremi muziku - CastPanel
+Otpremi MP3 muziku
+Otpremi sve
+Otpremi pozadinsku sliku
+Otpremi omot
+Podnaslov
+Suspenduj
+Automatski suspenduj stanicu ako plaćanje ne uspe
+Suspendovane
+Suspenzija
+
+
+Sub
+Da
+
+
+
+Tabela
+Tabele
+Tabele baze podataka (29)
+Veličina
+Maks. veličina otpremanja (MB)
+Ukupna veličina baze
+Zakazani zadaci. Restartujte ako se cron zadaci ne izvršavaju.
+Ugasi
+Tekst ispod logoa u bočnoj traci
+Tekst podnožja
+Tekst dugmeta ili zaglavlja na stranici za prijavu
+Realno vreme
+
+
+
+TikTok može suspendovati vaš nalog ako vaš radio tokom prenosa uživo pušta muziku zaštićenu autorskim pravima.
+TikTok → LIVE → Preuzmi URL servera i ključ
+Isteklo je vreme čekanja na odgovor demona
+
+Tip
+Tip servera
+Tip sertifikata
+Tip rasporeda
+Tip liste
+Tip fajla nije dozvoljen. Koristite PNG, JPG, GIF, SVG ili ICO
+Naziv radija
+Sve lozinke
+Svi izvori strimovanja
+Sve liste
+Sve liste
+Svi radiji zaustavljeni
+Svi AutoDJ-evi zaustavljeni
+Svi endpointi
+Svi korisnici (3)
+Sva obavezna polja moraju biti popunjena (naziv radija, korisnik, paket)
+Sva polja su obavezna
+Svi linkovi za strimovanje dostupni su sa SSL-om (HTTPS) radi maksimalne kompatibilnosti sa pregledačima i mobilnim aplikacijama.
+Neispravan CSRF token. Osvežite stranicu.
+Neispravan bezbednosni token
+Top 50 radija
+Top 50 radija - CastPanel
+
+Ukupno fajlova
+Ukupno poslato (TX)
+Ukupno primljeno (RX)
+
+Ukupno od pokretanja servera
+Prevedite vrednosti niza
+Prilagođeni prenos
+
+
+Instagram prenos uživo
+
+Youtube prenos uživo
+Prenos zaustavljen.
+
+
+Instagram prenos uživo
+Instagram prenos uživo - CastPanel
+
+
+YouTube prenos uživo
+Youtube prenos uživo
+Youtube prenos uživo - CastPanel
+Prenos je uspešno pokrenut.
+Emituje
+Vaš javni plejer
+Vaš nalog je ponovo aktiviran
+Vaš nalog je suspendovan
+Vaš nalog nema dozvolu za prijavu
+Vaš strim je kompatibilan sa svakim plejerom koji podržava HTTP strimovanje:
+
+Naslov
+Naslov za prijavu
+Naslov trenutne pesme
+Naslov panela
+Naslov i boje panela
+Direktan HTTP URL (bez SSL-a)
+RTMP URL je obavezan
+SSL URL
+Direktan SSL URL za HTML5 plejere, mobilne aplikacije, WordPress dodatke i prilagođene plejere. Radi sa HTTPS-om na portu stanice.
+URL za prijavu na DJ panel:
+Direktan SSL URL za reprodukciju
+URL spoljnog izvora *
+URL radija
+URL omota albuma
+HTTPS URL za strimovanje
+URL sistema
+URL sajta
+URL strima (HTTPS)
+URL spoljnog audio strima (Icecast, SHOUTcast, HTTP strim).
+Direktan URL bez SSL-a za radio softver kao što su SAM Broadcaster, BUTT, Mixxx, RadioBOSS i drugi enkoderi. Koristite ovaj URL sa navedenim portom za direktno emitovanje.
+URL-ovi strima
+URL-ovi za SSL strimovanje
+Prag
+Prag (Threshold)
+
+Za RTMP URL koristite Instagram API ili alate trećih strana
+Koristite funkciju
+Koristite podatke za prijavu svog
+
+Korisničko ime, e-pošta i lozinka su obavezni
+Korišćenje propusnog opsega
+Korišćenje propusnog opsega - CastPanel
+Korišćenje diska
+Korišćenje diska / HDD
+Korišćenje diska / HDD - CastPanel
+Korišćenje po stanici (2)
+Korisnik
+Administrator
+DJ korisnik
+DJ korisnik:
+SMTP korisnik
+Korisnik ažuriran
+Korisnik obrisan
+Korisnik nije pronađen
+Pogrešno korisničko ime ili lozinka
+Korisničko ime i lozinka su obavezni
+Korisničko ime i lozinka su obavezni
+Korisničko ime i lozinka su obavezni.
+Korisnici
+
+
+Dostupne promenljive
+Pregledajte, menjajte i upravljajte svim radijima i nalozima na serveru.
+Pogledaj
+Pogledaj plejer
+Provera...
+Pratite korišćenje memorije, procesora, opterećenja i diska servera u realnom vremenu.
+PHP verzija
+Pet
+Pregled
+Pregled u realnom vremenu
+Pregled:
+
+Kompaktni HTML vidžet (bez iframe-a)
+Vidžet plejera
+Vidžet plejera - CastPanel
+Vidžet uživo
+
+Vidžeti plejera
+
+
+Već reemituje
+Već je radio
+DJ sa tim korisničkim imenom već postoji.
+
+Vaša hosting kompanija i kompanija softvera panela nisu odgovorne u takvim slučajevima.
+Youtube izdaje upozorenja o autorskim pravima za muziku u prenosima uživo; ceo vaš youtube kanal može biti
+Youtube izdaje upozorenja o autorskim pravima za muziku u prenosima uživo; ceo vaš youtube kanal može biti zabranjen ili ograničen ako vaš radio pušta muziku zaštićenu autorskim pravima.
+Podrazumevana zona
+
+
+
+dnevno. Idite na
+
+
+kao lozinku, naročito za mobilne aplikacije. U programima za PC koristite samo lozinku i DJ port za povezivanje.
+sa omotom, naslovom, izvođačem, indikatorom statusa i kontrolama. Savršen za
+DJ nalog
+firewall-a završen. Otvoreni portovi:
+dnevno za youtube prenose uživo, ne restartujte prenos uživo više od
+
+
+
+ugradnju na vaš sajt, blog ili forum
+u mobilnim aplikacijama.
+u bilo kom PHP fajlu za prikaz prevedenog teksta.
+u svom programu za emitovanje. Čak i ako sistem koristi IceCast ili SCV2, uvek izaberite
+u svom programu za emitovanje. Ova stanica radi
+u svom programu za emitovanje. DJ-evi se povezuju na Harbor port (
+uživo.
+nepoznata greška
+
+stanica nije pronađena
+stanica ili slug je obavezan
+stanica je obavezna
+
+
+facebook.com/live/producer → Ključ za prenos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lista reklama
+
+
+ograničenje
+agresivna kompresija, istaknuti srednji tonovi, punch
+dodeljena.
+kreirana:
+AutoDJ konfiguracija ažurirana i servis restartovan.
+obrisana.
+
+Instagram prenos uživo
+
+Youtube prenos uživo
+sačuvana.
+blaga kompresija, idealna za
+nije pronađena
+ne mogu se zaustaviti iz panela da se ne bi izgubio pristup. Radnje nad servisima izvršavaju se preko demona
+
+
+
+
+ili Shoutcast u konfiguraciji. Možete koristiti
+ili kliknite za izbor
+ili mobilne aplikacije. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa.
+ili za otvaranje u iskačućem prozoru.
+
+ili ograničen ako vaš radio pušta muziku zaštićenu autorskim pravima.
+
+
+za prenos uživo. Ključ za prenos preuzmite iz
+omogućava zakazivanje niza plejlista koje se automatski puštaju zadatim redosledom i količinom, u podešenim terminima.
+omogućava reemitovanje spoljnog audio izvora. Kada je relej aktivan i u zakazanom terminu, stanica će reemitovati signal sa podešenog URL-a umesto AutoDJ-a.
+ali Apache i dalje ima greške
+
+
+
+javnu stranicu vašeg radija
+
+
+
+
+
+
+
+
+
+bez AutoDJ-a
+nema odgovora
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+studio.youtube.com → Prenos uživo → Ključ
+
+
+
+
+vi@email.rs
+
+radi 35 minuta
+
+
+username i password su obavezni
+korisnik:lozinka
+
+
+maksimalna snaga i jačina, zvuk komercijalnog FM-a
+i uključite funkcije prenosa uživo. Držite stranicu Youtube prenosa uživo otvorenom pre početka prenosa. Youtube-u je potrebno 24 sata za aktivaciju. Kopirajte ključ za prenos uživo, unesite ga na ovoj stranici i otpremite sliku 1280x720. Prenos uživo počeće posle 30-40 sekundi na Youtube-u.
+i otpremite spotove.
+vaš nalog ako vaš radio tokom prenosa uživo pušta muziku zaštićenu autorskim pravima.
+vaš nalog ili stranicu ako vaš radio tokom prenosa uživo pušta muziku zaštićenu autorskim pravima.
+
+© 2024 Moja firma
+Kako emitovati?
+Obrisati profilnu fotografiju?
+Poslednja izmena
+Poslednje ažuriranje:
+Poslednja prijava
+Poslednje SSH prijave
+— Otvara mrežni URL
+— Otvori URL
+— Otvori URL strima
+— Otvori .pls ili .m3u fajl
+— Povezivanje preko Liquidsoap Harbor-a (AutoDJ aktivan). Svaki DJ koristi svoje podatke za prijavu.
+— Direktno povezivanje sa SHOUTcast serverom (bez AutoDJ-a). U RadioCaster-u uvek koristite SHOUTcast v1 protokol.
+— Lozinka (samo u poruci dobrodošlice)
+— Domen panela
+— E-pošta korisnika
+— Link za reset
+— Direktan HTTPS link
+— Naziv stanice
+— Korisničko ime
+— Naziv panela
+— Direktan HTTPS URL
+— URL strima
+— Koristite M3U/PLS link
+— DJ-evi se povezuju direktno na server za strimovanje.
+
+
+○ Neaktivan
+
+● Aktivan
+
+⚠ Izvor odgovara, ali sa statusom:
+⚠️ Zaustavlja SVE prenose
+✅ Kopirano
+✅ Signal OK: izvor odgovara ispravno.
+✏️ Promeni
+✗ Greška
+❌ Povezivanje sa izvorom nije uspelo. Proverite URL.
+📱 Podešavanja za mobilni (BroadcastMyself, iCast itd.)
+📻 Podešavanja za PC (BUTT, SAM, Winamp itd.)
++ Dodaj
++ Kreiraj listu
++ Kreiraj novu plejlistu
+(ostavite prazno da ne menjate)
+(korisničko ime i lozinka)
+(šifrovano).
+-- Izaberite --
+-- Izaberite stanicu --
+-- Bez liste (opšta biblioteka) --
+% diska
+< 1 minut
+Količina = broj pesama koje se puštaju iz svakog foldera/liste pre prelaska na sledeći.
+Veći Q = uži opseg
+Veći broj = veći prioritet u odnosu na druge aktivne releje.
+Veći broj = veći prioritet. Rotacije sa većim prioritetom izvršavaju se prve.
+Veći ratio = više kompresije
+Bliže 0 = jače
+Blag prelaz (više = blaže)
+Maks. klijenata (0 = neograničeno)
+Maks. stanica (0 = neograničeno)
+0 = neograničeno
+Ograničenje 0 znači neograničeno.
+110px visine
+Sada svira: {x}
+Sada svira:
+Prosečno opterećenje: {x}
+{n} iskorišćeno od {n}
+{n} sati sadržaja
+{n} lista · {n} pesama bez liste
+{n} od {n}
+Strana {n} od {n} · {n} fajlova
+Prikaži/izmeni radije ({n})
+Izmeni/prikaži pakete ({n})
+Registrovani AutoDJ-evi ({n})
+Detalji stanica ({n})
+Svi korisnici ({n})
+Korišćenje po stanici ({n})
+Tabele baze podataka ({n})
+Šabloni e-pošte ({n})
+Deljene liste ({n})
+Liste reklama ({n})
+Aktivna pravila ({n})
+Registrovani preprodavci ({n})
+Paketi preprodavca ({n})
+Najpopularnija ({n} slušalaca)
+radi {n} minuta
+Završeno
+Otpremanje...
+Greška
+Otpremljeno ✓
+, Server: {x}, Port: {n}, Lozinka: (lozinka DJ-a)
+. Server: {x}, Port: {n}. Lozinka: lozinka svakog DJ naloga. Na mobilnom koristite
+, kreirajte video uživo i kopirajte „Ključ za prenos“. Nalepite ključ u polje ispod. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa. Facebook koristi
+. Ključ za prenos preuzmite iz podešavanja Instagram Live. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa. Instagram koristi
