@@ -1641,3 +1641,5 @@ Nahráno ✓
 . Server: {x}, Port: {n}. Heslo: heslo každého účtu DJ. Na mobilu použijte
 , vytvořte živé video a zkopírujte „Klíč vysílání“. Vložte klíč do pole níže. Nahrajte obrázek 1280x720, který se zobrazí během vysílání. Facebook používá
 . Klíč vysílání získáte v nastavení Instagram Live. Nahrajte obrázek 1280x720, který se zobrazí během vysílání. Instagram používá
+Jazyk změněn na {x}
+přeložené fráze

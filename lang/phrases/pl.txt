@@ -1641,3 +1641,5 @@ Przesłano ✓
 . Serwer: {x}, Port: {n}. Hasło: hasło każdego konta DJ. Na telefonie użyj
 , utwórz wideo na żywo i skopiuj „Klucz transmisji”. Wklej klucz w polu poniżej. Prześlij obraz 1280x720, który będzie wyświetlany podczas transmisji. Facebook używa
 . Pobierz klucz transmisji z ustawień Instagram Live. Prześlij obraz 1280x720, który będzie wyświetlany podczas transmisji. Instagram używa
+Zmieniono język na {x}
+przetłumaczone frazy

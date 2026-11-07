@@ -1641,3 +1641,5 @@ Eroare
 . Server: {x}, Port: {n}. Parolă: cea a fiecărui cont DJ. Pe mobil folosește
 , creează un video live și copiază „Cheia de transmisie”. Lipește cheia în câmpul de mai jos. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei. Facebook folosește
 . Obține cheia de transmisie din setările Instagram Live. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei. Instagram folosește
+Limba a fost schimbată în {x}
+fraze traduse

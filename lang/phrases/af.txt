@@ -1641,3 +1641,5 @@ Opgelaai ✓
 . Bediener: {x}, Poort: {n}. Wagwoord: elke DJ-rekening s'n. Gebruik op selfoon
 , skep 'n regstreekse video en kopieer die "Stroomsleutel". Plak die sleutel in die veld hieronder. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word. Facebook gebruik
 . Kry jou stroomsleutel in die Instagram Live-instellings. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word. Instagram gebruik
+Taal verander na {x}
+vertaalde frases

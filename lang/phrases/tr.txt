@@ -1641,3 +1641,5 @@ Yüklendi ✓
 . Sunucu: {x}, Port: {n}. Şifre: her DJ hesabının kendi şifresi. Mobilde şunu kullanın:
 , canlı bir video oluşturun ve "Yayın anahtarı"nı kopyalayın. Anahtarı aşağıdaki alana yapıştırın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin. Facebook şunu kullanır:
 . Yayın anahtarınızı Instagram Live ayarlarından alın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin. Instagram şunu kullanır:
+Dil değiştirildi: {x}
+çevrilmiş ifade

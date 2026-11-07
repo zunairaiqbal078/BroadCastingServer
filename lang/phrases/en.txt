@@ -1641,3 +1641,5 @@ Uploaded ✓
 . Server: {x}, Port: {n}. Password: each DJ account's own. On mobile use
 , create a live video and copy the "Stream key". Paste the key in the field below. Upload a 1280x720 image that will be shown during the broadcast. Facebook uses
 . Get your stream key from the Instagram Live settings. Upload a 1280x720 image that will be shown during the broadcast. Instagram uses
+Language changed to {x}
+translated phrases

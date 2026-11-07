@@ -1641,3 +1641,5 @@ Envoyé ✓
 . Serveur : {x}, Port : {n}. Mot de passe : celui de chaque compte DJ. Sur mobile utilisez
 , créez une vidéo en direct et copiez la « Clé de diffusion ». Collez la clé dans le champ ci-dessous. Envoyez une image de 1280x720 qui sera affichée pendant la diffusion. Facebook utilise
 . Obtenez votre clé de diffusion dans les paramètres d'Instagram Live. Envoyez une image de 1280x720 qui sera affichée pendant la diffusion. Instagram utilise
+Langue changée en {x}
+phrases traduites

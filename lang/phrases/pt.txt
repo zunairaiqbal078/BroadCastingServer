@@ -1641,3 +1641,5 @@ Enviado ✓
 . Servidor: {x}, Porta: {n}. Senha: a de cada conta DJ. No celular use
 , crie um vídeo ao vivo e copie a "Chave de transmissão". Cole a chave no campo abaixo. Envie uma imagem de 1280x720 que será exibida durante a transmissão. O Facebook usa
 . Obtenha sua chave de transmissão nas configurações do Instagram Live. Envie uma imagem de 1280x720 que será exibida durante a transmissão. O Instagram usa
+Idioma alterado para {x}
+frases traduzidas

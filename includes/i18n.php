@@ -49,7 +49,17 @@ function loadTranslations(?string $lang = null): void {
 function __($key, array $params = []): string {
     global $_TRANSLATIONS;
 
-    $text = $_TRANSLATIONS[$key] ?? $key;
+    static $fallback = null;
+    if (!isset($_TRANSLATIONS[$key])) {
+        // Older language files miss some keys: fall back to Spanish (the
+        // source language), which the page translator then translates
+        if ($fallback === null) {
+            $fallback = (array)@include __DIR__ . '/../lang/es.php';
+        }
+        $text = $fallback[$key] ?? $key;
+    } else {
+        $text = $_TRANSLATIONS[$key];
+    }
 
     // Reemplazar parámetros
     if (!empty($params)) {
@@ -131,9 +141,21 @@ function getTranslationCoverage(string $langCode): int {
  */
 function cpPhraseCount(string $code): int {
     $dir = __DIR__ . '/../lang/phrases/';
-    $file = $dir . basename($code === 'es' ? 'en' : $code) . '.txt';
-    if (!is_file($file)) return 0;
-    return count(array_filter(file($file, FILE_IGNORE_NEW_LINES), fn($l) => trim($l) !== ''));
+    $en = @file($dir . 'en.txt', FILE_IGNORE_NEW_LINES) ?: [];
+    if ($code === 'es' || $code === 'en') {
+        return count(array_filter($en, fn($l) => trim($l) !== ''));
+    }
+    $tr = @file($dir . basename($code) . '.txt', FILE_IGNORE_NEW_LINES);
+    if (!$tr) return 0;
+    // A phrase counts as covered when it is translated, or when it is a
+    // name/technical term that stays the same in every language (those
+    // lines are left empty on purpose and fall back to English).
+    $n = 0;
+    foreach ($en as $i => $e) {
+        if (trim($e) === '') continue;
+        if (trim($tr[$i] ?? '') !== '' || preg_match(CP_NEUTRAL_PHRASE, trim($e))) $n++;
+    }
+    return $n;
 }
 
 // =====================================================================
@@ -147,6 +169,8 @@ function cpPhraseCount(string $code): int {
 // =====================================================================
 
 $_PHRASES = null;
+// English phrases that are names or technical terms, identical in every language
+define('CP_NEUTRAL_PHRASE', '/^(AAC\\+|AIza\\.\\.\\.|API (Identifier|JSON|Key|Secret|Now Playing)|API JSON - CastPanel|Apache.*|Blesta|ClientExec|Cron.*|Docker.*|Fail2ban|Firewalld|Favicon|Facebook Live.*|Instagram Live|TikTok Live.*|YouTube Live|InnoDB|Kernel|Knee|Node\\.js|PHP Configuration|PLS Playlist|M3U Playlist|XSPF Playlist|MP3 128k|Swap|Uptime|SELinux|SC v2\\.6|SID 1|IceCast v2|Icecast.*|SHOUTcast v[0-9.]+|ShoutCast.*|Shoutcast.*|Slug|Timezone|TuneIn \\/ Radio\\.net|VLC Media Player|WinAmp \\/ AIMP|iTunes \\/ Apple Music|phpMyAdmin.*|Release|Peak|Ratio|Load Average|Collation|Cores|Engine|Encoder|Endpoint|Hostname|Codec|Bitrate|Sample Rate|DJs|DJ Panel|AutoDJ|Admin|Reseller|Jingles|Promos|Premium|Rock \\/ Pop|Facebook:|Instagram:|RadioCaster:|Mount \\/ SID|Mounts|Relay|Ads|Media|Warning|Fatal error|HTTP\\/1\\.1 403 Forbidden|Sync Proxy|Reset Pass|Change Logos\\/Titles|Source IP|[A-Z]{2} · .+|English|Español|Deutsch|Français|Italiano|Português|\\| SHOUTcast:|↑ TX:|↓ RX:|● ONLINE|○ OFFLINE|now_playing\\..*|paquete_id is required|Facebook can|Instagram can|TikTok can|Firewall|Firewall \\(firewalld\\)|Online|Offline|Dashboard|Email|Email:|Host:|Status:|Station not found|Username|Branding|Social|Software|Total|Total Streams|Stream \\/ Source List.*|Widgets & Players)$/u');
 $_PHRASE_PATTERNS = [];
 
 /**
@@ -315,6 +339,11 @@ function cpTranslateOutput(string $html, int $phase = 0): string {
     if (!$p) return $html;
 
     $html = preg_replace('/<html\b([^>]*)\blang="es"/i', '<html$1lang="' . htmlspecialchars($_CURRENT_LANG) . '"', $html, 1);
+    // Right-to-left languages: the panel layout (fixed left sidebar) stays as
+    // it is; only the text direction inside sidebar and content is flipped.
+    if (in_array($_CURRENT_LANG, ['fa', 'ar', 'he', 'ur'], true)) {
+        $html = preg_replace('#</head>#i', '<style>.sidebar-menu,.sidebar-section,.sidebar ul,.page-content,.main-content>header,.dj-main,.login-card{direction:rtl;text-align:right}.page-content input,.page-content code,.page-content pre{direction:ltr;text-align:left}</style></head>', $html, 1);
+    }
 
     // Split into: comments | script/style blocks | tags | text
     $parts = preg_split(

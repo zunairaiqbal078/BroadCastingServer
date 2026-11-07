@@ -1641,3 +1641,5 @@ Hochgeladen ✓
 . Server: {x}, Port: {n}. Passwort: das jedes DJ-Kontos. Auf Mobilgeräten verwenden
 , erstellen Sie ein Live-Video und kopieren Sie den „Stream-Schlüssel“. Fügen Sie den Schlüssel in das Feld unten ein. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird. Facebook nutzt
 . Den Stream-Schlüssel erhalten Sie in den Instagram-Live-Einstellungen. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird. Instagram nutzt
+Sprache geändert zu {x}
+übersetzte Texte

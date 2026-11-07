@@ -1641,3 +1641,5 @@ Subido ✓
 . Servidor: {x}, Puerto: {n}. Contraseña: la de cada cuenta DJ. En móvil usar
 , cree un video en vivo y copie la "Clave de transmisión". Pegue la clave en el campo de abajo. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión. Facebook usa
 . Obtenga su clave de transmisión desde la configuración de Instagram Live. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión. Instagram usa
+Idioma cambiado a {x}
+claves traducidas

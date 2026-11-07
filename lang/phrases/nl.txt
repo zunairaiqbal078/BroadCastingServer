@@ -1641,3 +1641,5 @@ Geüpload ✓
 . Server: {x}, Poort: {n}. Wachtwoord: dat van elk DJ-account. Gebruik op mobiel
 , maak een livevideo en kopieer de "Streamsleutel". Plak de sleutel in het veld hieronder. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond. Facebook gebruikt
 . Haal je streamsleutel op in de instellingen van Instagram Live. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond. Instagram gebruikt
+Taal gewijzigd naar {x}
+vertaalde zinnen

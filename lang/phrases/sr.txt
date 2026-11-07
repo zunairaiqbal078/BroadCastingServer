@@ -1641,3 +1641,5 @@ Otpremljeno ✓
 . Server: {x}, Port: {n}. Lozinka: lozinka svakog DJ naloga. Na mobilnom koristite
 , kreirajte video uživo i kopirajte „Ključ za prenos“. Nalepite ključ u polje ispod. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa. Facebook koristi
 . Ključ za prenos preuzmite iz podešavanja Instagram Live. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa. Instagram koristi
+Jezik je promenjen na {x}
+prevedene fraze

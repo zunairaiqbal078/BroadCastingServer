@@ -1641,3 +1641,5 @@ Caricato ✓
 . Server: {x}, Porta: {n}. Password: quella di ogni account DJ. Su mobile usa
 , crea un video in diretta e copia la "Chiave di trasmissione". Incolla la chiave nel campo qui sotto. Carica un'immagine 1280x720 che verrà mostrata durante la trasmissione. Facebook usa
 . Ottieni la chiave di trasmissione dalle impostazioni di Instagram Live. Carica un'immagine 1280x720 che verrà mostrata durante la trasmissione. Instagram usa
+Lingua cambiata in {x}
+frasi tradotte
