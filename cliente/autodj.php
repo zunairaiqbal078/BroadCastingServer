@@ -62,12 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
 
             // Regenerar config y reiniciar Liquidsoap automaticamente
             require_once __DIR__ . '/../includes/provisioning.php';
-            $stmtRefresh = $db->prepare("SELECT * FROM estaciones WHERE id = ?");
-            $stmtRefresh->execute([$estacion['id']]);
-            $estacionActualizada = $stmtRefresh->fetch();
-            if ($estacionActualizada) {
-                generateLiquidsoapConfig($estacionActualizada);
-                restartLiquidsoapService($estacionActualizada);
+            $estacionActualizada = loadStationWithPackage((int)$estacion['id']);
+            if ($estacionActualizada && stationHasAutoDJ($estacionActualizada)) {
+                restartStation($estacionActualizada);
             }
 
             setFlash('success', 'Configuraci' . chr(243) . 'n del AutoDJ actualizada y servicio reiniciado.');
@@ -80,14 +77,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             $cmd = $_POST['cmd'] ?? '';
             $resultado = ['success' => false, 'error' => 'Comando no reconocido'];
 
+            // Start/restart the whole station: SHOUTcast must be running
+            // before Liquidsoap, otherwise AutoDJ has nowhere to send audio
+            // and the station stays Offline.
             if ($cmd === 'iniciar') {
-                generateLiquidsoapConfig($estacion);
-                $resultado = startLiquidsoapService($estacion);
+                $resultado = startStation($estacion);
             } elseif ($cmd === 'detener') {
                 $resultado = stopLiquidsoapService($estacion);
             } elseif ($cmd === 'reiniciar') {
-                generateLiquidsoapConfig($estacion);
-                $resultado = restartLiquidsoapService($estacion);
+                $resultado = restartStation($estacion);
             }
 
             if ($resultado['success']) {

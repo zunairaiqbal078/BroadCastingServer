@@ -40,10 +40,8 @@ if ($stationId <= 0) {
 
 $db = getDB();
 
-// Obtener estacion
-$stmt = $db->prepare("SELECT * FROM estaciones WHERE id = ?");
-$stmt->execute([$stationId]);
-$estacion = $stmt->fetch();
+// Obtener estacion (with package flags, so startStation knows about AutoDJ)
+$estacion = loadStationWithPackage($stationId);
 
 if (!$estacion) {
     echo json_encode(['success' => false, 'error' => 'Estacion no encontrada']);
@@ -54,9 +52,7 @@ try {
     switch ($action) {
         case 'start':
             $result = startStation($estacion);
-            if ($result['success']) {
-                $db->prepare("UPDATE estaciones SET servicio_estado='running', autodj_estado='online' WHERE id=?")->execute([$stationId]);
-            }
+            // startStation() updates servicio_estado / autodj_estado itself
             echo json_encode(['success' => $result['success'], 'message' => $result['success'] ? 'Estacion iniciada' : ($result['error'] ?? 'Error al iniciar')]);
             break;
 
@@ -68,9 +64,7 @@ try {
 
         case 'restart':
             $result = restartStation($estacion);
-            if ($result['success']) {
-                $db->prepare("UPDATE estaciones SET servicio_estado='running', autodj_estado='online' WHERE id=?")->execute([$stationId]);
-            }
+            // startStation() updates servicio_estado / autodj_estado itself
             echo json_encode(['success' => $result['success'], 'message' => $result['success'] ? 'Estacion reiniciada' : ($result['error'] ?? 'Error al reiniciar')]);
             break;
 

@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/functions.php'; // liquidsoapCommand()
 require_once __DIR__ . '/audio_processor.php';
 
 /**
@@ -25,6 +26,39 @@ define('SC_SERV_DEFAULT', '/usr/local/bin/sc_serv2');
  */
 function isShoutcastType(string $serverType): bool {
     return in_array($serverType, ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25']);
+}
+
+/**
+ * Load a station together with its package flags (autodj_enabled, etc.).
+ * Several callers used "SELECT * FROM estaciones" without the package join,
+ * which left autodj_enabled empty and made startStation() skip Liquidsoap.
+ */
+function loadStationWithPackage(int $estacionId): ?array {
+    $stmt = getDB()->prepare("
+        SELECT e.*, p.max_storage_mb, p.max_bitrate, p.max_oyentes, p.nombre AS paquete_nombre,
+               p.autodj_enabled, p.anuncios_enabled
+        FROM estaciones e
+        LEFT JOIN paquetes p ON p.id = e.paquete_id
+        WHERE e.id = ?
+    ");
+    $stmt->execute([$estacionId]);
+    return $stmt->fetch() ?: null;
+}
+
+/**
+ * Does this station use AutoDJ (Liquidsoap)? Uses the package flag when the
+ * station row already has it, otherwise looks it up from the package.
+ */
+function stationHasAutoDJ(array $estacion): bool {
+    if (array_key_exists('autodj_enabled', $estacion)) {
+        return !empty($estacion['autodj_enabled']);
+    }
+    if (empty($estacion['paquete_id'])) {
+        return false;
+    }
+    $stmt = getDB()->prepare("SELECT autodj_enabled FROM paquetes WHERE id = ?");
+    $stmt->execute([$estacion['paquete_id']]);
+    return (bool)$stmt->fetchColumn();
 }
 
 /**
@@ -481,11 +515,13 @@ settings.log.level.set(3)
 # === FUENTES DE AUDIO ===
 
 # Playlist principal (archivos de la biblioteca)
+# reload every 60s: new uploads start playing even if the folder was empty
+# when Liquidsoap started ("rounds" never reloads an empty playlist)
 music_src = playlist(
     id="music_{$slug}",
     mode="randomize",
-    reload=10,
-    reload_mode="rounds",
+    reload=60,
+    reload_mode="seconds",
     "$mediaDir"
 )
 
@@ -938,15 +974,7 @@ function startShoutcastService(array $estacion): array {
     // CastPanel v7.4: srcip condicional segun autodj_enabled
     // AutoDJ=1 -> srcip=127.0.0.1 (solo Liquidsoap local conecta como source)
     // AutoDJ=0 -> srcip=0.0.0.0 (DJ externo conecta directo desde internet)
-    $autoDJ = false;
-    if (isset($estacion['autodj_enabled'])) {
-        $autoDJ = !empty($estacion['autodj_enabled']);
-    } elseif (!empty($estacion['paquete_id'])) {
-        $dbChk = getDB();
-        $stmtChk = $dbChk->prepare("SELECT autodj_enabled FROM paquetes WHERE id = ?");
-        $stmtChk->execute([$estacion['paquete_id']]);
-        $autoDJ = (bool)$stmtChk->fetchColumn();
-    }
+    $autoDJ = stationHasAutoDJ($estacion);
     $srcIp = $autoDJ ? '127.0.0.1' : '0.0.0.0';
     $scConfig .= "logfile=/var/log/shoutcast/$slug.log\nsrcip=$srcIp\ndestip=0.0.0.0\npublicserver=never\n";
     // Guardar ruta del binario y versión en la config para que el daemon sepa cuál usar
@@ -1207,22 +1235,32 @@ function removeShoutcastProxyRule(string $slug): bool {
  */
 function startStation(array $estacion): array {
     $type = $estacion['server_type'] ?? 'icecast';
+    $autoDJ = stationHasAutoDJ($estacion);
 
-    // v7.4: Iniciar Liquidsoap solo si AutoDJ esta habilitado
-    $liqResult = ['success' => true, 'message' => 'Sin AutoDJ'];
-    if (!empty($estacion['autodj_enabled'])) {
-        $liqResult = startLiquidsoapService($estacion);
-    }
-
-    // Si es SHOUTcast, también iniciar sc_serv2
+    // 1. Stream server first, so Liquidsoap (AutoDJ) has something to connect to.
+    //    Without AutoDJ this is all a live station needs: RadioCaster/BUTT
+    //    connect straight to sc_serv2 (srcip=0.0.0.0), no Liquidsoap/Docker.
+    $scResult = ['success' => true];
     if (isShoutcastType($type)) {
         $scResult = startShoutcastService($estacion);
-        if (!$liqResult['success'] && !$scResult['success']) {
-            return ['success' => false, 'error' => 'Liquidsoap: ' . ($liqResult['error'] ?? '') . ' | SHOUTcast: ' . ($scResult['error'] ?? '')];
+        if (!($scResult['success'] ?? false)) {
+            return ['success' => false, 'error' => 'SHOUTcast: ' . ($scResult['error'] ?? 'no se pudo iniciar')];
         }
     }
 
-    return $liqResult;
+    if (!$autoDJ) {
+        getDB()->prepare("UPDATE estaciones SET servicio_estado = 'running' WHERE id = ?")
+               ->execute([$estacion['id']]);
+        return ['success' => true, 'message' => 'Estacion en vivo iniciada (sin AutoDJ)'];
+    }
+
+    // 2. AutoDJ: always regenerate the config so it matches current settings,
+    //    then start Liquidsoap. Its harbor (portbase+5) is where DJs connect.
+    $cfg = generateLiquidsoapConfig($estacion);
+    if (!$cfg['success']) {
+        return ['success' => false, 'error' => 'Liquidsoap: ' . ($cfg['error'] ?? 'config')];
+    }
+    return startLiquidsoapService($estacion);
 }
 
 /**
@@ -1231,15 +1269,47 @@ function startStation(array $estacion): array {
 function stopStation(array $estacion): array {
     $type = $estacion['server_type'] ?? 'icecast';
 
-    // Siempre detener Liquidsoap
-    $liqResult = stopLiquidsoapService($estacion);
+    // Liquidsoap only exists for AutoDJ stations
+    if (stationHasAutoDJ($estacion)) {
+        stopLiquidsoapService($estacion);
+    }
 
     // Si es SHOUTcast, también detener sc_serv2
     if (isShoutcastType($type)) {
         stopShoutcastService($estacion);
     }
 
-    return $liqResult;
+    getDB()->prepare("UPDATE estaciones SET servicio_estado = 'stopped', autodj_estado = 'offline' WHERE id = ?")
+           ->execute([$estacion['id']]);
+
+    return ['success' => true];
+}
+
+/**
+ * After music is uploaded: make sure an AutoDJ station is actually playing.
+ * Not running yet -> start the whole station (SHOUTcast + Liquidsoap).
+ * Already running  -> ask Liquidsoap to reload its playlist (no restart).
+ */
+function ensureAutoDJPlaying(array $estacion): array {
+    if (!stationHasAutoDJ($estacion)) {
+        return ['success' => true, 'message' => 'Sin AutoDJ'];
+    }
+
+    $running = ($estacion['servicio_estado'] ?? '') === 'running'
+            && ($estacion['autodj_estado'] ?? '') === 'online';
+    if (!$running) {
+        return startStation($estacion);
+    }
+
+    $port = (int)($estacion['puerto_telnet'] ?: (LIQUIDSOAP_TELNET_PORT + $estacion['id']));
+    $reply = liquidsoapCommand('music_' . $estacion['slug'] . '.reload', $port);
+    if ($reply !== null) {
+        return ['success' => true, 'message' => 'Playlist recargada'];
+    }
+
+    // Telnet not reachable: Liquidsoap is not really running -> restart it
+    generateLiquidsoapConfig($estacion);
+    return restartLiquidsoapService($estacion);
 }
 
 /**

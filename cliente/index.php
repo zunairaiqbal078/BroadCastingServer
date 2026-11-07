@@ -23,13 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
         $cmd = $_POST['cmd'] ?? '';
         $resultado = ['success' => false, 'error' => 'Comando no reconocido'];
 
+        // startStation() generates the Liquidsoap config itself, and only
+        // for AutoDJ stations (live-only stations never touch Liquidsoap/Docker)
         if ($cmd === 'iniciar') {
-            generateLiquidsoapConfig($estacion);
             $resultado = startStation($estacion);
         } elseif ($cmd === 'detener') {
             $resultado = stopStation($estacion);
         } elseif ($cmd === 'reiniciar') {
-            generateLiquidsoapConfig($estacion);
             $resultado = restartStation($estacion);
         }
 

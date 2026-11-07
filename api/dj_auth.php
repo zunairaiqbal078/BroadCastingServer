@@ -17,6 +17,49 @@ $username = $_REQUEST['username'] ?? '';
 $password = $_REQUEST['password'] ?? '';
 $slug     = $_REQUEST['station']  ?? '';
 
+// RadioCaster / BUTT in SHOUTcast (ICY) mode send only a password, no
+// username; Liquidsoap then reports user "source" (or empty). Accept:
+//   1. password typed as "djuser:djpass"  -> normal DJ account check
+//   2. the station's source password      -> same login as a non-AutoDJ station
+//   3. the password of any active DJ of this station
+$icyClient = ($username === '' || $username === 'source');
+if ($icyClient && strpos($password, ':') !== false) {
+    [$username, $password] = explode(':', $password, 2);
+    $icyClient = false;
+}
+
+if ($icyClient && $password !== '' && $slug !== '') {
+    try {
+        $db = getDB();
+        $stmt = $db->prepare("SELECT id, icecast_password FROM estaciones WHERE slug = ?");
+        $stmt->execute([$slug]);
+        $st = $stmt->fetch();
+        $ok = false;
+        if ($st) {
+            if ($st['icecast_password'] !== '' && hash_equals((string)$st['icecast_password'], $password)) {
+                $ok = true;
+            } else {
+                $stmt = $db->prepare("SELECT password FROM cuentas_dj WHERE estacion_id = ? AND activo = 1");
+                $stmt->execute([$st['id']]);
+                foreach ($stmt->fetchAll(PDO::FETCH_COLUMN) as $hash) {
+                    if (password_verify($password, $hash)) { $ok = true; break; }
+                }
+            }
+        }
+        if ($ok) {
+            error_log("CastPanel DJ Auth: ICY source authenticated for station '$slug'");
+        }
+        header('Content-Type: text/plain');
+        echo $ok ? 'true' : 'false';
+        exit;
+    } catch (Exception $e) {
+        error_log("CastPanel DJ Auth Error: " . $e->getMessage());
+        header('Content-Type: text/plain');
+        echo 'false';
+        exit;
+    }
+}
+
 // All fields required
 if (!$username || !$password || !$slug) {
     header('Content-Type: text/plain');

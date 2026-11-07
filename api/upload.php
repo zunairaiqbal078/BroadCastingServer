@@ -21,7 +21,7 @@ $estacionId = (int)($_GET['estacion'] ?? 0);
 $tipo = $_GET['tipo'] ?? 'musica'; // musica o anuncio
 
 $db = getDB();
-$stmt = $db->prepare("SELECT e.*, p.max_storage_mb FROM estaciones e LEFT JOIN paquetes p ON p.id = e.paquete_id WHERE e.id = ? AND e.activa = 1");
+$stmt = $db->prepare("SELECT e.*, p.max_storage_mb, p.autodj_enabled FROM estaciones e LEFT JOIN paquetes p ON p.id = e.paquete_id WHERE e.id = ? AND e.activa = 1");
 $stmt->execute([$estacionId]);
 $estacion = $stmt->fetch();
 
@@ -119,7 +119,7 @@ for ($i = 0; $i < count($files['name']); $i++) {
             $coverUrl = BASE_URL . '/assets/covers/' . basename($coverFile);
         }
 
-        $playlistId = $_POST['playlist_id'] ?: null;
+        $playlistId = ($_POST['playlist_id'] ?? null) ?: null;
 
         // Obtener orden
         $orden = 0;
@@ -151,11 +151,9 @@ if ($uploaded > 0) {
     try {
         require_once __DIR__ . '/../includes/provisioning.php';
 
-        // Regenerar configuracion Liquidsoap con la nueva lista de archivos
-        generateLiquidsoapConfig($estacion);
-
-        // Reiniciar Liquidsoap para que cargue los nuevos archivos
-        restartLiquidsoapService($estacion);
+        // AutoDJ stations: start the station if it is not running yet,
+        // otherwise just reload the playlist (no restart per uploaded file)
+        ensureAutoDJPlaying($estacion);
     } catch (Exception $e) {
         // No bloquear la respuesta si falla el reinicio
         // El usuario puede reiniciar manualmente desde AutoDJ
