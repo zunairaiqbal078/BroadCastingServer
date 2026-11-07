@@ -13,3 +13,6 @@ INSERT INTO estaciones (usuario_id, paquete_id, nombre, slug, server_type, iceca
 SELECT u.id, (SELECT id FROM paquetes WHERE nombre='PRO'), 'Demo AutoDJ FM', 'demo-autodj', 'shoutcast_v2', '/demo-autodj', 'srcpass1', 8010, 1240 FROM usuarios u WHERE u.username='demo1';
 INSERT INTO estaciones (usuario_id, paquete_id, nombre, slug, server_type, icecast_mount, icecast_password, puerto_stream, puerto_telnet)
 SELECT u.id, (SELECT id FROM paquetes WHERE nombre='Live Only (dev)'), 'Demo Live FM', 'demo-live', 'shoutcast_v2', '/demo-live', 'srcpass2', 8020, 1250 FROM usuarios u WHERE u.username='demo2';
+
+-- Column used by includes/auth.php but missing from install/schema.sql
+ALTER TABLE paquetes ADD COLUMN IF NOT EXISTS social_stream_enabled tinyint(1) NOT NULL DEFAULT 0;
