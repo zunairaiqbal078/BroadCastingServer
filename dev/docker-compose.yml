@@ -16,6 +16,9 @@ services:
       # Local config is mounted over the placeholder config, so the
       # client's config/database.php stays untouched.
       - ./database.local.php:/var/www/html/config/database.php:ro
+      # Some pages (DJ portal) hardcode the production path /var/www/castpanel
+      - ..:/var/www/castpanel
+      - ./database.local.php:/var/www/castpanel/config/database.php:ro
     depends_on:
       db:
         condition: service_healthy

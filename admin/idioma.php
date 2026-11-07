@@ -47,12 +47,7 @@ try {
 } catch (PDOException $e) {}
 
 // Contar claves base (español)
-$baseKeys = 0;
-$baseLangFile = __DIR__ . '/../lang/es.php';
-if (file_exists($baseLangFile)) {
-    $baseTranslations = require $baseLangFile;
-    $baseKeys = count($baseTranslations);
-}
+$baseKeys = cpPhraseCount('es');
 ?>
 
 <?php if ($msg): ?>
