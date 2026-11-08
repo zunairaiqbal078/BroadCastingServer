@@ -48,6 +48,9 @@ if (!$estacion) {
     exit;
 }
 
+// Station state is about to change: drop its cached on-air status
+clearStreamStatusCache($stationId);
+
 try {
     switch ($action) {
         case 'start':

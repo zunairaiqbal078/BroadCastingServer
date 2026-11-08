@@ -412,7 +412,7 @@ toggleServerFields();
                                 <td><?= htmlspecialchars($e['paquete_nombre'] ?? 'Sin paquete') ?></td>
                                 <td>
                                     <?= $e['activa']
-                                        ? ($e['autodj_estado'] === 'online'
+                                        ? (isStationOnline($e)
                                             ? '<span class="badge badge-success">Online</span>'
                                             : '<span class="badge">Offline</span>')
                                         : '<span class="badge badge-danger">Inactiva</span>' ?>
@@ -421,7 +421,7 @@ toggleServerFields();
                                     if ($e['server_type'] === 'icecast') {
                                         echo $allListeners[$e['icecast_mount']]['oyentes'] ?? 0;
                                     } else {
-                                        $sc = getStreamStatus($e);
+                                        $sc = getStreamStatusCached($e);
                                         echo $sc['oyentes'];
                                     }
                                 ?></td>
