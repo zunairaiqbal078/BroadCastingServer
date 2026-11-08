@@ -28,10 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             } else {
                 $db->prepare("INSERT INTO configuracion (clave, valor) VALUES ('default_language', ?)")->execute([$lang]);
             }
-            // Recargar traducciones
+            // Reload the page so it (and its flash message) renders in the new language
             loadTranslations($lang);
-            $msg = __('language_changed') . " {$availableLanguages[$lang]['name']}";
-            $msgType = 'success';
+            setFlash('success', __('language_changed') . " {$availableLanguages[$lang]['name']}");
+            header('Location: ' . BASE_URL . '/admin/idioma.php');
+            exit;
         } catch (PDOException $e) {
             $msg = 'Error: ' . $e->getMessage();
             $msgType = 'error';
@@ -47,12 +48,7 @@ try {
 } catch (PDOException $e) {}
 
 // Contar claves base (español)
-$baseKeys = 0;
-$baseLangFile = __DIR__ . '/../lang/es.php';
-if (file_exists($baseLangFile)) {
-    $baseTranslations = require $baseLangFile;
-    $baseKeys = count($baseTranslations);
-}
+$baseKeys = cpPhraseCount('es');
 ?>
 
 <?php if ($msg): ?>

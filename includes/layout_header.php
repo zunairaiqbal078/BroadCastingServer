@@ -6,6 +6,8 @@ require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/branding.php';
 require_once __DIR__ . '/icons.php';
+require_once __DIR__ . '/i18n.php';
+cpI18nStart(); // translate the whole page into the panel language
 requireLogin();
 
 $estacion = getCurrentStation();

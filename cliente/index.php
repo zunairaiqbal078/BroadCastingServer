@@ -338,7 +338,7 @@ $cancionActual = $iceStatus['titulo'] ?? '';
                     </div>
                     <!-- Barra "Reproduciendo Ahora" -->
                     <div style="background:linear-gradient(135deg,#00897b,#00796b);color:#fff;padding:8px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">
-                        <?= cpIcon('music', 14) ?> Reproduciendo Ahora: <?= htmlspecialchars($cancionActual ?: 'Sin informaci&oacute;n') ?>
+                        <?= cpIcon('music', 14) ?> Reproduciendo Ahora: <?= htmlspecialchars($cancionActual ?: 'Sin información') ?>
                     </div>
                 </div>
 
@@ -401,7 +401,7 @@ $cancionActual = $iceStatus['titulo'] ?? '';
                     </div>
                     <!-- Barra "Reproduciendo Ahora" -->
                     <div style="background:linear-gradient(135deg,#00897b,#00796b);color:#fff;padding:8px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">
-                        <?= cpIcon('music', 14) ?> Reproduciendo Ahora: <?= htmlspecialchars($cancionActual ?: 'Sin informaci&oacute;n') ?>
+                        <?= cpIcon('music', 14) ?> Reproduciendo Ahora: <?= htmlspecialchars($cancionActual ?: 'Sin información') ?>
                     </div>
                 </div>
 

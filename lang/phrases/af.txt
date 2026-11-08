@@ -1,0 +1,1645 @@
+
+
+
+
+
+
+Google Maps API-sleutel gestoor
+
+
+CastPanel-API
+API gedeaktiveer
+Maak oop
+Maak poort oop
+Maak poort in firewall oop
+
+Toegang geweier
+Onbekende aksie:
+Ongeldige aksie
+Aksies
+Aksie nie herken nie. Geldige aksies: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Ongeldige aksie
+Aktief
+Aktiveer die verwerker sodat jou uitsending harder en met professionele gehalte klink
+Aktiveer AGC
+Aktiveer kompressor
+Aktiveer gelykmaker
+Aktiveer limiter
+Aktief
+Aktief
+Aktief (
+Aktief · Gedeaktiveer
+Huidige
+Werk by
+
+Diensbestuurder
+Diensbestuurder - CastPanel
+Bestuur AutoDJ
+Bestuur AutoDJ - CastPanel
+Bestuur rekening
+Bestuur rekening — CastPanel DJ
+Bestuur lyste
+Bestuur radio
+Bestuur bediener en dienste
+Bestuur SSL-sertifikate en domeine van die bediener.
+
+Voeg SSL-sertifikaat by
+Voeg radiopakket by
+Voeg herverkoperpakket by
+Finale aanpassing van die uitsaaivolume
+Pasgemaakte instellings
+Gebruiker se handmatige instellings
+Willekeurig
+Berg.
+Berging
+AutoDJ-berging
+Maksimum berging
+Berging:
+Hoog
+Hoë tone - Frekwensie
+Hoë tone - Versterking
+Stroom-bandwydte
+Bandwydte per stasie
+Animasie wat oor die agtergrondprent van die speler gewys word.
+Advertensie geskrap.
+
+
+
+
+Versoenbare toepassings
+Android/iOS-toepassings
+M3U-lêer (vir rekenaarspelers)
+PLS-lêer (versoenbaar met Winamp, VLC, ens.)
+Lêer te groot
+Lêer te groot (bediener)
+Lêer gedeeltelik opgelaai
+Tydelike lêers
+Musieklêers
+Stroomlêers
+Vertaallêers:
+Argitektuur
+Sleep jou lêers hierheen
+Kunstenaar
+Kunstenaar van die huidige liedjie
+Onderwerp
+Aanval
+Oudiostroming
+Oudiostromingsplatform
+Oudiostromingsplatform
+Verbreed die stereobeeld
+Skep nuwe rekeninge outomaties
+Skort outomaties op weens wanbetaling
+Beëindig gekanselleerde rekeninge outomaties
+Selfonderteken
+Outomatiese begin
+Outomatiese verfris:
+
+AutoDJ-status:
+AutoDJ gestop
+AutoDJ begin
+Geregistreerde AutoDJ's (2)
+Outomatisering
+Nog geen luisteraardata aangeteken nie.
+Huidige bandwydte
+Laag
+Bas - Frekwensie
+Bas - Versterking
+Balk
+Kantbalk van jou kliënte se paneel. PNG 140×40px.
+Oudiostawe
+Databasis:
+Hoofdatabasis van die paneel. Herbegin as daar verbindingsprobleme met die databasis is.
+Databasis:
+Basies
+Musiekbiblioteek
+Musiekbiblioteek - CastPanel
+Welkom
+
+Maksimum bitrate
+Uitsaai-bitrate in kbps
+Verstek-bitrate
+
+Vee boodskap uit
+
+Handelsmerk / White Label
+Handelsmerk / White-Label
+Handelsmerk / White-Label - CastPanel
+White-Label-handelsmerk
+Handelsmerk bygewerk. Jou kliënte sal die veranderinge sien wanneer hulle die bladsy herlaai.
+DJ-buffervertraging (sek)
+Soek
+Soek pakket...
+Soek op titel, kunstenaar...
+Soek...
+Business of Creator
+CORS geaktiveer
+KRITIES
+Elke DJ gebruik sy eie wagwoord (die een wat met die skep van die rekening toegeken is). Gebruik op selfoon die formaat
+Opnamegehalte
+Verander wagwoord
+Verander taal
+Verander taal - CastPanel
+Verander gasheernaam
+Verander gasheernaam - CastPanel
+Verander agtergrondprent
+Verander omslag
+Verander die taal van jou CastPanel.
+Veld
+Kanale
+Kanselleer
+Liedjies
+Liedjies gesorteer volgens n
+Liedjies gesorteer volgens nommers.
+Liedjies gesorteer volgens voorvoegsel.
+Huidige liedjie
+Liedjie bygewerk.
+Liedjie geskrap.
+Liedjie geskuif.
+Hoeveelheid
+Laai data...
+Laai geskiedenis...
+Laai...
+Beheersentrum
+DJ-beheersentrum
+DJ-beheersentrum - CastPanel
+Teken uit
+Pasgemaakte sertifikaat
+Sertifikaat uit die register verwyder
+
+Sterrehemel
+Stroomsleutel vereis
+Basissleutels (ES):
+
+Kliënt
+Kliënt bygewerk
+Kliënt geskrap (en al sy stasies)
+Kliënt nie gevind nie
+Ongeldige kliënt
+Kliënte
+
+Kodek / Bitrate / Monsterfrekwensie
+Verstek-kodek
+Lêertou
+
+Primêre kleur
+Aksentkleur:
+Agtergrondkleur van die kantbalk
+Tekskleur:
+Kleur van die kantbalk
+Hoofkleur vir knoppies en aksente
+Kleure
+Opdrag nie herken nie
+Nuttige opdragte (SSH)
+Deel hierdie skakel met jou luisteraars. Dit is die openbare spelerbladsy met omslae, liedjiegeskiedenis en aanpasbare visuele effekte.
+Aggressiewe kompressie, middeltone na vore, punch
+Ligte kompressie, ideaal vir klassieke musiek en jazz
+Dinamiese kompressor
+Met AutoDJ
+Intydse verbindings
+Liquidsoap-konfigurasie gegenereer:
+AutoDJ-konfigurasie gestoor
+Konfigurasie gestoor
+CastPanel-konfigurasie
+Globale konfigurasie
+Globale konfigurasie - CastPanel
+Google Maps-konfigurasie
+
+Liquidsoap-konfigurasie
+SSL-poortkonfigurasie
+SSL-poortkonfigurasie - CastPanel
+RadioCaster-konfigurasie
+SMTP-konfigurasie
+SMTP-konfigurasie - CastPanel
+SMTP-konfigurasie suksesvol gestoor
+API/faktuur-konfigurasie gestoor
+Lêerkonfigurasie
+Handelsmerkkonfigurasie gestoor. Herlaai die bladsy om die veranderinge te sien.
+SSL-domeinkonfigurasie gestoor
+SSL-poortkonfigurasie gestoor. Herbegin Apache om die veranderinge toe te pas.
+Bedienerkonfigurasie
+Werfkonfigurasie
+Spelerkonfigurasie suksesvol gestoor.
+Konfigurasie suksesvol gestoor
+Pasgemaakte konfigurasie gestoor. Die stasie sal herbegin om die veranderinge toe te pas.
+Pasgemaakte konfigurasie gestoor. Dit sal toegepas word wanneer AutoDJ geaktiveer word.
+Stel gasheernaam en domein op
+Stel SMTP / e-pos op
+Stel SSL in Apache op (SSH)
+Stel die e-posbediener vir kennisgewings op.
+Stel die globale instellings van die paneel en die strominsdienste op.
+Stel hierbo 'n Google Maps API-sleutel op om die luisteraarskaart te sien.
+Bevestig nuwe wagwoord:
+Navrae vanaf enige domein of selfoontoepassing
+Inhoud van die boodskap:
+Wagwoord
+Administrateurwagwoord
+Radiowagwoord
+Wagwoord
+Wagwoord (user:pass):
+Wagwoord *
+Huidige wagwoord:
+Administrateurwagwoord
+DJ-wagwoord
+DJ-wagwoord:
+SMTP-wagwoord
+Source / DJ-wagwoord
+Source / DJ-wagwoord:
+Wagwoord suksesvol bygewerk
+Verbindingswagwoord:
+Wagwoord:
+Outomatiese versterkingsbeheer (AGC)
+Grootmaatbeheer van radio's
+Meervoudige beheer
+Meervoudige beheer - CastPanel
+Vinnige beheer
+AutoDJ-beheer
+Radiobeheer
+Kopieer die widgetkode wat jy verkies en plak dit op jou webwerf sodat jou besoekers kan luister
+Kopieer
+Kopieer
+
+
+Skep 'n relay met die vorm aan die linkerkant.
+Skep een met die vorm aan die linkerkant.
+Skep 'n rotasie met die vorm aan die linkerkant.
+Geskep
+Skep kliënt
+Skep DJ-rekening
+Skep stasie
+Skep lys
+Skep gedeelde lys
+Skep nuwe herverkoper
+Skep pakket
+Skep herverkoperpakket
+Skep eerste rekening
+Skep radio
+Skep relay
+Skep herverkoper
+Skep rotasie
+Skep gebruiker
+Skep 'n nuwe herverkoper
+Skep een
+Skep 'n DJ-rekening
+Skep 'n nuwe radio en kliëntrekening. Kliënte kan hul radio's vanaf die kliëntpaneel bestuur.
+Skep en aktiveer die stasie outomaties by betaling
+Ongeldige API-besonderhede
+API-besonderhede vereis
+Ongeldige DJ-besonderhede
+Ongeldige aanmeldbesonderhede
+Skep 'n pakket met rekening- en radiolimiete vir jou kliënte.
+Skep en bestuur API-sleutels, laai modules vir faktuursagteware af.
+
+
+Oorgang (sekondes)
+Krities
+Rekening
+DJ-rekening
+DJ-rekening bygewerk.
+DJ-rekening geskrap
+DJ-rekening geskrap.
+DJ-rekening nie gevind nie
+Rekening heraktiveer
+Rekening opgeskort
+Rekening geskrap
+Rekening heeltemal geskrap
+Rekening heraktiveer
+Rekening opgeskort
+Rekening en stasie
+Rekeninge
+DJ-rekeninge
+DJ-rekeninge - CastPanel
+Maksimum DJ-rekeninge
+Geregistreerde DJ-rekeninge
+HTML-kode
+Opspringkode (knoppie wat 'n venster oopmaak)
+Kode met pasgemaakte breedte (bv. 500px)
+Iframe-kode
+Iframe-kode (om op jou webwerf in te bed)
+Hoe om 'n taal by te voeg:
+
+
+DJ kan eie wagwoord verander
+DJ kan eie wagwoord verander:
+DJ kan by DJ-paneel aanmeld
+DJ kan by DJ-paneel aanmeld:
+DJ kan AutoDJ begin/stop
+DJ kan AutoDJ begin/stop:
+DJ kan radio begin/stop
+DJ kan radio begin/stop:
+DJ kan jingles/ID's speel (op die lug)
+DJ kan jingles/ID's speel (op die lug):
+DJ kan liedjie oorslaan (AutoDJ)
+DJ kan liedjie oorslaan (AutoDJ):
+DJ kan profielfoto oplaai
+DJ kan profielfoto oplaai:
+DJ kan musiek uitsaai
+DJ kan musiek uitsaai:
+DJ kan Voice Pro gebruik (op die lug)
+DJ kan Voice Pro gebruik (op die lug):
+
+Aktiewe DJ's
+
+Data word by elke versoek met lewendige inligting bygewerk
+
+Bepaal na hoeveel liedjies advertensieblokke ingevoeg word. Jy kan verskeie reëls met verskillende frekwensie en tye skep.
+Gedeaktiveer
+Deaktiveer
+Ontkoppel
+Beskrywing
+Opsionele beskrywing
+Vervaging (blur):
+Gedeaktiveer
+Gedeaktiveer
+Stasiebesonderhede (2)
+Stop
+Stop AutoDJ
+Stop radio
+Stop alle radio's
+Stop alle AutoDJ's
+Stop die heruitsending voor redigering
+Stop alle Liquidsoap-houers
+
+Gids
+Mediagids
+Hoofgidse
+Gedeaktiveer
+Skyf
+Totale skyf
+Beskikbaar
+Verspreiding volgens bedienertipe
+
+
+
+Velddokumentasie
+So
+Domein
+SSL-domein
+Hoof-SSL-domein
+Paneeldomein
+Paneeldomein (SSL_DOMAIN)
+Domein vir paneel- en stroom-URL's
+Domeine / SSL-sertifikate
+Domeine / SSL-sertifikate - CastPanel
+Los die prentlêer hier om op te laai, of klik.
+Duur
+Totale duur
+Totale duur:
+Aktiewe dae
+Weeksdae
+
+
+
+Gelykmaker
+3-band-gelykmaker
+Redigeer
+Redigeer liedjie
+Redigeer kliënt
+Redigeer DJ-rekening
+Redigeer DJ:
+Redigeer stasie
+Redigeer pakket
+Redigeer radiopakket
+Redigeer herverkoperpakkette
+Redigeer herverkoperpakkette - CastPanel
+Redigeer relay
+Redigeer herverkoper
+Redigeer rotasie
+Redigeer gebruiker
+Redigeer/werk radio's by
+Redigeer/lys pakkette
+Redigeer/lys pakkette (4)
+Redigeer/lys pakkette - CastPanel
+Visuele agtergrondeffek
+Bv.: Kersmusiek
+Bv.: Oggendmusiek
+Bv.: Nasionale Radio FM
+Bv.: Advertensies
+Bv.: Treffers van die oomblik
+Voer op die bediener via SSH uit om Let's Encrypt-sertifikate te bestuur:
+Voorbeeld
+Integrasievoorbeeld (JavaScript)
+Die
+Die bandwydte per stasie is 'n skatting gebaseer op huidige luisteraars × bitrate. Netwerkkoppelvlakdata word opgetel sedert die laaste herbegin van die bediener.
+Die lêer mag nie groter as 2MB wees nie
+Die lêer kan nie groter as 3MB wees nie
+Die hoofdomein waarop die paneel oopgemaak word
+Die taal sal outomaties verskyn
+Die gebruikersnaam bestaan reeds
+Die pakketnaam is verpligtend
+Die naam is verpligtend
+Die naam is verpligtend.
+Die oudioverwerker werk in AutoDJ-modus sowel as wanneer 'n DJ regstreeks is. Wanneer veranderinge gestoor word, herbegin die stasie kortliks om die nuwe konfigurasie toe te pas. Die verwerker gebruik 'n professionele ketting: AGC → Kompressor → Gelykmaker → Limiter → Uitsetversterking.
+Die oudioverwerker verbeter die gehalte van jou uitsending met professionele kompressie, gelykmaking en limiter. Kies 'n preset wat by jou inhoudstyl pas.
+Die gebruikersnaam of e-pos bestaan reeds
+Die gebruiker bestaan reeds
+Skrap
+Skrap gekose
+Skrap stasie wanneer die diens gekanselleer word
+
+Administrateur se e-pos
+Sender se e-pos (From)
+Bestemmings-e-pos
+Ongeldige e-pos
+
+Stasie aktief
+Vandag gespeel:
+Maatskappy
+
+Op alle stasies
+Regstreeks
+
+Enkripsie
+
+API-endpoint:
+JSON-endpoint vir ontwikkelaars. Gee lewendige metadata terug: huidige liedjie, luisteraars, bedienerstatus. Nuttig vir integrasies en pasgemaakte toepassings.
+Openbare endpoint · Geen verifikasie nodig nie · JSON · CORS geaktiveer
+
+
+JSON-API-skakel
+M3U-skakel (vir spelers)
+PLS-skakel (vir WinAmp, VLC, ens.)
+XSPF-skakel
+Direkte skakel (om op sosiale netwerke, webwerwe, ens. te deel)
+Direkte stroomskakels
+SSL-skakels/Speel
+SSL-stroomskakels
+SSL-stroomskakels - CastPanel
+Stereoverbreding
+Voer Facebook-sleutel in
+Voer Instagram-sleutel in
+Voer TikTok-sleutel in
+Voer Youtube-sleutel in
+Gestuur (TX)
+Stuur toets-e-pos
+Stuur toets
+Databasisfout:
+Fout met bywerk:
+Fout met toepassing van die preset.
+Fout met stuur van toets-e-pos. Kontroleer die SMTP-konfigurasie.
+Fout met stoor van die lêer
+Fout met stoor van die konfigurasie.
+Fout met stoor van die konfigurasie:
+Fout met stoor:
+Fout met begin
+Fout met skuif van lêer
+Fout met kry van konfigurasie:
+Fout met herbegin
+Fout met sinkronisering van proxy-reëls. Kontroleer die toestemmings van die lêer /etc/httpd/shoutcast-proxy-rules.inc
+Oplaaifout
+Fout met oplaai van lêer (kode:
+Fout met oplaai van die foto
+Databasisfout:
+Verbindingsfout
+Oplaaifout
+Oplaaifout:
+Onbekende fout
+Onbekende fout met die skep van die radio
+Fout met die bewerking:
+Fout met die bewerking:
+Oplaai het misluk
+Fout met herbegin van firewall:
+Skryf hier die boodskap wat DJ's sal sien wanneer hulle die paneel binnegaan...
+Vrye spasie
+
+Daaglikse skatting
+Stasie
+Stasie geskep
+Stasie gestop
+Stasie geskrap en verwyder
+Stasie begin
+
+Stasie heraktiveer
+Stasie herbegin
+Stasie opgeskort
+Stasie:
+Stasies
+Aktiewe stasies
+Toegekende stasies
+Vanlyn stasies
+Aanlyn stasies
+Totale stasies
+Stasies toegeken aan die gedeelde lys
+Kliëntstasies
+Kliëntstasies - CastPanel
+Stasie
+Stasie geskep
+Stasie bygewerk
+Stasie geskrap
+
+Stasie saai nie uit nie
+Status
+Radiostatus
+Status bygewerk
+Rekeningstatus
+Radiostatus
+Radiostatus:
+Diensstatus
+Radiostatus
+Bedienerstatus
+Bedienerstatus - CastPanel
+Lewendige bedienerstatus
+
+Statistiek
+Statistiek - CastPanel
+Lewendige statistiek
+Lewendige statistiek - CastPanel
+Volledige statistiek
+Radiostatistiek
+Radiostatistiek - CastPanel
+Lewendige statistiek
+Vinnige statistiek (luisteraars, status, titel)
+Statistiek en rekening
+Hierdie is 'n KRITIEKE diens.
+Hierdie boodskap word aan DJ's gewys wanneer hulle by hul paneel aanmeld. Dit kan instruksies, skedules, reëls of enige belangrike inligting bevat. Basiese HTML word vir formatering ondersteun.
+Dit sal uitvoer:
+Sterre
+Standaard
+Stereo
+Toegelate uitbreidings
+Gelaaide uitbreidings
+
+
+
+
+Facebook kan jou rekening of bladsy beperk as jou radio kopieregbeskermde musiek tydens die regstreekse uitsending speel.
+
+Fakturering en API
+Fakturering en API - CastPanel
+Fakturering en outomatisering (API)
+
+
+
+Datum
+Enkele datum
+Datum/tyd van die navraag ISO 8601
+Rye
+
+
+Bediener-firewall. Herbegin as daar probleme met toegang tot poorte is.
+Firewall herlaai
+Firewall herbegin. Oop poorte:
+
+Ongeldige formaat vir agtergrondprent. Gebruik JPG, PNG, WebP of GIF.
+Ongeldige omslagformaat. Gebruik JPG, PNG of WebP.
+Ongeldige formaat
+Formate: MP3, OGG, AAC, M4A, WAV, FLAC — Maks. 50 MB per lêer
+Foto suksesvol bygewerk
+Profielfoto
+Profielfoto bygewerk
+Foto geskrap
+
+
+Bron
+Finale versterking
+Maks. versterking
+Min. versterking
+Uitsetversterking en ekstras
+Kompensasieversterking
+Genereer nuwe sleutel
+Genre
+Geolokaliseer
+Bestuur stasies
+Bestuur stasies - CastPanel
+Bestuur gebruikers
+Bestuur gebruikers - CastPanel
+Advertensiebestuur
+Advertensiebestuur - CastPanel
+AutoDJ-bestuur
+Google Maps API-sleutel
+Geanimeerde reëndruppels
+DJ-opname:
+Neem DJ op
+Stoor
+Stoor veranderinge
+Stoor AutoDJ-veranderinge
+Stoor konfigurasie
+Stoor pasgemaakte konfigurasie
+Stoor taal
+Stoor sleutel
+Stoor boodskap
+Stoor alle konfigurasie
+
+Geaktiveer
+Aktiveer REST-API
+Aktiveer stuur van SMTP-e-posse
+Geskiedenis
+Liedjiegeskiedenis
+Geskiedenis van onlangse liedjies
+Eindtyd
+Begintyd
+Bedienertyd
+
+Liquidsoap-gasheer
+
+
+Huidige gasheernaam
+Bediener se gasheernaam
+Ongeldige gasheernaam: slegs letters, syfers, koppeltekens en punte.
+Gasheernaam kon nie verander word nie:
+Ongeldige stasie-ID
+Ongeldige ID
+ID vereis
+Stroomverbindings-IP:
+Verbindings-IP:
+Radio-IP
+Bediener-IP
+Ongemagtigde IP
+Unieke IP's
+
+
+
+
+
+
+
+Ikoon van die blaaieroortjie. Aanbeveel: 32×32px of 64×64px, ICO of PNG.
+Blaaierikoon vir jou kliënte. ICO/PNG 32×32px.
+Unieke stasie-identifiseerder
+Aktiewe taal:
+Paneeltaal
+Agtergrondprent
+Agtergrondprent geskrap.
+Prent geskrap.
+Prent te groot (maks 5MB)
+Prent wat as omslag gewys word wanneer die liedjie nie sy eie het nie. Aanbeveel: 500x500px, vierkantig.
+Prent wat as agtergrond van die hele speler gewys word. Aanbeveel: 1920x1080px of groter.
+Prent suksesvol opgelaai.
+Onaktief
+Onaktief · Gedeaktiveer
+Inligting opgevra
+Radio-inligting
+Bedienerinligting
+Tegniese inligting
+Volledige inligting oor die stasie en die huidige liedjie
+Rekeninginligting
+DJ-inligting
+Bedienerinligting
+Bedienerinligting - CastPanel
+Sosiale inligting bygewerk
+Inligting:
+Voer die RTMP-URL van enige versoenbare bediener in
+Voer naam in
+Voer gebruikersnaam in
+Voer eers die stroomsleutel in.
+Voer jou wagwoord in
+Voer jou gebruikersnaam in
+Voer gebruikersnaam en wagwoord in
+Begin die radio's wat gestop is
+Begin
+Begin AutoDJ
+Begin radio
+Meld aan
+Meld aan - CastPanel
+Meld aan as gebruiker
+Meld aan by gebruiker
+Meld aan
+Begin alle radio's
+Tuis
+Begin van alle radio's uitgevoer
+Tuis — CastPanel DJ
+
+
+
+Instagram kan jou rekening beperk as jou radio kopieregbeskermde musiek tydens die regstreekse uitsending speel.
+
+Handmatige installasie (AlmaLinux 8):
+Geïnstalleer (aktief)
+Integrasies en API
+Netwerkkoppelvlakke
+Koppelvlak
+
+JPG, PNG of WebP - vierkant 500x500
+JPG, PNG, WebP of geanimeerde GIF
+Standaard JSON
+
+Jan van der Merwe
+Do
+
+
+Die
+Die huidige wagwoord is verkeerd
+Die wagwoord moet ten minste 6 karakters hê
+Die Facebook-regstreekse-uitsaaifunksie saai jou radio se musiek na Facebook Live uit. Gaan na
+Die Facebook-regstreekse-uitsaaifunksie saai jou radio se musiek na Facebook Live uit. Gaan na Facebook Live Producer, skep 'n regstreekse video en kopieer die "Stroomsleutel". Plak die sleutel in die veld hieronder. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word. Facebook gebruik RTMPS (geënkripteer).
+Die Instagram-regstreekse-uitsaaifunksie saai jou radio se musiek na Instagram Live uit. 'n Rekening van die tipe
+Die Instagram-regstreekse-uitsaaifunksie saai jou radio se musiek na Instagram Live uit. 'n Business- of Creator-rekening word vereis. Kry jou stroomsleutel in die Instagram Live-instellings. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word. Instagram gebruik RTMPS (geënkripteer).
+Die TikTok-regstreekse-uitsaaifunksie saai jou radio se musiek na TikTok Live uit. Jy benodig ten minste
+Die TikTok-regstreekse-uitsaaifunksie saai jou radio se musiek na TikTok Live uit. Jy benodig ten minste 1 000 volgers om regstreeks te gaan. Kry jou stroomsleutel in TikTok Live Studio of die selfoontoepassing. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word.
+Die Youtube-regstreekse-uitsaaifunksie saai jou radio se musiek na Youtube Live uit. Daar is 'n
+Opname gebeur outomaties as dit geaktiveer is. Om opname van regstreekse DJ-programme te aktiveer/deaktiveer, gebruik die stasiekonfigurasie. Lêers gebruik jou beskikbare gasheerspasie.
+Die wagwoorde stem nie ooreen nie
+Snitlyste word vanaf die gebruiker se paneel bestuur. Gebruik "Meld aan by gebruiker" vir toegang.
+Let's Encrypt (gratis)
+Pieklimiter
+Luisteraarlimiet
+
+Liquidsoap nie nodig nie (AutoDJ gedeaktiveer)
+Liquidsoap oorgeslaan (AutoDJ gedeaktiveer)
+Lys
+Geskeduleerde lys
+Gedeelde lys geskrap
+Bestemmingsnitlys
+Advertensielys geskrap.
+Advertensielys nie gespesifiseer nie
+Snitlys
+Bestemmingslys
+Lys geskrap. Die liedjies is sonder 'n toegekende lys gelaat.
+Lys hernoem.
+Lys / redigeer radio's
+Lys AutoDJ's
+Lys AutoDJ's - CastPanel
+Lys/laai DJ-programme af
+Lys/redigeer DJ-rekeninge
+Lys/redigeer radio's (2)
+Lys/redigeer herverkopers
+Lys/redigeer herverkopers - CastPanel
+Lyste
+Aktiewe lyste
+Gedeelde lyste
+Gedeelde lyste (0)
+Advertensielyste (0)
+Snitlyste
+Snitlyste
+Snitlyste - CastPanel
+Gedeelde snitlyste
+Gedeelde snitlyste - CastPanel
+
+Reën
+
+Aanmeldlogo
+Spelerlogo
+Kantbalklogo
+Logo geskrap. Die verstek-CastPanel-logo sal herstel word.
+Logo geskrap. Die paneel se verstek-logo sal gebruik word.
+Logo vir die openbare radiospeler. Aanbeveel: 200×200px, PNG.
+Klein logo in die paneel se kantbalk. Aanbeveel: 140×40px, deursigtige PNG.
+Logo suksesvol opgelaai.
+Logo's en favicon
+Stelsellogs
+Logs is nie vanaf die webpaneel toeganklik nie. Om die laaste SSH-toegange te sien, voer in 'n terminaal uit: last -n 10
+DJ's moet die protokol kies
+DJ's moet altyd die protokol kies
+Die verwerkerinstellings word in die databasis gestoor. Om verwerking intyds toe te pas, aktiveer AutoDJ in hierdie stasie se pakket. Sodra dit geaktiveer is, pas Liquidsoap die verwerkingsketting outomaties toe. Die verwerker gebruik 'n professionele ketting: AGC → Kompressor → Gelykmaker → Limiter → Uitsetversterking.
+Die dienste gemerk as
+Die ikone sal in die openbare speler gewys word. Laat leeg om te versteek.
+Ma
+Radiolimiete
+
+
+Kompensasieversterking
+Luisteraarskaart
+Di
+Maks. bitrate
+Maksimum 10 heruitsendings per stasie
+
+Media (musiek)
+Middeltone - Frekwensie
+Middeltone - Versterking
+Middeltone - Q-faktor
+DJ-paneelboodskap
+DJ-paneelboodskap - CastPanel
+Boodskap suksesvol bygewerk.
+DJ-paneelboodskap bygewerk
+Boodskap vir die DJ-paneel
+Metode nie toegelaat nie
+My handelsmerk
+My handelsmerk - CastPanel
+My kliënte
+My kliënte - CastPanel
+Wo
+Onderhoudmodus
+Speelmodus
+Wys titels
+Wys gelykmakerstawe
+Wys aantal luisteraars
+Wys liedjiegeskiedenis
+Houer-enjin vir AutoDJ (Liquidsoap). Herbegin as die AutoDJ's nie werk nie.
+Enjin:
+
+
+
+Koppelpunt
+
+Skuif
+Skuif na lys
+Gewildste (0 luisteraars)
+Maks. toegelaat
+Maks. op een radio
+Maksimum krag en volume, kommersiële FM-klank
+Maksimum toegelaat
+Maksimum in die laaste 24h
+Maandelikse maksimum
+Weeklikse maksimum
+Metode
+Metode nie toegelaat nie
+Musiek
+Webblaaiers
+Jy benodig 'n Google Maps API-sleutel met Maps JavaScript API geaktiveer.
+Sneeu
+Geen
+Geen
+Teikenvlak
+Vlak waar kompressie begin
+Maksimum vlak toegelaat voor beperking
+Nee
+Nie geverifieer nie
+Nie gemagtig vir hierdie stasie nie
+Nie opgestel nie
+Moenie 'n DJ-rekening met alle toestemmings skep nie, tensy jy daardie persoon heeltemal vertrou.
+Nie beskikbaar nie
+Nie gevind nie
+Daar is geen liedjies in die biblioteek nie.
+Geen DJ-rekeninge geskep nie.
+Geen gedeelde lyste nie
+Geen lyste geskep nie. Skep een met die vorm hierbo.
+Geen advertensielyste nie.
+Geen pakkette geskep nie
+Geen bykomende poorte oop nie (slegs verstekdienste)
+Geen telnet-poorte beskikbaar nie
+Nog geen uitsaai-rekords nie.
+Geen advertensiereëls opgestel nie.
+Geen relays opgestel nie.
+Geen herverkopers geregistreer nie
+Geen rotasies opgestel nie.
+Geen opgeneemde programme vir hierdie stasie nie.
+Nie geïnstalleer nie
+Jy kan nie jou eie rekening deaktiveer nie
+Jy kan nie jou eie rekening skrap nie
+Nie nodig nie (SHOUTcast-protokol)
+Geen geldige oudiolêers gevind nie
+Die stroomsleutel is nie opgestel nie
+Kon nie aan die SHOUTcast-bediener koppel nie
+Kon nie die AutoDJ stop nie
+Kon nie die radio stop nie
+Kon nie die IPC-opdrag skryf nie
+Kon nie die lêer stoor nie
+Kon nie Liquidsoap begin nie:
+Kon nie die AutoDJ begin nie
+Kon nie die FFmpeg-proses begin nie
+Kon nie die radio begin nie
+Kan nie skrap nie: die herverkoper het kliënte met aktiewe stasies
+Kan nie skrap nie: daar is stasies wat hierdie pakket gebruik
+Kan nie skrap nie: daar is herverkopers wat hierdie pakket gebruik
+Geen lêers ontvang nie
+Geen lêer ontvang nie
+Geen lêer ontvang nie
+Jy het nie toestemming vir hierdie stasie nie
+Jy het geen stasie toegeken nie. Kontak die administrateur.
+
+Naam
+Volle naam
+Volle naam:
+Stasienaam
+
+Gebruikersnaam *
+Naam van die lys
+Naam van die rotasie *
+Naam van die stasie
+Naam van die relay *
+Sender se naam
+Werfnaam
+Naam wat in die kantbalk en blaaiertitel verskyn
+Naam vereis
+Naam vereis.
+Naam en URL is verpligtend.
+Naam en slug is verpligtend
+Normaal (opeenvolgend)
+Let wel:
+Nuus / Gesproke woord
+Speel nou volgens stasie-ID
+Nuwe API-sleutel gegenereer:
+Nuwe wagwoord (laat leeg om te behou)
+Nuwe wagwoord:
+Nuwe DJ-rekening
+Nuwe stasie
+Nuwe advertensielys
+Nuwe advertensiereël
+Nuwe rotasie
+Nuut
+Nuwe kliënt
+Nuwe relay
+Nuwe gebruiker
+
+
+Kry sleutel
+
+Oseaangolwe
+Golwe
+
+Nou aanlyn
+Slegs .jpg of .png toegelaat! Maks 3MB.
+Spelerkeuses
+Geoptimaliseer vir spraak, maks. helderheid
+Geoptimaliseer vir spraak, maksimum helderheid
+Donkerheid van die oorleg:
+Luisteraars
+Luisteraars (Google Maps)
+Aktiewe luisteraars
+Luisteraars nou
+Gekoppelde luisteraars
+Maksimum luisteraars
+Totale luisteraars
+Totale luisteraars nou
+Huidige luisteraars
+Tans gekoppelde luisteraars
+Radioluisteraarsgrafiek (regstreeks)
+Luisteraars op die kaart
+Luisteraars op die kaart - CastPanel
+Luisteraars in die laaste 24 uur
+
+
+
+Radiobladsy
+Hoofpaneel
+Herverkoperpaneel
+Herverkoperpaneel - CastPanel
+Administrasiepaneel
+Administrasiepaneel - CastPanel
+Beheerpaneel
+Beheerpaneel - CastPanel
+Pakket
+Pakket bygewerk
+Pakket geskrap
+Pakket nie gevind nie
+Pakket nie gevind nie of onaktief
+Pakkette
+Herverkoperpakkette (0)
+Pakkette gelys
+Vir gevorderde instellings (AGC, kompressor, EQ, limiter) kontak die stasie-administrateur.
+
+Totale piek
+Plak jou stroomsleutel hier...
+Hangende
+Toestemmings
+DJ-toestemmings (wees versigtig)
+Pas die logo, naam en kleure van jou paneel aan.
+Pas die logo's, titels en favicons van jou paneel aan. Opgelaaide prente vervang die verstekwaardes. As jy 'n prent skrap, word die verstek-CastPanel-logo herstel. Herverkopers kan hul eie handelsmerk vanaf hul paneel vir hul kliënte opstel.
+Pasgemaak
+Pas speler aan
+Pas speler aan - CastPanel
+
+24-uur-piek
+24h-piek
+30-dae-piek
+7-dae-piek
+Pasgemaakte voetskrif
+Snitte
+Sjabloon suksesvol bygewerk
+E-possjablone
+E-possjablone (6)
+E-possjablone - CastPanel
+Verstek-sjablone geïnisialiseer
+Ongeldige platform
+Snitlys
+Snitlys 'General' geskep
+Aktiewe snitlys
+Snitlys-intervalle
+Snitlyste
+Omslag geskrap.
+Verstek-omslag
+DJ-portaal
+
+Postfix (e-pos)
+Postfix-e-posbediener
+Postfix-e-posbediener. Herbegin as e-posse nie gestuur word nie.
+Kragtig
+Pasop:
+
+Preset "
+Ongeldige preset
+Vinnige presets
+Voorskou
+Skep eers 'n
+Skep eers 'n
+Prioriteit
+Toets
+Toets sein
+Verwerker
+Verwerker geaktiveer
+Verwerker aktief
+Verwerker gedeaktiveer
+Oudioverwerker
+Oudioverwerker - CastPanel
+Gebalanseerde verwerking vir algemene radio
+Skedule
+Advertensieskedule geskep.
+Skedule geskrap.
+Skeduleer advertensies
+Skeduleer advertensies - CastPanel
+
+
+Eienaar
+Protokol
+
+SHOUTcast v1-protokol — Verbinding via Liquidsoap Harbor (AutoDJ aktief). Elke DJ gebruik sy eie aanmeldbesonderhede.
+SHOUTcast v1-protokol — Direkte verbinding met die SHOUTcast-bediener (sonder AutoDJ). Gebruik in RadioCaster altyd die SHOUTcast v1-protokol.
+Protokol:
+CastPanel-e-postoetsAs jy hierdie e-pos ontvang, werk die SMTP-konfigurasie korrek.
+Poort
+DJ-poort
+HTTP-poort
+HTTPS-poort
+
+SSL-poort
+Administrateur-SSL-poort
+Stroom-SSL-poort
+Paneel se SSL-poort (HTTPS)
+Telnet-poort
+DJ-verbindingspoort:
+Verbindingspoort:
+Uitsaaipoort
+Radiopoort
+Administrasiepoort (verstek: 2087)
+Standaard HTTPS-poort (verstek: 443)
+Poort nie toegeken nie
+Poort vir veilige strome (verstek: 8443)
+Poort:
+Oop poorte
+SSL-poorte
+Koppelpunt
+Koppelpunt (Mount)
+Koppelpunt (Mount):
+Bladsy 1 van 1 · 0 lêers
+Bladsy 1 van 1 · 2 lêers
+Jou kliënte se aanmeldbladsy. PNG 200×60px.
+Openbaar en gratis. Jy het nie 'n API-sleutel of tokens nodig nie
+Radio suksesvol gestop
+Radio suksesvol begin
+
+RadioCaster: Protokol
+RadioCaster: Icecast-protokol, bediener:
+RadioCaster: SHOUTcast v1-protokol, bediener:
+RadioCaster: Kies protokol
+RadioCaster: Kies die SHOUTcast v1-protokol. Bediener:
+Radio's en rekeninge
+Ranglys — Top 50 radio's volgens luisteraars
+
+Heraktivering
+Heraktiveer
+Voer 'n volledige herbegin van die SSH-diens uit, insluitend Fail2ban. Nuttig wanneer daar baie geblokkeerde toegangspogings of aanhoudende verbindingsprobleme is.
+Herlaai firewall
+Ontvang (RX)
+Netwerk
+Sosiale netwerke
+Stuur welkom-e-pos weer
+Verfris
+Hergenereer Apache-proxy-reëls
+Registreer sertifikaat
+Registrasie
+Openbare registrasie geaktiveer
+Aktiewe reëls (0)
+
+Herbegin die stromingsdiens van elke aktiewe stasie
+Herbegin alle Liquidsoap-houers
+Herbegin
+Herbegin AutoDJ
+Herbegin Fail2ban (verwyder tydelike verbanninge)
+Herbegin radio
+Herbegin dienste
+Herbegin dienste - CastPanel
+Herbegin alle radio's
+Herbegin alle AutoDJ's
+Herbegin SSHD-diens
+Om kritieke dienste te herbegin kan tydelike onderbrekings veroorsaak. Dienste gemerk as krities sal die paneel en/of stroming beïnvloed as hulle herbegin word.
+Herbegin die bediener se stromingsdienste.
+Herbegin van alle radio's uitgevoer
+Herbegin van alle AutoDJ's uitgevoer
+
+Relay-herleiding
+Relay-herleiding - CastPanel
+Relay bygewerk.
+Relay geskrap.
+Opgestelde relays
+
+Speel nou: geen inligting
+Speel nou:
+Speel
+Kompakte speler (iframe)
+Volbladsy-speler (met visuele effekte)
+Openbare speler
+Selfstandige speler wat nie 'n iframe nodig het nie. Kopieer en plak net die kode in jou HTML.
+Kompakte speler van
+Professionele volbladsy-speler met agtergrondanimasies, omslag, liedjiegeskiedenis en gevorderde kontroles. Ideaal as
+Openbare speler vir jou kliënte se radio's. PNG 200×200px.
+
+
+JSON-antwoord
+Gestruktureerde en gedokumenteerde JSON-antwoord
+Ongeldige JSON-antwoord
+Stel wagwoord terug
+Stel wagwoord terug
+Stel jou wagwoord terug
+Volledige SSH-terugstelling
+Resultate
+Inhoudsopsomming
+Rekeningopsomming (regstreeks)
+Bedieneropsomming
+Herverkoper bygewerk
+Herverkoper geskrap
+Herverkopers
+Geregistreerde herverkopers (0)
+
+Rol
+Opgestelde rotasies
+Rotasie bygewerk.
+Vouerrotasie
+Vouerrotasie - CastPanel
+Rotasie geskrap.
+Pad
+
+
+SHOUTcast-binêre lêer nie gevind nie in
+
+
+
+
+SSH-bediener
+SSH heeltemal herbegin
+SSL geaktiveer
+SSL geaktiveer (HTTPS)
+SSL en domein
+
+Verstek-monsterfrekwensie
+Word outomaties op die bediener toegepas via castpanel-ctl
+Gestuur wanneer 'n nuwe rekening geskep word
+Gestuur wanneer 'n nuwe stasie opgestel word
+Gestuur wanneer 'n gebruikersrekening heraktiveer word
+Gestuur wanneer 'n wagwoordterugstelling versoek word
+Gestuur wanneer 'n gebruikersrekening opgeskort word
+Word outomaties gegenereer. Jy kan dit verander.
+Word op die aanmeldbladsy gewys. Aanbeveel: 200×60px, deursigtige PNG.
+Snitlysvolgorde
+Sekuriteit en firewall
+Sekuriteit en firewall - CastPanel
+Kies liedjies met die merkblokkies vir grootmaataksies
+Kies die visuele effek:
+Kies 'n preset om oudioverwerking te aktiveer
+Kies 'n stasie om sy DJ-rekeninge te bestuur.
+Kies 'n snitlys
+Kies 'n snitlys uit die aftreklys om sy liedjies te sien en te bestuur.
+Geskei deur kommas
+Diens
+Liquidsoap-diens gestop
+Liquidsoap-diens begin (Docker: liquidsoap-
+SHOUTcast-diens gestop
+SSH-diens vir afstandtoegang. Herbegin as daar probleme met afstandverbindings is.
+Stelseldienste
+Bediener
+Bediener / Gasheer
+SMTP-bediener
+SSH-bediener
+E-posbediener
+
+Webbediener van die paneel. Herbegin as die paneel nie laai nie.
+Bediener:
+
+
+
+
+
+DJ-programme
+DJ-programme - CastPanel
+As die stasie uitsaai
+Sonder verifikasie
+Sonder AutoDJ
+Geen data
+Geen effek
+Geen bergingspasie
+Geen stasie
+Geen stasie gekies nie
+Geen stasies nie.
+Geen stasie toegeken nie.
+Geen inligting
+Geen lys
+Geen lys toegeken nie
+Geen pasgemaakte logo
+Sonder naam
+Geen pakket
+Geen toestemming vir AutoDJ
+Geen toestemming om wagwoord te verander
+Geen toestemming om te skep
+Geen toestemming om te skrap
+Geen toestemming om te begin/stop
+Geen toestemming om te lees
+Geen toestemming om te wysig
+Geen toestemming om te heraktiveer
+Geen toestemming om 'n foto op te laai
+Geen toestemming om op te skort
+Geen toestemmings
+Geen verwerking, oorspronklike oudio
+Sonder titel
+Stelsel
+Bedryfstelsel
+Faktureringstelsel
+Radiostelsel
+Vertaalstelsel
+
+
+
+Slegs JPG, PNG of WebP
+Slegs letters, syfers, koppeltekens en onderstrepe
+Slegs JPG- of PNG-lêers word toegelaat
+
+
+
+
+
+HTTP-stroom (sonder SSL)
+Hoof-HTTPS-stroom
+Sag
+Laai eers 'n omslagprent op
+Laai advertensies op
+Laai oudiolêers op
+Laai musiek op
+Laai musiek op - CastPanel
+Laai MP3-musiek op
+Laai alles op
+Laai agtergrondprent op
+Laai omslag op
+Subtitel
+Skort op
+Skort die stasie outomaties op as betaling misluk
+Opgeskort
+Opskorting
+
+
+Sa
+Ja
+
+
+
+Tabel
+Tabelle
+Databasistabelle (29)
+Grootte
+Maks. oplaaigrootte (MB)
+Totale databasisgrootte
+Geskeduleerde take. Herbegin as cron-take nie loop nie.
+Beëindig
+Teks onder die logo in die kantbalk
+Voetskrifteks
+Knoppie- of opskrifteks op die aanmeldbladsy
+Intyds
+
+
+
+TikTok kan jou rekening opskort as jou radio kopieregbeskermde musiek tydens die regstreekse uitsending speel.
+TikTok → LIVE → Kry bediener-URL en sleutel
+Tydsverloop terwyl daar vir die daemon se antwoord gewag is
+
+Tipe
+Bedienertipe
+Sertifikaattipe
+Skeduletipe
+Lystipe
+Lêertipe nie toegelaat nie. Gebruik PNG, JPG, GIF, SVG of ICO
+Radiotitel
+Alle wagwoorde
+Alle stroombronne
+Alle lyste
+Alle lyste
+Alle radio's gestop
+Alle AutoDJ's gestop
+Alle endpoints
+Alle gebruikers (3)
+Alle verpligte velde moet ingevul word (radionaam, gebruiker, pakket)
+Alle velde is verpligtend
+Alle stroomskakels is met SSL (HTTPS) beskikbaar vir maksimum versoenbaarheid met blaaiers en selfoontoepassings.
+Ongeldige CSRF-token. Herlaai die bladsy.
+Ongeldige sekuriteitstoken
+Top 50 radio's
+Top 50 radio's - CastPanel
+
+Totale lêers
+Totaal gestuur (TX)
+Totaal ontvang (RX)
+
+Totaal sedert die bediener begin het
+Vertaal die waardes van die skikking
+Pasgemaakte uitsending
+
+
+Instagram regstreekse uitsending
+
+Youtube regstreekse uitsending
+Uitsending gestop.
+
+
+Instagram regstreekse uitsending
+Instagram regstreekse uitsending - CastPanel
+
+
+YouTube regstreekse uitsending
+Youtube regstreekse uitsending
+Youtube regstreekse uitsending - CastPanel
+Uitsending suksesvol begin.
+Saai uit
+Jou openbare speler
+Jou rekening is heraktiveer
+Jou rekening is opgeskort
+Jou rekening het nie toestemming om aan te meld nie
+Jou stroom is versoenbaar met enige speler wat HTTP-stroming ondersteun:
+
+Titel
+Aanmeldtitel
+Titel van die huidige liedjie
+Paneeltitel
+Paneeltitel en kleure
+Direkte HTTP-URL (sonder SSL)
+RTMP-URL vereis
+SSL-URL
+Direkte SSL-URL vir HTML5-spelers, selfoontoepassings, WordPress-inproppe en pasgemaakte spelers. Werk met HTTPS op die stasie se poort.
+Aanmeld-URL van die DJ-paneel:
+Direkte SSL-speel-URL
+URL van die eksterne bron *
+Radio-URL
+URL van die albumomslag
+HTTPS-stroom-URL
+Stelsel-URL
+Werf-URL
+Stroom-URL (HTTPS)
+URL van die eksterne oudiostroom (Icecast, SHOUTcast, HTTP-stroom).
+Direkte URL sonder SSL vir radiosagteware soos SAM Broadcaster, BUTT, Mixxx, RadioBOSS en ander enkodeerders. Gebruik hierdie URL met die aangeduide poort vir direkte uitsending.
+Stroom-URL's
+SSL-stroom-URL's
+Drempel
+Drempel (Threshold)
+
+Gebruik die Instagram-API of derdepartyhulpmiddels vir die RTMP-URL
+Gebruik die funksie
+Gebruik die aanmeldbesonderhede van jou
+
+Gebruikersnaam, e-pos en wagwoord is verpligtend
+Bandwydtegebruik
+Bandwydtegebruik - CastPanel
+Skyfgebruik
+Skyfgebruik / HDD
+Skyfgebruik / HDD - CastPanel
+Gebruik per stasie (2)
+Gebruiker
+Administrateur
+DJ-gebruiker
+DJ-gebruiker:
+SMTP-gebruiker
+Gebruiker bygewerk
+Gebruiker geskrap
+Gebruiker nie gevind nie
+Verkeerde gebruikersnaam of wagwoord
+Gebruikersnaam en wagwoord is verpligtend
+Gebruikersnaam en wagwoord is verpligtend
+Gebruikersnaam en wagwoord is verpligtend.
+Gebruikers
+
+
+Beskikbare veranderlikes
+Bekyk, redigeer en bestuur alle bestaande radio's en rekeninge op die bediener.
+Bekyk
+Bekyk speler
+Kontroleer...
+Kontroleer die bediener se geheue-, SVE-, las- en skyfgebruik intyds.
+PHP-weergawe
+Vr
+Voorskou
+Intydse voorskou
+Voorskou:
+
+Kompakte HTML-widget (sonder iframe)
+Spelerwidget
+Spelerwidget - CastPanel
+Regstreekse widget
+
+Spelerwidgets
+
+
+Saai reeds heruit
+Het reeds geloop
+Daar bestaan reeds 'n DJ met daardie gebruikersnaam.
+
+Jou gasheermaatskappy en die maatskappy van die paneelsagteware is in sulke gevalle nie verantwoordelik nie.
+Youtube gee kopieregwaarskuwings vir musiek in regstreekse uitsendings; jou hele youtube-kanaal kan
+Youtube gee kopieregwaarskuwings vir musiek in regstreekse uitsendings; jou hele youtube-kanaal kan verban of beperk word as jou radio kopieregbeskermde musiek speel.
+Verstek-sone
+
+
+
+per dag. Gaan na
+
+
+as wagwoord, veral vir selfoontoepassings. Gebruik in rekenaarprogramme net die wagwoord en die DJ-poort om te koppel.
+met omslag, titel, kunstenaar, statusaanwyser en kontroles. Perfek om
+DJ-rekening
+van die firewall voltooi. Oop poorte:
+daagliks vir youtube-regstreekse uitsendings, moenie die regstreekse uitsending meer herbegin as
+
+
+
+op jou webwerf, blog of forum in te bed
+in selfoontoepassings.
+in enige PHP-lêer om vertaalde teks te wys.
+in jou uitsaaiprogram. Selfs as die stelsel IceCast of SCV2 gebruik, kies altyd
+in jou uitsaaiprogram. Hierdie stasie werk
+in jou uitsaaiprogram. DJ's koppel aan die Harbor-poort (
+regstreeks.
+onbekende fout
+
+stasie nie gevind nie
+stasie of slug vereis
+stasie vereis
+
+
+facebook.com/live/producer → Stroomsleutel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+advertensielys
+
+
+limiet
+aggressiewe kompressie, middeltone na vore, punch
+toegeken.
+geskep:
+AutoDJ-konfigurasie bygewerk en diens herbegin.
+geskrap.
+
+Instagram regstreekse uitsending
+
+Youtube regstreekse uitsending
+gestoor.
+ligte kompressie, ideaal vir
+nie gevind nie
+kan nie vanaf die paneel gestop word nie om verlies van toegang te voorkom. Diensaksies word via die daemon uitgevoer
+
+
+
+
+of Shoutcast in die konfigurasie. Jy kan gebruik
+of klik om te kies
+of die selfoontoepassing. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word.
+of om in 'n opspringvenster oop te maak.
+
+of beperk word as jou radio kopieregbeskermde musiek speel.
+
+
+om regstreeks te gaan. Kry jou stroomsleutel by
+laat jou 'n reeks snitlyste skeduleer wat outomaties in die gespesifiseerde volgorde en hoeveelheid binne die opgestelde tye speel.
+laat jou 'n eksterne oudiobron heruitsaai. Wanneer die relay aktief is en binne die geskeduleerde tyd val, sal die stasie die sein van die opgestelde URL in plaas van die AutoDJ uitsaai.
+maar Apache het steeds foute
+
+
+
+jou radio se openbare bladsy
+
+
+
+
+
+
+
+
+
+sonder AutoDJ
+geen antwoord
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+studio.youtube.com → Gaan regstreeks → Sleutel
+
+
+
+
+jy@email.co.za
+
+loop al 35 minute
+
+
+username en password is verpligtend
+gebruiker:wagwoord
+
+
+maksimum krag en volume, kommersiële FM-klank
+en aktiveer regstreekse uitsaaifunksies. Hou die Youtube-regstreekse-uitsaaibladsy oop voordat jy begin. Youtube neem 24 uur vir aktivering. Kopieer jou regstreekse stroomsleutel, voer dit op hierdie bladsy in en laai 'n prent van 1280x720 op. Die regstreekse uitsending begin na 30-40 sekondes op Youtube.
+en laai advertensies op.
+jou rekening as jou radio kopieregbeskermde musiek tydens die regstreekse uitsending speel.
+jou rekening of bladsy as jou radio kopieregbeskermde musiek tydens die regstreekse uitsending speel.
+
+© 2024 My Maatskappy
+Hoe om uit te saai?
+Skrap jou profielfoto?
+Laaste wysiging
+Laaste bywerking:
+Laaste aanmelding
+Laaste SSH-aanmeldings
+— Maak netwerk-URL oop
+— Maak URL oop
+— Maak stroom-URL oop
+— Maak .pls- of .m3u-lêer oop
+— Verbinding via Liquidsoap Harbor (AutoDJ aktief). Elke DJ gebruik sy eie aanmeldbesonderhede.
+— Direkte verbinding met die SHOUTcast-bediener (sonder AutoDJ). Gebruik in RadioCaster altyd die SHOUTcast v1-protokol.
+— Wagwoord (slegs in welkom)
+— Paneeldomein
+— Gebruiker se e-pos
+— Terugstelskakel
+— Direkte HTTPS-skakel
+— Naam van die stasie
+— Gebruikersnaam
+— Naam van die paneel
+— Direkte HTTPS-URL
+— Stroom-URL
+— Gebruik M3U/PLS-skakel
+— DJ's koppel direk aan die stromingsbediener.
+
+
+○ Onaktief
+
+● Aktief
+
+⚠ Die bron antwoord, maar met status:
+⚠️ Stop ALLE uitsendings
+✅ Gekopieer
+✅ Sein OK: die bron antwoord korrek.
+✏️ Verander
+✗ Fout
+❌ Kon nie aan die bron koppel nie. Kontroleer die URL.
+📱 Selfooninstellings (BroadcastMyself, iCast, ens.)
+📻 Rekenaarinstellings (BUTT, SAM, Winamp, ens.)
++ Voeg by
++ Skep lys
++ Skep nuwe snitlys
+(laat leeg om nie te verander nie)
+(gebruikersnaam en wagwoord)
+(geënkripteer).
+-- Kies --
+-- Kies stasie --
+-- Geen lys (algemene biblioteek) --
+% van die skyf
+< 1 minuut
+Hoeveelheid = aantal liedjies wat uit elke vouer/lys gespeel word voordat na die volgende oorgegaan word.
+Hoër Q = smaller band
+Hoër getal = hoër prioriteit bo ander aktiewe relays.
+Hoër getal = hoër prioriteit. Rotasies met hoër prioriteit loop eerste.
+Hoër ratio = meer kompressie
+Nader aan 0 = harder
+Gladde oorgang (hoër = gladder)
+Maks. kliënte (0 = onbeperk)
+Maks. stasies (0 = onbeperk)
+0 = onbeperk
+Limiet 0 beteken onbeperk.
+110px hoog
+Speel nou: {x}
+Speel nou:
+Gemiddelde las: {x}
+{n} gebruik van {n}
+{n} uur se inhoud
+{n} lys(te) · {n} liedjies sonder lys
+{n} van {n}
+Bladsy {n} van {n} · {n} lêers
+Lys/redigeer radio's ({n})
+Redigeer/lys pakkette ({n})
+Geregistreerde AutoDJ's ({n})
+Stasiebesonderhede ({n})
+Alle gebruikers ({n})
+Gebruik per stasie ({n})
+Databasistabelle ({n})
+E-possjablone ({n})
+Gedeelde lyste ({n})
+Advertensielyste ({n})
+Aktiewe reëls ({n})
+Geregistreerde herverkopers ({n})
+Herverkoperpakkette ({n})
+Gewildste ({n} luisteraars)
+loop al {n} minute
+Voltooi
+Laai op...
+Fout
+Opgelaai ✓
+, Bediener: {x}, Poort: {n}, Wagwoord: (die DJ s'n)
+. Bediener: {x}, Poort: {n}. Wagwoord: elke DJ-rekening s'n. Gebruik op selfoon
+, skep 'n regstreekse video en kopieer die "Stroomsleutel". Plak die sleutel in die veld hieronder. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word. Facebook gebruik
+. Kry jou stroomsleutel in die Instagram Live-instellings. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word. Instagram gebruik
+Taal verander na {x}
+vertaalde frases

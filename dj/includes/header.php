@@ -10,6 +10,8 @@ if (!isset($_SESSION['dj_id'])) {
 }
 
 require_once '/var/www/castpanel/config/database.php';
+require_once __DIR__ . '/../../includes/i18n.php';
+cpI18nStart(); // translate the DJ portal into the panel language
 
 $db = getDB();
 

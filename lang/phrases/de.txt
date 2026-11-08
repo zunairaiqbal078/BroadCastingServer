@@ -1,0 +1,1645 @@
+
+
+
+
+
+
+Google Maps API-Schlüssel gespeichert
+
+
+CastPanel-API
+API deaktiviert
+Öffnen
+Port öffnen
+Port in der Firewall öffnen
+
+Zugriff verweigert
+Unbekannte Aktion:
+Ungültige Aktion
+Aktionen
+Aktion nicht erkannt. Gültige Aktionen: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Ungültige Aktion
+Aktiv
+Aktivieren Sie den Prozessor, damit Ihre Sendung lauter und in professioneller Qualität klingt
+AGC aktivieren
+Kompressor aktivieren
+Equalizer aktivieren
+Limiter aktivieren
+Aktiv
+Aktiv
+Aktiv (
+Aktiv · Deaktiviert
+Aktuell
+Aktualisieren
+
+Dienstverwaltung
+Dienstverwaltung - CastPanel
+AutoDJ verwalten
+AutoDJ verwalten - CastPanel
+Konto verwalten
+Konto verwalten — CastPanel DJ
+Listen verwalten
+Radio verwalten
+Server und Dienste verwalten
+Verwalten Sie SSL-Zertifikate und Domains des Servers.
+
+SSL-Zertifikat hinzufügen
+Radiopaket hinzufügen
+Resellerpaket hinzufügen
+Abschließende Anpassung der Sendelautstärke
+Benutzerdefinierte Einstellungen
+Manuelle Einstellungen des Benutzers
+Zufällig
+Speich.
+Speicher
+AutoDJ-Speicher
+Maximaler Speicher
+Speicher:
+Hoch
+Höhen - Frequenz
+Höhen - Verstärkung
+Streaming-Bandbreite
+Bandbreite pro Station
+Animation über dem Hintergrundbild des Players.
+Werbung gelöscht.
+
+
+
+
+Kompatible Anwendungen
+Android/iOS-Apps
+M3U-Datei (für Desktop-Player)
+PLS-Datei (kompatibel mit Winamp, VLC usw.)
+Datei zu groß
+Datei zu groß (Server)
+Datei nur teilweise hochgeladen
+Temporäre Dateien
+Musikdateien
+Stream-Dateien
+Übersetzungsdateien:
+Architektur
+Ziehen Sie Ihre Dateien hierher
+Interpret
+Interpret des aktuellen Titels
+Betreff
+Attack
+Audio-Streaming
+Audio-Streaming-Plattform
+Audio-Streaming-Plattform
+Verbreitert das Stereobild
+Neue Konten automatisch bereitstellen
+Bei Nichtzahlung automatisch sperren
+Gekündigte Konten automatisch beenden
+Selbstsigniert
+Autostart
+Auto-Aktualisierung:
+
+AutoDJ-Status:
+AutoDJ gestoppt
+AutoDJ gestartet
+Registrierte AutoDJs (2)
+Automatisierung
+Noch keine Hörerdaten erfasst.
+Aktuelle BW
+Niedrig
+Bässe - Frequenz
+Bässe - Verstärkung
+Leiste
+Seitenleiste des Panels Ihrer Kunden. PNG 140×40px.
+Audiobalken
+Datenbank:
+Hauptdatenbank des Panels. Neu starten, wenn es Verbindungsprobleme mit der DB gibt.
+Datenbank:
+Basis
+Musikbibliothek
+Musikbibliothek - CastPanel
+Willkommen
+
+Maximale Bitrate
+Sende-Bitrate in kbps
+Standard-Bitrate
+
+Nachricht löschen
+
+Branding / White Label
+Branding / White-Label
+Branding / White-Label - CastPanel
+White-Label-Branding
+Branding aktualisiert. Ihre Kunden sehen die Änderungen nach dem Neuladen der Seite.
+DJ-Pufferverzögerung (Sek.)
+Suchen
+Paket suchen...
+Nach Titel, Interpret suchen...
+Suchen...
+Business oder Creator
+CORS aktiviert
+KRITISCH
+Jeder DJ verwendet sein eigenes Passwort (das beim Erstellen des Kontos vergeben wurde). Auf Mobilgeräten das Format verwenden
+Aufnahmequalität
+Passwort ändern
+Sprache ändern
+Sprache ändern - CastPanel
+Hostnamen ändern
+Hostnamen ändern - CastPanel
+Hintergrundbild ändern
+Cover ändern
+Ändern Sie die Sprache Ihres CastPanel.
+Feld
+Kanäle
+Abbrechen
+Titel
+Titel sortiert nach n
+Titel nach Nummern sortiert.
+Titel nach Präfix sortiert.
+Aktueller Titel
+Titel aktualisiert.
+Titel gelöscht.
+Titel verschoben.
+Anzahl
+Daten werden geladen...
+Verlauf wird geladen...
+Wird geladen...
+Kontrollzentrum
+DJ-Kontrollzentrum
+DJ-Kontrollzentrum - CastPanel
+Abmelden
+Benutzerdefiniertes Zertifikat
+Zertifikat aus dem Register entfernt
+
+Sternenhimmel
+Stream-Schlüssel erforderlich
+Basisschlüssel (ES):
+
+Kunde
+Kunde aktualisiert
+Kunde gelöscht (inkl. aller seiner Stationen)
+Kunde nicht gefunden
+Ungültiger Kunde
+Kunden
+
+Codec / Bitrate / Abtastrate
+Standard-Codec
+Dateiwarteschlange
+
+Primärfarbe
+Akzentfarbe:
+Hintergrundfarbe der Seitenleiste
+Textfarbe:
+Farbe der Seitenleiste
+Hauptfarbe für Schaltflächen und Akzente
+Farben
+Befehl nicht erkannt
+Nützliche Befehle (SSH)
+Teilen Sie diesen Link mit Ihren Hörern. Es ist die öffentliche Player-Seite mit Covern, Titelverlauf und anpassbaren visuellen Effekten.
+Aggressive Kompression, Mitten nach vorne, Punch
+Leichte Kompression, ideal für Klassik und Jazz
+Dynamikkompressor
+Mit AutoDJ
+Echtzeitverbindungen
+Liquidsoap-Konfiguration erstellt:
+AutoDJ-Konfiguration gespeichert
+Konfiguration gespeichert
+CastPanel-Konfiguration
+Globale Konfiguration
+Globale Konfiguration - CastPanel
+Google-Maps-Konfiguration
+
+Liquidsoap-Konfiguration
+SSL-Port-Konfiguration
+SSL-Port-Konfiguration - CastPanel
+RadioCaster-Konfiguration
+SMTP-Konfiguration
+SMTP-Konfiguration - CastPanel
+SMTP-Konfiguration erfolgreich gespeichert
+API/Abrechnungs-Konfiguration gespeichert
+Dateikonfiguration
+Branding-Konfiguration gespeichert. Laden Sie die Seite neu, um die Änderungen zu sehen.
+SSL-Domain-Konfiguration gespeichert
+SSL-Port-Konfiguration gespeichert. Starten Sie Apache neu, um die Änderungen anzuwenden.
+Serverkonfiguration
+Website-Konfiguration
+Player-Konfiguration erfolgreich gespeichert.
+Konfiguration erfolgreich gespeichert
+Benutzerdefinierte Konfiguration gespeichert. Die Station wird neu gestartet, um die Änderungen anzuwenden.
+Benutzerdefinierte Konfiguration gespeichert. Sie wird angewendet, wenn AutoDJ aktiviert wird.
+Hostname und Domain konfigurieren
+SMTP / E-Mail konfigurieren
+SSL in Apache konfigurieren (SSH)
+Konfigurieren Sie den Mailserver für Benachrichtigungen.
+Konfigurieren Sie die globalen Einstellungen des Panels und der Streaming-Dienste.
+Konfigurieren Sie oben einen Google Maps API-Schlüssel, um die Hörerkarte zu sehen.
+Neues Passwort bestätigen:
+Abfrage von jeder Domain oder mobilen App
+Nachrichteninhalt:
+Passwort
+Admin-Passwort
+Radio-Passwort
+Passwort
+Passwort (user:pass):
+Passwort *
+Aktuelles Passwort:
+Admin-Passwort
+DJ-Passwort
+DJ-Passwort:
+SMTP-Passwort
+Source / DJ-Passwort
+Source / DJ-Passwort:
+Passwort erfolgreich aktualisiert
+Verbindungspasswort:
+Passwort:
+Automatische Verstärkungsregelung (AGC)
+Massensteuerung der Radios
+Mehrfachsteuerung
+Mehrfachsteuerung - CastPanel
+Schnellsteuerung
+AutoDJ-Steuerung
+Radio-Steuerung
+Kopieren Sie den gewünschten Widget-Code und fügen Sie ihn in Ihre Website ein, damit Ihre Besucher zuhören können
+Kopieren
+Kopieren Sie
+
+
+Erstellen Sie ein Relay mit dem Formular links.
+Erstellen Sie eine mit dem Formular links.
+Erstellen Sie eine Rotation mit dem Formular links.
+Erstellt
+Kunde erstellen
+DJ-Konto erstellen
+Station erstellen
+Liste erstellen
+Geteilte Liste erstellen
+Neuen Reseller erstellen
+Paket erstellen
+Resellerpaket erstellen
+Erstes Konto erstellen
+Radio erstellen
+Relay erstellen
+Reseller erstellen
+Rotation erstellen
+Benutzer erstellen
+Einen neuen Reseller erstellen
+Eine erstellen
+Ein DJ-Konto erstellen
+Erstellen Sie ein neues Radio und Kundenkonto. Kunden können ihre Radios über das Kundenpanel verwalten.
+Station bei Zahlung automatisch erstellen und aktivieren
+Ungültige API-Zugangsdaten
+API-Zugangsdaten erforderlich
+Ungültige DJ-Zugangsdaten
+Ungültige Zugangsdaten
+Erstellen Sie ein Paket mit Konto- und Radiolimits für Ihre Kunden.
+Erstellen und verwalten Sie API-Schlüssel, laden Sie Module für Abrechnungssoftware herunter.
+
+
+Crossfade (Sekunden)
+Kritisch
+Konto
+DJ-Konto
+DJ-Konto aktualisiert.
+DJ-Konto gelöscht
+DJ-Konto gelöscht.
+DJ-Konto nicht gefunden
+Konto reaktiviert
+Konto gesperrt
+Konto gelöscht
+Konto vollständig gelöscht
+Konto reaktiviert
+Konto gesperrt
+Konto und Station
+Konten
+DJ-Konten
+DJ-Konten - CastPanel
+Maximale DJ-Konten
+Registrierte DJ-Konten
+HTML-Code
+Popup-Code (Schaltfläche, die ein Fenster öffnet)
+Code mit benutzerdefinierter Breite (z. B. 500px)
+Iframe-Code
+Iframe-Code (zum Einbetten in Ihre Website)
+So fügen Sie eine Sprache hinzu:
+
+
+DJ darf eigenes Passwort ändern
+DJ darf eigenes Passwort ändern:
+DJ darf sich im DJ-Panel anmelden
+DJ darf sich im DJ-Panel anmelden:
+DJ darf AutoDJ starten/stoppen
+DJ darf AutoDJ starten/stoppen:
+DJ darf Radio starten/stoppen
+DJ darf Radio starten/stoppen:
+DJ darf Jingles/IDs abspielen (On Air)
+DJ darf Jingles/IDs abspielen (On Air):
+DJ darf Titel überspringen (AutoDJ)
+DJ darf Titel überspringen (AutoDJ):
+DJ darf Profilfoto hochladen
+DJ darf Profilfoto hochladen:
+DJ darf Musik senden
+DJ darf Musik senden:
+DJ darf Voice Pro nutzen (On Air)
+DJ darf Voice Pro nutzen (On Air):
+
+Aktive DJs
+
+Daten werden bei jeder Anfrage mit Live-Informationen aktualisiert
+
+Legt fest, nach wie vielen Titeln Werbeblöcke eingefügt werden. Sie können mehrere Regeln mit unterschiedlicher Häufigkeit und Uhrzeit erstellen.
+Deaktiviert
+Deaktivieren
+Getrennt
+Beschreibung
+Optionale Beschreibung
+Unschärfe (Blur):
+Deaktiviert
+Deaktiviert
+Stationsdetails (2)
+Stoppen
+AutoDJ stoppen
+Radio stoppen
+Alle Radios stoppen
+Alle AutoDJs stoppen
+Stoppen Sie das Relay vor dem Bearbeiten
+Stoppt alle Liquidsoap-Container
+
+Verzeichnis
+Medienverzeichnis
+Hauptverzeichnisse
+Deaktiviert
+Festplatte
+Festplatte gesamt
+Verfügbar
+Verteilung nach Servertyp
+
+
+
+Felddokumentation
+So
+Domain
+SSL-Domain
+Haupt-SSL-Domain
+Panel-Domain
+Panel-Domain (SSL_DOMAIN)
+Domain für Panel- und Stream-URLs
+Domains / SSL-Zertifikate
+Domains / SSL-Zertifikate - CastPanel
+Bilddatei hier ablegen zum Hochladen, oder klicken.
+Dauer
+Gesamtdauer
+Gesamtdauer:
+Aktive Tage
+Wochentage
+
+
+
+Equalizer
+3-Band-Equalizer
+Bearbeiten
+Titel bearbeiten
+Kunde bearbeiten
+DJ-Konto bearbeiten
+DJ bearbeiten:
+Station bearbeiten
+Paket bearbeiten
+Radiopaket bearbeiten
+Resellerpakete bearbeiten
+Resellerpakete bearbeiten - CastPanel
+Relay bearbeiten
+Reseller bearbeiten
+Rotation bearbeiten
+Benutzer bearbeiten
+Radios bearbeiten/aktualisieren
+Pakete bearbeiten/auflisten
+Pakete bearbeiten/auflisten (4)
+Pakete bearbeiten/auflisten - CastPanel
+Visueller Hintergrundeffekt
+Z. B.: Weihnachtsmusik
+Z. B.: Morgenmusik
+Z. B.: Nationalradio FM
+Z. B.: Werbespots
+Z. B.: Aktuelle Hits
+Per SSH auf dem Server ausführen, um Let's-Encrypt-Zertifikate zu verwalten:
+Beispiel
+Integrationsbeispiel (JavaScript)
+Der
+Die Bandbreite pro Station ist eine Schätzung basierend auf aktuellen Hörern × Bitrate. Die Daten der Netzwerkschnittstellen werden seit dem letzten Serverneustart kumuliert.
+Die Datei darf 2 MB nicht überschreiten
+Die Datei darf nicht größer als 3 MB sein
+Die Hauptdomain, über die das Panel aufgerufen wird
+Die Sprache erscheint automatisch
+Der Benutzername existiert bereits
+Der Paketname ist erforderlich
+Der Name ist erforderlich
+Der Name ist erforderlich.
+Der Audioprozessor funktioniert sowohl im AutoDJ-Modus als auch, wenn ein DJ live ist. Beim Speichern wird die Station kurz neu gestartet, um die neue Konfiguration anzuwenden. Der Prozessor nutzt eine professionelle Kette: AGC → Kompressor → Equalizer → Limiter → Ausgangsverstärkung.
+Der Audioprozessor verbessert die Qualität Ihrer Sendung mit professioneller Kompression, Entzerrung und Limiter. Wählen Sie ein Preset, das zu Ihrem Inhalt passt.
+Benutzername oder E-Mail existiert bereits
+Der Benutzer existiert bereits
+Löschen
+Auswahl löschen
+Station bei Kündigung des Dienstes löschen
+
+Administrator-E-Mail
+Absender-E-Mail (From)
+Ziel-E-Mail
+Ungültige E-Mail
+
+Sender aktiv
+Heute gespielt:
+Firma
+
+Auf allen Stationen
+Live
+
+Verschlüsselung
+
+API-Endpoint:
+JSON-Endpoint für Entwickler. Liefert Live-Metadaten: aktueller Titel, Hörer, Serverstatus. Nützlich für Integrationen und eigene Apps.
+Öffentlicher Endpoint · Keine Authentifizierung erforderlich · JSON · CORS aktiviert
+
+
+JSON-API-Link
+M3U-Link (für Player)
+PLS-Link (für WinAmp, VLC usw.)
+XSPF-Link
+Direktlink (zum Teilen in sozialen Netzwerken, auf Websites usw.)
+Direkte Stream-Links
+SSL-Links/Abspielen
+SSL-Streaming-Links
+SSL-Streaming-Links - CastPanel
+Stereoverbreiterung
+Facebook-Schlüssel eingeben
+Instagram-Schlüssel eingeben
+TikTok-Schlüssel eingeben
+Youtube-Schlüssel eingeben
+Gesendet (TX)
+Test-E-Mail senden
+Test senden
+DB-Fehler:
+Fehler beim Aktualisieren:
+Fehler beim Anwenden des Presets.
+Fehler beim Senden der Test-E-Mail. Prüfen Sie die SMTP-Konfiguration.
+Fehler beim Speichern der Datei
+Fehler beim Speichern der Konfiguration.
+Fehler beim Speichern der Konfiguration:
+Fehler beim Speichern:
+Fehler beim Starten
+Fehler beim Verschieben der Datei
+Fehler beim Abrufen der Konfiguration:
+Fehler beim Neustart
+Fehler beim Synchronisieren der Proxy-Regeln. Prüfen Sie die Berechtigungen der Datei /etc/httpd/shoutcast-proxy-rules.inc
+Upload-Fehler
+Fehler beim Hochladen der Datei (Code:
+Fehler beim Hochladen des Fotos
+Datenbankfehler:
+Verbindungsfehler
+Upload-Fehler
+Upload-Fehler:
+Unbekannter Fehler
+Unbekannter Fehler beim Erstellen des Radios
+Fehler bei der Operation:
+Fehler bei der Operation:
+Upload fehlgeschlagen
+Fehler beim Neustart der Firewall:
+Schreiben Sie hier die Nachricht, die DJs beim Betreten des Panels sehen...
+Freier Speicher
+
+Tägl. Schätzung
+Station
+Station erstellt
+Station gestoppt
+Station gelöscht und deprovisioniert
+Station gestartet
+
+Station reaktiviert
+Station neu gestartet
+Station gesperrt
+Station:
+Stationen
+Aktive Stationen
+Zugewiesene Stationen
+Offline-Stationen
+Online-Stationen
+Stationen gesamt
+Der geteilten Liste zugewiesene Stationen
+Kundenstationen
+Kundenstationen - CastPanel
+Station
+Station erstellt
+Station aktualisiert
+Station gelöscht
+
+Station sendet nicht
+Status
+Radiostatus
+Status aktualisiert
+Kontostatus
+Radiostatus
+Radiostatus:
+Dienststatus
+Radiostatus
+Serverstatus
+Serverstatus - CastPanel
+Live-Serverstatus
+
+Statistiken
+Statistiken - CastPanel
+Live-Statistiken
+Live-Statistiken - CastPanel
+Vollständige Statistiken
+Radiostatistiken
+Radiostatistiken - CastPanel
+Live-Statistiken
+Schnellstatistiken (Hörer, Status, Titel)
+Statistiken und Konto
+Dies ist ein KRITISCHER Dienst.
+Diese Nachricht wird DJs angezeigt, wenn sie sich in ihrem Panel anmelden. Sie kann Anweisungen, Zeitpläne, Regeln oder andere wichtige Informationen enthalten. Einfaches HTML wird zur Formatierung unterstützt.
+Dies führt aus:
+Sterne
+Standard
+Stereo
+Erlaubte Erweiterungen
+Geladene Erweiterungen
+
+
+
+
+Facebook kann Ihr Konto oder Ihre Seite einschränken, wenn Ihr Radio während des Livestreams urheberrechtlich geschützte Musik spielt.
+
+Abrechnung und API
+Abrechnung und API - CastPanel
+Abrechnung und Automatisierung (API)
+
+
+
+Datum
+Einzeldatum
+Datum/Uhrzeit der Abfrage ISO 8601
+Zeilen
+
+
+Server-Firewall. Neu starten, wenn es Probleme beim Zugriff auf Ports gibt.
+Firewall neu geladen
+Firewall neu gestartet. Offene Ports:
+
+Ungültiges Format für das Hintergrundbild. Verwenden Sie JPG, PNG, WebP oder GIF.
+Ungültiges Cover-Format. Verwenden Sie JPG, PNG oder WebP.
+Ungültiges Format
+Formate: MP3, OGG, AAC, M4A, WAV, FLAC — Max. 50 MB pro Datei
+Foto erfolgreich aktualisiert
+Profilfoto
+Profilfoto aktualisiert
+Foto gelöscht
+
+
+Quelle
+Endverstärkung
+Max. Verstärkung
+Min. Verstärkung
+Ausgangsverstärkung und Extras
+Ausgleichsverstärkung
+Neuen Schlüssel erzeugen
+Genre
+Geolokalisiert
+Stationen verwalten
+Stationen verwalten - CastPanel
+Benutzer verwalten
+Benutzer verwalten - CastPanel
+Werbeverwaltung
+Werbeverwaltung - CastPanel
+AutoDJ-Verwaltung
+Google Maps API-Schlüssel
+Animierte Regentropfen
+DJ-Aufnahme:
+DJ aufnehmen
+Speichern
+Änderungen speichern
+AutoDJ-Änderungen speichern
+Konfiguration speichern
+Benutzerdefinierte Konfiguration speichern
+Sprache speichern
+Schlüssel speichern
+Nachricht speichern
+Gesamte Konfiguration speichern
+
+Aktiviert
+REST-API aktivieren
+SMTP-E-Mail-Versand aktivieren
+Verlauf
+Titelverlauf
+Verlauf der letzten Titel
+Endzeit
+Startzeit
+Serverzeit
+
+Liquidsoap-Host
+
+
+Aktueller Hostname
+Server-Hostname
+Ungültiger Hostname: nur Buchstaben, Zahlen, Bindestriche und Punkte.
+Hostname konnte nicht geändert werden:
+Ungültige Stations-ID
+Ungültige ID
+ID erforderlich
+Stream-Verbindungs-IP:
+Verbindungs-IP:
+Radio-IP
+Server-IP
+Nicht autorisierte IP
+Eindeutige IPs
+
+
+
+
+
+
+
+Symbol im Browser-Tab. Empfohlen: 32×32px oder 64×64px, ICO oder PNG.
+Browsersymbol für Ihre Kunden. ICO/PNG 32×32px.
+Eindeutige Stationskennung
+Aktive Sprache:
+Panel-Sprache
+Hintergrundbild
+Hintergrundbild gelöscht.
+Bild gelöscht.
+Bild zu groß (max. 5 MB)
+Bild, das als Cover angezeigt wird, wenn der Titel kein eigenes hat. Empfohlen: 500x500px, quadratisch.
+Bild, das als Hintergrund des gesamten Players angezeigt wird. Empfohlen: 1920x1080px oder größer.
+Bild erfolgreich hochgeladen.
+Inaktiv
+Inaktiv · Deaktiviert
+Info abgerufen
+Radio-Info
+Server-Info
+Technische Informationen
+Vollständige Informationen zur Station und zum aktuellen Titel
+Kontoinformationen
+DJ-Informationen
+Serverinformationen
+Serverinformationen - CastPanel
+Social-Informationen aktualisiert
+Informationen:
+Geben Sie die RTMP-URL eines kompatiblen Servers ein
+Namen eingeben
+Benutzernamen eingeben
+Geben Sie zuerst den Stream-Schlüssel ein.
+Passwort eingeben
+Benutzernamen eingeben
+Benutzername und Passwort eingeben
+Startet die gestoppten Radios
+Starten
+AutoDJ starten
+Radio starten
+Anmelden
+Anmelden - CastPanel
+Als Benutzer anmelden
+Beim Benutzer anmelden
+Anmelden
+Alle Radios starten
+Start
+Start aller Radios ausgeführt
+Start — CastPanel DJ
+
+
+
+Instagram kann Ihr Konto einschränken, wenn Ihr Radio während des Livestreams urheberrechtlich geschützte Musik spielt.
+
+Manuelle Installation (AlmaLinux 8):
+Installiert (aktiv)
+Integrationen und API
+Netzwerkschnittstellen
+Schnittstelle
+
+JPG, PNG oder WebP - quadratisch 500x500
+JPG, PNG, WebP oder animiertes GIF
+Standard-JSON
+
+Max Mustermann
+Do
+
+
+Die
+Das aktuelle Passwort ist falsch
+Das Passwort muss mindestens 6 Zeichen haben
+Die Facebook-Livestream-Funktion überträgt die Musik Ihres Radios zu Facebook Live. Gehen Sie zu
+Die Facebook-Livestream-Funktion überträgt die Musik Ihres Radios zu Facebook Live. Gehen Sie zu Facebook Live Producer, erstellen Sie ein Live-Video und kopieren Sie den „Stream-Schlüssel“. Fügen Sie den Schlüssel in das Feld unten ein. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird. Facebook nutzt RTMPS (verschlüsselt).
+Die Instagram-Livestream-Funktion überträgt die Musik Ihres Radios zu Instagram Live. Erforderlich ist ein Konto vom Typ
+Die Instagram-Livestream-Funktion überträgt die Musik Ihres Radios zu Instagram Live. Ein Business- oder Creator-Konto ist erforderlich. Den Stream-Schlüssel erhalten Sie in den Instagram-Live-Einstellungen. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird. Instagram nutzt RTMPS (verschlüsselt).
+Die TikTok-Livestream-Funktion überträgt die Musik Ihres Radios zu TikTok Live. Erforderlich sind mindestens
+Die TikTok-Livestream-Funktion überträgt die Musik Ihres Radios zu TikTok Live. Für Livestreams sind mindestens 1.000 Follower erforderlich. Den Stream-Schlüssel erhalten Sie in TikTok Live Studio oder in der mobilen App. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird.
+Die Youtube-Livestream-Funktion überträgt die Musik Ihres Radios zu Youtube Live. Es gibt ein
+Die Aufnahme erfolgt automatisch, wenn sie aktiviert ist. Um die Aufnahme von Live-DJ-Shows zu aktivieren/deaktivieren, verwenden Sie die Stationskonfiguration. Die Dateien nutzen Ihren verfügbaren Hosting-Speicher.
+Die Passwörter stimmen nicht überein
+Playlists werden im Benutzerpanel verwaltet. Verwenden Sie „Beim Benutzer anmelden“, um darauf zuzugreifen.
+Let's Encrypt (kostenlos)
+Spitzenbegrenzer
+Hörerlimit
+
+Liquidsoap nicht erforderlich (AutoDJ deaktiviert)
+Liquidsoap übersprungen (AutoDJ deaktiviert)
+Liste
+Geplante Liste
+Geteilte Liste gelöscht
+Ziel-Playlist
+Werbeliste gelöscht.
+Werbeliste nicht angegeben
+Playlist
+Zielliste
+Liste gelöscht. Die Titel haben nun keine zugewiesene Liste.
+Liste umbenannt.
+Radios auflisten / bearbeiten
+AutoDJs auflisten
+AutoDJs auflisten - CastPanel
+DJ-Shows auflisten/herunterladen
+DJ-Konten auflisten/bearbeiten
+Radios auflisten/bearbeiten (2)
+Reseller auflisten/bearbeiten
+Reseller auflisten/bearbeiten - CastPanel
+Listen
+Aktive Listen
+Geteilte Listen
+Geteilte Listen (0)
+Werbelisten (0)
+Playlists
+Playlists
+Playlists - CastPanel
+Geteilte Playlists
+Geteilte Playlists - CastPanel
+
+Regen
+
+Login-Logo
+Player-Logo
+Seitenleisten-Logo
+Logo gelöscht. Das Standard-Logo von CastPanel wird wiederhergestellt.
+Logo gelöscht. Das Standard-Logo des Panels wird verwendet.
+Logo für den öffentlichen Radioplayer. Empfohlen: 200×200px, PNG.
+Kleines Logo in der Seitenleiste des Panels. Empfohlen: 140×40px, transparentes PNG.
+Logo erfolgreich hochgeladen.
+Logos und Favicon
+Systemprotokolle
+Protokolle sind über das Webpanel nicht zugänglich. Um die letzten SSH-Zugriffe zu sehen, führen Sie im Terminal aus: last -n 10
+DJs müssen das Protokoll wählen
+DJs müssen immer das Protokoll wählen
+Die Prozessoreinstellungen werden in der Datenbank gespeichert. Um die Verarbeitung in Echtzeit anzuwenden, aktivieren Sie AutoDJ im Paket dieser Station. Danach wendet Liquidsoap die Verarbeitungskette automatisch an. Der Prozessor nutzt eine professionelle Kette: AGC → Kompressor → Equalizer → Limiter → Ausgangsverstärkung.
+Die als
+Die Symbole werden im öffentlichen Player angezeigt. Leer lassen zum Ausblenden.
+Mo
+Radiolimits
+
+
+Ausgleichsverstärkung
+Hörerkarte
+Di
+Max. Bitrate
+Maximal 10 Relays pro Station
+
+Medien (Musik)
+Mitten - Frequenz
+Mitten - Verstärkung
+Mitten - Q-Faktor
+DJ-Panel-Nachricht
+DJ-Panel-Nachricht - CastPanel
+Nachricht erfolgreich aktualisiert.
+DJ-Panel-Nachricht aktualisiert
+Nachricht für das DJ-Panel
+Methode nicht erlaubt
+Mein Branding
+Mein Branding - CastPanel
+Meine Kunden
+Meine Kunden - CastPanel
+Mi
+Wartungsmodus
+Wiedergabemodus
+Titel anzeigen
+Equalizer-Balken anzeigen
+Hörerzahl anzeigen
+Titelverlauf anzeigen
+Container-Engine für AutoDJ (Liquidsoap). Neu starten, wenn die AutoDJs nicht funktionieren.
+Engine:
+
+
+
+Mountpoint
+
+Verschieben
+In Liste verschieben
+Am beliebtesten (0 Hörer)
+Max. erlaubt
+Max. auf einem Radio
+Maximale Kraft und Lautstärke, kommerzieller FM-Sound
+Maximal erlaubt
+Maximum der letzten 24h
+Monatliches Maximum
+Wöchentliches Maximum
+Methode
+Methode nicht erlaubt
+Musik
+Webbrowser
+Sie benötigen einen Google Maps API-Schlüssel mit aktivierter Maps JavaScript API.
+Schnee
+Keine
+Keiner
+Zielpegel
+Pegel, ab dem die Kompression beginnt
+Maximal erlaubter Pegel vor der Begrenzung
+Nein
+Nicht authentifiziert
+Nicht berechtigt für diese Station
+Nicht konfiguriert
+Erstellen Sie kein DJ-Konto mit allen Berechtigungen, es sei denn, Sie vertrauen der Person vollständig.
+Nicht verfügbar
+Nicht gefunden
+Keine Titel in der Bibliothek.
+Keine DJ-Konten erstellt.
+Keine geteilten Listen
+Keine Listen erstellt. Erstellen Sie eine mit dem Formular oben.
+Keine Werbelisten.
+Keine Pakete erstellt
+Keine zusätzlichen Ports offen (nur Standarddienste)
+Keine Telnet-Ports verfügbar
+Noch keine Sendeaufzeichnungen.
+Keine Werberegeln konfiguriert.
+Keine Relays konfiguriert.
+Keine Reseller registriert
+Keine Rotationen konfiguriert.
+Keine aufgezeichneten Shows für diese Station.
+Nicht installiert
+Sie können Ihr eigenes Konto nicht deaktivieren
+Sie können Ihr eigenes Konto nicht löschen
+Nicht erforderlich (SHOUTcast-Protokoll)
+Keine gültigen Audiodateien gefunden
+Der Stream-Schlüssel wurde nicht konfiguriert
+Verbindung zum SHOUTcast-Server nicht möglich
+AutoDJ konnte nicht gestoppt werden
+Radio konnte nicht gestoppt werden
+IPC-Befehl konnte nicht geschrieben werden
+Datei konnte nicht gespeichert werden
+Liquidsoap konnte nicht gestartet werden:
+AutoDJ konnte nicht gestartet werden
+FFmpeg-Prozess konnte nicht gestartet werden
+Radio konnte nicht gestartet werden
+Löschen nicht möglich: Der Reseller hat Kunden mit aktiven Stationen
+Löschen nicht möglich: Stationen nutzen dieses Paket
+Löschen nicht möglich: Reseller nutzen dieses Paket
+Keine Dateien empfangen
+Keine Datei empfangen
+Keine Datei empfangen
+Sie haben keine Berechtigung für diese Station
+Ihnen ist keine Station zugewiesen. Wenden Sie sich an den Administrator.
+
+Name
+Vollständiger Name
+Vollständiger Name:
+Stationsname
+
+Benutzername *
+Listenname
+Name der Rotation *
+Name der Station
+Name des Relays *
+Absendername
+Website-Name
+Name in der Seitenleiste und im Browsertitel
+Name erforderlich
+Name erforderlich.
+Name und URL sind erforderlich.
+Name und Slug sind erforderlich
+Normal (sequenziell)
+Hinweis:
+Nachrichten / Wort
+Now Playing nach Stations-ID
+Neuer API-Schlüssel erzeugt:
+Neues Passwort (leer lassen, um es beizubehalten)
+Neues Passwort:
+Neues DJ-Konto
+Neue Station
+Neue Werbeliste
+Neue Werberegel
+Neue Rotation
+Neu
+Neuer Kunde
+Neues Relay
+Neuer Benutzer
+
+
+Schlüssel holen
+
+Meereswellen
+Wellen
+
+Jetzt online
+Nur .jpg oder .png erlaubt! Max. 3 MB.
+Player-Optionen
+Optimiert für Sprache, max. Klarheit
+Optimiert für Sprache, maximale Klarheit
+Abdunklung des Overlays:
+Hörer
+Hörer (Google Maps)
+Aktive Hörer
+Hörer jetzt
+Verbundene Hörer
+Maximale Hörer
+Hörer gesamt
+Hörer gesamt jetzt
+Aktuelle Hörer
+Derzeit verbundene Hörer
+Hörerdiagramm des Radios (live)
+Hörer auf der Karte
+Hörer auf der Karte - CastPanel
+Hörer der letzten 24 Stunden
+
+
+
+Radioseite
+Hauptpanel
+Reseller-Panel
+Reseller-Panel - CastPanel
+Administrationspanel
+Administrationspanel - CastPanel
+Kontrollpanel
+Kontrollpanel - CastPanel
+Paket
+Paket aktualisiert
+Paket gelöscht
+Paket nicht gefunden
+Paket nicht gefunden oder inaktiv
+Pakete
+Resellerpakete (0)
+Pakete aufgelistet
+Für erweiterte Einstellungen (AGC, Kompressor, EQ, Limiter) wenden Sie sich an den Stationsadministrator.
+
+Spitze gesamt
+Fügen Sie Ihren Stream-Schlüssel hier ein...
+Ausstehend
+Berechtigungen
+DJ-Berechtigungen (Vorsicht)
+Passen Sie Logo, Namen und Farben Ihres Panels an.
+Passen Sie Logos, Titel und Favicons Ihres Panels an. Hochgeladene Bilder ersetzen die Standardwerte. Beim Löschen eines Bildes wird das Standard-Logo von CastPanel wiederhergestellt. Reseller können ihr eigenes Branding in ihrem Panel für ihre Kunden einrichten.
+Benutzerdefiniert
+Player anpassen
+Player anpassen - CastPanel
+
+24-Stunden-Spitze
+24h-Spitze
+30-Tage-Spitze
+7-Tage-Spitze
+Benutzerdefinierte Fußzeile
+Tracks
+Vorlage erfolgreich aktualisiert
+E-Mail-Vorlagen
+E-Mail-Vorlagen (6)
+E-Mail-Vorlagen - CastPanel
+Standardvorlagen initialisiert
+Ungültige Plattform
+Playlist
+Playlist 'General' erstellt
+Aktive Playlist
+Playlist-Intervalle
+Playlists
+Cover gelöscht.
+Standard-Cover
+DJ-Portal
+
+Postfix (Mail)
+Postfix-Mailserver
+Postfix-Mailserver. Neu starten, wenn keine E-Mails gesendet werden.
+Kraftvoll
+Achtung:
+
+Preset „
+Ungültiges Preset
+Schnell-Presets
+Vorschau
+Erstellen Sie zuerst ein
+Erstellen Sie zuerst eine
+Priorität
+Testen
+Signal testen
+Prozessor
+Prozessor aktiviert
+Prozessor aktiv
+Prozessor deaktiviert
+Audioprozessor
+Audioprozessor - CastPanel
+Ausgewogene Verarbeitung für allgemeines Radio
+Zeitplan
+Werbezeitplan erstellt.
+Zeitplan gelöscht.
+Werbung planen
+Werbung planen - CastPanel
+
+
+Eigentümer
+Protokoll
+
+SHOUTcast-v1-Protokoll — Verbindung über Liquidsoap Harbor (AutoDJ aktiv). Jeder DJ verwendet seine eigenen Zugangsdaten.
+SHOUTcast-v1-Protokoll — Direkte Verbindung zum SHOUTcast-Server (ohne AutoDJ). In RadioCaster immer das SHOUTcast-v1-Protokoll verwenden.
+Protokoll:
+CastPanel-E-Mail-TestWenn Sie diese E-Mail erhalten, funktioniert die SMTP-Konfiguration korrekt.
+Port
+DJ-Port
+HTTP-Port
+HTTPS-Port
+
+SSL-Port
+Admin-SSL-Port
+Streaming-SSL-Port
+SSL-Port des Panels (HTTPS)
+Telnet-Port
+DJ-Verbindungsport:
+Verbindungsport:
+Sendeport
+Radio-Port
+Verwaltungsport (Standard: 2087)
+Standard-HTTPS-Port (Standard: 443)
+Port nicht zugewiesen
+Port für sichere Streams (Standard: 8443)
+Port:
+Offene Ports
+SSL-Ports
+Mountpoint
+Mountpoint (Mount)
+Mountpoint (Mount):
+Seite 1 von 1 · 0 Dateien
+Seite 1 von 1 · 2 Dateien
+Login-Seite Ihrer Kunden. PNG 200×60px.
+Öffentlich und kostenlos. Sie brauchen keinen API-Schlüssel und keine Tokens
+Radio erfolgreich gestoppt
+Radio erfolgreich gestartet
+
+RadioCaster: Protokoll
+RadioCaster: Icecast-Protokoll, Server:
+RadioCaster: SHOUTcast-v1-Protokoll, Server:
+RadioCaster: Protokoll auswählen
+RadioCaster: SHOUTcast-v1-Protokoll auswählen. Server:
+Radios und Konten
+Rangliste — Top 50 Radios nach Hörern
+
+Reaktivierung
+Reaktivieren
+Führt einen vollständigen Neustart des SSH-Dienstes einschließlich Fail2ban durch. Nützlich bei vielen blockierten Zugriffsversuchen oder anhaltenden Verbindungsproblemen.
+Firewall neu laden
+Empfangen (RX)
+Netzwerk
+Soziale Netzwerke
+Willkommens-E-Mail erneut senden
+Aktualisieren
+Apache-Proxy-Regeln neu erzeugen
+Zertifikat registrieren
+Registrierung
+Öffentliche Registrierung aktiviert
+Aktive Regeln (0)
+
+Startet den Streaming-Dienst jeder aktiven Station neu
+Startet alle Liquidsoap-Container neu
+Neu starten
+AutoDJ neu starten
+Fail2ban neu starten (löscht temporäre Sperren)
+Radio neu starten
+Dienste neu starten
+Dienste neu starten - CastPanel
+Alle Radios neu starten
+Alle AutoDJs neu starten
+SSHD-Dienst neu starten
+Ein Neustart kritischer Dienste kann vorübergehende Unterbrechungen verursachen. Als kritisch markierte Dienste beeinträchtigen beim Neustart das Panel und/oder das Streaming.
+Starten Sie die Streaming-Dienste des Servers neu.
+Neustart aller Radios ausgeführt
+Neustart aller AutoDJs ausgeführt
+
+Relay-Weiterleitung
+Relay-Weiterleitung - CastPanel
+Relay aktualisiert.
+Relay gelöscht.
+Konfigurierte Relays
+
+Jetzt läuft: Keine Information
+Jetzt läuft:
+Abspielen
+Kompakter Player (iframe)
+Ganzseitiger Player (mit visuellen Effekten)
+Öffentlicher Player
+Eigenständiger Player, der kein iframe benötigt. Kopieren Sie den Code einfach in Ihr HTML.
+Kompakter Player mit
+Professioneller ganzseitiger Player mit Hintergrundanimationen, Cover, Titelverlauf und erweiterten Steuerelementen. Ideal als
+Öffentlicher Player für die Radios Ihrer Kunden. PNG 200×200px.
+
+
+JSON-Antwort
+Strukturierte und dokumentierte JSON-Antwort
+Ungültige JSON-Antwort
+Passwort zurücksetzen
+Passwort zurücksetzen
+Ihr Passwort zurücksetzen
+Vollständiger SSH-Reset
+Ergebnisse
+Inhaltsübersicht
+Kontoübersicht (live)
+Serverübersicht
+Reseller aktualisiert
+Reseller gelöscht
+Reseller
+Registrierte Reseller (0)
+
+Rolle
+Konfigurierte Rotationen
+Rotation aktualisiert.
+Ordnerrotation
+Ordnerrotation - CastPanel
+Rotation gelöscht.
+Pfad
+
+
+SHOUTcast-Binärdatei nicht gefunden in
+
+
+
+
+SSH-Server
+SSH vollständig neu gestartet
+SSL aktiviert
+SSL aktiviert (HTTPS)
+SSL und Domain
+
+Standard-Abtastrate
+Wird automatisch auf dem Server über castpanel-ctl angewendet
+Wird beim Erstellen eines neuen Kontos gesendet
+Wird beim Bereitstellen einer neuen Station gesendet
+Wird beim Reaktivieren eines Benutzerkontos gesendet
+Wird bei Anforderung einer Passwortzurücksetzung gesendet
+Wird beim Sperren eines Benutzerkontos gesendet
+Wird automatisch erzeugt. Sie können es ändern.
+Wird auf der Login-Seite angezeigt. Empfohlen: 200×60px, transparentes PNG.
+Playlist-Abfolge
+Sicherheit und Firewall
+Sicherheit und Firewall - CastPanel
+Wählen Sie Titel mit den Kontrollkästchen für Massenaktionen aus
+Visuellen Effekt auswählen:
+Wählen Sie ein Preset, um die Audioverarbeitung zu aktivieren
+Wählen Sie eine Station, um ihre DJ-Konten zu verwalten.
+Eine Playlist auswählen
+Wählen Sie eine Playlist aus dem Dropdown-Menü, um ihre Titel anzuzeigen und zu verwalten.
+Durch Kommas getrennt
+Dienst
+Liquidsoap-Dienst gestoppt
+Liquidsoap-Dienst gestartet (Docker: liquidsoap-
+SHOUTcast-Dienst gestoppt
+SSH-Fernzugriffsdienst. Neu starten, wenn es Probleme mit der Fernverbindung gibt.
+Systemdienste
+Server
+Server / Host
+SMTP-Server
+SSH-Server
+Mailserver
+
+Webserver des Panels. Neu starten, wenn das Panel nicht lädt.
+Server:
+
+
+
+
+
+DJ-Shows
+DJ-Shows - CastPanel
+Wenn die Station sendet
+Ohne Authentifizierung
+Ohne AutoDJ
+Keine Daten
+Kein Effekt
+Kein Speicherplatz
+Keine Station
+Keine Station ausgewählt
+Keine Stationen.
+Keine Station zugewiesen.
+Keine Information
+Keine Liste
+Keine Liste zugewiesen
+Kein eigenes Logo
+Ohne Namen
+Kein Paket
+Keine Berechtigung für AutoDJ
+Keine Berechtigung zum Ändern des Passworts
+Keine Berechtigung zum Erstellen
+Keine Berechtigung zum Löschen
+Keine Berechtigung zum Starten/Stoppen
+Keine Berechtigung zum Lesen
+Keine Berechtigung zum Ändern
+Keine Berechtigung zum Reaktivieren
+Keine Berechtigung zum Hochladen von Fotos
+Keine Berechtigung zum Sperren
+Keine Berechtigungen
+Keine Verarbeitung, Originalaudio
+Ohne Titel
+System
+Betriebssystem
+Abrechnungssystem
+Radiosystem
+Übersetzungssystem
+
+
+
+Nur JPG, PNG oder WebP
+Nur Buchstaben, Zahlen, Bindestriche und Unterstriche
+Nur JPG- oder PNG-Dateien sind erlaubt
+
+
+
+
+
+HTTP-Stream (ohne SSL)
+Haupt-HTTPS-Stream
+Sanft
+Laden Sie zuerst ein Coverbild hoch
+Werbung hochladen
+Audiodateien hochladen
+Musik hochladen
+Musik hochladen - CastPanel
+MP3-Musik hochladen
+Alle hochladen
+Hintergrundbild hochladen
+Cover hochladen
+Untertitel
+Sperren
+Station automatisch sperren, wenn die Zahlung fehlschlägt
+Gesperrt
+Sperrung
+
+
+Sa
+Ja
+
+
+
+Tabelle
+Tabellen
+Datenbanktabellen (29)
+Größe
+Max. Upload-Größe (MB)
+DB-Gesamtgröße
+Geplante Aufgaben. Neu starten, wenn Cronjobs nicht ausgeführt werden.
+Beenden
+Text unter dem Logo in der Seitenleiste
+Fußzeilentext
+Schaltflächen- oder Überschrifttext auf der Login-Seite
+Echtzeit
+
+
+
+TikTok kann Ihr Konto sperren, wenn Ihr Radio während des Livestreams urheberrechtlich geschützte Musik spielt.
+TikTok → LIVE → Server-URL und Schlüssel abrufen
+Zeitüberschreitung beim Warten auf die Daemon-Antwort
+
+Typ
+Servertyp
+Zertifikatstyp
+Zeitplantyp
+Listentyp
+Dateityp nicht erlaubt. Verwenden Sie PNG, JPG, GIF, SVG oder ICO
+Radiotitel
+Alle Passwörter
+Alle Streaming-Quellen
+Alle Listen
+Alle Listen
+Alle Radios gestoppt
+Alle AutoDJs gestoppt
+Alle Endpoints
+Alle Benutzer (3)
+Alle Pflichtfelder müssen ausgefüllt werden (Radioname, Benutzer, Paket)
+Alle Felder sind erforderlich
+Alle Streaming-Links sind mit SSL (HTTPS) verfügbar, für maximale Kompatibilität mit Browsern und mobilen Apps.
+Ungültiges CSRF-Token. Laden Sie die Seite neu.
+Ungültiges Sicherheitstoken
+Top 50 Radios
+Top 50 Radios - CastPanel
+
+Dateien gesamt
+Gesamt gesendet (TX)
+Gesamt empfangen (RX)
+
+Gesamt seit Serverstart
+Übersetzen Sie die Werte des Arrays
+Benutzerdefinierte Übertragung
+
+
+Instagram-Livestream
+
+Youtube-Livestream
+Übertragung gestoppt.
+
+
+Instagram-Livestream
+Instagram-Livestream - CastPanel
+
+
+YouTube-Livestream
+Youtube-Livestream
+Youtube-Livestream - CastPanel
+Übertragung erfolgreich gestartet.
+Sendet
+Ihr öffentlicher Player
+Ihr Konto wurde reaktiviert
+Ihr Konto wurde gesperrt
+Ihr Konto darf sich nicht anmelden
+Ihr Stream ist mit jedem Player kompatibel, der HTTP-Streaming unterstützt:
+
+Titel
+Login-Titel
+Titel des aktuellen Songs
+Panel-Titel
+Panel-Titel und Farben
+Direkte HTTP-URL (ohne SSL)
+RTMP-URL erforderlich
+SSL-URL
+Direkte SSL-URL für HTML5-Player, mobile Apps, WordPress-Plugins und eigene Player. Funktioniert mit HTTPS auf dem Port der Station.
+Login-URL des DJ-Panels:
+Direkte SSL-Wiedergabe-URL
+URL der externen Quelle *
+Radio-URL
+URL des Album-Covers
+HTTPS-Streaming-URL
+System-URL
+Website-URL
+Stream-URL (HTTPS)
+URL des externen Audio-Streams (Icecast, SHOUTcast, HTTP-Stream).
+Direkte URL ohne SSL für Radiosoftware wie SAM Broadcaster, BUTT, Mixxx, RadioBOSS und andere Encoder. Verwenden Sie diese URL mit dem angegebenen Port für die direkte Übertragung.
+Stream-URLs
+SSL-Streaming-URLs
+Schwelle
+Schwelle (Threshold)
+
+Verwenden Sie die Instagram-API oder Drittanbieter-Tools für die RTMP-URL
+Verwenden Sie die Funktion
+Verwenden Sie die Zugangsdaten Ihres
+
+Benutzername, E-Mail und Passwort sind erforderlich
+Bandbreitennutzung
+Bandbreitennutzung - CastPanel
+Festplattennutzung
+Festplattennutzung / HDD
+Festplattennutzung / HDD - CastPanel
+Nutzung pro Station (2)
+Benutzer
+Admin-Benutzer
+DJ-Benutzer
+DJ-Benutzer:
+SMTP-Benutzer
+Benutzer aktualisiert
+Benutzer gelöscht
+Benutzer nicht gefunden
+Benutzername oder Passwort falsch
+Benutzername und Passwort sind erforderlich
+Benutzername und Passwort sind erforderlich
+Benutzername und Passwort sind erforderlich.
+Benutzer
+
+
+Verfügbare Variablen
+Alle vorhandenen Radios und Konten auf dem Server anzeigen, bearbeiten und verwalten.
+Ansehen
+Player ansehen
+Wird geprüft...
+Prüfen Sie Speicher-, CPU-, Last- und Festplattennutzung des Servers in Echtzeit.
+PHP-Version
+Fr
+Vorschau
+Echtzeit-Vorschau
+Vorschau:
+
+Kompaktes HTML-Widget (ohne iframe)
+Player-Widget
+Player-Widget - CastPanel
+Live-Widget
+
+Player-Widgets
+
+
+Wird bereits weitergeleitet
+Lief bereits
+Ein DJ mit diesem Benutzernamen existiert bereits.
+
+Ihr Hosting-Anbieter und der Hersteller der Panel-Software sind in solchen Fällen nicht verantwortlich.
+Youtube verhängt Urheberrechtsverwarnungen für Musik in Livestreams; Ihr gesamter Youtube-Kanal kann
+Youtube verhängt Urheberrechtsverwarnungen für Musik in Livestreams; Ihr gesamter Youtube-Kanal kann gesperrt oder eingeschränkt werden, wenn Ihr Radio urheberrechtlich geschützte Musik spielt.
+Standardzone
+
+
+
+pro Tag. Gehen Sie zu
+
+
+als Passwort, besonders für mobile Apps. In PC-Programmen nur das Passwort und den DJ-Port zum Verbinden verwenden.
+mit Cover, Titel, Interpret, Statusanzeige und Steuerelementen. Perfekt zum
+DJ-Konto
+der Firewall abgeschlossen. Offene Ports:
+täglich für Youtube-Livestreams, starten Sie den Livestream nicht öfter als
+
+
+
+Einbetten in Ihre Website, Ihren Blog oder Ihr Forum
+in mobilen Apps.
+in jeder PHP-Datei, um übersetzten Text anzuzeigen.
+in Ihrem Sendeprogramm. Auch wenn das System IceCast oder SCV2 verwendet, wählen Sie immer
+in Ihrem Sendeprogramm. Diese Station arbeitet
+in Ihrem Sendeprogramm. Die DJs verbinden sich mit dem Harbor-Port (
+live.
+unbekannter Fehler
+
+Station nicht gefunden
+Station oder Slug erforderlich
+Station erforderlich
+
+
+facebook.com/live/producer → Stream-Schlüssel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Werbeliste
+
+
+Limit
+aggressive Kompression, Mitten nach vorne, Punch
+zugewiesen.
+erstellt:
+AutoDJ-Konfiguration aktualisiert und Dienst neu gestartet.
+gelöscht.
+
+Instagram-Livestream
+
+Youtube-Livestream
+gespeichert.
+leichte Kompression, ideal für
+nicht gefunden
+können nicht über das Panel gestoppt werden, um einen Zugriffsverlust zu vermeiden. Dienstaktionen werden über den Daemon ausgeführt
+
+
+
+
+oder Shoutcast in der Konfiguration. Sie können verwenden
+oder klicken zum Auswählen
+oder der mobilen App. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird.
+oder zum Öffnen in einem Popup-Fenster.
+
+oder eingeschränkt werden, wenn Ihr Radio urheberrechtlich geschützte Musik spielt.
+
+
+für Livestreams. Den Stream-Schlüssel erhalten Sie über
+ermöglicht es, eine Abfolge von Playlists zu planen, die automatisch in der angegebenen Reihenfolge und Anzahl innerhalb der konfigurierten Zeiten abgespielt werden.
+ermöglicht die Weiterleitung einer externen Audioquelle. Wenn das Relay aktiv ist und im geplanten Zeitraum liegt, überträgt der Sender das Signal der konfigurierten URL statt des AutoDJ.
+aber Apache hat weiterhin Fehler
+
+
+
+öffentliche Seite Ihres Radios
+
+
+
+
+
+
+
+
+
+ohne AutoDJ
+keine Antwort
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+studio.youtube.com → Livestream starten → Schlüssel
+
+
+
+
+ihre@email.de
+
+aktiv seit 35 Minuten
+
+
+username und password sind erforderlich
+benutzer:passwort
+
+
+maximale Kraft und Lautstärke, kommerzieller FM-Sound
+und aktivieren Sie die Livestream-Funktionen. Lassen Sie die Youtube-Livestream-Seite geöffnet, bevor Sie den Livestream starten. Youtube benötigt 24 Stunden zur Aktivierung. Kopieren Sie Ihren Livestream-Schlüssel, geben Sie ihn auf dieser Seite ein und laden Sie ein Bild in 1280x720 hoch. Der Livestream startet nach 30-40 Sekunden auf Youtube.
+und laden Sie Spots hoch.
+Ihr Konto, wenn Ihr Radio während des Livestreams urheberrechtlich geschützte Musik spielt.
+Ihr Konto oder Ihre Seite, wenn Ihr Radio während des Livestreams urheberrechtlich geschützte Musik spielt.
+
+© 2024 Meine Firma
+Wie sende ich?
+Ihr Profilfoto löschen?
+Letzte Bearbeitung
+Letzte Aktualisierung:
+Letzte Anmeldung
+Letzte SSH-Anmeldungen
+— Öffnet Netzwerk-URL
+— URL öffnen
+— Stream-URL öffnen
+— .pls- oder .m3u-Datei öffnen
+— Verbindung über Liquidsoap Harbor (AutoDJ aktiv). Jeder DJ verwendet seine eigenen Zugangsdaten.
+— Direkte Verbindung zum SHOUTcast-Server (ohne AutoDJ). In RadioCaster immer das SHOUTcast-v1-Protokoll verwenden.
+— Passwort (nur in der Willkommensnachricht)
+— Panel-Domain
+— E-Mail des Benutzers
+— Link zum Zurücksetzen
+— Direkter HTTPS-Link
+— Name der Station
+— Benutzername
+— Name des Panels
+— Direkte HTTPS-URL
+— Stream-URL
+— M3U/PLS-Link verwenden
+— DJs verbinden sich direkt mit dem Streaming-Server.
+
+
+○ Inaktiv
+
+● Aktiv
+
+⚠ Die Quelle antwortet, aber mit Status:
+⚠️ Stoppt ALLE Übertragungen
+✅ Kopiert
+✅ Signal OK: Die Quelle antwortet korrekt.
+✏️ Ändern
+✗ Fehler
+❌ Verbindung zur Quelle nicht möglich. Prüfen Sie die URL.
+📱 Einstellungen für Mobilgeräte (BroadcastMyself, iCast usw.)
+📻 Einstellungen für PC (BUTT, SAM, Winamp usw.)
++ Hinzufügen
++ Liste erstellen
++ Neue Playlist erstellen
+(leer lassen, um nichts zu ändern)
+(Benutzername und Passwort)
+(verschlüsselt).
+-- Auswählen --
+-- Station auswählen --
+-- Keine Liste (allgemeine Bibliothek) --
+% der Festplatte
+< 1 Minute
+Anzahl = Anzahl der Titel, die aus jedem Ordner/jeder Liste gespielt werden, bevor zum nächsten gewechselt wird.
+Höheres Q = schmaleres Band
+Höhere Zahl = höhere Priorität gegenüber anderen aktiven Relays.
+Höhere Zahl = höhere Priorität. Rotationen mit höherer Priorität werden zuerst ausgeführt.
+Höhere Ratio = mehr Kompression
+Näher an 0 = lauter
+Sanfter Übergang (höher = sanfter)
+Max. Kunden (0 = unbegrenzt)
+Max. Stationen (0 = unbegrenzt)
+0 = unbegrenzt
+Limit 0 bedeutet unbegrenzt.
+110px Höhe
+Jetzt läuft: {x}
+Jetzt läuft:
+Systemlast: {x}
+{n} von {n} belegt
+{n} Stunden Inhalt
+{n} Liste(n) · {n} Titel ohne Liste
+{n} von {n}
+Seite {n} von {n} · {n} Dateien
+Radios auflisten/bearbeiten ({n})
+Pakete bearbeiten/auflisten ({n})
+Registrierte AutoDJs ({n})
+Stationsdetails ({n})
+Alle Benutzer ({n})
+Nutzung pro Station ({n})
+Datenbanktabellen ({n})
+E-Mail-Vorlagen ({n})
+Geteilte Listen ({n})
+Werbelisten ({n})
+Aktive Regeln ({n})
+Registrierte Reseller ({n})
+Resellerpakete ({n})
+Am beliebtesten ({n} Hörer)
+aktiv seit {n} Minuten
+Abgeschlossen
+Wird hochgeladen...
+Fehler
+Hochgeladen ✓
+, Server: {x}, Port: {n}, Passwort: (das des DJs)
+. Server: {x}, Port: {n}. Passwort: das jedes DJ-Kontos. Auf Mobilgeräten verwenden
+, erstellen Sie ein Live-Video und kopieren Sie den „Stream-Schlüssel“. Fügen Sie den Schlüssel in das Feld unten ein. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird. Facebook nutzt
+. Den Stream-Schlüssel erhalten Sie in den Instagram-Live-Einstellungen. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird. Instagram nutzt
+Sprache geändert zu {x}
+übersetzte Texte

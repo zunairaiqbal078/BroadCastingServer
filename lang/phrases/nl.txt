@@ -1,0 +1,1645 @@
+
+
+
+
+
+
+Google Maps API-sleutel opgeslagen
+
+
+CastPanel-API
+API uitgeschakeld
+Openen
+Poort openen
+Poort openen in firewall
+
+Toegang geweigerd
+Onbekende actie:
+Ongeldige actie
+Acties
+Actie niet herkend. Geldige acties: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Ongeldige actie
+Actief
+Schakel de processor in zodat je uitzending luider en met professionele kwaliteit klinkt
+AGC inschakelen
+Compressor inschakelen
+Equalizer inschakelen
+Limiter inschakelen
+Actief
+Actief
+Actief (
+Actief · Uitgeschakeld
+Huidig
+Bijwerken
+
+Servicebeheer
+Servicebeheer - CastPanel
+AutoDJ beheren
+AutoDJ beheren - CastPanel
+Account beheren
+Account beheren — CastPanel DJ
+Lijsten beheren
+Radio beheren
+Server en services beheren
+Beheer SSL-certificaten en domeinen van de server.
+
+SSL-certificaat toevoegen
+Radiopakket toevoegen
+Resellerpakket toevoegen
+Laatste aanpassing van het uitzendvolume
+Aangepaste instellingen
+Handmatige instellingen van de gebruiker
+Willekeurig
+Opsl.
+Opslag
+AutoDJ-opslag
+Maximale opslag
+Opslag:
+Hoog
+Hoog - Frequentie
+Hoog - Versterking
+Streaming-bandbreedte
+Bandbreedte per station
+Animatie over de achtergrondafbeelding van de speler.
+Advertentie verwijderd.
+
+
+
+
+Compatibele toepassingen
+Android/iOS-apps
+M3U-bestand (voor desktopspelers)
+PLS-bestand (compatibel met Winamp, VLC, enz.)
+Bestand te groot
+Bestand te groot (server)
+Bestand gedeeltelijk geüpload
+Tijdelijke bestanden
+Muziekbestanden
+Streambestanden
+Vertaalbestanden:
+Architectuur
+Sleep je bestanden hierheen
+Artiest
+Artiest van het huidige nummer
+Onderwerp
+Attack
+Audiostreaming
+Audiostreamingplatform
+Audiostreamingplatform
+Verbreedt het stereobeeld
+Nieuwe accounts automatisch aanmaken
+Automatisch opschorten bij wanbetaling
+Opgezegde accounts automatisch beëindigen
+Zelfondertekend
+Automatisch starten
+Automatisch vernieuwen:
+
+AutoDJ-status:
+AutoDJ gestopt
+AutoDJ gestart
+Geregistreerde AutoDJ's (2)
+Automatisering
+Nog geen luistergegevens geregistreerd.
+Huidige BW
+Laag
+Laag - Frequentie
+Laag - Versterking
+Balk
+Zijbalk van het paneel van je klanten. PNG 140×40px.
+Audiobalken
+Database:
+Hoofddatabase van het paneel. Herstart bij verbindingsproblemen met de DB.
+Database:
+Basis
+Muziekbibliotheek
+Muziekbibliotheek - CastPanel
+Welkom
+
+Maximale bitrate
+Uitzendbitrate in kbps
+Standaard bitrate
+
+Bericht wissen
+
+Branding / White Label
+Branding / White-Label
+Branding / White-Label - CastPanel
+White-label-branding
+Branding bijgewerkt. Je klanten zien de wijzigingen na het herladen van de pagina.
+DJ-buffervertraging (sec)
+Zoeken
+Pakket zoeken...
+Zoeken op titel, artiest...
+Zoeken...
+Business of Creator
+CORS ingeschakeld
+KRITIEK
+Elke DJ gebruikt zijn eigen wachtwoord (het wachtwoord dat bij het aanmaken van het account is toegewezen). Gebruik op mobiel het formaat
+Opnamekwaliteit
+Wachtwoord wijzigen
+Taal wijzigen
+Taal wijzigen - CastPanel
+Hostnaam wijzigen
+Hostnaam wijzigen - CastPanel
+Achtergrondafbeelding wijzigen
+Hoes wijzigen
+Wijzig de taal van je CastPanel.
+Veld
+Kanalen
+Annuleren
+Nummers
+Nummers gesorteerd op n
+Nummers gesorteerd op nummer.
+Nummers gesorteerd op voorvoegsel.
+Huidig nummer
+Nummer bijgewerkt.
+Nummer verwijderd.
+Nummer verplaatst.
+Aantal
+Gegevens laden...
+Geschiedenis laden...
+Laden...
+Controlecentrum
+DJ-controlecentrum
+DJ-controlecentrum - CastPanel
+Uitloggen
+Aangepast certificaat
+Certificaat uit het register verwijderd
+
+Sterrenhemel
+Streamsleutel vereist
+Basissleutels (ES):
+
+Klant
+Klant bijgewerkt
+Klant verwijderd (en al zijn stations)
+Klant niet gevonden
+Ongeldige klant
+Klanten
+
+Codec / Bitrate / Samplefrequentie
+Standaard codec
+Bestandswachtrij
+
+Primaire kleur
+Accentkleur:
+Achtergrondkleur van de zijbalk
+Tekstkleur:
+Kleur van de zijbalk
+Hoofdkleur van knoppen en accenten
+Kleuren
+Opdracht niet herkend
+Handige opdrachten (SSH)
+Deel deze link met je luisteraars. Het is de openbare spelerpagina met hoezen, nummergeschiedenis en aanpasbare visuele effecten.
+Agressieve compressie, middentonen naar voren, punch
+Lichte compressie, ideaal voor klassieke muziek en jazz
+Dynamiekcompressor
+Met AutoDJ
+Realtime verbindingen
+Liquidsoap-configuratie gegenereerd:
+AutoDJ-configuratie opgeslagen
+Configuratie opgeslagen
+CastPanel-configuratie
+Algemene configuratie
+Algemene configuratie - CastPanel
+Google Maps-configuratie
+
+Liquidsoap-configuratie
+SSL-poortconfiguratie
+SSL-poortconfiguratie - CastPanel
+RadioCaster-configuratie
+SMTP-configuratie
+SMTP-configuratie - CastPanel
+SMTP-configuratie succesvol opgeslagen
+API/facturatie-configuratie opgeslagen
+Bestandsconfiguratie
+Brandingconfiguratie opgeslagen. Herlaad de pagina om de wijzigingen te zien.
+SSL-domeinconfiguratie opgeslagen
+SSL-poortconfiguratie opgeslagen. Herstart Apache om de wijzigingen toe te passen.
+Serverconfiguratie
+Siteconfiguratie
+Spelerconfiguratie succesvol opgeslagen.
+Configuratie succesvol opgeslagen
+Aangepaste configuratie opgeslagen. Het station wordt herstart om de wijzigingen toe te passen.
+Aangepaste configuratie opgeslagen. Deze wordt toegepast wanneer AutoDJ wordt ingeschakeld.
+Hostnaam en domein configureren
+SMTP / e-mail configureren
+SSL configureren in Apache (SSH)
+Configureer de mailserver voor meldingen.
+Configureer de algemene instellingen van het paneel en de streamingdiensten.
+Configureer hierboven een Google Maps API-sleutel om de luisteraarskaart te zien.
+Nieuw wachtwoord bevestigen:
+Opvragen vanaf elk domein of mobiele app
+Inhoud van het bericht:
+Wachtwoord
+Beheerderswachtwoord
+Radiowachtwoord
+Wachtwoord
+Wachtwoord (user:pass):
+Wachtwoord *
+Huidig wachtwoord:
+Beheerderswachtwoord
+DJ-wachtwoord
+DJ-wachtwoord:
+SMTP-wachtwoord
+Source / DJ-wachtwoord
+Source / DJ-wachtwoord:
+Wachtwoord succesvol bijgewerkt
+Verbindingswachtwoord:
+Wachtwoord:
+Automatische versterkingsregeling (AGC)
+Bulkbeheer van radio's
+Meervoudig beheer
+Meervoudig beheer - CastPanel
+Snelbediening
+AutoDJ-beheer
+Radiobeheer
+Kopieer de widgetcode die je wilt en plak die op je website zodat je bezoekers kunnen luisteren
+Kopiëren
+Kopieer
+
+
+Maak een relay aan met het formulier links.
+Maak er een aan met het formulier links.
+Maak een rotatie aan met het formulier links.
+Aangemaakt
+Klant aanmaken
+DJ-account aanmaken
+Station aanmaken
+Lijst aanmaken
+Gedeelde lijst aanmaken
+Nieuwe reseller aanmaken
+Pakket aanmaken
+Resellerpakket aanmaken
+Eerste account aanmaken
+Radio aanmaken
+Relay aanmaken
+Reseller aanmaken
+Rotatie aanmaken
+Gebruiker aanmaken
+Een nieuwe reseller aanmaken
+Er een aanmaken
+Een DJ-account aanmaken
+Maak een nieuwe radio en klantaccount aan. Klanten kunnen hun radio's beheren via het klantpaneel.
+Station automatisch aanmaken en activeren bij betaling
+Ongeldige API-gegevens
+API-gegevens vereist
+Ongeldige DJ-gegevens
+Ongeldige gegevens
+Maak een pakket met account- en radiolimieten voor je klanten.
+Maak en beheer API-sleutels, download modules voor facturatiesoftware.
+
+
+Crossfade (seconden)
+Kritiek
+Account
+DJ-account
+DJ-account bijgewerkt.
+DJ-account verwijderd
+DJ-account verwijderd.
+DJ-account niet gevonden
+Account opnieuw geactiveerd
+Account opgeschort
+Account verwijderd
+Account volledig verwijderd
+Account opnieuw geactiveerd
+Account opgeschort
+Account en station
+Accounts
+DJ-accounts
+DJ-accounts - CastPanel
+Maximaal aantal DJ-accounts
+Geregistreerde DJ-accounts
+HTML-code
+Popupcode (knop die een venster opent)
+Code met aangepaste breedte (bijv. 500px)
+Iframe-code
+Iframe-code (om op je website in te sluiten)
+Een taal toevoegen:
+
+
+DJ mag eigen wachtwoord wijzigen
+DJ mag eigen wachtwoord wijzigen:
+DJ mag inloggen op het DJ-paneel
+DJ mag inloggen op het DJ-paneel:
+DJ mag AutoDJ starten/stoppen
+DJ mag AutoDJ starten/stoppen:
+DJ mag radio starten/stoppen
+DJ mag radio starten/stoppen:
+DJ mag jingles/ID's afspelen (in de lucht)
+DJ mag jingles/ID's afspelen (in de lucht):
+DJ mag nummer overslaan (AutoDJ)
+DJ mag nummer overslaan (AutoDJ):
+DJ mag profielfoto uploaden
+DJ mag profielfoto uploaden:
+DJ mag muziek uitzenden
+DJ mag muziek uitzenden:
+DJ mag Voice Pro gebruiken (in de lucht)
+DJ mag Voice Pro gebruiken (in de lucht):
+
+Actieve DJ's
+
+Gegevens worden bij elke aanvraag bijgewerkt met live-informatie
+
+Bepaalt na hoeveel nummers reclameblokken worden ingevoegd. Je kunt meerdere regels maken met verschillende frequentie en tijden.
+Uitgeschakeld
+Uitschakelen
+Niet verbonden
+Beschrijving
+Optionele beschrijving
+Vervaging (blur):
+Uitgeschakeld
+Uitgeschakeld
+Stationdetails (2)
+Stoppen
+AutoDJ stoppen
+Radio stoppen
+Alle radio's stoppen
+Alle AutoDJ's stoppen
+Stop de relay voordat je bewerkt
+Stopt alle Liquidsoap-containers
+
+Map
+Mediamap
+Hoofdmappen
+Uitgeschakeld
+Schijf
+Totale schijf
+Beschikbaar
+Verdeling per servertype
+
+
+
+Velddocumentatie
+Zo
+Domein
+SSL-domein
+Hoofd-SSL-domein
+Paneeldomein
+Paneeldomein (SSL_DOMAIN)
+Domein voor paneel- en stream-URL's
+Domeinen / SSL-certificaten
+Domeinen / SSL-certificaten - CastPanel
+Zet het afbeeldingsbestand hier neer om te uploaden, of klik.
+Duur
+Totale duur
+Totale duur:
+Actieve dagen
+Weekdagen
+
+
+
+Equalizer
+3-bands equalizer
+Bewerken
+Nummer bewerken
+Klant bewerken
+DJ-account bewerken
+DJ bewerken:
+Station bewerken
+Pakket bewerken
+Radiopakket bewerken
+Resellerpakketten bewerken
+Resellerpakketten bewerken - CastPanel
+Relay bewerken
+Reseller bewerken
+Rotatie bewerken
+Gebruiker bewerken
+Radio's bewerken/bijwerken
+Pakketten bewerken/weergeven
+Pakketten bewerken/weergeven (4)
+Pakketten bewerken/weergeven - CastPanel
+Visueel achtergrondeffect
+Bijv.: Kerstmuziek
+Bijv.: Ochtendmuziek
+Bijv.: Nationale Radio FM
+Bijv.: Reclamespots
+Bijv.: Hits van nu
+Voer uit op de server via SSH om Let's Encrypt-certificaten te beheren:
+Voorbeeld
+Integratievoorbeeld (JavaScript)
+De
+De bandbreedte per station is een schatting op basis van huidige luisteraars × bitrate. Gegevens van netwerkinterfaces zijn opgeteld sinds de laatste herstart van de server.
+Het bestand mag niet groter zijn dan 2MB
+Het bestand mag niet groter zijn dan 3MB
+Het hoofddomein waarop het paneel wordt geopend
+De taal verschijnt automatisch
+De gebruikersnaam bestaat al
+De pakketnaam is verplicht
+De naam is verplicht
+De naam is verplicht.
+De audioprocessor werkt zowel in AutoDJ-modus als wanneer een DJ live is. Bij het opslaan wordt het station kort herstart om de nieuwe configuratie toe te passen. De processor gebruikt een professionele keten: AGC → Compressor → Equalizer → Limiter → Uitgangsversterking.
+De audioprocessor verbetert de kwaliteit van je uitzending met professionele compressie, equalisatie en limiter. Kies een preset die past bij je soort inhoud.
+De gebruikersnaam of het e-mailadres bestaat al
+De gebruiker bestaat al
+Verwijderen
+Selectie verwijderen
+Station verwijderen bij opzegging van de dienst
+
+E-mail beheerder
+E-mail afzender (From)
+E-mail bestemming
+Ongeldig e-mailadres
+
+Zender actief
+Vandaag gespeeld:
+Bedrijf
+
+Op alle stations
+Live
+
+Versleuteling
+
+API-endpoint:
+JSON-endpoint voor ontwikkelaars. Geeft live metadata terug: huidig nummer, luisteraars, serverstatus. Handig voor integraties en eigen apps.
+Openbaar endpoint · Geen authenticatie vereist · JSON · CORS ingeschakeld
+
+
+JSON-API-link
+M3U-link (voor spelers)
+PLS-link (voor WinAmp, VLC, enz.)
+XSPF-link
+Directe link (om te delen op sociale netwerken, websites, enz.)
+Directe streamlinks
+SSL-links/afspelen
+SSL-streaminglinks
+SSL-streaminglinks - CastPanel
+Stereoverbreding
+Facebook-sleutel invoeren
+Instagram-sleutel invoeren
+TikTok-sleutel invoeren
+Youtube-sleutel invoeren
+Verzonden (TX)
+Test-e-mail versturen
+Test versturen
+DB-fout:
+Fout bij bijwerken:
+Fout bij toepassen van de preset.
+Fout bij versturen van de test-e-mail. Controleer de SMTP-configuratie.
+Fout bij opslaan van het bestand
+Fout bij opslaan van de configuratie.
+Fout bij opslaan van de configuratie:
+Fout bij opslaan:
+Fout bij starten
+Fout bij verplaatsen van bestand
+Fout bij ophalen van configuratie:
+Fout bij herstarten
+Fout bij synchroniseren van proxyregels. Controleer de rechten van het bestand /etc/httpd/shoutcast-proxy-rules.inc
+Uploadfout
+Fout bij uploaden van bestand (code:
+Fout bij uploaden van de foto
+Databasefout:
+Verbindingsfout
+Uploadfout
+Uploadfout:
+Onbekende fout
+Onbekende fout bij het aanmaken van de radio
+Fout bij de bewerking:
+Fout bij de bewerking:
+Upload mislukt
+Fout bij herstarten van de firewall:
+Schrijf hier het bericht dat DJ's zien wanneer ze het paneel openen...
+Vrije ruimte
+
+Dagelijkse schatting
+Station
+Station aangemaakt
+Station gestopt
+Station verwijderd en gedeprovisioneerd
+Station gestart
+
+Station opnieuw geactiveerd
+Station herstart
+Station opgeschort
+Station:
+Stations
+Actieve stations
+Toegewezen stations
+Offline stations
+Online stations
+Totaal stations
+Stations toegewezen aan de gedeelde lijst
+Klantstations
+Klantstations - CastPanel
+Station
+Station aangemaakt
+Station bijgewerkt
+Station verwijderd
+
+Station zendt niet uit
+Status
+Radiostatus
+Status bijgewerkt
+Accountstatus
+Radiostatus
+Radiostatus:
+Servicestatus
+Radiostatus
+Serverstatus
+Serverstatus - CastPanel
+Live serverstatus
+
+Statistieken
+Statistieken - CastPanel
+Live statistieken
+Live statistieken - CastPanel
+Volledige statistieken
+Radiostatistieken
+Radiostatistieken - CastPanel
+Live statistieken
+Snelle statistieken (luisteraars, status, titel)
+Statistieken en account
+Dit is een KRITIEKE service.
+Dit bericht wordt aan DJ's getoond wanneer ze inloggen op hun paneel. Het kan instructies, schema's, regels of andere belangrijke informatie bevatten. Eenvoudige HTML wordt ondersteund voor opmaak.
+Dit voert uit:
+Sterren
+Standaard
+Stereo
+Toegestane extensies
+Geladen extensies
+
+
+
+
+Facebook kan je account of pagina beperken als je radio tijdens de livestream auteursrechtelijk beschermde muziek speelt.
+
+Facturatie en API
+Facturatie en API - CastPanel
+Facturatie en automatisering (API)
+
+
+
+Datum
+Enkele datum
+Datum/tijd van de aanvraag ISO 8601
+Rijen
+
+
+Serverfirewall. Herstart bij problemen met toegang tot poorten.
+Firewall herladen
+Firewall herstart. Open poorten:
+
+Ongeldig formaat voor achtergrondafbeelding. Gebruik JPG, PNG, WebP of GIF.
+Ongeldig hoesformaat. Gebruik JPG, PNG of WebP.
+Ongeldig formaat
+Formaten: MP3, OGG, AAC, M4A, WAV, FLAC — Max. 50 MB per bestand
+Foto succesvol bijgewerkt
+Profielfoto
+Profielfoto bijgewerkt
+Foto verwijderd
+
+
+Bron
+Eindversterking
+Max. versterking
+Min. versterking
+Uitgangsversterking en extra's
+Compensatieversterking
+Nieuwe sleutel genereren
+Genre
+Gegeolokaliseerd
+Stations beheren
+Stations beheren - CastPanel
+Gebruikers beheren
+Gebruikers beheren - CastPanel
+Advertentiebeheer
+Advertentiebeheer - CastPanel
+AutoDJ-beheer
+Google Maps API-sleutel
+Geanimeerde regendruppels
+DJ-opname:
+DJ opnemen
+Opslaan
+Wijzigingen opslaan
+AutoDJ-wijzigingen opslaan
+Configuratie opslaan
+Aangepaste configuratie opslaan
+Taal opslaan
+Sleutel opslaan
+Bericht opslaan
+Alle configuratie opslaan
+
+Ingeschakeld
+REST-API inschakelen
+Versturen van SMTP-e-mails inschakelen
+Geschiedenis
+Nummergeschiedenis
+Geschiedenis van recente nummers
+Eindtijd
+Starttijd
+Servertijd
+
+Liquidsoap-host
+
+
+Huidige hostnaam
+Hostnaam van de server
+Ongeldige hostnaam: alleen letters, cijfers, koppeltekens en punten.
+Hostnaam kon niet worden gewijzigd:
+Ongeldig station-ID
+Ongeldig ID
+ID vereist
+Streamverbindings-IP:
+Verbindings-IP:
+Radio-IP
+Server-IP
+Niet-geautoriseerd IP
+Unieke IP's
+
+
+
+
+
+
+
+Pictogram van het browsertabblad. Aanbevolen: 32×32px of 64×64px, ICO of PNG.
+Browserpictogram voor je klanten. ICO/PNG 32×32px.
+Unieke stationsidentificatie
+Actieve taal:
+Paneeltaal
+Achtergrondafbeelding
+Achtergrondafbeelding verwijderd.
+Afbeelding verwijderd.
+Afbeelding te groot (max 5MB)
+Afbeelding die als hoes wordt getoond als het nummer geen eigen hoes heeft. Aanbevolen: 500x500px, vierkant.
+Afbeelding die als achtergrond van de hele speler wordt getoond. Aanbevolen: 1920x1080px of groter.
+Afbeelding succesvol geüpload.
+Inactief
+Inactief · Uitgeschakeld
+Info opgevraagd
+Radio-info
+Serverinfo
+Technische informatie
+Volledige informatie over het station en het huidige nummer
+Accountinformatie
+DJ-informatie
+Serverinformatie
+Serverinformatie - CastPanel
+Sociale informatie bijgewerkt
+Informatie:
+Voer de RTMP-URL van een compatibele server in
+Naam invoeren
+Gebruikersnaam invoeren
+Voer eerst de streamsleutel in.
+Voer je wachtwoord in
+Voer je gebruikersnaam in
+Voer gebruikersnaam en wachtwoord in
+Start de radio's die gestopt zijn
+Starten
+AutoDJ starten
+Radio starten
+Inloggen
+Inloggen - CastPanel
+Inloggen als gebruiker
+Inloggen bij gebruiker
+Inloggen
+Alle radio's starten
+Start
+Start van alle radio's uitgevoerd
+Start — CastPanel DJ
+
+
+
+Instagram kan je account beperken als je radio tijdens de livestream auteursrechtelijk beschermde muziek speelt.
+
+Handmatige installatie (AlmaLinux 8):
+Geïnstalleerd (actief)
+Integraties en API
+Netwerkinterfaces
+Interface
+
+JPG, PNG of WebP - Vierkant 500x500
+JPG, PNG, WebP of geanimeerde GIF
+Standaard JSON
+
+Jan Jansen
+Do
+
+
+De
+Het huidige wachtwoord is onjuist
+Het wachtwoord moet minstens 6 tekens bevatten
+De Facebook-livestreamfunctie zendt de muziek van je radio uit naar Facebook Live. Ga naar
+De Facebook-livestreamfunctie zendt de muziek van je radio uit naar Facebook Live. Ga naar Facebook Live Producer, maak een livevideo en kopieer de "Streamsleutel". Plak de sleutel in het veld hieronder. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond. Facebook gebruikt RTMPS (versleuteld).
+De Instagram-livestreamfunctie zendt de muziek van je radio uit naar Instagram Live. Vereist is een account van het type
+De Instagram-livestreamfunctie zendt de muziek van je radio uit naar Instagram Live. Een Business- of Creator-account is vereist. Haal je streamsleutel op in de instellingen van Instagram Live. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond. Instagram gebruikt RTMPS (versleuteld).
+De TikTok-livestreamfunctie zendt de muziek van je radio uit naar TikTok Live. Vereist zijn minstens
+De TikTok-livestreamfunctie zendt de muziek van je radio uit naar TikTok Live. Je hebt minstens 1.000 volgers nodig om live te gaan. Haal je streamsleutel op via TikTok Live Studio of de mobiele app. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond.
+De Youtube-livestreamfunctie zendt de muziek van je radio uit naar Youtube Live. Er geldt een
+Opnemen gebeurt automatisch als het is ingeschakeld. Om opname van live DJ-shows in/uit te schakelen, gebruik je de stationsconfiguratie. Bestanden gebruiken je beschikbare hostingruimte.
+De wachtwoorden komen niet overeen
+Afspeellijsten worden beheerd via het gebruikerspaneel. Gebruik "Inloggen bij gebruiker" om toegang te krijgen.
+Let's Encrypt (gratis)
+Pieklimiter
+Luisteraarslimiet
+
+Liquidsoap niet nodig (AutoDJ uitgeschakeld)
+Liquidsoap overgeslagen (AutoDJ uitgeschakeld)
+Lijst
+Geplande lijst
+Gedeelde lijst verwijderd
+Doelafspeellijst
+Advertentielijst verwijderd.
+Advertentielijst niet opgegeven
+Afspeellijst
+Doellijst
+Lijst verwijderd. De nummers hebben geen toegewezen lijst meer.
+Lijst hernoemd.
+Radio's weergeven / bewerken
+AutoDJ's weergeven
+AutoDJ's weergeven - CastPanel
+DJ-shows weergeven/downloaden
+DJ-accounts weergeven/bewerken
+Radio's weergeven/bewerken (2)
+Resellers weergeven/bewerken
+Resellers weergeven/bewerken - CastPanel
+Lijsten
+Actieve lijsten
+Gedeelde lijsten
+Gedeelde lijsten (0)
+Advertentielijsten (0)
+Afspeellijsten
+Afspeellijsten
+Afspeellijsten - CastPanel
+Gedeelde afspeellijsten
+Gedeelde afspeellijsten - CastPanel
+
+Regen
+
+Inloglogo
+Spelerlogo
+Zijbalklogo
+Logo verwijderd. Het standaardlogo van CastPanel wordt hersteld.
+Logo verwijderd. Het standaardlogo van het paneel wordt gebruikt.
+Logo voor de openbare radiospeler. Aanbevolen: 200×200px, PNG.
+Klein logo in de zijbalk van het paneel. Aanbevolen: 140×40px, transparante PNG.
+Logo succesvol geüpload.
+Logo's en favicon
+Systeemlogs
+Logs zijn niet toegankelijk via het webpaneel. Om de laatste SSH-toegang te zien, voer in een terminal uit: last -n 10
+DJ's moeten het protocol kiezen
+DJ's moeten altijd het protocol kiezen
+De processorinstellingen worden in de database opgeslagen. Om de verwerking in realtime toe te passen, schakel je AutoDJ in het pakket van dit station in. Daarna past Liquidsoap de verwerkingsketen automatisch toe. De processor gebruikt een professionele keten: AGC → Compressor → Equalizer → Limiter → Uitgangsversterking.
+De services gemarkeerd als
+De pictogrammen worden in de openbare speler getoond. Laat leeg om te verbergen.
+Ma
+Radiolimieten
+
+
+Compensatieversterking
+Luisteraarskaart
+Di
+Max. bitrate
+Maximaal 10 relays per station
+
+Media (muziek)
+Midden - Frequentie
+Midden - Versterking
+Midden - Q-factor
+DJ-paneelbericht
+DJ-paneelbericht - CastPanel
+Bericht succesvol bijgewerkt.
+DJ-paneelbericht bijgewerkt
+Bericht voor het DJ-paneel
+Methode niet toegestaan
+Mijn branding
+Mijn branding - CastPanel
+Mijn klanten
+Mijn klanten - CastPanel
+Wo
+Onderhoudsmodus
+Afspeelmodus
+Titels tonen
+Equalizerbalken tonen
+Aantal luisteraars tonen
+Nummergeschiedenis tonen
+Containerengine voor AutoDJ (Liquidsoap). Herstart als de AutoDJ's niet werken.
+Engine:
+
+
+
+Mountpoint
+
+Verplaatsen
+Naar lijst verplaatsen
+Populairst (0 luisteraars)
+Max. toegestaan
+Max. op één radio
+Maximale kracht en volume, commercieel FM-geluid
+Maximaal toegestaan
+Maximum in de laatste 24u
+Maandelijks maximum
+Wekelijks maximum
+Methode
+Methode niet toegestaan
+Muziek
+Webbrowsers
+Je hebt een Google Maps API-sleutel nodig met Maps JavaScript API ingeschakeld.
+Sneeuw
+Geen
+Geen
+Doelniveau
+Niveau waarop compressie begint
+Maximaal toegestaan niveau vóór begrenzing
+Nee
+Niet geauthenticeerd
+Niet geautoriseerd voor dit station
+Niet geconfigureerd
+Maak geen DJ-account met alle rechten aan, tenzij je die persoon volledig vertrouwt.
+Niet beschikbaar
+Niet gevonden
+Er staan geen nummers in de bibliotheek.
+Geen DJ-accounts aangemaakt.
+Geen gedeelde lijsten
+Geen lijsten aangemaakt. Maak er een aan met het formulier hierboven.
+Geen advertentielijsten.
+Geen pakketten aangemaakt
+Geen extra poorten open (alleen standaardservices)
+Geen telnetpoorten beschikbaar
+Nog geen uitzendregistraties.
+Geen advertentieregels geconfigureerd.
+Geen relays geconfigureerd.
+Geen resellers geregistreerd
+Geen rotaties geconfigureerd.
+Geen opgenomen shows voor dit station.
+Niet geïnstalleerd
+Je kunt je eigen account niet deactiveren
+Je kunt je eigen account niet verwijderen
+Niet vereist (SHOUTcast-protocol)
+Geen geldige audiobestanden gevonden
+De streamsleutel is niet geconfigureerd
+Kan geen verbinding maken met de SHOUTcast-server
+Kan de AutoDJ niet stoppen
+Kan de radio niet stoppen
+Kan IPC-opdracht niet schrijven
+Kan het bestand niet opslaan
+Kan Liquidsoap niet starten:
+Kan de AutoDJ niet starten
+Kan het FFmpeg-proces niet starten
+Kan de radio niet starten
+Kan niet verwijderen: de reseller heeft klanten met actieve stations
+Kan niet verwijderen: er zijn stations die dit pakket gebruiken
+Kan niet verwijderen: er zijn resellers die dit pakket gebruiken
+Geen bestanden ontvangen
+Geen bestand ontvangen
+Geen bestand ontvangen
+Je hebt geen toestemming voor dit station
+Je hebt geen toegewezen station. Neem contact op met de beheerder.
+
+Naam
+Volledige naam
+Volledige naam:
+Stationsnaam
+
+Gebruikersnaam *
+Naam van de lijst
+Naam van de rotatie *
+Naam van het station
+Naam van de relay *
+Naam afzender
+Sitenaam
+Naam in de zijbalk en browsertitel
+Naam vereist
+Naam vereist.
+Naam en URL zijn verplicht.
+Naam en slug zijn verplicht
+Normaal (sequentieel)
+Opmerking:
+Nieuws / Gesproken woord
+Nu speelt per station-ID
+Nieuwe API-sleutel gegenereerd:
+Nieuw wachtwoord (leeg laten om te behouden)
+Nieuw wachtwoord:
+Nieuw DJ-account
+Nieuw station
+Nieuwe advertentielijst
+Nieuwe advertentieregel
+Nieuwe rotatie
+Nieuw
+Nieuwe klant
+Nieuwe relay
+Nieuwe gebruiker
+
+
+Sleutel ophalen
+
+Oceaangolven
+Golven
+
+Nu online
+Alleen .jpg of .png toegestaan! Max 3MB.
+Spelersopties
+Geoptimaliseerd voor spraak, max. helderheid
+Geoptimaliseerd voor spraak, maximale helderheid
+Donkerte van de overlay:
+Luisteraars
+Luisteraars (Google Maps)
+Actieve luisteraars
+Luisteraars nu
+Verbonden luisteraars
+Maximaal aantal luisteraars
+Totaal luisteraars
+Totaal luisteraars nu
+Huidige luisteraars
+Momenteel verbonden luisteraars
+Luisteraarsgrafiek van de radio (live)
+Luisteraars op de kaart
+Luisteraars op de kaart - CastPanel
+Luisteraars laatste 24 uur
+
+
+
+Radiopagina
+Hoofdpaneel
+Resellerpaneel
+Resellerpaneel - CastPanel
+Beheerpaneel
+Beheerpaneel - CastPanel
+Configuratiescherm
+Configuratiescherm - CastPanel
+Pakket
+Pakket bijgewerkt
+Pakket verwijderd
+Pakket niet gevonden
+Pakket niet gevonden of inactief
+Pakketten
+Resellerpakketten (0)
+Pakketten weergegeven
+Neem voor geavanceerde instellingen (AGC, compressor, EQ, limiter) contact op met de stationsbeheerder.
+
+Totale piek
+Plak hier je streamsleutel...
+In behandeling
+Rechten
+DJ-rechten (wees voorzichtig)
+Pas logo, naam en kleuren van je paneel aan.
+Pas logo's, titels en favicons van je paneel aan. Geüploade afbeeldingen vervangen de standaardwaarden. Als je een afbeelding verwijdert, wordt het standaardlogo van CastPanel hersteld. Resellers kunnen vanuit hun paneel hun eigen branding voor hun klanten instellen.
+Aangepast
+Speler aanpassen
+Speler aanpassen - CastPanel
+
+Piek 24 uur
+Piek 24u
+Piek 30 dagen
+Piek 7 dagen
+Aangepaste voettekst
+Tracks
+Sjabloon succesvol bijgewerkt
+E-mailsjablonen
+E-mailsjablonen (6)
+E-mailsjablonen - CastPanel
+Standaardsjablonen geïnitialiseerd
+Ongeldig platform
+Afspeellijst
+Afspeellijst 'General' aangemaakt
+Actieve afspeellijst
+Afspeellijstintervallen
+Afspeellijsten
+Hoes verwijderd.
+Standaardhoes
+DJ-portaal
+
+Postfix (mail)
+Postfix-mailserver
+Postfix-mailserver. Herstart als e-mails niet worden verzonden.
+Krachtig
+Let op:
+
+Preset "
+Ongeldige preset
+Snelle presets
+Voorbeeld
+Maak eerst een
+Maak eerst een
+Prioriteit
+Testen
+Signaal testen
+Processor
+Processor ingeschakeld
+Processor actief
+Processor uitgeschakeld
+Audioprocessor
+Audioprocessor - CastPanel
+Gebalanceerde verwerking voor algemene radio
+Planning
+Advertentieplanning aangemaakt.
+Planning verwijderd.
+Advertenties plannen
+Advertenties plannen - CastPanel
+
+
+Eigenaar
+Protocol
+
+SHOUTcast v1-protocol — Verbinding via Liquidsoap Harbor (AutoDJ actief). Elke DJ gebruikt zijn eigen inloggegevens.
+SHOUTcast v1-protocol — Directe verbinding met de SHOUTcast-server (zonder AutoDJ). Gebruik in RadioCaster altijd het SHOUTcast v1-protocol.
+Protocol:
+CastPanel-e-mailtestAls je deze e-mail ontvangt, werkt de SMTP-configuratie correct.
+Poort
+DJ-poort
+HTTP-poort
+HTTPS-poort
+
+SSL-poort
+Admin-SSL-poort
+Streaming-SSL-poort
+SSL-poort van het paneel (HTTPS)
+Telnetpoort
+DJ-verbindingspoort:
+Verbindingspoort:
+Uitzendpoort
+Radiopoort
+Beheerpoort (standaard: 2087)
+Standaard HTTPS-poort (standaard: 443)
+Poort niet toegewezen
+Poort voor beveiligde streams (standaard: 8443)
+Poort:
+Open poorten
+SSL-poorten
+Mountpoint
+Mountpoint (Mount)
+Mountpoint (Mount):
+Pagina 1 van 1 · 0 bestanden
+Pagina 1 van 1 · 2 bestanden
+Inlogpagina van je klanten. PNG 200×60px.
+Openbaar en gratis. Je hebt geen API-sleutel of tokens nodig
+Radio succesvol gestopt
+Radio succesvol gestart
+
+RadioCaster: Protocol
+RadioCaster: Icecast-protocol, Server:
+RadioCaster: SHOUTcast v1-protocol, Server:
+RadioCaster: Protocol kiezen
+RadioCaster: Kies het SHOUTcast v1-protocol. Server:
+Radio's en accounts
+Ranglijst — Top 50 radio's op luisteraars
+
+Heractivering
+Heractiveren
+Voert een volledige herstart uit van de SSH-service, inclusief Fail2ban. Handig bij veel geblokkeerde toegangspogingen of aanhoudende verbindingsproblemen.
+Firewall herladen
+Ontvangen (RX)
+Netwerk
+Sociale netwerken
+Welkomstmail opnieuw versturen
+Vernieuwen
+Apache-proxyregels opnieuw genereren
+Certificaat registreren
+Registratie
+Openbare registratie ingeschakeld
+Actieve regels (0)
+
+Herstart de streamingservice van elk actief station
+Herstart alle Liquidsoap-containers
+Herstarten
+AutoDJ herstarten
+Fail2ban herstarten (wist tijdelijke bans)
+Radio herstarten
+Services herstarten
+Services herstarten - CastPanel
+Alle radio's herstarten
+Alle AutoDJ's herstarten
+SSHD-service herstarten
+Het herstarten van kritieke services kan tijdelijke onderbrekingen veroorzaken. Als kritiek gemarkeerde services beïnvloeden het paneel en/of de streaming bij een herstart.
+Herstart de streamingservices van de server.
+Herstart van alle radio's uitgevoerd
+Herstart van alle AutoDJ's uitgevoerd
+
+Relay-omleiding
+Relay-omleiding - CastPanel
+Relay bijgewerkt.
+Relay verwijderd.
+Geconfigureerde relays
+
+Nu speelt: geen informatie
+Nu speelt:
+Afspelen
+Compacte speler (iframe)
+Volledige paginaspeler (met visuele effecten)
+Openbare speler
+Zelfstandige speler die geen iframe nodig heeft. Kopieer en plak de code gewoon in je HTML.
+Compacte speler van
+Professionele volledige paginaspeler met achtergrondanimaties, hoes, nummergeschiedenis en geavanceerde bediening. Ideaal als
+Openbare speler voor de radio's van je klanten. PNG 200×200px.
+
+
+JSON-antwoord
+Gestructureerd en gedocumenteerd JSON-antwoord
+Ongeldig JSON-antwoord
+Wachtwoord resetten
+Wachtwoord resetten
+Je wachtwoord resetten
+Volledige SSH-reset
+Resultaten
+Inhoudsoverzicht
+Accountoverzicht (live)
+Serveroverzicht
+Reseller bijgewerkt
+Reseller verwijderd
+Resellers
+Geregistreerde resellers (0)
+
+Rol
+Geconfigureerde rotaties
+Rotatie bijgewerkt.
+Maprotatie
+Maprotatie - CastPanel
+Rotatie verwijderd.
+Pad
+
+
+SHOUTcast-binary niet gevonden in
+
+
+
+
+SSH-server
+SSH volledig herstart
+SSL ingeschakeld
+SSL ingeschakeld (HTTPS)
+SSL en domein
+
+Standaard samplefrequentie
+Wordt automatisch toegepast op de server via castpanel-ctl
+Verzonden bij het aanmaken van een nieuw account
+Verzonden bij het aanmaken van een nieuw station
+Verzonden bij het heractiveren van een gebruikersaccount
+Verzonden bij een verzoek om het wachtwoord te resetten
+Verzonden bij het opschorten van een gebruikersaccount
+Wordt automatisch gegenereerd. Je kunt het wijzigen.
+Getoond op de inlogpagina. Aanbevolen: 200×60px, transparante PNG.
+Afspeellijstvolgorde
+Beveiliging en firewall
+Beveiliging en firewall - CastPanel
+Selecteer nummers met de selectievakjes voor bulkacties
+Kies het visuele effect:
+Kies een preset om audioverwerking in te schakelen
+Kies een station om de DJ-accounts te beheren.
+Kies een afspeellijst
+Kies een afspeellijst in het vervolgkeuzemenu om de nummers te bekijken en te beheren.
+Gescheiden door komma's
+Service
+Liquidsoap-service gestopt
+Liquidsoap-service gestart (Docker: liquidsoap-
+SHOUTcast-service gestopt
+SSH-service voor externe toegang. Herstart bij problemen met externe verbindingen.
+Systeemservices
+Server
+Server / Host
+SMTP-server
+SSH-server
+Mailserver
+
+Webserver van het paneel. Herstart als het paneel niet laadt.
+Server:
+
+
+
+
+
+DJ-shows
+DJ-shows - CastPanel
+Als het station uitzendt
+Zonder authenticatie
+Zonder AutoDJ
+Geen gegevens
+Geen effect
+Geen opslagruimte
+Geen station
+Geen station geselecteerd
+Geen stations.
+Geen station toegewezen.
+Geen informatie
+Geen lijst
+Geen lijst toegewezen
+Geen eigen logo
+Zonder naam
+Geen pakket
+Geen toestemming voor AutoDJ
+Geen toestemming om het wachtwoord te wijzigen
+Geen toestemming om aan te maken
+Geen toestemming om te verwijderen
+Geen toestemming om te starten/stoppen
+Geen toestemming om te lezen
+Geen toestemming om te wijzigen
+Geen toestemming om te heractiveren
+Geen toestemming om een foto te uploaden
+Geen toestemming om op te schorten
+Geen rechten
+Geen verwerking, originele audio
+Zonder titel
+Systeem
+Besturingssysteem
+Facturatiesysteem
+Radiosysteem
+Vertaalsysteem
+
+
+
+Alleen JPG, PNG of WebP
+Alleen letters, cijfers, koppeltekens en underscores
+Alleen JPG- of PNG-bestanden zijn toegestaan
+
+
+
+
+
+HTTP-stream (zonder SSL)
+Hoofd-HTTPS-stream
+Zacht
+Upload eerst een hoesafbeelding
+Advertenties uploaden
+Audiobestanden uploaden
+Muziek uploaden
+Muziek uploaden - CastPanel
+MP3-muziek uploaden
+Alles uploaden
+Achtergrondafbeelding uploaden
+Hoes uploaden
+Ondertitel
+Opschorten
+Station automatisch opschorten als de betaling mislukt
+Opgeschort
+Opschorting
+
+
+Za
+Ja
+
+
+
+Tabel
+Tabellen
+Databasetabellen (29)
+Grootte
+Max. uploadgrootte (MB)
+Totale DB-grootte
+Geplande taken. Herstart als cronjobs niet worden uitgevoerd.
+Beëindigen
+Tekst onder het logo in de zijbalk
+Voettekst
+Knop- of koptekst op de inlogpagina
+Realtime
+
+
+
+TikTok kan je account opschorten als je radio tijdens de livestream auteursrechtelijk beschermde muziek speelt.
+TikTok → LIVE → Server-URL en sleutel ophalen
+Time-out bij wachten op antwoord van de daemon
+
+Type
+Servertype
+Certificaattype
+Type planning
+Type lijst
+Bestandstype niet toegestaan. Gebruik PNG, JPG, GIF, SVG of ICO
+Radiotitel
+Alle wachtwoorden
+Alle streamingbronnen
+Alle lijsten
+Alle lijsten
+Alle radio's gestopt
+Alle AutoDJ's gestopt
+Alle endpoints
+Alle gebruikers (3)
+Alle verplichte velden moeten worden ingevuld (radionaam, gebruiker, pakket)
+Alle velden zijn verplicht
+Alle streaminglinks zijn beschikbaar met SSL (HTTPS) voor maximale compatibiliteit met browsers en mobiele apps.
+Ongeldig CSRF-token. Herlaad de pagina.
+Ongeldig beveiligingstoken
+Top 50 radio's
+Top 50 radio's - CastPanel
+
+Totaal bestanden
+Totaal verzonden (TX)
+Totaal ontvangen (RX)
+
+Totaal sinds serverstart
+Vertaal de waarden van de array
+Aangepaste uitzending
+
+
+Instagram-livestream
+
+Youtube-livestream
+Uitzending gestopt.
+
+
+Instagram-livestream
+Instagram-livestream - CastPanel
+
+
+YouTube-livestream
+Youtube-livestream
+Youtube-livestream - CastPanel
+Uitzending succesvol gestart.
+Zendt uit
+Je openbare speler
+Je account is opnieuw geactiveerd
+Je account is opgeschort
+Je account mag niet inloggen
+Je stream is compatibel met elke speler die HTTP-streaming ondersteunt:
+
+Titel
+Inlogtitel
+Titel van het huidige nummer
+Paneeltitel
+Paneeltitel en kleuren
+Directe HTTP-URL (zonder SSL)
+RTMP-URL vereist
+SSL-URL
+Directe SSL-URL voor HTML5-spelers, mobiele apps, WordPress-plugins en eigen spelers. Werkt met HTTPS op de poort van het station.
+Inlog-URL van het DJ-paneel:
+Directe SSL-afspeel-URL
+URL van de externe bron *
+Radio-URL
+URL van de albumhoes
+HTTPS-streaming-URL
+Systeem-URL
+Site-URL
+Stream-URL (HTTPS)
+URL van de externe audiostream (Icecast, SHOUTcast, HTTP-stream).
+Directe URL zonder SSL voor radiosoftware zoals SAM Broadcaster, BUTT, Mixxx, RadioBOSS en andere encoders. Gebruik deze URL met de aangegeven poort voor directe uitzending.
+Stream-URL's
+SSL-streaming-URL's
+Drempel
+Drempel (Threshold)
+
+Gebruik de Instagram-API of tools van derden voor de RTMP-URL
+Gebruik de functie
+Gebruik de inloggegevens van je
+
+Gebruikersnaam, e-mail en wachtwoord zijn verplicht
+Bandbreedtegebruik
+Bandbreedtegebruik - CastPanel
+Schijfgebruik
+Schijfgebruik / HDD
+Schijfgebruik / HDD - CastPanel
+Gebruik per station (2)
+Gebruiker
+Beheerder
+DJ-gebruiker
+DJ-gebruiker:
+SMTP-gebruiker
+Gebruiker bijgewerkt
+Gebruiker verwijderd
+Gebruiker niet gevonden
+Onjuiste gebruikersnaam of wachtwoord
+Gebruikersnaam en wachtwoord zijn verplicht
+Gebruikersnaam en wachtwoord zijn verplicht
+Gebruikersnaam en wachtwoord zijn verplicht.
+Gebruikers
+
+
+Beschikbare variabelen
+Bekijk, bewerk en beheer alle bestaande radio's en accounts op de server.
+Bekijken
+Speler bekijken
+Controleren...
+Controleer het geheugen-, CPU-, belasting- en schijfgebruik van de server in realtime.
+PHP-versie
+Vr
+Voorbeeld
+Realtime voorbeeld
+Voorbeeld:
+
+Compacte HTML-widget (zonder iframe)
+Spelerwidget
+Spelerwidget - CastPanel
+Livewidget
+
+Spelerwidgets
+
+
+Wordt al doorgegeven
+Draaide al
+Er bestaat al een DJ met die gebruikersnaam.
+
+Je hostingbedrijf en het bedrijf achter de paneelsoftware zijn in zulke gevallen niet verantwoordelijk.
+Youtube geeft auteursrechtwaarschuwingen voor muziek in livestreams; je hele youtube-kanaal kan worden
+Youtube geeft auteursrechtwaarschuwingen voor muziek in livestreams; je hele youtube-kanaal kan worden verbannen of beperkt als je radio auteursrechtelijk beschermde muziek speelt.
+Standaardzone
+
+
+
+per dag. Ga naar
+
+
+als wachtwoord, vooral voor mobiele apps. Gebruik in pc-programma's alleen het wachtwoord en de DJ-poort om te verbinden.
+met hoes, titel, artiest, statusindicator en bediening. Perfect om
+DJ-account
+van de firewall voltooid. Open poorten:
+dagelijks voor youtube-livestreams, herstart de livestream niet vaker dan
+
+
+
+in te sluiten op je website, blog of forum
+in mobiele apps.
+in elk PHP-bestand om vertaalde tekst te tonen.
+in je uitzendprogramma. Ook als het systeem IceCast of SCV2 gebruikt, kies altijd
+in je uitzendprogramma. Dit station werkt
+in je uitzendprogramma. DJ's verbinden met de Harbor-poort (
+live.
+onbekende fout
+
+station niet gevonden
+station of slug vereist
+station vereist
+
+
+facebook.com/live/producer → Streamsleutel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+advertentielijst
+
+
+limiet
+agressieve compressie, middentonen naar voren, punch
+toegewezen.
+aangemaakt:
+AutoDJ-configuratie bijgewerkt en service herstart.
+verwijderd.
+
+Instagram-livestream
+
+Youtube-livestream
+opgeslagen.
+lichte compressie, ideaal voor
+niet gevonden
+kunnen niet vanuit het paneel worden gestopt om verlies van toegang te voorkomen. Service-acties worden uitgevoerd via de daemon
+
+
+
+
+of Shoutcast in de configuratie. Je kunt gebruiken
+of klik om te selecteren
+of de mobiele app. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond.
+of om te openen in een popupvenster.
+
+of beperkt als je radio auteursrechtelijk beschermde muziek speelt.
+
+
+om live te gaan. Haal je streamsleutel op via
+maakt het mogelijk een reeks afspeellijsten te plannen die automatisch in de opgegeven volgorde en hoeveelheid worden afgespeeld, binnen de ingestelde tijden.
+maakt het mogelijk een externe audiobron door te geven. Als de relay actief is en binnen de geplande tijd valt, zendt de zender het signaal van de ingestelde URL uit in plaats van de AutoDJ.
+maar Apache heeft nog steeds fouten
+
+
+
+openbare pagina van je radio
+
+
+
+
+
+
+
+
+
+zonder AutoDJ
+geen antwoord
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+studio.youtube.com → Live gaan → Sleutel
+
+
+
+
+jij@email.nl
+
+actief sinds 35 minuten
+
+
+username en password zijn verplicht
+gebruiker:wachtwoord
+
+
+maximale kracht en volume, commercieel FM-geluid
+en schakel livestreamfuncties in. Houd de Youtube-livestreampagina open voordat je de livestream start. Youtube heeft 24 uur nodig voor activering. Kopieer je livestreamsleutel, voer die op deze pagina in en upload een afbeelding van 1280x720. De livestream start na 30-40 seconden op Youtube.
+en upload spots.
+je account als je radio tijdens de livestream auteursrechtelijk beschermde muziek speelt.
+je account of pagina als je radio tijdens de livestream auteursrechtelijk beschermde muziek speelt.
+
+© 2024 Mijn Bedrijf
+Hoe zend ik uit?
+Je profielfoto verwijderen?
+Laatst bewerkt
+Laatst bijgewerkt:
+Laatste login
+Laatste SSH-logins
+— Opent netwerk-URL
+— URL openen
+— Stream-URL openen
+— .pls- of .m3u-bestand openen
+— Verbinding via Liquidsoap Harbor (AutoDJ actief). Elke DJ gebruikt zijn eigen inloggegevens.
+— Directe verbinding met de SHOUTcast-server (zonder AutoDJ). Gebruik in RadioCaster altijd het SHOUTcast v1-protocol.
+— Wachtwoord (alleen in welkomstmail)
+— Paneeldomein
+— E-mail van de gebruiker
+— Resetlink
+— Directe HTTPS-link
+— Naam van het station
+— Gebruikersnaam
+— Naam van het paneel
+— Directe HTTPS-URL
+— Stream-URL
+— M3U/PLS-link gebruiken
+— DJ's verbinden rechtstreeks met de streamingserver.
+
+
+○ Inactief
+
+● Actief
+
+⚠ De bron antwoordt, maar met status:
+⚠️ Stopt ALLE uitzendingen
+✅ Gekopieerd
+✅ Signaal OK: de bron antwoordt correct.
+✏️ Wijzigen
+✗ Fout
+❌ Kan geen verbinding maken met de bron. Controleer de URL.
+📱 Instellingen voor mobiel (BroadcastMyself, iCast, enz.)
+📻 Instellingen voor pc (BUTT, SAM, Winamp, enz.)
++ Toevoegen
++ Lijst aanmaken
++ Nieuwe afspeellijst aanmaken
+(leeg laten om niet te wijzigen)
+(gebruikersnaam en wachtwoord)
+(versleuteld).
+-- Selecteren --
+-- Station selecteren --
+-- Geen lijst (algemene bibliotheek) --
+% van de schijf
+< 1 minuut
+Aantal = aantal nummers dat uit elke map/lijst wordt gespeeld voordat naar de volgende wordt gegaan.
+Hogere Q = smallere band
+Hoger getal = hogere prioriteit boven andere actieve relays.
+Hoger getal = hogere prioriteit. Rotaties met hogere prioriteit worden eerst uitgevoerd.
+Hogere ratio = meer compressie
+Dichter bij 0 = luider
+Zachte overgang (hoger = zachter)
+Max. klanten (0 = onbeperkt)
+Max. stations (0 = onbeperkt)
+0 = onbeperkt
+Limiet 0 betekent onbeperkt.
+110px hoog
+Nu speelt: {x}
+Nu speelt:
+Gemiddelde belasting: {x}
+{n} gebruikt van {n}
+{n} uur aan inhoud
+{n} lijst(en) · {n} nummers zonder lijst
+{n} van {n}
+Pagina {n} van {n} · {n} bestanden
+Radio's weergeven/bewerken ({n})
+Pakketten bewerken/weergeven ({n})
+Geregistreerde AutoDJ's ({n})
+Stationdetails ({n})
+Alle gebruikers ({n})
+Gebruik per station ({n})
+Databasetabellen ({n})
+E-mailsjablonen ({n})
+Gedeelde lijsten ({n})
+Advertentielijsten ({n})
+Actieve regels ({n})
+Geregistreerde resellers ({n})
+Resellerpakketten ({n})
+Populairst ({n} luisteraars)
+actief sinds {n} minuten
+Voltooid
+Uploaden...
+Fout
+Geüpload ✓
+, Server: {x}, Poort: {n}, Wachtwoord: (dat van de DJ)
+. Server: {x}, Poort: {n}. Wachtwoord: dat van elk DJ-account. Gebruik op mobiel
+, maak een livevideo en kopieer de "Streamsleutel". Plak de sleutel in het veld hieronder. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond. Facebook gebruikt
+. Haal je streamsleutel op in de instellingen van Instagram Live. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond. Instagram gebruikt
+Taal gewijzigd naar {x}
+vertaalde zinnen

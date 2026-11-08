@@ -1,0 +1,1645 @@
+AAC+
+AIza...
+API Identifier
+API JSON
+API JSON - CastPanel
+API Key
+API Key de Google Maps guardada
+API Now Playing
+API Secret
+API de CastPanel
+API deshabilitada
+Abrir
+Abrir Puerto
+Abrir Puerto en Firewall
+Acceso a phpMyAdmin
+Acceso denegado
+Accion desconocida:
+Accion no valida
+Acciones
+Acción no reconocida. Acciones válidas: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Acción no válida
+Activa
+Activa el procesador para que tu transmisión suene con más fuerza y calidad profesional
+Activar AGC
+Activar Compresor
+Activar Ecualizador
+Activar Limitador
+Activas
+Activo
+Activo (
+Activo · Deshabilitado
+Actual
+Actualizar
+Admin
+Administrador de Servicios
+Administrador de Servicios - CastPanel
+Administrar AutoDJ
+Administrar AutoDJ - CastPanel
+Administrar Cuenta
+Administrar Cuenta — CastPanel DJ
+Administrar Listas
+Administrar Radio
+Administrar Servidor y Servicios
+Administre certificados SSL y dominios del servidor.
+Ads
+Agregar Certificado SSL
+Agregar Paquete de Radio
+Agregar Paquete de Revendedor
+Ajuste final de volumen de transmisión
+Ajustes Personalizados
+Ajustes manuales del usuario
+Aleatorio
+Almac.
+Almacenamiento
+Almacenamiento AutoDJ
+Almacenamiento Máximo
+Almacenamiento:
+Alta
+Altos - Frecuencia
+Altos - Ganancia
+Ancho de Banda Streaming
+Ancho de Banda por Estación
+Animación que se muestra sobre la imagen de fondo del reproductor.
+Anuncio eliminado.
+Anuncios
+Apache
+Apache HTTP
+Apache Web Server
+Aplicaciones Compatibles
+Apps Android/iOS
+Archivo M3U (para reproductores de escritorio)
+Archivo PLS (compatible con Winamp, VLC, etc.)
+Archivo demasiado grande
+Archivo demasiado grande (servidor)
+Archivo subido parcialmente
+Archivos Temporales
+Archivos de Música
+Archivos de Stream
+Archivos de traducción:
+Arquitectura
+Arrastra tus archivos aquí
+Artista
+Artista de la canción actual
+Asunto
+Ataque
+Audio Streaming
+Audio Streaming Plataforma
+Audio Streaming Platform
+Aumenta la imagen estéreo
+Auto-Provisionar cuentas nuevas
+Auto-Suspender por impago
+Auto-Terminar cuentas canceladas
+Auto-firmado
+Auto-inicio
+Auto-refresh:
+AutoDJ
+AutoDJ Estado:
+AutoDJ detenido
+AutoDJ iniciado
+AutoDJs Registrados (2)
+Automatización
+Aún no hay datos de oyentes registrados.
+BW Actual
+Baja
+Bajos - Frecuencia
+Bajos - Ganancia
+Barra
+Barra lateral del panel de sus clientes. 140×40px PNG.
+Barras de audio
+Base de Datos:
+Base de datos principal del panel. Reiniciar si hay problemas de conexión a la BD.
+Base de datos:
+Basico
+Biblioteca de Música
+Biblioteca de Música - CastPanel
+Bienvenida
+Bitrate
+Bitrate Máximo
+Bitrate de la transmisión en kbps
+Bitrate por Defecto
+Blesta
+Borrar Mensaje
+Branding
+Branding / White Label
+Branding / White-Label
+Branding / White-Label - CastPanel
+Branding White-Label
+Branding actualizado. Sus clientes verán los cambios al recargar la página.
+Buffer DJ Delay (seg)
+Buscar
+Buscar paquete...
+Buscar por título, artista...
+Buscar...
+Business o Creator
+CORS Habilitado
+CRÍTICO
+Cada DJ usa su propia contraseña (la que se asigna al crear la cuenta). En móviles usar formato
+Calidad de Grabacion
+Cambiar Contraseña
+Cambiar Idioma
+Cambiar Idioma - CastPanel
+Cambiar Nombre de Host
+Cambiar Nombre de Host - CastPanel
+Cambiar imagen de fondo
+Cambiar portada
+Cambie el idioma de su CastPanel.
+Campo
+Canales
+Cancelar
+Canciones
+Canciones ordenadas por n
+Canciones ordenadas por números.
+Canciones ordenadas por prefijo.
+Canción Actual
+Canción actualizada.
+Canción eliminada.
+Canción movida.
+Cantidad
+Cargando datos...
+Cargando historial...
+Cargando...
+Centro de Control
+Centro de Control DJ
+Centro de Control DJ - CastPanel
+Cerrar Sesión
+Certificado Personalizado
+Certificado eliminado del registro
+Change Logos/Titles
+Cielo estrellado
+Clave de transmision requerida
+Claves base (ES):
+ClientExec
+Cliente
+Cliente actualizado
+Cliente eliminado (y todas sus estaciones)
+Cliente no encontrado
+Cliente no válido
+Clientes
+Codec
+Codec / Bitrate / Sample Rate
+Codec por Defecto
+Cola de archivos
+Collation
+Color Primario
+Color de acento:
+Color de fondo de la barra lateral
+Color de texto:
+Color del Sidebar
+Color principal de botones y acentos
+Colores
+Comando no reconocido
+Comandos Útiles (SSH)
+Comparta este enlace con sus oyentes. Es la página del reproductor público con carátulas, historial de canciones y efectos visuales personalizables.
+Compresión agresiva, medios al frente, punch
+Compresión ligera, ideal para música clásica y jazz
+Compresor de Dinámica
+Con AutoDJ
+Conexiones en tiempo real
+Config Liquidsoap generado:
+Configuracion AutoDJ guardada
+Configuracion guardada
+Configuración CastPanel
+Configuración Global
+Configuración Global - CastPanel
+Configuración Google Maps
+Configuración Icecast
+Configuración Liquidsoap
+Configuración Puerto SSL
+Configuración Puerto SSL - CastPanel
+Configuración RadioCaster
+Configuración SMTP
+Configuración SMTP - CastPanel
+Configuración SMTP guardada exitosamente
+Configuración de API/Facturación guardada
+Configuración de Archivos
+Configuración de branding guardada. Recargue la página para ver los cambios.
+Configuración de dominio SSL guardada
+Configuración de puertos SSL guardada. Reinicie Apache para aplicar los cambios.
+Configuración del Servidor
+Configuración del Sitio
+Configuración del reproductor guardada correctamente.
+Configuración guardada exitosamente
+Configuración personalizada guardada. La estación se reiniciará para aplicar los cambios.
+Configuración personalizada guardada. Se aplicará cuando se active AutoDJ.
+Configurar Hostname y Dominio
+Configurar SMTP / Email
+Configurar SSL en Apache (SSH)
+Configure el servidor de correo para notificaciones.
+Configure los ajustes globales del panel y servicios de streaming.
+Configure una API Key de Google Maps arriba para ver el mapa de oyentes.
+Confirmar Nueva Contraseña:
+Consulta desde cualquier dominio o app móvil
+Contenido del mensaje:
+Contrasena
+Contrasena de Admin
+Contrasena de Radio
+Contraseña
+Contraseña (user:pass):
+Contraseña *
+Contraseña Actual:
+Contraseña Admin
+Contraseña DJ
+Contraseña DJ:
+Contraseña SMTP
+Contraseña Source / DJ
+Contraseña Source / DJ:
+Contraseña actualizada correctamente
+Contraseña de Conexión:
+Contraseña:
+Control Automático de Ganancia (AGC)
+Control Masivo de Radios
+Control Múltiple
+Control Múltiple - CastPanel
+Control Rápido
+Control de AutoDJs
+Control de Radios
+Copia el código del widget que prefieras y pégalo en tu página web para que tus visitantes puedan escuchar
+Copiar
+Copie
+Core, date, libxml, openssl, pcre, sqlite3, zlib, ctype, curl, dom, fileinfo, filter, hash, iconv, json, mbstring, SPL, session, PDO, pdo_sqlite, standard, posix, random, Reflection, Phar, SimpleXML, tokenizer, xml, xmlreader, xmlwriter, mysqlnd, apache2handler, gd, pdo_mysql, sodium, zip, Zend OPcache
+Cores
+Crea un relay con el formulario de la izquierda.
+Crea una con el formulario de la izquierda.
+Crea una rotación con el formulario de la izquierda.
+Creada
+Crear Cliente
+Crear Cuenta DJ
+Crear Estación
+Crear Lista
+Crear Lista Compartida
+Crear Nuevo Revendedor
+Crear Paquete
+Crear Paquete de Revendedor
+Crear Primera Cuenta
+Crear Radio
+Crear Relay
+Crear Revendedor
+Crear Rotación
+Crear Usuario
+Crear un Nuevo Revendedor
+Crear una
+Crear una Cuenta DJ
+Crear una nueva radio y cuenta de cliente. Los clientes pueden administrar sus radios desde el panel del cliente.
+Crear y activar estación automáticamente al pagar
+Credenciales API inválidas
+Credenciales API requeridas
+Credenciales DJ inválidas
+Credenciales inválidas
+Cree un paquete con los límites de cuentas y radios para sus clientes.
+Cree y administre claves API, descargue módulos para software de facturación.
+Cron
+Cron Scheduler
+Crossfade (segundos)
+Crítico
+Cuenta
+Cuenta DJ
+Cuenta DJ actualizada.
+Cuenta DJ eliminada
+Cuenta DJ eliminada.
+Cuenta DJ no encontrada
+Cuenta Reactivada
+Cuenta Suspendida
+Cuenta eliminada
+Cuenta eliminada completamente
+Cuenta reactivada
+Cuenta suspendida
+Cuenta y Estacion
+Cuentas
+Cuentas DJ
+Cuentas DJ - CastPanel
+Cuentas DJ Máximo
+Cuentas DJ Registradas
+Código HTML
+Código Popup (botón que abre ventana)
+Código con ancho personalizado (ej: 500px)
+Código iframe
+Código iframe (para embeber en tu web)
+Cómo agregar un idioma:
+DE · Deutsch
+DJ Panel
+DJ Puede Cambiar Propia Contraseña
+DJ Puede Cambiar Propia Contraseña:
+DJ Puede Iniciar Sesión en Panel DJ
+DJ Puede Iniciar Sesión en Panel DJ:
+DJ Puede Iniciar/Detener AutoDJ
+DJ Puede Iniciar/Detener AutoDJ:
+DJ Puede Iniciar/Detener Radio
+DJ Puede Iniciar/Detener Radio:
+DJ Puede Reproducir Jingles/IDs (Al Aire)
+DJ Puede Reproducir Jingles/IDs (Al Aire):
+DJ Puede Saltar Canción (AutoDJ)
+DJ Puede Saltar Canción (AutoDJ):
+DJ Puede Subir Foto de Perfil
+DJ Puede Subir Foto de Perfil:
+DJ Puede Transmitir Música
+DJ Puede Transmitir Música:
+DJ Puede usar Voice Pro (Al Aire)
+DJ Puede usar Voice Pro (Al Aire):
+DJs
+DJs Activos
+Dashboard
+Datos actualizados en cada solicitud con información en vivo
+Debian GNU/Linux 13 (trixie)
+Define cada cuántas canciones se insertan bloques de anuncios. Puedes crear varias reglas con diferente frecuencia y horario.
+Desactivado
+Desactivar
+Desconectada
+Descripción
+Descripción opcional
+Desenfoque (blur):
+Deshabilitada
+Deshabilitado
+Detalle de Estaciones (2)
+Detener
+Detener AutoDJ
+Detener Radio
+Detener Todas las Radios
+Detener Todos los AutoDJs
+Detener la retransmision antes de editar
+Detiene todos los contenedores Liquidsoap
+Deutsch
+Directorio
+Directorio Media
+Directorios Principales
+Disabled
+Disco
+Disco Total
+Disponibles
+Distribución por Tipo de Servidor
+Docker
+Docker Engine
+Docker Engine (activo)
+Documentación de Campos
+Dom
+Dominio
+Dominio SSL
+Dominio SSL Principal
+Dominio del Panel
+Dominio del Panel (SSL_DOMAIN)
+Dominio usado para URLs del panel y streams
+Dominios / Certificados SSL
+Dominios / Certificados SSL - CastPanel
+Drop the picture file here to upload, or click.
+Duración
+Duración Total
+Duración total:
+Días Activos
+Días Semanales
+EN · English
+ENUM('shoutcast_v2','shoutcast_v25','shoutcast_v1','icecast') NOT NULL DEFAULT 'shoutcast_v2' AFTER `nombre`
+ES · Español
+Ecualizador
+Ecualizador 3 Bandas
+Editar
+Editar Canción
+Editar Cliente
+Editar Cuenta DJ
+Editar DJ:
+Editar Estación
+Editar Paquete
+Editar Paquete de Radio
+Editar Paquetes de Revendedor
+Editar Paquetes de Revendedor - CastPanel
+Editar Relay
+Editar Revendedor
+Editar Rotación
+Editar Usuario
+Editar/Actualizar Radios
+Editar/Listar Paquetes
+Editar/Listar Paquetes (4)
+Editar/Listar Paquetes - CastPanel
+Efecto Visual del Fondo
+Ej: Música Navideña
+Ej: Música de Mañana
+Ej: Radio Nacional FM
+Ej: Spots Comerciales
+Ej: Éxitos del momento
+Ejecutar en el servidor vía SSH para gestionar certificados Let's Encrypt:
+Ejemplo
+Ejemplo de Integración (JavaScript)
+El
+El ancho de banda por estación es una estimación basada en oyentes actuales × bitrate. Los datos de interfaces de red son acumulados desde el último reinicio del servidor.
+El archivo no debe superar 2MB
+El archivo no puede pesar más de 3MB
+El dominio principal donde se accede al panel
+El idioma aparecerá automáticamente
+El nombre de usuario ya existe
+El nombre del paquete es obligatorio
+El nombre es obligatorio
+El nombre es obligatorio.
+El procesador de audio funciona tanto en modo AutoDJ como cuando un DJ está en vivo. Al guardar cambios, la estación se reiniciará brevemente para aplicar la nueva configuración. El procesador usa una cadena profesional: AGC → Compresor → Ecualizador → Limitador → Ganancia de Salida.
+El procesador de audio mejora la calidad de tu transmision con compresion, ecualizacion y limitador profesional. Selecciona un preset que se adapte a tu estilo de contenido.
+El username o email ya existe
+El usuario ya existe
+Eliminar
+Eliminar Seleccionadas
+Eliminar estación al cancelar el servicio
+Email
+Email Administrador
+Email Remitente (From)
+Email de Destino
+Email no válido
+Email:
+Emisora Activa
+Emitidas hoy:
+Empresa
+En Línea
+En todas las estaciones
+En vivo
+Encoder
+Encriptación
+Endpoint
+Endpoint API:
+Endpoint JSON para desarrolladores. Retorna metadatos en vivo: canción actual, oyentes, estado del servidor. Útil para integraciones y apps personalizadas.
+Endpoint público · No requiere autenticación · JSON · CORS habilitado
+Engine
+English
+Enlace API JSON
+Enlace M3U (para reproductores)
+Enlace PLS (para WinAmp, VLC, etc)
+Enlace XSPF
+Enlace directo (para compartir en redes, web, etc.)
+Enlaces Directos al Stream
+Enlaces SSL/Reproducir
+Enlaces de Streaming SSL
+Enlaces de Streaming SSL - CastPanel
+Ensanchamiento Estéreo
+Enter Facebook Key
+Enter Instagram Key
+Enter TikTok Key
+Enter Youtube Key
+Enviado (TX)
+Enviar Correo de Prueba
+Enviar Prueba
+Error DB:
+Error al actualizar:
+Error al aplicar el preset.
+Error al enviar correo de prueba. Verifique la configuración SMTP.
+Error al guardar el archivo
+Error al guardar la configuración.
+Error al guardar la configuración:
+Error al guardar:
+Error al iniciar
+Error al mover archivo
+Error al obtener config:
+Error al reiniciar
+Error al sincronizar reglas proxy. Verificar permisos del archivo /etc/httpd/shoutcast-proxy-rules.inc
+Error al subir
+Error al subir archivo (código:
+Error al subir la foto
+Error de base de datos:
+Error de conexión
+Error de subida
+Error de subida:
+Error desconocido
+Error desconocido al crear la radio
+Error en la operacion:
+Error en la operación:
+Error en la subida
+Error reiniciando Firewall:
+Escriba aquí el mensaje que verán los DJs al entrar al panel...
+Espacio Libre
+Español
+Est. Diario
+Estacion
+Estacion Creada
+Estacion detenida
+Estacion eliminada y des-aprovisionada
+Estacion iniciada
+Estacion no encontrada
+Estacion reactivada
+Estacion reiniciada
+Estacion suspendida
+Estacion:
+Estaciones
+Estaciones Activas
+Estaciones Asignadas
+Estaciones Offline
+Estaciones Online
+Estaciones Total
+Estaciones asignadas a la lista compartida
+Estaciones de Clientes
+Estaciones de Clientes - CastPanel
+Estación
+Estación Creada
+Estación actualizada
+Estación eliminada
+Estación no encontrada
+Estación no está transmitiendo
+Estado
+Estado Radio
+Estado actualizado
+Estado de Cuentas
+Estado de Radio
+Estado de Radio:
+Estado de Servicios
+Estado de la Radio
+Estado del Servidor
+Estado del Servidor - CastPanel
+Estado del Servidor en Vivo
+Estado:
+Estadísticas
+Estadísticas - CastPanel
+Estadísticas En Vivo
+Estadísticas En Vivo - CastPanel
+Estadísticas completas
+Estadísticas de Radio
+Estadísticas de Radio - CastPanel
+Estadísticas en Vivo
+Estadísticas rápidas (oyentes, estado, título)
+Estadísticas y Cuenta
+Este es un servicio CRÍTICO.
+Este mensaje se muestra a los DJs cuando inician sesión en su panel. Puede incluir instrucciones, horarios, reglas o cualquier información importante. Se admite HTML básico para formato.
+Esto ejecutará:
+Estrellas
+Estándar
+Estéreo
+Extensiones Permitidas
+Extensiones cargadas
+FR · Français
+Facebook Live
+Facebook Live Producer
+Facebook can
+Facebook can restrict your account or page if your radio plays copyrighted music during live stream.
+Facebook:
+Facturación y API
+Facturación y API - CastPanel
+Facturación y Automatización (API)
+Fail2ban
+Fatal error
+Favicon
+Fecha
+Fecha Única
+Fecha/hora de la consulta ISO 8601
+Filas
+Firewall
+Firewall (firewalld)
+Firewall del servidor. Reiniciar si hay problemas de acceso a puertos.
+Firewall recargado
+Firewall reiniciado. Puertos abiertos:
+Firewalld
+Formato de imagen de fondo no válido. Use JPG, PNG, WebP o GIF.
+Formato de portada no válido. Use JPG, PNG o WebP.
+Formato no válido
+Formatos: MP3, OGG, AAC, M4A, WAV, FLAC — Máx. 50 MB por archivo
+Foto actualizada correctamente
+Foto de Perfil
+Foto de perfil actualizada
+Foto eliminada
+Français
+Frecuencia de Muestreo
+Fuente
+Ganancia Final
+Ganancia Máx
+Ganancia Mín
+Ganancia de Salida y Extras
+Ganancia de compensación
+Generar Nueva Key
+Genero
+Geolocalizados
+Gestionar Estaciones
+Gestionar Estaciones - CastPanel
+Gestionar Usuarios
+Gestionar Usuarios - CastPanel
+Gestión de Anuncios
+Gestión de Anuncios - CastPanel
+Gestión de AutoDJ
+Google Maps API Key
+Gotas de lluvia animadas
+Grabación DJ:
+Grabar DJ
+Guardar
+Guardar Cambios
+Guardar Cambios AutoDJ
+Guardar Configuración
+Guardar Configuración Personalizada
+Guardar Idioma
+Guardar Key
+Guardar Mensaje
+Guardar Toda la Configuración
+HTTP/1.1 403 Forbidden
+Habilitado
+Habilitar API REST
+Habilitar envío de correos SMTP
+Historial
+Historial de Canciones
+Historial de canciones recientes
+Hora Fin
+Hora Inicio
+Hora del Servidor
+Host Icecast
+Host Liquidsoap
+Host:
+Hostname
+Hostname Actual
+Hostname del Servidor
+Hostname inválido: solo letras, números, guiones y puntos.
+Hostname no pudo ser cambiado:
+ID de estacion invalido
+ID invalido
+ID requerido
+IP de Conexión de Stream:
+IP de Conexión:
+IP de Radio
+IP del Servidor
+IP no autorizada
+IPs Únicas
+IT · Italiano
+IceCast v2
+Icecast
+Icecast (Source)
+Icecast (activo en puerto 8000)
+Icecast (instalado)
+Icecast2 Streaming
+Icono de la pestaña del navegador. Recomendado: 32×32px o 64×64px, ICO o PNG.
+Icono del navegador para sus clientes. 32×32px ICO/PNG.
+Identificador único de la estación
+Idioma activo:
+Idioma del Panel
+Imagen de Fondo
+Imagen de fondo eliminada.
+Imagen eliminada.
+Imagen muy grande (max 5MB)
+Imagen que se muestra como carátula cuando la canción no tiene portada propia. Recomendado: 500x500px, cuadrada.
+Imagen que se muestra de fondo en todo el reproductor. Recomendado: 1920x1080px o mayor.
+Imagen subida correctamente.
+Inactivo
+Inactivo · Deshabilitado
+Info consultada
+Info de Radio
+Info del Servidor
+Información Técnica
+Información completa de la estación y canción actual
+Información de la Cuenta
+Información del DJ
+Información del Servidor
+Información del Servidor - CastPanel
+Información social actualizada
+Información:
+Ingresa la URL RTMP de cualquier servidor compatible
+Ingresar Nombre
+Ingresar Nombre de Usuario
+Ingrese la clave de transmisión primero.
+Ingrese su contraseña
+Ingrese su usuario
+Ingrese usuario y contraseña
+Inicia las radios que estén detenidas
+Iniciar
+Iniciar AutoDJ
+Iniciar Radio
+Iniciar Sesion
+Iniciar Sesion - CastPanel
+Iniciar Sesion como Usuario
+Iniciar Sesion en Usuario
+Iniciar Sesión
+Iniciar Todas las Radios
+Inicio
+Inicio de todas las radios ejecutado
+Inicio — CastPanel DJ
+InnoDB
+Instagram Live
+Instagram can
+Instagram can restrict your account if your radio plays copyrighted music during live stream.
+Instagram:
+Instalación manual (AlmaLinux 8):
+Instalado (activo)
+Integraciones y API
+Interfaces de Red
+Interfaz
+Italiano
+JPG, PNG o WebP - Cuadrada 500x500
+JPG, PNG, WebP o GIF animado
+JSON Estándar
+Jingles
+Juan Pérez
+Jue
+Kernel
+Knee
+La
+La contraseña actual es incorrecta
+La contraseña debe tener al menos 6 caracteres
+La función transmisión en vivo Facebook transmite su música de radio a Facebook Live. Vaya a
+La función transmisión en vivo Facebook transmite su música de radio a Facebook Live. Vaya a Facebook Live Producer, cree un video en vivo y copie la "Clave de transmisión". Pegue la clave en el campo de abajo. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión. Facebook usa RTMPS (cifrado).
+La función transmisión en vivo Instagram transmite su música de radio a Instagram Live. Se requiere una cuenta de tipo
+La función transmisión en vivo Instagram transmite su música de radio a Instagram Live. Se requiere una cuenta de tipo Business o Creator. Obtenga su clave de transmisión desde la configuración de Instagram Live. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión. Instagram usa RTMPS (cifrado).
+La función transmisión en vivo TikTok transmite su música de radio a TikTok Live. Se requieren al menos
+La función transmisión en vivo TikTok transmite su música de radio a TikTok Live. Se requieren al menos 1,000 seguidores para transmitir en vivo. Obtenga su clave de transmisión desde TikTok Live Studio o la aplicación móvil. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión.
+La función transmisión en vivo Youtube transmite su música de radio a Youtube live. Hay un
+La grabación es automática si está habilitada. Para habilitar/deshabilitar la grabación de shows DJ en vivo, use la configuración de la estación. Los archivos usan su espacio de alojamiento disponible.
+Las contraseñas no coinciden
+Las listas de reproduccion se administran desde el panel del usuario. Use "Iniciar Sesion en Usuario" para acceder.
+Let's Encrypt (Gratis)
+Limitador de Picos
+Limite de Oyentes
+Linux 7.0.12-linuxkit
+Liquidsoap no necesario (AutoDJ deshabilitado)
+Liquidsoap omitido (AutoDJ deshabilitado)
+Lista
+Lista Programada
+Lista compartida eliminada
+Lista de Reproducción Destino
+Lista de anuncios eliminada.
+Lista de anuncios no especificada
+Lista de reproducci
+Lista destino
+Lista eliminada. Las canciones quedaron sin lista asignada.
+Lista renombrada.
+Listar / Editar Radios
+Listar AutoDJs
+Listar AutoDJs - CastPanel
+Listar/Descargar Shows DJ
+Listar/Editar Cuentas DJ
+Listar/Editar Radios (2)
+Listar/Editar Revendedores
+Listar/Editar Revendedores - CastPanel
+Listas
+Listas Activas
+Listas Compartidas
+Listas Compartidas (0)
+Listas de Anuncios (0)
+Listas de Reproduccion
+Listas de Reproducción
+Listas de Reproducción - CastPanel
+Listas de Reproducción Compartidas
+Listas de Reproducción Compartidas - CastPanel
+Live Only (dev)
+Lluvia
+Load Average
+Logo de Login
+Logo del Reproductor
+Logo del Sidebar
+Logo eliminado. Se restaurará el logo por defecto de CastPanel.
+Logo eliminado. Se usará el logo por defecto del panel.
+Logo para el reproductor público de radio. Recomendado: 200×200px, PNG.
+Logo pequeño en la barra lateral del panel. Recomendado: 140×40px, PNG transparente.
+Logo subido correctamente.
+Logos y Favicon
+Logs del Sistema
+Logs no accesibles desde el panel web. Para ver los últimos accesos SSH ejecute en terminal: last -n 10
+Los DJs deben elegir el protocolo
+Los DJs deben elegir siempre el protocolo
+Los ajustes del procesador se guardan en la base de datos. Para aplicar el procesamiento en tiempo real, active AutoDJ en el paquete de esta estación. Una vez activado, Liquidsoap aplicará la cadena de procesamiento automáticamente. El procesador usa una cadena profesional: AGC → Compresor → Ecualizador → Limitador → Ganancia de Salida.
+Los servicios marcados como
+Los íconos se mostrarán en el reproductor público. Deja vacío para ocultar.
+Lun
+Límites de Radio
+M3U Playlist
+MP3 128k
+Makeup Gain
+Mapa de Oyentes
+Mar
+Max Bitrate
+Maximo 10 retransmisiones por estacion
+Media
+Media (Música)
+Medios - Frecuencia
+Medios - Ganancia
+Medios - Q Factor
+Mensaje Panel DJ
+Mensaje Panel DJ - CastPanel
+Mensaje actualizado correctamente.
+Mensaje del Panel DJ actualizado
+Mensaje para el Panel DJ
+Metodo no permitido
+Mi Branding
+Mi Branding - CastPanel
+Mis Clientes
+Mis Clientes - CastPanel
+Mié
+Modo Mantenimiento
+Modo de Reproduccion
+Mostrar Titulos
+Mostrar barras de ecualizador
+Mostrar conteo de oyentes
+Mostrar historial de canciones
+Motor de contenedores para AutoDJ (Liquidsoap). Reiniciar si los AutoDJs no funcionan.
+Motor:
+Mount / SID
+Mount Icecast configurado:
+Mount Icecast removido
+Mount Point
+Mounts
+Mover
+Mover a Lista
+Más Popular (0 oyentes)
+Máx. Permitidos
+Máx. en una Radio
+Máxima fuerza y volumen, sonido de FM comercial
+Máximo Permitido
+Máximo en las últimas 24h
+Máximo mensual
+Máximo semanal
+Método
+Método no permitido
+Música
+Navegadores Web
+Necesita una API Key de Google Maps con Maps JavaScript API habilitado.
+Nieve
+Ninguna
+Ninguno
+Nivel Objetivo
+Nivel donde inicia la compresión
+Nivel máximo permitido antes de limitar
+No
+No autenticado
+No autorizado para esta estación
+No configurado
+No cree una cuenta de DJ con todos los permisos permitidos a menos que confíe completamente en esa persona.
+No disponible
+No encontrada
+No hay canciones en la biblioteca.
+No hay cuentas DJ creadas.
+No hay listas compartidas
+No hay listas creadas. Crea una con el formulario de arriba.
+No hay listas de anuncios.
+No hay paquetes creados
+No hay puertos adicionales abiertos (solo servicios predeterminados)
+No hay puertos telnet disponibles
+No hay registros de emisión aún.
+No hay reglas de anuncios configuradas.
+No hay relays configurados.
+No hay revendedores registrados
+No hay rotaciones configuradas.
+No hay shows grabados para esta estación.
+No instalado
+No puedes desactivar tu propia cuenta
+No puedes eliminar tu propia cuenta
+No requiere (protocolo SHOUTcast)
+No se encontraron archivos de audio válidos
+No se ha configurado la clave de transmisi
+No se pudo conectar al servidor SHOUTcast
+No se pudo detener el AutoDJ
+No se pudo detener la radio
+No se pudo escribir comando IPC
+No se pudo guardar el archivo
+No se pudo iniciar Liquidsoap:
+No se pudo iniciar el AutoDJ
+No se pudo iniciar el proceso FFmpeg
+No se pudo iniciar la radio
+No se puede eliminar: el revendedor tiene clientes con estaciones activas
+No se puede eliminar: hay estaciones usando este paquete
+No se puede eliminar: hay revendedores usando este paquete
+No se recibieron archivos
+No se recibio archivo
+No se recibió archivo
+No tiene permiso para esta estacion
+No tienes una estación asignada. Contacta al administrador.
+Node.js
+Nombre
+Nombre Completo
+Nombre Completo:
+Nombre de Estación
+Nombre de Usuario
+Nombre de Usuario *
+Nombre de la Lista
+Nombre de la Rotación *
+Nombre de la estación
+Nombre del Relay *
+Nombre del Remitente
+Nombre del Sitio
+Nombre que aparece en el sidebar y título del navegador
+Nombre requerido
+Nombre requerido.
+Nombre y URL son obligatorios.
+Nombre y slug son obligatorios
+Normal (Secuencial)
+Nota:
+Noticias / Voz
+Now Playing por ID de estación
+Nueva API Key generada:
+Nueva Contraseña (dejar vacío para mantener)
+Nueva Contraseña:
+Nueva Cuenta DJ
+Nueva Estación
+Nueva Lista de Anuncios
+Nueva Regla de Anuncios
+Nueva Rotación
+Nuevo
+Nuevo Cliente
+Nuevo Relay
+Nuevo Usuario
+ORDER BY e.created_at DESC
+ORDER BY emitido_at DESC LIMIT ?
+Obtener Key
+Offline
+Olas del océano
+Ondas
+Online
+Online Ahora
+Only .jpg or .png allowed! Max 3MB.
+Opciones del Reproductor
+Optimizado para voz hablada, claridad m
+Optimizado para voz hablada, claridad máxima
+Oscuridad del overlay:
+Oyentes
+Oyentes (Google Maps)
+Oyentes Activos
+Oyentes Ahora
+Oyentes Conectados
+Oyentes Máximo
+Oyentes Totales
+Oyentes Totales Ahora
+Oyentes actuales
+Oyentes conectados actualmente
+Oyentes de Radio Gráfico (En Vivo)
+Oyentes en Mapa
+Oyentes en Mapa - CastPanel
+Oyentes Últimas 24 Horas
+PHP Configuration
+PLS Playlist
+PT · Português
+Pagina de Radio
+Panel Principal
+Panel Reseller
+Panel Reseller - CastPanel
+Panel de Administración
+Panel de Administración - CastPanel
+Panel de Control
+Panel de Control - CastPanel
+Paquete
+Paquete actualizado
+Paquete eliminado
+Paquete no encontrado
+Paquete no encontrado o inactivo
+Paquetes
+Paquetes de Revendedor (0)
+Paquetes listados
+Para ajustes avanzados (AGC, Compresor, EQ, Limitador) contacta al administrador de la estacion.
+Peak
+Peak Total
+Pega tu clave de transmision aqui...
+Pendiente
+Permisos
+Permisos DJ (Tenga Cuidado)
+Personalice el logo, nombre y colores de su panel.
+Personalice los logos, títulos y favicons de su panel. Las imágenes subidas reemplazarán los valores por defecto. Al eliminar una imagen se restaurará el logo por defecto de CastPanel. Los resellers pueden configurar su propio branding desde su panel para sus clientes.
+Personalizado
+Personalizar Reproductor
+Personalizar Reproductor - CastPanel
+Pico
+Pico 24 Horas
+Pico 24h
+Pico 30 Días
+Pico 7 Días
+Pie de página personalizado
+Pistas
+Plantilla actualizada exitosamente
+Plantillas de Correo
+Plantillas de Correo (6)
+Plantillas de Correo - CastPanel
+Plantillas predeterminadas inicializadas
+Plataforma no valida
+Playlist
+Playlist 'General' creada
+Playlist Activa
+Playlist Intervals
+Playlists
+Portada eliminada.
+Portada por Defecto
+Portal DJ
+Português
+Postfix (Mail)
+Postfix Mail Server
+Postfix mail server. Reiniciar si los correos no se envían.
+Potente
+Precaución:
+Premium
+Preset "
+Preset no valido
+Presets Rápidos
+Previsualización
+Primero crea un
+Primero crea una
+Prioridad
+Probar
+Probar Señal
+Procesador
+Procesador Activado
+Procesador Activo
+Procesador Desactivado
+Procesador de Audio
+Procesador de Audio - CastPanel
+Procesamiento balanceado para radio general
+Programación
+Programación de anuncios creada.
+Programación eliminada.
+Programar Anuncios
+Programar Anuncios - CastPanel
+Promedios de Carga: 0.23 - 0.11 - 0.09
+Promos
+Propietario
+Protocolo
+Protocolo Icecast — Conexión directa al servidor Icecast.
+Protocolo SHOUTcast v1 — Conexión a través de Liquidsoap Harbor (AutoDJ activo). Cada DJ usa sus propias credenciales.
+Protocolo SHOUTcast v1 — Conexión directa al servidor SHOUTcast (sin AutoDJ). En RadioCaster usar siempre protocolo SHOUTcast v1.
+Protocolo:
+Prueba de Correo CastPanelSi recibes este correo, la configuración SMTP está funcionando correctamente.
+Puerto
+Puerto DJ
+Puerto HTTP
+Puerto HTTPS
+Puerto Icecast
+Puerto SSL
+Puerto SSL Admin
+Puerto SSL de Streaming
+Puerto SSL del Panel (HTTPS)
+Puerto Telnet
+Puerto de Conexión DJ:
+Puerto de Conexión:
+Puerto de Emisión
+Puerto de Radio
+Puerto de administración (default: 2087)
+Puerto estándar HTTPS (default: 443)
+Puerto no asignado
+Puerto para streams seguros (default: 8443)
+Puerto:
+Puertos Abiertos
+Puertos SSL
+Punto de Montaje
+Punto de Montaje (Mount)
+Punto de Montaje (Mount):
+Página 1 de 1 · 0 archivos
+Página 1 de 1 · 2 archivos
+Página de inicio de sesión de sus clientes. 200×60px PNG.
+Público y libre. No necesitas API Key ni tokens
+Radio detenida correctamente
+Radio iniciada correctamente
+RadioCaster:
+RadioCaster: Protocolo
+RadioCaster: Protocolo Icecast, Servidor:
+RadioCaster: Protocolo SHOUTcast v1, Servidor:
+RadioCaster: Seleccionar protocolo
+RadioCaster: Seleccionar protocolo SHOUTcast v1. Servidor:
+Radios y Cuentas
+Ranking — Top 50 Radios por Oyentes
+Ratio
+Reactivacion
+Reactivar
+Realiza un reinicio completo del servicio SSH incluyendo Fail2ban. Útil cuando hay muchos intentos de acceso bloqueados o problemas persistentes de conexión.
+Recargar Firewall
+Recibido (RX)
+Red
+Redes Sociales
+Reenviar Correo de Bienvenida
+Refrescar
+Regenerar reglas proxy Apache
+Registrar Certificado
+Registro
+Registro Público Habilitado
+Reglas Activas (0)
+Reglas proxy de Apache sincronizadas correctamente
+Reinicia el servicio de streaming de cada estación activa
+Reinicia todos los contenedores Liquidsoap
+Reiniciar
+Reiniciar AutoDJ
+Reiniciar Fail2ban (limpia bans temporales)
+Reiniciar Radio
+Reiniciar Servicios
+Reiniciar Servicios - CastPanel
+Reiniciar Todas las Radios
+Reiniciar Todos los AutoDJs
+Reiniciar servicio SSHD
+Reiniciar servicios críticos puede causar interrupciones temporales. Los servicios marcados como críticos afectarán al panel y/o streaming si se reinician.
+Reinicie los servicios de streaming del servidor.
+Reinicio de todas las radios ejecutado
+Reinicio de todos los AutoDJs ejecutado
+Relay
+Relay Redireccionamiento
+Relay Redireccionamiento - CastPanel
+Relay actualizado.
+Relay eliminado.
+Relays Configurados
+Release
+Reproduciendo Ahora: Sin información
+Reproduciendo:
+Reproducir
+Reproductor Compacto (iframe)
+Reproductor Página Completa (con Efectos Visuales)
+Reproductor Público
+Reproductor autocontenido que no requiere iframe. Solo copia y pega el código en tu HTML.
+Reproductor compacto de
+Reproductor profesional a página completa con animaciones de fondo, carátula, historial de canciones y controles avanzados. Ideal como
+Reproductor público de las radios de sus clientes. 200×200px PNG.
+Reseller
+Reset Pass
+Respuesta JSON
+Respuesta JSON estructurada y documentada
+Respuesta JSON invalida
+Restablecer Contrasena
+Restablecer Contraseña
+Restablecer tu contraseña
+Restablecimiento Completo SSH
+Resultados
+Resumen de Contenido
+Resumen de Cuenta (En Vivo)
+Resumen del Servidor
+Revendedor actualizado
+Revendedor eliminado
+Revendedores
+Revendedores Registrados (0)
+Rock / Pop
+Rol
+Rotaciones Configuradas
+Rotación actualizada.
+Rotación de Carpetas
+Rotación de Carpetas - CastPanel
+Rotación eliminada.
+Ruta
+SC v2.6
+SELinux
+SHOUTcast binary no encontrado en
+SHOUTcast v1
+SHOUTcast v2
+SHOUTcast v2.5
+SID 1
+SSH Server
+SSH completamente reiniciado
+SSL Habilitado
+SSL Habilitado (HTTPS)
+SSL y Dominio
+Sample Rate
+Sample Rate por Defecto
+Se aplica automáticamente en el servidor vía castpanel-ctl
+Se envía al crear una nueva cuenta
+Se envía al provisionar una nueva estación
+Se envía al reactivar una cuenta de usuario
+Se envía al solicitar restablecimiento de contraseña
+Se envía al suspender una cuenta de usuario
+Se genera automáticamente. Puedes cambiarla.
+Se muestra en la página de inicio de sesión. Recomendado: 200×60px, PNG transparente.
+Secuencia de Playlists
+Seguridad y Firewall
+Seguridad y Firewall - CastPanel
+Selecciona canciones con las casillas para acciones masivas
+Selecciona el efecto visual:
+Selecciona un preset para activar el procesamiento de audio
+Selecciona una estacion para administrar sus cuentas DJ.
+Seleccionar una lista de reproducción
+Seleccione una lista de reproducción del menú desplegable para ver y administrar sus canciones.
+Separadas por coma
+Servicio
+Servicio Liquidsoap detenido
+Servicio Liquidsoap iniciado (Docker: liquidsoap-
+Servicio SHOUTcast detenido
+Servicio de acceso remoto SSH. Reiniciar si hay problemas de conexión remota.
+Servicios del Sistema
+Servidor
+Servidor / Host
+Servidor SMTP
+Servidor SSH
+Servidor de Correo
+Servidor de streaming Icecast. Reiniciar si las radios Icecast no transmiten.
+Servidor web del panel. Reiniciar si el panel no carga.
+Servidor:
+ShoutCast v1
+ShoutCast v2.5
+ShoutCast v2.6
+Shoutcast v1
+Shoutcast_v2
+Shows DJ
+Shows DJ - CastPanel
+Si la estación está transmitiendo
+Sin Autenticación
+Sin AutoDJ
+Sin datos
+Sin efecto
+Sin espacio de almacenamiento
+Sin estaci
+Sin estacion seleccionada
+Sin estaciones.
+Sin estación asignada.
+Sin información
+Sin lista
+Sin lista asignada
+Sin logo personalizado
+Sin nombre
+Sin paquete
+Sin permiso para AutoDJ
+Sin permiso para cambiar contraseña
+Sin permiso para crear
+Sin permiso para eliminar
+Sin permiso para iniciar/detener
+Sin permiso para leer
+Sin permiso para modificar
+Sin permiso para reactivar
+Sin permiso para subir foto
+Sin permiso para suspender
+Sin permisos
+Sin procesamiento, audio original
+Sin título
+Sistema
+Sistema Operativo
+Sistema de Facturación
+Sistema de Radio
+Sistema de Traducción
+Slug
+Social
+Software
+Solo JPG, PNG o WebP
+Solo letras, números, guiones y guiones bajos
+Solo se permiten archivos JPG o PNG
+Source IP
+Station not found
+Status:
+Stream / Source List
+Stream / Source List - CastPanel
+Stream HTTP (sin SSL)
+Stream HTTPS Principal
+Suave
+Sube una imagen de portada primero
+Subir Anuncios
+Subir Archivos de Audio
+Subir Música
+Subir Música - CastPanel
+Subir Música MP3
+Subir Todos
+Subir imagen de fondo
+Subir portada
+Subtítulo
+Suspender
+Suspender estación automáticamente si el pago falla
+Suspendidas
+Suspension
+Swap
+Sync Proxy
+Sáb
+Sí
+TINYINT(1) NOT NULL DEFAULT 0 AFTER `default_hostname`
+TINYINT(1) NOT NULL DEFAULT 1 AFTER `server_type`
+TINYINT(1) NOT NULL DEFAULT 1 AFTER `social_stream_enabled`
+Tabla
+Tablas
+Tablas de la Base de Datos (29)
+Tamaño
+Tamaño Máx. Upload (MB)
+Tamaño Total BD
+Tareas programadas. Reiniciar si los cron jobs no se ejecutan.
+Terminar
+Texto bajo el logo en el sidebar
+Texto del Footer
+Texto del botón o encabezado en la página de login
+Tiempo Real
+TikTok Live
+TikTok Live Studio
+TikTok can
+TikTok can suspend your account if your radio plays copyrighted music during live stream.
+TikTok → LIVE → Obtener URL y clave del servidor
+Timeout esperando respuesta del daemon
+Timezone
+Tipo
+Tipo Servidor
+Tipo de Certificado
+Tipo de Horario
+Tipo de Lista
+Tipo de archivo no permitido. Use PNG, JPG, GIF, SVG o ICO
+Titulo de Radio
+Todas las Contraseñas
+Todas las Fuentes de Streaming
+Todas las Listas
+Todas las listas
+Todas las radios detenidas
+Todos los AutoDJs detenidos
+Todos los Endpoints
+Todos los Usuarios (3)
+Todos los campos obligatorios deben ser completados (nombre radio, usuario, paquete)
+Todos los campos son requeridos
+Todos los enlaces de streaming están disponibles con SSL (HTTPS) para máxima compatibilidad con navegadores y aplicaciones móviles.
+Token CSRF invalido. Recarga la pagina.
+Token de seguridad inválido
+Top 50 Radios
+Top 50 Radios - CastPanel
+Total
+Total Archivos
+Total Enviado (TX)
+Total Recibido (RX)
+Total Streams
+Total desde inicio del servidor
+Traduzca los valores del array
+Transmision Personalizada
+Transmision en Vivo Facebook
+Transmision en Vivo Facebook - CastPanel
+Transmision en Vivo Instagram
+Transmision en Vivo TikTok
+Transmision en Vivo Youtube
+Transmisión detenida.
+Transmisión en Vivo Facebook
+Transmisión en Vivo Facebook - CastPanel
+Transmisión en Vivo Instagram
+Transmisión en Vivo Instagram - CastPanel
+Transmisión en Vivo TikTok
+Transmisión en Vivo TikTok - CastPanel
+Transmisión en Vivo YouTube
+Transmisión en Vivo Youtube
+Transmisión en Vivo Youtube - CastPanel
+Transmisión iniciada correctamente.
+Transmitiendo
+Tu Reproductor Público
+Tu cuenta ha sido reactivada
+Tu cuenta ha sido suspendida
+Tu cuenta no tiene permiso para iniciar sesión
+Tu stream es compatible con cualquier reproductor que soporte HTTP streaming:
+TuneIn / Radio.net
+Título
+Título de Login
+Título de la canción actual
+Título del Panel
+Título y Colores del Panel
+URL HTTP Directa (Sin SSL)
+URL RTMP requerida
+URL SSL
+URL SSL directa para reproductores HTML5, apps móviles, plugins WordPress y players personalizados. Funciona con HTTPS en el puerto de la estación.
+URL de Inicio de Sesión Panel DJ:
+URL de Reproducción SSL Directa
+URL de la Fuente Externa *
+URL de la Radio
+URL de la carátula del álbum
+URL de streaming HTTPS
+URL del Sistema
+URL del Sitio
+URL del Stream (HTTPS)
+URL del stream de audio externo (Icecast, SHOUTcast, HTTP stream).
+URL directa sin SSL para software de radio como SAM Broadcaster, BUTT, Mixxx, RadioBOSS y otros encoders. Use esta URL con el puerto indicado para transmisión directa.
+URLs de Stream
+URLs de Streaming SSL
+Umbral
+Umbral (Threshold)
+Uptime
+Usa Instagram API o herramientas de terceros para la URL RTMP
+Use la función
+Use las credenciales de su
+Username
+Username, email y contraseña son obligatorios
+Uso de Ancho de Banda
+Uso de Ancho de Banda - CastPanel
+Uso de Disco
+Uso de Disco / HDD
+Uso de Disco / HDD - CastPanel
+Uso por Estación (2)
+Usuario
+Usuario Admin
+Usuario DJ
+Usuario DJ:
+Usuario SMTP
+Usuario actualizado
+Usuario eliminado
+Usuario no encontrado
+Usuario o contraseña incorrectos
+Usuario y contrasena son obligatorios
+Usuario y contraseña son obligatorios
+Usuario y contraseña son obligatorios.
+Usuarios
+VARCHAR(255) NOT NULL DEFAULT '' AFTER `allow_system_change`
+VLC Media Player
+Variables Disponibles
+Vea, edite y administre todas las radios y cuentas existentes en el servidor.
+Ver
+Ver Reproductor
+Verificando...
+Verifique el uso de memoria, CPU, carga y disco del servidor en tiempo real.
+Versión PHP
+Vie
+Vista Previa
+Vista Previa en Tiempo Real
+Vista previa:
+Warning
+Widget HTML Compacto (sin iframe)
+Widget de Reproductor
+Widget de Reproductor - CastPanel
+Widget en Vivo
+Widgets & Players
+Widgets de Players
+WinAmp / AIMP
+XSPF Playlist
+Ya esta retransmitiendo
+Ya estaba corriendo
+Ya existe un DJ con ese nombre de usuario.
+YouTube Live
+Your hosting company and the control panel software company are not responsible in such cases.
+Youtube has copyright strikes for live stream music, your entire youtube channel can be
+Youtube has copyright strikes for live stream music, your entire youtube channel can be banned or limited if your radio plays copyrighted music.
+Zona Default
+__('clave')
+aarch64
+admin@castpanel.com
+al día. Vaya a
+apache2handler
+castpanel-ctl
+como contraseña, especialmente para aplicaciones móviles. En programas de PC solo usa la contraseña y el puerto DJ para conectar.
+con carátula, título, artista, indicador de estado y controles. Perfecto para
+cuenta DJ
+de Firewall completado. Puertos abiertos:
+diario de transmisión en vivo en youtube, no reinicie la transmisión en vivo más de
+dj1
+dj@ejemplo.com
+duplicate skipped
+embeber en tu página web, blog o foro
+en apps móviles.
+en cualquier archivo PHP para mostrar texto traducido.
+en su programa de transmisión. Aunque el sistema use IceCast o SCV2, siempre elige
+en su programa de transmisión. Esta estación opera
+en su programa de transmisión. Los DJs se conectan al puerto Harbor (
+en vivo.
+error desconocido
+erspan0
+estacion no encontrada
+estacion o slug requerido
+estacion requerida
+estacion_id, username, password, password_plain, nombre, email
+eth0
+facebook.com/live/producer → Clave de transmision
+ffmpeg -re -loop 1 -i
+ffmpeg -y -i %s -an -vcodec mjpeg -frames:v 1 %s 2>/dev/null
+ffprobe -v quiet -print_format json -show_format %s 2>/dev/null
+firewall_open 8000-8200/tcp
+foobar2000
+gre0
+gretap0
+history[]
+hostname -I 2>/dev/null
+httpd -t 2>&1
+iTunes / Apple Music
+ip6_vti0
+ip6gre0
+ip6tnl0
+ip_vti0
+last_logins 10
+lista de anuncios
+live.listeners
+live.online
+límite
+n agresiva, medios al frente, punch
+n asignada.
+n creada:
+n del AutoDJ actualizada y servicio reiniciado.
+n eliminada.
+n en Vivo Facebook
+n en Vivo Instagram
+n en Vivo TikTok
+n en Vivo Youtube
+n guardada.
+n ligera, ideal para m
+n no encontrada
+no pueden ser detenidos desde el panel para evitar la pérdida de acceso. Las acciones de servicio se ejecutan a través del daemon
+noreply@example.com
+now_playing.artist
+now_playing.cover
+now_playing.title
+o Shoutcast en la configuración. Puedes usar
+o haz clic para seleccionar
+o la aplicación móvil. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión.
+o para abrir en ventana popup.
+on line
+or limited if your radio plays copyrighted music.
+panel.example.com
+paquete_id es obligatorio
+para transmitir en vivo. Obtenga su clave de transmisión desde
+permite programar una secuencia de playlists que se reproducen automáticamente en el orden y cantidad especificados, dentro de los horarios configurados.
+permite retransmitir una fuente de audio externa. Cuando el relay está activo y dentro del horario programado, la emisora retransmitirá la señal de la URL configurada en lugar del AutoDJ.
+pero Apache aún tiene errores
+phpMyAdmin
+phpMyAdmin - CastPanel
+phpMyAdmin no fue detectado en este servidor.
+página pública de tu radio
+server1.example.com
+service_restart fail2ban
+service_restart sshd
+session opened
+setInterval
+shoutcast stopped
+shoutcast_v2
+sica cl
+sica y jazz
+sin AutoDJ
+sin respuesta
+sit0
+smtp.gmail.com
+song1
+song1.mp3
+song2
+song2.mp3
+ss -tlnp 2>/dev/null
+station not found
+station parameter required
+station required
+station.bitrate
+station.name
+station.slug
+station.stream_url
+stream.example.com
+studio.youtube.com → Transmitir en vivo → Clave
+systemctl is-active
+systemctl is-active fail2ban 2>/dev/null
+test@example.com
+toast-msg toast-
+tu@email.com
+tunl0
+up 35 minutos
+use strict
+user@gmail.com
+username y password son obligatorios
+usuario:contraseña
+utf8mb4_general_ci
+utf8mb4_unicode_ci
+xima fuerza y volumen, sonido de FM comercial
+y active funciones de transmisión en vivo. Mantenga la página de transmisión en vivo Youtube abierta antes de iniciar la transmisión en vivo. Youtube tarda 24 horas para activación. Copie su clave de transmisión en vivo e ingrésela en esta página, suba una imagen de tamaño 1280x720. La transmisión en vivo comenzará después de 30-40 segundos en Youtube.
+y sube spots.
+your account if your radio plays copyrighted music during live stream.
+your account or page if your radio plays copyrighted music during live stream.
+| SHOUTcast:
+© 2024 Mi Empresa
+¿Cómo Transmitir?
+¿Eliminar tu foto de perfil?
+Última Edición
+Última actualización:
+Último Login
+Últimos Inicios de Sesión SSH
+— Abre URL de red
+— Abrir URL
+— Abrir URL del stream
+— Abrir archivo .pls o .m3u
+— Conexión a través de Liquidsoap Harbor (AutoDJ activo). Cada DJ usa sus propias credenciales.
+— Conexión directa al servidor SHOUTcast (sin AutoDJ). En RadioCaster usar siempre protocolo SHOUTcast v1.
+— Contraseña (solo en bienvenida)
+— Dominio del panel
+— Email del usuario
+— Enlace de restablecimiento
+— Enlace directo HTTPS
+— Nombre de la estación
+— Nombre de usuario
+— Nombre del panel
+— URL HTTPS directa
+— URL del stream
+— Usar enlace M3U/PLS
+— los DJs se conectan directamente al servidor de streaming.
+↑ TX:
+↓ RX:
+○ Inactivo
+○ OFFLINE
+● Activo
+● ONLINE
+⚠ La fuente responde pero con estado:
+⚠️ Detiene TODAS las transmisiones
+✅ Copiado
+✅ Señal OK: La fuente responde correctamente.
+✏️ Cambiar
+✗ Error
+❌ No se pudo conectar a la fuente. Verifique la URL.
+📱 Configuración para Móvil (BroadcastMyself, iCast, etc.)
+📻 Configuración para PC (BUTT, SAM, Winamp, etc.)
++ Agregar
++ Crear Lista
++ Crear Nueva Lista de Reproducción
+(dejar vacío para no cambiar)
+(usuario y contraseña)
+(cifrado).
+-- Seleccionar --
+-- Seleccionar Estacion --
+-- Sin lista (Biblioteca general) --
+% del Disco
+< 1 minuto
+Cantidad = número de canciones a reproducir de cada carpeta/lista antes de pasar a la siguiente.
+Mayor Q = banda más angosta
+Mayor número = mayor prioridad sobre otros relays activos.
+Mayor número = mayor prioridad. Las rotaciones con mayor prioridad se ejecutan primero.
+Mayor ratio = más compresión
+Más cercano a 0 = más fuerte
+Transición suave (mayor = más suave)
+Máx. Clientes (0 = ilimitado)
+Máx. Estaciones (0 = ilimitado)
+0 = ilimitado
+Limite 0 significa ilimitado.
+110px de altura
+Reproduciendo Ahora: {x}
+Reproduciendo Ahora:
+Promedios de Carga: {x}
+{n} usado de {n}
+{n} horas de contenido
+{n} lista(s) · {n} canciones sin lista
+{n} de {n}
+Página {n} de {n} · {n} archivos
+Listar/Editar Radios ({n})
+Editar/Listar Paquetes ({n})
+AutoDJs Registrados ({n})
+Detalle de Estaciones ({n})
+Todos los Usuarios ({n})
+Uso por Estación ({n})
+Tablas de la Base de Datos ({n})
+Plantillas de Correo ({n})
+Listas Compartidas ({n})
+Listas de Anuncios ({n})
+Reglas Activas ({n})
+Revendedores Registrados ({n})
+Paquetes de Revendedor ({n})
+Más Popular ({n} oyentes)
+up {n} minutos
+Completado
+Subiendo...
+Error
+Subido ✓
+, Servidor: {x}, Puerto: {n}, Contraseña: (la del DJ)
+. Servidor: {x}, Puerto: {n}. Contraseña: la de cada cuenta DJ. En móvil usar
+, cree un video en vivo y copie la "Clave de transmisión". Pegue la clave en el campo de abajo. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión. Facebook usa
+. Obtenga su clave de transmisión desde la configuración de Instagram Live. Suba una imagen de tamaño 1280x720 que se mostrará durante la transmisión. Instagram usa
+Idioma cambiado a {x}
+claves traducidas

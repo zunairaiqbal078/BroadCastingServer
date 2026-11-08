@@ -1,0 +1,1645 @@
+
+
+
+
+
+
+Google Maps API anahtarı kaydedildi
+
+
+CastPanel API
+API devre dışı
+Aç
+Port aç
+Güvenlik duvarında port aç
+
+Erişim reddedildi
+Bilinmeyen işlem:
+Geçersiz işlem
+İşlemler
+İşlem tanınmadı. Geçerli işlemler: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Geçersiz işlem
+Aktif
+Yayınınızın daha güçlü ve profesyonel kalitede duyulması için işlemciyi etkinleştirin
+AGC'yi etkinleştir
+Kompresörü etkinleştir
+Ekolayzırı etkinleştir
+Limiteri etkinleştir
+Aktif
+Aktif
+Aktif (
+Aktif · Devre dışı
+Mevcut
+Güncelle
+
+Hizmet Yöneticisi
+Hizmet Yöneticisi - CastPanel
+AutoDJ'yi Yönet
+AutoDJ'yi Yönet - CastPanel
+Hesabı Yönet
+Hesabı Yönet — CastPanel DJ
+Listeleri Yönet
+Radyoyu Yönet
+Sunucu ve Hizmetleri Yönet
+Sunucunun SSL sertifikalarını ve alan adlarını yönetin.
+
+SSL Sertifikası Ekle
+Radyo Paketi Ekle
+Bayi Paketi Ekle
+Yayın sesinin son ayarı
+Özel Ayarlar
+Kullanıcının manuel ayarları
+Rastgele
+Depo.
+Depolama
+AutoDJ Depolaması
+Maksimum Depolama
+Depolama:
+Yüksek
+Tizler - Frekans
+Tizler - Kazanç
+Yayın Bant Genişliği
+İstasyon Başına Bant Genişliği
+Oynatıcı arka plan görselinin üzerinde gösterilen animasyon.
+Reklam silindi.
+
+
+
+
+Uyumlu Uygulamalar
+Android/iOS Uygulamaları
+M3U dosyası (masaüstü oynatıcılar için)
+PLS dosyası (Winamp, VLC vb. ile uyumlu)
+Dosya çok büyük
+Dosya çok büyük (sunucu)
+Dosya kısmen yüklendi
+Geçici Dosyalar
+Müzik Dosyaları
+Yayın Dosyaları
+Çeviri dosyaları:
+Mimari
+Dosyalarınızı buraya sürükleyin
+Sanatçı
+Çalan şarkının sanatçısı
+Konu
+Atak
+Ses Yayını
+Ses Yayın Platformu
+Ses Yayın Platformu
+Stereo görüntüyü genişletir
+Yeni hesapları otomatik oluştur
+Ödeme yapılmazsa otomatik askıya al
+İptal edilen hesapları otomatik sonlandır
+Kendinden imzalı
+Otomatik başlat
+Otomatik yenileme:
+
+AutoDJ Durumu:
+AutoDJ durduruldu
+AutoDJ başlatıldı
+Kayıtlı AutoDJ'ler (2)
+Otomasyon
+Henüz kayıtlı dinleyici verisi yok.
+Mevcut BG
+Düşük
+Baslar - Frekans
+Baslar - Kazanç
+Çubuk
+Müşterilerinizin panelindeki kenar çubuğu. PNG 140×40px.
+Ses çubukları
+Veritabanı:
+Panelin ana veritabanı. Veritabanı bağlantı sorunlarında yeniden başlatın.
+Veritabanı:
+Temel
+Müzik Kütüphanesi
+Müzik Kütüphanesi - CastPanel
+Hoş geldiniz
+
+Maksimum Bitrate
+Yayın bitrate'i (kbps)
+Varsayılan Bitrate
+
+Mesajı Temizle
+
+Marka / White Label
+Marka / White-Label
+Marka / White-Label - CastPanel
+White-Label Marka
+Marka güncellendi. Müşterileriniz sayfayı yenilediğinde değişiklikleri görecek.
+DJ Tampon Gecikmesi (sn)
+Ara
+Paket ara...
+Başlık, sanatçı ara...
+Ara...
+Business veya Creator
+CORS Etkin
+KRİTİK
+Her DJ kendi şifresini kullanır (hesap oluşturulurken atanan). Mobilde şu biçimi kullanın
+Kayıt Kalitesi
+Şifreyi Değiştir
+Dili Değiştir
+Dili Değiştir - CastPanel
+Sunucu Adını Değiştir
+Sunucu Adını Değiştir - CastPanel
+Arka plan görselini değiştir
+Kapağı değiştir
+CastPanel'inizin dilini değiştirin.
+Alan
+Kanallar
+İptal
+Şarkılar
+Şarkılar n'ye göre sıralı
+Şarkılar numaraya göre sıralı.
+Şarkılar öneke göre sıralı.
+Çalan Şarkı
+Şarkı güncellendi.
+Şarkı silindi.
+Şarkı taşındı.
+Miktar
+Veriler yükleniyor...
+Geçmiş yükleniyor...
+Yükleniyor...
+Kontrol Merkezi
+DJ Kontrol Merkezi
+DJ Kontrol Merkezi - CastPanel
+Çıkış Yap
+Özel Sertifika
+Sertifika kayıttan kaldırıldı
+
+Yıldızlı gökyüzü
+Yayın anahtarı gerekli
+Temel anahtarlar (ES):
+
+Müşteri
+Müşteri güncellendi
+Müşteri silindi (tüm istasyonlarıyla birlikte)
+Müşteri bulunamadı
+Geçersiz müşteri
+Müşteriler
+
+Codec / Bitrate / Örnekleme Hızı
+Varsayılan Codec
+Dosya kuyruğu
+
+Ana Renk
+Vurgu rengi:
+Kenar çubuğu arka plan rengi
+Metin rengi:
+Kenar Çubuğu Rengi
+Düğmeler ve vurgular için ana renk
+Renkler
+Komut tanınmadı
+Yararlı Komutlar (SSH)
+Bu bağlantıyı dinleyicilerinizle paylaşın. Kapaklar, şarkı geçmişi ve özelleştirilebilir görsel efektlerle herkese açık oynatıcı sayfasıdır.
+Agresif sıkıştırma, öne çıkan orta frekanslar, punch
+Hafif sıkıştırma, klasik müzik ve caz için ideal
+Dinamik Kompresör
+AutoDJ ile
+Gerçek zamanlı bağlantılar
+Liquidsoap yapılandırması oluşturuldu:
+AutoDJ yapılandırması kaydedildi
+Yapılandırma kaydedildi
+CastPanel Yapılandırması
+Genel Yapılandırma
+Genel Yapılandırma - CastPanel
+Google Maps Yapılandırması
+
+Liquidsoap Yapılandırması
+SSL Port Yapılandırması
+SSL Port Yapılandırması - CastPanel
+RadioCaster Yapılandırması
+SMTP Yapılandırması
+SMTP Yapılandırması - CastPanel
+SMTP yapılandırması başarıyla kaydedildi
+API/Faturalama yapılandırması kaydedildi
+Dosya Yapılandırması
+Marka yapılandırması kaydedildi. Değişiklikleri görmek için sayfayı yenileyin.
+SSL alan adı yapılandırması kaydedildi
+SSL port yapılandırması kaydedildi. Değişiklikleri uygulamak için Apache'yi yeniden başlatın.
+Sunucu Yapılandırması
+Site Yapılandırması
+Oynatıcı yapılandırması başarıyla kaydedildi.
+Yapılandırma başarıyla kaydedildi
+Özel yapılandırma kaydedildi. Değişiklikleri uygulamak için istasyon yeniden başlatılacak.
+Özel yapılandırma kaydedildi. AutoDJ etkinleştirildiğinde uygulanacak.
+Sunucu Adı ve Alan Adını Yapılandır
+SMTP / E-postayı Yapılandır
+Apache'de SSL Yapılandır (SSH)
+Bildirimler için e-posta sunucusunu yapılandırın.
+Panelin ve yayın hizmetlerinin genel ayarlarını yapılandırın.
+Dinleyici haritasını görmek için yukarıda bir Google Maps API anahtarı yapılandırın.
+Yeni Şifreyi Onayla:
+Herhangi bir alan adından veya mobil uygulamadan sorgulama
+Mesaj içeriği:
+Şifre
+Yönetici Şifresi
+Radyo Şifresi
+Şifre
+Şifre (user:pass):
+Şifre *
+Mevcut Şifre:
+Yönetici Şifresi
+DJ Şifresi
+DJ Şifresi:
+SMTP Şifresi
+Source / DJ Şifresi
+Source / DJ Şifresi:
+Şifre başarıyla güncellendi
+Bağlantı Şifresi:
+Şifre:
+Otomatik Kazanç Kontrolü (AGC)
+Toplu Radyo Kontrolü
+Çoklu Kontrol
+Çoklu Kontrol - CastPanel
+Hızlı Kontrol
+AutoDJ Kontrolü
+Radyo Kontrolü
+İstediğiniz widget kodunu kopyalayıp web sitenize yapıştırın, ziyaretçileriniz dinleyebilsin
+Kopyala
+Kopyalayın
+
+
+Soldaki formla bir relay oluşturun.
+Soldaki formla bir tane oluşturun.
+Soldaki formla bir rotasyon oluşturun.
+Oluşturuldu
+Müşteri Oluştur
+DJ Hesabı Oluştur
+İstasyon Oluştur
+Liste Oluştur
+Paylaşılan Liste Oluştur
+Yeni Bayi Oluştur
+Paket Oluştur
+Bayi Paketi Oluştur
+İlk Hesabı Oluştur
+Radyo Oluştur
+Relay Oluştur
+Bayi Oluştur
+Rotasyon Oluştur
+Kullanıcı Oluştur
+Yeni Bir Bayi Oluştur
+Bir tane oluştur
+Bir DJ Hesabı Oluştur
+Yeni bir radyo ve müşteri hesabı oluşturun. Müşteriler radyolarını müşteri panelinden yönetebilir.
+Ödeme yapıldığında istasyonu otomatik oluştur ve etkinleştir
+Geçersiz API kimlik bilgileri
+API kimlik bilgileri gerekli
+Geçersiz DJ kimlik bilgileri
+Geçersiz kimlik bilgileri
+Müşterileriniz için hesap ve radyo sınırları içeren bir paket oluşturun.
+API anahtarları oluşturun ve yönetin, faturalama yazılımı için modüller indirin.
+
+
+Crossfade (saniye)
+Kritik
+Hesap
+DJ Hesabı
+DJ hesabı güncellendi.
+DJ hesabı silindi
+DJ hesabı silindi.
+DJ hesabı bulunamadı
+Hesap Yeniden Etkinleştirildi
+Hesap Askıya Alındı
+Hesap silindi
+Hesap tamamen silindi
+Hesap yeniden etkinleştirildi
+Hesap askıya alındı
+Hesap ve İstasyon
+Hesaplar
+DJ Hesapları
+DJ Hesapları - CastPanel
+Maksimum DJ Hesabı
+Kayıtlı DJ Hesapları
+HTML Kodu
+Açılır Pencere Kodu (pencere açan düğme)
+Özel genişlikli kod (ör. 500px)
+Iframe kodu
+Iframe kodu (web sitenize yerleştirmek için)
+Dil nasıl eklenir:
+
+
+DJ Kendi Şifresini Değiştirebilir
+DJ Kendi Şifresini Değiştirebilir:
+DJ, DJ Paneline Giriş Yapabilir
+DJ, DJ Paneline Giriş Yapabilir:
+DJ AutoDJ'yi Başlatıp Durdurabilir
+DJ AutoDJ'yi Başlatıp Durdurabilir:
+DJ Radyoyu Başlatıp Durdurabilir
+DJ Radyoyu Başlatıp Durdurabilir:
+DJ Jingle/ID Çalabilir (Yayında)
+DJ Jingle/ID Çalabilir (Yayında):
+DJ Şarkı Atlayabilir (AutoDJ)
+DJ Şarkı Atlayabilir (AutoDJ):
+DJ Profil Fotoğrafı Yükleyebilir
+DJ Profil Fotoğrafı Yükleyebilir:
+DJ Müzik Yayınlayabilir
+DJ Müzik Yayınlayabilir:
+DJ Voice Pro Kullanabilir (Yayında)
+DJ Voice Pro Kullanabilir (Yayında):
+
+Aktif DJ'ler
+
+Veriler her istekte canlı bilgilerle güncellenir
+
+Reklam bloklarının kaç şarkıda bir ekleneceğini belirler. Farklı sıklık ve saatlerle birden fazla kural oluşturabilirsiniz.
+Devre dışı
+Devre dışı bırak
+Bağlantı kesik
+Açıklama
+İsteğe bağlı açıklama
+Bulanıklık (blur):
+Devre dışı
+Devre dışı
+İstasyon Ayrıntıları (2)
+Durdur
+AutoDJ'yi Durdur
+Radyoyu Durdur
+Tüm Radyoları Durdur
+Tüm AutoDJ'leri Durdur
+Düzenlemeden önce relay'i durdurun
+Tüm Liquidsoap konteynerlerini durdurur
+
+Dizin
+Medya Dizini
+Ana Dizinler
+Devre dışı
+Disk
+Toplam Disk
+Kullanılabilir
+Sunucu Türüne Göre Dağılım
+
+
+
+Alan Belgeleri
+Paz
+Alan adı
+SSL Alan Adı
+Ana SSL Alan Adı
+Panel Alan Adı
+Panel Alan Adı (SSL_DOMAIN)
+Panel ve yayın URL'leri için kullanılan alan adı
+Alan Adları / SSL Sertifikaları
+Alan Adları / SSL Sertifikaları - CastPanel
+Yüklemek için görsel dosyasını buraya bırakın veya tıklayın.
+Süre
+Toplam Süre
+Toplam süre:
+Aktif Günler
+Haftanın Günleri
+
+
+
+Ekolayzır
+3 Bantlı Ekolayzır
+Düzenle
+Şarkıyı Düzenle
+Müşteriyi Düzenle
+DJ Hesabını Düzenle
+DJ'yi Düzenle:
+İstasyonu Düzenle
+Paketi Düzenle
+Radyo Paketini Düzenle
+Bayi Paketlerini Düzenle
+Bayi Paketlerini Düzenle - CastPanel
+Relay'i Düzenle
+Bayiyi Düzenle
+Rotasyonu Düzenle
+Kullanıcıyı Düzenle
+Radyoları Düzenle/Güncelle
+Paketleri Düzenle/Listele
+Paketleri Düzenle/Listele (4)
+Paketleri Düzenle/Listele - CastPanel
+Arka Plan Görsel Efekti
+Ör: Yılbaşı Müzikleri
+Ör: Sabah Müzikleri
+Ör: Ulusal Radyo FM
+Ör: Ticari Spotlar
+Ör: Günün Hitleri
+Let's Encrypt sertifikalarını yönetmek için sunucuda SSH ile çalıştırın:
+Örnek
+Entegrasyon Örneği (JavaScript)
+Bu
+İstasyon başına bant genişliği, mevcut dinleyici × bitrate'e dayalı bir tahmindir. Ağ arayüzü verileri sunucunun son yeniden başlatılmasından bu yana birikmiştir.
+Dosya 2MB'ı geçmemelidir
+Dosya 3MB'tan büyük olamaz
+Panele erişilen ana alan adı
+Dil otomatik olarak görünecek
+Kullanıcı adı zaten mevcut
+Paket adı zorunludur
+Ad zorunludur
+Ad zorunludur.
+Ses işlemcisi hem AutoDJ modunda hem de bir DJ canlı yayındayken çalışır. Değişiklikler kaydedilirken yeni yapılandırmayı uygulamak için istasyon kısa süreliğine yeniden başlatılır. İşlemci profesyonel bir zincir kullanır: AGC → Kompresör → Ekolayzır → Limiter → Çıkış Kazancı.
+Ses işlemcisi, profesyonel sıkıştırma, ekolayzır ve limiter ile yayın kalitenizi artırır. İçerik tarzınıza uyan bir preset seçin.
+Kullanıcı adı veya e-posta zaten mevcut
+Kullanıcı zaten mevcut
+Sil
+Seçilenleri Sil
+Hizmet iptal edildiğinde istasyonu sil
+
+Yönetici E-postası
+Gönderen E-postası (From)
+Hedef E-posta
+Geçersiz e-posta
+
+Yayın Aktif
+Bugün çalınan:
+Şirket
+
+Tüm istasyonlarda
+Canlı
+
+Şifreleme
+
+API Uç Noktası:
+Geliştiriciler için JSON uç noktası. Canlı meta verileri döndürür: çalan şarkı, dinleyiciler, sunucu durumu. Entegrasyonlar ve özel uygulamalar için kullanışlıdır.
+Herkese açık uç nokta · Kimlik doğrulama gerekmez · JSON · CORS etkin
+
+
+JSON API Bağlantısı
+M3U Bağlantısı (oynatıcılar için)
+PLS Bağlantısı (WinAmp, VLC vb. için)
+XSPF Bağlantısı
+Doğrudan bağlantı (sosyal ağlarda, web'de vb. paylaşmak için)
+Doğrudan Yayın Bağlantıları
+SSL Bağlantıları/Oynat
+SSL Yayın Bağlantıları
+SSL Yayın Bağlantıları - CastPanel
+Stereo Genişletme
+Facebook Anahtarını Girin
+Instagram Anahtarını Girin
+TikTok Anahtarını Girin
+Youtube Anahtarını Girin
+Gönderilen (TX)
+Test E-postası Gönder
+Test Gönder
+Veritabanı hatası:
+Güncelleme hatası:
+Preset uygulanırken hata oluştu.
+Test e-postası gönderilirken hata oluştu. SMTP yapılandırmasını kontrol edin.
+Dosya kaydedilirken hata oluştu
+Yapılandırma kaydedilirken hata oluştu.
+Yapılandırma kaydedilirken hata oluştu:
+Kaydetme hatası:
+Başlatma hatası
+Dosya taşınırken hata oluştu
+Yapılandırma alınırken hata oluştu:
+Yeniden başlatma hatası
+Proxy kuralları senkronize edilirken hata oluştu. /etc/httpd/shoutcast-proxy-rules.inc dosyasının izinlerini kontrol edin
+Yükleme hatası
+Dosya yüklenirken hata oluştu (kod:
+Fotoğraf yüklenirken hata oluştu
+Veritabanı hatası:
+Bağlantı hatası
+Yükleme hatası
+Yükleme hatası:
+Bilinmeyen hata
+Radyo oluşturulurken bilinmeyen hata
+İşlem hatası:
+İşlem hatası:
+Yükleme başarısız
+Güvenlik duvarı yeniden başlatılırken hata:
+DJ'lerin panele girdiklerinde görecekleri mesajı buraya yazın...
+Boş Alan
+
+Günlük Tahmin
+İstasyon
+İstasyon Oluşturuldu
+İstasyon durduruldu
+İstasyon silindi ve kaldırıldı
+İstasyon başlatıldı
+
+İstasyon yeniden etkinleştirildi
+İstasyon yeniden başlatıldı
+İstasyon askıya alındı
+İstasyon:
+İstasyonlar
+Aktif İstasyonlar
+Atanan İstasyonlar
+Çevrimdışı İstasyonlar
+Çevrimiçi İstasyonlar
+Toplam İstasyon
+Paylaşılan listeye atanan istasyonlar
+Müşteri İstasyonları
+Müşteri İstasyonları - CastPanel
+İstasyon
+İstasyon Oluşturuldu
+İstasyon güncellendi
+İstasyon silindi
+
+İstasyon yayın yapmıyor
+Durum
+Radyo Durumu
+Durum güncellendi
+Hesap Durumu
+Radyo Durumu
+Radyo Durumu:
+Hizmet Durumu
+Radyo Durumu
+Sunucu Durumu
+Sunucu Durumu - CastPanel
+Canlı Sunucu Durumu
+
+İstatistikler
+İstatistikler - CastPanel
+Canlı İstatistikler
+Canlı İstatistikler - CastPanel
+Tam istatistikler
+Radyo İstatistikleri
+Radyo İstatistikleri - CastPanel
+Canlı İstatistikler
+Hızlı istatistikler (dinleyiciler, durum, başlık)
+İstatistikler ve Hesap
+Bu KRİTİK bir hizmettir.
+Bu mesaj DJ'lere panellerine giriş yaptıklarında gösterilir. Talimatlar, programlar, kurallar veya önemli bilgiler içerebilir. Biçimlendirme için temel HTML desteklenir.
+Bu şunu çalıştıracak:
+Yıldızlar
+Standart
+Stereo
+İzin Verilen Uzantılar
+Yüklü uzantılar
+
+
+
+
+Radyonuz canlı yayın sırasında telif hakkıyla korunan müzik çalarsa Facebook hesabınızı veya sayfanızı kısıtlayabilir.
+
+Faturalama ve API
+Faturalama ve API - CastPanel
+Faturalama ve Otomasyon (API)
+
+
+
+Tarih
+Tek Tarih
+Sorgu tarihi/saati ISO 8601
+Satırlar
+
+
+Sunucu güvenlik duvarı. Port erişim sorunlarında yeniden başlatın.
+Güvenlik duvarı yeniden yüklendi
+Güvenlik duvarı yeniden başlatıldı. Açık portlar:
+
+Geçersiz arka plan görseli biçimi. JPG, PNG, WebP veya GIF kullanın.
+Geçersiz kapak biçimi. JPG, PNG veya WebP kullanın.
+Geçersiz biçim
+Biçimler: MP3, OGG, AAC, M4A, WAV, FLAC — Dosya başına en fazla 50 MB
+Fotoğraf başarıyla güncellendi
+Profil Fotoğrafı
+Profil fotoğrafı güncellendi
+Fotoğraf silindi
+
+
+Kaynak
+Son Kazanç
+Maks Kazanç
+Min Kazanç
+Çıkış Kazancı ve Ekstralar
+Telafi kazancı
+Yeni Anahtar Oluştur
+Tür
+Konumu belirlenen
+İstasyonları Yönet
+İstasyonları Yönet - CastPanel
+Kullanıcıları Yönet
+Kullanıcıları Yönet - CastPanel
+Reklam Yönetimi
+Reklam Yönetimi - CastPanel
+AutoDJ Yönetimi
+Google Maps API Anahtarı
+Hareketli yağmur damlaları
+DJ Kaydı:
+DJ'yi Kaydet
+Kaydet
+Değişiklikleri Kaydet
+AutoDJ Değişikliklerini Kaydet
+Yapılandırmayı Kaydet
+Özel Yapılandırmayı Kaydet
+Dili Kaydet
+Anahtarı Kaydet
+Mesajı Kaydet
+Tüm Yapılandırmayı Kaydet
+
+Etkin
+REST API'yi Etkinleştir
+SMTP e-posta gönderimini etkinleştir
+Geçmiş
+Şarkı Geçmişi
+Son şarkıların geçmişi
+Bitiş Saati
+Başlangıç Saati
+Sunucu Saati
+
+Liquidsoap Sunucusu
+
+
+Mevcut Sunucu Adı
+Sunucu Adı
+Geçersiz sunucu adı: yalnızca harf, rakam, tire ve nokta.
+Sunucu adı değiştirilemedi:
+Geçersiz istasyon kimliği
+Geçersiz kimlik
+Kimlik gerekli
+Yayın Bağlantı IP'si:
+Bağlantı IP'si:
+Radyo IP'si
+Sunucu IP'si
+Yetkisiz IP
+Benzersiz IP'ler
+
+
+
+
+
+
+
+Tarayıcı sekmesi simgesi. Önerilen: 32×32px veya 64×64px, ICO veya PNG.
+Müşterileriniz için tarayıcı simgesi. ICO/PNG 32×32px.
+Benzersiz istasyon tanımlayıcısı
+Aktif dil:
+Panel Dili
+Arka Plan Görseli
+Arka plan görseli silindi.
+Görsel silindi.
+Görsel çok büyük (en fazla 5MB)
+Şarkının kendi kapağı yoksa kapak olarak gösterilen görsel. Önerilen: 500x500px, kare.
+Tüm oynatıcının arka planı olarak gösterilen görsel. Önerilen: 1920x1080px veya daha büyük.
+Görsel başarıyla yüklendi.
+Pasif
+Pasif · Devre dışı
+Bilgi sorgulandı
+Radyo Bilgisi
+Sunucu Bilgisi
+Teknik Bilgiler
+İstasyon ve çalan şarkı hakkında tam bilgi
+Hesap Bilgileri
+DJ Bilgileri
+Sunucu Bilgileri
+Sunucu Bilgileri - CastPanel
+Sosyal bilgiler güncellendi
+Bilgi:
+Uyumlu herhangi bir sunucunun RTMP URL'sini girin
+Ad Girin
+Kullanıcı Adı Girin
+Önce yayın anahtarını girin.
+Şifrenizi girin
+Kullanıcı adınızı girin
+Kullanıcı adı ve şifre girin
+Durdurulmuş radyoları başlatır
+Başlat
+AutoDJ'yi Başlat
+Radyoyu Başlat
+Giriş Yap
+Giriş Yap - CastPanel
+Kullanıcı Olarak Giriş Yap
+Kullanıcıya Giriş Yap
+Giriş Yap
+Tüm Radyoları Başlat
+Ana Sayfa
+Tüm radyoların başlatılması tamamlandı
+Ana Sayfa — CastPanel DJ
+
+
+
+Radyonuz canlı yayın sırasında telif hakkıyla korunan müzik çalarsa Instagram hesabınızı kısıtlayabilir.
+
+Manuel kurulum (AlmaLinux 8):
+Kurulu (aktif)
+Entegrasyonlar ve API
+Ağ Arayüzleri
+Arayüz
+
+JPG, PNG veya WebP - Kare 500x500
+JPG, PNG, WebP veya animasyonlu GIF
+Standart JSON
+
+Ahmet Yılmaz
+Per
+
+
+Bu
+Mevcut şifre yanlış
+Şifre en az 6 karakter olmalıdır
+Facebook canlı yayın özelliği radyonuzun müziğini Facebook Live'a yayınlar. Şuraya gidin:
+Facebook canlı yayın özelliği radyonuzun müziğini Facebook Live'a yayınlar. Facebook Live Producer'a gidin, canlı bir video oluşturun ve "Yayın anahtarı"nı kopyalayın. Anahtarı aşağıdaki alana yapıştırın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin. Facebook RTMPS (şifreli) kullanır.
+Instagram canlı yayın özelliği radyonuzun müziğini Instagram Live'a yayınlar. Gereken hesap türü:
+Instagram canlı yayın özelliği radyonuzun müziğini Instagram Live'a yayınlar. Business veya Creator hesabı gerekir. Yayın anahtarınızı Instagram Live ayarlarından alın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin. Instagram RTMPS (şifreli) kullanır.
+TikTok canlı yayın özelliği radyonuzun müziğini TikTok Live'a yayınlar. En az şu kadar gerekir:
+TikTok canlı yayın özelliği radyonuzun müziğini TikTok Live'a yayınlar. Canlı yayın için en az 1.000 takipçi gerekir. Yayın anahtarınızı TikTok Live Studio'dan veya mobil uygulamadan alın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin.
+Youtube canlı yayın özelliği radyonuzun müziğini Youtube Live'a yayınlar. Şöyle bir
+Etkinse kayıt otomatiktir. Canlı DJ şovlarının kaydını etkinleştirmek/devre dışı bırakmak için istasyon yapılandırmasını kullanın. Dosyalar mevcut barındırma alanınızı kullanır.
+Şifreler eşleşmiyor
+Çalma listeleri kullanıcı panelinden yönetilir. Erişmek için "Kullanıcıya Giriş Yap" seçeneğini kullanın.
+Let's Encrypt (Ücretsiz)
+Tepe Sınırlayıcı
+Dinleyici Sınırı
+
+Liquidsoap gerekli değil (AutoDJ devre dışı)
+Liquidsoap atlandı (AutoDJ devre dışı)
+Liste
+Programlı Liste
+Paylaşılan liste silindi
+Hedef Çalma Listesi
+Reklam listesi silindi.
+Reklam listesi belirtilmedi
+Çalma listesi
+Hedef liste
+Liste silindi. Şarkılar atanmış bir liste olmadan kaldı.
+Liste yeniden adlandırıldı.
+Radyoları Listele / Düzenle
+AutoDJ'leri Listele
+AutoDJ'leri Listele - CastPanel
+DJ Şovlarını Listele/İndir
+DJ Hesaplarını Listele/Düzenle
+Radyoları Listele/Düzenle (2)
+Bayileri Listele/Düzenle
+Bayileri Listele/Düzenle - CastPanel
+Listeler
+Aktif Listeler
+Paylaşılan Listeler
+Paylaşılan Listeler (0)
+Reklam Listeleri (0)
+Çalma Listeleri
+Çalma Listeleri
+Çalma Listeleri - CastPanel
+Paylaşılan Çalma Listeleri
+Paylaşılan Çalma Listeleri - CastPanel
+
+Yağmur
+
+Giriş Logosu
+Oynatıcı Logosu
+Kenar Çubuğu Logosu
+Logo silindi. Varsayılan CastPanel logosu geri yüklenecek.
+Logo silindi. Panelin varsayılan logosu kullanılacak.
+Herkese açık radyo oynatıcısı için logo. Önerilen: 200×200px, PNG.
+Panel kenar çubuğundaki küçük logo. Önerilen: 140×40px, şeffaf PNG.
+Logo başarıyla yüklendi.
+Logolar ve Favicon
+Sistem Kayıtları
+Kayıtlara web panelinden erişilemez. Son SSH erişimlerini görmek için terminalde çalıştırın: last -n 10
+DJ'ler protokolü seçmelidir
+DJ'ler her zaman protokolü seçmelidir
+İşlemci ayarları veritabanına kaydedilir. İşlemeyi gerçek zamanlı uygulamak için bu istasyonun paketinde AutoDJ'yi etkinleştirin. Etkinleştirildiğinde Liquidsoap işleme zincirini otomatik olarak uygular. İşlemci profesyonel bir zincir kullanır: AGC → Kompresör → Ekolayzır → Limiter → Çıkış Kazancı.
+Şu şekilde işaretlenen hizmetler
+Simgeler herkese açık oynatıcıda gösterilecek. Gizlemek için boş bırakın.
+Pzt
+Radyo Sınırları
+
+
+Telafi Kazancı
+Dinleyici Haritası
+Sal
+Maks Bitrate
+İstasyon başına en fazla 10 relay
+
+Medya (Müzik)
+Ortalar - Frekans
+Ortalar - Kazanç
+Ortalar - Q Faktörü
+DJ Paneli Mesajı
+DJ Paneli Mesajı - CastPanel
+Mesaj başarıyla güncellendi.
+DJ Paneli mesajı güncellendi
+DJ Paneli için mesaj
+Yönteme izin verilmiyor
+Markam
+Markam - CastPanel
+Müşterilerim
+Müşterilerim - CastPanel
+Çar
+Bakım Modu
+Çalma Modu
+Başlıkları Göster
+Ekolayzır çubuklarını göster
+Dinleyici sayısını göster
+Şarkı geçmişini göster
+AutoDJ (Liquidsoap) için konteyner motoru. AutoDJ'ler çalışmıyorsa yeniden başlatın.
+Motor:
+
+
+
+Bağlama Noktası
+
+Taşı
+Listeye Taşı
+En Popüler (0 dinleyici)
+Maks. İzin Verilen
+Bir Radyoda Maks.
+Maksimum güç ve ses, ticari FM sesi
+İzin Verilen Maksimum
+Son 24 saatteki maksimum
+Aylık maksimum
+Haftalık maksimum
+Yöntem
+Yönteme izin verilmiyor
+Müzik
+Web Tarayıcıları
+Maps JavaScript API etkin bir Google Maps API anahtarına ihtiyacınız var.
+Kar
+Hiçbiri
+Hiçbiri
+Hedef Seviye
+Sıkıştırmanın başladığı seviye
+Sınırlamadan önce izin verilen maksimum seviye
+Hayır
+Kimlik doğrulanmadı
+Bu istasyon için yetkili değil
+Yapılandırılmadı
+O kişiye tamamen güvenmiyorsanız tüm izinlere sahip bir DJ hesabı oluşturmayın.
+Kullanılamıyor
+Bulunamadı
+Kütüphanede şarkı yok.
+Oluşturulmuş DJ hesabı yok.
+Paylaşılan liste yok
+Oluşturulmuş liste yok. Yukarıdaki formla bir tane oluşturun.
+Reklam listesi yok.
+Oluşturulmuş paket yok
+Ek açık port yok (yalnızca varsayılan hizmetler)
+Kullanılabilir telnet portu yok
+Henüz yayın kaydı yok.
+Yapılandırılmış reklam kuralı yok.
+Yapılandırılmış relay yok.
+Kayıtlı bayi yok
+Yapılandırılmış rotasyon yok.
+Bu istasyon için kaydedilmiş şov yok.
+Kurulu değil
+Kendi hesabınızı devre dışı bırakamazsınız
+Kendi hesabınızı silemezsiniz
+Gerekli değil (SHOUTcast protokolü)
+Geçerli ses dosyası bulunamadı
+Yayın anahtarı yapılandırılmamış
+SHOUTcast sunucusuna bağlanılamadı
+AutoDJ durdurulamadı
+Radyo durdurulamadı
+IPC komutu yazılamadı
+Dosya kaydedilemedi
+Liquidsoap başlatılamadı:
+AutoDJ başlatılamadı
+FFmpeg işlemi başlatılamadı
+Radyo başlatılamadı
+Silinemiyor: bayinin aktif istasyonlu müşterileri var
+Silinemiyor: bu paketi kullanan istasyonlar var
+Silinemiyor: bu paketi kullanan bayiler var
+Dosya alınmadı
+Dosya alınmadı
+Dosya alınmadı
+Bu istasyon için izniniz yok
+Size atanmış bir istasyon yok. Yöneticiyle iletişime geçin.
+
+Ad
+Tam Ad
+Tam Ad:
+İstasyon Adı
+
+Kullanıcı Adı *
+Liste Adı
+Rotasyon Adı *
+İstasyon adı
+Relay Adı *
+Gönderen Adı
+Site Adı
+Kenar çubuğunda ve tarayıcı başlığında görünen ad
+Ad gerekli
+Ad gerekli.
+Ad ve URL zorunludur.
+Ad ve slug zorunludur
+Normal (Sıralı)
+Not:
+Haber / Konuşma
+İstasyon kimliğine göre Şimdi Çalıyor
+Yeni API anahtarı oluşturuldu:
+Yeni Şifre (korumak için boş bırakın)
+Yeni Şifre:
+Yeni DJ Hesabı
+Yeni İstasyon
+Yeni Reklam Listesi
+Yeni Reklam Kuralı
+Yeni Rotasyon
+Yeni
+Yeni Müşteri
+Yeni Relay
+Yeni Kullanıcı
+
+
+Anahtar Al
+
+Okyanus dalgaları
+Dalgalar
+
+Şu An Çevrimiçi
+Yalnızca .jpg veya .png! En fazla 3MB.
+Oynatıcı Seçenekleri
+Konuşma için optimize, maks netlik
+Konuşma için optimize, maksimum netlik
+Kaplama koyuluğu:
+Dinleyiciler
+Dinleyiciler (Google Maps)
+Aktif Dinleyiciler
+Şu Anki Dinleyiciler
+Bağlı Dinleyiciler
+Maksimum Dinleyici
+Toplam Dinleyici
+Şu An Toplam Dinleyici
+Mevcut dinleyiciler
+Şu anda bağlı dinleyiciler
+Radyo Dinleyici Grafiği (Canlı)
+Haritadaki Dinleyiciler
+Haritadaki Dinleyiciler - CastPanel
+Son 24 Saatteki Dinleyiciler
+
+
+
+Radyo Sayfası
+Ana Panel
+Bayi Paneli
+Bayi Paneli - CastPanel
+Yönetim Paneli
+Yönetim Paneli - CastPanel
+Kontrol Paneli
+Kontrol Paneli - CastPanel
+Paket
+Paket güncellendi
+Paket silindi
+Paket bulunamadı
+Paket bulunamadı veya pasif
+Paketler
+Bayi Paketleri (0)
+Paketler listelendi
+Gelişmiş ayarlar (AGC, Kompresör, EQ, Limiter) için istasyon yöneticisiyle iletişime geçin.
+
+Toplam Tepe
+Yayın anahtarınızı buraya yapıştırın...
+Beklemede
+İzinler
+DJ İzinleri (Dikkatli Olun)
+Panelinizin logosunu, adını ve renklerini özelleştirin.
+Panelinizin logolarını, başlıklarını ve faviconlarını özelleştirin. Yüklenen görseller varsayılan değerlerin yerini alır. Bir görseli silmek varsayılan CastPanel logosunu geri yükler. Bayiler kendi panellerinden müşterileri için kendi markalarını ayarlayabilir.
+Özel
+Oynatıcıyı Özelleştir
+Oynatıcıyı Özelleştir - CastPanel
+
+24 Saatlik Tepe
+24s Tepe
+30 Günlük Tepe
+7 Günlük Tepe
+Özel alt bilgi
+Parçalar
+Şablon başarıyla güncellendi
+E-posta Şablonları
+E-posta Şablonları (6)
+E-posta Şablonları - CastPanel
+Varsayılan şablonlar oluşturuldu
+Geçersiz platform
+Çalma listesi
+'General' çalma listesi oluşturuldu
+Aktif Çalma Listesi
+Çalma Listesi Aralıkları
+Çalma Listeleri
+Kapak silindi.
+Varsayılan Kapak
+DJ Portalı
+
+Postfix (Posta)
+Postfix Posta Sunucusu
+Postfix posta sunucusu. E-postalar gönderilmiyorsa yeniden başlatın.
+Güçlü
+Dikkat:
+
+Preset "
+Geçersiz preset
+Hızlı Presetler
+Önizleme
+Önce bir tane oluşturun:
+Önce bir tane oluşturun:
+Öncelik
+Test Et
+Sinyali Test Et
+İşlemci
+İşlemci Etkin
+İşlemci Aktif
+İşlemci Devre Dışı
+Ses İşlemcisi
+Ses İşlemcisi - CastPanel
+Genel radyo için dengeli işleme
+Program
+Reklam programı oluşturuldu.
+Program silindi.
+Reklam Programla
+Reklam Programla - CastPanel
+
+
+Sahip
+Protokol
+
+SHOUTcast v1 protokolü — Liquidsoap Harbor üzerinden bağlantı (AutoDJ aktif). Her DJ kendi kimlik bilgilerini kullanır.
+SHOUTcast v1 protokolü — SHOUTcast sunucusuna doğrudan bağlantı (AutoDJ yok). RadioCaster'da her zaman SHOUTcast v1 protokolünü kullanın.
+Protokol:
+CastPanel E-posta TestiBu e-postayı alıyorsanız SMTP yapılandırması doğru çalışıyor.
+Port
+DJ Portu
+HTTP Portu
+HTTPS Portu
+
+SSL Portu
+Yönetici SSL Portu
+Yayın SSL Portu
+Panel SSL Portu (HTTPS)
+Telnet Portu
+DJ Bağlantı Portu:
+Bağlantı Portu:
+Yayın Portu
+Radyo Portu
+Yönetim portu (varsayılan: 2087)
+Standart HTTPS portu (varsayılan: 443)
+Port atanmadı
+Güvenli yayınlar için port (varsayılan: 8443)
+Port:
+Açık Portlar
+SSL Portları
+Bağlama Noktası
+Bağlama Noktası (Mount)
+Bağlama Noktası (Mount):
+Sayfa 1 / 1 · 0 dosya
+Sayfa 1 / 1 · 2 dosya
+Müşterilerinizin giriş sayfası. PNG 200×60px.
+Herkese açık ve ücretsiz. API anahtarına veya token'a gerek yok
+Radyo başarıyla durduruldu
+Radyo başarıyla başlatıldı
+
+RadioCaster: Protokol
+RadioCaster: Icecast protokolü, Sunucu:
+RadioCaster: SHOUTcast v1 protokolü, Sunucu:
+RadioCaster: Protokol seçin
+RadioCaster: SHOUTcast v1 protokolünü seçin. Sunucu:
+Radyolar ve Hesaplar
+Sıralama — Dinleyiciye Göre İlk 50 Radyo
+
+Yeniden Etkinleştirme
+Yeniden Etkinleştir
+Fail2ban dahil SSH hizmetini tamamen yeniden başlatır. Çok sayıda engellenmiş erişim denemesi veya kalıcı bağlantı sorunları olduğunda kullanışlıdır.
+Güvenlik Duvarını Yeniden Yükle
+Alınan (RX)
+Ağ
+Sosyal Ağlar
+Hoş Geldin E-postasını Yeniden Gönder
+Yenile
+Apache proxy kurallarını yeniden oluştur
+Sertifikayı Kaydet
+Kayıt
+Herkese Açık Kayıt Etkin
+Aktif Kurallar (0)
+
+Her aktif istasyonun yayın hizmetini yeniden başlatır
+Tüm Liquidsoap konteynerlerini yeniden başlatır
+Yeniden Başlat
+AutoDJ'yi Yeniden Başlat
+Fail2ban'i Yeniden Başlat (geçici yasakları temizler)
+Radyoyu Yeniden Başlat
+Hizmetleri Yeniden Başlat
+Hizmetleri Yeniden Başlat - CastPanel
+Tüm Radyoları Yeniden Başlat
+Tüm AutoDJ'leri Yeniden Başlat
+SSHD hizmetini yeniden başlat
+Kritik hizmetleri yeniden başlatmak geçici kesintilere neden olabilir. Kritik olarak işaretlenen hizmetler yeniden başlatılırsa paneli ve/veya yayını etkiler.
+Sunucunun yayın hizmetlerini yeniden başlatın.
+Tüm radyoların yeniden başlatılması tamamlandı
+Tüm AutoDJ'lerin yeniden başlatılması tamamlandı
+
+Relay Yönlendirme
+Relay Yönlendirme - CastPanel
+Relay güncellendi.
+Relay silindi.
+Yapılandırılmış Relay'ler
+
+Şimdi Çalıyor: Bilgi yok
+Şimdi Çalıyor:
+Oynat
+Kompakt Oynatıcı (iframe)
+Tam Sayfa Oynatıcı (Görsel Efektli)
+Herkese Açık Oynatıcı
+Iframe gerektirmeyen bağımsız oynatıcı. Kodu kopyalayıp HTML'nize yapıştırmanız yeterli.
+Kompakt oynatıcı:
+Arka plan animasyonları, kapak, şarkı geçmişi ve gelişmiş kontrollere sahip profesyonel tam sayfa oynatıcı. İdeal kullanım:
+Müşterilerinizin radyoları için herkese açık oynatıcı. PNG 200×200px.
+
+
+JSON Yanıtı
+Yapılandırılmış ve belgelenmiş JSON yanıtı
+Geçersiz JSON yanıtı
+Şifreyi Sıfırla
+Şifreyi Sıfırla
+Şifrenizi sıfırlayın
+Tam SSH Sıfırlaması
+Sonuçlar
+İçerik Özeti
+Hesap Özeti (Canlı)
+Sunucu Özeti
+Bayi güncellendi
+Bayi silindi
+Bayiler
+Kayıtlı Bayiler (0)
+
+Rol
+Yapılandırılmış Rotasyonlar
+Rotasyon güncellendi.
+Klasör Rotasyonu
+Klasör Rotasyonu - CastPanel
+Rotasyon silindi.
+Yol
+
+
+SHOUTcast ikili dosyası bulunamadı:
+
+
+
+
+SSH Sunucusu
+SSH tamamen yeniden başlatıldı
+SSL Etkin
+SSL Etkin (HTTPS)
+SSL ve Alan Adı
+
+Varsayılan Örnekleme Hızı
+Sunucuda castpanel-ctl ile otomatik uygulanır
+Yeni bir hesap oluşturulduğunda gönderilir
+Yeni bir istasyon kurulduğunda gönderilir
+Bir kullanıcı hesabı yeniden etkinleştirildiğinde gönderilir
+Şifre sıfırlama istendiğinde gönderilir
+Bir kullanıcı hesabı askıya alındığında gönderilir
+Otomatik oluşturulur. Değiştirebilirsiniz.
+Giriş sayfasında gösterilir. Önerilen: 200×60px, şeffaf PNG.
+Çalma Listesi Sırası
+Güvenlik ve Güvenlik Duvarı
+Güvenlik ve Güvenlik Duvarı - CastPanel
+Toplu işlemler için şarkıları onay kutularıyla seçin
+Görsel efekti seçin:
+Ses işlemeyi etkinleştirmek için bir preset seçin
+DJ hesaplarını yönetmek için bir istasyon seçin.
+Bir çalma listesi seçin
+Şarkılarını görmek ve yönetmek için açılır menüden bir çalma listesi seçin.
+Virgülle ayrılmış
+Hizmet
+Liquidsoap hizmeti durduruldu
+Liquidsoap hizmeti başlatıldı (Docker: liquidsoap-
+SHOUTcast hizmeti durduruldu
+SSH uzaktan erişim hizmeti. Uzak bağlantı sorunlarında yeniden başlatın.
+Sistem Hizmetleri
+Sunucu
+Sunucu / Ana bilgisayar
+SMTP Sunucusu
+SSH Sunucusu
+Posta Sunucusu
+
+Panelin web sunucusu. Panel yüklenmiyorsa yeniden başlatın.
+Sunucu:
+
+
+
+
+
+DJ Şovları
+DJ Şovları - CastPanel
+İstasyon yayın yapıyorsa
+Kimlik Doğrulamasız
+AutoDJ olmadan
+Veri yok
+Efekt yok
+Depolama alanı yok
+İstasyon yok
+Seçili istasyon yok
+İstasyon yok.
+Atanmış istasyon yok.
+Bilgi yok
+Liste yok
+Atanmış liste yok
+Özel logo yok
+Adsız
+Paket yok
+AutoDJ için izin yok
+Şifre değiştirme izni yok
+Oluşturma izni yok
+Silme izni yok
+Başlatma/durdurma izni yok
+Okuma izni yok
+Değiştirme izni yok
+Yeniden etkinleştirme izni yok
+Fotoğraf yükleme izni yok
+Askıya alma izni yok
+İzin yok
+İşleme yok, orijinal ses
+Başlıksız
+Sistem
+İşletim Sistemi
+Faturalama Sistemi
+Radyo Sistemi
+Çeviri Sistemi
+
+
+
+Yalnızca JPG, PNG veya WebP
+Yalnızca harf, rakam, tire ve alt çizgi
+Yalnızca JPG veya PNG dosyalarına izin verilir
+
+
+
+
+
+HTTP Yayını (SSL'siz)
+Ana HTTPS Yayını
+Yumuşak
+Önce bir kapak görseli yükleyin
+Reklam Yükle
+Ses Dosyası Yükle
+Müzik Yükle
+Müzik Yükle - CastPanel
+MP3 Müzik Yükle
+Tümünü Yükle
+Arka plan görseli yükle
+Kapak yükle
+Alt başlık
+Askıya Al
+Ödeme başarısız olursa istasyonu otomatik askıya al
+Askıya alınmış
+Askıya Alma
+
+
+Cmt
+Evet
+
+
+
+Tablo
+Tablolar
+Veritabanı Tabloları (29)
+Boyut
+Maks. Yükleme Boyutu (MB)
+Toplam Veritabanı Boyutu
+Zamanlanmış görevler. Cron işleri çalışmıyorsa yeniden başlatın.
+Sonlandır
+Kenar çubuğunda logonun altındaki metin
+Alt Bilgi Metni
+Giriş sayfasındaki düğme veya başlık metni
+Gerçek Zamanlı
+
+
+
+Radyonuz canlı yayın sırasında telif hakkıyla korunan müzik çalarsa TikTok hesabınızı askıya alabilir.
+TikTok → LIVE → Sunucu URL'sini ve anahtarı al
+Daemon yanıtı beklenirken zaman aşımı
+
+Tür
+Sunucu Türü
+Sertifika Türü
+Program Türü
+Liste Türü
+Dosya türüne izin verilmiyor. PNG, JPG, GIF, SVG veya ICO kullanın
+Radyo Başlığı
+Tüm Şifreler
+Tüm Yayın Kaynakları
+Tüm Listeler
+Tüm listeler
+Tüm radyolar durduruldu
+Tüm AutoDJ'ler durduruldu
+Tüm Uç Noktalar
+Tüm Kullanıcılar (3)
+Tüm zorunlu alanlar doldurulmalıdır (radyo adı, kullanıcı, paket)
+Tüm alanlar zorunludur
+Tüm yayın bağlantıları, tarayıcılar ve mobil uygulamalarla maksimum uyumluluk için SSL (HTTPS) ile kullanılabilir.
+Geçersiz CSRF token'ı. Sayfayı yenileyin.
+Geçersiz güvenlik token'ı
+İlk 50 Radyo
+İlk 50 Radyo - CastPanel
+
+Toplam Dosya
+Toplam Gönderilen (TX)
+Toplam Alınan (RX)
+
+Sunucu başlangıcından bu yana toplam
+Dizi değerlerini çevirin
+Özel Yayın
+
+
+Instagram Canlı Yayını
+
+Youtube Canlı Yayını
+Yayın durduruldu.
+
+
+Instagram Canlı Yayını
+Instagram Canlı Yayını - CastPanel
+
+
+YouTube Canlı Yayını
+Youtube Canlı Yayını
+Youtube Canlı Yayını - CastPanel
+Yayın başarıyla başlatıldı.
+Yayında
+Herkese Açık Oynatıcınız
+Hesabınız yeniden etkinleştirildi
+Hesabınız askıya alındı
+Hesabınızın giriş yapma izni yok
+Yayınınız HTTP yayınını destekleyen tüm oynatıcılarla uyumludur:
+
+Başlık
+Giriş Başlığı
+Çalan şarkının başlığı
+Panel Başlığı
+Panel Başlığı ve Renkleri
+Doğrudan HTTP URL'si (SSL'siz)
+RTMP URL'si gerekli
+SSL URL'si
+HTML5 oynatıcılar, mobil uygulamalar, WordPress eklentileri ve özel oynatıcılar için doğrudan SSL URL'si. İstasyon portunda HTTPS ile çalışır.
+DJ Paneli Giriş URL'si:
+Doğrudan SSL Oynatma URL'si
+Harici Kaynak URL'si *
+Radyo URL'si
+Albüm kapağı URL'si
+HTTPS yayın URL'si
+Sistem URL'si
+Site URL'si
+Yayın URL'si (HTTPS)
+Harici ses yayınının URL'si (Icecast, SHOUTcast, HTTP yayını).
+SAM Broadcaster, BUTT, Mixxx, RadioBOSS ve diğer encoder'lar gibi radyo yazılımları için SSL'siz doğrudan URL. Doğrudan yayın için bu URL'yi belirtilen portla kullanın.
+Yayın URL'leri
+SSL Yayın URL'leri
+Eşik
+Eşik (Threshold)
+
+RTMP URL'si için Instagram API'sini veya üçüncü taraf araçları kullanın
+Şu fonksiyonu kullanın:
+Şunun kimlik bilgilerini kullanın:
+
+Kullanıcı adı, e-posta ve şifre zorunludur
+Bant Genişliği Kullanımı
+Bant Genişliği Kullanımı - CastPanel
+Disk Kullanımı
+Disk Kullanımı / HDD
+Disk Kullanımı / HDD - CastPanel
+İstasyon Başına Kullanım (2)
+Kullanıcı
+Yönetici Kullanıcı
+DJ Kullanıcısı
+DJ Kullanıcısı:
+SMTP Kullanıcısı
+Kullanıcı güncellendi
+Kullanıcı silindi
+Kullanıcı bulunamadı
+Kullanıcı adı veya şifre yanlış
+Kullanıcı adı ve şifre zorunludur
+Kullanıcı adı ve şifre zorunludur
+Kullanıcı adı ve şifre zorunludur.
+Kullanıcılar
+
+
+Kullanılabilir Değişkenler
+Sunucudaki tüm radyoları ve hesapları görüntüleyin, düzenleyin ve yönetin.
+Görüntüle
+Oynatıcıyı Görüntüle
+Kontrol ediliyor...
+Sunucunun bellek, CPU, yük ve disk kullanımını gerçek zamanlı kontrol edin.
+PHP Sürümü
+Cum
+Önizleme
+Gerçek Zamanlı Önizleme
+Önizleme:
+
+Kompakt HTML Widget'ı (iframe'siz)
+Oynatıcı Widget'ı
+Oynatıcı Widget'ı - CastPanel
+Canlı Widget
+
+Oynatıcı Widget'ları
+
+
+Zaten yeniden yayınlanıyor
+Zaten çalışıyordu
+Bu kullanıcı adıyla bir DJ zaten mevcut.
+
+Bu gibi durumlarda barındırma şirketiniz ve kontrol paneli yazılım şirketi sorumlu değildir.
+Youtube canlı yayındaki müzikler için telif hakkı ihtarı verir; tüm youtube kanalınız
+Youtube canlı yayındaki müzikler için telif hakkı ihtarı verir; radyonuz telif hakkıyla korunan müzik çalarsa tüm youtube kanalınız yasaklanabilir veya kısıtlanabilir.
+Varsayılan Bölge
+
+
+
+günde. Şuraya gidin:
+
+
+şifre olarak, özellikle mobil uygulamalar için. PC programlarında bağlanmak için yalnızca şifreyi ve DJ portunu kullanın.
+kapak, başlık, sanatçı, durum göstergesi ve kontrollerle. Şunun için ideal:
+DJ hesabı
+güvenlik duvarı tamamlandı. Açık portlar:
+günlük youtube canlı yayın sınırı; canlı yayını şundan fazla yeniden başlatmayın:
+
+
+
+web sitenize, blogunuza veya forumunuza yerleştirmek
+mobil uygulamalarda.
+çevrilmiş metin göstermek için herhangi bir PHP dosyasında.
+yayın programınızda. Sistem IceCast veya SCV2 kullansa bile her zaman şunu seçin:
+yayın programınızda. Bu istasyon şöyle çalışır:
+yayın programınızda. DJ'ler Harbor portuna bağlanır (
+canlı.
+bilinmeyen hata
+
+istasyon bulunamadı
+istasyon veya slug gerekli
+istasyon gerekli
+
+
+facebook.com/live/producer → Yayın anahtarı
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+reklam listesi
+
+
+sınır
+agresif sıkıştırma, öne çıkan orta frekanslar, punch
+atandı.
+oluşturuldu:
+AutoDJ yapılandırması güncellendi ve hizmet yeniden başlatıldı.
+silindi.
+
+Instagram Canlı Yayını
+
+Youtube Canlı Yayını
+kaydedildi.
+hafif sıkıştırma, şunun için ideal:
+bulunamadı
+erişimi kaybetmemek için panelden durdurulamaz. Hizmet işlemleri daemon üzerinden yürütülür:
+
+
+
+
+veya yapılandırmada Shoutcast. Şunu kullanabilirsiniz:
+veya seçmek için tıklayın
+veya mobil uygulamadan. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin.
+veya açılır pencerede açmak için.
+
+veya radyonuz telif hakkıyla korunan müzik çalarsa kısıtlanabilir.
+
+
+canlı yayın için. Yayın anahtarınızı şuradan alın:
+belirtilen sıra ve miktarda, yapılandırılmış saatler içinde otomatik çalan bir çalma listesi dizisi programlamanızı sağlar.
+harici bir ses kaynağını yeniden yayınlamanızı sağlar. Relay aktif ve programlanan saat içindeyken, yayın AutoDJ yerine yapılandırılan URL'nin sinyalini yeniden yayınlar.
+ancak Apache'de hâlâ hatalar var
+
+
+
+radyonuzun herkese açık sayfası
+
+
+
+
+
+
+
+
+
+AutoDJ olmadan
+yanıt yok
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+studio.youtube.com → Canlı yayına geç → Anahtar
+
+
+
+
+siz@email.com
+
+35 dakikadır açık
+
+
+username ve password zorunludur
+kullanıcı:şifre
+
+
+maksimum güç ve ses, ticari FM sesi
+ve canlı yayın özelliklerini etkinleştirin. Canlı yayını başlatmadan önce Youtube canlı yayın sayfasını açık tutun. Youtube'un etkinleştirmesi 24 saat sürer. Canlı yayın anahtarınızı kopyalayıp bu sayfaya girin, 1280x720 boyutunda bir görsel yükleyin. Canlı yayın Youtube'da 30-40 saniye sonra başlar.
+ve spotları yükleyin.
+radyonuz canlı yayın sırasında telif hakkıyla korunan müzik çalarsa hesabınızı.
+radyonuz canlı yayın sırasında telif hakkıyla korunan müzik çalarsa hesabınızı veya sayfanızı.
+
+© 2024 Şirketim
+Nasıl Yayın Yapılır?
+Profil fotoğrafınız silinsin mi?
+Son Düzenleme
+Son güncelleme:
+Son Giriş
+Son SSH Girişleri
+— Ağ URL'si açar
+— URL aç
+— Yayın URL'sini aç
+— .pls veya .m3u dosyası aç
+— Liquidsoap Harbor üzerinden bağlantı (AutoDJ aktif). Her DJ kendi kimlik bilgilerini kullanır.
+— SHOUTcast sunucusuna doğrudan bağlantı (AutoDJ yok). RadioCaster'da her zaman SHOUTcast v1 protokolünü kullanın.
+— Şifre (yalnızca karşılama e-postasında)
+— Panel alan adı
+— Kullanıcının e-postası
+— Sıfırlama bağlantısı
+— Doğrudan HTTPS bağlantısı
+— İstasyon adı
+— Kullanıcı adı
+— Panel adı
+— Doğrudan HTTPS URL'si
+— Yayın URL'si
+— M3U/PLS bağlantısını kullanın
+— DJ'ler doğrudan yayın sunucusuna bağlanır.
+
+
+○ Pasif
+
+● Aktif
+
+⚠ Kaynak yanıt veriyor ancak durumu:
+⚠️ TÜM yayınları durdurur
+✅ Kopyalandı
+✅ Sinyal OK: Kaynak doğru yanıt veriyor.
+✏️ Değiştir
+✗ Hata
+❌ Kaynağa bağlanılamadı. URL'yi kontrol edin.
+📱 Mobil Ayarlar (BroadcastMyself, iCast vb.)
+📻 PC Ayarları (BUTT, SAM, Winamp vb.)
++ Ekle
++ Liste Oluştur
++ Yeni Çalma Listesi Oluştur
+(değiştirmemek için boş bırakın)
+(kullanıcı adı ve şifre)
+(şifreli).
+-- Seçin --
+-- İstasyon Seçin --
+-- Liste yok (Genel kütüphane) --
+Diskin %'si
+< 1 dakika
+Miktar = sonrakine geçmeden önce her klasörden/listeden çalınacak şarkı sayısı.
+Yüksek Q = daha dar bant
+Yüksek sayı = diğer aktif relay'lere göre daha yüksek öncelik.
+Yüksek sayı = daha yüksek öncelik. Önceliği yüksek rotasyonlar önce çalışır.
+Yüksek oran = daha fazla sıkıştırma
+0'a daha yakın = daha güçlü
+Yumuşak geçiş (yüksek = daha yumuşak)
+Maks. Müşteri (0 = sınırsız)
+Maks. İstasyon (0 = sınırsız)
+0 = sınırsız
+0 sınırı sınırsız demektir.
+110px yüksekliğinde
+Şimdi Çalıyor: {x}
+Şimdi Çalıyor:
+Yük Ortalamaları: {x}
+{n} / {n} kullanıldı
+{n} saatlik içerik
+{n} liste · listesiz {n} şarkı
+{n} / {n}
+Sayfa {n} / {n} · {n} dosya
+Radyoları Listele/Düzenle ({n})
+Paketleri Düzenle/Listele ({n})
+Kayıtlı AutoDJ'ler ({n})
+İstasyon Ayrıntıları ({n})
+Tüm Kullanıcılar ({n})
+İstasyon Başına Kullanım ({n})
+Veritabanı Tabloları ({n})
+E-posta Şablonları ({n})
+Paylaşılan Listeler ({n})
+Reklam Listeleri ({n})
+Aktif Kurallar ({n})
+Kayıtlı Bayiler ({n})
+Bayi Paketleri ({n})
+En Popüler ({n} dinleyici)
+{n} dakikadır açık
+Tamamlandı
+Yükleniyor...
+Hata
+Yüklendi ✓
+, Sunucu: {x}, Port: {n}, Şifre: (DJ'nin şifresi)
+. Sunucu: {x}, Port: {n}. Şifre: her DJ hesabının kendi şifresi. Mobilde şunu kullanın:
+, canlı bir video oluşturun ve "Yayın anahtarı"nı kopyalayın. Anahtarı aşağıdaki alana yapıştırın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin. Facebook şunu kullanır:
+. Yayın anahtarınızı Instagram Live ayarlarından alın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin. Instagram şunu kullanır:
+Dil değiştirildi: {x}
+çevrilmiş ifade

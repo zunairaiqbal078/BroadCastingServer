@@ -1,0 +1,1645 @@
+
+
+
+
+
+
+Cheia API Google Maps a fost salvată
+
+
+API CastPanel
+API dezactivat
+Deschide
+Deschide portul
+Deschide portul în firewall
+
+Acces interzis
+Acțiune necunoscută:
+Acțiune invalidă
+Acțiuni
+Acțiune nerecunoscută. Acțiuni valide: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Acțiune invalidă
+Activă
+Activează procesorul pentru ca transmisia ta să sune mai puternic, la calitate profesională
+Activează AGC
+Activează compresorul
+Activează egalizatorul
+Activează limitatorul
+Active
+Activ
+Activ (
+Activ · Dezactivat
+Curent
+Actualizează
+
+Manager de servicii
+Manager de servicii - CastPanel
+Gestionează AutoDJ
+Gestionează AutoDJ - CastPanel
+Gestionează contul
+Gestionează contul — CastPanel DJ
+Gestionează listele
+Gestionează radioul
+Gestionează serverul și serviciile
+Gestionează certificatele SSL și domeniile serverului.
+
+Adaugă certificat SSL
+Adaugă pachet radio
+Adaugă pachet revânzător
+Ajustarea finală a volumului transmisiei
+Setări personalizate
+Setări manuale ale utilizatorului
+Aleatoriu
+Stoc.
+Stocare
+Stocare AutoDJ
+Stocare maximă
+Stocare:
+Ridicată
+Înalte - Frecvență
+Înalte - Câștig
+Lățime de bandă streaming
+Lățime de bandă per stație
+Animație afișată peste imaginea de fundal a playerului.
+Reclamă ștearsă.
+
+
+
+
+Aplicații compatibile
+Aplicații Android/iOS
+Fișier M3U (pentru playere desktop)
+Fișier PLS (compatibil cu Winamp, VLC etc.)
+Fișier prea mare
+Fișier prea mare (server)
+Fișier încărcat parțial
+Fișiere temporare
+Fișiere muzicale
+Fișiere de stream
+Fișiere de traducere:
+Arhitectură
+Trage fișierele aici
+Artist
+Artistul piesei curente
+Subiect
+Atac
+Streaming audio
+Platformă de streaming audio
+Platformă de streaming audio
+Lărgește imaginea stereo
+Creează automat conturi noi
+Suspendă automat pentru neplată
+Închide automat conturile anulate
+Autosemnat
+Pornire automată
+Reîmprospătare automată:
+
+Stare AutoDJ:
+AutoDJ oprit
+AutoDJ pornit
+AutoDJ înregistrate (2)
+Automatizare
+Încă nu există date despre ascultători.
+Lățime de bandă curentă
+Scăzută
+Joase - Frecvență
+Joase - Câștig
+Bară
+Bara laterală a panoului clienților tăi. PNG 140×40px.
+Bare audio
+Bază de date:
+Baza de date principală a panoului. Repornește dacă există probleme de conectare la BD.
+Bază de date:
+De bază
+Bibliotecă muzicală
+Bibliotecă muzicală - CastPanel
+Bun venit
+
+Bitrate maxim
+Bitrate-ul transmisiei în kbps
+Bitrate implicit
+
+Șterge mesajul
+
+Branding / White Label
+Branding / White-Label
+Branding / White-Label - CastPanel
+Branding White-Label
+Branding actualizat. Clienții tăi vor vedea modificările la reîncărcarea paginii.
+Întârziere buffer DJ (sec)
+Caută
+Caută pachet...
+Caută după titlu, artist...
+Caută...
+Business sau Creator
+CORS activat
+CRITIC
+Fiecare DJ folosește propria parolă (cea atribuită la crearea contului). Pe mobil folosește formatul
+Calitatea înregistrării
+Schimbă parola
+Schimbă limba
+Schimbă limba - CastPanel
+Schimbă numele gazdei
+Schimbă numele gazdei - CastPanel
+Schimbă imaginea de fundal
+Schimbă coperta
+Schimbă limba CastPanel-ului tău.
+Câmp
+Canale
+Anulează
+Piese
+Piese sortate după n
+Piese sortate după numere.
+Piese sortate după prefix.
+Piesa curentă
+Piesă actualizată.
+Piesă ștearsă.
+Piesă mutată.
+Cantitate
+Se încarcă datele...
+Se încarcă istoricul...
+Se încarcă...
+Centru de control
+Centru de control DJ
+Centru de control DJ - CastPanel
+Deconectare
+Certificat personalizat
+Certificat eliminat din registru
+
+Cer înstelat
+Cheia de transmisie este obligatorie
+Chei de bază (ES):
+
+Client
+Client actualizat
+Client șters (împreună cu toate stațiile sale)
+Clientul nu a fost găsit
+Client invalid
+Clienți
+
+Codec / Bitrate / Rată de eșantionare
+Codec implicit
+Coadă de fișiere
+
+Culoare principală
+Culoare de accent:
+Culoarea de fundal a barei laterale
+Culoarea textului:
+Culoarea barei laterale
+Culoarea principală a butoanelor și accentelor
+Culori
+Comandă nerecunoscută
+Comenzi utile (SSH)
+Distribuie acest link ascultătorilor tăi. Este pagina playerului public cu coperți, istoricul pieselor și efecte vizuale personalizabile.
+Compresie agresivă, frecvențe medii în față, punch
+Compresie ușoară, ideală pentru muzică clasică și jazz
+Compresor de dinamică
+Cu AutoDJ
+Conexiuni în timp real
+Configurația Liquidsoap a fost generată:
+Configurația AutoDJ a fost salvată
+Configurație salvată
+Configurare CastPanel
+Configurare globală
+Configurare globală - CastPanel
+Configurare Google Maps
+
+Configurare Liquidsoap
+Configurare port SSL
+Configurare port SSL - CastPanel
+Configurare RadioCaster
+Configurare SMTP
+Configurare SMTP - CastPanel
+Configurația SMTP a fost salvată cu succes
+Configurația API/facturare a fost salvată
+Configurare fișiere
+Configurația de branding a fost salvată. Reîncarcă pagina pentru a vedea modificările.
+Configurația domeniului SSL a fost salvată
+Configurația porturilor SSL a fost salvată. Repornește Apache pentru a aplica modificările.
+Configurare server
+Configurare site
+Configurația playerului a fost salvată cu succes.
+Configurație salvată cu succes
+Configurația personalizată a fost salvată. Stația va reporni pentru a aplica modificările.
+Configurația personalizată a fost salvată. Se va aplica la activarea AutoDJ.
+Configurează numele gazdei și domeniul
+Configurează SMTP / e-mail
+Configurează SSL în Apache (SSH)
+Configurează serverul de e-mail pentru notificări.
+Configurează setările globale ale panoului și ale serviciilor de streaming.
+Configurează mai sus o cheie API Google Maps pentru a vedea harta ascultătorilor.
+Confirmă parola nouă:
+Interogare din orice domeniu sau aplicație mobilă
+Conținutul mesajului:
+Parolă
+Parolă administrator
+Parolă radio
+Parolă
+Parolă (user:pass):
+Parolă *
+Parola curentă:
+Parolă administrator
+Parolă DJ
+Parolă DJ:
+Parolă SMTP
+Parolă Source / DJ
+Parolă Source / DJ:
+Parola a fost actualizată cu succes
+Parolă de conectare:
+Parolă:
+Control automat al câștigului (AGC)
+Control în masă al radiourilor
+Control multiplu
+Control multiplu - CastPanel
+Control rapid
+Control AutoDJ
+Control radiouri
+Copiază codul widgetului preferat și lipește-l pe site-ul tău, ca vizitatorii să poată asculta
+Copiază
+Copiază
+
+
+Creează un relay cu formularul din stânga.
+Creează una cu formularul din stânga.
+Creează o rotație cu formularul din stânga.
+Creată
+Creează client
+Creează cont DJ
+Creează stație
+Creează listă
+Creează listă partajată
+Creează revânzător nou
+Creează pachet
+Creează pachet revânzător
+Creează primul cont
+Creează radio
+Creează relay
+Creează revânzător
+Creează rotație
+Creează utilizator
+Creează un revânzător nou
+Creează una
+Creează un cont DJ
+Creează un radio nou și un cont de client. Clienții își pot gestiona radiourile din panoul de client.
+Creează și activează automat stația la plată
+Date API invalide
+Date API obligatorii
+Date DJ invalide
+Date de autentificare invalide
+Creează un pachet cu limite de conturi și radiouri pentru clienții tăi.
+Creează și gestionează chei API, descarcă module pentru software de facturare.
+
+
+Crossfade (secunde)
+Critic
+Cont
+Cont DJ
+Cont DJ actualizat.
+Cont DJ șters
+Cont DJ șters.
+Contul DJ nu a fost găsit
+Cont reactivat
+Cont suspendat
+Cont șters
+Cont șters complet
+Cont reactivat
+Cont suspendat
+Cont și stație
+Conturi
+Conturi DJ
+Conturi DJ - CastPanel
+Număr maxim de conturi DJ
+Conturi DJ înregistrate
+Cod HTML
+Cod popup (buton care deschide o fereastră)
+Cod cu lățime personalizată (ex: 500px)
+Cod iframe
+Cod iframe (pentru a-l încorpora pe site)
+Cum adaugi o limbă:
+
+
+DJ-ul își poate schimba parola
+DJ-ul își poate schimba parola:
+DJ-ul se poate autentifica în panoul DJ
+DJ-ul se poate autentifica în panoul DJ:
+DJ-ul poate porni/opri AutoDJ
+DJ-ul poate porni/opri AutoDJ:
+DJ-ul poate porni/opri radioul
+DJ-ul poate porni/opri radioul:
+DJ-ul poate reda jingle-uri/ID-uri (în emisie)
+DJ-ul poate reda jingle-uri/ID-uri (în emisie):
+DJ-ul poate sări o piesă (AutoDJ)
+DJ-ul poate sări o piesă (AutoDJ):
+DJ-ul poate încărca fotografie de profil
+DJ-ul poate încărca fotografie de profil:
+DJ-ul poate transmite muzică
+DJ-ul poate transmite muzică:
+DJ-ul poate folosi Voice Pro (în emisie)
+DJ-ul poate folosi Voice Pro (în emisie):
+
+DJ activi
+
+Date actualizate la fiecare cerere cu informații în timp real
+
+Definește la câte piese se inserează blocurile de reclame. Poți crea mai multe reguli cu frecvențe și orare diferite.
+Dezactivat
+Dezactivează
+Deconectată
+Descriere
+Descriere opțională
+Estompare (blur):
+Dezactivată
+Dezactivat
+Detalii stații (2)
+Oprește
+Oprește AutoDJ
+Oprește radioul
+Oprește toate radiourile
+Oprește toate AutoDJ
+Oprește retransmisia înainte de editare
+Oprește toate containerele Liquidsoap
+
+Director
+Director media
+Directoare principale
+Dezactivat
+Disc
+Disc total
+Disponibile
+Distribuție după tipul serverului
+
+
+
+Documentația câmpurilor
+Dum
+Domeniu
+Domeniu SSL
+Domeniu SSL principal
+Domeniul panoului
+Domeniul panoului (SSL_DOMAIN)
+Domeniu folosit pentru URL-urile panoului și ale streamurilor
+Domenii / Certificate SSL
+Domenii / Certificate SSL - CastPanel
+Plasează aici fișierul imagine pentru încărcare sau dă clic.
+Durată
+Durată totală
+Durată totală:
+Zile active
+Zilele săptămânii
+
+
+
+Egalizator
+Egalizator cu 3 benzi
+Editează
+Editează piesa
+Editează clientul
+Editează contul DJ
+Editează DJ:
+Editează stația
+Editează pachetul
+Editează pachetul radio
+Editează pachetele de revânzător
+Editează pachetele de revânzător - CastPanel
+Editează relay-ul
+Editează revânzătorul
+Editează rotația
+Editează utilizatorul
+Editează/Actualizează radiourile
+Editează/Listează pachetele
+Editează/Listează pachetele (4)
+Editează/Listează pachetele - CastPanel
+Efect vizual de fundal
+Ex: Muzică de Crăciun
+Ex: Muzică de dimineață
+Ex: Radio Național FM
+Ex: Spoturi comerciale
+Ex: Hiturile momentului
+Rulează pe server prin SSH pentru a gestiona certificatele Let's Encrypt:
+Exemplu
+Exemplu de integrare (JavaScript)
+Acest
+Lățimea de bandă per stație este o estimare bazată pe ascultătorii curenți × bitrate. Datele interfețelor de rețea sunt cumulate de la ultima repornire a serverului.
+Fișierul nu trebuie să depășească 2MB
+Fișierul nu poate avea mai mult de 3MB
+Domeniul principal prin care se accesează panoul
+Limba va apărea automat
+Numele de utilizator există deja
+Numele pachetului este obligatoriu
+Numele este obligatoriu
+Numele este obligatoriu.
+Procesorul audio funcționează atât în modul AutoDJ, cât și când un DJ este live. La salvarea modificărilor, stația va reporni scurt pentru a aplica noua configurație. Procesorul folosește un lanț profesional: AGC → Compresor → Egalizator → Limitator → Câștig de ieșire.
+Procesorul audio îmbunătățește calitatea transmisiei cu compresie, egalizare și limitator profesionale. Alege un preset potrivit stilului conținutului tău.
+Numele de utilizator sau e-mailul există deja
+Utilizatorul există deja
+Șterge
+Șterge selectate
+Șterge stația la anularea serviciului
+
+E-mail administrator
+E-mail expeditor (From)
+E-mail destinatar
+E-mail invalid
+
+Post activ
+Difuzate azi:
+Companie
+
+Pe toate stațiile
+Live
+
+Criptare
+
+Endpoint API:
+Endpoint JSON pentru dezvoltatori. Returnează metadate în timp real: piesa curentă, ascultători, starea serverului. Util pentru integrări și aplicații personalizate.
+Endpoint public · Fără autentificare · JSON · CORS activat
+
+
+Link API JSON
+Link M3U (pentru playere)
+Link PLS (pentru WinAmp, VLC etc.)
+Link XSPF
+Link direct (de distribuit pe rețele sociale, site-uri etc.)
+Linkuri directe la stream
+Linkuri SSL/Redare
+Linkuri de streaming SSL
+Linkuri de streaming SSL - CastPanel
+Lărgire stereo
+Introdu cheia Facebook
+Introdu cheia Instagram
+Introdu cheia TikTok
+Introdu cheia Youtube
+Trimis (TX)
+Trimite e-mail de test
+Trimite test
+Eroare BD:
+Eroare la actualizare:
+Eroare la aplicarea presetului.
+Eroare la trimiterea e-mailului de test. Verifică configurația SMTP.
+Eroare la salvarea fișierului
+Eroare la salvarea configurației.
+Eroare la salvarea configurației:
+Eroare la salvare:
+Eroare la pornire
+Eroare la mutarea fișierului
+Eroare la obținerea configurației:
+Eroare la repornire
+Eroare la sincronizarea regulilor proxy. Verifică permisiunile fișierului /etc/httpd/shoutcast-proxy-rules.inc
+Eroare la încărcare
+Eroare la încărcarea fișierului (cod:
+Eroare la încărcarea fotografiei
+Eroare de bază de date:
+Eroare de conexiune
+Eroare la încărcare
+Eroare la încărcare:
+Eroare necunoscută
+Eroare necunoscută la crearea radioului
+Eroare la operațiune:
+Eroare la operațiune:
+Încărcarea a eșuat
+Eroare la repornirea firewall-ului:
+Scrie aici mesajul pe care DJ-ii îl vor vedea la intrarea în panou...
+Spațiu liber
+
+Est. zilnică
+Stație
+Stație creată
+Stație oprită
+Stație ștearsă și dezafectată
+Stație pornită
+
+Stație reactivată
+Stație repornită
+Stație suspendată
+Stație:
+Stații
+Stații active
+Stații atribuite
+Stații offline
+Stații online
+Total stații
+Stații atribuite listei partajate
+Stațiile clienților
+Stațiile clienților - CastPanel
+Stație
+Stație creată
+Stație actualizată
+Stație ștearsă
+
+Stația nu transmite
+Stare
+Starea radioului
+Stare actualizată
+Starea conturilor
+Starea radioului
+Starea radioului:
+Starea serviciilor
+Starea radioului
+Starea serverului
+Starea serverului - CastPanel
+Starea serverului în timp real
+
+Statistici
+Statistici - CastPanel
+Statistici în timp real
+Statistici în timp real - CastPanel
+Statistici complete
+Statistici radio
+Statistici radio - CastPanel
+Statistici în timp real
+Statistici rapide (ascultători, stare, titlu)
+Statistici și cont
+Acesta este un serviciu CRITIC.
+Acest mesaj este afișat DJ-ilor când se autentifică în panoul lor. Poate conține instrucțiuni, programe, reguli sau orice informație importantă. Se acceptă HTML de bază pentru formatare.
+Se va executa:
+Stele
+Standard
+Stereo
+Extensii permise
+Extensii încărcate
+
+
+
+
+Facebook îți poate restricționa contul sau pagina dacă radioul tău redă muzică protejată de drepturi de autor în timpul transmisiunii live.
+
+Facturare și API
+Facturare și API - CastPanel
+Facturare și automatizare (API)
+
+
+
+Dată
+Dată unică
+Data/ora interogării ISO 8601
+Rânduri
+
+
+Firewall-ul serverului. Repornește dacă există probleme de acces la porturi.
+Firewall reîncărcat
+Firewall repornit. Porturi deschise:
+
+Format invalid pentru imaginea de fundal. Folosește JPG, PNG, WebP sau GIF.
+Format invalid pentru copertă. Folosește JPG, PNG sau WebP.
+Format invalid
+Formate: MP3, OGG, AAC, M4A, WAV, FLAC — Max. 50 MB per fișier
+Fotografia a fost actualizată cu succes
+Fotografie de profil
+Fotografia de profil a fost actualizată
+Fotografie ștearsă
+
+
+Sursă
+Câștig final
+Câștig max
+Câștig min
+Câștig de ieșire și extra
+Câștig de compensare
+Generează cheie nouă
+Gen
+Geolocalizați
+Gestionează stațiile
+Gestionează stațiile - CastPanel
+Gestionează utilizatorii
+Gestionează utilizatorii - CastPanel
+Gestionarea reclamelor
+Gestionarea reclamelor - CastPanel
+Gestionare AutoDJ
+Cheie API Google Maps
+Picături de ploaie animate
+Înregistrare DJ:
+Înregistrează DJ
+Salvează
+Salvează modificările
+Salvează modificările AutoDJ
+Salvează configurația
+Salvează configurația personalizată
+Salvează limba
+Salvează cheia
+Salvează mesajul
+Salvează toată configurația
+
+Activat
+Activează API REST
+Activează trimiterea de e-mailuri SMTP
+Istoric
+Istoricul pieselor
+Istoricul pieselor recente
+Ora de sfârșit
+Ora de început
+Ora serverului
+
+Gazdă Liquidsoap
+
+
+Nume gazdă curent
+Numele gazdei serverului
+Nume de gazdă invalid: doar litere, cifre, cratime și puncte.
+Numele gazdei nu a putut fi schimbat:
+ID de stație invalid
+ID invalid
+ID obligatoriu
+IP de conectare stream:
+IP de conectare:
+IP radio
+IP server
+IP neautorizat
+IP-uri unice
+
+
+
+
+
+
+
+Pictograma filei browserului. Recomandat: 32×32px sau 64×64px, ICO sau PNG.
+Pictograma browserului pentru clienții tăi. ICO/PNG 32×32px.
+Identificator unic al stației
+Limbă activă:
+Limba panoului
+Imagine de fundal
+Imaginea de fundal a fost ștearsă.
+Imagine ștearsă.
+Imagine prea mare (max 5MB)
+Imagine afișată drept copertă când piesa nu are una proprie. Recomandat: 500x500px, pătrată.
+Imagine afișată ca fundal al întregului player. Recomandat: 1920x1080px sau mai mare.
+Imagine încărcată cu succes.
+Inactiv
+Inactiv · Dezactivat
+Informații interogate
+Info radio
+Info server
+Informații tehnice
+Informații complete despre stație și piesa curentă
+Informații cont
+Informații DJ
+Informații server
+Informații server - CastPanel
+Informații sociale actualizate
+Informații:
+Introdu URL-ul RTMP al oricărui server compatibil
+Introdu numele
+Introdu numele de utilizator
+Introdu mai întâi cheia de transmisie.
+Introdu parola
+Introdu numele de utilizator
+Introdu numele de utilizator și parola
+Pornește radiourile oprite
+Pornește
+Pornește AutoDJ
+Pornește radioul
+Autentificare
+Autentificare - CastPanel
+Autentificare ca utilizator
+Autentificare în contul utilizatorului
+Autentificare
+Pornește toate radiourile
+Acasă
+Pornirea tuturor radiourilor a fost executată
+Acasă — CastPanel DJ
+
+
+
+Instagram îți poate restricționa contul dacă radioul tău redă muzică protejată de drepturi de autor în timpul transmisiunii live.
+
+Instalare manuală (AlmaLinux 8):
+Instalat (activ)
+Integrări și API
+Interfețe de rețea
+Interfață
+
+JPG, PNG sau WebP - Pătrată 500x500
+JPG, PNG, WebP sau GIF animat
+JSON standard
+
+Ion Popescu
+Joi
+
+
+Această
+Parola curentă este incorectă
+Parola trebuie să aibă cel puțin 6 caractere
+Funcția de transmisie live Facebook difuzează muzica radioului tău pe Facebook Live. Mergi la
+Funcția de transmisie live Facebook difuzează muzica radioului tău pe Facebook Live. Mergi la Facebook Live Producer, creează un video live și copiază „Cheia de transmisie”. Lipește cheia în câmpul de mai jos. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei. Facebook folosește RTMPS (criptat).
+Funcția de transmisie live Instagram difuzează muzica radioului tău pe Instagram Live. Este necesar un cont de tip
+Funcția de transmisie live Instagram difuzează muzica radioului tău pe Instagram Live. Este necesar un cont Business sau Creator. Obține cheia de transmisie din setările Instagram Live. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei. Instagram folosește RTMPS (criptat).
+Funcția de transmisie live TikTok difuzează muzica radioului tău pe TikTok Live. Sunt necesari cel puțin
+Funcția de transmisie live TikTok difuzează muzica radioului tău pe TikTok Live. Sunt necesari cel puțin 1.000 de urmăritori pentru a transmite live. Obține cheia de transmisie din TikTok Live Studio sau din aplicația mobilă. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei.
+Funcția de transmisie live Youtube difuzează muzica radioului tău pe Youtube Live. Există o
+Înregistrarea este automată dacă este activată. Pentru a activa/dezactiva înregistrarea emisiunilor DJ live, folosește configurația stației. Fișierele folosesc spațiul de găzduire disponibil.
+Parolele nu coincid
+Listele de redare se gestionează din panoul utilizatorului. Folosește „Autentificare în contul utilizatorului” pentru acces.
+Let's Encrypt (gratuit)
+Limitator de vârfuri
+Limită de ascultători
+
+Liquidsoap nu este necesar (AutoDJ dezactivat)
+Liquidsoap omis (AutoDJ dezactivat)
+Listă
+Listă programată
+Listă partajată ștearsă
+Lista de redare destinație
+Lista de reclame a fost ștearsă.
+Lista de reclame nu a fost specificată
+Listă de redare
+Listă destinație
+Listă ștearsă. Piesele au rămas fără listă atribuită.
+Listă redenumită.
+Listează / Editează radiourile
+Listează AutoDJ
+Listează AutoDJ - CastPanel
+Listează/Descarcă emisiunile DJ
+Listează/Editează conturile DJ
+Listează/Editează radiourile (2)
+Listează/Editează revânzătorii
+Listează/Editează revânzătorii - CastPanel
+Liste
+Liste active
+Liste partajate
+Liste partajate (0)
+Liste de reclame (0)
+Liste de redare
+Liste de redare
+Liste de redare - CastPanel
+Liste de redare partajate
+Liste de redare partajate - CastPanel
+
+Ploaie
+
+Logo de autentificare
+Logo player
+Logo bară laterală
+Logo șters. Se va restaura logo-ul implicit CastPanel.
+Logo șters. Se va folosi logo-ul implicit al panoului.
+Logo pentru playerul radio public. Recomandat: 200×200px, PNG.
+Logo mic în bara laterală a panoului. Recomandat: 140×40px, PNG transparent.
+Logo încărcat cu succes.
+Logo-uri și favicon
+Jurnale de sistem
+Jurnalele nu sunt accesibile din panoul web. Pentru a vedea ultimele accesări SSH rulează în terminal: last -n 10
+DJ-ii trebuie să aleagă protocolul
+DJ-ii trebuie să aleagă întotdeauna protocolul
+Setările procesorului se salvează în baza de date. Pentru procesare în timp real, activează AutoDJ în pachetul acestei stații. Odată activat, Liquidsoap va aplica automat lanțul de procesare. Procesorul folosește un lanț profesional: AGC → Compresor → Egalizator → Limitator → Câștig de ieșire.
+Serviciile marcate ca
+Pictogramele vor fi afișate în playerul public. Lasă gol pentru a le ascunde.
+Lun
+Limitele radioului
+
+
+Câștig de compensare
+Harta ascultătorilor
+Mar
+Bitrate max
+Maximum 10 retransmisii per stație
+
+Media (muzică)
+Medii - Frecvență
+Medii - Câștig
+Medii - Factor Q
+Mesaj panou DJ
+Mesaj panou DJ - CastPanel
+Mesaj actualizat cu succes.
+Mesajul panoului DJ a fost actualizat
+Mesaj pentru panoul DJ
+Metodă nepermisă
+Brandingul meu
+Brandingul meu - CastPanel
+Clienții mei
+Clienții mei - CastPanel
+Mie
+Mod mentenanță
+Mod de redare
+Afișează titlurile
+Afișează barele egalizatorului
+Afișează numărul de ascultători
+Afișează istoricul pieselor
+Motor de containere pentru AutoDJ (Liquidsoap). Repornește dacă AutoDJ nu funcționează.
+Motor:
+
+
+
+Punct de montare
+
+Mută
+Mută în listă
+Cea mai populară (0 ascultători)
+Max. permis
+Max. pe un radio
+Forță și volum maxim, sunet FM comercial
+Maxim permis
+Maxim în ultimele 24h
+Maxim lunar
+Maxim săptămânal
+Metodă
+Metodă nepermisă
+Muzică
+Browsere web
+Ai nevoie de o cheie API Google Maps cu Maps JavaScript API activat.
+Zăpadă
+Niciuna
+Niciunul
+Nivel țintă
+Nivelul de la care începe compresia
+Nivelul maxim permis înainte de limitare
+Nu
+Neautentificat
+Neautorizat pentru această stație
+Neconfigurat
+Nu crea un cont DJ cu toate permisiunile decât dacă ai încredere deplină în acea persoană.
+Indisponibil
+Negăsită
+Nu există piese în bibliotecă.
+Nu există conturi DJ create.
+Nu există liste partajate
+Nu există liste create. Creează una cu formularul de mai sus.
+Nu există liste de reclame.
+Nu există pachete create
+Nu există porturi suplimentare deschise (doar serviciile implicite)
+Nu există porturi telnet disponibile
+Încă nu există înregistrări de difuzare.
+Nu există reguli de reclame configurate.
+Nu există relay-uri configurate.
+Nu există revânzători înregistrați
+Nu există rotații configurate.
+Nu există emisiuni înregistrate pentru această stație.
+Neinstalat
+Nu îți poți dezactiva propriul cont
+Nu îți poți șterge propriul cont
+Nu este necesar (protocol SHOUTcast)
+Nu s-au găsit fișiere audio valide
+Cheia de transmisie nu a fost configurată
+Nu s-a putut conecta la serverul SHOUTcast
+Nu s-a putut opri AutoDJ
+Nu s-a putut opri radioul
+Nu s-a putut scrie comanda IPC
+Nu s-a putut salva fișierul
+Nu s-a putut porni Liquidsoap:
+Nu s-a putut porni AutoDJ
+Nu s-a putut porni procesul FFmpeg
+Nu s-a putut porni radioul
+Nu se poate șterge: revânzătorul are clienți cu stații active
+Nu se poate șterge: există stații care folosesc acest pachet
+Nu se poate șterge: există revânzători care folosesc acest pachet
+Nu s-au primit fișiere
+Nu s-a primit niciun fișier
+Nu s-a primit niciun fișier
+Nu ai permisiune pentru această stație
+Nu ai nicio stație atribuită. Contactează administratorul.
+
+Nume
+Nume complet
+Nume complet:
+Numele stației
+
+Nume de utilizator *
+Numele listei
+Numele rotației *
+Numele stației
+Numele relay-ului *
+Numele expeditorului
+Numele site-ului
+Nume afișat în bara laterală și în titlul browserului
+Nume obligatoriu
+Nume obligatoriu.
+Numele și URL-ul sunt obligatorii.
+Numele și slug-ul sunt obligatorii
+Normal (secvențial)
+Notă:
+Știri / Vorbit
+Acum se redă după ID-ul stației
+Cheie API nouă generată:
+Parolă nouă (lasă gol pentru a o păstra)
+Parolă nouă:
+Cont DJ nou
+Stație nouă
+Listă nouă de reclame
+Regulă nouă de reclame
+Rotație nouă
+Nou
+Client nou
+Relay nou
+Utilizator nou
+
+
+Obține cheia
+
+Valuri oceanice
+Unde
+
+Online acum
+Doar .jpg sau .png permise! Max 3MB.
+Opțiuni player
+Optimizat pentru voce, claritate max
+Optimizat pentru voce, claritate maximă
+Întunecarea suprapunerii:
+Ascultători
+Ascultători (Google Maps)
+Ascultători activi
+Ascultători acum
+Ascultători conectați
+Număr maxim de ascultători
+Total ascultători
+Total ascultători acum
+Ascultători curenți
+Ascultători conectați în prezent
+Grafic ascultători radio (live)
+Ascultători pe hartă
+Ascultători pe hartă - CastPanel
+Ascultători în ultimele 24 de ore
+
+
+
+Pagina radioului
+Panou principal
+Panou revânzător
+Panou revânzător - CastPanel
+Panou de administrare
+Panou de administrare - CastPanel
+Panou de control
+Panou de control - CastPanel
+Pachet
+Pachet actualizat
+Pachet șters
+Pachetul nu a fost găsit
+Pachetul nu a fost găsit sau este inactiv
+Pachete
+Pachete revânzător (0)
+Pachete listate
+Pentru setări avansate (AGC, compresor, EQ, limitator) contactează administratorul stației.
+
+Vârf total
+Lipește aici cheia de transmisie...
+În așteptare
+Permisiuni
+Permisiuni DJ (atenție)
+Personalizează logo-ul, numele și culorile panoului.
+Personalizează logo-urile, titlurile și faviconurile panoului. Imaginile încărcate vor înlocui valorile implicite. Ștergerea unei imagini va restaura logo-ul implicit CastPanel. Revânzătorii își pot configura propriul branding din panoul lor pentru clienții lor.
+Personalizat
+Personalizează playerul
+Personalizează playerul - CastPanel
+
+Vârf 24 de ore
+Vârf 24h
+Vârf 30 de zile
+Vârf 7 zile
+Subsol personalizat
+Piste
+Șablon actualizat cu succes
+Șabloane e-mail
+Șabloane e-mail (6)
+Șabloane e-mail - CastPanel
+Șabloanele implicite au fost inițializate
+Platformă invalidă
+Playlist
+Playlist 'General' creat
+Playlist activ
+Intervale playlist
+Playlisturi
+Copertă ștearsă.
+Copertă implicită
+Portal DJ
+
+Postfix (e-mail)
+Server de e-mail Postfix
+Server de e-mail Postfix. Repornește dacă e-mailurile nu se trimit.
+Puternic
+Atenție:
+
+Preset „
+Preset invalid
+Preseturi rapide
+Previzualizare
+Mai întâi creează un
+Mai întâi creează o
+Prioritate
+Testează
+Testează semnalul
+Procesor
+Procesor activat
+Procesor activ
+Procesor dezactivat
+Procesor audio
+Procesor audio - CastPanel
+Procesare echilibrată pentru radio general
+Programare
+Programarea reclamelor a fost creată.
+Programare ștearsă.
+Programează reclame
+Programează reclame - CastPanel
+
+
+Proprietar
+Protocol
+
+Protocol SHOUTcast v1 — Conexiune prin Liquidsoap Harbor (AutoDJ activ). Fiecare DJ își folosește propriile date de autentificare.
+Protocol SHOUTcast v1 — Conexiune directă la serverul SHOUTcast (fără AutoDJ). În RadioCaster folosește întotdeauna protocolul SHOUTcast v1.
+Protocol:
+Test e-mail CastPanelDacă primești acest e-mail, configurația SMTP funcționează corect.
+Port
+Port DJ
+Port HTTP
+Port HTTPS
+
+Port SSL
+Port SSL administrator
+Port SSL de streaming
+Port SSL al panoului (HTTPS)
+Port Telnet
+Port de conectare DJ:
+Port de conectare:
+Port de transmisie
+Port radio
+Port de administrare (implicit: 2087)
+Port HTTPS standard (implicit: 443)
+Port neatribuit
+Port pentru streamuri securizate (implicit: 8443)
+Port:
+Porturi deschise
+Porturi SSL
+Punct de montare
+Punct de montare (Mount)
+Punct de montare (Mount):
+Pagina 1 din 1 · 0 fișiere
+Pagina 1 din 1 · 2 fișiere
+Pagina de autentificare a clienților tăi. PNG 200×60px.
+Public și gratuit. Nu ai nevoie de cheie API sau tokenuri
+Radioul a fost oprit cu succes
+Radioul a fost pornit cu succes
+
+RadioCaster: Protocol
+RadioCaster: Protocol Icecast, Server:
+RadioCaster: Protocol SHOUTcast v1, Server:
+RadioCaster: Selectează protocolul
+RadioCaster: Selectează protocolul SHOUTcast v1. Server:
+Radiouri și conturi
+Clasament — Top 50 radiouri după ascultători
+
+Reactivare
+Reactivează
+Efectuează o repornire completă a serviciului SSH, inclusiv Fail2ban. Util când există multe încercări de acces blocate sau probleme persistente de conexiune.
+Reîncarcă firewall-ul
+Primit (RX)
+Rețea
+Rețele sociale
+Retrimite e-mailul de bun venit
+Reîmprospătează
+Regenerează regulile proxy Apache
+Înregistrează certificatul
+Înregistrare
+Înregistrare publică activată
+Reguli active (0)
+
+Repornește serviciul de streaming al fiecărei stații active
+Repornește toate containerele Liquidsoap
+Repornește
+Repornește AutoDJ
+Repornește Fail2ban (șterge blocările temporare)
+Repornește radioul
+Repornește serviciile
+Repornește serviciile - CastPanel
+Repornește toate radiourile
+Repornește toate AutoDJ
+Repornește serviciul SSHD
+Repornirea serviciilor critice poate cauza întreruperi temporare. Serviciile marcate ca critice vor afecta panoul și/sau streamingul la repornire.
+Repornește serviciile de streaming ale serverului.
+Repornirea tuturor radiourilor a fost executată
+Repornirea tuturor AutoDJ a fost executată
+
+Redirecționare relay
+Redirecționare relay - CastPanel
+Relay actualizat.
+Relay șters.
+Relay-uri configurate
+
+Se redă acum: Fără informații
+Se redă acum:
+Redă
+Player compact (iframe)
+Player pe toată pagina (cu efecte vizuale)
+Player public
+Player autonom care nu necesită iframe. Doar copiază și lipește codul în HTML-ul tău.
+Player compact de
+Player profesional pe toată pagina, cu animații de fundal, copertă, istoricul pieselor și controale avansate. Ideal ca
+Player public pentru radiourile clienților tăi. PNG 200×200px.
+
+
+Răspuns JSON
+Răspuns JSON structurat și documentat
+Răspuns JSON invalid
+Resetează parola
+Resetează parola
+Resetează-ți parola
+Resetare SSH completă
+Rezultate
+Rezumatul conținutului
+Rezumatul contului (live)
+Rezumatul serverului
+Revânzător actualizat
+Revânzător șters
+Revânzători
+Revânzători înregistrați (0)
+
+Rol
+Rotații configurate
+Rotație actualizată.
+Rotația folderelor
+Rotația folderelor - CastPanel
+Rotație ștearsă.
+Cale
+
+
+Binarul SHOUTcast nu a fost găsit în
+
+
+
+
+Server SSH
+SSH repornit complet
+SSL activat
+SSL activat (HTTPS)
+SSL și domeniu
+
+Rată de eșantionare implicită
+Se aplică automat pe server prin castpanel-ctl
+Trimis la crearea unui cont nou
+Trimis la crearea unei stații noi
+Trimis la reactivarea unui cont de utilizator
+Trimis la solicitarea resetării parolei
+Trimis la suspendarea unui cont de utilizator
+Se generează automat. O poți schimba.
+Afișat pe pagina de autentificare. Recomandat: 200×60px, PNG transparent.
+Secvență de playlisturi
+Securitate și firewall
+Securitate și firewall - CastPanel
+Selectează piese cu casetele de bifare pentru acțiuni în masă
+Selectează efectul vizual:
+Selectează un preset pentru a activa procesarea audio
+Selectează o stație pentru a-i gestiona conturile DJ.
+Selectează o listă de redare
+Selectează o listă de redare din meniul derulant pentru a vedea și gestiona piesele.
+Separate prin virgulă
+Serviciu
+Serviciul Liquidsoap a fost oprit
+Serviciul Liquidsoap a fost pornit (Docker: liquidsoap-
+Serviciul SHOUTcast a fost oprit
+Serviciu de acces la distanță SSH. Repornește dacă există probleme de conexiune la distanță.
+Servicii de sistem
+Server
+Server / Gazdă
+Server SMTP
+Server SSH
+Server de e-mail
+
+Serverul web al panoului. Repornește dacă panoul nu se încarcă.
+Server:
+
+
+
+
+
+Emisiuni DJ
+Emisiuni DJ - CastPanel
+Dacă stația transmite
+Fără autentificare
+Fără AutoDJ
+Fără date
+Fără efect
+Fără spațiu de stocare
+Fără stație
+Nicio stație selectată
+Fără stații.
+Nicio stație atribuită.
+Fără informații
+Fără listă
+Nicio listă atribuită
+Fără logo personalizat
+Fără nume
+Fără pachet
+Fără permisiune pentru AutoDJ
+Fără permisiune de a schimba parola
+Fără permisiune de a crea
+Fără permisiune de a șterge
+Fără permisiune de a porni/opri
+Fără permisiune de citire
+Fără permisiune de modificare
+Fără permisiune de reactivare
+Fără permisiune de a încărca fotografii
+Fără permisiune de suspendare
+Fără permisiuni
+Fără procesare, audio original
+Fără titlu
+Sistem
+Sistem de operare
+Sistem de facturare
+Sistem radio
+Sistem de traducere
+
+
+
+Doar JPG, PNG sau WebP
+Doar litere, cifre, cratime și liniuțe jos
+Sunt permise doar fișiere JPG sau PNG
+
+
+
+
+
+Stream HTTP (fără SSL)
+Stream HTTPS principal
+Blând
+Încarcă mai întâi o imagine de copertă
+Încarcă reclame
+Încarcă fișiere audio
+Încarcă muzică
+Încarcă muzică - CastPanel
+Încarcă muzică MP3
+Încarcă tot
+Încarcă imagine de fundal
+Încarcă copertă
+Subtitlu
+Suspendă
+Suspendă automat stația dacă plata eșuează
+Suspendate
+Suspendare
+
+
+Sâm
+Da
+
+
+
+Tabel
+Tabele
+Tabelele bazei de date (29)
+Dimensiune
+Dimensiune max. încărcare (MB)
+Dimensiunea totală a BD
+Sarcini programate. Repornește dacă cron job-urile nu rulează.
+Închide
+Text sub logo în bara laterală
+Textul subsolului
+Textul butonului sau al titlului pe pagina de autentificare
+Timp real
+
+
+
+TikTok îți poate suspenda contul dacă radioul tău redă muzică protejată de drepturi de autor în timpul transmisiunii live.
+TikTok → LIVE → Obține URL-ul și cheia serverului
+Timp expirat în așteptarea răspunsului daemonului
+
+Tip
+Tip server
+Tip certificat
+Tip program
+Tip listă
+Tip de fișier nepermis. Folosește PNG, JPG, GIF, SVG sau ICO
+Titlul radioului
+Toate parolele
+Toate sursele de streaming
+Toate listele
+Toate listele
+Toate radiourile oprite
+Toate AutoDJ oprite
+Toate endpointurile
+Toți utilizatorii (3)
+Toate câmpurile obligatorii trebuie completate (nume radio, utilizator, pachet)
+Toate câmpurile sunt obligatorii
+Toate linkurile de streaming sunt disponibile cu SSL (HTTPS) pentru compatibilitate maximă cu browserele și aplicațiile mobile.
+Token CSRF invalid. Reîncarcă pagina.
+Token de securitate invalid
+Top 50 radiouri
+Top 50 radiouri - CastPanel
+
+Total fișiere
+Total trimis (TX)
+Total primit (RX)
+
+Total de la pornirea serverului
+Tradu valorile array-ului
+Transmisie personalizată
+
+
+Transmisie live Instagram
+
+Transmisie live Youtube
+Transmisie oprită.
+
+
+Transmisie live Instagram
+Transmisie live Instagram - CastPanel
+
+
+Transmisie live YouTube
+Transmisie live Youtube
+Transmisie live Youtube - CastPanel
+Transmisie pornită cu succes.
+În emisie
+Playerul tău public
+Contul tău a fost reactivat
+Contul tău a fost suspendat
+Contul tău nu are permisiunea de autentificare
+Streamul tău este compatibil cu orice player care suportă streaming HTTP:
+
+Titlu
+Titlul de autentificare
+Titlul piesei curente
+Titlul panoului
+Titlul și culorile panoului
+URL HTTP direct (fără SSL)
+URL RTMP obligatoriu
+URL SSL
+URL SSL direct pentru playere HTML5, aplicații mobile, pluginuri WordPress și playere personalizate. Funcționează cu HTTPS pe portul stației.
+URL de autentificare în panoul DJ:
+URL de redare SSL direct
+URL-ul sursei externe *
+URL-ul radioului
+URL-ul copertei albumului
+URL de streaming HTTPS
+URL-ul sistemului
+URL-ul site-ului
+URL-ul streamului (HTTPS)
+URL-ul streamului audio extern (Icecast, SHOUTcast, stream HTTP).
+URL direct fără SSL pentru software radio precum SAM Broadcaster, BUTT, Mixxx, RadioBOSS și alte encodere. Folosește acest URL cu portul indicat pentru transmisie directă.
+URL-uri de stream
+URL-uri de streaming SSL
+Prag
+Prag (Threshold)
+
+Folosește API-ul Instagram sau instrumente terțe pentru URL-ul RTMP
+Folosește funcția
+Folosește datele de autentificare ale
+
+Numele de utilizator, e-mailul și parola sunt obligatorii
+Utilizarea lățimii de bandă
+Utilizarea lățimii de bandă - CastPanel
+Utilizarea discului
+Utilizarea discului / HDD
+Utilizarea discului / HDD - CastPanel
+Utilizare per stație (2)
+Utilizator
+Utilizator administrator
+Utilizator DJ
+Utilizator DJ:
+Utilizator SMTP
+Utilizator actualizat
+Utilizator șters
+Utilizatorul nu a fost găsit
+Nume de utilizator sau parolă incorectă
+Numele de utilizator și parola sunt obligatorii
+Numele de utilizator și parola sunt obligatorii
+Numele de utilizator și parola sunt obligatorii.
+Utilizatori
+
+
+Variabile disponibile
+Vezi, editează și gestionează toate radiourile și conturile existente pe server.
+Vezi
+Vezi playerul
+Se verifică...
+Verifică în timp real utilizarea memoriei, CPU, încărcării și discului serverului.
+Versiune PHP
+Vin
+Previzualizare
+Previzualizare în timp real
+Previzualizare:
+
+Widget HTML compact (fără iframe)
+Widget player
+Widget player - CastPanel
+Widget live
+
+Widgeturi player
+
+
+Retransmite deja
+Rula deja
+Există deja un DJ cu acest nume de utilizator.
+
+Compania ta de găzduire și compania software-ului de panou nu sunt responsabile în astfel de cazuri.
+Youtube aplică avertismente pentru drepturi de autor la muzica din transmisiile live; întregul tău canal youtube poate fi
+Youtube aplică avertismente pentru drepturi de autor la muzica din transmisiile live; întregul tău canal youtube poate fi blocat sau limitat dacă radioul tău redă muzică protejată de drepturi de autor.
+Zonă implicită
+
+
+
+pe zi. Mergi la
+
+
+ca parolă, mai ales pentru aplicațiile mobile. În programele de PC folosește doar parola și portul DJ pentru conectare.
+cu copertă, titlu, artist, indicator de stare și controale. Perfect pentru
+cont DJ
+al firewall-ului finalizat. Porturi deschise:
+zilnică pentru transmisiile live pe youtube, nu reporni transmisia live de mai mult de
+
+
+
+a-l încorpora pe site-ul, blogul sau forumul tău
+în aplicațiile mobile.
+în orice fișier PHP pentru a afișa text tradus.
+în programul de transmisie. Chiar dacă sistemul folosește IceCast sau SCV2, alege întotdeauna
+în programul de transmisie. Această stație funcționează
+în programul de transmisie. DJ-ii se conectează la portul Harbor (
+live.
+eroare necunoscută
+
+stația nu a fost găsită
+stație sau slug obligatoriu
+stație obligatorie
+
+
+facebook.com/live/producer → Cheie de transmisie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+listă de reclame
+
+
+limită
+compresie agresivă, frecvențe medii în față, punch
+atribuită.
+creată:
+Configurația AutoDJ a fost actualizată și serviciul repornit.
+ștearsă.
+
+Transmisie live Instagram
+
+Transmisie live Youtube
+salvată.
+compresie ușoară, ideală pentru
+negăsită
+nu pot fi oprite din panou pentru a evita pierderea accesului. Acțiunile asupra serviciilor se execută prin daemonul
+
+
+
+
+sau Shoutcast în configurație. Poți folosi
+sau dă clic pentru a selecta
+sau din aplicația mobilă. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei.
+sau pentru a deschide într-o fereastră popup.
+
+sau limitat dacă radioul tău redă muzică protejată de drepturi de autor.
+
+
+pentru a transmite live. Obține cheia de transmisie din
+permite programarea unei secvențe de playlisturi care se redau automat în ordinea și cantitatea specificate, în orarele configurate.
+permite retransmiterea unei surse audio externe. Când relay-ul este activ și în orarul programat, postul va retransmite semnalul de la URL-ul configurat în locul AutoDJ.
+dar Apache are încă erori
+
+
+
+pagina publică a radioului tău
+
+
+
+
+
+
+
+
+
+fără AutoDJ
+fără răspuns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+studio.youtube.com → Transmite live → Cheie
+
+
+
+
+tu@email.ro
+
+activ de 35 de minute
+
+
+username și password sunt obligatorii
+utilizator:parolă
+
+
+forță și volum maxim, sunet FM comercial
+și activează funcțiile de transmisie live. Ține deschisă pagina de transmisie live Youtube înainte de a începe transmisia. Youtube are nevoie de 24 de ore pentru activare. Copiază cheia de transmisie live și introdu-o pe această pagină, încarcă o imagine de 1280x720. Transmisia live va începe după 30-40 de secunde pe Youtube.
+și încarcă spoturi.
+contul dacă radioul tău redă muzică protejată de drepturi de autor în timpul transmisiunii live.
+contul sau pagina dacă radioul tău redă muzică protejată de drepturi de autor în timpul transmisiunii live.
+
+© 2024 Compania Mea
+Cum transmit?
+Ștergi fotografia de profil?
+Ultima editare
+Ultima actualizare:
+Ultima autentificare
+Ultimele autentificări SSH
+— Deschide URL de rețea
+— Deschide URL
+— Deschide URL-ul streamului
+— Deschide fișier .pls sau .m3u
+— Conexiune prin Liquidsoap Harbor (AutoDJ activ). Fiecare DJ își folosește propriile date de autentificare.
+— Conexiune directă la serverul SHOUTcast (fără AutoDJ). În RadioCaster folosește întotdeauna protocolul SHOUTcast v1.
+— Parolă (doar în mesajul de bun venit)
+— Domeniul panoului
+— E-mailul utilizatorului
+— Link de resetare
+— Link direct HTTPS
+— Numele stației
+— Numele de utilizator
+— Numele panoului
+— URL HTTPS direct
+— URL-ul streamului
+— Folosește linkul M3U/PLS
+— DJ-ii se conectează direct la serverul de streaming.
+
+
+○ Inactiv
+
+● Activ
+
+⚠ Sursa răspunde, dar cu starea:
+⚠️ Oprește TOATE transmisiile
+✅ Copiat
+✅ Semnal OK: sursa răspunde corect.
+✏️ Schimbă
+✗ Eroare
+❌ Nu s-a putut conecta la sursă. Verifică URL-ul.
+📱 Configurare pentru mobil (BroadcastMyself, iCast etc.)
+📻 Configurare pentru PC (BUTT, SAM, Winamp etc.)
++ Adaugă
++ Creează listă
++ Creează listă de redare nouă
+(lasă gol pentru a nu schimba)
+(nume de utilizator și parolă)
+(criptat).
+-- Selectează --
+-- Selectează stația --
+-- Fără listă (biblioteca generală) --
+% din disc
+< 1 minut
+Cantitate = numărul de piese redate din fiecare folder/listă înainte de a trece la următorul.
+Q mai mare = bandă mai îngustă
+Număr mai mare = prioritate mai mare față de alte relay-uri active.
+Număr mai mare = prioritate mai mare. Rotațiile cu prioritate mai mare rulează primele.
+Ratio mai mare = mai multă compresie
+Mai aproape de 0 = mai puternic
+Tranziție lină (mai mare = mai lină)
+Max. clienți (0 = nelimitat)
+Max. stații (0 = nelimitat)
+0 = nelimitat
+Limita 0 înseamnă nelimitat.
+110px înălțime
+Se redă acum: {x}
+Se redă acum:
+Încărcare medie: {x}
+{n} folosiți din {n}
+{n} ore de conținut
+{n} listă(e) · {n} piese fără listă
+{n} din {n}
+Pagina {n} din {n} · {n} fișiere
+Listează/Editează radiourile ({n})
+Editează/Listează pachetele ({n})
+AutoDJ înregistrate ({n})
+Detalii stații ({n})
+Toți utilizatorii ({n})
+Utilizare per stație ({n})
+Tabelele bazei de date ({n})
+Șabloane e-mail ({n})
+Liste partajate ({n})
+Liste de reclame ({n})
+Reguli active ({n})
+Revânzători înregistrați ({n})
+Pachete revânzător ({n})
+Cea mai populară ({n} ascultători)
+activ de {n} minute
+Finalizat
+Se încarcă...
+Eroare
+Încărcat ✓
+, Server: {x}, Port: {n}, Parolă: (a DJ-ului)
+. Server: {x}, Port: {n}. Parolă: cea a fiecărui cont DJ. Pe mobil folosește
+, creează un video live și copiază „Cheia de transmisie”. Lipește cheia în câmpul de mai jos. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei. Facebook folosește
+. Obține cheia de transmisie din setările Instagram Live. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei. Instagram folosește
+Limba a fost schimbată în {x}
+fraze traduse

@@ -1,0 +1,1645 @@
+
+
+
+
+
+
+Klíč API Google Maps uložen
+
+
+API CastPanel
+API vypnuto
+Otevřít
+Otevřít port
+Otevřít port ve firewallu
+
+Přístup odepřen
+Neznámá akce:
+Neplatná akce
+Akce
+Nerozpoznaná akce. Platné akce: create_account, suspend, unsuspend, terminate, change_package, info, list_packages
+Neplatná akce
+Aktivní
+Zapněte procesor, aby vaše vysílání znělo hlasitěji a v profesionální kvalitě
+Zapnout AGC
+Zapnout kompresor
+Zapnout ekvalizér
+Zapnout limiter
+Aktivní
+Aktivní
+Aktivní (
+Aktivní · Vypnuto
+Aktuální
+Aktualizovat
+
+Správce služeb
+Správce služeb - CastPanel
+Spravovat AutoDJ
+Spravovat AutoDJ - CastPanel
+Spravovat účet
+Spravovat účet — CastPanel DJ
+Spravovat seznamy
+Spravovat rádio
+Spravovat server a služby
+Spravujte SSL certifikáty a domény serveru.
+
+Přidat SSL certifikát
+Přidat rádiový balíček
+Přidat balíček prodejce
+Konečné nastavení hlasitosti vysílání
+Vlastní nastavení
+Ruční nastavení uživatele
+Náhodně
+Úlož.
+Úložiště
+Úložiště AutoDJ
+Maximální úložiště
+Úložiště:
+Vysoká
+Výšky - Frekvence
+Výšky - Zisk
+Šířka pásma streamování
+Šířka pásma na stanici
+Animace zobrazená přes obrázek pozadí přehrávače.
+Reklama smazána.
+
+
+
+
+Kompatibilní aplikace
+Aplikace pro Android/iOS
+Soubor M3U (pro desktopové přehrávače)
+Soubor PLS (kompatibilní s Winamp, VLC atd.)
+Soubor je příliš velký
+Soubor je příliš velký (server)
+Soubor nahrán jen částečně
+Dočasné soubory
+Hudební soubory
+Soubory streamu
+Soubory překladů:
+Architektura
+Přetáhněte sem své soubory
+Interpret
+Interpret aktuální skladby
+Předmět
+Náběh
+Streamování zvuku
+Platforma pro streamování zvuku
+Platforma pro streamování zvuku
+Rozšiřuje stereo obraz
+Automaticky zakládat nové účty
+Automaticky pozastavit při neplacení
+Automaticky ukončit zrušené účty
+Podepsaný sám sebou
+Automatické spuštění
+Automatické obnovení:
+
+Stav AutoDJ:
+AutoDJ zastaven
+AutoDJ spuštěn
+Registrované AutoDJ (2)
+Automatizace
+Zatím nejsou zaznamenána žádná data o posluchačích.
+Aktuální šířka pásma
+Nízká
+Basy - Frekvence
+Basy - Zisk
+Lišta
+Boční panel panelu vašich klientů. PNG 140×40px.
+Zvukové sloupce
+Databáze:
+Hlavní databáze panelu. Restartujte při problémech s připojením k databázi.
+Databáze:
+Základní
+Hudební knihovna
+Hudební knihovna - CastPanel
+Vítejte
+
+Maximální bitrate
+Bitrate vysílání v kbps
+Výchozí bitrate
+
+Vymazat zprávu
+
+Branding / White Label
+Branding / White-Label
+Branding / White-Label - CastPanel
+White-Label branding
+Branding aktualizován. Vaši klienti uvidí změny po obnovení stránky.
+Zpoždění bufferu DJ (s)
+Hledat
+Hledat balíček...
+Hledat podle názvu, interpreta...
+Hledat...
+Business nebo Creator
+CORS zapnuto
+KRITICKÉ
+Každý DJ používá vlastní heslo (přidělené při vytvoření účtu). Na mobilu použijte formát
+Kvalita nahrávání
+Změnit heslo
+Změnit jazyk
+Změnit jazyk - CastPanel
+Změnit název hostitele
+Změnit název hostitele - CastPanel
+Změnit obrázek pozadí
+Změnit obal
+Změňte jazyk svého CastPanelu.
+Pole
+Kanály
+Zrušit
+Skladby
+Skladby seřazené podle n
+Skladby seřazené podle čísel.
+Skladby seřazené podle předpony.
+Aktuální skladba
+Skladba aktualizována.
+Skladba smazána.
+Skladba přesunuta.
+Množství
+Načítání dat...
+Načítání historie...
+Načítání...
+Ovládací centrum
+Ovládací centrum DJ
+Ovládací centrum DJ - CastPanel
+Odhlásit se
+Vlastní certifikát
+Certifikát odebrán z registru
+
+Hvězdná obloha
+Klíč vysílání je povinný
+Základní klíče (ES):
+
+Klient
+Klient aktualizován
+Klient smazán (včetně všech jeho stanic)
+Klient nenalezen
+Neplatný klient
+Klienti
+
+Kodek / Bitrate / Vzorkovací frekvence
+Výchozí kodek
+Fronta souborů
+
+Primární barva
+Barva zvýraznění:
+Barva pozadí bočního panelu
+Barva textu:
+Barva bočního panelu
+Hlavní barva tlačítek a zvýraznění
+Barvy
+Nerozpoznaný příkaz
+Užitečné příkazy (SSH)
+Sdílejte tento odkaz se svými posluchači. Je to veřejná stránka přehrávače s obaly, historií skladeb a přizpůsobitelnými vizuálními efekty.
+Agresivní komprese, středy dopředu, punch
+Lehká komprese, ideální pro klasickou hudbu a jazz
+Kompresor dynamiky
+S AutoDJ
+Připojení v reálném čase
+Konfigurace Liquidsoap vygenerována:
+Konfigurace AutoDJ uložena
+Konfigurace uložena
+Konfigurace CastPanel
+Globální konfigurace
+Globální konfigurace - CastPanel
+Konfigurace Google Maps
+
+Konfigurace Liquidsoap
+Konfigurace SSL portu
+Konfigurace SSL portu - CastPanel
+Konfigurace RadioCaster
+Konfigurace SMTP
+Konfigurace SMTP - CastPanel
+Konfigurace SMTP úspěšně uložena
+Konfigurace API/fakturace uložena
+Konfigurace souborů
+Konfigurace brandingu uložena. Obnovte stránku, abyste viděli změny.
+Konfigurace SSL domény uložena
+Konfigurace SSL portů uložena. Restartujte Apache, aby se změny projevily.
+Konfigurace serveru
+Konfigurace webu
+Konfigurace přehrávače úspěšně uložena.
+Konfigurace úspěšně uložena
+Vlastní konfigurace uložena. Stanice se restartuje, aby se změny projevily.
+Vlastní konfigurace uložena. Použije se po zapnutí AutoDJ.
+Nastavit název hostitele a doménu
+Nastavit SMTP / e-mail
+Nastavit SSL v Apache (SSH)
+Nastavte poštovní server pro oznámení.
+Nastavte globální volby panelu a streamovacích služeb.
+Nastavte výše klíč API Google Maps, abyste viděli mapu posluchačů.
+Potvrďte nové heslo:
+Dotazy z libovolné domény nebo mobilní aplikace
+Obsah zprávy:
+Heslo
+Heslo správce
+Heslo rádia
+Heslo
+Heslo (user:pass):
+Heslo *
+Aktuální heslo:
+Heslo správce
+Heslo DJ
+Heslo DJ:
+Heslo SMTP
+Heslo Source / DJ
+Heslo Source / DJ:
+Heslo úspěšně aktualizováno
+Heslo pro připojení:
+Heslo:
+Automatické řízení zisku (AGC)
+Hromadné ovládání rádií
+Vícenásobné ovládání
+Vícenásobné ovládání - CastPanel
+Rychlé ovládání
+Ovládání AutoDJ
+Ovládání rádií
+Zkopírujte kód widgetu, který chcete, a vložte ho na svůj web, aby vaši návštěvníci mohli poslouchat
+Kopírovat
+Zkopírujte
+
+
+Vytvořte relay pomocí formuláře vlevo.
+Vytvořte ji pomocí formuláře vlevo.
+Vytvořte rotaci pomocí formuláře vlevo.
+Vytvořeno
+Vytvořit klienta
+Vytvořit účet DJ
+Vytvořit stanici
+Vytvořit seznam
+Vytvořit sdílený seznam
+Vytvořit nového prodejce
+Vytvořit balíček
+Vytvořit balíček prodejce
+Vytvořit první účet
+Vytvořit rádio
+Vytvořit relay
+Vytvořit prodejce
+Vytvořit rotaci
+Vytvořit uživatele
+Vytvořit nového prodejce
+Vytvořit
+Vytvořit účet DJ
+Vytvořte nové rádio a klientský účet. Klienti mohou svá rádia spravovat z klientského panelu.
+Automaticky vytvořit a aktivovat stanici po zaplacení
+Neplatné přihlašovací údaje API
+Přihlašovací údaje API jsou povinné
+Neplatné přihlašovací údaje DJ
+Neplatné přihlašovací údaje
+Vytvořte balíček s limity účtů a rádií pro své klienty.
+Vytvářejte a spravujte klíče API, stahujte moduly pro fakturační software.
+
+
+Prolínání (sekundy)
+Kritický
+Účet
+Účet DJ
+Účet DJ aktualizován.
+Účet DJ smazán
+Účet DJ smazán.
+Účet DJ nenalezen
+Účet znovu aktivován
+Účet pozastaven
+Účet smazán
+Účet zcela smazán
+Účet znovu aktivován
+Účet pozastaven
+Účet a stanice
+Účty
+Účty DJ
+Účty DJ - CastPanel
+Maximum účtů DJ
+Registrované účty DJ
+Kód HTML
+Kód popup (tlačítko, které otevře okno)
+Kód s vlastní šířkou (např. 500px)
+Kód iframe
+Kód iframe (pro vložení na váš web)
+Jak přidat jazyk:
+
+
+DJ může změnit vlastní heslo
+DJ může změnit vlastní heslo:
+DJ se může přihlásit do panelu DJ
+DJ se může přihlásit do panelu DJ:
+DJ může spustit/zastavit AutoDJ
+DJ může spustit/zastavit AutoDJ:
+DJ může spustit/zastavit rádio
+DJ může spustit/zastavit rádio:
+DJ může přehrávat znělky/ID (ve vysílání)
+DJ může přehrávat znělky/ID (ve vysílání):
+DJ může přeskočit skladbu (AutoDJ)
+DJ může přeskočit skladbu (AutoDJ):
+DJ může nahrát profilovou fotku
+DJ může nahrát profilovou fotku:
+DJ může vysílat hudbu
+DJ může vysílat hudbu:
+DJ může používat Voice Pro (ve vysílání)
+DJ může používat Voice Pro (ve vysílání):
+
+Aktivní DJ
+
+Data se aktualizují při každém požadavku živými informacemi
+
+Určuje, po kolika skladbách se vkládají reklamní bloky. Můžete vytvořit více pravidel s různou frekvencí a časy.
+Vypnuto
+Vypnout
+Odpojeno
+Popis
+Volitelný popis
+Rozmazání (blur):
+Vypnuto
+Vypnuto
+Podrobnosti stanic (2)
+Zastavit
+Zastavit AutoDJ
+Zastavit rádio
+Zastavit všechna rádia
+Zastavit všechny AutoDJ
+Před úpravou zastavte retransmisi
+Zastaví všechny kontejnery Liquidsoap
+
+Adresář
+Adresář médií
+Hlavní adresáře
+Vypnuto
+Disk
+Disk celkem
+Dostupné
+Rozdělení podle typu serveru
+
+
+
+Dokumentace polí
+Ne
+Doména
+SSL doména
+Hlavní SSL doména
+Doména panelu
+Doména panelu (SSL_DOMAIN)
+Doména použitá pro URL panelu a streamů
+Domény / SSL certifikáty
+Domény / SSL certifikáty - CastPanel
+Přetáhněte sem obrázek pro nahrání, nebo klikněte.
+Délka
+Celková délka
+Celková délka:
+Aktivní dny
+Dny v týdnu
+
+
+
+Ekvalizér
+Tříbandový ekvalizér
+Upravit
+Upravit skladbu
+Upravit klienta
+Upravit účet DJ
+Upravit DJ:
+Upravit stanici
+Upravit balíček
+Upravit rádiový balíček
+Upravit balíčky prodejce
+Upravit balíčky prodejce - CastPanel
+Upravit relay
+Upravit prodejce
+Upravit rotaci
+Upravit uživatele
+Upravit/aktualizovat rádia
+Upravit/zobrazit balíčky
+Upravit/zobrazit balíčky (4)
+Upravit/zobrazit balíčky - CastPanel
+Vizuální efekt pozadí
+Např.: Vánoční hudba
+Např.: Ranní hudba
+Např.: Národní rádio FM
+Např.: Reklamní spoty
+Např.: Aktuální hity
+Spusťte na serveru přes SSH pro správu certifikátů Let's Encrypt:
+Příklad
+Příklad integrace (JavaScript)
+Tento
+Šířka pásma na stanici je odhad podle aktuálních posluchačů × bitrate. Data síťových rozhraní se sčítají od posledního restartu serveru.
+Soubor nesmí přesáhnout 2MB
+Soubor nesmí být větší než 3MB
+Hlavní doména, přes kterou se otevírá panel
+Jazyk se zobrazí automaticky
+Uživatelské jméno již existuje
+Název balíčku je povinný
+Název je povinný
+Název je povinný.
+Zvukový procesor funguje v režimu AutoDJ i během živého vysílání DJ. Při uložení změn se stanice krátce restartuje, aby se nová konfigurace projevila. Procesor používá profesionální řetězec: AGC → Kompresor → Ekvalizér → Limiter → Výstupní zisk.
+Zvukový procesor zlepšuje kvalitu vysílání profesionální kompresí, ekvalizací a limiterem. Vyberte preset, který odpovídá stylu vašeho obsahu.
+Uživatelské jméno nebo e-mail již existuje
+Uživatel již existuje
+Smazat
+Smazat vybrané
+Smazat stanici při zrušení služby
+
+E-mail správce
+E-mail odesílatele (From)
+Cílový e-mail
+Neplatný e-mail
+
+Stanice aktivní
+Dnes odvysíláno:
+Firma
+
+Na všech stanicích
+Živě
+
+Šifrování
+
+Endpoint API:
+JSON endpoint pro vývojáře. Vrací živá metadata: aktuální skladbu, posluchače, stav serveru. Užitečné pro integrace a vlastní aplikace.
+Veřejný endpoint · Bez ověření · JSON · CORS zapnuto
+
+
+Odkaz na JSON API
+Odkaz M3U (pro přehrávače)
+Odkaz PLS (pro WinAmp, VLC atd.)
+Odkaz XSPF
+Přímý odkaz (ke sdílení na sociálních sítích, webu atd.)
+Přímé odkazy na stream
+Odkazy SSL/Přehrát
+Odkazy pro SSL streamování
+Odkazy pro SSL streamování - CastPanel
+Rozšíření sterea
+Zadejte klíč Facebook
+Zadejte klíč Instagram
+Zadejte klíč TikTok
+Zadejte klíč Youtube
+Odesláno (TX)
+Odeslat testovací e-mail
+Odeslat test
+Chyba DB:
+Chyba při aktualizaci:
+Chyba při použití presetu.
+Chyba při odesílání testovacího e-mailu. Zkontrolujte konfiguraci SMTP.
+Chyba při ukládání souboru
+Chyba při ukládání konfigurace.
+Chyba při ukládání konfigurace:
+Chyba při ukládání:
+Chyba při spuštění
+Chyba při přesouvání souboru
+Chyba při načítání konfigurace:
+Chyba při restartu
+Chyba při synchronizaci pravidel proxy. Zkontrolujte oprávnění souboru /etc/httpd/shoutcast-proxy-rules.inc
+Chyba nahrávání
+Chyba při nahrávání souboru (kód:
+Chyba při nahrávání fotky
+Chyba databáze:
+Chyba připojení
+Chyba nahrávání
+Chyba nahrávání:
+Neznámá chyba
+Neznámá chyba při vytváření rádia
+Chyba operace:
+Chyba operace:
+Nahrávání selhalo
+Chyba při restartu firewallu:
+Sem napište zprávu, kterou DJ uvidí po vstupu do panelu...
+Volné místo
+
+Denní odhad
+Stanice
+Stanice vytvořena
+Stanice zastavena
+Stanice smazána a odstraněna
+Stanice spuštěna
+
+Stanice znovu aktivována
+Stanice restartována
+Stanice pozastavena
+Stanice:
+Stanice
+Aktivní stanice
+Přiřazené stanice
+Offline stanice
+Online stanice
+Celkem stanic
+Stanice přiřazené ke sdílenému seznamu
+Stanice klientů
+Stanice klientů - CastPanel
+Stanice
+Stanice vytvořena
+Stanice aktualizována
+Stanice smazána
+
+Stanice nevysílá
+Stav
+Stav rádia
+Stav aktualizován
+Stav účtů
+Stav rádia
+Stav rádia:
+Stav služeb
+Stav rádia
+Stav serveru
+Stav serveru - CastPanel
+Živý stav serveru
+
+Statistiky
+Statistiky - CastPanel
+Živé statistiky
+Živé statistiky - CastPanel
+Úplné statistiky
+Statistiky rádia
+Statistiky rádia - CastPanel
+Živé statistiky
+Rychlé statistiky (posluchači, stav, název)
+Statistiky a účet
+Toto je KRITICKÁ služba.
+Tato zpráva se zobrazí DJům po přihlášení do jejich panelu. Může obsahovat pokyny, rozpisy, pravidla nebo jiné důležité informace. Pro formátování je podporováno základní HTML.
+Spustí se:
+Hvězdy
+Standardní
+Stereo
+Povolené přípony
+Načtená rozšíření
+
+
+
+
+Facebook může omezit váš účet nebo stránku, pokud vaše rádio během živého vysílání hraje hudbu chráněnou autorským právem.
+
+Fakturace a API
+Fakturace a API - CastPanel
+Fakturace a automatizace (API)
+
+
+
+Datum
+Jedno datum
+Datum/čas dotazu ISO 8601
+Řádky
+
+
+Firewall serveru. Restartujte při problémech s přístupem k portům.
+Firewall znovu načten
+Firewall restartován. Otevřené porty:
+
+Neplatný formát obrázku pozadí. Použijte JPG, PNG, WebP nebo GIF.
+Neplatný formát obalu. Použijte JPG, PNG nebo WebP.
+Neplatný formát
+Formáty: MP3, OGG, AAC, M4A, WAV, FLAC — Max. 50 MB na soubor
+Fotka úspěšně aktualizována
+Profilová fotka
+Profilová fotka aktualizována
+Fotka smazána
+
+
+Zdroj
+Konečný zisk
+Max. zisk
+Min. zisk
+Výstupní zisk a doplňky
+Kompenzační zisk
+Vygenerovat nový klíč
+Žánr
+Geolokalizovaní
+Spravovat stanice
+Spravovat stanice - CastPanel
+Spravovat uživatele
+Spravovat uživatele - CastPanel
+Správa reklam
+Správa reklam - CastPanel
+Správa AutoDJ
+Klíč API Google Maps
+Animované kapky deště
+Nahrávání DJ:
+Nahrávat DJ
+Uložit
+Uložit změny
+Uložit změny AutoDJ
+Uložit konfiguraci
+Uložit vlastní konfiguraci
+Uložit jazyk
+Uložit klíč
+Uložit zprávu
+Uložit celou konfiguraci
+
+Zapnuto
+Zapnout REST API
+Zapnout odesílání e-mailů přes SMTP
+Historie
+Historie skladeb
+Historie nedávných skladeb
+Čas konce
+Čas začátku
+Čas serveru
+
+Hostitel Liquidsoap
+
+
+Aktuální název hostitele
+Název hostitele serveru
+Neplatný název hostitele: pouze písmena, číslice, pomlčky a tečky.
+Název hostitele nelze změnit:
+Neplatné ID stanice
+Neplatné ID
+ID je povinné
+IP připojení streamu:
+IP připojení:
+IP rádia
+IP serveru
+Neautorizovaná IP
+Unikátní IP
+
+
+
+
+
+
+
+Ikona karty prohlížeče. Doporučeno: 32×32px nebo 64×64px, ICO nebo PNG.
+Ikona prohlížeče pro vaše klienty. ICO/PNG 32×32px.
+Jedinečný identifikátor stanice
+Aktivní jazyk:
+Jazyk panelu
+Obrázek pozadí
+Obrázek pozadí smazán.
+Obrázek smazán.
+Obrázek je příliš velký (max 5MB)
+Obrázek zobrazený jako obal, když skladba nemá vlastní. Doporučeno: 500x500px, čtvercový.
+Obrázek zobrazený jako pozadí celého přehrávače. Doporučeno: 1920x1080px nebo větší.
+Obrázek úspěšně nahrán.
+Neaktivní
+Neaktivní · Vypnuto
+Informace načteny
+Info o rádiu
+Info o serveru
+Technické informace
+Úplné informace o stanici a aktuální skladbě
+Informace o účtu
+Informace o DJ
+Informace o serveru
+Informace o serveru - CastPanel
+Sociální informace aktualizovány
+Informace:
+Zadejte RTMP URL libovolného kompatibilního serveru
+Zadejte jméno
+Zadejte uživatelské jméno
+Nejprve zadejte klíč vysílání.
+Zadejte heslo
+Zadejte uživatelské jméno
+Zadejte uživatelské jméno a heslo
+Spustí zastavená rádia
+Spustit
+Spustit AutoDJ
+Spustit rádio
+Přihlásit se
+Přihlásit se - CastPanel
+Přihlásit se jako uživatel
+Přihlásit se do uživatele
+Přihlásit se
+Spustit všechna rádia
+Domů
+Spuštění všech rádií provedeno
+Domů — CastPanel DJ
+
+
+
+Instagram může omezit váš účet, pokud vaše rádio během živého vysílání hraje hudbu chráněnou autorským právem.
+
+Ruční instalace (AlmaLinux 8):
+Nainstalováno (aktivní)
+Integrace a API
+Síťová rozhraní
+Rozhraní
+
+JPG, PNG nebo WebP - čtverec 500x500
+JPG, PNG, WebP nebo animovaný GIF
+Standardní JSON
+
+Jan Novák
+Čt
+
+
+Tato
+Aktuální heslo je nesprávné
+Heslo musí mít alespoň 6 znaků
+Funkce živého vysílání Facebook vysílá hudbu vašeho rádia na Facebook Live. Přejděte na
+Funkce živého vysílání Facebook vysílá hudbu vašeho rádia na Facebook Live. Přejděte na Facebook Live Producer, vytvořte živé video a zkopírujte „Klíč vysílání“. Vložte klíč do pole níže. Nahrajte obrázek 1280x720, který se zobrazí během vysílání. Facebook používá RTMPS (šifrované).
+Funkce živého vysílání Instagram vysílá hudbu vašeho rádia na Instagram Live. Vyžaduje se účet typu
+Funkce živého vysílání Instagram vysílá hudbu vašeho rádia na Instagram Live. Vyžaduje se účet Business nebo Creator. Klíč vysílání získáte v nastavení Instagram Live. Nahrajte obrázek 1280x720, který se zobrazí během vysílání. Instagram používá RTMPS (šifrované).
+Funkce živého vysílání TikTok vysílá hudbu vašeho rádia na TikTok Live. Je potřeba alespoň
+Funkce živého vysílání TikTok vysílá hudbu vašeho rádia na TikTok Live. Pro živé vysílání potřebujete alespoň 1 000 sledujících. Klíč vysílání získáte v TikTok Live Studio nebo v mobilní aplikaci. Nahrajte obrázek 1280x720, který se zobrazí během vysílání.
+Funkce živého vysílání Youtube vysílá hudbu vašeho rádia na Youtube Live. Platí
+Nahrávání je automatické, pokud je zapnuté. Pro zapnutí/vypnutí nahrávání živých pořadů DJ použijte konfiguraci stanice. Soubory využívají dostupné místo vašeho hostingu.
+Hesla se neshodují
+Seznamy skladeb se spravují z uživatelského panelu. Pro přístup použijte „Přihlásit se do uživatele“.
+Let's Encrypt (zdarma)
+Limiter špiček
+Limit posluchačů
+
+Liquidsoap není potřeba (AutoDJ vypnut)
+Liquidsoap vynechán (AutoDJ vypnut)
+Seznam
+Naplánovaný seznam
+Sdílený seznam smazán
+Cílový seznam skladeb
+Seznam reklam smazán.
+Seznam reklam nebyl zadán
+Seznam skladeb
+Cílový seznam
+Seznam smazán. Skladby zůstaly bez přiřazeného seznamu.
+Seznam přejmenován.
+Zobrazit / upravit rádia
+Zobrazit AutoDJ
+Zobrazit AutoDJ - CastPanel
+Zobrazit/stáhnout pořady DJ
+Zobrazit/upravit účty DJ
+Zobrazit/upravit rádia (2)
+Zobrazit/upravit prodejce
+Zobrazit/upravit prodejce - CastPanel
+Seznamy
+Aktivní seznamy
+Sdílené seznamy
+Sdílené seznamy (0)
+Seznamy reklam (0)
+Seznamy skladeb
+Seznamy skladeb
+Seznamy skladeb - CastPanel
+Sdílené seznamy skladeb
+Sdílené seznamy skladeb - CastPanel
+
+Déšť
+
+Logo přihlášení
+Logo přehrávače
+Logo bočního panelu
+Logo smazáno. Obnoví se výchozí logo CastPanel.
+Logo smazáno. Použije se výchozí logo panelu.
+Logo pro veřejný přehrávač rádia. Doporučeno: 200×200px, PNG.
+Malé logo v bočním panelu. Doporučeno: 140×40px, průhledné PNG.
+Logo úspěšně nahráno.
+Loga a favicon
+Systémové protokoly
+Protokoly nejsou přístupné z webového panelu. Pro zobrazení posledních přístupů SSH spusťte v terminálu: last -n 10
+DJ musí zvolit protokol
+DJ musí vždy zvolit protokol
+Nastavení procesoru se ukládá do databáze. Pro zpracování v reálném čase zapněte AutoDJ v balíčku této stanice. Po zapnutí Liquidsoap automaticky použije řetězec zpracování. Procesor používá profesionální řetězec: AGC → Kompresor → Ekvalizér → Limiter → Výstupní zisk.
+Služby označené jako
+Ikony se zobrazí ve veřejném přehrávači. Ponechte prázdné pro skrytí.
+Po
+Limity rádia
+
+
+Kompenzační zisk
+Mapa posluchačů
+Út
+Max. bitrate
+Maximálně 10 retransmisí na stanici
+
+Média (hudba)
+Středy - Frekvence
+Středy - Zisk
+Středy - Činitel Q
+Zpráva panelu DJ
+Zpráva panelu DJ - CastPanel
+Zpráva úspěšně aktualizována.
+Zpráva panelu DJ aktualizována
+Zpráva pro panel DJ
+Metoda není povolena
+Můj branding
+Můj branding - CastPanel
+Moji klienti
+Moji klienti - CastPanel
+St
+Režim údržby
+Režim přehrávání
+Zobrazit názvy
+Zobrazit sloupce ekvalizéru
+Zobrazit počet posluchačů
+Zobrazit historii skladeb
+Kontejnerový engine pro AutoDJ (Liquidsoap). Restartujte, pokud AutoDJ nefungují.
+Engine:
+
+
+
+Přípojný bod
+
+Přesunout
+Přesunout do seznamu
+Nejpopulárnější (0 posluchačů)
+Max. povoleno
+Max. na jednom rádiu
+Maximální síla a hlasitost, zvuk komerčního FM
+Maximálně povoleno
+Maximum za posledních 24h
+Měsíční maximum
+Týdenní maximum
+Metoda
+Metoda není povolena
+Hudba
+Webové prohlížeče
+Potřebujete klíč API Google Maps se zapnutým Maps JavaScript API.
+Sníh
+Žádná
+Žádný
+Cílová úroveň
+Úroveň, od které začíná komprese
+Maximální úroveň povolená před omezením
+Ne
+Neověřeno
+Bez oprávnění pro tuto stanici
+Nenastaveno
+Nevytvářejte účet DJ se všemi oprávněními, pokud té osobě plně nedůvěřujete.
+Nedostupné
+Nenalezeno
+V knihovně nejsou žádné skladby.
+Nejsou vytvořeny žádné účty DJ.
+Žádné sdílené seznamy
+Nejsou vytvořeny žádné seznamy. Vytvořte jeden pomocí formuláře výše.
+Žádné seznamy reklam.
+Nejsou vytvořeny žádné balíčky
+Žádné další otevřené porty (pouze výchozí služby)
+Nejsou dostupné žádné porty telnet
+Zatím žádné záznamy vysílání.
+Nejsou nastavena žádná pravidla reklam.
+Nejsou nastaveny žádné relay.
+Nejsou registrováni žádní prodejci
+Nejsou nastaveny žádné rotace.
+Pro tuto stanici nejsou nahrané žádné pořady.
+Nenainstalováno
+Nemůžete deaktivovat vlastní účet
+Nemůžete smazat vlastní účet
+Není potřeba (protokol SHOUTcast)
+Nenalezeny žádné platné zvukové soubory
+Klíč vysílání nebyl nastaven
+Nelze se připojit k serveru SHOUTcast
+AutoDJ nelze zastavit
+Rádio nelze zastavit
+Příkaz IPC nelze zapsat
+Soubor nelze uložit
+Liquidsoap nelze spustit:
+AutoDJ nelze spustit
+Proces FFmpeg nelze spustit
+Rádio nelze spustit
+Nelze smazat: prodejce má klienty s aktivními stanicemi
+Nelze smazat: tento balíček používají stanice
+Nelze smazat: tento balíček používají prodejci
+Nebyly přijaty žádné soubory
+Nebyl přijat žádný soubor
+Nebyl přijat žádný soubor
+Nemáte oprávnění pro tuto stanici
+Nemáte přiřazenou stanici. Kontaktujte správce.
+
+Název
+Celé jméno
+Celé jméno:
+Název stanice
+
+Uživatelské jméno *
+Název seznamu
+Název rotace *
+Název stanice
+Název relay *
+Jméno odesílatele
+Název webu
+Název zobrazený v bočním panelu a v titulku prohlížeče
+Název je povinný
+Název je povinný.
+Název a URL jsou povinné.
+Název a slug jsou povinné
+Normální (postupně)
+Poznámka:
+Zprávy / Mluvené slovo
+Právě hraje podle ID stanice
+Vygenerován nový klíč API:
+Nové heslo (ponechte prázdné pro zachování)
+Nové heslo:
+Nový účet DJ
+Nová stanice
+Nový seznam reklam
+Nové pravidlo reklam
+Nová rotace
+Nový
+Nový klient
+Nový relay
+Nový uživatel
+
+
+Získat klíč
+
+Oceánské vlny
+Vlny
+
+Právě online
+Povoleny jsou jen .jpg nebo .png! Max 3MB.
+Možnosti přehrávače
+Optimalizováno pro mluvené slovo, max. srozumitelnost
+Optimalizováno pro mluvené slovo, maximální srozumitelnost
+Ztmavení překryvu:
+Posluchači
+Posluchači (Google Maps)
+Aktivní posluchači
+Posluchači nyní
+Připojení posluchači
+Maximum posluchačů
+Celkem posluchačů
+Celkem posluchačů nyní
+Aktuální posluchači
+Právě připojení posluchači
+Graf posluchačů rádia (živě)
+Posluchači na mapě
+Posluchači na mapě - CastPanel
+Posluchači za posledních 24 hodin
+
+
+
+Stránka rádia
+Hlavní panel
+Panel prodejce
+Panel prodejce - CastPanel
+Administrační panel
+Administrační panel - CastPanel
+Ovládací panel
+Ovládací panel - CastPanel
+Balíček
+Balíček aktualizován
+Balíček smazán
+Balíček nenalezen
+Balíček nenalezen nebo neaktivní
+Balíčky
+Balíčky prodejce (0)
+Balíčky zobrazeny
+Pro pokročilá nastavení (AGC, kompresor, EQ, limiter) kontaktujte správce stanice.
+
+Celková špička
+Sem vložte klíč vysílání...
+Čeká
+Oprávnění
+Oprávnění DJ (pozor)
+Přizpůsobte logo, název a barvy svého panelu.
+Přizpůsobte loga, nadpisy a favicony svého panelu. Nahrané obrázky nahradí výchozí hodnoty. Smazáním obrázku se obnoví výchozí logo CastPanel. Prodejci si mohou ve svém panelu nastavit vlastní branding pro své klienty.
+Vlastní
+Přizpůsobit přehrávač
+Přizpůsobit přehrávač - CastPanel
+
+Špička za 24 hodin
+Špička 24h
+Špička za 30 dní
+Špička za 7 dní
+Vlastní zápatí
+Stopy
+Šablona úspěšně aktualizována
+E-mailové šablony
+E-mailové šablony (6)
+E-mailové šablony - CastPanel
+Výchozí šablony inicializovány
+Neplatná platforma
+Playlist
+Playlist 'General' vytvořen
+Aktivní playlist
+Intervaly playlistu
+Playlisty
+Obal smazán.
+Výchozí obal
+Portál DJ
+
+Postfix (pošta)
+Poštovní server Postfix
+Poštovní server Postfix. Restartujte, pokud se e-maily neodesílají.
+Silný
+Pozor:
+
+Preset „
+Neplatný preset
+Rychlé presety
+Náhled
+Nejprve vytvořte
+Nejprve vytvořte
+Priorita
+Otestovat
+Otestovat signál
+Procesor
+Procesor zapnut
+Procesor aktivní
+Procesor vypnut
+Zvukový procesor
+Zvukový procesor - CastPanel
+Vyvážené zpracování pro běžné rádio
+Rozvrh
+Rozvrh reklam vytvořen.
+Rozvrh smazán.
+Naplánovat reklamy
+Naplánovat reklamy - CastPanel
+
+
+Vlastník
+Protokol
+
+Protokol SHOUTcast v1 — Připojení přes Liquidsoap Harbor (AutoDJ aktivní). Každý DJ používá vlastní přihlašovací údaje.
+Protokol SHOUTcast v1 — Přímé připojení k serveru SHOUTcast (bez AutoDJ). V RadioCaster vždy používejte protokol SHOUTcast v1.
+Protokol:
+Test e-mailu CastPanelPokud jste tento e-mail obdrželi, konfigurace SMTP funguje správně.
+Port
+Port DJ
+Port HTTP
+Port HTTPS
+
+Port SSL
+Port SSL správce
+Port SSL pro streamování
+Port SSL panelu (HTTPS)
+Port Telnet
+Port pro připojení DJ:
+Port pro připojení:
+Port vysílání
+Port rádia
+Administrační port (výchozí: 2087)
+Standardní port HTTPS (výchozí: 443)
+Port nepřiřazen
+Port pro zabezpečené streamy (výchozí: 8443)
+Port:
+Otevřené porty
+Porty SSL
+Přípojný bod
+Přípojný bod (Mount)
+Přípojný bod (Mount):
+Strana 1 z 1 · 0 souborů
+Strana 1 z 1 · 2 soubory
+Přihlašovací stránka vašich klientů. PNG 200×60px.
+Veřejné a zdarma. Nepotřebujete klíč API ani tokeny
+Rádio úspěšně zastaveno
+Rádio úspěšně spuštěno
+
+RadioCaster: Protokol
+RadioCaster: Protokol Icecast, server:
+RadioCaster: Protokol SHOUTcast v1, server:
+RadioCaster: Zvolte protokol
+RadioCaster: Zvolte protokol SHOUTcast v1. Server:
+Rádia a účty
+Žebříček — Top 50 rádií podle posluchačů
+
+Opětovná aktivace
+Znovu aktivovat
+Provede úplný restart služby SSH včetně Fail2ban. Užitečné při mnoha zablokovaných pokusech o přístup nebo trvalých problémech s připojením.
+Znovu načíst firewall
+Přijato (RX)
+Síť
+Sociální sítě
+Znovu odeslat uvítací e-mail
+Obnovit
+Znovu vygenerovat pravidla proxy Apache
+Registrovat certifikát
+Registrace
+Veřejná registrace zapnuta
+Aktivní pravidla (0)
+
+Restartuje streamovací službu každé aktivní stanice
+Restartuje všechny kontejnery Liquidsoap
+Restartovat
+Restartovat AutoDJ
+Restartovat Fail2ban (smaže dočasné zákazy)
+Restartovat rádio
+Restartovat služby
+Restartovat služby - CastPanel
+Restartovat všechna rádia
+Restartovat všechny AutoDJ
+Restartovat službu SSHD
+Restart kritických služeb může způsobit dočasné výpadky. Služby označené jako kritické po restartu ovlivní panel a/nebo streamování.
+Restartujte streamovací služby serveru.
+Restart všech rádií proveden
+Restart všech AutoDJ proveden
+
+Přesměrování relay
+Přesměrování relay - CastPanel
+Relay aktualizován.
+Relay smazán.
+Nastavené relay
+
+Právě hraje: žádné informace
+Právě hraje:
+Přehrát
+Kompaktní přehrávač (iframe)
+Celostránkový přehrávač (s vizuálními efekty)
+Veřejný přehrávač
+Samostatný přehrávač, který nepotřebuje iframe. Stačí zkopírovat a vložit kód do vašeho HTML.
+Kompaktní přehrávač s výškou
+Profesionální celostránkový přehrávač s animacemi pozadí, obalem, historií skladeb a pokročilými ovládacími prvky. Ideální jako
+Veřejný přehrávač rádií vašich klientů. PNG 200×200px.
+
+
+Odpověď JSON
+Strukturovaná a zdokumentovaná odpověď JSON
+Neplatná odpověď JSON
+Obnovit heslo
+Obnovit heslo
+Obnovte své heslo
+Úplný reset SSH
+Výsledky
+Přehled obsahu
+Přehled účtu (živě)
+Přehled serveru
+Prodejce aktualizován
+Prodejce smazán
+Prodejci
+Registrovaní prodejci (0)
+
+Role
+Nastavené rotace
+Rotace aktualizována.
+Rotace složek
+Rotace složek - CastPanel
+Rotace smazána.
+Cesta
+
+
+Binární soubor SHOUTcast nenalezen v
+
+
+
+
+Server SSH
+SSH zcela restartováno
+SSL zapnuto
+SSL zapnuto (HTTPS)
+SSL a doména
+
+Výchozí vzorkovací frekvence
+Použije se automaticky na serveru přes castpanel-ctl
+Odesílá se při vytvoření nového účtu
+Odesílá se při zřízení nové stanice
+Odesílá se při opětovné aktivaci uživatelského účtu
+Odesílá se při žádosti o obnovení hesla
+Odesílá se při pozastavení uživatelského účtu
+Generuje se automaticky. Můžete ho změnit.
+Zobrazuje se na přihlašovací stránce. Doporučeno: 200×60px, průhledné PNG.
+Pořadí playlistů
+Zabezpečení a firewall
+Zabezpečení a firewall - CastPanel
+Vyberte skladby zaškrtávacími políčky pro hromadné akce
+Vyberte vizuální efekt:
+Vyberte preset pro zapnutí zpracování zvuku
+Vyberte stanici pro správu jejích účtů DJ.
+Vyberte seznam skladeb
+Vyberte seznam skladeb z rozbalovací nabídky pro zobrazení a správu jeho skladeb.
+Oddělené čárkou
+Služba
+Služba Liquidsoap zastavena
+Služba Liquidsoap spuštěna (Docker: liquidsoap-
+Služba SHOUTcast zastavena
+Služba vzdáleného přístupu SSH. Restartujte při problémech se vzdáleným připojením.
+Systémové služby
+Server
+Server / Hostitel
+Server SMTP
+Server SSH
+Poštovní server
+
+Webový server panelu. Restartujte, pokud se panel nenačítá.
+Server:
+
+
+
+
+
+Pořady DJ
+Pořady DJ - CastPanel
+Pokud stanice vysílá
+Bez ověření
+Bez AutoDJ
+Žádná data
+Bez efektu
+Není místo v úložišti
+Žádná stanice
+Není vybrána žádná stanice
+Žádné stanice.
+Není přiřazena žádná stanice.
+Žádné informace
+Bez seznamu
+Není přiřazen seznam
+Bez vlastního loga
+Bez názvu
+Bez balíčku
+Bez oprávnění pro AutoDJ
+Bez oprávnění ke změně hesla
+Bez oprávnění k vytváření
+Bez oprávnění k mazání
+Bez oprávnění ke spuštění/zastavení
+Bez oprávnění ke čtení
+Bez oprávnění k úpravám
+Bez oprávnění k opětovné aktivaci
+Bez oprávnění k nahrání fotky
+Bez oprávnění k pozastavení
+Bez oprávnění
+Bez zpracování, původní zvuk
+Bez názvu
+Systém
+Operační systém
+Fakturační systém
+Rádiový systém
+Systém překladů
+
+
+
+Pouze JPG, PNG nebo WebP
+Pouze písmena, číslice, pomlčky a podtržítka
+Povoleny jsou pouze soubory JPG nebo PNG
+
+
+
+
+
+HTTP stream (bez SSL)
+Hlavní HTTPS stream
+Jemný
+Nejprve nahrajte obrázek obalu
+Nahrát reklamy
+Nahrát zvukové soubory
+Nahrát hudbu
+Nahrát hudbu - CastPanel
+Nahrát hudbu MP3
+Nahrát vše
+Nahrát obrázek pozadí
+Nahrát obal
+Podnadpis
+Pozastavit
+Automaticky pozastavit stanici, pokud platba selže
+Pozastavené
+Pozastavení
+
+
+So
+Ano
+
+
+
+Tabulka
+Tabulky
+Tabulky databáze (29)
+Velikost
+Max. velikost nahrávání (MB)
+Celková velikost DB
+Naplánované úlohy. Restartujte, pokud se úlohy cron nespouštějí.
+Ukončit
+Text pod logem v bočním panelu
+Text zápatí
+Text tlačítka nebo záhlaví na přihlašovací stránce
+Reálný čas
+
+
+
+TikTok může pozastavit váš účet, pokud vaše rádio během živého vysílání hraje hudbu chráněnou autorským právem.
+TikTok → LIVE → Získat URL serveru a klíč
+Vypršel čas čekání na odpověď démona
+
+Typ
+Typ serveru
+Typ certifikátu
+Typ rozvrhu
+Typ seznamu
+Typ souboru není povolen. Použijte PNG, JPG, GIF, SVG nebo ICO
+Název rádia
+Všechna hesla
+Všechny zdroje streamování
+Všechny seznamy
+Všechny seznamy
+Všechna rádia zastavena
+Všechny AutoDJ zastaveny
+Všechny endpointy
+Všichni uživatelé (3)
+Musí být vyplněna všechna povinná pole (název rádia, uživatel, balíček)
+Všechna pole jsou povinná
+Všechny odkazy pro streamování jsou dostupné s SSL (HTTPS) pro maximální kompatibilitu s prohlížeči a mobilními aplikacemi.
+Neplatný token CSRF. Obnovte stránku.
+Neplatný bezpečnostní token
+Top 50 rádií
+Top 50 rádií - CastPanel
+
+Celkem souborů
+Celkem odesláno (TX)
+Celkem přijato (RX)
+
+Celkem od spuštění serveru
+Přeložte hodnoty pole
+Vlastní vysílání
+
+
+Živé vysílání Instagram
+
+Živé vysílání Youtube
+Vysílání zastaveno.
+
+
+Živé vysílání Instagram
+Živé vysílání Instagram - CastPanel
+
+
+Živé vysílání YouTube
+Živé vysílání Youtube
+Živé vysílání Youtube - CastPanel
+Vysílání úspěšně spuštěno.
+Vysílá
+Váš veřejný přehrávač
+Váš účet byl znovu aktivován
+Váš účet byl pozastaven
+Váš účet nemá oprávnění k přihlášení
+Váš stream je kompatibilní s každým přehrávačem, který podporuje HTTP streamování:
+
+Název
+Přihlašovací nadpis
+Název aktuální skladby
+Název panelu
+Název a barvy panelu
+Přímá HTTP URL (bez SSL)
+RTMP URL je povinná
+SSL URL
+Přímá SSL URL pro HTML5 přehrávače, mobilní aplikace, pluginy WordPress a vlastní přehrávače. Funguje s HTTPS na portu stanice.
+URL přihlášení do panelu DJ:
+Přímá SSL URL přehrávání
+URL externího zdroje *
+URL rádia
+URL obalu alba
+HTTPS URL streamování
+URL systému
+URL webu
+URL streamu (HTTPS)
+URL externího audio streamu (Icecast, SHOUTcast, HTTP stream).
+Přímá URL bez SSL pro rádiový software jako SAM Broadcaster, BUTT, Mixxx, RadioBOSS a další enkodéry. Použijte tuto URL s uvedeným portem pro přímé vysílání.
+URL streamů
+URL pro SSL streamování
+Práh
+Práh (Threshold)
+
+Pro RTMP URL použijte API Instagramu nebo nástroje třetích stran
+Použijte funkci
+Použijte přihlašovací údaje svého
+
+Uživatelské jméno, e-mail a heslo jsou povinné
+Využití šířky pásma
+Využití šířky pásma - CastPanel
+Využití disku
+Využití disku / HDD
+Využití disku / HDD - CastPanel
+Využití na stanici (2)
+Uživatel
+Správce
+Uživatel DJ
+Uživatel DJ:
+Uživatel SMTP
+Uživatel aktualizován
+Uživatel smazán
+Uživatel nenalezen
+Nesprávné uživatelské jméno nebo heslo
+Uživatelské jméno a heslo jsou povinné
+Uživatelské jméno a heslo jsou povinné
+Uživatelské jméno a heslo jsou povinné.
+Uživatelé
+
+
+Dostupné proměnné
+Zobrazte, upravujte a spravujte všechna rádia a účty na serveru.
+Zobrazit
+Zobrazit přehrávač
+Kontrola...
+Sledujte využití paměti, CPU, zátěže a disku serveru v reálném čase.
+Verze PHP
+Pá
+Náhled
+Náhled v reálném čase
+Náhled:
+
+Kompaktní HTML widget (bez iframe)
+Widget přehrávače
+Widget přehrávače - CastPanel
+Živý widget
+
+Widgety přehrávačů
+
+
+Již retransmituje
+Již běžel
+DJ s tímto uživatelským jménem již existuje.
+
+Váš poskytovatel hostingu ani výrobce softwaru panelu za takové případy neodpovídají.
+Youtube uděluje upozornění na autorská práva za hudbu v živém vysílání; celý váš youtube kanál může být
+Youtube uděluje upozornění na autorská práva za hudbu v živém vysílání; celý váš youtube kanál může být zablokován nebo omezen, pokud vaše rádio hraje hudbu chráněnou autorským právem.
+Výchozí zóna
+
+
+
+denně. Přejděte na
+
+
+jako heslo, zejména pro mobilní aplikace. V programech pro PC použijte k připojení jen heslo a port DJ.
+s obalem, názvem, interpretem, ukazatelem stavu a ovládáním. Ideální pro
+účet DJ
+firewallu dokončen. Otevřené porty:
+denně pro živé vysílání na youtube, nerestartujte živé vysílání více než
+
+
+
+vložení na váš web, blog nebo fórum
+v mobilních aplikacích.
+v libovolném souboru PHP pro zobrazení přeloženého textu.
+ve vašem vysílacím programu. I když systém používá IceCast nebo SCV2, vždy zvolte
+ve vašem vysílacím programu. Tato stanice funguje
+ve vašem vysílacím programu. DJ se připojují k portu Harbor (
+živě.
+neznámá chyba
+
+stanice nenalezena
+stanice nebo slug je povinný
+stanice je povinná
+
+
+facebook.com/live/producer → Klíč vysílání
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+seznam reklam
+
+
+limit
+agresivní komprese, středy dopředu, punch
+přiřazena.
+vytvořena:
+Konfigurace AutoDJ aktualizována a služba restartována.
+smazána.
+
+Živé vysílání Instagram
+
+Živé vysílání Youtube
+uložena.
+lehká komprese, ideální pro
+nenalezena
+nelze zastavit z panelu, aby nedošlo ke ztrátě přístupu. Akce služeb se provádějí přes démona
+
+
+
+
+nebo Shoutcast v konfiguraci. Můžete použít
+nebo klikněte pro výběr
+nebo z mobilní aplikace. Nahrajte obrázek 1280x720, který se zobrazí během vysílání.
+nebo pro otevření ve vyskakovacím okně.
+
+nebo omezen, pokud vaše rádio hraje hudbu chráněnou autorským právem.
+
+
+pro živé vysílání. Klíč vysílání získáte z
+umožňuje naplánovat posloupnost playlistů, které se automaticky přehrají v zadaném pořadí a počtu v nastavených časech.
+umožňuje retransmitovat externí zdroj zvuku. Když je relay aktivní a v naplánovaném čase, stanice bude místo AutoDJ vysílat signál z nastavené URL.
+ale Apache má stále chyby
+
+
+
+veřejnou stránku vašeho rádia
+
+
+
+
+
+
+
+
+
+bez AutoDJ
+bez odpovědi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+studio.youtube.com → Vysílat živě → Klíč
+
+
+
+
+vy@email.cz
+
+běží 35 minut
+
+
+username a password jsou povinné
+uživatel:heslo
+
+
+maximální síla a hlasitost, zvuk komerčního FM
+a zapněte funkce živého vysílání. Před zahájením vysílání nechte stránku živého vysílání Youtube otevřenou. Aktivace na Youtube trvá 24 hodin. Zkopírujte klíč živého vysílání, zadejte ho na této stránce a nahrajte obrázek 1280x720. Živé vysílání začne na Youtube po 30-40 sekundách.
+a nahrajte spoty.
+váš účet, pokud vaše rádio během živého vysílání hraje hudbu chráněnou autorským právem.
+váš účet nebo stránku, pokud vaše rádio během živého vysílání hraje hudbu chráněnou autorským právem.
+
+© 2024 Moje firma
+Jak vysílat?
+Smazat profilovou fotku?
+Poslední úprava
+Poslední aktualizace:
+Poslední přihlášení
+Poslední přihlášení SSH
+— Otevře síťovou URL
+— Otevřít URL
+— Otevřít URL streamu
+— Otevřít soubor .pls nebo .m3u
+— Připojení přes Liquidsoap Harbor (AutoDJ aktivní). Každý DJ používá vlastní přihlašovací údaje.
+— Přímé připojení k serveru SHOUTcast (bez AutoDJ). V RadioCaster vždy používejte protokol SHOUTcast v1.
+— Heslo (pouze v uvítání)
+— Doména panelu
+— E-mail uživatele
+— Odkaz pro obnovení
+— Přímý odkaz HTTPS
+— Název stanice
+— Uživatelské jméno
+— Název panelu
+— Přímá HTTPS URL
+— URL streamu
+— Použít odkaz M3U/PLS
+— DJ se připojují přímo ke streamovacímu serveru.
+
+
+○ Neaktivní
+
+● Aktivní
+
+⚠ Zdroj odpovídá, ale se stavem:
+⚠️ Zastaví VŠECHNA vysílání
+✅ Zkopírováno
+✅ Signál OK: zdroj odpovídá správně.
+✏️ Změnit
+✗ Chyba
+❌ Nelze se připojit ke zdroji. Zkontrolujte URL.
+📱 Nastavení pro mobil (BroadcastMyself, iCast atd.)
+📻 Nastavení pro PC (BUTT, SAM, Winamp atd.)
++ Přidat
++ Vytvořit seznam
++ Vytvořit nový seznam skladeb
+(ponechte prázdné pro zachování)
+(uživatelské jméno a heslo)
+(šifrované).
+-- Vyberte --
+-- Vyberte stanici --
+-- Bez seznamu (obecná knihovna) --
+% disku
+< 1 minuta
+Množství = počet skladeb přehraných z každé složky/seznamu před přechodem na další.
+Vyšší Q = užší pásmo
+Vyšší číslo = vyšší priorita před ostatními aktivními relay.
+Vyšší číslo = vyšší priorita. Rotace s vyšší prioritou se spouštějí jako první.
+Vyšší ratio = více komprese
+Blíže k 0 = hlasitější
+Plynulý přechod (vyšší = plynulejší)
+Max. klientů (0 = neomezeně)
+Max. stanic (0 = neomezeně)
+0 = neomezeně
+Limit 0 znamená neomezeně.
+110px
+Právě hraje: {x}
+Právě hraje:
+Průměrná zátěž: {x}
+{n} využito z {n}
+{n} hodin obsahu
+{n} seznam(ů) · {n} skladeb bez seznamu
+{n} z {n}
+Strana {n} z {n} · {n} souborů
+Zobrazit/upravit rádia ({n})
+Upravit/zobrazit balíčky ({n})
+Registrované AutoDJ ({n})
+Podrobnosti stanic ({n})
+Všichni uživatelé ({n})
+Využití na stanici ({n})
+Tabulky databáze ({n})
+E-mailové šablony ({n})
+Sdílené seznamy ({n})
+Seznamy reklam ({n})
+Aktivní pravidla ({n})
+Registrovaní prodejci ({n})
+Balíčky prodejce ({n})
+Nejpopulárnější ({n} posluchačů)
+běží {n} minut
+Dokončeno
+Nahrávání...
+Chyba
+Nahráno ✓
+, Server: {x}, Port: {n}, Heslo: (heslo DJ)
+. Server: {x}, Port: {n}. Heslo: heslo každého účtu DJ. Na mobilu použijte
+, vytvořte živé video a zkopírujte „Klíč vysílání“. Vložte klíč do pole níže. Nahrajte obrázek 1280x720, který se zobrazí během vysílání. Facebook používá
+. Klíč vysílání získáte v nastavení Instagram Live. Nahrajte obrázek 1280x720, který se zobrazí během vysílání. Instagram používá
+Jazyk změněn na {x}
+přeložené fráze
