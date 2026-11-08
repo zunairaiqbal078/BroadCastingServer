@@ -1643,3 +1643,275 @@ Eroare
 . Obține cheia de transmisie din setările Instagram Live. Încarcă o imagine de 1280x720 care va fi afișată în timpul transmisiei. Instagram folosește
 Limba a fost schimbată în {x}
 fraze traduse
+Acțiune finalizată
+Acțiune
+Listă de redare activă:
+Administrator
+Adaugă pachet radio - CastPanel
+Adaugă pachet revânzător - CastPanel
+Stocare (MB)
+Stocare (MB):
+Reclame activate
+Fișier
+Fișier:
+Trage fotografia aici sau dă clic pentru a selecta
+Trage spoturile aici
+Subiectul e-mailului
+Platformă de streaming audio (implicit)
+Generată automat
+AutoDJ activat
+Automat
+Încă nu ai clienți.
+Bitrate (kbps)
+Bitrate (kbps):
+Branding personalizat
+Branding pentru clienții tăi
+Caută, artiști, titluri de piese...
+La fiecare X piese
+Lanț:
+Calitatea MP3 a înregistrării live:
+Piesă
+Închide
+Oraș
+Client *
+Clienți recenți
+Encoder:
+Completează datele pentru a crea un radio nou. Portul și URL-ul SSL se atribuie automat.
+Setări pentru titlul pieselor:
+Configurează propriul URL RTMP pentru a transmite către orice server compatibil. Introdu URL-ul serverului RTMP și cheia de transmisie. Încarcă o imagine de 1280x720.
+Parolă DJ: *
+Parolă de autentificare CP:
+Parola serverului
+Copiază codul HTML de mai jos și lipește-l pe site pentru a afișa playerul live al postului tău.
+E-mailul clientului:
+Creează primul
+Creează un revânzător nou - CastPanel
+Creează unul
+Crossfade (AutoMix):
+Cont activ
+Corpul e-mailului (HTML)
+Cod copiat
+Cod copiat în clipboard
+DJ-ul își poate schimba parola:
+DJ-ul se poate autentifica în panoul DJ:
+DJ-ul poate transmite muzică:
+DJ-ul poate sări o piesă (AutoDJ):
+Stabilește zilele, orarul și playlistul.
+Lasă gol pentru a nu schimba
+Lasă gol pentru a folosi valoarea globală
+Descrierea pachetului
+Descriere:
+Detaliu
+Oprești transmisia?
+Oprit
+Se oprește
+Se oprește...
+Zi
+Zile
+Zile de emisie
+Zile de transmisie
+Editează/Vezi
+Editează: Bun venit
+Efect vizual al playerului:
+Ex: Radio Palmeras FM
+Ex: client1
+Ex: radiofm
+AutoDJ redă muzică automat când nu este conectat niciun DJ. Poți porni sau opri AutoDJ de aici.
+Șterge fotografia
+Șterge imaginea
+E-mail *
+Pe stațiile tale
+Trimite e-mailul contului (opțional)
+Eroare de conexiune
+Eroare la acțiune
+Scrie mesajul aici...
+Stații ({n})
+Stații recente
+Stație activă
+Iată ce vor vedea DJ-ii tăi în panoul DJ:
+Expirat
+Fundal curent
+Formatul de codare audio al transmisiei
+Fotografia curentă
+Fotografie de profil — CastPanel DJ
+Frecvență
+Funcția de retrimitere a e-mailului nu este încă implementată
+Gestionează clienții
+Înregistrează automat transmisiile live ale DJ-ilor
+Înregistrare DJ:
+Înregistrează emisiunile DJ live:
+Salvează șablonul
+Gen
+Gen:
+Oră
+Ora de sfârșit
+Ora de început
+Orar
+Numele gazdei implicit atribuit stațiilor din acest pachet
+IP stream:
+IP de conectare stream:
+Imagine actualizată
+Inactivă
+Introdu URL-ul RTMP al serverului tău
+Introdu cheia de transmisie
+Introdu un nume
+Introdu un nume de pachet: *
+Se pornește
+Se pornește...
+Autentificare (implicit)
+IP-ul radioului se atribuie automat de server
+Funcția de transmisie live TikTok difuzează muzica radioului tău pe TikTok Live. Mergi pe TikTok, alege LIVE și obține URL-ul și cheia serverului. Copiază cheia de transmisie și introdu-o pe această pagină, încarcă o imagine de 1280x720. Transmisia va începe după 30-40 de secunde.
+Limita maximă de bitrate:
+Golește
+Link direct
+Listă de reclame
+Listă de reclame destinație
+Modificările se aplică imediat la salvare.
+Pachetele sunt limitele de conturi și radiouri. Poți folosi pachetele pentru a crea ușor radiouri și conturi.
+Limita maximă de bitrate:
+Limită de clienți:
+Limită de stații:
+Max. conturi DJ:
+Mesaj personalizat în panoul DJ:
+Clienții mei ({n})
+Mod aleatoriu (Shuffle)
+Mod de redare:
+Afișează titlurile pieselor (implicit)
+Puncte de montare:
+Bitrate max. (kbps)
+Max. conturi de client
+Max. stații
+Max. ascultători per stație
+Nepermis
+Nu există piese în această listă.
+Nu există conturi DJ pe această stație.
+Nu există date disponibile
+Nu există stații active
+Nu există stații înregistrate
+Nu există istoric.
+Nu există liste de redare create.
+Momentan nu există ascultători geolocalizați.
+Nu există șabloane. Folosește butonul „Inițializează șabloanele” pentru a le crea pe cele implicite.
+Nu există programări configurate.
+Nu există emisiuni înregistrate pentru această stație.
+Nu există streamuri înregistrate
+Istoricul nu a putut fi încărcat.
+Statisticile de rețea nu au putut fi citite
+Nu ai permisiunea de a-ți schimba parola. Contactează administratorul.
+Nu ai permisiunea de a încărca fotografie de profil. Contactează administratorul.
+Numele stației *
+Numele radioului: *
+Numele DJ-ului (opțional)
+Numele pachetului *
+Nouă
+Programare nouă
+Nume nou
+Ascunde titlurile
+Opțiuni suplimentare:
+PERICOL: aceasta va șterge stația și toate datele ei. Continui?
+PERICOL: aceasta va șterge definitiv stația, toate fișierele și configurația ei. Această acțiune NU poate fi anulată. Scrie ELIMINAR pentru confirmare:
+Panou DJ:
+Pachet activ
+Pachet revânzător
+Pachet: *
+Țară
+Permite stațiilor să creeze puncte de montare suplimentare
+Permite stațiilor să creeze și să folosească AutoDJ pentru redare automată
+Permite stațiilor să folosească Social Stream (transmisie pe rețele sociale)
+Permite revânzătorului/clientului să schimbe tipul sistemului radio
+Permis
+Permite schimbarea sistemului radio:
+Permite crearea AutoDJ:
+Personalizează logo-urile, titlurile și faviconurile pe care le vor vedea clienții tăi. Imaginile încărcate vor înlocui valorile implicite ale panoului. Ștergerea unei imagini va restaura logo-ul implicit.
+Coperta curentă
+Preset aplicat
+Programează ce playlist să folosească AutoDJ în fiecare interval orar. Poți crea mai multe intervale pentru același radio și le poți repeta săptămânal.
+Programări active
+Poți folosi HTML și variabilele menționate mai sus
+Port DJ (auto):
+Port atribuit automat (admin:
+Port atribuit automat (admin: {n}, harbor: {n})
+Port de conectare DJ:
+Portul serverului Icecast central (mount: /
+Port harbor pentru conexiunea DJ live (portul streamului + 5)
+Elimină
+Radio oprit
+Radio pornit
+Redirecționare către panoul utilizatorului...
+Înregistrat
+Redă în mod normal
+Player complet
+Mini player (bară)
+Rezultat
+Rezumat:
+Revânzător de bază
+Rată de eșantionare (Hz):
+Moștenit din pachetul selectat
+Secvențial strict
+Sigur vrei să SUSPENZI această stație?
+Selectează clientul...
+Selectează pachetul...
+Servicii permise:
+Următor »
+Nu există date despre tipuri
+Fără stații
+Fără stații active
+Încă nu există stații
+Nicio secvență configurată
+Slug (URL) *
+Social Stream:
+Doar litere, cifre și liniuță jos (3-64 de caractere)
+Spoturi per bloc
+ID stream (SID)
+Se încarcă imaginea...
+Suspendat
+Dimensiune recomandată: 400 x 120px
+Dimensiune recomandată: 400 x 550px
+Tip server
+Toate
+Toți clienții
+Traducere indisponibilă
+Transmisie oprită
+Transmisie pornită
+Compania ta de găzduire și compania software-ului de panou nu sunt responsabile în astfel de cazuri.
+Titlul radioului:
+URL RTMP al serverului
+URL de autentificare în panoul DJ:
+Ultima autentificare
+Folosit de clienții tăi
+Se folosește logo-ul implicit
+Nume de utilizator *
+Utilizator DJ: *
+Utilizator de autentificare CP: *
+Vezi în bibliotecă
+Vezi toate
+Vezi toți
+Valabil
+Widget live — CastPanel DJ
+Widget live — Cod de încorporare
+Youtube aplică avertismente pentru drepturi de autor la muzica live, întregul tău canal Youtube poate fi
+pe zi. Mergi la
+ca parolă pentru programele de pe mobil.
+zilnică pentru transmisiile live pe youtube, nu reporni transmisia live de mai mult de
+nu există încă. Rulează migrarea SQL pentru a activa această funcție.
+nu există. Rulează migrarea SQL v2.3 pentru a o crea.
+nu există. Rulează migrarea SQL.
+nu a putut fi creată. Verifică permisiunile bazei de date.
+sau opțiunea server shoutcast din programul de transmisie. Poți folosi
+sau limitat dacă radioul tău redă muzică protejată de drepturi de autor.
+sau liste
+phpMyAdmin este instalat și configurat cu acces direct.
+are o problemă. Verifică migrarea SQL.
+are o problemă. Verifică migrarea SQL.
+activ de {n} ore, {n} minute
+« Înapoi
+— Fără pachet —
+(fără e-mail)
+(Fără playlist)
+{n} piese, {n} reclame
+{n} ascultători
+-- Selectează o listă --
++ Salvează programarea
+Editează DJ: {x}
+Parolă DJ nouă: (gol = fără schimbare)
+CastPanel (implicit)

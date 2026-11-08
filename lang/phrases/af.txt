@@ -1643,3 +1643,275 @@ Opgelaai ✓
 . Kry jou stroomsleutel in die Instagram Live-instellings. Laai 'n prent van 1280x720 op wat tydens die uitsending gewys sal word. Instagram gebruik
 Taal verander na {x}
 vertaalde frases
+Aksie voltooi
+Aksie
+Aktiewe snitlys:
+Administrateur
+Voeg radiopakket by - CastPanel
+Voeg herverkoperpakket by - CastPanel
+Berging (MB)
+Berging (MB):
+Advertensies geaktiveer
+Lêer
+Lêer:
+Sleep jou foto hierheen of klik om te kies
+Sleep jou advertensies hierheen
+E-pos-onderwerp
+Oudiostromingsplatform (verstek)
+Outomaties gegenereer
+AutoDJ geaktiveer
+Outomaties
+Jy het nog geen kliënte nie.
+Bitrate (kbps)
+Bitrate (kbps):
+Pasgemaakte handelsmerk
+Handelsmerk vir jou kliënte
+Soek, kunstenaars, liedjietitels...
+Elke X liedjies
+Ketting:
+MP3-gehalte van regstreekse opname:
+Liedjie
+Maak toe
+Stad
+Kliënt *
+Onlangse kliënte
+Enkodeerder:
+Vul die besonderhede in om 'n nuwe radio te skep. Die poort en SSL-URL word outomaties toegeken.
+Instellings vir liedjietitels:
+Stel jou eie RTMP-URL op om na enige versoenbare bediener uit te saai. Voer die RTMP-bediener-URL en die stroomsleutel in. Laai 'n prent van 1280x720 op.
+DJ-wagwoord: *
+CP-aanmeldwagwoord:
+Bedienerwagwoord
+Kopieer die HTML-kode hieronder en plak dit op jou webwerf om jou stasie se regstreekse speler te wys.
+Kliënt se e-pos:
+Skep die eerste
+Skep 'n nuwe herverkoper - CastPanel
+Skep een
+Oorgang (AutoMix):
+Rekening aktief
+E-pos-inhoud (HTML)
+Kode gekopieer
+Kode na knipbord gekopieer
+DJ kan eie wagwoord verander:
+DJ kan by DJ-paneel aanmeld:
+DJ kan musiek uitsaai:
+DJ kan liedjie oorslaan (AutoDJ):
+Stel die dae, tye en snitlys in.
+Laat leeg om nie te verander nie
+Laat leeg om die globale waarde te gebruik
+Pakketbeskrywing
+Beskrywing:
+Besonderhede
+Stop die uitsending?
+Gestop
+Stop tans
+Stop tans...
+Dag
+Dae
+Uitsaaidae
+Uitsaaidae
+Redigeer/Bekyk
+Redigeer: Welkom
+Visuele effek van die speler:
+Bv.: Radio Palmeras FM
+Bv.: klient1
+Bv.: radiofm
+Die AutoDJ speel outomaties musiek wanneer geen DJ gekoppel is nie. Jy kan die AutoDJ hier begin of stop.
+Skrap foto
+Skrap prent
+E-pos *
+Op jou stasies
+Stuur rekening-e-pos (opsioneel)
+Verbindingsfout
+Fout met aksie
+Skryf jou boodskap hier...
+Stasies ({n})
+Onlangse stasies
+Stasie aktief
+Dit is wat jou DJ's in hul DJ-paneel sal sien:
+Verval
+Huidige agtergrond
+Oudio-enkoderingsformaat van die uitsending
+Huidige foto
+Profielfoto — CastPanel DJ
+Frekwensie
+Funksie om e-pos weer te stuur is nog nie geïmplementeer nie
+Bestuur kliënte
+Neem regstreekse DJ-uitsendings outomaties op
+DJ-opname:
+Neem regstreekse DJ-programme op:
+Stoor sjabloon
+Genre
+Genre:
+Tyd
+Eindtyd
+Begintyd
+Skedule
+Verstek-gasheernaam vir die stasies van hierdie pakket
+Stroom-IP:
+Stroomverbindings-IP:
+Prent bygewerk
+Onaktief
+Voer die RTMP-URL van jou eie bediener in
+Voer die stroomsleutel in
+Voer 'n naam in
+Voer 'n pakketnaam in: *
+Begin tans
+Begin tans...
+Meld aan (verstek)
+Die radio-IP word outomaties deur die bediener toegeken
+Die TikTok-regstreekse-uitsaaifunksie saai jou radio se musiek na TikTok Live uit. Gaan na TikTok, kies LIVE en kry die bediener-URL en sleutel. Kopieer die stroomsleutel en voer dit op hierdie bladsy in, laai 'n prent van 1280x720 op. Die uitsending begin na 30-40 sekondes.
+Maksimum bitrate-limiet:
+Maak skoon
+Direkte skakel
+Advertensielys
+Bestemmings-advertensielys
+Veranderinge word onmiddellik met stoor toegepas.
+Pakkette is die rekening- en radiolimiete. Met jou pakkette skep jy maklik radio's en rekeninge.
+Maksimum bitrate-limiet:
+Kliëntlimiet:
+Stasielimiet:
+Maks. DJ-rekeninge:
+Pasgemaakte DJ-paneelboodskap:
+My kliënte ({n})
+Willekeurige modus (Shuffle)
+Speelmodus:
+Wys liedjietitels (verstek)
+Koppelpunte:
+Maks. bitrate (kbps)
+Maks. kliëntrekeninge
+Maks. stasies
+Maks. luisteraars per stasie
+Nie toegelaat nie
+Daar is geen liedjies in hierdie lys nie.
+Daar is geen DJ-rekeninge op hierdie stasie nie.
+Geen data beskikbaar nie
+Geen aktiewe stasies nie
+Geen geregistreerde stasies nie
+Geen geskiedenis beskikbaar nie.
+Geen snitlyste geskep nie.
+Tans geen geolokaliseerde luisteraars nie.
+Geen sjablone nie. Gebruik die knoppie "Inisialiseer sjablone" om die verstek-sjablone te skep.
+Geen skedules opgestel nie.
+Geen opgeneemde programme vir hierdie stasie nie.
+Geen geregistreerde strome nie
+Kon nie die geskiedenis laai nie.
+Kon nie netwerkstatistiek lees nie
+Jy mag nie jou wagwoord verander nie. Kontak die administrateur.
+Jy mag nie 'n profielfoto oplaai nie. Kontak die administrateur.
+Stasienaam *
+Radionaam: *
+DJ-naam (opsioneel)
+Pakketnaam *
+Nuut
+Nuwe skedule
+Nuwe naam
+Versteek titels
+Bykomende opsies:
+GEVAAR: dit sal die stasie en al sy data skrap. Gaan voort?
+GEVAAR: dit sal die stasie, al sy lêers en instellings permanent skrap. Hierdie aksie kan NIE ongedaan gemaak word nie. Tik ELIMINAR om te bevestig:
+DJ-paneel:
+Aktiewe pakket
+Herverkoperpakket
+Pakket: *
+Land
+Laat stasies toe om bykomende koppelpunte te skep
+Laat stasies toe om AutoDJ vir outomatiese speel te skep en te gebruik
+Laat stasies toe om Social Stream te gebruik (uitsaai na sosiale netwerke)
+Laat die herverkoper/kliënt toe om die tipe radiostelsel te verander
+Toegelaat
+Laat verandering van radiostelsel toe:
+Laat skep van AutoDJ toe:
+Pas die logo's, titels en favicons aan wat jou kliënte sal sien. Opgelaaide prente vervang die paneel se verstekwaardes. As jy 'n prent skrap, word die verstek-logo herstel.
+Huidige omslag
+Preset toegepas
+Skeduleer watter snitlys die AutoDJ in elke tydgleuf moet gebruik. Jy kan verskeie tydgleuwe vir dieselfde radio skep en hulle weekliks herhaal.
+Aktiewe skedules
+Jy kan HTML en die veranderlikes hierbo gebruik
+DJ-poort (outo):
+Outomaties toegekende poort (admin:
+Outomaties toegekende poort (admin: {n}, harbor: {n})
+DJ-verbindingspoort:
+Poort van die sentrale Icecast-bediener (mount: /
+Harbor-poort vir regstreekse DJ-verbinding (stroompoort + 5)
+Verwyder
+Radio gestop
+Radio begin
+Herlei na die gebruiker se paneel...
+Geregistreer
+Speel in normale modus
+Volle speler
+Mini-speler (balk)
+Resultaat
+Opsomming:
+Basiese herverkoper
+Monsterfrekwensie (Hz):
+Geërf van die gekose pakket
+Streng opeenvolgend
+Is jy seker jy wil hierdie stasie OPSKORT?
+Kies kliënt...
+Kies pakket...
+Toegelate dienste:
+Volgende »
+Geen tipedata nie
+Geen stasies nie
+Geen aktiewe stasies nie
+Nog geen stasies nie
+Geen volgorde opgestel nie
+Slug (URL) *
+Social Stream:
+Slegs letters, syfers en onderstreep (3-64 karakters)
+Advertensies per blok
+Stroom-ID (SID)
+Laai prent op...
+Opgeskort
+Aanbevole grootte: 400 x 120px
+Aanbevole grootte: 400 x 550px
+Bedienertipe
+Almal
+Alle kliënte
+Vertaling nie beskikbaar nie
+Uitsending gestop
+Uitsending begin
+Jou gasheermaatskappy en die maatskappy van die paneelsagteware is in sulke gevalle nie verantwoordelik nie.
+Radiotitel:
+Bediener se RTMP-URL
+Aanmeld-URL van die DJ-paneel:
+Laaste aanmelding
+Gebruik deur jou kliënte
+Verstek-logo word gebruik
+Gebruikersnaam *
+DJ-gebruiker: *
+CP-aanmeldgebruikersnaam: *
+Bekyk in biblioteek
+Bekyk alles
+Bekyk almal
+Geldig
+Regstreekse widget — CastPanel DJ
+Regstreekse widget — Inbedkode
+Youtube gee kopieregwaarskuwings vir regstreekse musiek; jou hele Youtube-kanaal kan
+per dag. Gaan na
+as wagwoord vir selfoonprogramme.
+daagliks vir youtube-regstreekse uitsendings, moenie die regstreekse uitsending meer herbegin as
+bestaan nog nie. Voer die SQL-migrasie uit om hierdie funksie te aktiveer.
+bestaan nie. Voer die SQL-migrasie v2.3 uit om dit te skep.
+bestaan nie. Voer die SQL-migrasie uit.
+kon nie geskep word nie. Kontroleer die databasistoestemmings.
+of die shoutcast-bediener-opsie in jou uitsaaiprogram. Jy kan gebruik
+of beperk word as jou radio kopieregbeskermde musiek speel.
+of lyste
+phpMyAdmin is geïnstalleer en opgestel met direkte toegang.
+het 'n probleem. Kontroleer die SQL-migrasie.
+het 'n probleem. Kontroleer die SQL-migrasie.
+loop al {n} uur, {n} minute
+« Vorige
+— Geen pakket —
+(geen e-pos)
+(Geen snitlys)
+{n} liedjies, {n} advertensies
+{n} luisteraars
+-- Kies 'n lys --
++ Stoor skedule
+Redigeer DJ: {x}
+Nuwe DJ-wagwoord: (leeg = geen verandering)
+CastPanel (verstek)

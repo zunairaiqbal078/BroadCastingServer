@@ -1643,3 +1643,275 @@ Envoyé ✓
 . Obtenez votre clé de diffusion dans les paramètres d'Instagram Live. Envoyez une image de 1280x720 qui sera affichée pendant la diffusion. Instagram utilise
 Langue changée en {x}
 phrases traduites
+Action terminée
+Action
+Liste de lecture active :
+Administrateur
+Ajouter un forfait radio - CastPanel
+Ajouter un forfait revendeur - CastPanel
+Stockage (Mo)
+Stockage (Mo) :
+Annonces activées
+Fichier
+Fichier :
+Glissez votre photo ici ou cliquez pour sélectionner
+Glissez vos spots ici
+Objet de l'e-mail
+Plateforme de streaming audio (par défaut)
+Générée automatiquement
+AutoDJ activé
+Automatique
+Vous n'avez pas encore de clients.
+Bitrate (kbps)
+Bitrate (kbps) :
+Image de marque personnalisée
+Image de marque pour vos clients
+Rechercher, artistes, titres...
+Toutes les X chansons
+Chaîne :
+Qualité MP3 de l'enregistrement en direct :
+Morceau
+Fermer
+Ville
+Client *
+Clients récents
+Encodeur :
+Remplissez les informations pour créer une nouvelle radio. Le port et l'URL SSL sont attribués automatiquement.
+Paramètres du titre des morceaux :
+Configurez votre propre URL RTMP personnalisée pour diffuser vers n'importe quel serveur compatible. Saisissez l'URL du serveur RTMP et la clé de diffusion. Envoyez une image de 1280x720.
+Mot de passe DJ : *
+Mot de passe de connexion CP :
+Mot de passe du serveur
+Copiez le code HTML ci-dessous et collez-le sur votre site pour afficher le lecteur en direct de votre station.
+E-mail du client :
+Créer le premier
+Créer un nouveau revendeur - CastPanel
+En créer un
+Fondu enchaîné (AutoMix) :
+Compte actif
+Corps de l'e-mail (HTML)
+Code copié
+Code copié dans le presse-papiers
+Le DJ peut changer son mot de passe :
+Le DJ peut se connecter au panneau DJ :
+Le DJ peut diffuser de la musique :
+Le DJ peut passer un morceau (AutoDJ) :
+Définissez les jours, l'horaire et la playlist.
+Laisser vide pour ne pas modifier
+Laisser vide pour utiliser la valeur globale
+Description du forfait
+Description :
+Détail
+Arrêter la diffusion ?
+Arrêté
+Arrêt
+Arrêt en cours...
+Jour
+Jours
+Jours d'émission
+Jours de diffusion
+Modifier/Voir
+Modifier : Bienvenue
+Effet visuel du lecteur :
+Ex : Radio Palmeras FM
+Ex : client1
+Ex : radiofm
+L'AutoDJ joue de la musique automatiquement quand aucun DJ n'est connecté. Vous pouvez démarrer ou arrêter l'AutoDJ ici.
+Supprimer la photo
+Supprimer l'image
+E-mail *
+Sur vos stations
+Envoyer l'e-mail du compte (facultatif)
+Erreur de connexion
+Erreur lors de l'action
+Écrivez votre message ici...
+Stations ({n})
+Stations récentes
+Station active
+Voici ce que vos DJ verront dans leur panneau DJ :
+Expiré
+Fond actuel
+Format d'encodage audio de la diffusion
+Photo actuelle
+Photo de profil — CastPanel DJ
+Fréquence
+La fonction de renvoi d'e-mail n'est pas encore implémentée
+Gérer les clients
+Enregistre automatiquement les diffusions en direct des DJ
+Enregistrement DJ :
+Enregistrer les shows DJ en direct :
+Enregistrer le modèle
+Genre
+Genre :
+Heure
+Heure de fin
+Heure de début
+Horaire
+Nom d'hôte par défaut attribué aux stations de ce forfait
+IP du stream :
+IP de connexion du stream :
+Image mise à jour
+Inactive
+Saisissez l'URL RTMP de votre serveur personnalisé
+Saisissez la clé de diffusion
+Saisissez un nom
+Saisissez un nom de forfait : *
+Démarrage
+Démarrage...
+Se connecter (par défaut)
+L'IP de la radio est attribuée automatiquement par le serveur
+La fonction de diffusion en direct TikTok diffuse la musique de votre radio sur TikTok Live. Allez sur TikTok, sélectionnez LIVE et obtenez l'URL et la clé du serveur. Copiez la clé de diffusion et saisissez-la sur cette page, envoyez une image de 1280x720. La diffusion commencera après 30-40 secondes.
+Limite maximale de bitrate :
+Effacer
+Lien direct
+Liste d'annonces
+Liste d'annonces de destination
+Les modifications s'appliquent immédiatement à l'enregistrement.
+Les forfaits définissent les limites de comptes et de radios. Vous pouvez utiliser vos forfaits pour créer facilement des radios et des comptes.
+Limite maximale de bitrate :
+Limite de clients :
+Limite de stations :
+Max. comptes DJ :
+Message personnalisé du panneau DJ :
+Mes clients ({n})
+Mode aléatoire (Shuffle)
+Mode de lecture :
+Afficher les titres des morceaux (par défaut)
+Points de montage :
+Bitrate max. (kbps)
+Max. comptes clients
+Max. stations
+Max. auditeurs par station
+Non autorisé
+Aucun morceau dans cette liste.
+Aucun compte DJ sur cette station.
+Aucune donnée disponible
+Aucune station active
+Aucune station enregistrée
+Aucun historique disponible.
+Aucune liste de lecture créée.
+Aucun auditeur géolocalisé pour le moment.
+Aucun modèle. Utilisez le bouton « Initialiser les modèles » pour créer ceux par défaut.
+Aucune programmation configurée.
+Aucun show enregistré pour cette station.
+Aucun stream enregistré
+Impossible de charger l'historique.
+Impossible de lire les statistiques réseau
+Vous n'êtes pas autorisé à changer votre mot de passe. Contactez l'administrateur.
+Vous n'êtes pas autorisé à envoyer une photo de profil. Contactez l'administrateur.
+Nom de la station *
+Nom de la radio : *
+Nom du DJ (facultatif)
+Nom du forfait *
+Nouvelle
+Nouvelle programmation
+Nouveau nom
+Masquer les titres
+Options supplémentaires :
+DANGER : ceci supprimera la station et toutes ses données. Continuer ?
+DANGER : ceci supprimera définitivement la station, tous ses fichiers et sa configuration. Cette action est IRRÉVERSIBLE. Tapez ELIMINAR pour confirmer :
+Panneau DJ :
+Forfait actif
+Forfait revendeur
+Forfait : *
+Pays
+Permet aux stations de créer des points de montage supplémentaires
+Permet aux stations de créer et d'utiliser l'AutoDJ pour la lecture automatique
+Permet aux stations d'utiliser Social Stream (diffusion sur les réseaux sociaux)
+Permet au revendeur/client de changer le type de système radio
+Autorisé
+Autoriser le changement de système radio :
+Autoriser la création d'AutoDJ :
+Personnalisez les logos, titres et favicons que verront vos clients. Les images envoyées remplaceront les valeurs par défaut du panneau. Supprimer une image restaurera le logo par défaut.
+Pochette actuelle
+Preset appliqué
+Programmez la playlist que l'AutoDJ doit utiliser dans chaque créneau. Vous pouvez créer plusieurs créneaux pour la même radio et les répéter chaque semaine.
+Programmations actives
+Vous pouvez utiliser du HTML et les variables mentionnées ci-dessus
+Port DJ (auto) :
+Port attribué automatiquement (admin :
+Port attribué automatiquement (admin : {n}, harbor : {n})
+Port de connexion DJ :
+Port du serveur Icecast central (mount : /
+Port harbor pour la connexion DJ en direct (port du stream + 5)
+Retirer
+Radio arrêtée
+Radio démarrée
+Redirection vers le panneau de l'utilisateur...
+Inscrit
+Lire en mode normal
+Lecteur complet
+Mini lecteur (barre)
+Résultat
+Résumé :
+Revendeur basique
+Fréquence d'échantillonnage (Hz) :
+Hérité du forfait sélectionné
+Séquentiel strict
+Voulez-vous vraiment SUSPENDRE cette station ?
+Sélectionner un client...
+Sélectionner un forfait...
+Services autorisés :
+Suivant »
+Aucune donnée de type
+Aucune station
+Aucune station active
+Pas encore de stations
+Aucune séquence configurée
+Slug (URL) *
+Social Stream :
+Uniquement lettres, chiffres et tiret bas (3-64 caractères)
+Spots par bloc
+ID du stream (SID)
+Envoi de l'image...
+Suspendu
+Taille recommandée : 400 x 120px
+Taille recommandée : 400 x 550px
+Type de serveur
+Tous
+Tous les clients
+Traduction non disponible
+Diffusion arrêtée
+Diffusion démarrée
+Votre hébergeur et l'éditeur du panneau de contrôle ne sont pas responsables dans de tels cas.
+Titre de la radio :
+URL RTMP du serveur
+URL de connexion au panneau DJ :
+Dernière connexion
+Utilisé par vos clients
+Logo par défaut utilisé
+Nom d'utilisateur *
+Utilisateur DJ : *
+Nom d'utilisateur de connexion CP : *
+Voir dans la bibliothèque
+Tout voir
+Tout voir
+En vigueur
+Widget en direct — CastPanel DJ
+Widget en direct — Code d'intégration
+Youtube applique des avertissements pour droits d'auteur sur la musique en direct, toute votre chaîne Youtube peut être
+par jour. Allez sur
+comme mot de passe pour les applis mobiles.
+quotidienne de diffusion en direct sur youtube, ne redémarrez pas le direct plus de
+n'existe pas encore. Exécutez la migration SQL pour activer cette fonction.
+n'existe pas. Exécutez la migration SQL v2.3 pour la créer.
+n'existe pas. Exécutez la migration SQL.
+n'a pas pu être créée. Vérifiez les permissions de la base de données.
+ou l'option serveur shoutcast dans votre logiciel de diffusion. Vous pouvez utiliser
+ou limitée si votre radio diffuse de la musique protégée.
+ou listes
+phpMyAdmin est installé et configuré avec accès direct.
+présente un problème. Vérifiez la migration SQL.
+présente un problème. Vérifiez la migration SQL.
+actif depuis {n} heures, {n} minutes
+« Précédent
+— Sans forfait —
+(sans e-mail)
+(Sans playlist)
+{n} morceaux, {n} annonces
+{n} auditeurs
+-- Sélectionnez une liste --
++ Enregistrer la programmation
+Modifier le DJ : {x}
+Nouveau mot de passe DJ : (vide = inchangé)
+CastPanel (par défaut)

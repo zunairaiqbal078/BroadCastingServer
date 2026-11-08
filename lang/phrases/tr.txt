@@ -1643,3 +1643,275 @@ Yüklendi ✓
 . Yayın anahtarınızı Instagram Live ayarlarından alın. Yayın sırasında gösterilecek 1280x720 boyutunda bir görsel yükleyin. Instagram şunu kullanır:
 Dil değiştirildi: {x}
 çevrilmiş ifade
+İşlem tamamlandı
+İşlem
+Aktif Çalma Listesi:
+Yönetici
+Radyo Paketi Ekle - CastPanel
+Bayi Paketi Ekle - CastPanel
+Depolama (MB)
+Depolama (MB):
+Reklamlar Etkin
+Dosya
+Dosya:
+Fotoğrafınızı buraya sürükleyin veya seçmek için tıklayın
+Spotlarınızı buraya sürükleyin
+E-posta Konusu
+Ses Yayın Platformu (varsayılan)
+Otomatik oluşturulur
+AutoDJ Etkin
+Otomatik
+Henüz müşteriniz yok.
+Bitrate (kbps)
+Bitrate (kbps):
+Özel Marka
+Müşterileriniz için Marka
+Ara, sanatçılar, şarkı adları...
+Her X Şarkıda
+Zincir:
+Canlı Kayıt MP3 Kalitesi:
+Şarkı
+Kapat
+Şehir
+Müşteri *
+Son Müşteriler
+Encoder:
+Yeni bir radyo oluşturmak için bilgileri doldurun. Port ve SSL URL'si otomatik atanır.
+Şarkı Başlığı Ayarları:
+Uyumlu herhangi bir sunucuya yayın yapmak için kendi RTMP URL'nizi ayarlayın. RTMP sunucu URL'sini ve yayın anahtarını girin. 1280x720 boyutunda bir görsel yükleyin.
+DJ Şifresi: *
+CP Giriş Şifresi:
+Sunucu Şifresi
+İstasyonunuzun canlı oynatıcısını göstermek için aşağıdaki HTML kodunu kopyalayıp web sitenize yapıştırın.
+Müşteri E-postası:
+İlkini oluştur
+Yeni Bir Bayi Oluştur - CastPanel
+Bir tane oluştur
+Crossfade (AutoMix):
+Hesap Aktif
+E-posta Gövdesi (HTML)
+Kod kopyalandı
+Kod panoya kopyalandı
+DJ Kendi Şifresini Değiştirebilir:
+DJ, DJ Paneline Giriş Yapabilir:
+DJ Müzik Yayınlayabilir:
+DJ Şarkı Atlayabilir (AutoDJ):
+Günleri, saati ve çalma listesini belirleyin.
+Değiştirmemek için boş bırakın
+Genel değeri kullanmak için boş bırakın
+Paket açıklaması
+Açıklama:
+Ayrıntı
+Yayın durdurulsun mu?
+Durduruldu
+Durduruluyor
+Durduruluyor...
+Gün
+Günler
+Yayın Günleri
+Yayın Günleri
+Düzenle/Görüntüle
+Düzenle: Hoş geldiniz
+Oynatıcı görsel efekti:
+Ör: Radio Palmeras FM
+Ör: musteri1
+Ör: radiofm
+Bağlı DJ yokken AutoDJ otomatik olarak müzik çalar. AutoDJ'yi buradan başlatabilir veya durdurabilirsiniz.
+Fotoğrafı Sil
+Görseli sil
+E-posta *
+İstasyonlarınızda
+Hesap E-postası Gönder (İsteğe bağlı)
+Bağlantı hatası
+İşlem hatası
+Mesajınızı buraya yazın...
+İstasyonlar ({n})
+Son İstasyonlar
+İstasyon Aktif
+DJ'leriniz DJ Panelinde şunu görecek:
+Süresi dolmuş
+Mevcut arka plan
+Yayının ses kodlama biçimi
+Mevcut fotoğraf
+Profil Fotoğrafı — CastPanel DJ
+Sıklık
+E-posta yeniden gönderme özelliği henüz eklenmedi
+Müşterileri Yönet
+DJ'lerin canlı yayınlarını otomatik kaydeder
+DJ Kaydı:
+Canlı DJ Şovlarını Kaydet:
+Şablonu Kaydet
+Tür
+Tür:
+Saat
+Bitiş saati
+Başlangıç saati
+Program
+Bu paketin istasyonlarına atanan varsayılan sunucu adı
+Yayın IP'si:
+Yayın Bağlantı IP'si:
+Görsel güncellendi
+Pasif
+Özel sunucunuzun RTMP URL'sini girin
+Yayın anahtarını girin
+Bir ad girin
+Bir paket adı girin: *
+Başlatılıyor
+Başlatılıyor...
+Giriş Yap (varsayılan)
+Radyo IP'si sunucudan otomatik atanır
+TikTok canlı yayın özelliği radyonuzun müziğini TikTok Live'a yayınlar. TikTok'a gidin, LIVE'ı seçin ve sunucu URL'sini ve anahtarı alın. Yayın anahtarını kopyalayıp bu sayfaya girin, 1280x720 boyutunda bir görsel yükleyin. Yayın 30-40 saniye sonra başlar.
+Maksimum Bitrate Sınırı:
+Temizle
+Doğrudan Bağlantı
+Reklam Listesi
+Hedef Reklam Listesi
+Değişiklikler kaydedilince hemen uygulanır.
+Paketler hesap ve radyo sınırlarıdır. Paketlerinizle kolayca radyo ve hesap oluşturabilirsiniz.
+Maksimum Bitrate Sınırı:
+Müşteri sınırı:
+İstasyon sınırı:
+Maks. DJ Hesabı:
+Özel DJ Paneli Mesajı:
+Müşterilerim ({n})
+Rastgele Mod (Shuffle)
+Çalma Modu:
+Şarkı Başlıklarını Göster (Varsayılan)
+Bağlama Noktaları:
+Maks. Bitrate (kbps)
+Maks. Müşteri Hesabı
+Maks. İstasyon
+İstasyon Başına Maks. Dinleyici
+İzin Verilmiyor
+Bu listede şarkı yok.
+Bu istasyonda DJ hesabı yok.
+Veri yok
+Aktif istasyon yok
+Kayıtlı istasyon yok
+Geçmiş yok.
+Oluşturulmuş çalma listesi yok.
+Şu anda konumu belirlenen dinleyici yok.
+Şablon yok. Varsayılanları oluşturmak için "Şablonları Başlat" düğmesini kullanın.
+Yapılandırılmış program yok.
+Bu istasyon için kaydedilmiş şov yok.
+Kayıtlı yayın yok
+Geçmiş yüklenemedi.
+Ağ istatistikleri okunamadı
+Şifrenizi değiştirme izniniz yok. Yöneticiyle iletişime geçin.
+Profil fotoğrafı yükleme izniniz yok. Yöneticiyle iletişime geçin.
+İstasyon Adı *
+Radyo Adı: *
+DJ Adı (isteğe bağlı)
+Paket Adı *
+Yeni
+Yeni program
+Yeni Ad
+Başlıkları Gizle
+Ek Seçenekler:
+TEHLİKE: Bu işlem istasyonu ve tüm verilerini silecek. Devam edilsin mi?
+TEHLİKE: Bu işlem istasyonu, tüm dosyalarını ve ayarlarını kalıcı olarak silecek. Bu işlem GERİ ALINAMAZ. Onaylamak için ELIMINAR yazın:
+DJ Paneli:
+Aktif Paket
+Bayi Paketi
+Paket: *
+Ülke
+İstasyonların ek bağlama noktaları oluşturmasına izin verir
+İstasyonların otomatik çalma için AutoDJ oluşturup kullanmasına izin verir
+İstasyonların Social Stream kullanmasına izin verir (sosyal ağlara yayın)
+Bayinin/müşterinin radyo sistemi türünü değiştirmesine izin verir
+İzin Verildi
+Radyo Sistemi Değişikliğine İzin Ver:
+AutoDJ Oluşturmaya İzin Ver:
+Müşterilerinizin göreceği logoları, başlıkları ve faviconları özelleştirin. Yüklenen görseller panelin varsayılan değerlerinin yerini alır. Bir görseli silmek varsayılan logoyu geri yükler.
+Mevcut kapak
+Preset uygulandı
+AutoDJ'nin her zaman diliminde hangi çalma listesini kullanacağını programlayın. Aynı radyo için birden fazla zaman dilimi oluşturup haftalık tekrarlayabilirsiniz.
+Aktif programlar
+HTML ve yukarıda belirtilen değişkenleri kullanabilirsiniz
+DJ Portu (Oto):
+Otomatik atanan port (admin:
+Otomatik atanan port (admin: {n}, harbor: {n})
+DJ Bağlantı Portu:
+Merkezi Icecast sunucusunun portu (mount: /
+Canlı DJ bağlantısı için harbor portu (yayın portu + 5)
+Kaldır
+Radyo durduruldu
+Radyo başlatıldı
+Kullanıcı paneline yönlendiriliyor...
+Kayıtlı
+Normal Modda Çal
+Tam Oynatıcı
+Mini Oynatıcı (çubuk)
+Sonuç
+Özet:
+Temel Bayi
+Örnekleme Hızı (Hz):
+Seçilen paketten alınır
+Katı Sıralı
+Bu istasyonu ASKIYA ALMAK istediğinizden emin misiniz?
+Müşteri seçin...
+Paket seçin...
+İzin verilen hizmetler:
+Sonraki »
+Tür verisi yok
+İstasyon yok
+Aktif istasyon yok
+Henüz istasyon yok
+Yapılandırılmış sıra yok
+Slug (URL) *
+Social Stream:
+Yalnızca harf, rakam ve alt çizgi (3-64 karakter)
+Blok Başına Spot
+Yayın Kimliği (SID)
+Görsel yükleniyor...
+Askıya alındı
+Önerilen boyut: 400 x 120px
+Önerilen boyut: 400 x 550px
+Sunucu Türü
+Tümü
+Tüm müşteriler
+Çeviri mevcut değil
+Yayın durduruldu
+Yayın başlatıldı
+Bu gibi durumlarda barındırma şirketiniz ve kontrol paneli yazılım şirketi sorumlu değildir.
+Radyo Başlığı:
+Sunucu RTMP URL'si
+DJ Paneli Giriş URL'si:
+Son Giriş
+Müşterileriniz tarafından kullanılıyor
+Varsayılan logo kullanılıyor
+Kullanıcı adı *
+DJ Kullanıcısı: *
+CP Giriş Kullanıcı Adı: *
+Kütüphanede görüntüle
+Tümünü gör
+Tümünü gör
+Geçerli
+Canlı Widget — CastPanel DJ
+Canlı Widget — Yerleştirme Kodu
+Youtube canlı müzik yayınları için telif hakkı ihtarı verir, tüm Youtube kanalınız
+günde. Şuraya gidin:
+mobil programlar için şifre olarak.
+günlük youtube canlı yayın sınırı; canlı yayını şundan fazla yeniden başlatmayın:
+henüz mevcut değil. Bu özelliği etkinleştirmek için SQL geçişini çalıştırın.
+mevcut değil. Oluşturmak için SQL v2.3 geçişini çalıştırın.
+mevcut değil. SQL geçişini çalıştırın.
+oluşturulamadı. Veritabanı izinlerini kontrol edin.
+veya yayın programınızda shoutcast sunucu seçeneği. Şunu kullanabilirsiniz:
+veya radyonuz telif hakkıyla korunan müzik çalarsa kısıtlanabilir.
+veya listeler
+phpMyAdmin kurulu ve doğrudan erişimle yapılandırılmış.
+bir sorun var. SQL geçişini kontrol edin.
+bir sorun var. SQL geçişini kontrol edin.
+{n} saat, {n} dakikadır açık
+« Önceki
+— Paket yok —
+(e-posta yok)
+(Çalma listesi yok)
+{n} şarkı, {n} reklam
+{n} dinleyici
+-- Bir liste seçin --
++ Programı Kaydet
+DJ'yi Düzenle: {x}
+Yeni DJ Şifresi: (boş = değişiklik yok)
+CastPanel (varsayılan)

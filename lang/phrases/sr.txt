@@ -1643,3 +1643,275 @@ Otpremljeno ✓
 . Ključ za prenos preuzmite iz podešavanja Instagram Live. Otpremite sliku 1280x720 koja će se prikazivati tokom prenosa. Instagram koristi
 Jezik je promenjen na {x}
 prevedene fraze
+Radnja završena
+Radnja
+Aktivna plejlista:
+Administrator
+Dodaj radio paket - CastPanel
+Dodaj paket preprodavca - CastPanel
+Skladište (MB)
+Skladište (MB):
+Reklame uključene
+Fajl
+Fajl:
+Prevucite fotografiju ovde ili kliknite za izbor
+Prevucite spotove ovde
+Tema e-pošte
+Platforma za audio strimovanje (podrazumevano)
+Automatski generisana
+AutoDJ uključen
+Automatski
+Još nemate klijente.
+Bitrate (kbps)
+Bitrate (kbps):
+Prilagođeni brending
+Brending za vaše klijente
+Pretraga, izvođači, nazivi pesama...
+Svakih X pesama
+Lanac:
+MP3 kvalitet snimanja uživo:
+Pesma
+Zatvori
+Grad
+Klijent *
+Nedavni klijenti
+Enkoder:
+Popunite podatke da biste kreirali novi radio. Port i SSL URL se dodeljuju automatski.
+Podešavanja naslova pesama:
+Podesite sopstveni RTMP URL za emitovanje na bilo koji kompatibilni server. Unesite URL RTMP servera i ključ za prenos. Otpremite sliku 1280x720.
+DJ lozinka: *
+Lozinka za prijavu u CP:
+Lozinka servera
+Kopirajte HTML kod ispod i nalepite ga na svoj sajt da biste prikazali plejer uživo vaše stanice.
+E-pošta klijenta:
+Kreiraj prvi
+Kreiraj novog preprodavca - CastPanel
+Kreiraj jedan
+Crossfade (AutoMix):
+Nalog aktivan
+Telo e-pošte (HTML)
+Kod kopiran
+Kod kopiran u međuspremnik
+DJ može promeniti svoju lozinku:
+DJ se može prijaviti na DJ panel:
+DJ može emitovati muziku:
+DJ može preskočiti pesmu (AutoDJ):
+Odredite dane, termin i plejlistu.
+Ostavite prazno da ne menjate
+Ostavite prazno za globalnu vrednost
+Opis paketa
+Opis:
+Detalj
+Zaustaviti prenos?
+Zaustavljeno
+Zaustavljanje
+Zaustavljanje...
+Dan
+Dani
+Dani emitovanja
+Dani prenosa
+Izmeni/Pogledaj
+Izmeni: Dobrodošlica
+Vizuelni efekat plejera:
+Npr.: Radio Palmeras FM
+Npr.: klijent1
+Npr.: radiofm
+AutoDJ automatski pušta muziku kada nijedan DJ nije povezan. Ovde možete pokrenuti ili zaustaviti AutoDJ.
+Obriši fotografiju
+Obriši sliku
+E-pošta *
+Na vašim stanicama
+Pošalji e-poštu naloga (opciono)
+Greška veze
+Greška u radnji
+Ovde napišite poruku...
+Stanice ({n})
+Nedavne stanice
+Stanica aktivna
+Ovo će vaši DJ-evi videti u svom DJ panelu:
+Isteklo
+Trenutna pozadina
+Format audio kodiranja za prenos
+Trenutna fotografija
+Profilna fotografija — CastPanel DJ
+Učestalost
+Funkcija ponovnog slanja e-pošte još nije implementirana
+Upravljaj klijentima
+Automatski snima prenose DJ-eva uživo
+DJ snimanje:
+Snimaj DJ emisije uživo:
+Sačuvaj šablon
+Žanr
+Žanr:
+Vreme
+Vreme završetka
+Vreme početka
+Raspored
+Podrazumevano ime hosta za stanice ovog paketa
+IP strima:
+IP za povezivanje strima:
+Slika ažurirana
+Neaktivna
+Unesite RTMP URL svog servera
+Unesite ključ za prenos
+Unesite naziv
+Unesite naziv paketa: *
+Pokretanje
+Pokretanje...
+Prijava (podrazumevano)
+IP radija se dodeljuje automatski sa servera
+Funkcija prenosa uživo na TikTok-u emituje muziku vašeg radija na TikTok Live. Idite na TikTok, izaberite LIVE i preuzmite URL servera i ključ. Kopirajte ključ za prenos i unesite ga na ovoj stranici, otpremite sliku 1280x720. Prenos će početi posle 30-40 sekundi.
+Maksimalno ograničenje bitrate-a:
+Očisti
+Direktan link
+Lista reklama
+Odredišna lista reklama
+Izmene se primenjuju odmah po čuvanju.
+Paketi su ograničenja naloga i radija. Pomoću paketa lako kreirate radije i naloge.
+Maksimalno ograničenje bitrate-a:
+Ograničenje klijenata:
+Ograničenje stanica:
+Maks. DJ naloga:
+Prilagođena poruka DJ panela:
+Moji klijenti ({n})
+Nasumični režim (Shuffle)
+Režim reprodukcije:
+Prikaži naslove pesama (podrazumevano)
+Tačke montiranja:
+Maks. bitrate (kbps)
+Maks. naloga klijenata
+Maks. stanica
+Maks. slušalaca po stanici
+Nije dozvoljeno
+U ovoj listi nema pesama.
+Na ovoj stanici nema DJ naloga.
+Nema dostupnih podataka
+Nema aktivnih stanica
+Nema registrovanih stanica
+Nema istorije.
+Nema kreiranih plejlista.
+Trenutno nema geolociranih slušalaca.
+Nema šablona. Koristite dugme „Inicijalizuj šablone“ da kreirate podrazumevane.
+Nema podešenih rasporeda.
+Nema snimljenih emisija za ovu stanicu.
+Nema registrovanih strimova
+Istorija nije mogla da se učita.
+Statistika mreže nije mogla da se pročita
+Nemate dozvolu da promenite lozinku. Obratite se administratoru.
+Nemate dozvolu da otpremite profilnu fotografiju. Obratite se administratoru.
+Naziv stanice *
+Naziv radija: *
+Ime DJ-a (opciono)
+Naziv paketa *
+Nova
+Novi raspored
+Novi naziv
+Sakrij naslove
+Dodatne opcije:
+OPASNOST: ovo će obrisati stanicu i sve njene podatke. Nastaviti?
+OPASNOST: ovo će trajno obrisati stanicu, sve njene fajlove i podešavanja. Ova radnja se NE MOŽE poništiti. Upišite ELIMINAR za potvrdu:
+DJ panel:
+Aktivan paket
+Paket preprodavca
+Paket: *
+Zemlja
+Dozvoljava stanicama da kreiraju dodatne tačke montiranja
+Dozvoljava stanicama da kreiraju i koriste AutoDJ za automatsku reprodukciju
+Dozvoljava stanicama da koriste Social Stream (prenos na društvene mreže)
+Dozvoljava preprodavcu/klijentu da promeni tip radio sistema
+Dozvoljeno
+Dozvoli promenu radio sistema:
+Dozvoli kreiranje AutoDJ-a:
+Prilagodite logoe, naslove i favicone koje će videti vaši klijenti. Otpremljene slike zameniće podrazumevane vrednosti panela. Brisanjem slike vratiće se podrazumevani logo.
+Trenutni omot
+Preset primenjen
+Zakažite koju plejlistu AutoDJ koristi u svakom terminu. Možete kreirati više termina za isti radio i ponavljati ih nedeljno.
+Aktivni rasporedi
+Možete koristiti HTML i gore navedene promenljive
+DJ port (auto):
+Automatski dodeljen port (admin:
+Automatski dodeljen port (admin: {n}, harbor: {n})
+Port za DJ povezivanje:
+Port centralnog Icecast servera (mount: /
+Harbor port za DJ povezivanje uživo (port strima + 5)
+Ukloni
+Radio zaustavljen
+Radio pokrenut
+Preusmeravanje na panel korisnika...
+Registrovan
+Pusti u normalnom režimu
+Pun plejer
+Mini plejer (traka)
+Rezultat
+Rezime:
+Osnovni preprodavac
+Frekvencija uzorkovanja (Hz):
+Nasleđeno iz izabranog paketa
+Strogo redom
+Da li sigurno želite da SUSPENDUJETE ovu stanicu?
+Izaberite klijenta...
+Izaberite paket...
+Dozvoljene usluge:
+Sledeće »
+Nema podataka o tipovima
+Nema stanica
+Nema aktivnih stanica
+Još nema stanica
+Nije podešen redosled
+Slug (URL) *
+Social Stream:
+Samo slova, brojevi i donja crta (3-64 znaka)
+Spotova po bloku
+ID strima (SID)
+Otpremanje slike...
+Suspendovan
+Preporučena veličina: 400 x 120px
+Preporučena veličina: 400 x 550px
+Tip servera
+Svi
+Svi klijenti
+Prevod nije dostupan
+Prenos zaustavljen
+Prenos pokrenut
+Vaša hosting kompanija i kompanija softvera panela nisu odgovorne u takvim slučajevima.
+Naziv radija:
+RTMP URL servera
+URL za prijavu na DJ panel:
+Poslednja prijava
+Koriste vaši klijenti
+Koristi se podrazumevani logo
+Korisničko ime *
+DJ korisnik: *
+Korisničko ime za prijavu u CP: *
+Pogledaj u biblioteci
+Pogledaj sve
+Pogledaj sve
+Važeće
+Vidžet uživo — CastPanel DJ
+Vidžet uživo — Kod za ugradnju
+Youtube izdaje upozorenja o autorskim pravima za muziku uživo, ceo vaš Youtube kanal može biti
+dnevno. Idite na
+kao lozinku za mobilne programe.
+dnevno za youtube prenose uživo, ne restartujte prenos uživo više od
+još ne postoji. Pokrenite SQL migraciju da uključite ovu funkciju.
+ne postoji. Pokrenite SQL migraciju v2.3 da je kreirate.
+ne postoji. Pokrenite SQL migraciju.
+nije mogla biti kreirana. Proverite dozvole baze podataka.
+ili opciju shoutcast servera u vašem programu za emitovanje. Možete koristiti
+ili ograničen ako vaš radio pušta muziku zaštićenu autorskim pravima.
+ili liste
+phpMyAdmin je instaliran i podešen sa direktnim pristupom.
+ima problem. Proverite SQL migraciju.
+ima problem. Proverite SQL migraciju.
+radi {n} h, {n} min
+« Prethodna
+— Bez paketa —
+(bez e-pošte)
+(Bez plejliste)
+{n} pesama, {n} reklama
+{n} slušalaca
+-- Izaberite listu --
++ Sačuvaj raspored
+Izmeni DJ-a: {x}
+Nova DJ lozinka: (prazno = bez promene)
+CastPanel (podrazumevano)

@@ -1643,3 +1643,275 @@ Uploaded ✓
 . Get your stream key from the Instagram Live settings. Upload a 1280x720 image that will be shown during the broadcast. Instagram uses
 Language changed to {x}
 translated phrases
+Action completed
+Action
+Active Playlist:
+Administrator
+Add Radio Package - CastPanel
+Add Reseller Package - CastPanel
+Storage (MB)
+Storage (MB):
+Ads Enabled
+File
+File:
+Drag your photo here or click to select
+Drag your spots here
+Email Subject
+Audio Streaming Platform (default)
+Auto-generated
+AutoDJ Enabled
+Automatic
+You have no clients yet.
+Bitrate (kbps)
+Bitrate (kbps):
+Custom Branding
+Branding for your Clients
+Search, artists, song names...
+Every X Songs
+Chain:
+Live Recording MP3 Quality:
+Song
+Close
+City
+Client *
+Recent Clients
+Encoder:
+Fill in the details to create a new radio. The port and SSL URL are assigned automatically.
+Song Title Settings:
+Set up your own custom RTMP URL to stream to any compatible server. Enter the RTMP server URL and the stream key. Upload a 1280x720 image.
+DJ Password: *
+CP Login Password:
+Server Password
+Copy the HTML code below and paste it on your website to show your station's live player.
+Client Email:
+Create the first one
+Create a New Reseller - CastPanel
+Create one
+Crossfade (AutoMix):
+Account Active
+Email Body (HTML)
+Code copied
+Code copied to clipboard
+DJ Can Change Own Password:
+DJ Can Log In to DJ Panel:
+DJ Can Broadcast Music:
+DJ Can Use Skip Song (AutoDJ):
+Set the days, schedule and playlist.
+Leave empty to keep unchanged
+Leave empty to use the global value
+Package description
+Description:
+Detail
+Stop the broadcast?
+Stopped
+Stopping
+Stopping...
+Day
+Days
+Broadcast Days
+Broadcast Days
+Edit/View
+Edit: Welcome
+Player visual effect:
+E.g.: Radio Palmeras FM
+E.g.: client1
+E.g.: radiofm
+The AutoDJ plays music automatically when no DJ is connected. You can start or stop the AutoDJ from here.
+Delete Photo
+Delete image
+Email *
+On your stations
+Send Account Email (Optional)
+Connection error
+Action error
+Write your message here...
+Stations ({n})
+Recent Stations
+Station Active
+This is what your DJs will see in their DJ Panel:
+Expired
+Current background
+Audio encoding format for the broadcast
+Current photo
+Profile Photo — CastPanel DJ
+Frequency
+Email resend feature not implemented yet
+Manage Clients
+Automatically records live DJ broadcasts
+DJ Recording:
+Record Live DJ Shows:
+Save Template
+Genre
+Genre:
+Time
+End time
+Start time
+Schedule
+Default hostname assigned to the stations of this package
+Stream IP:
+Stream Connection IP:
+Image updated
+Inactive
+Enter the RTMP URL of your custom server
+Enter the stream key
+Enter a Name
+Enter a Package Name: *
+Starting
+Starting...
+Log In (default)
+The radio IP is assigned automatically from the server
+The TikTok live streaming feature broadcasts your radio music to TikTok Live. Go to TikTok, select LIVE and get the server URL and key. Copy the stream key and enter it on this page, upload a 1280x720 image. The broadcast will start after 30-40 seconds.
+Maximum Bitrate Limit:
+Clear
+Direct Link
+Ad List
+Destination Ad List
+Changes apply immediately when saved.
+Packages are the account and radio limits. You can use your packages to create radios and accounts easily.
+Maximum Bitrate Limit:
+Client limit:
+Station limit:
+Max. DJ Accounts:
+Custom DJ Panel Message:
+My Clients ({n})
+Random Mode (Shuffle)
+Playback Mode:
+Show Song Titles (Default)
+Mount Points:
+Max. Bitrate (kbps)
+Max. Client Accounts
+Max. Stations
+Max. Listeners per Station
+Not Allowed
+There are no songs in this playlist.
+There are no DJ accounts on this station.
+No data available
+No active stations
+No registered stations
+No history available.
+No playlists created.
+No geolocated listeners at the moment.
+No templates. Use the "Initialize Templates" button to create the default ones.
+No schedules configured.
+No recorded shows for this station.
+No registered streams
+Could not load the history.
+Could not read network statistics
+You are not allowed to change your password. Contact the administrator.
+You are not allowed to upload a profile photo. Contact the administrator.
+Station Name *
+Radio Name: *
+DJ Name (optional)
+Package Name *
+New
+New schedule
+New Name
+Hide Titles
+Additional Options:
+DANGER: This will delete the station and all its data. Continue?
+DANGER: This will permanently delete the station, all its files and settings. This action CANNOT be undone. Type ELIMINAR to confirm:
+DJ Panel:
+Active Package
+Reseller Package
+Package: *
+Country
+Allows stations to create additional mount points
+Allows stations to create and use AutoDJ for automatic playback
+Allows stations to use Social Stream (broadcast to social networks)
+Allows the reseller/client to change the radio system type
+Allowed
+Allow Radio System Change:
+Allow AutoDJ Creation:
+Customize the logos, titles and favicons your clients will see. Uploaded images will replace the panel's default values. Deleting an image will restore the default logo.
+Current cover
+Preset applied
+Schedule which playlist the AutoDJ should use in each time slot. You can create several schedules for the same radio and repeat them weekly.
+Active schedules
+You can use HTML and the variables mentioned above
+DJ Port (Auto):
+Port assigned automatically (admin:
+Port assigned automatically (admin: {n}, harbor: {n})
+DJ Connection Port:
+Port of the central Icecast server (mount: /
+Harbor port for live DJ connection (stream port + 5)
+Remove
+Radio stopped
+Radio started
+Redirecting to the user panel...
+Registered
+Play in Normal Mode
+Full Player
+Mini Player (bar)
+Result
+Summary:
+Basic Reseller
+Sample Rate (Hz):
+Inherited from the selected package
+Strict Sequential
+Are you sure you want to SUSPEND this station?
+Select client...
+Select package...
+Allowed services:
+Next »
+No type data
+No stations
+No active stations
+No stations yet
+No sequence configured
+Slug (URL) *
+Social Stream:
+Only letters, numbers and underscore (3-64 characters)
+Spots per Block
+Stream ID (SID)
+Uploading image...
+Suspended
+Recommended size: 400 x 120px
+Recommended size: 400 x 550px
+Server Type
+All
+All clients
+Translation not available
+Broadcast stopped
+Broadcast started
+Your hosting company and the control panel software company are not responsible in such cases.
+Radio Title:
+Server RTMP URL
+DJ Panel Login URL:
+Last Login
+Used by your clients
+Using default logo
+Username *
+DJ User: *
+CP Login Username: *
+View in library
+View all
+View all
+Valid
+Live Widget — CastPanel DJ
+Live Widget — Embed Code
+Youtube applies copyright strikes for live music streams, your entire Youtube channel can be
+per day. Go to
+as the password for mobile programs.
+daily on youtube live streaming, do not restart the live stream more than
+does not exist yet. Run the SQL migration to enable this feature.
+does not exist. Run the SQL migration v2.3 to create it.
+does not exist. Run the SQL migration.
+could not be created. Check the database permissions.
+or the shoutcast server option in your broadcasting software. You can use
+or limited if your radio plays copyrighted music.
+or playlists
+phpMyAdmin is installed and configured with direct access.
+has a problem. Check the SQL migration.
+has a problem. Check the SQL migration.
+up {n} hours, {n} minutes
+« Previous
+— No package —
+(no email)
+(No playlist)
+{n} songs, {n} ads
+{n} listeners
+-- Select a playlist --
++ Save Schedule
+Edit DJ: {x}
+New DJ Password: (empty = no change)
+CastPanel (default)

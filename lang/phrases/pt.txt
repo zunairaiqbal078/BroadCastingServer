@@ -1643,3 +1643,275 @@ Enviado ✓
 . Obtenha sua chave de transmissão nas configurações do Instagram Live. Envie uma imagem de 1280x720 que será exibida durante a transmissão. O Instagram usa
 Idioma alterado para {x}
 frases traduzidas
+Ação concluída
+Ação
+Lista de Reprodução Ativa:
+Administrador
+Adicionar Pacote de Rádio - CastPanel
+Adicionar Pacote de Revendedor - CastPanel
+Armazenamento (MB)
+Armazenamento (MB):
+Anúncios Ativados
+Arquivo
+Arquivo:
+Arraste sua foto aqui ou clique para selecionar
+Arraste seus spots aqui
+Assunto do E-mail
+Plataforma de Streaming de Áudio (padrão)
+Gerada automaticamente
+AutoDJ Ativado
+Automático
+Você ainda não tem clientes.
+Bitrate (kbps)
+Bitrate (kbps):
+Marca Personalizada
+Marca para seus Clientes
+Buscar, artistas, nomes de músicas...
+A cada X Músicas
+Cadeia:
+Qualidade MP3 da Gravação Ao Vivo:
+Música
+Fechar
+Cidade
+Cliente *
+Clientes Recentes
+Codificador:
+Preencha os dados para criar uma nova rádio. A porta e a URL SSL são atribuídas automaticamente.
+Configurações do Título da Música:
+Configure sua própria URL RTMP personalizada para transmitir para qualquer servidor compatível. Insira a URL do servidor RTMP e a chave de transmissão. Envie uma imagem de 1280x720.
+Senha DJ: *
+Senha de Login do CP:
+Senha do Servidor
+Copie o código HTML abaixo e cole no seu site para mostrar o player ao vivo da sua emissora.
+E-mail do Cliente:
+Criar o primeiro
+Criar um Novo Revendedor - CastPanel
+Criar um
+Crossfade (AutoMix):
+Conta Ativa
+Corpo do E-mail (HTML)
+Código copiado
+Código copiado para a área de transferência
+DJ Pode Alterar a Própria Senha:
+DJ Pode Entrar no Painel DJ:
+DJ Pode Transmitir Música:
+DJ Pode Pular Música (AutoDJ):
+Defina os dias, o horário e a playlist.
+Deixe vazio para não alterar
+Deixe vazio para usar o valor global
+Descrição do pacote
+Descrição:
+Detalhe
+Parar a transmissão?
+Parado
+Parando
+Parando...
+Dia
+Dias
+Dias de Emissão
+Dias de Transmissão
+Editar/Ver
+Editar: Boas-vindas
+Efeito visual do player:
+Ex: Rádio Palmeiras FM
+Ex: cliente1
+Ex: radiofm
+O AutoDJ toca música automaticamente quando nenhum DJ está conectado. Você pode iniciar ou parar o AutoDJ aqui.
+Excluir Foto
+Excluir imagem
+E-mail *
+Nas suas estações
+Enviar E-mail da Conta (Opcional)
+Erro de conexão
+Erro na ação
+Escreva sua mensagem aqui...
+Estações ({n})
+Estações Recentes
+Estação Ativa
+Isto é o que seus DJs verão no Painel DJ:
+Expirado
+Fundo atual
+Formato de codificação de áudio da transmissão
+Foto atual
+Foto de Perfil — CastPanel DJ
+Frequência
+Função de reenvio de e-mail ainda não implementada
+Gerenciar Clientes
+Grava automaticamente as transmissões ao vivo dos DJs
+Gravação DJ:
+Gravar Shows DJ Ao Vivo:
+Salvar Modelo
+Gênero
+Gênero:
+Hora
+Hora de fim
+Hora de início
+Horário
+Hostname padrão atribuído às estações deste pacote
+IP do Stream:
+IP de Conexão do Stream:
+Imagem atualizada
+Inativa
+Insira a URL RTMP do seu servidor personalizado
+Insira a chave de transmissão
+Insira um Nome
+Insira um Nome de Pacote: *
+Iniciando
+Iniciando...
+Entrar (padrão)
+O IP da rádio é atribuído automaticamente pelo servidor
+O recurso de transmissão ao vivo do TikTok transmite a música da sua rádio para o TikTok Live. Vá ao TikTok, selecione LIVE e obtenha a URL e a chave do servidor. Copie a chave de transmissão e insira-a nesta página, envie uma imagem de 1280x720. A transmissão começará após 30-40 segundos.
+Limite Máximo de Bitrate:
+Limpar
+Link Direto
+Lista de Anúncios
+Lista de Anúncios de Destino
+As alterações são aplicadas imediatamente ao salvar.
+Os pacotes são os limites de contas e rádios. Você pode usar seus pacotes para criar rádios e contas facilmente.
+Limite Máximo de Bitrate:
+Limite de clientes:
+Limite de estações:
+Máx. Contas DJ:
+Mensagem Personalizada do Painel DJ:
+Meus Clientes ({n})
+Modo Aleatório (Shuffle)
+Modo de Reprodução:
+Mostrar Títulos das Músicas (Padrão)
+Pontos de Montagem:
+Bitrate Máx. (kbps)
+Máx. Contas de Cliente
+Máx. Estações
+Máx. Ouvintes por Estação
+Não Permitido
+Não há músicas nesta lista.
+Não há contas DJ nesta estação.
+Não há dados disponíveis
+Não há estações ativas
+Não há estações registradas
+Não há histórico disponível.
+Nenhuma lista de reprodução criada.
+Não há ouvintes geolocalizados no momento.
+Não há modelos. Use o botão "Inicializar Modelos" para criar os padrões.
+Nenhuma programação configurada.
+Não há shows gravados para esta estação.
+Não há streams registrados
+Não foi possível carregar o histórico.
+Não foi possível ler as estatísticas de rede
+Você não tem permissão para alterar sua senha. Contate o administrador.
+Você não tem permissão para enviar foto de perfil. Contate o administrador.
+Nome da Estação *
+Nome da Rádio: *
+Nome do DJ (opcional)
+Nome do Pacote *
+Nova
+Nova programação
+Novo Nome
+Ocultar Títulos
+Opções Adicionais:
+PERIGO: Isto excluirá a estação e todos os seus dados. Continuar?
+PERIGO: Isto excluirá permanentemente a estação, todos os seus arquivos e configurações. Esta ação NÃO pode ser desfeita. Digite ELIMINAR para confirmar:
+Painel DJ:
+Pacote Ativo
+Pacote de Revendedor
+Pacote: *
+País
+Permite que as estações criem pontos de montagem adicionais
+Permite que as estações criem e usem o AutoDJ para reprodução automática
+Permite que as estações usem o Social Stream (transmissão para redes sociais)
+Permite que o revendedor/cliente altere o tipo de sistema de rádio
+Permitido
+Permitir Alteração do Sistema de Rádio:
+Permitir Criação de AutoDJ:
+Personalize os logos, títulos e favicons que seus clientes verão. As imagens enviadas substituirão os valores padrão do painel. Ao excluir uma imagem, o logo padrão será restaurado.
+Capa atual
+Preset aplicado
+Programe qual playlist o AutoDJ deve usar em cada horário. Você pode criar vários horários para a mesma rádio e repeti-los semanalmente.
+Programações ativas
+Você pode usar HTML e as variáveis mencionadas acima
+Porta DJ (Auto):
+Porta atribuída automaticamente (admin:
+Porta atribuída automaticamente (admin: {n}, harbor: {n})
+Porta de Conexão DJ:
+Porta do servidor Icecast central (mount: /
+Porta harbor para conexão DJ ao vivo (porta do stream + 5)
+Remover
+Rádio parada
+Rádio iniciada
+Redirecionando para o painel do usuário...
+Registrado
+Reproduzir em Modo Normal
+Player Completo
+Player Mini (barra)
+Resultado
+Resumo:
+Revendedor Básico
+Taxa de Amostragem (Hz):
+Herdado do pacote selecionado
+Sequencial Estrito
+Tem certeza de que deseja SUSPENDER esta estação?
+Selecionar cliente...
+Selecionar pacote...
+Serviços permitidos:
+Próximo »
+Sem dados de tipos
+Sem estações
+Sem estações ativas
+Ainda sem estações
+Nenhuma sequência configurada
+Slug (URL) *
+Social Stream:
+Apenas letras, números e sublinhado (3-64 caracteres)
+Spots por Bloco
+ID do Stream (SID)
+Enviando imagem...
+Suspenso
+Tamanho recomendado: 400 x 120px
+Tamanho recomendado: 400 x 550px
+Tipo de Servidor
+Todos
+Todos os clientes
+Tradução não disponível
+Transmissão parada
+Transmissão iniciada
+Sua empresa de hospedagem e a empresa do software do painel de controle não são responsáveis nesses casos.
+Título da Rádio:
+URL RTMP do servidor
+URL de Login do Painel DJ:
+Último Login
+Usado por seus clientes
+Usando logo padrão
+Nome de usuário *
+Usuário DJ: *
+Usuário de Login do CP: *
+Ver na biblioteca
+Ver todas
+Ver todos
+Vigente
+Widget ao Vivo — CastPanel DJ
+Widget ao Vivo — Código de Incorporação
+O Youtube aplica avisos de direitos autorais para músicas ao vivo, todo o seu canal do Youtube pode ser
+por dia. Vá para
+como senha para programas de celular.
+diário de transmissão ao vivo no youtube, não reinicie a transmissão ao vivo mais de
+ainda não existe. Execute a migração SQL para ativar este recurso.
+não existe. Execute a migração SQL v2.3 para criá-la.
+não existe. Execute a migração SQL.
+não pôde ser criada. Verifique as permissões do banco de dados.
+ou a opção servidor shoutcast no seu programa de transmissão. Você pode usar
+ou limitado se sua rádio tocar música protegida por direitos autorais.
+ou listas
+O phpMyAdmin está instalado e configurado com acesso direto.
+tem um problema. Verifique a migração SQL.
+tem um problema. Verifique a migração SQL.
+ativo há {n} horas, {n} minutos
+« Anterior
+— Sem pacote —
+(sem e-mail)
+(Sem playlist)
+{n} músicas, {n} anúncios
+{n} ouvintes
+-- Selecione uma lista --
++ Salvar Programação
+Editar DJ: {x}
+Nova Senha DJ: (vazio = sem alteração)
+CastPanel (padrão)

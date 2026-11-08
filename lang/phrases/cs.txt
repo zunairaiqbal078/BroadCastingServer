@@ -1643,3 +1643,275 @@ Nahráno ✓
 . Klíč vysílání získáte v nastavení Instagram Live. Nahrajte obrázek 1280x720, který se zobrazí během vysílání. Instagram používá
 Jazyk změněn na {x}
 přeložené fráze
+Akce dokončena
+Akce
+Aktivní seznam skladeb:
+Správce
+Přidat rádiový balíček - CastPanel
+Přidat balíček prodejce - CastPanel
+Úložiště (MB)
+Úložiště (MB):
+Reklamy zapnuty
+Soubor
+Soubor:
+Přetáhněte sem fotku nebo klikněte pro výběr
+Přetáhněte sem své spoty
+Předmět e-mailu
+Platforma pro streamování zvuku (výchozí)
+Generováno automaticky
+AutoDJ zapnuto
+Automaticky
+Zatím nemáte žádné klienty.
+Bitrate (kbps)
+Bitrate (kbps):
+Vlastní branding
+Branding pro vaše klienty
+Hledat, interpreti, názvy skladeb...
+Každých X skladeb
+Řetězec:
+Kvalita MP3 živé nahrávky:
+Skladba
+Zavřít
+Město
+Klient *
+Nedávní klienti
+Enkodér:
+Vyplňte údaje pro vytvoření nového rádia. Port a SSL URL se přiřadí automaticky.
+Nastavení názvů skladeb:
+Nastavte vlastní RTMP URL pro vysílání na libovolný kompatibilní server. Zadejte URL RTMP serveru a klíč vysílání. Nahrajte obrázek 1280x720.
+Heslo DJ: *
+Přihlašovací heslo CP:
+Heslo serveru
+Zkopírujte níže uvedený HTML kód a vložte ho na svůj web, aby se zobrazil živý přehrávač vaší stanice.
+E-mail klienta:
+Vytvořit první
+Vytvořit nového prodejce - CastPanel
+Vytvořit
+Prolínání (AutoMix):
+Účet aktivní
+Tělo e-mailu (HTML)
+Kód zkopírován
+Kód zkopírován do schránky
+DJ může změnit vlastní heslo:
+DJ se může přihlásit do panelu DJ:
+DJ může vysílat hudbu:
+DJ může přeskočit skladbu (AutoDJ):
+Nastavte dny, čas a playlist.
+Ponechte prázdné pro zachování
+Ponechte prázdné pro použití globální hodnoty
+Popis balíčku
+Popis:
+Detail
+Zastavit vysílání?
+Zastaveno
+Zastavování
+Zastavování...
+Den
+Dny
+Dny vysílání
+Dny vysílání
+Upravit/Zobrazit
+Upravit: Uvítání
+Vizuální efekt přehrávače:
+Např.: Radio Palmeras FM
+Např.: klient1
+Např.: radiofm
+AutoDJ automaticky přehrává hudbu, když není připojen žádný DJ. Zde můžete AutoDJ spustit nebo zastavit.
+Smazat fotku
+Smazat obrázek
+E-mail *
+Na vašich stanicích
+Odeslat e-mail s účtem (volitelné)
+Chyba připojení
+Chyba akce
+Sem napište svou zprávu...
+Stanice ({n})
+Nedávné stanice
+Stanice aktivní
+Toto uvidí vaši DJ ve svém panelu DJ:
+Vypršelo
+Aktuální pozadí
+Formát kódování zvuku pro vysílání
+Aktuální fotka
+Profilová fotka — CastPanel DJ
+Frekvence
+Funkce opětovného odeslání e-mailu zatím není hotová
+Spravovat klienty
+Automaticky nahrává živé vysílání DJ
+Nahrávání DJ:
+Nahrávat živé pořady DJ:
+Uložit šablonu
+Žánr
+Žánr:
+Čas
+Čas konce
+Čas začátku
+Rozvrh
+Výchozí název hostitele pro stanice tohoto balíčku
+IP streamu:
+IP připojení streamu:
+Obrázek aktualizován
+Neaktivní
+Zadejte RTMP URL svého serveru
+Zadejte klíč vysílání
+Zadejte název
+Zadejte název balíčku: *
+Spouštění
+Spouštění...
+Přihlásit se (výchozí)
+IP rádia je přiřazena automaticky serverem
+Funkce živého vysílání TikTok vysílá hudbu vašeho rádia na TikTok Live. Přejděte na TikTok, zvolte LIVE a získejte URL serveru a klíč. Zkopírujte klíč vysílání a zadejte ho na této stránce, nahrajte obrázek 1280x720. Vysílání začne po 30-40 sekundách.
+Maximální limit bitrate:
+Vymazat
+Přímý odkaz
+Seznam reklam
+Cílový seznam reklam
+Změny se projeví ihned po uložení.
+Balíčky určují limity účtů a rádií. Pomocí balíčků můžete snadno vytvářet rádia a účty.
+Maximální limit bitrate:
+Limit klientů:
+Limit stanic:
+Max. účtů DJ:
+Vlastní zpráva panelu DJ:
+Moji klienti ({n})
+Náhodný režim (Shuffle)
+Režim přehrávání:
+Zobrazit názvy skladeb (výchozí)
+Přípojné body:
+Max. bitrate (kbps)
+Max. klientských účtů
+Max. stanic
+Max. posluchačů na stanici
+Nepovoleno
+V tomto seznamu nejsou žádné skladby.
+Na této stanici nejsou žádné účty DJ.
+Žádná dostupná data
+Žádné aktivní stanice
+Žádné registrované stanice
+Žádná historie.
+Nejsou vytvořeny žádné seznamy skladeb.
+Momentálně žádní geolokalizovaní posluchači.
+Žádné šablony. Použijte tlačítko „Inicializovat šablony“ pro vytvoření výchozích.
+Nejsou nastaveny žádné rozvrhy.
+Pro tuto stanici nejsou nahrané žádné pořady.
+Žádné registrované streamy
+Historii nelze načíst.
+Síťové statistiky nelze načíst
+Nemáte oprávnění změnit heslo. Kontaktujte správce.
+Nemáte oprávnění nahrát profilovou fotku. Kontaktujte správce.
+Název stanice *
+Název rádia: *
+Jméno DJ (volitelné)
+Název balíčku *
+Nová
+Nový rozvrh
+Nový název
+Skrýt názvy
+Další možnosti:
+NEBEZPEČÍ: tímto smažete stanici a všechna její data. Pokračovat?
+NEBEZPEČÍ: tímto trvale smažete stanici, všechny její soubory a nastavení. Tuto akci NELZE vrátit. Pro potvrzení napište ELIMINAR:
+Panel DJ:
+Aktivní balíček
+Balíček prodejce
+Balíček: *
+Země
+Umožňuje stanicím vytvářet další přípojné body
+Umožňuje stanicím vytvářet a používat AutoDJ pro automatické přehrávání
+Umožňuje stanicím používat Social Stream (vysílání na sociální sítě)
+Umožňuje prodejci/klientovi změnit typ rádiového systému
+Povoleno
+Povolit změnu rádiového systému:
+Povolit vytvoření AutoDJ:
+Přizpůsobte loga, nadpisy a favicony, které uvidí vaši klienti. Nahrané obrázky nahradí výchozí hodnoty panelu. Smazáním obrázku se obnoví výchozí logo.
+Aktuální obal
+Preset použit
+Naplánujte, který playlist má AutoDJ používat v každém časovém úseku. Pro stejné rádio můžete vytvořit více úseků a opakovat je každý týden.
+Aktivní rozvrhy
+Můžete použít HTML a výše uvedené proměnné
+Port DJ (auto):
+Automaticky přiřazený port (admin:
+Automaticky přiřazený port (admin: {n}, harbor: {n})
+Port pro připojení DJ:
+Port centrálního serveru Icecast (mount: /
+Port harbor pro živé připojení DJ (port streamu + 5)
+Odebrat
+Rádio zastaveno
+Rádio spuštěno
+Přesměrování do panelu uživatele...
+Registrováno
+Přehrávat v normálním režimu
+Úplný přehrávač
+Mini přehrávač (lišta)
+Výsledek
+Souhrn:
+Základní prodejce
+Vzorkovací frekvence (Hz):
+Převzato z vybraného balíčku
+Přísně postupně
+Opravdu chcete POZASTAVIT tuto stanici?
+Vyberte klienta...
+Vyberte balíček...
+Povolené služby:
+Další »
+Žádná data o typech
+Žádné stanice
+Žádné aktivní stanice
+Zatím žádné stanice
+Není nastaveno žádné pořadí
+Slug (URL) *
+Social Stream:
+Pouze písmena, číslice a podtržítko (3-64 znaků)
+Spotů na blok
+ID streamu (SID)
+Nahrávání obrázku...
+Pozastaveno
+Doporučená velikost: 400 x 120px
+Doporučená velikost: 400 x 550px
+Typ serveru
+Vše
+Všichni klienti
+Překlad není k dispozici
+Vysílání zastaveno
+Vysílání spuštěno
+Váš poskytovatel hostingu ani výrobce softwaru panelu za takové případy neodpovídají.
+Název rádia:
+RTMP URL serveru
+URL přihlášení do panelu DJ:
+Poslední přihlášení
+Používají vaši klienti
+Používá se výchozí logo
+Uživatelské jméno *
+Uživatel DJ: *
+Přihlašovací jméno CP: *
+Zobrazit v knihovně
+Zobrazit vše
+Zobrazit všechny
+Platné
+Živý widget — CastPanel DJ
+Živý widget — Kód pro vložení
+Youtube uděluje upozornění na autorská práva za živou hudbu, celý váš Youtube kanál může být
+denně. Přejděte na
+jako heslo pro mobilní programy.
+denně pro živé vysílání na youtube, nerestartujte živé vysílání více než
+zatím neexistuje. Spusťte SQL migraci pro zapnutí této funkce.
+neexistuje. Spusťte SQL migraci v2.3 pro její vytvoření.
+neexistuje. Spusťte SQL migraci.
+nelze vytvořit. Zkontrolujte oprávnění databáze.
+nebo volbu serveru shoutcast ve vašem vysílacím programu. Můžete použít
+nebo omezen, pokud vaše rádio hraje hudbu chráněnou autorským právem.
+nebo seznamy
+phpMyAdmin je nainstalován a nastaven s přímým přístupem.
+má problém. Zkontrolujte SQL migraci.
+má problém. Zkontrolujte SQL migraci.
+běží {n} h, {n} min
+« Předchozí
+— Bez balíčku —
+(bez e-mailu)
+(Bez playlistu)
+{n} skladeb, {n} reklam
+{n} posluchačů
+-- Vyberte seznam --
++ Uložit rozvrh
+Upravit DJ: {x}
+Nové heslo DJ: (prázdné = beze změny)
+CastPanel (výchozí)

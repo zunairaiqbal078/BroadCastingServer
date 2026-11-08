@@ -1643,3 +1643,275 @@ Hochgeladen ✓
 . Den Stream-Schlüssel erhalten Sie in den Instagram-Live-Einstellungen. Laden Sie ein Bild in 1280x720 hoch, das während der Übertragung angezeigt wird. Instagram nutzt
 Sprache geändert zu {x}
 übersetzte Texte
+Aktion abgeschlossen
+Aktion
+Aktive Playlist:
+Administrator
+Radiopaket hinzufügen - CastPanel
+Resellerpaket hinzufügen - CastPanel
+Speicher (MB)
+Speicher (MB):
+Werbung aktiviert
+Datei
+Datei:
+Foto hierher ziehen oder klicken zum Auswählen
+Spots hierher ziehen
+E-Mail-Betreff
+Audio-Streaming-Plattform (Standard)
+Automatisch erzeugt
+AutoDJ aktiviert
+Automatisch
+Sie haben noch keine Kunden.
+Bitrate (kbps)
+Bitrate (kbps):
+Eigenes Branding
+Branding für Ihre Kunden
+Suchen, Interpreten, Titelnamen...
+Alle X Titel
+Kette:
+MP3-Qualität der Live-Aufnahme:
+Titel
+Schließen
+Stadt
+Kunde *
+Neueste Kunden
+Encoder:
+Füllen Sie die Daten aus, um ein neues Radio zu erstellen. Port und SSL-URL werden automatisch zugewiesen.
+Einstellungen für Titelanzeige:
+Richten Sie Ihre eigene RTMP-URL ein, um an jeden kompatiblen Server zu senden. Geben Sie die URL des RTMP-Servers und den Stream-Schlüssel ein. Laden Sie ein Bild in 1280x720 hoch.
+DJ-Passwort: *
+CP-Login-Passwort:
+Server-Passwort
+Kopieren Sie den HTML-Code unten und fügen Sie ihn in Ihre Website ein, um den Live-Player Ihres Senders anzuzeigen.
+E-Mail des Kunden:
+Den ersten erstellen
+Einen neuen Reseller erstellen - CastPanel
+Einen erstellen
+Crossfade (AutoMix):
+Konto aktiv
+E-Mail-Text (HTML)
+Code kopiert
+Code in die Zwischenablage kopiert
+DJ darf eigenes Passwort ändern:
+DJ darf sich im DJ-Panel anmelden:
+DJ darf Musik senden:
+DJ darf Titel überspringen (AutoDJ):
+Legen Sie Tage, Uhrzeit und Playlist fest.
+Leer lassen, um nichts zu ändern
+Leer lassen, um den globalen Wert zu verwenden
+Paketbeschreibung
+Beschreibung:
+Detail
+Übertragung stoppen?
+Gestoppt
+Wird gestoppt
+Wird gestoppt...
+Tag
+Tage
+Sendetage
+Übertragungstage
+Bearbeiten/Ansehen
+Bearbeiten: Willkommen
+Visueller Effekt des Players:
+Z. B.: Radio Palmeras FM
+Z. B.: kunde1
+Z. B.: radiofm
+Der AutoDJ spielt automatisch Musik, wenn kein DJ verbunden ist. Sie können den AutoDJ hier starten oder stoppen.
+Foto löschen
+Bild löschen
+E-Mail *
+Auf Ihren Stationen
+Konto-E-Mail senden (optional)
+Verbindungsfehler
+Fehler bei der Aktion
+Schreiben Sie hier Ihre Nachricht...
+Stationen ({n})
+Neueste Stationen
+Station aktiv
+Das sehen Ihre DJs in ihrem DJ-Panel:
+Abgelaufen
+Aktueller Hintergrund
+Audio-Kodierungsformat der Übertragung
+Aktuelles Foto
+Profilfoto — CastPanel DJ
+Häufigkeit
+Funktion zum erneuten Senden von E-Mails noch nicht umgesetzt
+Kunden verwalten
+Nimmt Live-Übertragungen von DJs automatisch auf
+DJ-Aufnahme:
+Live-DJ-Shows aufnehmen:
+Vorlage speichern
+Genre
+Genre:
+Uhrzeit
+Endzeit
+Startzeit
+Zeitplan
+Standard-Hostname für die Stationen dieses Pakets
+Stream-IP:
+Stream-Verbindungs-IP:
+Bild aktualisiert
+Inaktiv
+Geben Sie die RTMP-URL Ihres eigenen Servers ein
+Geben Sie den Stream-Schlüssel ein
+Namen eingeben
+Paketnamen eingeben: *
+Wird gestartet
+Wird gestartet...
+Anmelden (Standard)
+Die Radio-IP wird automatisch vom Server zugewiesen
+Die TikTok-Livestream-Funktion überträgt die Musik Ihres Radios zu TikTok Live. Gehen Sie zu TikTok, wählen Sie LIVE und holen Sie Server-URL und Schlüssel. Kopieren Sie den Stream-Schlüssel, geben Sie ihn auf dieser Seite ein und laden Sie ein Bild in 1280x720 hoch. Die Übertragung startet nach 30-40 Sekunden.
+Maximales Bitrate-Limit:
+Leeren
+Direktlink
+Werbeliste
+Ziel-Werbeliste
+Änderungen gelten sofort nach dem Speichern.
+Pakete legen die Limits für Konten und Radios fest. Mit Ihren Paketen können Sie Radios und Konten einfach erstellen.
+Maximales Bitrate-Limit:
+Kundenlimit:
+Stationslimit:
+Max. DJ-Konten:
+Eigene Nachricht im DJ-Panel:
+Meine Kunden ({n})
+Zufallsmodus (Shuffle)
+Wiedergabemodus:
+Titel anzeigen (Standard)
+Mountpoints:
+Max. Bitrate (kbps)
+Max. Kundenkonten
+Max. Stationen
+Max. Hörer pro Station
+Nicht erlaubt
+Keine Titel in dieser Liste.
+Keine DJ-Konten auf dieser Station.
+Keine Daten verfügbar
+Keine aktiven Stationen
+Keine registrierten Stationen
+Kein Verlauf verfügbar.
+Keine Playlists erstellt.
+Derzeit keine geolokalisierten Hörer.
+Keine Vorlagen. Verwenden Sie die Schaltfläche „Vorlagen initialisieren“, um die Standardvorlagen zu erstellen.
+Keine Zeitpläne konfiguriert.
+Keine aufgezeichneten Shows für diese Station.
+Keine registrierten Streams
+Verlauf konnte nicht geladen werden.
+Netzwerkstatistiken konnten nicht gelesen werden
+Sie dürfen Ihr Passwort nicht ändern. Wenden Sie sich an den Administrator.
+Sie dürfen kein Profilfoto hochladen. Wenden Sie sich an den Administrator.
+Stationsname *
+Radioname: *
+DJ-Name (optional)
+Paketname *
+Neu
+Neuer Zeitplan
+Neuer Name
+Titel ausblenden
+Zusätzliche Optionen:
+GEFAHR: Dies löscht die Station und alle ihre Daten. Fortfahren?
+GEFAHR: Dies löscht die Station mit allen Dateien und Einstellungen endgültig. Diese Aktion kann NICHT rückgängig gemacht werden. Geben Sie ELIMINAR zur Bestätigung ein:
+DJ-Panel:
+Aktives Paket
+Resellerpaket
+Paket: *
+Land
+Erlaubt Stationen, zusätzliche Mountpoints zu erstellen
+Erlaubt Stationen, AutoDJ für automatische Wiedergabe zu erstellen und zu nutzen
+Erlaubt Stationen, Social Stream zu nutzen (Übertragung in soziale Netzwerke)
+Erlaubt dem Reseller/Kunden, den Radiosystemtyp zu ändern
+Erlaubt
+Wechsel des Radiosystems erlauben:
+Erstellung von AutoDJ erlauben:
+Passen Sie die Logos, Titel und Favicons an, die Ihre Kunden sehen. Hochgeladene Bilder ersetzen die Standardwerte des Panels. Beim Löschen eines Bildes wird das Standard-Logo wiederhergestellt.
+Aktuelles Cover
+Preset angewendet
+Legen Sie fest, welche Playlist der AutoDJ in jedem Zeitfenster nutzt. Sie können mehrere Zeitfenster für dasselbe Radio erstellen und wöchentlich wiederholen.
+Aktive Zeitpläne
+Sie können HTML und die oben genannten Variablen verwenden
+DJ-Port (Auto):
+Automatisch zugewiesener Port (admin:
+Automatisch zugewiesener Port (admin: {n}, harbor: {n})
+DJ-Verbindungsport:
+Port des zentralen Icecast-Servers (mount: /
+Harbor-Port für Live-DJ-Verbindung (Stream-Port + 5)
+Entfernen
+Radio gestoppt
+Radio gestartet
+Weiterleitung zum Benutzerpanel...
+Registriert
+Im Normalmodus abspielen
+Vollständiger Player
+Mini-Player (Leiste)
+Ergebnis
+Zusammenfassung:
+Basis-Reseller
+Abtastrate (Hz):
+Wird vom gewählten Paket übernommen
+Streng sequenziell
+Möchten Sie diese Station wirklich SPERREN?
+Kunde auswählen...
+Paket auswählen...
+Erlaubte Dienste:
+Weiter »
+Keine Typdaten
+Keine Stationen
+Keine aktiven Stationen
+Noch keine Stationen
+Keine Abfolge konfiguriert
+Slug (URL) *
+Social Stream:
+Nur Buchstaben, Zahlen und Unterstrich (3-64 Zeichen)
+Spots pro Block
+Stream-ID (SID)
+Bild wird hochgeladen...
+Gesperrt
+Empfohlene Größe: 400 x 120px
+Empfohlene Größe: 400 x 550px
+Servertyp
+Alle
+Alle Kunden
+Übersetzung nicht verfügbar
+Übertragung gestoppt
+Übertragung gestartet
+Ihr Hosting-Anbieter und der Hersteller der Panel-Software sind in solchen Fällen nicht verantwortlich.
+Radiotitel:
+RTMP-URL des Servers
+Login-URL des DJ-Panels:
+Letzte Anmeldung
+Von Ihren Kunden genutzt
+Standard-Logo wird verwendet
+Benutzername *
+DJ-Benutzer: *
+CP-Login-Benutzername: *
+In der Bibliothek ansehen
+Alle ansehen
+Alle ansehen
+Gültig
+Live-Widget — CastPanel DJ
+Live-Widget — Einbettungscode
+Youtube verhängt Urheberrechtsverwarnungen für Live-Musik; Ihr gesamter Youtube-Kanal kann
+pro Tag. Gehen Sie zu
+als Passwort für mobile Programme.
+täglich für Youtube-Livestreams, starten Sie den Livestream nicht öfter als
+existiert noch nicht. Führen Sie die SQL-Migration aus, um diese Funktion zu aktivieren.
+existiert nicht. Führen Sie die SQL-Migration v2.3 aus, um sie zu erstellen.
+existiert nicht. Führen Sie die SQL-Migration aus.
+konnte nicht erstellt werden. Prüfen Sie die Datenbankrechte.
+oder die Option Shoutcast-Server in Ihrem Sendeprogramm. Sie können verwenden
+oder eingeschränkt werden, wenn Ihr Radio urheberrechtlich geschützte Musik spielt.
+oder Listen
+phpMyAdmin ist installiert und mit Direktzugriff konfiguriert.
+hat ein Problem. Prüfen Sie die SQL-Migration.
+hat ein Problem. Prüfen Sie die SQL-Migration.
+aktiv seit {n} Stunden, {n} Minuten
+« Zurück
+— Kein Paket —
+(keine E-Mail)
+(Keine Playlist)
+{n} Titel, {n} Werbespots
+{n} Hörer
+-- Liste auswählen --
++ Zeitplan speichern
+DJ bearbeiten: {x}
+Neues DJ-Passwort: (leer = keine Änderung)
+CastPanel (Standard)

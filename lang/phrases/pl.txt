@@ -1643,3 +1643,275 @@ Przesłano ✓
 . Pobierz klucz transmisji z ustawień Instagram Live. Prześlij obraz 1280x720, który będzie wyświetlany podczas transmisji. Instagram używa
 Zmieniono język na {x}
 przetłumaczone frazy
+Akcja zakończona
+Akcja
+Aktywna lista odtwarzania:
+Administrator
+Dodaj pakiet radiowy - CastPanel
+Dodaj pakiet resellera - CastPanel
+Magazyn (MB)
+Magazyn (MB):
+Reklamy włączone
+Plik
+Plik:
+Przeciągnij tutaj zdjęcie lub kliknij, aby wybrać
+Przeciągnij tutaj swoje spoty
+Temat wiadomości e-mail
+Platforma streamingu audio (domyślnie)
+Generowane automatycznie
+AutoDJ włączony
+Automatycznie
+Nie masz jeszcze klientów.
+Bitrate (kbps)
+Bitrate (kbps):
+Własny branding
+Branding dla Twoich klientów
+Szukaj, wykonawcy, tytuły utworów...
+Co X utworów
+Łańcuch:
+Jakość MP3 nagrania na żywo:
+Utwór
+Zamknij
+Miasto
+Klient *
+Ostatni klienci
+Enkoder:
+Uzupełnij dane, aby utworzyć nowe radio. Port i URL SSL są przypisywane automatycznie.
+Ustawienia tytułów utworów:
+Skonfiguruj własny URL RTMP, aby nadawać na dowolny zgodny serwer. Wpisz URL serwera RTMP i klucz transmisji. Prześlij obraz 1280x720.
+Hasło DJ: *
+Hasło logowania CP:
+Hasło serwera
+Skopiuj poniższy kod HTML i wklej go na swojej stronie, aby pokazać odtwarzacz na żywo swojej stacji.
+E-mail klienta:
+Utwórz pierwszy
+Utwórz nowego resellera - CastPanel
+Utwórz jeden
+Crossfade (AutoMix):
+Konto aktywne
+Treść wiadomości e-mail (HTML)
+Skopiowano kod
+Skopiowano kod do schowka
+DJ może zmienić własne hasło:
+DJ może logować się do panelu DJ:
+DJ może nadawać muzykę:
+DJ może pominąć utwór (AutoDJ):
+Określ dni, godziny i playlistę.
+Pozostaw puste, aby nie zmieniać
+Pozostaw puste, aby użyć wartości globalnej
+Opis pakietu
+Opis:
+Szczegóły
+Zatrzymać transmisję?
+Zatrzymany
+Zatrzymywanie
+Zatrzymywanie...
+Dzień
+Dni
+Dni emisji
+Dni transmisji
+Edytuj/Zobacz
+Edytuj: Powitanie
+Efekt wizualny odtwarzacza:
+Np.: Radio Palmeras FM
+Np.: klient1
+Np.: radiofm
+AutoDJ odtwarza muzykę automatycznie, gdy żaden DJ nie jest połączony. Możesz tutaj uruchomić lub zatrzymać AutoDJ.
+Usuń zdjęcie
+Usuń obraz
+E-mail *
+Na Twoich stacjach
+Wyślij e-mail z kontem (opcjonalnie)
+Błąd połączenia
+Błąd akcji
+Napisz tutaj swoją wiadomość...
+Stacje ({n})
+Ostatnie stacje
+Stacja aktywna
+To zobaczą Twoi DJ-e w panelu DJ:
+Wygasło
+Bieżące tło
+Format kodowania audio transmisji
+Bieżące zdjęcie
+Zdjęcie profilowe — CastPanel DJ
+Częstotliwość
+Funkcja ponownego wysyłania e-maili nie jest jeszcze gotowa
+Zarządzaj klientami
+Automatycznie nagrywa transmisje DJ-ów na żywo
+Nagrywanie DJ:
+Nagrywaj audycje DJ na żywo:
+Zapisz szablon
+Gatunek
+Gatunek:
+Godzina
+Godzina zakończenia
+Godzina rozpoczęcia
+Harmonogram
+Domyślna nazwa hosta dla stacji z tego pakietu
+IP streamu:
+IP połączenia streamu:
+Obraz zaktualizowany
+Nieaktywna
+Wpisz URL RTMP swojego serwera
+Wpisz klucz transmisji
+Wpisz nazwę
+Wpisz nazwę pakietu: *
+Uruchamianie
+Uruchamianie...
+Zaloguj się (domyślnie)
+IP radia jest przypisywane automatycznie przez serwer
+Funkcja transmisji na żywo TikTok nadaje muzykę Twojego radia na TikTok Live. Przejdź do TikTok, wybierz LIVE i pobierz URL serwera i klucz. Skopiuj klucz transmisji i wpisz go na tej stronie, prześlij obraz 1280x720. Transmisja rozpocznie się po 30-40 sekundach.
+Maksymalny limit bitrate:
+Wyczyść
+Link bezpośredni
+Lista reklam
+Docelowa lista reklam
+Zmiany są stosowane od razu po zapisaniu.
+Pakiety określają limity kont i radii. Możesz używać pakietów, aby łatwo tworzyć radia i konta.
+Maksymalny limit bitrate:
+Limit klientów:
+Limit stacji:
+Maks. kont DJ:
+Własna wiadomość panelu DJ:
+Moi klienci ({n})
+Tryb losowy (Shuffle)
+Tryb odtwarzania:
+Pokazuj tytuły utworów (domyślnie)
+Punkty montowania:
+Maks. bitrate (kbps)
+Maks. kont klientów
+Maks. stacji
+Maks. słuchaczy na stację
+Niedozwolone
+Brak utworów na tej liście.
+Brak kont DJ na tej stacji.
+Brak dostępnych danych
+Brak aktywnych stacji
+Brak zarejestrowanych stacji
+Brak historii.
+Nie utworzono list odtwarzania.
+Obecnie brak zlokalizowanych słuchaczy.
+Brak szablonów. Użyj przycisku „Inicjuj szablony”, aby utworzyć domyślne.
+Brak skonfigurowanych harmonogramów.
+Brak nagranych audycji dla tej stacji.
+Brak zarejestrowanych streamów
+Nie udało się wczytać historii.
+Nie udało się odczytać statystyk sieci
+Nie masz uprawnień do zmiany hasła. Skontaktuj się z administratorem.
+Nie masz uprawnień do przesłania zdjęcia profilowego. Skontaktuj się z administratorem.
+Nazwa stacji *
+Nazwa radia: *
+Nazwa DJ (opcjonalnie)
+Nazwa pakietu *
+Nowa
+Nowy harmonogram
+Nowa nazwa
+Ukryj tytuły
+Dodatkowe opcje:
+NIEBEZPIECZEŃSTWO: to usunie stację i wszystkie jej dane. Kontynuować?
+NIEBEZPIECZEŃSTWO: to trwale usunie stację, wszystkie jej pliki i konfigurację. Tej operacji NIE można cofnąć. Wpisz ELIMINAR, aby potwierdzić:
+Panel DJ:
+Aktywny pakiet
+Pakiet resellera
+Pakiet: *
+Kraj
+Pozwala stacjom tworzyć dodatkowe punkty montowania
+Pozwala stacjom tworzyć i używać AutoDJ do automatycznego odtwarzania
+Pozwala stacjom używać Social Stream (transmisja do mediów społecznościowych)
+Pozwala resellerowi/klientowi zmienić typ systemu radiowego
+Dozwolone
+Zezwalaj na zmianę systemu radiowego:
+Zezwalaj na tworzenie AutoDJ:
+Dostosuj loga, tytuły i favicony, które zobaczą Twoi klienci. Przesłane obrazy zastąpią domyślne wartości panelu. Usunięcie obrazu przywróci domyślne logo.
+Bieżąca okładka
+Zastosowano preset
+Zaplanuj, której playlisty AutoDJ ma używać w każdym przedziale czasu. Możesz utworzyć kilka przedziałów dla tego samego radia i powtarzać je co tydzień.
+Aktywne harmonogramy
+Możesz używać HTML i zmiennych wymienionych powyżej
+Port DJ (auto):
+Port przypisany automatycznie (admin:
+Port przypisany automatycznie (admin: {n}, harbor: {n})
+Port połączenia DJ:
+Port centralnego serwera Icecast (mount: /
+Port harbor do połączenia DJ na żywo (port streamu + 5)
+Usuń
+Radio zatrzymane
+Radio uruchomione
+Przekierowanie do panelu użytkownika...
+Zarejestrowany
+Odtwarzaj w trybie normalnym
+Pełny odtwarzacz
+Mini odtwarzacz (pasek)
+Wynik
+Podsumowanie:
+Podstawowy reseller
+Częstotliwość próbkowania (Hz):
+Dziedziczone z wybranego pakietu
+Ściśle sekwencyjnie
+Czy na pewno chcesz ZAWIESIĆ tę stację?
+Wybierz klienta...
+Wybierz pakiet...
+Dozwolone usługi:
+Dalej »
+Brak danych o typach
+Brak stacji
+Brak aktywnych stacji
+Jeszcze brak stacji
+Brak skonfigurowanej sekwencji
+Slug (URL) *
+Social Stream:
+Tylko litery, cyfry i podkreślenie (3-64 znaki)
+Spoty na blok
+ID streamu (SID)
+Przesyłanie obrazu...
+Zawieszony
+Zalecany rozmiar: 400 x 120px
+Zalecany rozmiar: 400 x 550px
+Typ serwera
+Wszystkie
+Wszyscy klienci
+Tłumaczenie niedostępne
+Transmisja zatrzymana
+Transmisja uruchomiona
+Twoja firma hostingowa i producent oprogramowania panelu nie ponoszą odpowiedzialności w takich przypadkach.
+Tytuł radia:
+URL RTMP serwera
+URL logowania do panelu DJ:
+Ostatnie logowanie
+Używane przez Twoich klientów
+Używane jest domyślne logo
+Nazwa użytkownika *
+Użytkownik DJ: *
+Nazwa użytkownika logowania CP: *
+Zobacz w bibliotece
+Zobacz wszystkie
+Zobacz wszystkich
+Obowiązuje
+Widżet na żywo — CastPanel DJ
+Widżet na żywo — Kod do osadzenia
+Youtube nakłada ostrzeżenia o prawach autorskich za muzykę na żywo, cały Twój kanał Youtube może zostać
+dziennie. Przejdź do
+jako hasło dla programów mobilnych.
+dziennie dla transmisji na żywo na youtube, nie uruchamiaj ponownie transmisji więcej niż
+jeszcze nie istnieje. Uruchom migrację SQL, aby włączyć tę funkcję.
+nie istnieje. Uruchom migrację SQL v2.3, aby ją utworzyć.
+nie istnieje. Uruchom migrację SQL.
+nie można utworzyć. Sprawdź uprawnienia bazy danych.
+lub opcję serwera shoutcast w programie nadawczym. Możesz użyć
+lub ograniczony, jeśli Twoje radio odtwarza muzykę chronioną prawem autorskim.
+lub listy
+phpMyAdmin jest zainstalowany i skonfigurowany z bezpośrednim dostępem.
+ma problem. Sprawdź migrację SQL.
+ma problem. Sprawdź migrację SQL.
+działa od {n} godz., {n} min
+« Wstecz
+— Brak pakietu —
+(brak e-maila)
+(Brak playlisty)
+{n} utworów, {n} reklam
+{n} słuchaczy
+-- Wybierz listę --
++ Zapisz harmonogram
+Edytuj DJ: {x}
+Nowe hasło DJ: (puste = bez zmian)
+CastPanel (domyślnie)

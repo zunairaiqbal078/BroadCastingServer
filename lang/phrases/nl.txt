@@ -1643,3 +1643,275 @@ Geüpload ✓
 . Haal je streamsleutel op in de instellingen van Instagram Live. Upload een afbeelding van 1280x720 die tijdens de uitzending wordt getoond. Instagram gebruikt
 Taal gewijzigd naar {x}
 vertaalde zinnen
+Actie voltooid
+Actie
+Actieve afspeellijst:
+Beheerder
+Radiopakket toevoegen - CastPanel
+Resellerpakket toevoegen - CastPanel
+Opslag (MB)
+Opslag (MB):
+Advertenties ingeschakeld
+Bestand
+Bestand:
+Sleep je foto hierheen of klik om te selecteren
+Sleep je spots hierheen
+Onderwerp van de e-mail
+Audiostreamingplatform (standaard)
+Automatisch gegenereerd
+AutoDJ ingeschakeld
+Automatisch
+Je hebt nog geen klanten.
+Bitrate (kbps)
+Bitrate (kbps):
+Eigen branding
+Branding voor je klanten
+Zoeken, artiesten, nummertitels...
+Elke X nummers
+Keten:
+MP3-kwaliteit van live-opname:
+Nummer
+Sluiten
+Stad
+Klant *
+Recente klanten
+Encoder:
+Vul de gegevens in om een nieuwe radio aan te maken. De poort en SSL-URL worden automatisch toegewezen.
+Instellingen voor nummertitels:
+Stel je eigen RTMP-URL in om naar elke compatibele server uit te zenden. Voer de URL van de RTMP-server en de streamsleutel in. Upload een afbeelding van 1280x720.
+DJ-wachtwoord: *
+CP-inlogwachtwoord:
+Serverwachtwoord
+Kopieer de HTML-code hieronder en plak die op je website om de livespeler van je zender te tonen.
+E-mail van de klant:
+Maak de eerste aan
+Een nieuwe reseller aanmaken - CastPanel
+Maak er een aan
+Crossfade (AutoMix):
+Account actief
+Inhoud van de e-mail (HTML)
+Code gekopieerd
+Code naar klembord gekopieerd
+DJ mag eigen wachtwoord wijzigen:
+DJ mag inloggen op het DJ-paneel:
+DJ mag muziek uitzenden:
+DJ mag nummer overslaan (AutoDJ):
+Stel de dagen, tijden en afspeellijst in.
+Leeg laten om niet te wijzigen
+Leeg laten om de algemene waarde te gebruiken
+Pakketbeschrijving
+Beschrijving:
+Detail
+Uitzending stoppen?
+Gestopt
+Stoppen
+Bezig met stoppen...
+Dag
+Dagen
+Uitzenddagen
+Uitzenddagen
+Bewerken/Bekijken
+Bewerken: Welkom
+Visueel effect van de speler:
+Bijv.: Radio Palmeras FM
+Bijv.: klant1
+Bijv.: radiofm
+De AutoDJ speelt automatisch muziek als er geen DJ verbonden is. Je kunt de AutoDJ hier starten of stoppen.
+Foto verwijderen
+Afbeelding verwijderen
+E-mail *
+Op je stations
+Account-e-mail versturen (optioneel)
+Verbindingsfout
+Fout bij de actie
+Schrijf hier je bericht...
+Stations ({n})
+Recente stations
+Station actief
+Dit zien je DJ's in hun DJ-paneel:
+Verlopen
+Huidige achtergrond
+Audiocoderingsformaat van de uitzending
+Huidige foto
+Profielfoto — CastPanel DJ
+Frequentie
+Functie om e-mail opnieuw te versturen nog niet geïmplementeerd
+Klanten beheren
+Neemt live-uitzendingen van DJ's automatisch op
+DJ-opname:
+Live DJ-shows opnemen:
+Sjabloon opslaan
+Genre
+Genre:
+Tijd
+Eindtijd
+Starttijd
+Planning
+Standaard hostnaam voor de stations van dit pakket
+Stream-IP:
+Streamverbindings-IP:
+Afbeelding bijgewerkt
+Inactief
+Voer de RTMP-URL van je eigen server in
+Voer de streamsleutel in
+Voer een naam in
+Voer een pakketnaam in: *
+Bezig met starten
+Bezig met starten...
+Inloggen (standaard)
+Het radio-IP wordt automatisch door de server toegewezen
+De TikTok-livestreamfunctie zendt de muziek van je radio uit naar TikTok Live. Ga naar TikTok, kies LIVE en haal de server-URL en sleutel op. Kopieer de streamsleutel, voer die op deze pagina in en upload een afbeelding van 1280x720. De uitzending start na 30-40 seconden.
+Maximale bitratelimiet:
+Wissen
+Directe link
+Advertentielijst
+Doel-advertentielijst
+Wijzigingen worden direct toegepast bij opslaan.
+Pakketten bepalen de limieten voor accounts en radio's. Met je pakketten maak je eenvoudig radio's en accounts aan.
+Maximale bitratelimiet:
+Klantlimiet:
+Stationlimiet:
+Max. DJ-accounts:
+Eigen bericht in het DJ-paneel:
+Mijn klanten ({n})
+Willekeurige modus (Shuffle)
+Afspeelmodus:
+Nummertitels tonen (standaard)
+Mountpoints:
+Max. bitrate (kbps)
+Max. klantaccounts
+Max. stations
+Max. luisteraars per station
+Niet toegestaan
+Er staan geen nummers in deze lijst.
+Er zijn geen DJ-accounts op dit station.
+Geen gegevens beschikbaar
+Geen actieve stations
+Geen geregistreerde stations
+Geen geschiedenis beschikbaar.
+Geen afspeellijsten aangemaakt.
+Momenteel geen gegeolokaliseerde luisteraars.
+Geen sjablonen. Gebruik de knop "Sjablonen initialiseren" om de standaardsjablonen aan te maken.
+Geen planningen geconfigureerd.
+Geen opgenomen shows voor dit station.
+Geen geregistreerde streams
+Kon de geschiedenis niet laden.
+Kon netwerkstatistieken niet lezen
+Je mag je wachtwoord niet wijzigen. Neem contact op met de beheerder.
+Je mag geen profielfoto uploaden. Neem contact op met de beheerder.
+Stationsnaam *
+Radionaam: *
+DJ-naam (optioneel)
+Pakketnaam *
+Nieuw
+Nieuwe planning
+Nieuwe naam
+Titels verbergen
+Extra opties:
+GEVAAR: dit verwijdert het station en al zijn gegevens. Doorgaan?
+GEVAAR: dit verwijdert het station met al zijn bestanden en instellingen definitief. Deze actie kan NIET ongedaan worden gemaakt. Typ ELIMINAR om te bevestigen:
+DJ-paneel:
+Actief pakket
+Resellerpakket
+Pakket: *
+Land
+Staat stations toe extra mountpoints aan te maken
+Staat stations toe AutoDJ aan te maken en te gebruiken voor automatisch afspelen
+Staat stations toe Social Stream te gebruiken (uitzenden naar sociale netwerken)
+Staat de reseller/klant toe het type radiosysteem te wijzigen
+Toegestaan
+Wijzigen van radiosysteem toestaan:
+Aanmaken van AutoDJ toestaan:
+Pas de logo's, titels en favicons aan die je klanten zien. Geüploade afbeeldingen vervangen de standaardwaarden van het paneel. Als je een afbeelding verwijdert, wordt het standaardlogo hersteld.
+Huidige hoes
+Preset toegepast
+Plan welke afspeellijst de AutoDJ per tijdvak gebruikt. Je kunt meerdere tijdvakken voor dezelfde radio maken en ze wekelijks herhalen.
+Actieve planningen
+Je kunt HTML en de hierboven genoemde variabelen gebruiken
+DJ-poort (auto):
+Automatisch toegewezen poort (admin:
+Automatisch toegewezen poort (admin: {n}, harbor: {n})
+DJ-verbindingspoort:
+Poort van de centrale Icecast-server (mount: /
+Harbor-poort voor live DJ-verbinding (streampoort + 5)
+Verwijderen
+Radio gestopt
+Radio gestart
+Doorsturen naar het gebruikerspaneel...
+Geregistreerd
+Afspelen in normale modus
+Volledige speler
+Minispeler (balk)
+Resultaat
+Samenvatting:
+Basisreseller
+Samplefrequentie (Hz):
+Overgenomen van het gekozen pakket
+Strikt sequentieel
+Weet je zeker dat je dit station wilt OPSCHORTEN?
+Klant kiezen...
+Pakket kiezen...
+Toegestane diensten:
+Volgende »
+Geen typegegevens
+Geen stations
+Geen actieve stations
+Nog geen stations
+Geen volgorde geconfigureerd
+Slug (URL) *
+Social Stream:
+Alleen letters, cijfers en underscore (3-64 tekens)
+Spots per blok
+Stream-ID (SID)
+Afbeelding uploaden...
+Opgeschort
+Aanbevolen formaat: 400 x 120px
+Aanbevolen formaat: 400 x 550px
+Servertype
+Alle
+Alle klanten
+Vertaling niet beschikbaar
+Uitzending gestopt
+Uitzending gestart
+Je hostingbedrijf en het bedrijf achter de paneelsoftware zijn in zulke gevallen niet verantwoordelijk.
+Radiotitel:
+RTMP-URL van de server
+Inlog-URL van het DJ-paneel:
+Laatste login
+Gebruikt door je klanten
+Standaardlogo in gebruik
+Gebruikersnaam *
+DJ-gebruiker: *
+CP-inlognaam: *
+Bekijken in bibliotheek
+Alles bekijken
+Alles bekijken
+Geldig
+Livewidget — CastPanel DJ
+Livewidget — Insluitcode
+Youtube geeft auteursrechtwaarschuwingen voor livemuziek; je hele Youtube-kanaal kan worden
+per dag. Ga naar
+als wachtwoord voor mobiele programma's.
+dagelijks voor youtube-livestreams, herstart de livestream niet vaker dan
+bestaat nog niet. Voer de SQL-migratie uit om deze functie in te schakelen.
+bestaat niet. Voer de SQL-migratie v2.3 uit om die aan te maken.
+bestaat niet. Voer de SQL-migratie uit.
+kon niet worden aangemaakt. Controleer de databaserechten.
+of de optie shoutcast-server in je uitzendprogramma. Je kunt gebruiken
+of beperkt als je radio auteursrechtelijk beschermde muziek speelt.
+of lijsten
+phpMyAdmin is geïnstalleerd en ingesteld met directe toegang.
+heeft een probleem. Controleer de SQL-migratie.
+heeft een probleem. Controleer de SQL-migratie.
+actief sinds {n} uur, {n} minuten
+« Vorige
+— Geen pakket —
+(geen e-mail)
+(Geen afspeellijst)
+{n} nummers, {n} advertenties
+{n} luisteraars
+-- Kies een lijst --
++ Planning opslaan
+DJ bewerken: {x}
+Nieuw DJ-wachtwoord: (leeg = geen wijziging)
+CastPanel (standaard)
