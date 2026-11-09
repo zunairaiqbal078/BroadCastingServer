@@ -1915,3 +1915,13 @@ activ de {n} ore, {n} minute
 Editează DJ: {x}
 Parolă DJ nouă: (gol = fără schimbare)
 CastPanel (implicit)
+Bun venit, {x}
+Prezentare în timp real a serverului radio
+{n} online acum
+{n} conturi DJ
+Resursele serverului
+Încărcare CPU
+Memorie
+Vezi detalii
+Acțiuni rapide
+{n}% · {n} nuclee

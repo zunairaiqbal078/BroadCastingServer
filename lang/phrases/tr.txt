@@ -1915,3 +1915,13 @@ bir sorun var. SQL geçişini kontrol edin.
 DJ'yi Düzenle: {x}
 Yeni DJ Şifresi: (boş = değişiklik yok)
 CastPanel (varsayılan)
+Hoş geldiniz, {x}
+Radyo sunucunuzun gerçek zamanlı özeti
+{n} şu anda çevrimiçi
+{n} DJ hesabı
+Sunucu kaynakları
+CPU yükü
+Bellek
+Ayrıntıları gör
+Hızlı işlemler
+{n}% · {n} çekirdek

@@ -1915,3 +1915,13 @@ up {n} hours, {n} minutes
 Edit DJ: {x}
 New DJ Password: (empty = no change)
 CastPanel (default)
+Welcome, {x}
+Real-time overview of your radio server
+{n} online now
+{n} DJ accounts
+Server Resources
+CPU Load
+Memory
+View details
+Quick Actions
+{n}% · {n} cores

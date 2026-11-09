@@ -1915,3 +1915,13 @@ loop al {n} uur, {n} minute
 Redigeer DJ: {x}
 Nuwe DJ-wagwoord: (leeg = geen verandering)
 CastPanel (verstek)
+Welkom, {x}
+Intydse oorsig van jou radiobediener
+{n} nou aanlyn
+{n} DJ-rekeninge
+Bedienerhulpbronne
+SVE-las
+Geheue
+Sien besonderhede
+Vinnige aksies
+{n}% · {n} kerns

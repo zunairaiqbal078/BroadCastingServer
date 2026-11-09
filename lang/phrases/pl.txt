@@ -1915,3 +1915,13 @@ działa od {n} godz., {n} min
 Edytuj DJ: {x}
 Nowe hasło DJ: (puste = bez zmian)
 CastPanel (domyślnie)
+Witaj, {x}
+Podgląd serwera radiowego w czasie rzeczywistym
+{n} teraz online
+{n} kont DJ
+Zasoby serwera
+Obciążenie CPU
+Pamięć
+Zobacz szczegóły
+Szybkie akcje
+{n}% · {n} rdzeni

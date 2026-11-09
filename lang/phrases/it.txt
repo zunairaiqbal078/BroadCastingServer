@@ -1915,3 +1915,13 @@ attivo da {n} ore, {n} minuti
 Modifica DJ: {x}
 Nuova password DJ: (vuoto = nessuna modifica)
 CastPanel (predefinito)
+Benvenuto, {x}
+Panoramica in tempo reale del tuo server radio
+{n} online ora
+{n} account DJ
+Risorse del server
+Carico CPU
+Memoria
+Vedi dettagli
+Accesso rapido
+{n}% · {n} core

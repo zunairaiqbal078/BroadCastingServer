@@ -1915,3 +1915,13 @@ běží {n} h, {n} min
 Upravit DJ: {x}
 Nové heslo DJ: (prázdné = beze změny)
 CastPanel (výchozí)
+Vítejte, {x}
+Přehled vašeho rádiového serveru v reálném čase
+{n} nyní online
+{n} DJ účtů
+Prostředky serveru
+Zatížení CPU
+Paměť
+Zobrazit podrobnosti
+Rychlé akce
+{n}% · {n} jader

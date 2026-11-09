@@ -1915,3 +1915,13 @@ actif depuis {n} heures, {n} minutes
 Modifier le DJ : {x}
 Nouveau mot de passe DJ : (vide = inchangé)
 CastPanel (par défaut)
+Bienvenue, {x}
+Aperçu en temps réel de votre serveur radio
+{n} en ligne maintenant
+{n} comptes DJ
+Ressources du serveur
+Charge CPU
+Mémoire
+Voir les détails
+Accès rapides
+{n}% · {n} cœurs

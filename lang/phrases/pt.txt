@@ -1915,3 +1915,13 @@ ativo há {n} horas, {n} minutos
 Editar DJ: {x}
 Nova Senha DJ: (vazio = sem alteração)
 CastPanel (padrão)
+Bem-vindo, {x}
+Visão geral em tempo real do seu servidor de rádio
+{n} online agora
+{n} contas de DJ
+Recursos do servidor
+Carga da CPU
+Memória
+Ver detalhes
+Acessos rápidos
+{n}% · {n} núcleos

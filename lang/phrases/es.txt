@@ -1915,3 +1915,13 @@ up {n} horas, {n} minutos
 Editar DJ: {x}
 Nueva Contraseña DJ: (vacío = sin cambio)
 CastPanel (por defecto)
+Bienvenido, {x}
+Resumen de su servidor de radio en tiempo real
+{n} online ahora
+{n} cuentas DJ
+Recursos del Servidor
+Carga de CPU
+Memoria
+Ver detalles
+Accesos Rápidos
+{n}% · {n} núcleos

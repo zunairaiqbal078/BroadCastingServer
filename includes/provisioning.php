@@ -902,10 +902,12 @@ function castpanelCtl(string $command): array {
         @mkdir($ipcDir, 0755, true);
     }
 
-    // Esperar si hay otro comando en curso
+    // Esperar si hay otro comando en curso (a lock older than 60 s is left
+    // over from a crashed request and is ignored)
     $maxWait = 10;
-    while (file_exists($lockFile) && $maxWait-- > 0) {
+    while (file_exists($lockFile) && (time() - (int)@filemtime($lockFile)) < 60 && $maxWait-- > 0) {
         usleep(500000); // 0.5s
+        clearstatcache(true, $lockFile);
     }
 
     // Crear lock
@@ -925,6 +927,15 @@ function castpanelCtl(string $command): array {
     $start = time();
     while (!file_exists($resFile) && (time() - $start) < $timeout) {
         usleep(200000); // 0.2s
+        clearstatcache();
+        // The daemon removes the command file as soon as it reads it. If it is
+        // still there after 5 s, the daemon is not running: fail now instead
+        // of making the page wait the full 30 s for every command.
+        if ((time() - $start) >= 5 && file_exists($cmdFile) && !file_exists($resFile)) {
+            @unlink($cmdFile);
+            @unlink($lockFile);
+            return ['success' => false, 'error' => 'El servicio castpanel-ctl no está en ejecución (systemctl start castpanel-ctl)'];
+        }
     }
 
     if (!file_exists($resFile)) {

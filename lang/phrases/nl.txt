@@ -1915,3 +1915,13 @@ actief sinds {n} uur, {n} minuten
 DJ bewerken: {x}
 Nieuw DJ-wachtwoord: (leeg = geen wijziging)
 CastPanel (standaard)
+Welkom, {x}
+Realtime overzicht van uw radioserver
+{n} nu online
+{n} DJ-accounts
+Serverbronnen
+CPU-belasting
+Geheugen
+Details bekijken
+Snelle acties
+{n}% · {n} kernen

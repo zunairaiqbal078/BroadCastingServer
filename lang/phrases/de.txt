@@ -1915,3 +1915,13 @@ aktiv seit {n} Stunden, {n} Minuten
 DJ bearbeiten: {x}
 Neues DJ-Passwort: (leer = keine Änderung)
 CastPanel (Standard)
+Willkommen, {x}
+Echtzeit-Übersicht über Ihren Radioserver
+{n} jetzt online
+{n} DJ-Konten
+Serverressourcen
+CPU-Last
+Arbeitsspeicher
+Details anzeigen
+Schnellzugriff
+{n}% · {n} Kerne

@@ -1915,3 +1915,13 @@ radi {n} h, {n} min
 Izmeni DJ-a: {x}
 Nova DJ lozinka: (prazno = bez promene)
 CastPanel (podrazumevano)
+Dobro došli, {x}
+Pregled vašeg radio servera u realnom vremenu
+{n} sada online
+{n} DJ naloga
+Resursi servera
+Opterećenje CPU-a
+Memorija
+Prikaži detalje
+Brze akcije
+{n}% · {n} jezgara
