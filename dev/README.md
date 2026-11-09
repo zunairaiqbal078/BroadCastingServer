@@ -9,6 +9,9 @@ docker compose up -d --build
 
 Open http://localhost:8080
 
+DJ Control Center (port 2080): http://localhost:2080 — set up by
+`install/setup_dj_port.sh`, the same script used on real servers.
+
 | User | Password | Role |
 |---|---|---|
 | admin | password | admin |
@@ -26,8 +29,8 @@ docker compose down -v && docker compose up -d
 ## What does NOT work locally
 
 SHOUTcast (`sc_serv2`), Icecast, Liquidsoap (Docker) and the `castpanel-ctl`
-daemon are not part of this stack. Start/stop buttons, AutoDJ playback,
-RadioCaster connections and the DJ port 2080 must be tested on a Linux
+daemon are not part of this stack. Start/stop buttons, AutoDJ playback
+and RadioCaster connections must be tested on a Linux
 server or VM installed with `install.sh`.
 
 `dev/database.local.php` is mounted over `config/database.php`, so the real

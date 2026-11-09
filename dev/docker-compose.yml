@@ -5,12 +5,15 @@
 #
 #   cd dev && docker compose up -d --build
 #   open http://localhost:8080     login: admin / password  (clients: demo1, demo2 / demo123)
+#   DJ Control Center: http://localhost:2080   (dj1 / djpass1 after creating it)
 
 services:
   web:
     build: .
     ports:
       - "8080:80"
+      - "2080:2080"   # DJ Control Center, set up by the same script used on servers
+    command: ["bash", "-c", "bash /var/www/castpanel/install/setup_dj_port.sh /var/www/castpanel localhost && exec apache2-foreground"]
     volumes:
       - ..:/var/www/html
       # Local config is mounted over the placeholder config, so the

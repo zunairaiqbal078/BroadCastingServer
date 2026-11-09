@@ -915,6 +915,15 @@ setup_apache() {
         a2enmod rewrite proxy proxy_http ssl headers 2>/dev/null || true
     fi
 
+    # Ruta del archivo proxy rules. Debe definirse ANTES del heredoc de abajo:
+    # si no, IncludeOptional queda sin argumento y Apache no arranca.
+    if [ "$PKG_MANAGER" = "apt" ]; then
+        PROXY_RULES_FILE_PATH="/etc/apache2/shoutcast-proxy-rules.inc"
+    else
+        PROXY_RULES_FILE_PATH="/etc/httpd/shoutcast-proxy-rules.inc"
+    fi
+    touch "$PROXY_RULES_FILE_PATH" 2>/dev/null || true
+
     # VirtualHost principal (HTTP)
     VHOST_FILE="$VHOST_DIR/castpanel.conf"
 
@@ -954,14 +963,6 @@ setup_apache() {
 </VirtualHost>
 VHOSTEOF
 
-    # Determinar ruta del archivo proxy rules para incluirlo
-    if [ "$PKG_MANAGER" = "apt" ]; then
-        PROXY_RULES_FILE_PATH="/etc/apache2/shoutcast-proxy-rules.inc"
-    else
-        PROXY_RULES_FILE_PATH="/etc/httpd/shoutcast-proxy-rules.inc"
-    fi
-    # Reemplazar placeholder en el vhost generado
-    sed -i "s|\${PROXY_RULES_FILE_PATH}|${PROXY_RULES_FILE_PATH}|g" "$VHOST_FILE"
 
     if [ "$PKG_MANAGER" = "apt" ]; then
         a2ensite castpanel.conf 2>/dev/null || true
@@ -1065,6 +1066,18 @@ setup_ssl() {
     else
         log_warning "No se pudo instalar SSL automaticamente"
         log_info "Ejecute manualmente: certbot --apache -d ${PANEL_DOMAIN}"
+    fi
+}
+
+# ---- DJ CONTROL CENTER (PUERTO 2080) ----
+
+setup_dj_portal() {
+    log_step "CONFIGURANDO DJ CONTROL CENTER (PUERTO 2080)"
+    if [ -f "$PANEL_DIR/install/setup_dj_port.sh" ]; then
+        bash "$PANEL_DIR/install/setup_dj_port.sh" "$PANEL_DIR" "$PANEL_DOMAIN" \
+            || log_warning "No se pudo configurar el puerto 2080 (el panel principal sigue funcionando)"
+    else
+        log_warning "No se encontro install/setup_dj_port.sh"
     fi
 }
 
@@ -1369,6 +1382,7 @@ setup_sudoers
 
 # 10. SSL
 setup_ssl
+setup_dj_portal
 
 # 11. Verificar
 verify_install

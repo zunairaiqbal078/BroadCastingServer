@@ -136,7 +136,8 @@ unset($d);
                 <?php if (empty($stationUsage)): ?>
                 <tr><td colspan="5" style="text-align:center;padding:2rem;color:#999;">Sin datos</td></tr>
                 <?php else: ?>
-                <?php $maxSize = max(array_column($stationUsage, 'size'), 1); ?>
+                <?php // max(array, 1) returns the array in PHP, so take the largest size first
+                      $maxSize = max(1, ...array_column($stationUsage, 'size')); ?>
                 <?php foreach ($stationUsage as $i => $su): ?>
                 <tr>
                     <td><?= $i + 1 ?></td>
