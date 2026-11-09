@@ -838,8 +838,22 @@ setup_shoutcast() {
     # Crear directorios
     mkdir -p "$SHOUTCAST_DIR" "$SHOUTCAST_CONF_DIR" "$SHOUTCAST_LOG_DIR"
 
+    # The current Nullsoft download ships the binary as "sc_serv" (older ones
+    # as "sc_serv2"); the panel and castpanel-ctl use sc_serv2, so link it.
+    sc_link_binary() {
+        [ -e "$SHOUTCAST_DIR/sc_serv2" ] && return 0
+        local found
+        found=$(find "$SHOUTCAST_DIR" -maxdepth 2 -type f \( -name sc_serv -o -name sc_serv2 \) 2>/dev/null | head -1)
+        if [ -n "$found" ]; then
+            chmod +x "$found"
+            ln -sf "$found" "$SHOUTCAST_DIR/sc_serv2"
+            log_success "SHOUTcast: $SHOUTCAST_DIR/sc_serv2 -> $found"
+        fi
+    }
+    sc_link_binary
+
     # Verificar si sc_serv2 ya existe
-    if [ -f "$SHOUTCAST_DIR/sc_serv2" ]; then
+    if [ -e "$SHOUTCAST_DIR/sc_serv2" ]; then
         log_success "SHOUTcast sc_serv2 ya esta instalado"
     else
         log_info "Descargando SHOUTcast DNAS v2..."
@@ -856,9 +870,13 @@ setup_shoutcast() {
         }
         if [ -f sc_serv2.tar.gz ]; then
             tar xzf sc_serv2.tar.gz -C "$SHOUTCAST_DIR/" 2>/dev/null
-            chmod +x "$SHOUTCAST_DIR/sc_serv2" 2>/dev/null || true
             rm -f sc_serv2.tar.gz
-            log_success "SHOUTcast sc_serv2 instalado en $SHOUTCAST_DIR/"
+            sc_link_binary
+            if [ -e "$SHOUTCAST_DIR/sc_serv2" ]; then
+                log_success "SHOUTcast sc_serv2 instalado en $SHOUTCAST_DIR/"
+            else
+                log_warning "No se encontro el binario sc_serv/sc_serv2 dentro del paquete descargado"
+            fi
         fi
         cd /
     fi
@@ -1222,7 +1240,7 @@ verify_install() {
     fi
 
     # SHOUTcast
-    if [ -f "/opt/shoutcast/sc_serv2" ]; then
+    if [ -e "/opt/shoutcast/sc_serv2" ]; then
         log_success "SHOUTcast sc_serv2: Instalado"
     else
         log_warning "SHOUTcast sc_serv2: No encontrado"

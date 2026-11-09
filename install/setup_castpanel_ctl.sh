@@ -54,6 +54,12 @@ fi
 # Folders the panel (web user) writes into
 mkdir -p /opt/shoutcast/configs /opt/shoutcast/bin /var/log/shoutcast
 chown -R "$WEB_USER:$WEB_USER" /opt/shoutcast/configs /opt/shoutcast/bin /var/log/shoutcast
+# Newer SHOUTcast downloads name the binary "sc_serv"; the panel expects sc_serv2
+if [ ! -e /opt/shoutcast/sc_serv2 ] && [ -f /opt/shoutcast/sc_serv ]; then
+    chmod +x /opt/shoutcast/sc_serv
+    ln -s /opt/shoutcast/sc_serv /opt/shoutcast/sc_serv2
+    ok "linked /opt/shoutcast/sc_serv2 -> sc_serv"
+fi
 [ -x /opt/shoutcast/sc_serv2 ] && [ ! -e /usr/local/bin/sc_serv2 ] && ln -s /opt/shoutcast/sc_serv2 /usr/local/bin/sc_serv2
 
 cp "$UNIT_SRC" /etc/systemd/system/castpanel-ctl.service

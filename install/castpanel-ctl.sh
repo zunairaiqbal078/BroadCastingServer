@@ -78,7 +78,7 @@ sc_pid() { pgrep -f "$SHOUTCAST_DIR/configs/$1.conf" | head -1; }
 sc_binary() {  # binary chosen by the panel, falling back to the installed one
     local conf="$SHOUTCAST_DIR/configs/$1.conf" b
     b=$(grep -m1 '^; sc_binary=' "$conf" 2>/dev/null | cut -d= -f2-)
-    for cand in "$b" "$SHOUTCAST_DIR/sc_serv2" /usr/local/bin/sc_serv2; do
+    for cand in "$b" "$SHOUTCAST_DIR/sc_serv2" /usr/local/bin/sc_serv2 "$SHOUTCAST_DIR/sc_serv"; do
         [ -n "$cand" ] && [ -x "$cand" ] && { echo "$cand"; return 0; }
     done
     return 1
@@ -89,7 +89,7 @@ start_shoutcast() {
     [ -f "$conf" ] || { fail "SHOUTcast config not found: $conf"; return; }
     pid=$(sc_pid "$slug")
     if [ -n "$pid" ]; then ok "\"output\":\"$pid\",\"message\":\"already running\""; return; fi
-    bin=$(sc_binary "$slug") || { fail "sc_serv2 binary not found in $SHOUTCAST_DIR"; return; }
+    bin=$(sc_binary "$slug") || { fail "SHOUTcast binary (sc_serv2 / sc_serv) not found in $SHOUTCAST_DIR"; return; }
     mkdir -p "$SHOUTCAST_LOG_DIR" && chown "$WEB_USER" "$SHOUTCAST_LOG_DIR"
     # run as the web user, never as root
     ( cd "$SHOUTCAST_DIR" && runuser -u "$WEB_USER" -- "$bin" daemon "$conf" >/dev/null 2>&1 ) &
