@@ -694,7 +694,12 @@ function startLiquidsoapService(array $estacion): array {
         return ['success' => true, 'container' => $containerName];
     }
 
-    return ['success' => false, 'error' => 'No se pudo iniciar Liquidsoap: ' . ($result['output'] ?? 'error desconocido')];
+    // castpanelCtl() reports IPC problems (e.g. daemon not responding) in
+    // 'error', daemon output in 'output'/'message'. Showing only 'output'
+    // turned every daemon timeout into "unknown error".
+    $why = $result['error'] ?? $result['output'] ?? $result['message'] ?? '';
+    $why = trim((string)$why) !== '' ? trim((string)$why) : 'error desconocido';
+    return ['success' => false, 'error' => 'No se pudo iniciar Liquidsoap: ' . $why];
 }
 
 /**

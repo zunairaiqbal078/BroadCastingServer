@@ -17,89 +17,58 @@ $results = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
     $action = $_POST['action'] ?? '';
+    // One daemon call per station can take a few seconds each
+    @set_time_limit(0);
 
-    try {
-        $stations = $db->query("
-            SELECT e.id, e.nombre, e.slug, e.server_type, e.puerto_stream, e.activa
-            FROM estaciones e
-            WHERE e.activa = 1
-            ORDER BY e.nombre
-        ")->fetchAll();
+    // Same provisioning functions the admin/client panels use for a single
+    // station, so bulk actions send the daemon the commands it understands.
+    // (Before: unknown "restart_radio <id>" commands, and the AutoDJ actions
+    // passed an id where a station row is required, which crashed the page.)
+    $actions = [
+        'restart_all_radios'  => ['Reiniciar Radio',  false, fn($e) => restartStation($e),
+                                  'Reinicio de todas las radios ejecutado'],
+        'start_all_radios'    => ['Iniciar Radio',    false, fn($e) => startStation($e),
+                                  'Inicio de todas las radios ejecutado'],
+        'stop_all_radios'     => ['Detener Radio',    false, fn($e) => stopStation($e),
+                                  'Todas las radios detenidas'],
+        'restart_all_autodjs' => ['Reiniciar AutoDJ', true,  fn($e) => restartStation($e),
+                                  'Reinicio de todos los AutoDJs ejecutado'],
+        'stop_all_autodjs'    => ['Detener AutoDJ',   true,  fn($e) => stopLiquidsoapService($e),
+                                  'Todos los AutoDJs detenidos'],
+    ];
 
-        switch ($action) {
-            case 'restart_all_radios':
-                foreach ($stations as $st) {
-                    $r = castpanelCtl("restart_radio {$st['id']}");
-                    $results[] = [
-                        'station' => $st['nombre'],
-                        'action' => 'Reiniciar Radio',
-                        'success' => $r['success'] ?? false,
-                        'msg' => $r['error'] ?? 'OK',
-                    ];
+    if (isset($actions[$action])) {
+        [$label, $autoDJOnly, $run, $doneMsg] = $actions[$action];
+        try {
+            $ids = $db->query("SELECT id FROM estaciones WHERE activa = 1 ORDER BY nombre")->fetchAll(PDO::FETCH_COLUMN);
+            $failed = 0;
+            foreach ($ids as $id) {
+                $st = loadStationWithPackage((int)$id);
+                if (!$st) continue;
+                if ($autoDJOnly && !stationHasAutoDJ($st)) {
+                    continue; // stations without AutoDJ have no Liquidsoap to restart/stop
                 }
-                $msg = 'Reinicio de todas las radios ejecutado';
-                $msgType = 'success';
-                break;
-
-            case 'restart_all_autodjs':
-                foreach ($stations as $st) {
-                    $r = restartLiquidsoapService($st['id']);
-                    $results[] = [
-                        'station' => $st['nombre'],
-                        'action' => 'Reiniciar AutoDJ',
-                        'success' => $r['success'] ?? false,
-                        'msg' => $r['error'] ?? 'OK',
-                    ];
+                try {
+                    $r = $run($st);
+                } catch (\Throwable $ex) {
+                    $r = ['success' => false, 'error' => $ex->getMessage()];
                 }
-                $msg = 'Reinicio de todos los AutoDJs ejecutado';
-                $msgType = 'success';
-                break;
-
-            case 'stop_all_radios':
-                foreach ($stations as $st) {
-                    $r = castpanelCtl("stop_radio {$st['id']}");
-                    $results[] = [
-                        'station' => $st['nombre'],
-                        'action' => 'Detener Radio',
-                        'success' => $r['success'] ?? false,
-                        'msg' => $r['error'] ?? 'OK',
-                    ];
-                }
-                $msg = 'Todas las radios detenidas';
-                $msgType = 'success';
-                break;
-
-            case 'start_all_radios':
-                foreach ($stations as $st) {
-                    $r = castpanelCtl("start_radio {$st['id']}");
-                    $results[] = [
-                        'station' => $st['nombre'],
-                        'action' => 'Iniciar Radio',
-                        'success' => $r['success'] ?? false,
-                        'msg' => $r['error'] ?? 'OK',
-                    ];
-                }
-                $msg = 'Inicio de todas las radios ejecutado';
-                $msgType = 'success';
-                break;
-
-            case 'stop_all_autodjs':
-                foreach ($stations as $st) {
-                    $r = stopLiquidsoapService($st['id']);
-                    $results[] = [
-                        'station' => $st['nombre'],
-                        'action' => 'Detener AutoDJ',
-                        'success' => $r['success'] ?? false,
-                        'msg' => $r['error'] ?? 'OK',
-                    ];
-                }
-                $msg = 'Todos los AutoDJs detenidos';
-                $msgType = 'success';
-                break;
+                clearStreamStatusCache((int)$id);
+                $ok = !empty($r['success']);
+                if (!$ok) $failed++;
+                $results[] = [
+                    'station' => $st['nombre'],
+                    'action'  => $label,
+                    'success' => $ok,
+                    'msg'     => $ok ? 'OK' : ($r['error'] ?? 'Error desconocido'),
+                ];
+            }
+            $msg = $doneMsg;
+            $msgType = $failed ? 'error' : 'success';
+        } catch (PDOException $e) {
+            $msg = 'Error: ' . $e->getMessage();
+            $msgType = 'error';
         }
-    } catch (PDOException $e) {
-        $msg = 'Error: ' . $e->getMessage();
-        $msgType = 'error';
     }
 }
 
@@ -108,12 +77,9 @@ $totalActive = 0;
 $totalOnline = 0;
 $totalAutoDJ = 0;
 try {
-    $stations = $db->query("SELECT id, nombre, slug, server_type, puerto_stream, activa FROM estaciones WHERE activa = 1")->fetchAll();
+    $stations = $db->query("SELECT * FROM estaciones WHERE activa = 1")->fetchAll();
     $totalActive = count($stations);
-    foreach ($stations as $st) {
-        $status = getStreamStatus($st);
-        if (($status['status'] ?? '') === 'online') $totalOnline++;
-    }
+    $totalOnline = countOnlineStations($stations);
     // AutoDJ count
     $totalAutoDJ = (int)$db->query("SELECT COUNT(*) FROM estaciones WHERE activa = 1 AND autodj_estado = 'online'")->fetchColumn();
 } catch (PDOException $e) {}

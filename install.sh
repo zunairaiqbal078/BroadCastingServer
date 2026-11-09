@@ -811,9 +811,12 @@ WantedBy=multi-user.target
 SVCEOF
 
     systemctl daemon-reload
-    systemctl enable liquidsoap 2>/dev/null || true
+    # No se habilita: castpanel-ctl arranca un contenedor por estacion
+    # (liquidsoap-<slug>, --restart unless-stopped). Este servicio solo
+    # arrancaba la primera estacion y chocaria con esos contenedores.
+    systemctl disable liquidsoap 2>/dev/null || true
 
-    log_success "Servicio Liquidsoap creado (se inicia al crear una estacion)"
+    log_success "Liquidsoap: un contenedor Docker por estacion (gestionado por castpanel-ctl)"
 
     # Copiar script de gestion
     if [ -f "$PANEL_DIR/liquidsoap/manage.sh" ]; then
@@ -891,9 +894,16 @@ setup_shoutcast() {
         log_success "Archivo proxy rules SHOUTcast creado: $PROXY_RULES_FILE"
     fi
 
-    # Permisos
-    chown -R "$WEB_USER:$WEB_USER" "$SHOUTCAST_LOG_DIR"
-    chmod 775 "$SHOUTCAST_CONF_DIR"
+    # El panel busca /usr/local/bin/sc_serv2 (includes/provisioning.php)
+    if [ -x "$SHOUTCAST_DIR/sc_serv2" ] && [ ! -e /usr/local/bin/sc_serv2 ]; then
+        ln -s "$SHOUTCAST_DIR/sc_serv2" /usr/local/bin/sc_serv2
+    fi
+
+    # Permisos: el panel (usuario web) escribe aqui la config y el wrapper de
+    # cada estacion; antes eran de root y la escritura fallaba en silencio
+    mkdir -p "$SHOUTCAST_DIR/bin"
+    chown -R "$WEB_USER:$WEB_USER" "$SHOUTCAST_LOG_DIR" "$SHOUTCAST_CONF_DIR" "$SHOUTCAST_DIR/bin"
+    chmod 775 "$SHOUTCAST_CONF_DIR" "$SHOUTCAST_DIR/bin"
 
     # Firewall: abrir rango de puertos para estaciones SHOUTcast (8100-8199)
     if command -v firewall-cmd &>/dev/null; then
@@ -1067,6 +1077,16 @@ setup_ssl() {
         log_warning "No se pudo instalar SSL automaticamente"
         log_info "Ejecute manualmente: certbot --apache -d ${PANEL_DOMAIN}"
     fi
+}
+
+# ---- CASTPANEL-CTL (DAEMON ROOT PARA EL PANEL) ----
+
+setup_castpanel_ctl() {
+    log_step "INSTALANDO CASTPANEL-CTL"
+    WEB_USER="$WEB_USER" LIQUIDSOAP_IMAGE="$LIQUIDSOAP_DOCKER_IMAGE" \
+    LIQUIDSOAP_CONF_DIR="$LIQUIDSOAP_DIR" MEDIA_DIR="$MEDIA_DIR" ANUNCIOS_DIR="$ANUNCIOS_DIR" \
+        bash "$PANEL_DIR/install/setup_castpanel_ctl.sh" "$PANEL_DIR" \
+        || log_warning "castpanel-ctl no se pudo instalar (las estaciones no arrancaran)"
 }
 
 # ---- DJ CONTROL CENTER (PUERTO 2080) ----
@@ -1379,6 +1399,7 @@ setup_apache
 
 # 9. Permisos sudo para PHP
 setup_sudoers
+setup_castpanel_ctl
 
 # 10. SSL
 setup_ssl

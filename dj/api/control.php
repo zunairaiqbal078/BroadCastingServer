@@ -2,7 +2,10 @@
 /**
  * CastPanel DJ Portal — API: Control de Radio
  * Acciones: start, stop, autodj_start, autodj_stop
- * Usa castpanelCtl() para IPC con el daemon
+ *
+ * Uses the same provisioning functions as the admin and client panels
+ * (startStation / stopStation / Liquidsoap service), so the DJ buttons send
+ * the same daemon commands that already work there.
  */
 header('Content-Type: application/json');
 
@@ -14,16 +17,11 @@ if (!isset($_SESSION['dj_id'])) {
 }
 
 require_once '/var/www/castpanel/config/database.php';
+require_once __DIR__ . '/../../includes/provisioning.php';
 $db = getDB();
 
-// Load DJ + verify permissions
-$stmt = $db->prepare("
-    SELECT d.*, e.nombre AS estacion_nombre, e.slug, e.server_type,
-           e.puerto_stream, e.icecast_port, e.ip_stream, e.activa, e.id AS eid
-    FROM cuentas_dj d
-    JOIN estaciones e ON e.id = d.estacion_id
-    WHERE d.id = ? AND d.activo = 1
-");
+// Load DJ + permissions
+$stmt = $db->prepare("SELECT d.* FROM cuentas_dj d JOIN estaciones e ON e.id = d.estacion_id WHERE d.id = ? AND d.activo = 1");
 $stmt->execute([$_SESSION['dj_id']]);
 $dj = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -33,19 +31,30 @@ if (!$dj) {
 }
 
 // Read JSON body
-$input = json_decode(file_get_contents('php://input'), true);
+$input = json_decode(file_get_contents('php://input'), true) ?: [];
 $action = $input['action'] ?? '';
 $estacionId = (int)($input['estacion_id'] ?? $dj['estacion_id']);
 
-// Verify station matches DJ
+// A DJ may only control their own station
 if ($estacionId !== (int)$dj['estacion_id']) {
     echo json_encode(['success' => false, 'message' => 'No autorizado para esta estación']);
     exit;
 }
 
-// castpanelCtl helper — file-based IPC at /var/run/castpanel/
-if (!function_exists('castpanelCtl')) {
-    require_once '/var/www/castpanel/includes/functions.php';
+$estacion = loadStationWithPackage($estacionId);
+if (!$estacion || empty($estacion['activa'])) {
+    echo json_encode(['success' => false, 'message' => 'Estación no encontrada']);
+    exit;
+}
+
+/** JSON reply; on failure include the real reason from the daemon/provisioning */
+function djReply(array $result, string $okMsg, string $failMsg): void {
+    $ok = !empty($result['success']);
+    $msg = $ok ? $okMsg : $failMsg;
+    if (!$ok && !empty($result['error'])) {
+        $msg .= ': ' . $result['error'];
+    }
+    echo json_encode(['success' => $ok, 'message' => $msg]);
 }
 
 switch ($action) {
@@ -54,11 +63,8 @@ switch ($action) {
             echo json_encode(['success' => false, 'message' => 'Sin permiso para iniciar/detener']);
             exit;
         }
-        $result = castpanelCtl('start', $estacionId);
-        echo json_encode([
-            'success' => (bool)$result,
-            'message' => $result ? 'Radio iniciada correctamente' : 'No se pudo iniciar la radio'
-        ]);
+        clearStreamStatusCache($estacionId);
+        djReply(startStation($estacion), 'Radio iniciada correctamente', 'No se pudo iniciar la radio');
         break;
 
     case 'stop':
@@ -66,11 +72,8 @@ switch ($action) {
             echo json_encode(['success' => false, 'message' => 'Sin permiso para iniciar/detener']);
             exit;
         }
-        $result = castpanelCtl('stop', $estacionId);
-        echo json_encode([
-            'success' => (bool)$result,
-            'message' => $result ? 'Radio detenida correctamente' : 'No se pudo detener la radio'
-        ]);
+        clearStreamStatusCache($estacionId);
+        djReply(stopStation($estacion), 'Radio detenida correctamente', 'No se pudo detener la radio');
         break;
 
     case 'autodj_start':
@@ -78,11 +81,13 @@ switch ($action) {
             echo json_encode(['success' => false, 'message' => 'Sin permiso para AutoDJ']);
             exit;
         }
-        $result = castpanelCtl('autodj_start', $estacionId);
-        echo json_encode([
-            'success' => (bool)$result,
-            'message' => $result ? 'AutoDJ iniciado' : 'No se pudo iniciar el AutoDJ'
-        ]);
+        if (!stationHasAutoDJ($estacion)) {
+            echo json_encode(['success' => false, 'message' => 'Sin permiso para AutoDJ']);
+            exit;
+        }
+        clearStreamStatusCache($estacionId);
+        // startStation() starts SHOUTcast first (if needed) and then Liquidsoap
+        djReply(startStation($estacion), 'AutoDJ iniciado', 'No se pudo iniciar el AutoDJ');
         break;
 
     case 'autodj_stop':
@@ -90,11 +95,8 @@ switch ($action) {
             echo json_encode(['success' => false, 'message' => 'Sin permiso para AutoDJ']);
             exit;
         }
-        $result = castpanelCtl('autodj_stop', $estacionId);
-        echo json_encode([
-            'success' => (bool)$result,
-            'message' => $result ? 'AutoDJ detenido' : 'No se pudo detener el AutoDJ'
-        ]);
+        clearStreamStatusCache($estacionId);
+        djReply(stopLiquidsoapService($estacion), 'AutoDJ detenido', 'No se pudo detener el AutoDJ');
         break;
 
     default:

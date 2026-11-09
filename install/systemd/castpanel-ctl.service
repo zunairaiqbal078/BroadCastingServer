@@ -1,0 +1,15 @@
+[Unit]
+Description=CastPanel privileged helper (castpanel-ctl)
+After=network.target docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/castpanel-ctl
+Restart=always
+RestartSec=2
+StandardOutput=append:/var/log/castpanel-ctl.log
+StandardError=append:/var/log/castpanel-ctl.log
+
+[Install]
+WantedBy=multi-user.target

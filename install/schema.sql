@@ -37,8 +37,13 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 CREATE TABLE IF NOT EXISTS `paquetes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(128) NOT NULL,
-  `server_type` enum('shoutcast_v2','shoutcast_v1','icecast') NOT NULL DEFAULT 'shoutcast_v2',
+  `server_type` enum('shoutcast_v2','shoutcast_v25','shoutcast_v1','icecast') NOT NULL DEFAULT 'shoutcast_v2',
   `allow_system_change` tinyint(1) NOT NULL DEFAULT 1,
+  -- Columns the panel also adds at runtime in admin/paquetes.php. Without them
+  -- a fresh install fails on the client pages until Paquetes is opened once.
+  `default_hostname` varchar(255) NOT NULL DEFAULT '',
+  `social_stream_enabled` tinyint(1) NOT NULL DEFAULT 0,
+  `mount_points_enabled` tinyint(1) NOT NULL DEFAULT 1,
   `max_storage_mb` int(10) unsigned NOT NULL DEFAULT 5500,
   `max_bitrate` int(10) unsigned NOT NULL DEFAULT 320,
   `max_oyentes` int(10) unsigned NOT NULL DEFAULT 500,
