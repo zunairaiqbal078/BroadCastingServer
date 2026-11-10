@@ -654,7 +654,11 @@ LIQ;
     $configDir = $stmt->fetchColumn() ?: '/etc/liquidsoap/stations';
 
     if (!is_dir($configDir)) {
-        @mkdir($configDir, 0755, true);
+        @mkdir($configDir, 0775, true);
+    }
+    if (!is_dir($configDir) || !is_writable($configDir)) {
+        $hint = 'En el servidor (root): sudo bash ' . (defined('PANEL_PATH') ? PANEL_PATH : '/var/www/castpanel') . '/install/setup_castpanel_ctl.sh';
+        return ['success' => false, 'error' => "No se pudo escribir $configDir ($hint)"];
     }
 
     $configFile = $configDir . '/' . $slug . '.liq';

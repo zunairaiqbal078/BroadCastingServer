@@ -54,6 +54,21 @@ fi
 # Folders the panel (web user) writes into
 mkdir -p /opt/shoutcast/configs /opt/shoutcast/bin /var/log/shoutcast
 chown -R "$WEB_USER:$WEB_USER" /opt/shoutcast/configs /opt/shoutcast/bin /var/log/shoutcast
+
+# AutoDJ: PHP must write <slug>.liq here before Docker starts Liquidsoap
+LIQ_DIR="${LIQUIDSOAP_CONF_DIR:-/etc/liquidsoap/stations}"
+mkdir -p "$LIQ_DIR" /var/log/liquidsoap /var/run/liquidsoap
+chown -R "$WEB_USER:$WEB_USER" "$LIQ_DIR" /var/log/liquidsoap /var/run/liquidsoap
+chmod 775 "$LIQ_DIR"
+ok "Liquidsoap config dir writable by $WEB_USER ($LIQ_DIR)"
+
+mkdir -p /var/castpanel/media /var/castpanel/anuncios
+chown -R "$WEB_USER:$WEB_USER" /var/castpanel/media /var/castpanel/anuncios
+chmod 775 /var/castpanel/media /var/castpanel/anuncios
+
+mkdir -p /var/run/castpanel
+chown root:"$WEB_USER" /var/run/castpanel
+chmod 2770 /var/run/castpanel
 # Newer SHOUTcast downloads name the binary "sc_serv"; the panel expects sc_serv2
 if [ ! -e /opt/shoutcast/sc_serv2 ] && [ -f /opt/shoutcast/sc_serv ]; then
     chmod +x /opt/shoutcast/sc_serv
