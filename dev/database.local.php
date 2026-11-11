@@ -33,6 +33,9 @@ define('LIQUIDSOAP_PORT', 1234);
 // SSL / Dominio publico
 define('SSL_DOMAIN', 'localhost');
 
+// Local Docker has no SHOUTcast/Liquidsoap/castpanel-ctl — panel UI only.
+define('CASTPANEL_STREAMING_DISABLED', true);
+
 // Sesion
 define('SESSION_NAME', 'castpanel_session');
 define('SESSION_LIFETIME', 86400); // 24 horas

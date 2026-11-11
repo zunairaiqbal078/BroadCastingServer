@@ -35,3 +35,13 @@ server or VM installed with `install.sh`.
 
 `dev/database.local.php` is mounted over `config/database.php`, so the real
 config file (with `__PLACEHOLDER__` values for `install.sh`) is never changed.
+
+### AutoDJ logic (no streaming stack)
+
+Quick Control title/skip fixes can be checked without SHOUTcast/Liquidsoap:
+
+```bash
+docker exec dev-web-1 php /var/www/castpanel/dev/test_autodj_track_logic.php
+```
+
+Full AutoDJ playback, skip on telnet, and encoder connections still need an x86 Linux VPS (`install.sh`).

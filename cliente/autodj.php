@@ -5,11 +5,17 @@ ob_start();
  * Rediseno estilo SonicPanel - modulo unico plano
  * Incluye modulo de Listas de Reproduccion integrado
  */
-$pageTitle = 'Administrar AutoDJ';
+$pageTitle = 'Manage AutoDJ';
 $pageIcon = 'gear';
 require_once __DIR__ . '/../includes/layout_header.php';
 
 if (!$estacion) { echo '<div class="alert alert-warning">Sin estaci' . chr(243) . 'n asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
+
+if (defined('CASTPANEL_STREAMING_DISABLED') && CASTPANEL_STREAMING_DISABLED) {
+    echo '<div class="alert alert-warning" style="margin-bottom:16px">'
+        . '<strong>Local dev mode:</strong> AutoDJ cannot start here (no SHOUTcast/Liquidsoap). '
+        . 'Create and test stations on your Linux VPS with <code>install.sh</code>.</div>';
+}
 
 $db = getDB();
 
@@ -62,12 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
 
             // Regenerar config y reiniciar Liquidsoap automaticamente
             require_once __DIR__ . '/../includes/provisioning.php';
+            require_once __DIR__ . '/../includes/liquidsoap_playlist.php';
             $estacionActualizada = loadStationWithPackage((int)$estacion['id']);
             if ($estacionActualizada && stationHasAutoDJ($estacionActualizada)) {
+                castpanelWriteActivePlaylistM3u($estacionActualizada);
                 restartStation($estacionActualizada);
             }
 
-            setFlash('success', 'Configuraci' . chr(243) . 'n del AutoDJ actualizada y servicio reiniciado.');
+            setFlash('success', 'AutoDJ settings saved and the service was restarted.');
             header('Location: autodj.php?tab=config');
             exit;
         }
@@ -89,10 +97,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             }
 
             clearStreamStatusCache((int)$estacion['id']);
+            $cmdEn = match ($cmd) {
+                'iniciar' => 'started',
+                'detener' => 'stopped',
+                'reiniciar' => 'restarted',
+                default => $cmd,
+            };
             if ($resultado['success']) {
-                setFlash('success', "AutoDJ: $cmd ejecutado correctamente.");
+                setFlash('success', 'AutoDJ ' . $cmdEn . ' successfully.');
             } else {
-                setFlash('error', "AutoDJ: Error al $cmd - " . ($resultado['error'] ?? 'desconocido'));
+                setFlash('error', 'AutoDJ could not ' . ($cmd === 'iniciar' ? 'start' : ($cmd === 'detener' ? 'stop' : 'restart'))
+                    . ': ' . ($resultado['error'] ?? 'unknown error'));
             }
             header('Location: autodj.php?tab=config');
             exit;
@@ -219,6 +234,9 @@ try {
 
 // Subtabs
 $subtab = $_GET['tab'] ?? 'listas';
+if (in_array($subtab, ['manage', 'admin', 'administrar'], true)) {
+    $subtab = 'config';
+}
 $selectedPl = isset($_GET['pl']) ? (int)$_GET['pl'] : 0;
 
 // Cargar canciones si hay playlist seleccionada
@@ -337,7 +355,7 @@ if ($subtab === 'listas' && $selectedPl > 0) {
 <!-- ======= TAB: Listas de Reproduccion - Estilo SonicPanel ======= -->
 
 <!-- Selector de playlist + crear nueva -->
-<form method="POST" id="formCreatePl" style="display:inline">
+<form method="POST" action="autodj.php?tab=listas" id="formCreatePl" style="display:inline">
     <?= csrfField() ?>
     <input type="hidden" name="action" value="create_playlist">
     <div class="sp-pl-header">
@@ -485,23 +503,23 @@ function filterSongs() {
         <?= csrfField() ?>
         <input type="hidden" name="action" value="autodj_control">
         <input type="hidden" name="cmd" value="iniciar">
-        <button type="submit" class="sp-btn-start"><?= cpIcon('play',14) ?> Iniciar</button>
+        <button type="submit" class="sp-btn-start"><?= cpIcon('play',14) ?> Start</button>
     </form>
     <form method="POST" style="display:inline">
         <?= csrfField() ?>
         <input type="hidden" name="action" value="autodj_control">
         <input type="hidden" name="cmd" value="detener">
-        <button type="submit" class="sp-btn-stop"><?= cpIcon('x',14) ?> Detener</button>
+        <button type="submit" class="sp-btn-stop"><?= cpIcon('x',14) ?> Stop</button>
     </form>
     <form method="POST" style="display:inline">
         <?= csrfField() ?>
         <input type="hidden" name="action" value="autodj_control">
         <input type="hidden" name="cmd" value="reiniciar">
-        <button type="submit" class="sp-btn-restart"><?= cpIcon('refresh',14) ?> Reiniciar</button>
+        <button type="submit" class="sp-btn-restart"><?= cpIcon('refresh',14) ?> Restart</button>
     </form>
-    <span class="sp-status">AutoDJ Estado:
+    <span class="sp-status">AutoDJ status:
         <span class="sp-status-val <?= ($estacion['autodj_estado'] ?? 'offline') === 'online' ? 'online' : 'offline' ?>">
-            <?= ucfirst($estacion['autodj_estado'] ?? 'Offline') ?>
+            <?= ($estacion['autodj_estado'] ?? 'offline') === 'online' ? 'Online' : 'Offline' ?>
         </span>
     </span>
     <form method="POST" style="display:inline;margin-left:auto" onsubmit="return confirm('&iquest;Est&aacute;s seguro de eliminar el AutoDJ? Esta acci&oacute;n detendr&aacute; el servicio.')">
@@ -621,7 +639,7 @@ function filterSongs() {
 
         <div class="sp-save-bar">
             <span class="sp-warn"><?= cpIcon('warning',14) ?> Los cambios se aplican de forma inmediata al guardar.</span>
-            <button type="submit" class="sp-save-btn"><?= cpIcon('save',14) ?> Guardar Cambios</button>
+            <button type="submit" class="sp-save-btn"><?= cpIcon('save',14) ?> Save changes</button>
         </div>
     </form>
 </div>

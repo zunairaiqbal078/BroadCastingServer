@@ -49,14 +49,10 @@ if (!empty($pc['social_twitter'])) $socials[] = ['url' => $pc['social_twitter'],
 if (!empty($pc['social_youtube'])) $socials[] = ['url' => $pc['social_youtube'], 'icon' => 'yt', 'label' => 'YouTube'];
 if (!empty($pc['social_website'])) $socials[] = ['url' => $pc['social_website'], 'icon' => 'web', 'label' => 'Website'];
 
-// URL del stream segun tipo de servidor
-if (in_array($estacion['server_type'] ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/shoutcast/' . $estacion['slug'];
-    $fallbackUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-} else {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-    $fallbackUrl = '';
-}
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
+$fallbackUrl = isShoutcastServerType($estacion['server_type'] ?? '')
+    ? preg_replace('#/shoutcast/#', '/live/', $streamUrl)
+    : '';
 $apiUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? SSL_DOMAIN) . str_replace('/widgets/player', '', dirname($_SERVER['SCRIPT_NAME'])) . '/api/nowplaying.php?slug=' . urlencode($estacion['slug']);
 $radioName = htmlspecialchars($estacion['titulo_radio'] ?: $estacion['nombre']);
 $genre = htmlspecialchars($estacion['genero'] ?? '');

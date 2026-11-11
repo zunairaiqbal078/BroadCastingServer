@@ -29,6 +29,10 @@ if (!$estacion) {
 }
 
 $iceStatus = getStreamStatus($estacion);
+$liveTitle = trim((string)($iceStatus['titulo'] ?? ''));
+if ($liveTitle === '' && !empty($iceStatus['online'])) {
+    $liveTitle = castpanelLiquidsoapNowPlaying($estacion);
+}
 
 // Última canción del log
 $stmt = $db->prepare("SELECT * FROM log_emision WHERE estacion_id = ? AND tipo = 'cancion' ORDER BY emitido_at DESC LIMIT 1");
@@ -40,14 +44,8 @@ $stmt = $db->prepare("SELECT tipo, titulo, artista, emitido_at FROM log_emision 
 $stmt->execute([$estacion['id']]);
 $history = $stmt->fetchAll();
 
-// URL del stream segun tipo de servidor
-if (in_array($estacion['server_type'] ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/shoutcast/' . $estacion['slug'];
-    $fallbackUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-} else {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-    $fallbackUrl = '';
-}
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
+$fallbackUrl = '';
 
 jsonResponse([
     'station' => [
@@ -63,13 +61,13 @@ jsonResponse([
     'live' => [
         'online' => $iceStatus['online'],
         'listeners' => $iceStatus['oyentes'],
-        'title' => $iceStatus['titulo'],
+        'title' => $liveTitle ?: ($lastSong['titulo'] ?? ''),
     ],
-    'now_playing' => $lastSong ? [
-        'title' => $lastSong['titulo'],
-        'artist' => $lastSong['artista'],
-        'cover' => $lastSong['caratula'],
-        'started_at' => $lastSong['emitido_at'],
+    'now_playing' => ($lastSong || $liveTitle !== '') ? [
+        'title' => $lastSong['titulo'] ?? $liveTitle,
+        'artist' => $lastSong['artista'] ?? '',
+        'cover' => $lastSong['caratula'] ?? null,
+        'started_at' => $lastSong['emitido_at'] ?? null,
     ] : null,
     'history' => array_map(function($h) {
         return [

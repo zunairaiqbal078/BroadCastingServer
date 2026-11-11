@@ -3,6 +3,16 @@ ob_start();
 /**
  * CastPanel v2.3 - Dashboard Cliente (Estilo SonicPanel)
  */
+require_once __DIR__ . '/../includes/auth.php';
+if (isset($_GET['login_as'])) {
+    if (castpanelAdminLoginAsCliente((int)$_GET['login_as'])) {
+        header('Location: ' . BASE_URL . '/cliente/index.php');
+        exit;
+    }
+    setFlash('error', 'Could not open the client panel (user has no active station).');
+    header('Location: ' . BASE_URL . '/admin/estaciones.php');
+    exit;
+}
 $pageTitle = 'Panel de Control';
 $pageIcon = 'radio';
 require_once __DIR__ . '/../includes/layout_header.php';
@@ -34,10 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
         }
 
         clearStreamStatusCache((int)$estacion['id']);
+        $cmdEn = match ($cmd) {
+            'iniciar' => 'started',
+            'detener' => 'stopped',
+            'reiniciar' => 'restarted',
+            default => $cmd,
+        };
         if ($resultado['success']) {
-            setFlash('success', "Estaci&oacute;n: $cmd ejecutado correctamente.");
+            setFlash('success', 'Station ' . $cmdEn . ' successfully.');
         } else {
-            setFlash('error', "Estaci&oacute;n: Error al $cmd - " . ($resultado['error'] ?? 'desconocido'));
+            setFlash('error', 'Station could not ' . ($cmd === 'iniciar' ? 'start' : ($cmd === 'detener' ? 'stop' : 'restart'))
+                . ': ' . ($resultado['error'] ?? 'unknown error'));
         }
         header('Location: ' . BASE_URL . '/cliente/index.php');
         exit;
@@ -93,12 +110,8 @@ try {
     $totalDJ = (int)$stmt->fetchColumn();
 } catch (PDOException $e) {}
 
-// URL del stream — SHOUTcast usa proxy /shoutcast/, Icecast usa /live/
-if (in_array($estacion['server_type'] ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/shoutcast/' . $estacion['slug'];
-} else {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-}
+// URL del stream — mismo origen que el panel (Apache proxy /shoutcast/ o /live/)
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
 
 // Obtener configuración del player (para effect_type en URL del reproductor)
 $playerEffect = 'rain';
@@ -111,8 +124,14 @@ try {
     }
 } catch (PDOException $e) {}
 
-// Canción actual (del status del stream)
+// Now playing (SHOUTcast, telnet, or emission log)
 $cancionActual = $iceStatus['titulo'] ?? '';
+if ($cancionActual === '' && !empty($iceStatus['online'])) {
+    $cancionActual = castpanelLiquidsoapNowPlaying($estacion);
+}
+$quickPlayerAutodjFirst = !empty($estacion['autodj_enabled']);
+$npEmptyLabel = 'No track info';
+$npBarPrefix = 'Now playing: ';
 ?>
 
 <!-- ===== DASHBOARD SONICPANEL STYLE ===== -->
@@ -278,16 +297,16 @@ $cancionActual = $iceStatus['titulo'] ?? '';
                 <h3><?= cpIcon('zap', 18) ?> Control R&aacute;pido</h3>
             </div>
             <div class="sp-card-tabs">
-                <button class="sp-tab active" onclick="spTab(this,'ctrl-estado')">Estado de la Radio</button>
+                <button class="sp-tab <?= $quickPlayerAutodjFirst ? '' : 'active' ?>" onclick="spTab(this,'ctrl-estado')">Radio status</button>
                 <?php if (!empty($estacion['autodj_enabled'])): ?>
-                <button class="sp-tab" onclick="spTab(this,'ctrl-autodj')">Administrar AutoDJ</button>
+                <button class="sp-tab <?= $quickPlayerAutodjFirst ? 'active' : '' ?>" onclick="spTab(this,'ctrl-autodj')">Manage AutoDJ</button>
                 <?php endif; ?>
-                <button class="sp-tab" onclick="spTab(this,'ctrl-historial')">Historial de Canciones</button>
+                <button class="sp-tab" onclick="spTab(this,'ctrl-historial')">Song history</button>
             </div>
 
-            <!-- Tab: Estado de la Radio -->
-            <div class="sp-tab-content active" id="ctrl-estado">
-                <!-- Control Buttons + Estado en misma línea -->
+            <!-- Tab: Radio status (listeners + listen only) -->
+            <div class="sp-tab-content <?= $quickPlayerAutodjFirst ? '' : 'active' ?>" id="ctrl-estado">
+                <p style="font-size:12px;color:#666;margin:0 0 10px"><strong>Radio status</strong> — is the stream online and how many listeners. Start/stop the whole station here (not individual songs).</p>
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
                     <form method="POST" action="<?= BASE_URL ?>/cliente/index.php" style="display:inline">
                         <?= csrfField() ?>
@@ -316,7 +335,7 @@ $cancionActual = $iceStatus['titulo'] ?? '';
                         <!-- Carátula / Cover -->
                         <div style="width:90px;min-height:70px;background:linear-gradient(135deg,#00897b,#004d40);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:8px">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-                            <span style="color:#fff;font-size:9px;margin-top:4px;text-align:center;line-height:1.2;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><?= htmlspecialchars(mb_substr($cancionActual, 0, 30)) ?: 'Sin datos' ?></span>
+                            <span id="stCoverTitle" style="color:#fff;font-size:9px;margin-top:4px;text-align:center;line-height:1.2;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><?= htmlspecialchars(mb_substr($cancionActual, 0, 30)) ?: $npEmptyLabel ?></span>
                         </div>
                         <!-- Controles de audio -->
                         <div style="flex:1;padding:10px 14px;display:flex;flex-direction:column;gap:6px">
@@ -339,7 +358,7 @@ $cancionActual = $iceStatus['titulo'] ?? '';
                     </div>
                     <!-- Barra "Reproduciendo Ahora" -->
                     <div style="background:linear-gradient(135deg,#00897b,#00796b);color:#fff;padding:8px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">
-                        <?= cpIcon('music', 14) ?> Reproduciendo Ahora: <?= htmlspecialchars($cancionActual ?: 'Sin información') ?>
+                        <?= cpIcon('music', 14) ?> <span id="stNowPlayingBar"><?= $npBarPrefix ?><?= htmlspecialchars($cancionActual ?: $npEmptyLabel) ?></span>
                     </div>
                 </div>
 
@@ -349,28 +368,29 @@ $cancionActual = $iceStatus['titulo'] ?? '';
 
             <!-- Tab: Administrar AutoDJ (Estilo SonicPanel) -->
             <?php if (!empty($estacion['autodj_enabled'])): ?>
-            <div class="sp-tab-content" id="ctrl-autodj">
+            <div class="sp-tab-content <?= $quickPlayerAutodjFirst ? 'active' : '' ?>" id="ctrl-autodj">
                 <!-- Fila: Botones + Estado en misma línea -->
+                <p style="font-size:12px;color:#666;margin:0 0 10px"><strong>Manage AutoDJ</strong> — start/stop the robot and see now playing. Playlist runs automatically. Use <strong>Radio status</strong> for listeners only.</p>
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
                     <form method="POST" action="<?= BASE_URL ?>/cliente/autodj.php" style="display:inline">
                         <?= csrfField() ?>
                         <input type="hidden" name="action" value="autodj_control">
                         <input type="hidden" name="cmd" value="iniciar">
-                        <button type="submit" style="padding:8px 18px;background:#4caf50;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px"><?= cpIcon('play', 13) ?> Iniciar</button>
+                        <button type="submit" style="padding:8px 18px;background:#4caf50;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px"><?= cpIcon('play', 13) ?> Start AutoDJ</button>
                     </form>
                     <form method="POST" action="<?= BASE_URL ?>/cliente/autodj.php" style="display:inline">
                         <?= csrfField() ?>
                         <input type="hidden" name="action" value="autodj_control">
                         <input type="hidden" name="cmd" value="detener">
-                        <button type="submit" style="padding:8px 18px;background:#757575;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px"><?= cpIcon('circle-stop', 13) ?> Detener</button>
+                        <button type="submit" style="padding:8px 18px;background:#757575;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px"><?= cpIcon('circle-stop', 13) ?> Stop</button>
                     </form>
                     <form method="POST" action="<?= BASE_URL ?>/cliente/autodj.php" style="display:inline">
                         <?= csrfField() ?>
                         <input type="hidden" name="action" value="autodj_control">
                         <input type="hidden" name="cmd" value="reiniciar">
-                        <button type="submit" style="padding:8px 18px;background:#4caf50;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px"><?= cpIcon('refresh-cw', 13) ?> Reiniciar</button>
+                        <button type="submit" style="padding:8px 18px;background:#2e7d32;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px"><?= cpIcon('refresh-cw', 13) ?> Restart</button>
                     </form>
-                    <span style="font-size:14px;color:#555;font-weight:600;margin-left:6px">AutoDJ Estado: <strong style="color:<?= $estacion['autodj_estado'] === 'online' ? '#4caf50' : '#e53935' ?>"><?= $estacion['autodj_estado'] === 'online' ? 'Online' : ucfirst($estacion['autodj_estado']) ?></strong></span>
+                    <span style="font-size:14px;color:#555;font-weight:600;margin-left:6px">AutoDJ: <strong style="color:<?= $estacion['autodj_estado'] === 'online' ? '#4caf50' : '#e53935' ?>"><?= $estacion['autodj_estado'] === 'online' ? 'Online' : 'Offline' ?></strong></span>
                 </div>
 
                 <!-- Reproductor embebido estilo SonicPanel -->
@@ -379,19 +399,19 @@ $cancionActual = $iceStatus['titulo'] ?? '';
                         <!-- Carátula / Cover -->
                         <div style="width:90px;min-height:70px;background:linear-gradient(135deg,#00897b,#004d40);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:8px">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-                            <span style="color:#fff;font-size:9px;margin-top:4px;text-align:center;line-height:1.2;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><?= htmlspecialchars(mb_substr($cancionActual, 0, 30)) ?: 'Sin datos' ?></span>
+                            <span id="cpCoverTitle" style="color:#fff;font-size:9px;margin-top:4px;text-align:center;line-height:1.2;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><?= htmlspecialchars(mb_substr($cancionActual, 0, 30)) ?: $npEmptyLabel ?></span>
                         </div>
                         <!-- Controles de audio -->
                         <div style="flex:1;padding:10px 14px;display:flex;flex-direction:column;gap:6px">
-                            <div style="display:flex;align-items:center;gap:10px">
-                                <button onclick="cpAudioPlay()" style="width:34px;height:34px;background:#e0e0e0;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Reproducir">
+                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                <button onclick="cpAudioPlay()" style="width:34px;height:34px;background:#e0e0e0;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Play / Pause">
                                     <svg id="cpPlayIcon" width="16" height="16" viewBox="0 0 24 24" fill="#555"><polygon points="5,3 19,12 5,21"/></svg>
                                 </button>
-                                <button onclick="cpAudioStop()" style="width:34px;height:34px;background:#e0e0e0;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Detener">
+                                <button onclick="cpAudioStop()" style="width:34px;height:34px;background:#e0e0e0;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center" title="Stop">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="#555"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
                                 </button>
-                                <input type="range" id="cpSeekBar" min="0" max="100" value="0" disabled style="flex:1;height:4px;accent-color:#00897b;cursor:default">
-                                <span style="font-size:12px;color:#888;min-width:40px;text-align:right" id="cpAudioTime">00:00</span>
+                                <input type="range" id="cpSeekBar" min="0" max="100" value="0" readonly style="flex:1;min-width:80px;height:4px;accent-color:#00897b;pointer-events:none">
+                                <span style="font-size:11px;color:#888;min-width:72px;text-align:right;white-space:nowrap" id="cpAudioTime">00:00 / 00:00</span>
                             </div>
                             <div style="display:flex;align-items:center;gap:6px">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19"/></svg>
@@ -401,40 +421,40 @@ $cancionActual = $iceStatus['titulo'] ?? '';
                         </div>
                     </div>
                     <!-- Barra "Reproduciendo Ahora" -->
-                    <div style="background:linear-gradient(135deg,#00897b,#00796b);color:#fff;padding:8px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">
-                        <?= cpIcon('music', 14) ?> Reproduciendo Ahora: <?= htmlspecialchars($cancionActual ?: 'Sin información') ?>
+                    <div style="background:linear-gradient(135deg,#00897b,#00796b);color:#fff;padding:8px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+                        <span><?= cpIcon('music', 14) ?> <span id="cpNowPlayingBar"><?= $npBarPrefix ?><?= htmlspecialchars($cancionActual ?: $npEmptyLabel) ?></span></span>
+                        <span id="cpPlaylistPos" style="font-size:11px;opacity:0.9;font-weight:500"></span>
                     </div>
                 </div>
 
                 <!-- Audio element oculto -->
-                <audio id="cpAudioPlayer" preload="none"></audio>
+                <audio id="cpAudioPlayer" preload="none" playsinline></audio>
+                <p id="cpAudioErr" style="display:none;font-size:12px;color:#c62828;margin:8px 0 0"></p>
+                <p style="font-size:12px;color:#666;margin:8px 0 0">Click ▶ to listen — same stream as <a href="<?= htmlspecialchars($streamUrl) ?>" target="_blank" rel="noopener">/shoutcast/<?= htmlspecialchars($estacion['slug']) ?></a></p>
 
                 <!-- (info grid y links removidos por solicitud del usuario) -->
             </div>
             <?php endif; /* autodj_enabled */ ?>
 
-            <!-- Tab: Historial de Canciones -->
+            <!-- Tab: Song history -->
             <div class="sp-tab-content" id="ctrl-historial">
-                <?php if (empty($logEmision)): ?>
-                    <div class="sp-empty">No hay registros de emisi&oacute;n a&uacute;n.</div>
-                <?php else: ?>
-                    <div class="sp-history-list">
+                <p style="font-size:12px;color:#666;margin:0 0 10px">Recent songs played on your station (updates automatically).</p>
+                <div class="sp-history-list" id="ctrl-historial-list">
+                    <?php if (empty($logEmision)): ?>
+                        <div class="sp-empty" id="ctrl-historial-empty">No songs logged yet — start AutoDJ and play music.</div>
+                    <?php else: ?>
                         <?php foreach ($logEmision as $log): ?>
                             <div class="sp-history-item">
                                 <span class="sp-hist-time"><?= date('H:i:s', strtotime($log['emitido_at'])) ?></span>
-                                <?php if ($log['tipo'] === 'cancion'): ?>
-                                    <span class="sp-hist-badge song"><?= cpIcon('music', 14) ?></span>
-                                <?php else: ?>
-                                    <span class="sp-hist-badge ad"><?= cpIcon('megaphone', 14) ?></span>
-                                <?php endif; ?>
-                                <span class="sp-hist-title"><?= htmlspecialchars($log['titulo'] ?: 'Sin t&iacute;tulo') ?></span>
+                                <span class="sp-hist-badge song"><?= cpIcon('music', 14) ?></span>
+                                <span class="sp-hist-title"><?= htmlspecialchars($log['titulo'] ?: 'Unknown') ?></span>
                                 <?php if ($log['estado'] === 'al_aire'): ?>
-                                    <span class="sp-hist-live"><?= cpIcon('circle-dot', 10) ?> Al aire</span>
+                                    <span class="sp-hist-live"><?= cpIcon('circle-dot', 10) ?> Live</span>
                                 <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
@@ -616,6 +636,7 @@ function spTab(btn, panelId) {
     card.querySelectorAll('.sp-tab-content').forEach(function(p) { p.classList.remove('active'); });
     btn.classList.add('active');
     document.getElementById(panelId).classList.add('active');
+    if (panelId === 'ctrl-historial') cpRefreshHistory();
 }
 
 // Copy to clipboard
@@ -645,13 +666,17 @@ var stTimerInterval = null;
 
 function stAudioPlay() {
     if (!stAudioEl) return;
-    if (stIsPlaying) return;
-    stAudioEl.src = '<?= $streamUrl ?>';
+    if (stIsPlaying && !stAudioEl.paused) {
+        stAudioEl.pause();
+        stIsPlaying = false;
+        document.getElementById('stPlayIcon').innerHTML = '<polygon points="5,3 19,12 5,21"/>';
+        return;
+    }
+    if (!stAudioEl.src) cpSetStreamSrc(stAudioEl, false);
     stAudioEl.volume = (document.getElementById('stVolume').value || 80) / 100;
     stAudioEl.play().catch(function(){});
     stIsPlaying = true;
     document.getElementById('stPlayIcon').innerHTML = '<polygon points="6,4 10,4 10,20 6,20"/><polygon points="14,4 18,4 18,20 14,20"/>';
-    stStartTimer();
 }
 
 function stAudioStop() {
@@ -661,24 +686,10 @@ function stAudioStop() {
     stIsPlaying = false;
     document.getElementById('stPlayIcon').innerHTML = '<polygon points="5,3 19,12 5,21"/>';
     document.getElementById('stAudioTime').textContent = '00:00';
-    if (stTimerInterval) { clearInterval(stTimerInterval); stTimerInterval = null; }
 }
 
 function stSetVolume(val) {
     if (stAudioEl) stAudioEl.volume = val / 100;
-}
-
-function stStartTimer() {
-    var secs = 0;
-    if (stTimerInterval) clearInterval(stTimerInterval);
-    stTimerInterval = setInterval(function() {
-        if (!stIsPlaying) return;
-        secs++;
-        var m = Math.floor(secs / 60);
-        var s = secs % 60;
-        document.getElementById('stAudioTime').textContent =
-            (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-    }, 1000);
 }
 
 // AutoDJ Audio Player (reproductor embebido en tab AutoDJ)
@@ -686,15 +697,42 @@ var cpAudioEl = document.getElementById('cpAudioPlayer');
 var cpIsPlaying = false;
 var cpTimerInterval = null;
 
+function cpSetStreamSrc(el, bustCache) {
+    if (!el || !cpStreamUrl) return;
+    var url = cpStreamUrl;
+    if (bustCache) {
+        url += (url.indexOf('?') >= 0 ? '&' : '?') + '_=' + Date.now();
+    }
+    el.src = url;
+    el.load();
+}
+
+var cpAudioRestartHint = ' If you cannot hear audio, click Restart AutoDJ, wait a few seconds, then press Play again.';
+
+function cpShowAudioError(msg) {
+    var err = document.getElementById('cpAudioErr');
+    if (err) {
+        err.style.display = msg ? 'block' : 'none';
+        err.textContent = msg || '';
+    }
+}
+
 function cpAudioPlay() {
     if (!cpAudioEl) return;
-    if (cpIsPlaying) return;
-    cpAudioEl.src = '<?= $streamUrl ?>';
+    if (cpIsPlaying && !cpAudioEl.paused) {
+        cpAudioEl.pause();
+        cpIsPlaying = false;
+        document.getElementById('cpPlayIcon').innerHTML = '<polygon points="5,3 19,12 5,21"/>';
+        return;
+    }
+    cpShowAudioError('');
+    if (!cpAudioEl.src) cpSetStreamSrc(cpAudioEl, false);
     cpAudioEl.volume = (document.getElementById('cpVolume').value || 80) / 100;
-    cpAudioEl.play().catch(function(){});
+    cpAudioEl.play().catch(function() {
+        cpShowAudioError('Could not start playback — click Play again or open the stream link below.' + cpAudioRestartHint);
+    });
     cpIsPlaying = true;
     document.getElementById('cpPlayIcon').innerHTML = '<polygon points="6,4 10,4 10,20 6,20"/><polygon points="14,4 18,4 18,20 14,20"/>';
-    cpStartTimer();
 }
 
 function cpAudioStop() {
@@ -704,25 +742,121 @@ function cpAudioStop() {
     cpIsPlaying = false;
     document.getElementById('cpPlayIcon').innerHTML = '<polygon points="5,3 19,12 5,21"/>';
     document.getElementById('cpAudioTime').textContent = '00:00';
-    if (cpTimerInterval) { clearInterval(cpTimerInterval); cpTimerInterval = null; }
 }
 
 function cpSetVolume(val) {
     if (cpAudioEl) cpAudioEl.volume = val / 100;
 }
 
-function cpStartTimer() {
-    var secs = 0;
-    if (cpTimerInterval) clearInterval(cpTimerInterval);
-    cpTimerInterval = setInterval(function() {
-        if (!cpIsPlaying) return;
-        secs++;
-        var m = Math.floor(secs / 60);
-        var s = secs % 60;
-        document.getElementById('cpAudioTime').textContent =
-            (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-    }, 1000);
+var cpStreamUrl = <?= json_encode($streamUrl) ?>;
+var cpPlayerApi = <?= json_encode((BASE_URL ?: '') . '/api/autodj_player.php?estacion=' . (int)$estacion['id']) ?>;
+var cpNpPrefix = <?= json_encode($npBarPrefix) ?>;
+var cpNpEmpty = <?= json_encode($npEmptyLabel) ?>;
+var cpLastTitle = '';
+var cpPlayerState = { elapsed: 0, duration: 0, progress: 0, title: '' };
+
+function cpFormatTime(sec) {
+    sec = Math.max(0, Math.floor(sec || 0));
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
 }
+
+function cpApplyPlayer(p) {
+    if (!p) return;
+    var title = p.title || cpNpEmpty;
+    if (!title && p.online) title = 'Streaming…';
+    var short = title.length > 30 ? title.substring(0, 30) + '…' : title;
+    cpLastTitle = title;
+    cpPlayerState = {
+        elapsed: p.elapsed || 0,
+        duration: Math.max(1, p.duration || 0),
+        progress: p.progress || 0,
+        title: title
+    };
+    ['stCoverTitle', 'cpCoverTitle'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = short;
+    });
+    var barTitle = cpNpPrefix + title;
+    var stBar = document.getElementById('stNowPlayingBar');
+    var cpBar = document.getElementById('cpNowPlayingBar');
+    if (stBar) stBar.textContent = barTitle;
+    if (cpBar) cpBar.textContent = barTitle;
+    var pos = document.getElementById('cpPlaylistPos');
+    if (pos && p.playlist_total > 0 && typeof p.playlist_index === 'number' && p.playlist_index >= 0) {
+        pos.textContent = 'Track ' + (p.playlist_index + 1) + ' of ' + p.playlist_total;
+    } else if (pos && p.playlist_total > 0) {
+        pos.textContent = p.playlist_total + ' tracks in playlist';
+    } else if (pos) {
+        pos.textContent = '';
+    }
+    cpUpdateProgressUI();
+}
+
+function cpUpdateProgressUI() {
+    var elBar = Math.min(100, Math.max(0, cpPlayerState.progress || 0));
+    ['stSeekBar', 'cpSeekBar'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.value = elBar;
+    });
+    var timeStr = cpFormatTime(cpPlayerState.elapsed) + ' / ' + cpFormatTime(cpPlayerState.duration);
+    var stTime = document.getElementById('stAudioTime');
+    var cpTime = document.getElementById('cpAudioTime');
+    if (stTime) stTime.textContent = timeStr;
+    if (cpTime) cpTime.textContent = timeStr;
+}
+
+function cpRefreshNowPlaying() {
+    fetch(cpPlayerApi + '&action=status', { credentials: 'same-origin' })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.success && data.player) cpApplyPlayer(data.player);
+        })
+        .catch(function() {});
+}
+
+function cpRefreshHistory() {
+    var list = document.getElementById('ctrl-historial-list');
+    if (!list) return;
+    fetch(cpPlayerApi + '&action=history', { credentials: 'same-origin' })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (!data.success || !data.history) return;
+            if (!data.history.length) {
+                list.innerHTML = '<div class="sp-empty">No songs logged yet — start AutoDJ and play music.</div>';
+                return;
+            }
+            list.innerHTML = data.history.map(function(h) {
+                var t = (h.emitido_at || '').substr(11, 8) || '';
+                var live = h.estado === 'al_aire' ? ' <span class="sp-hist-live">● Live</span>' : '';
+                return '<div class="sp-history-item"><span class="sp-hist-time">' + t + '</span>' +
+                    '<span class="sp-hist-title">' + (h.titulo || 'Unknown') + '</span>' + live + '</div>';
+            }).join('');
+        })
+        .catch(function() {});
+}
+
+if (cpAudioEl) {
+    cpAudioEl.addEventListener('error', function() {
+        cpShowAudioError('Stream error — check AutoDJ is Online, then click Play again.' + cpAudioRestartHint);
+    });
+}
+if (stAudioEl) {
+    stAudioEl.addEventListener('error', function() {
+        cpShowAudioError('Stream error — check AutoDJ is Online, then click Play again.' + cpAudioRestartHint);
+    });
+}
+
+setInterval(cpRefreshNowPlaying, 3000);
+setInterval(function() {
+    if (cpPlayerState.duration > 0 && cpPlayerState.elapsed < cpPlayerState.duration) {
+        cpPlayerState.elapsed++;
+        cpPlayerState.progress = Math.min(100, (cpPlayerState.elapsed / cpPlayerState.duration) * 100);
+        cpUpdateProgressUI();
+    }
+}, 1000);
+cpRefreshNowPlaying();
 </script>
 
 <?php require_once __DIR__ . '/../includes/layout_footer.php'; ?>

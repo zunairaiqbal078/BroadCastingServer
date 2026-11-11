@@ -25,12 +25,7 @@ if (!$estacion) {
     exit;
 }
 
-// URL del stream segun tipo de servidor
-if (in_array($estacion['server_type'] ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/shoutcast/' . $estacion['slug'];
-} else {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-}
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
 $radioName = $estacion['titulo_radio'] ?: $estacion['nombre'];
 
 switch ($format) {

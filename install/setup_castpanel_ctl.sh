@@ -45,10 +45,16 @@ if [ ! -f /etc/castpanel/ctl.conf ]; then
 # castpanel-ctl settings
 WEB_USER="$WEB_USER"
 LIQUIDSOAP_IMAGE="${LIQUIDSOAP_IMAGE:-savonet/liquidsoap:v2.2.5}"
-LIQUIDSOAP_CONF_DIR="${LIQUIDSOAP_CONF_DIR:-/etc/liquidsoap/stations}"
+LIQUIDSOAP_CONF_DIR="${LIQUIDSOAP_CONF_DIR:-/var/castpanel/liquidsoap/stations}"
 MEDIA_DIR="${MEDIA_DIR:-/var/castpanel/media}"
 ANUNCIOS_DIR="${ANUNCIOS_DIR:-/var/castpanel/anuncios}"
 CONFEOF
+else
+    if grep -q '^LIQUIDSOAP_CONF_DIR=' /etc/castpanel/ctl.conf; then
+        sed -i 's|^LIQUIDSOAP_CONF_DIR=.*|LIQUIDSOAP_CONF_DIR="/var/castpanel/liquidsoap/stations"|' /etc/castpanel/ctl.conf
+    else
+        echo 'LIQUIDSOAP_CONF_DIR="/var/castpanel/liquidsoap/stations"' >> /etc/castpanel/ctl.conf
+    fi
 fi
 
 # Folders the panel (web user) writes into
@@ -56,9 +62,10 @@ mkdir -p /opt/shoutcast/configs /opt/shoutcast/bin /var/log/shoutcast
 chown -R "$WEB_USER:$WEB_USER" /opt/shoutcast/configs /opt/shoutcast/bin /var/log/shoutcast
 
 # AutoDJ: PHP must write <slug>.liq here before Docker starts Liquidsoap
-LIQ_DIR="${LIQUIDSOAP_CONF_DIR:-/etc/liquidsoap/stations}"
+LIQ_DIR="${LIQUIDSOAP_CONF_DIR:-/var/castpanel/liquidsoap/stations}"
 mkdir -p "$LIQ_DIR" /var/log/liquidsoap /var/run/liquidsoap
-chown -R "$WEB_USER:$WEB_USER" "$LIQ_DIR" /var/log/liquidsoap /var/run/liquidsoap
+chown -R "$WEB_USER:$WEB_USER" "$LIQ_DIR" /var/run/liquidsoap
+chmod 1777 /var/log/liquidsoap
 chmod 775 "$LIQ_DIR"
 ok "Liquidsoap config dir writable by $WEB_USER ($LIQ_DIR)"
 

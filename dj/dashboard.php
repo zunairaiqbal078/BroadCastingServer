@@ -25,21 +25,38 @@ try {
     // audio_processor table may not exist yet - graceful fallback
 }
 
-// Connection info
-$sslDomain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['HTTP_HOST'] ?? 'localhost');
-$connIP = $sslDomain;
+require_once '/var/www/castpanel/includes/functions.php';
+
+// Connection info (harbor IP = public host, not :2080 DJ portal host)
+$connIP = castpanelPublicHost();
 $autodj = !empty($dj['autodj_enabled']);
-// AutoDJ: DJ se conecta al harbor de Liquidsoap (puerto_stream + 5)
-// Sin AutoDJ: DJ se conecta directo a SHOUTcast/Icecast (puerto_stream)
 $connPort = $autodj ? ((int)($dj['puerto_stream'] ?? 8000) + 5) : ($dj['puerto_stream'] ?? 8000);
 $djPassword = $autodj ? ($dj['password_plain'] ?? $dj['icecast_password'] ?? '') : ($dj['icecast_password'] ?? '');
 $djConnUser = $dj['username'] ?? '';
 
-// Stream URL for player
-$streamUrl = 'https://' . $sslDomain . '/live/' . ($dj['slug'] ?? '');
-
-// Now playing API
-$npUrl = 'https://' . $sslDomain . '/api/nowplaying.php?estacion=' . $dj['estacion_id'];
+$estacionForUrl = [
+    'slug' => $dj['slug'] ?? '',
+    'server_type' => $dj['server_type'] ?? 'shoutcast_v2',
+];
+$pageOrigin = '';
+try {
+    $stmt = $db->prepare("SELECT valor FROM configuracion WHERE clave = 'site_url'");
+    $stmt->execute();
+    $site = trim((string)$stmt->fetchColumn());
+    if ($site !== '') {
+        $pageOrigin = rtrim($site, '/');
+    }
+} catch (Throwable $e) {
+    // ignore
+}
+if ($pageOrigin === '') {
+    $pageOrigin = castpanelPublicPageOrigin();
+}
+$slugEnc = rawurlencode($dj['slug'] ?? '');
+$streamUrl = isShoutcastServerType($dj['server_type'] ?? '')
+    ? ($pageOrigin . '/shoutcast/' . $slugEnc)
+    : ($pageOrigin . '/live/' . $slugEnc);
+$npUrl = $pageOrigin . '/api/nowplaying.php?estacion=' . (int)$dj['estacion_id'];
 ?>
 
 <!-- ═══ DJ INFORMATION ═══ -->

@@ -38,7 +38,7 @@ MEDIA_DIR="/var/castpanel/media"
 ANUNCIOS_DIR="/var/castpanel/anuncios"
 DB_NAME="castpanel"
 DB_USER="castpanel"
-LIQUIDSOAP_DIR="/etc/liquidsoap/stations"
+LIQUIDSOAP_DIR="/var/castpanel/liquidsoap/stations"
 ICECAST_CONF_DIR="/etc/icecast2"
 LIQUIDSOAP_DOCKER_IMAGE="savonet/liquidsoap:v2.2.5"
 
@@ -472,6 +472,7 @@ define('BASE_URL', '');
 // Rutas de archivos
 define('MEDIA_PATH', '%%MEDIA_DIR%%');
 define('ANUNCIOS_PATH', '%%ANUNCIOS_DIR%%');
+define('LIQUIDSOAP_CONFIG_DIR', '%%LIQUIDSOAP_DIR%%');
 
 // Icecast
 define('ICECAST_HOST', '127.0.0.1');
@@ -526,6 +527,7 @@ PHPEOF
     sed -i "s|%%PANEL_DIR%%|${PANEL_DIR}|g" "$PANEL_DIR/config/database.php"
     sed -i "s|%%MEDIA_DIR%%|${MEDIA_DIR}|g" "$PANEL_DIR/config/database.php"
     sed -i "s|%%ANUNCIOS_DIR%%|${ANUNCIOS_DIR}|g" "$PANEL_DIR/config/database.php"
+    sed -i "s|%%LIQUIDSOAP_DIR%%|${LIQUIDSOAP_DIR}|g" "$PANEL_DIR/config/database.php"
     sed -i "s|%%ICECAST_PORT%%|${ICECAST_PORT}|g" "$PANEL_DIR/config/database.php"
     sed -i "s|%%ICECAST_ADMIN_PASS%%|${ICECAST_ADMIN_PASS}|g" "$PANEL_DIR/config/database.php"
     sed -i "s|%%ICECAST_SOURCE_PASS%%|${ICECAST_SOURCE_PASS}|g" "$PANEL_DIR/config/database.php"
@@ -618,8 +620,8 @@ setup_directories() {
     chown -R "$WEB_USER:$WEB_USER" "$MEDIA_DIR"
     chown -R "$WEB_USER:$WEB_USER" "$ANUNCIOS_DIR"
     chown -R "$WEB_USER:$WEB_USER" "$LIQUIDSOAP_DIR"
-    chown -R "$WEB_USER:$WEB_USER" /var/log/liquidsoap
     chown -R "$WEB_USER:$WEB_USER" /var/run/liquidsoap
+    chmod 1777 /var/log/liquidsoap
 
     chmod -R 755 "$PANEL_DIR"
     chmod -R 775 "$MEDIA_DIR"

@@ -25,14 +25,10 @@ if ($slug) {
 $estacion = $stmt->fetch();
 if (!$estacion) die('Estación no encontrada');
 
-// URL del stream segun tipo de servidor
-if (in_array($estacion['server_type'] ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/shoutcast/' . $estacion['slug'];
-    $fallbackUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-} else {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/live/' . $estacion['slug'];
-    $fallbackUrl = '';
-}
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
+$fallbackUrl = isShoutcastServerType($estacion['server_type'] ?? '')
+    ? preg_replace('#/shoutcast/#', '/live/', $streamUrl)
+    : '';
 $apiUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? SSL_DOMAIN) . preg_replace('#/widgets/.*$#', '', $_SERVER['SCRIPT_NAME']) . '/api/nowplaying.php?slug=' . urlencode($estacion['slug']);
 $radioName = htmlspecialchars($estacion['titulo_radio'] ?: $estacion['nombre']);
 ?>

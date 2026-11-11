@@ -9,19 +9,14 @@ require_once __DIR__ . '/../includes/layout_header.php';
 
 if (!$estacion) { echo '<div class="alert alert-warning">Sin estación asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
 
-$_sslDomain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['HTTP_HOST'] ?? 'localhost');
 $_baseUrl = defined('BASE_URL') ? BASE_URL : '';
-if (in_array($estacion['server_type'] ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    $streamUrl = 'https://' . $_sslDomain . '/shoutcast/' . ($estacion['slug'] ?? '');
-} else {
-    $streamUrl = 'https://' . $_sslDomain . '/live/' . ($estacion['slug'] ?? '');
-}
-$apiUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? $_sslDomain) . $_baseUrl . '/api/nowplaying.php?estacion=' . $estacion['id'];
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
+$baseHost = castpanelPublicPageOrigin() . $_baseUrl;
+$apiUrl = $baseHost . '/api/nowplaying.php?estacion=' . (int)$estacion['id'];
 $radioName = htmlspecialchars(($estacion['titulo_radio'] ?? '') ?: ($estacion['nombre'] ?? 'Radio'));
-$baseHost = (isset($_SERVER['HTTPS'])?'https':'http') . '://' . ($_SERVER['HTTP_HOST'] ?? $_sslDomain) . $_baseUrl;
-$port = (int)($estacion['puerto_stream'] ?? 0);
-$playerFullUrl = $baseHost . '/widgets/player/?p=' . $port;
-$playerSingleUrl = $baseHost . '/widgets/player/single/?p=' . $port;
+$slugEnc = rawurlencode($estacion['slug'] ?? '');
+$playerFullUrl = $baseHost . '/widgets/player/?slug=' . $slugEnc;
+$playerSingleUrl = $baseHost . '/widgets/player/single/?slug=' . $slugEnc;
 ?>
 
 <style>

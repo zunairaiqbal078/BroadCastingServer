@@ -54,22 +54,9 @@ if (!$usuario || !$usuario['activo']) {
     exit;
 }
 
-// Construir URL del stream
-$sslDomain = '';
-$stmt = $db->prepare("SELECT valor FROM configuracion WHERE clave = 'ssl_domain'");
-$stmt->execute();
-$sslDomain = $stmt->fetchColumn() ?: 'localhost';
-
-// Construir URL del stream via reverse proxy (HTTPS)
-if (in_array($estacion['server_type'] ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    // SHOUTcast: usar proxy Apache /shoutcast/{slug}
-    $streamUrl = "https://{$sslDomain}/shoutcast/{$estacion['slug']}";
-    $streamUrlHttp = "https://{$sslDomain}/shoutcast/{$estacion['slug']}";
-} else {
-    // Icecast: usar proxy Apache /live/{mount}
-    $streamUrl = "https://{$sslDomain}/live/{$estacion['slug']}";
-    $streamUrlHttp = "https://{$sslDomain}/live/{$estacion['slug']}";
-}
+// Stream URL: same origin as this page (panel :8080, HTTPS prod, etc.)
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
+$streamUrlHttp = $streamUrl;
 
 // URL del embed
 $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost');

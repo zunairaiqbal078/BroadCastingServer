@@ -219,33 +219,39 @@ function provisionStation(int $estacionId): array {
             }
         }
 
-        // 3b. Configurar SHOUTcast (si aplica): iniciar sc_serv2 + proxy Apache
+        // 3b. SHOUTcast config + proxy (process start happens in step 7 via startStation)
         if (isShoutcastType($serverType)) {
-            $scResult = startShoutcastService($estacion);
-            if ($scResult['success']) {
-                $log[] = "SHOUTcast iniciado en portbase $puertoStream";
+            require_once __DIR__ . '/shoutcast.php';
+            $gen = generateShoutcastConfig($estacion);
+            if ($gen['success'] ?? false) {
+                $log[] = 'SHOUTcast config written: ' . ($gen['file'] ?? $estacion['slug']);
             } else {
-                $log[] = "AVISO: No se pudo iniciar SHOUTcast: " . ($scResult['error'] ?? 'Error desconocido');
+                $log[] = 'AVISO: SHOUTcast config: ' . ($gen['error'] ?? 'unknown');
             }
-            // Agregar regla proxy Apache para HTTPS
             addShoutcastProxyRule($estacion['slug'], $puertoStream);
             $log[] = "Proxy Apache configurado: /shoutcast/{$estacion['slug']}";
         }
 
-        // 4. Generar configuración Liquidsoap (solo si AutoDJ habilitado)
+        // 4. Playlist por defecto (antes de Liquidsoap — active.m3u la necesita)
+        $stmt = $db->prepare("INSERT INTO playlists (estacion_id, nombre, slug) VALUES (?, 'General', 'general')");
+        $stmt->execute([$estacionId]);
+        $defaultPlaylistId = (int)$db->lastInsertId();
+        $db->prepare("UPDATE estaciones SET autodj_playlist_activa = ? WHERE id = ?")
+           ->execute([$defaultPlaylistId, $estacionId]);
+        $estacion['autodj_playlist_activa'] = $defaultPlaylistId;
+        $log[] = "Playlist 'General' creada y marcada como activa";
+
+        // 5. Generar configuración Liquidsoap (solo si AutoDJ habilitado)
         if (!empty($estacion['autodj_enabled'])) {
             $liqResult = generateLiquidsoapConfig($estacion);
             if ($liqResult['success']) {
                 $log[] = "Config Liquidsoap generado: " . $liqResult['file'];
+            } else {
+                $log[] = "AVISO: Config Liquidsoap: " . ($liqResult['error'] ?? 'error');
             }
         } else {
             $log[] = "Liquidsoap omitido (AutoDJ deshabilitado)";
         }
-
-        // 5. Crear playlist por defecto
-        $stmt = $db->prepare("INSERT INTO playlists (estacion_id, nombre, slug) VALUES (?, 'General', 'general')");
-        $stmt->execute([$estacionId]);
-        $log[] = "Playlist 'General' creada";
 
         // 6. Abrir puertos en firewall: streaming + harbor (DJ externo)
         $harborPort = $puertoStream + 5;
@@ -254,16 +260,19 @@ function provisionStation(int $estacionId): array {
         castpanelCtl("firewall_reload");
         $log[] = "Puertos abiertos en firewall: streaming=$puertoStream, harbor=$harborPort";
 
-        // 7. Iniciar servicio Liquidsoap (solo si AutoDJ habilitado)
-        if (!empty($estacion['autodj_enabled'])) {
-            $startResult = startLiquidsoapService($estacion);
-            if ($startResult['success']) {
-                $log[] = "Servicio Liquidsoap iniciado (Docker: liquidsoap-" . ($estacion['slug'] ?? '') . ")";
+        // 7. Start the whole station (SHOUTcast + Liquidsoap when AutoDJ) so new clients see Online
+        $estacion = loadStationWithPackage($estacionId) ?: $estacion;
+        if (stationHasAutoDJ($estacion) || isShoutcastType($serverType) || $estacion['server_type'] === 'icecast') {
+            if (!castpanelStreamingAvailable()) {
+                $log[] = 'AVISO: Streaming daemon not available — station created but not started (local dev or castpanel-ctl stopped).';
             } else {
-                $log[] = "AVISO: No se pudo iniciar Liquidsoap: " . ($startResult['error'] ?? 'Error desconocido');
+                $startResult = startStation($estacion);
+                if ($startResult['success'] ?? false) {
+                    $log[] = 'Estación iniciada (stream + AutoDJ si aplica)';
+                } else {
+                    $log[] = 'AVISO: No se pudo iniciar la estación: ' . ($startResult['error'] ?? 'error');
+                }
             }
-        } else {
-            $log[] = "Liquidsoap no necesario (AutoDJ deshabilitado)";
         }
 
         return ['success' => true, 'log' => $log, 'puerto' => $puertoStream, 'telnet' => $puertoTelnet];
@@ -309,6 +318,44 @@ function deprovisionStation(array $estacion): array {
     // No eliminamos media por seguridad, el admin puede hacerlo manual
 
     return ['success' => true, 'log' => $log];
+}
+
+/**
+ * Eliminar estación del panel + des-aprovisionar + usuario cliente huérfano
+ */
+function deleteStationFully(array $estacion): array {
+    $db = getDB();
+    $stationId = (int)$estacion['id'];
+    $usuarioId = (int)($estacion['usuario_id'] ?? 0);
+
+    deprovisionStation($estacion);
+
+    $db->prepare("DELETE FROM estaciones WHERE id = ?")->execute([$stationId]);
+
+    $mediaDir = MEDIA_PATH . '/' . $estacion['slug'];
+    $adsDir = ANUNCIOS_PATH . '/' . $estacion['slug'];
+    if (is_dir($mediaDir)) {
+        foreach (glob("$mediaDir/*") ?: [] as $f) {
+            @unlink($f);
+        }
+        @rmdir($mediaDir);
+    }
+    if (is_dir($adsDir)) {
+        foreach (glob("$adsDir/*") ?: [] as $f) {
+            @unlink($f);
+        }
+        @rmdir($adsDir);
+    }
+
+    if ($usuarioId > 0) {
+        $stmt = $db->prepare("SELECT COUNT(*) FROM estaciones WHERE usuario_id = ?");
+        $stmt->execute([$usuarioId]);
+        if ((int)$stmt->fetchColumn() === 0) {
+            $db->prepare("DELETE FROM usuarios WHERE id = ? AND rol = 'cliente'")->execute([$usuarioId]);
+        }
+    }
+
+    return ['success' => true];
 }
 
 /**
@@ -393,14 +440,35 @@ function removeIcecastMount(array $estacion): bool {
 }
 
 /**
+ * Directorio donde PHP escribe los .liq (debe ser escribible por el usuario del
+ * servidor web; /etc suele ser de solo lectura con Apache + ProtectSystem=full).
+ */
+function getLiquidsoapConfigDir(): string {
+    if (defined('LIQUIDSOAP_CONFIG_DIR') && LIQUIDSOAP_CONFIG_DIR !== '') {
+        return rtrim(LIQUIDSOAP_CONFIG_DIR, '/');
+    }
+    try {
+        $stmt = getDB()->prepare("SELECT valor FROM configuracion WHERE clave = 'liquidsoap_config_path'");
+        $stmt->execute();
+        $dir = $stmt->fetchColumn();
+        if (is_string($dir) && $dir !== '') {
+            // Rutas legacy bajo /etc no funcionan con mod_php en muchos servidores
+            if (str_starts_with($dir, '/etc/')) {
+                return '/var/castpanel/liquidsoap/stations';
+            }
+            return rtrim($dir, '/');
+        }
+    } catch (Exception $e) {
+        // ignore
+    }
+    return '/var/castpanel/liquidsoap/stations';
+}
+
+/**
  * Obtener ruta del config Liquidsoap para una estación
  */
 function getLiquidsoapConfigPath(string $slug): string {
-    $db = getDB();
-    $stmt = $db->prepare("SELECT valor FROM configuracion WHERE clave = 'liquidsoap_config_path'");
-    $stmt->execute();
-    $dir = $stmt->fetchColumn() ?: '/etc/liquidsoap/stations';
-    return $dir . '/' . $slug . '.liq';
+    return getLiquidsoapConfigDir() . '/' . $slug . '.liq';
 }
 
 /**
@@ -408,6 +476,7 @@ function getLiquidsoapConfigPath(string $slug): string {
  */
 function generateLiquidsoapConfig(array $estacion): array {
     $db = getDB();
+    require_once __DIR__ . '/liquidsoap_playlist.php';
 
     $slug = $estacion['slug'];
     $serverType = $estacion['server_type'] ?? 'icecast';
@@ -438,8 +507,15 @@ function generateLiquidsoapConfig(array $estacion): array {
     //   /var/castpanel/media/{slug}    → /media
     //   /var/castpanel/anuncios/{slug} → /anuncios
     // Liquidsoap corre DENTRO del contenedor, así que debe usar las rutas del contenedor
-    $mediaDir = '/media';
     $anunciosDir = '/anuncios';
+
+    $m3uResult = castpanelWriteActivePlaylistM3u($estacion);
+    if (!$m3uResult['success']) {
+        return ['success' => false, 'error' => $m3uResult['error'] ?? 'No se pudo generar active.m3u'];
+    }
+    $playlistUri = $m3uResult['liquidsoap_uri'];
+    $modoRep = $estacion['modo_reproduccion'] ?? 'normal';
+    $playMode = ($modoRep === 'aleatorio') ? 'randomize' : 'normal';
 
     // Construir bloque de encoding según codec
     $encodingBlock = match($codec) {
@@ -490,10 +566,7 @@ output.icecast(
 LIQ;
     }
 
-    // Obtener URL del panel para webhook
-    $stmt = $db->prepare("SELECT valor FROM configuracion WHERE clave = 'site_url'");
-    $stmt->execute();
-    $panelUrl = $stmt->fetchColumn() ?: '';
+    $panelUrl = castpanelInternalPanelUrl();
 
     // Config completo
     $config = <<<LIQ
@@ -514,16 +587,22 @@ settings.log.level.set(3)
 
 # === FUENTES DE AUDIO ===
 
-# Playlist principal (archivos de la biblioteca)
-# reload every 60s: new uploads start playing even if the folder was empty
-# when Liquidsoap started ("rounds" never reloads an empty playlist)
+# Playlist principal (solo canciones de la playlist activa — active.m3u)
 music_src = playlist(
     id="music_{$slug}",
-    mode="randomize",
-    reload=60,
-    reload_mode="seconds",
-    "$mediaDir"
+    mode="{$playMode}",
+    reload=10,
+    reload_mode="watch",
+    "{$playlistUri}"
 )
+
+# Prefer M3U #EXTINF titles over embedded MP3 ID3 (fixes stuck “tiki” on SHOUTcast/panel).
+def m3u_stream_meta(m) =
+    s = list.assoc(default="", "song", m)
+    t = if s != "" then s else list.assoc(default="", "title", m) end
+    [("title", t), ("artist", "")]
+end
+music_src = map_metadata(m3u_stream_meta, music_src)
 
 # Anuncios (spots publicitarios)
 ads_src = playlist(
@@ -546,6 +625,7 @@ ads = fallback(id="ads_safe_{$slug}", track_sensitive=false, [ads_src, silence])
 
 # Insertar anuncios cada 5 canciones
 radio = rotate(
+    id="radio_{$slug}",
     weights=[5, 1],
     [music, ads]
 )
@@ -568,7 +648,7 @@ LIQ;
     // URL del panel para DJ auth webhook (Liquidsoap llama HTTP desde Docker)
     // Liquidsoap corre en Docker con host networking — usar HTTP local directo
     // (HTTPS no funciona porque el contenedor no tiene certificados CA)
-    $djAuthUrl = 'http://127.0.0.1/api/dj_auth.php';
+    $djAuthUrl = castpanelInternalPanelUrl() . '/api/dj_auth.php';
 
     // Construir bloque de autenticación harbor
     if ($djAuthUrl) {
@@ -621,16 +701,15 @@ LIQ;
     $procConfig = getProcessorConfig($estacion['id']);
     $config .= generateProcessorLiquidsoap($procConfig);
 
-    // Webhook de metadata
-    if ($panelUrl) {
-        $config .= <<<LIQ
+    $config .= <<<LIQ
 
-# Webhook de metadata al panel
+# Webhook de metadata al panel (loopback — contenedor Docker)
 def on_metadata(m) =
     title = m["title"]
     artist = m["artist"]
     ignore(
         http.post(
+            headers=[("Content-Type", "application/x-www-form-urlencoded")],
             data="station=$slug&title=#{title}&artist=#{artist}",
             "$panelUrl/api/webhook.php"
         )
@@ -639,7 +718,6 @@ end
 radio.on_metadata(on_metadata)
 
 LIQ;
-    }
 
     $config .= <<<LIQ
 
@@ -649,15 +727,13 @@ $outputBlock
 LIQ;
 
     // Guardar archivo
-    $stmt = $db->prepare("SELECT valor FROM configuracion WHERE clave = 'liquidsoap_config_path'");
-    $stmt->execute();
-    $configDir = $stmt->fetchColumn() ?: '/etc/liquidsoap/stations';
+    $configDir = getLiquidsoapConfigDir();
 
     if (!is_dir($configDir)) {
         @mkdir($configDir, 0775, true);
     }
     if (!is_dir($configDir) || !is_writable($configDir)) {
-        $hint = 'En el servidor (root): sudo bash ' . (defined('PANEL_PATH') ? PANEL_PATH : '/var/www/castpanel') . '/install/setup_castpanel_ctl.sh';
+        $hint = 'En el servidor (root): sudo bash ' . (defined('BASE_PATH') ? BASE_PATH : '/var/www/castpanel') . '/install/setup_castpanel_ctl.sh';
         return ['success' => false, 'error' => "No se pudo escribir $configDir ($hint)"];
     }
 
@@ -689,21 +765,37 @@ function startLiquidsoapService(array $estacion): array {
     // El daemon maneja internamente: docker rm, docker run con mounts correctos
     $result = castpanelCtl("start-liquidsoap-$slug");
 
-    if ($result['success']) {
-        // Actualizar BD
-        $db = getDB();
-        $db->prepare("UPDATE estaciones SET servicio_estado = 'running', autodj_estado = 'online' WHERE id = ?")
+    $db = getDB();
+    $markOffline = static function () use ($db, $estacion): void {
+        $db->prepare("UPDATE estaciones SET servicio_estado = 'stopped', autodj_estado = 'offline' WHERE id = ?")
            ->execute([$estacion['id']]);
+    };
 
-        return ['success' => true, 'container' => $containerName];
+    if (!$result['success'] && !liquidsoapContainerIsRunning($slug)) {
+        $markOffline();
+        $why = $result['error'] ?? $result['output'] ?? $result['message'] ?? '';
+        $why = trim((string)$why) !== '' ? trim((string)$why) : 'error desconocido';
+        return ['success' => false, 'error' => 'No se pudo iniciar Liquidsoap: ' . $why];
     }
 
-    // castpanelCtl() reports IPC problems (e.g. daemon not responding) in
-    // 'error', daemon output in 'output'/'message'. Showing only 'output'
-    // turned every daemon timeout into "unknown error".
-    $why = $result['error'] ?? $result['output'] ?? $result['message'] ?? '';
-    $why = trim((string)$why) !== '' ? trim((string)$why) : 'error desconocido';
-    return ['success' => false, 'error' => 'No se pudo iniciar Liquidsoap: ' . $why];
+    // Daemon started the container (or it was already up) — confirm Docker is really running.
+    usleep(500000);
+    if (!liquidsoapContainerIsRunning($slug)) {
+        $markOffline();
+        $why = $result['error'] ?? $result['output'] ?? '';
+        $why = trim((string)$why) !== '' ? trim((string)$why) : 'el contenedor se detuvo al iniciar (revisar log Liquidsoap)';
+        return ['success' => false, 'error' => 'Liquidsoap no está en ejecución: ' . $why];
+    }
+
+    $db->prepare("UPDATE estaciones SET servicio_estado = 'running', autodj_estado = 'online' WHERE id = ?")
+       ->execute([$estacion['id']]);
+
+    $message = ($result['success'] ?? false) ? null : 'already running';
+    return array_filter([
+        'success' => true,
+        'container' => $containerName,
+        'message' => $message,
+    ]);
 }
 
 /**
@@ -735,15 +827,24 @@ function restartLiquidsoapService(array $estacion): array {
 }
 
 /**
- * Verificar si el contenedor Docker de Liquidsoap está corriendo
+ * Verificar si el contenedor Docker de Liquidsoap está corriendo (Docker, no solo BD).
+ */
+function liquidsoapContainerIsRunning(string $slug): bool {
+    $r = castpanelCtl('liquidsoap-status-' . $slug);
+    return !empty($r['success']) && !empty($r['running']);
+}
+
+/**
+ * @deprecated Prefer liquidsoapContainerIsRunning(); kept for callers that only need a quick hint.
  */
 function isLiquidsoapRunning(string $slug): bool {
-    // Consultar estado en BD (actualizado por start/stop)
+    if (liquidsoapContainerIsRunning($slug)) {
+        return true;
+    }
     $db = getDB();
     $stmt = $db->prepare("SELECT servicio_estado FROM estaciones WHERE slug = ?");
     $stmt->execute([$slug]);
-    $estado = $stmt->fetchColumn();
-    return $estado === 'running';
+    return $stmt->fetchColumn() === 'running';
 }
 
 /**
@@ -891,11 +992,34 @@ function createAccountWithStation(array $params): array {
 // SHOUTcast v2 Management Functions
 // ============================================================
 
+/** Whether privileged streaming (castpanel-ctl) is available on this host. */
+function castpanelStreamingAvailable(): bool {
+    if (defined('CASTPANEL_STREAMING_DISABLED') && CASTPANEL_STREAMING_DISABLED) {
+        return false;
+    }
+    $ipcDir = '/var/run/castpanel';
+
+    return is_dir($ipcDir)
+        && is_writable($ipcDir)
+        && (is_executable('/usr/local/bin/castpanel-ctl') || file_exists('/etc/systemd/system/castpanel-ctl.service'));
+}
+
 /**
  * Enviar comando al daemon castpanel-ctl (root) via IPC
  * El daemon corre como root y ejecuta comandos privilegiados
  */
 function castpanelCtl(string $command): array {
+    $command = trim($command);
+    if ($command === '') {
+        return ['success' => false, 'error' => 'Comando IPC vacío'];
+    }
+    if (!castpanelStreamingAvailable()) {
+        $msg = (defined('CASTPANEL_STREAMING_DISABLED') && CASTPANEL_STREAMING_DISABLED)
+            ? 'AutoDJ is not available in local Docker dev — use a Linux server with install.sh (or the test VPS).'
+            : 'castpanel-ctl service is not running. On the server run: sudo systemctl enable --now castpanel-ctl';
+
+        return ['success' => false, 'error' => $msg];
+    }
     $ipcDir = '/var/run/castpanel';
     $cmdFile = "$ipcDir/command";
     $resFile = "$ipcDir/result";
@@ -938,7 +1062,7 @@ function castpanelCtl(string $command): array {
         if ((time() - $start) >= 5 && file_exists($cmdFile) && !file_exists($resFile)) {
             @unlink($cmdFile);
             @unlink($lockFile);
-            return ['success' => false, 'error' => 'El servicio castpanel-ctl no está en ejecución (systemctl start castpanel-ctl)'];
+            return ['success' => false, 'error' => 'castpanel-ctl service is not running (sudo systemctl enable --now castpanel-ctl)'];
         }
     }
 
@@ -1065,18 +1189,11 @@ function stopShoutcastService(array $estacion): array {
 }
 
 /**
- * Regenerar TODAS las reglas ProxyPass de Apache para estaciones SHOUTcast.
- * Lee todas las estaciones shoutcast activas de la BD y genera el archivo completo.
- * Requiere que /etc/httpd/shoutcast-proxy-rules.inc sea escribible por Apache:
- *   sudo chown apache:apache /etc/httpd/shoutcast-proxy-rules.inc
- * Y que Apache pueda recargar httpd via sudoers:
- *   echo 'apache ALL=(root) NOPASSWD: /usr/bin/systemctl reload httpd' | sudo tee /etc/sudoers.d/castpanel-httpd
+ * Regenerar reglas ProxyPass SHOUTcast e instalar vía castpanel-ctl (root escribe en /etc/apache2).
  */
 function updateShoutcastProxyConfig(): bool {
-    $incFile = '/etc/httpd/shoutcast-proxy-rules.inc';
     $db = getDB();
 
-    // Obtener TODAS las estaciones SHOUTcast activas
     $stmt = $db->query(
         "SELECT slug, puerto_stream FROM estaciones
          WHERE server_type IN ('shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25')
@@ -1085,35 +1202,34 @@ function updateShoutcastProxyConfig(): bool {
     );
     $estaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Generar contenido completo del archivo
     $content = "# Auto-generado por updateShoutcastProxyConfig()\n";
-    $content .= "# CastPanel v2.3 - NO EDITAR MANUALMENTE\n";
+    $content .= "# CastPanel - NO EDITAR MANUALMENTE\n";
     $content .= "# Ultima actualizacion: " . date('Y-m-d H:i:s') . "\n";
     $content .= "# Total estaciones: " . count($estaciones) . "\n\n";
 
     foreach ($estaciones as $est) {
-        $slug = $est['slug'];
+        $slug = preg_replace('/[^a-z0-9\-]/', '', strtolower($est['slug']));
         $port = (int)$est['puerto_stream'];
-        // SHOUTcast v2 usa /stream/1/ (SID 1) para el stream de audio
+        if ($port <= 0 || $slug === '') {
+            continue;
+        }
         $content .= "# Estacion: $slug (puerto $port)\n";
         $content .= "ProxyPass /shoutcast/$slug http://127.0.0.1:$port/stream/1/ retry=1 flushpackets=on\n";
         $content .= "ProxyPassReverse /shoutcast/$slug http://127.0.0.1:$port/stream/1/\n\n";
     }
 
-    // Escribir archivo directamente (requiere permisos, ver docblock arriba)
-    $written = @file_put_contents($incFile, $content);
-    if ($written === false) {
-        error_log("CastPanel: No se pudo escribir $incFile - verificar permisos (chown apache:apache)");
+    $tmpFile = '/tmp/castpanel-shoutcast-proxy.conf';
+    if (@file_put_contents($tmpFile, $content) === false) {
+        error_log("CastPanel: No se pudo escribir $tmpFile");
         return false;
     }
+    @chmod($tmpFile, 0644);
 
-    // Validar configuración de Apache ANTES de recargar
-    // Esto previene que configs problemáticos (ej: SSL certs faltantes) bloqueen el reload
-    $reloadOk = reloadApacheSafe();
-    if (!$reloadOk) {
-        error_log("CastPanel: Proxy rules escritas en $incFile pero Apache no se pudo recargar. Verifique la config de Apache.");
+    $r = castpanelCtl('update-shoutcast-proxy');
+    if (empty($r['success'])) {
+        error_log('CastPanel: update-shoutcast-proxy fallo: ' . ($r['error'] ?? $r['output'] ?? ''));
+        return false;
     }
-
     return true;
 }
 
@@ -1276,6 +1392,7 @@ function startStation(array $estacion): array {
 
     // 2. AutoDJ: always regenerate the config so it matches current settings,
     //    then start Liquidsoap. Its harbor (portbase+5) is where DJs connect.
+    $estacion = loadStationWithPackage((int)$estacion['id']) ?: $estacion;
     $cfg = generateLiquidsoapConfig($estacion);
     if (!$cfg['success']) {
         return ['success' => false, 'error' => 'Liquidsoap: ' . ($cfg['error'] ?? 'config')];
@@ -1310,18 +1427,47 @@ function stopStation(array $estacion): array {
  * Not running yet -> start the whole station (SHOUTcast + Liquidsoap).
  * Already running  -> ask Liquidsoap to reload its playlist (no restart).
  */
+/** When a client logs in, start AutoDJ if the stream is down (real server with castpanel-ctl only). */
+function castpanelClientAutoStartOnLogin(array $estacionRow): void {
+    if (!castpanelStreamingAvailable()) {
+        return;
+    }
+    $full = loadStationWithPackage((int)$estacionRow['id']);
+    if (!$full || !stationHasAutoDJ($full)) {
+        return;
+    }
+    if (isStationOnline($full)) {
+        return;
+    }
+    ensureAutoDJPlaying($full);
+    clearStreamStatusCache((int)$full['id']);
+}
+
 function ensureAutoDJPlaying(array $estacion): array {
     if (!stationHasAutoDJ($estacion)) {
         return ['success' => true, 'message' => 'Sin AutoDJ'];
     }
 
-    $running = ($estacion['servicio_estado'] ?? '') === 'running'
-            && ($estacion['autodj_estado'] ?? '') === 'online';
+    $fresh = loadStationWithPackage((int)$estacion['id']);
+    if ($fresh) {
+        $estacion = $fresh;
+    }
+
+    $running = liquidsoapContainerIsRunning($estacion['slug'])
+            || (($estacion['servicio_estado'] ?? '') === 'running'
+                && ($estacion['autodj_estado'] ?? '') === 'online');
     if (!$running) {
         return startStation($estacion);
     }
 
     $port = (int)($estacion['puerto_telnet'] ?: (LIQUIDSOAP_TELNET_PORT + $estacion['id']));
+    require_once __DIR__ . '/liquidsoap_playlist.php';
+    $m3u = castpanelWriteActivePlaylistM3u($estacion);
+    if (!$m3u['success']) {
+        generateLiquidsoapConfig($estacion);
+        return restartLiquidsoapService($estacion);
+    }
+
     $reply = liquidsoapCommand('music_' . $estacion['slug'] . '.reload', $port);
     if ($reply !== null) {
         return ['success' => true, 'message' => 'Playlist recargada'];

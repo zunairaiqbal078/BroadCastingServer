@@ -11,7 +11,7 @@
 #   ./manage.sh stopall          - Detener todas
 # =============================================================
 
-CONFIG_DIR="/etc/liquidsoap/stations"
+CONFIG_DIR="/var/castpanel/liquidsoap/stations"
 PID_DIR="/var/run/liquidsoap"
 LOG_DIR="/var/log/liquidsoap"
 

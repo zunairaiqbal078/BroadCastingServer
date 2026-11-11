@@ -959,9 +959,8 @@ function loginAsUser() {
     if (currentStationData) {
         // Login as user functionality - redirect to client panel
         var userId = currentStationData.station.usuario_id;
-        showToast('Redirigiendo al panel del usuario...', 'success');
-        // For now, open user panel in new tab
-        window.open(baseUrl + '/cliente/?login_as=' + userId, '_blank');
+        showToast('Opening client panel…', 'success');
+        window.open(baseUrl + '/cliente/index.php?login_as=' + userId, '_blank');
     }
 }
 

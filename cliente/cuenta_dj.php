@@ -33,49 +33,48 @@ try {
 // Detectar si AutoDJ está habilitado
 $autoDJEnabled = !empty($estacion['autodj_enabled']);
 
-// Calcular datos de conexión según tipo de estación
-$serverHost = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['SERVER_NAME'] ?? 'localhost');
-$serverIP   = defined('SERVER_IP') ? SERVER_IP : $serverHost;
+// Encoder / RadioCaster host — IP or domain only (no :8080 panel port)
+$connServer = castpanelPublicHost();
+$serverIP   = defined('SERVER_IP') ? SERVER_IP : $connServer;
 $puertoStream = (int)($estacion['puerto_stream'] ?: ($estacion['icecast_port'] ?? 8000));
 
 if ($autoDJEnabled) {
     // Con AutoDJ: conectar a Liquidsoap harbor (SHOUTcast v1 / ICY protocol)
     $connProtocol  = 'SHOUTcast v1';
-    $connServer    = $serverHost;
     $connPort      = $puertoStream + 5; // Harbor port
     $connMount     = ''; // No se necesita mount point con SHOUTcast v1
     $connPassword  = ''; // Se muestra por DJ individual (password_plain)
     $connUser      = ''; // Se muestra por DJ individual (username)
     $connNote      = 'Protocolo <strong>SHOUTcast v1</strong> — Conexi&oacute;n a trav&eacute;s de Liquidsoap Harbor (AutoDJ activo). Cada DJ usa sus propias credenciales.';
-    $radiocastNote = 'RadioCaster: Seleccionar protocolo <em>SHOUTcast v1</em>. Servidor: ' . htmlspecialchars($serverHost) . ', Puerto: ' . $connPort . '. Contrase&ntilde;a: la de cada cuenta DJ. En m&oacute;vil usar <code>usuario:contrase&ntilde;a</code>.';
+    $radiocastNote = 'RadioCaster: Protocol <em>SHOUTcast v1</em>. Server: <strong>' . htmlspecialchars($connServer) . '</strong>, '
+        . 'Port: <strong>' . $connPort . '</strong> (harbor — not the listener port ' . $puertoStream . '). '
+        . 'Password: this DJ account password. Username: optional; if required use DJ username. '
+        . 'When you connect, AutoDJ is overridden automatically (no extra permission needed). '
+        . 'Enable <strong>DJ can transmit</strong> below.';
 } else {
     // Sin AutoDJ: conectar directamente al servidor SHOUTcast/Icecast
     $serverType = $estacion['server_type'] ?? 'shoutcast_v2';
     if (stripos($serverType, 'icecast') !== false) {
         $connProtocol  = 'Icecast (Source)';
-        $connServer    = $serverHost;
         $connPort      = (int)($estacion['icecast_port'] ?: $puertoStream);
         $connMount     = '/' . ($estacion['icecast_mount'] ?? ($estacion['slug'] ?? 'stream'));
         $connPassword  = $estacion['icecast_password'] ?? 'hackme';
         $connUser      = 'source';
         $connNote      = 'Protocolo <strong>Icecast</strong> — Conexi&oacute;n directa al servidor Icecast.';
-        $radiocastNote = 'RadioCaster: Protocolo <em>Icecast</em>, Servidor: ' . htmlspecialchars($serverHost) . ', Puerto: ' . $connPort . ', Mount: ' . htmlspecialchars($connMount);
+        $radiocastNote = 'RadioCaster: Protocolo <em>Icecast</em>, Servidor: ' . htmlspecialchars($connServer) . ', Puerto: ' . $connPort . ', Mount: ' . htmlspecialchars($connMount);
     } else {
         // SHOUTcast v1/v2
         $connProtocol  = 'SHOUTcast';
-        $connServer    = $serverHost;
         $connPort      = $puertoStream;
         $connMount     = '/' . ($estacion['slug'] ?? 'stream');
         $connPassword  = $estacion['icecast_password'] ?? ($estacion['password'] ?? '');
         $connUser      = '';
         $connNote      = 'Protocolo <strong>SHOUTcast v1</strong> — Conexi&oacute;n directa al servidor SHOUTcast (sin AutoDJ). En RadioCaster usar siempre protocolo SHOUTcast v1.';
-        $radiocastNote = 'RadioCaster: Protocolo <em>SHOUTcast v1</em>, Servidor: ' . htmlspecialchars($serverHost) . ', Puerto: ' . $connPort . ', Contrase&ntilde;a: (la del DJ)';
+        $radiocastNote = 'RadioCaster: Protocolo <em>SHOUTcast v1</em>, Servidor: ' . htmlspecialchars($connServer) . ', Puerto: ' . $connPort . ', Contrase&ntilde;a: (la del DJ)';
     }
 }
 
-// Panel DJ URL
-$panelScheme = (!empty($estacion['paquete_ssl_enabled']) || (defined('SSL_ENABLED') && SSL_ENABLED)) ? 'https' : 'http';
-$panelDJUrl  = $panelScheme . '://' . $serverHost . '/dj/';
+$panelDJUrl = castpanelDjPortalUrl();
 
 // Permisos DJ disponibles
 $permisos = [
@@ -404,6 +403,9 @@ if (isset($_GET['edit'])) {
                                 <input type="text" value="<?= htmlspecialchars($panelDJUrl) ?>" readonly id="cp-conn-url">
                                 <button type="button" class="cp-copy-btn" onclick="cpCopy('cp-conn-url')"><?= cpIcon('clipboard',14) ?> Copiar</button>
                             </div>
+                            <small style="color:var(--text-secondary);font-size:11px;display:block;margin-top:4px">
+                                DJ web login uses port <?= (int)(defined('DJ_PORT') ? DJ_PORT : 2080) ?> (not the cliente panel port). Live audio uses the harbor port above.
+                            </small>
                         </div>
 
                         <!-- ===== Permisos DJ ===== -->

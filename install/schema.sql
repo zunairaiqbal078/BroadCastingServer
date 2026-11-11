@@ -669,7 +669,7 @@ INSERT INTO `configuracion` (`clave`, `valor`, `descripcion`) VALUES
 ('icecast_config_path', '/etc/icecast2/icecast.xml', 'Ruta al archivo de configuracion de Icecast'),
 ('icecast_host', '127.0.0.1', 'Host del servidor Icecast'),
 ('icecast_port', '8000', NULL),
-('liquidsoap_config_path', '/etc/liquidsoap/stations', 'Directorio de configs de Liquidsoap'),
+('liquidsoap_config_path', '/var/castpanel/liquidsoap/stations', 'Directorio de configs de Liquidsoap'),
 ('liquidsoap_host', '127.0.0.1', NULL),
 ('liquidsoap_port', '1234', NULL),
 ('liquidsoap_telnet_host', '127.0.0.1', 'Host telnet de Liquidsoap'),

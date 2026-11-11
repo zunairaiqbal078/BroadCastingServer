@@ -17,6 +17,8 @@ define('BASE_URL', ''); // Ej: /castpanel o vacio si esta en raiz
 // Rutas de archivos
 define('MEDIA_PATH', '/var/castpanel/media');
 define('ANUNCIOS_PATH', '/var/castpanel/anuncios');
+// Liquidsoap .liq files (must live under /var — Apache cannot write under /etc)
+define('LIQUIDSOAP_CONFIG_DIR', '/var/castpanel/liquidsoap/stations');
 
 // Icecast
 define('ICECAST_HOST', '127.0.0.1');

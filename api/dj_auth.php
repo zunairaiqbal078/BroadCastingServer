@@ -39,7 +39,9 @@ if ($icyClient && $password !== '' && $slug !== '') {
             if ($st['icecast_password'] !== '' && hash_equals((string)$st['icecast_password'], $password)) {
                 $ok = true;
             } else {
-                $stmt = $db->prepare("SELECT password FROM cuentas_dj WHERE estacion_id = ? AND activo = 1");
+                $stmt = $db->prepare(
+                    "SELECT password FROM cuentas_dj WHERE estacion_id = ? AND activo = 1 AND perm_transmitir = 1"
+                );
                 $stmt->execute([$st['id']]);
                 foreach ($stmt->fetchAll(PDO::FETCH_COLUMN) as $hash) {
                     if (password_verify($password, $hash)) { $ok = true; break; }
@@ -83,12 +85,13 @@ try {
 
     // Find DJ account for this station
     $stmt = $db->prepare(
-        "SELECT id, password, activo FROM cuentas_dj WHERE estacion_id = ? AND username = ? LIMIT 1"
+        "SELECT id, password, activo, perm_transmitir FROM cuentas_dj
+         WHERE estacion_id = ? AND username = ? LIMIT 1"
     );
     $stmt->execute([$estacion['id'], $username]);
     $dj = $stmt->fetch();
 
-    if (!$dj || empty($dj['activo'])) {
+    if (!$dj || empty($dj['activo']) || empty($dj['perm_transmitir'])) {
         header('Content-Type: text/plain');
         echo 'false';
         exit;

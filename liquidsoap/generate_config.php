@@ -9,6 +9,7 @@
  * Tambien genera el archivo M3U de playlist activa.
  */
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/liquidsoap_playlist.php';
 
 if (php_sapi_name() !== 'cli') {
     die('Este script solo se ejecuta desde CLI');
@@ -79,60 +80,14 @@ if ($modoReproduccion === 'aleatorio') {
 $crossfade = (int)($estacion['crossfade_seconds'] ?? 0);
 if ($crossfade < 1) $crossfade = 3;
 
-// ---- Generar M3U de playlist activa ----
-$mediaPath = defined('MEDIA_PATH') ? MEDIA_PATH : '/var/castpanel/media';
-$slug = $estacion['slug'];
-$activePlaylistId = $estacion['autodj_playlist_activa'];
-$playlistFile = "$mediaPath/$slug"; // default: directorio completo
-
-if ($activePlaylistId) {
-    // Obtener canciones de la playlist activa
-    $stmtSongs = $db->prepare(
-        "SELECT ruta_archivo FROM canciones WHERE estacion_id = ? AND playlist_id = ? AND activa = 1 ORDER BY orden ASC"
-    );
-    $stmtSongs->execute([$estacionId, $activePlaylistId]);
-    $songs = $stmtSongs->fetchAll(PDO::FETCH_COLUMN);
-
-    if (!empty($songs)) {
-        $m3uPath = "$mediaPath/$slug/active.m3u";
-        $m3uContent = "#EXTM3U\n";
-        foreach ($songs as $songPath) {
-            $m3uContent .= $songPath . "\n";
-        }
-        file_put_contents($m3uPath, $m3uContent);
-        $playlistFile = "$mediaPath/$slug/active.m3u";
-
-        // Obtener nombre de la playlist activa
-        $stmtPl = $db->prepare("SELECT nombre FROM playlists WHERE id = ?");
-        $stmtPl->execute([$activePlaylistId]);
-        $plName = $stmtPl->fetchColumn();
-        echo "Playlist activa: $plName (" . count($songs) . " canciones)\n";
-        echo "M3U generado: $m3uPath\n";
-    } else {
-        echo "Playlist activa sin canciones, usando directorio completo\n";
-    }
-} else {
-    // Sin playlist activa: intentar generar M3U con TODAS las canciones
-    $stmtSongs = $db->prepare(
-        "SELECT ruta_archivo FROM canciones WHERE estacion_id = ? AND activa = 1 ORDER BY orden ASC"
-    );
-    $stmtSongs->execute([$estacionId]);
-    $songs = $stmtSongs->fetchAll(PDO::FETCH_COLUMN);
-
-    if (!empty($songs)) {
-        $m3uPath = "$mediaPath/$slug/active.m3u";
-        $m3uContent = "#EXTM3U\n";
-        foreach ($songs as $songPath) {
-            $m3uContent .= $songPath . "\n";
-        }
-        file_put_contents($m3uPath, $m3uContent);
-        $playlistFile = "$mediaPath/$slug/active.m3u";
-        echo "Sin playlist activa, M3U con todas las canciones (" . count($songs) . ")\n";
-        echo "M3U generado: $m3uPath\n";
-    } else {
-        echo "Sin canciones en BD, usando directorio: $playlistFile\n";
-    }
+$m3uResult = castpanelWriteActivePlaylistM3u($estacion);
+if (!$m3uResult['success']) {
+    echo "Error: " . ($m3uResult['error'] ?? 'M3U') . "\n";
+    exit(1);
 }
+$playlistFile = $m3uResult['liquidsoap_uri'];
+echo "M3U generado: {$m3uResult['path']} ({$m3uResult['count']} canciones)\n";
+echo "Liquidsoap URI: $playlistFile\n";
 
 // ---- Bloque de salida ----
 if ($serverType === 'shoutcast_v1' || $serverType === 'shoutcast_v2' || $serverType === 'shoutcast_v25') {
@@ -215,7 +170,7 @@ $replacements = [
 $config = str_replace(array_keys($replacements), array_values($replacements), $template);
 
 // Directorio de salida
-$outputDir = '/etc/liquidsoap/stations';
+$outputDir = defined('LIQUIDSOAP_CONFIG_DIR') ? LIQUIDSOAP_CONFIG_DIR : '/var/castpanel/liquidsoap/stations';
 if (!is_dir($outputDir)) {
     @mkdir($outputDir, 0755, true);
 }

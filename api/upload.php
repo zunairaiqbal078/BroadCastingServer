@@ -120,6 +120,17 @@ for ($i = 0; $i < count($files['name']); $i++) {
         }
 
         $playlistId = ($_POST['playlist_id'] ?? null) ?: null;
+        // Uploads without a playlist only appear in Music Library, not in AutoDJ playlists
+        if (!$playlistId) {
+            $activePl = $estacion['autodj_playlist_activa'] ?? null;
+            if ($activePl) {
+                $playlistId = (int)$activePl;
+            } else {
+                $stmt = $db->prepare("SELECT id FROM playlists WHERE estacion_id = ? AND activa = 1 ORDER BY id ASC LIMIT 1");
+                $stmt->execute([$estacionId]);
+                $playlistId = (int)$stmt->fetchColumn() ?: null;
+            }
+        }
 
         // Obtener orden
         $orden = 0;
@@ -139,6 +150,11 @@ for ($i = 0; $i < count($files['name']); $i++) {
 
         if ($playlistId) {
             $db->prepare("UPDATE playlists SET total_canciones = total_canciones + 1 WHERE id = ?")->execute([$playlistId]);
+            if (empty($estacion['autodj_playlist_activa'])) {
+                $db->prepare('UPDATE estaciones SET autodj_playlist_activa = ? WHERE id = ?')
+                   ->execute([$playlistId, $estacionId]);
+                $estacion['autodj_playlist_activa'] = $playlistId;
+            }
         }
     }
 

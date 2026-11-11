@@ -221,17 +221,25 @@ function filterLog(tipo) {
     });
 }
 
-// Buscar en tabla
-function searchTable(inputId, tableId) {
-    const input = document.getElementById(inputId);
+// Buscar en tabla (soporta ID de input o valor directo en oninput)
+function searchTable(inputOrValue, tableId) {
     const table = document.getElementById(tableId);
-    if (!input || !table) return;
+    if (!table) return;
 
-    input.addEventListener('input', () => {
-        const filter = input.value.toLowerCase();
+    const input = typeof inputOrValue === 'string' ? document.getElementById(inputOrValue) : null;
+    if (input) {
+        input.addEventListener('input', () => {
+            const filter = input.value.toLowerCase();
+            table.querySelectorAll('tbody tr').forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+    } else {
+        const filter = String(inputOrValue ?? '').toLowerCase();
         table.querySelectorAll('tbody tr').forEach(row => {
             const text = row.textContent.toLowerCase();
             row.style.display = text.includes(filter) ? '' : 'none';
         });
-    });
+    }
 }

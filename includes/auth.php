@@ -68,6 +68,8 @@ function loginUser(string $username, string $password): array {
             $_SESSION['estacion_id'] = $estacion['id'];
             $_SESSION['estacion_nombre'] = $estacion['nombre'];
             $_SESSION['estacion_slug'] = $estacion['slug'];
+            require_once __DIR__ . '/provisioning.php';
+            castpanelClientAutoStartOnLogin($estacion);
         }
     }
 
@@ -120,6 +122,58 @@ function logout(): void {
     session_destroy();
     header('Location: ' . BASE_URL . '/index.php');
     exit;
+}
+
+/**
+ * Admin/reseller: open client panel as that station owner (Login as user).
+ */
+function castpanelAdminLoginAsCliente(int $clientUserId): bool {
+    if (!isLoggedIn() || $clientUserId <= 0) {
+        return false;
+    }
+    $rol = $_SESSION['user_rol'] ?? '';
+    if (!in_array($rol, ['admin', 'reseller'], true)) {
+        return false;
+    }
+
+    $db = getDB();
+    $stmt = $db->prepare("SELECT * FROM usuarios WHERE id = ? AND rol = 'cliente' AND activo = 1");
+    $stmt->execute([$clientUserId]);
+    $user = $stmt->fetch();
+    if (!$user) {
+        return false;
+    }
+    if ($rol === 'reseller' && (int)($user['reseller_id'] ?? 0) !== (int)$_SESSION['user_id']) {
+        return false;
+    }
+
+    if (!isset($_SESSION['admin_impersonator_id'])) {
+        $_SESSION['admin_impersonator_id'] = (int)$_SESSION['user_id'];
+        $_SESSION['admin_impersonator_rol'] = $rol;
+    }
+
+    $_SESSION['user_id'] = (int)$user['id'];
+    $_SESSION['user_username'] = $user['username'];
+    $_SESSION['user_nombre'] = $user['nombre'] ?: $user['username'];
+    $_SESSION['user_rol'] = 'cliente';
+    $_SESSION['user_email'] = $user['email'] ?? '';
+
+    $stmt = $db->prepare(
+        "SELECT id, nombre, slug FROM estaciones WHERE usuario_id = ? AND activa = 1 ORDER BY id ASC LIMIT 1"
+    );
+    $stmt->execute([$clientUserId]);
+    $est = $stmt->fetch();
+    if (!$est) {
+        unset($_SESSION['estacion_id'], $_SESSION['estacion_nombre'], $_SESSION['estacion_slug']);
+        return false;
+    }
+
+    $_SESSION['estacion_id'] = (int)$est['id'];
+    $_SESSION['estacion_nombre'] = $est['nombre'];
+    $_SESSION['estacion_slug'] = $est['slug'];
+    require_once __DIR__ . '/provisioning.php';
+    castpanelClientAutoStartOnLogin(['id' => (int)$est['id']]);
+    return true;
 }
 
 /**

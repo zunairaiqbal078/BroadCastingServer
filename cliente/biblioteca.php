@@ -364,7 +364,11 @@ try {
 <?php endforeach; ?>
 
 <script>
-searchTable('searchInput', 'tablaBiblioteca');
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof searchTable === 'function') {
+        searchTable('searchInput', 'tablaBiblioteca');
+    }
+});
 </script>
 
 <?php require_once __DIR__ . '/../includes/layout_footer.php'; ?>

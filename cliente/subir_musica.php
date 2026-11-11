@@ -54,10 +54,13 @@ $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStora
             <div class="form-group">
                 <label>Lista de Reproducción Destino</label>
                 <select name="playlist_id" id="uploadPlaylist" class="form-control">
-                    <option value="">-- Sin lista (Biblioteca general) --</option>
-                    <?php foreach ($playlists as $pl): ?>
-                        <option value="<?= $pl['id'] ?>"><?= htmlspecialchars($pl['nombre']) ?></option>
-                    <?php endforeach; ?>
+                    <?php if (empty($playlists)): ?>
+                        <option value="">-- Sin lista --</option>
+                    <?php else: ?>
+                        <?php foreach ($playlists as $i => $pl): ?>
+                            <option value="<?= $pl['id'] ?>" <?= $i === 0 ? 'selected' : '' ?>><?= htmlspecialchars($pl['nombre']) ?><?= !empty($pl['activa']) ? ' (Active)' : '' ?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </select>
             </div>
 

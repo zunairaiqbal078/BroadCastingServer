@@ -144,18 +144,7 @@ try {
             break;
 
         case 'delete':
-            deprovisionStation($estacion);
-            $db->prepare("DELETE FROM estaciones WHERE id = ?")->execute([$stationId]);
-            $mediaDir = MEDIA_PATH . '/' . $estacion['slug'];
-            $adsDir = ANUNCIOS_PATH . '/' . $estacion['slug'];
-            if (is_dir($mediaDir)) {
-                array_map('unlink', glob("$mediaDir/*"));
-                @rmdir($mediaDir);
-            }
-            if (is_dir($adsDir)) {
-                array_map('unlink', glob("$adsDir/*"));
-                @rmdir($adsDir);
-            }
+            deleteStationFully($estacion);
             echo json_encode(['success' => true, 'message' => 'Estacion eliminada y des-aprovisionada']);
             break;
 

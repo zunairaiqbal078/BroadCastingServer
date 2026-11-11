@@ -274,12 +274,35 @@ function getStreamStatus(array $estacion): array {
             break;
     }
 
+    $titulo = trim((string)($raw['titulo'] ?? ''));
+    if ($titulo === '' && !empty($raw['online'])) {
+        $titulo = castpanelLiquidsoapNowPlaying($estacion);
+    }
+    if ($titulo === '' && !empty($estacion['id'])) {
+        try {
+            $stmt = getDB()->prepare(
+                "SELECT titulo, artista FROM log_emision
+                 WHERE estacion_id = ? AND tipo = 'cancion'
+                 ORDER BY emitido_at DESC LIMIT 1"
+            );
+            $stmt->execute([(int)$estacion['id']]);
+            $row = $stmt->fetch();
+            if ($row && trim((string)($row['titulo'] ?? '')) !== '') {
+                $titulo = trim((string)$row['titulo']);
+                if (!empty($row['artista'])) {
+                    $titulo = trim($row['artista'] . ' - ' . $titulo, ' -');
+                }
+            }
+        } catch (Throwable $e) {
+            // ignore
+        }
+    }
     // Normalizar claves para que los callers funcionen con ambos formatos
     return [
         // Claves que usan live_stats.php, radio_stats.php, etc.
         'status'    => !empty($raw['online']) ? 'online' : 'offline',
         'listeners' => (int)($raw['oyentes'] ?? 0),
-        'title'     => $raw['titulo'] ?? '',
+        'title'     => $titulo,
         'bitrate'   => (int)($raw['bitrate'] ?? 0),
         'peak'      => (int)($raw['pico_oyentes'] ?? 0),
         'genre'     => $raw['genero'] ?? '',
@@ -287,7 +310,7 @@ function getStreamStatus(array $estacion): array {
         // Claves originales para backward compat
         'online'    => !empty($raw['online']),
         'oyentes'   => (int)($raw['oyentes'] ?? 0),
-        'titulo'    => $raw['titulo'] ?? '',
+        'titulo'    => $titulo,
         'pico_oyentes' => (int)($raw['pico_oyentes'] ?? 0),
     ];
 }
@@ -342,6 +365,141 @@ function countOnlineStations(array $estaciones): int {
     return $n;
 }
 
+/** Host path to Liquidsoap log for a station slug (readable by the web user when mode 644). */
+function castpanelLiquidsoapLogFile(string $slug): string {
+    $dir = defined('LIQUIDSOAP_LOG_DIR') ? (string)LIQUIDSOAP_LOG_DIR : '/var/log/liquidsoap';
+
+    return rtrim($dir, '/') . '/' . $slug . '.log';
+}
+
+function castpanelEnsureLiquidsoapLogReadable(string $slug): void {
+    $path = castpanelLiquidsoapLogFile($slug);
+    if ($path !== '' && is_readable($path)) {
+        return;
+    }
+    if (function_exists('castpanelCtl')) {
+        castpanelCtl('liquidsoap-log-chmod-' . $slug);
+    }
+}
+
+/** Read tail of Liquidsoap log (www-data must be able to read — castpanel-ctl fixes mode 644). */
+function castpanelLiquidsoapLogTail(string $slug, int $maxBytes = 65536): ?string {
+    castpanelEnsureLiquidsoapLogReadable($slug);
+    $path = castpanelLiquidsoapLogFile($slug);
+    if (!is_readable($path)) {
+        return null;
+    }
+    $size = @filesize($path);
+    if ($size === false || $size < 1) {
+        return null;
+    }
+    $read = (int)min($size, $maxBytes);
+    $fh = @fopen($path, 'rb');
+    if (!$fh) {
+        return null;
+    }
+    if ($size > $read) {
+        fseek($fh, $size - $read);
+    }
+    $chunk = fread($fh, $read);
+    fclose($fh);
+
+    return is_string($chunk) && $chunk !== '' ? $chunk : null;
+}
+
+/** Last decoded file URI from Liquidsoap log (“Prepared …”) — not affected by bad ID3 tags. */
+function castpanelLiquidsoapLastPreparedUri(string $slug): ?string {
+    $chunk = castpanelLiquidsoapLogTail($slug);
+    if ($chunk === null) {
+        return null;
+    }
+    if (!preg_match_all('/Prepared "(\/media\/[^"]+)"/', $chunk, $m)) {
+        return null;
+    }
+    $uri = end($m[1]);
+
+    return is_string($uri) && $uri !== '' ? $uri : null;
+}
+
+/**
+ * After skip, wait until log shows a new Prepared line (or timeout).
+ */
+function castpanelLiquidsoapWaitPreparedUri(string $slug, ?string $previousUri = null, float $timeoutSec = 2.5): ?string {
+    $deadline = microtime(true) + max(0.3, $timeoutSec);
+    $last = null;
+    do {
+        $uri = castpanelLiquidsoapLastPreparedUri($slug);
+        if ($uri !== null && ($previousUri === null || $uri !== $previousUri)) {
+            return $uri;
+        }
+        $last = $uri;
+        usleep(200000);
+    } while (microtime(true) < $deadline);
+
+    return $last;
+}
+
+/**
+ * Current track title from Liquidsoap telnet (when SHOUTcast SONGTITLE is empty).
+ */
+function castpanelLiquidsoapNowPlaying(array $estacion): string {
+    $slug = $estacion['slug'] ?? '';
+    if ($slug !== '') {
+        $uri = castpanelLiquidsoapLastPreparedUri($slug);
+        if ($uri !== null) {
+            require_once __DIR__ . '/autodj_player.php';
+            $tracks = castpanelActivePlaylistTracks($estacion);
+            $idx = castpanelTrackByUri($tracks, $uri);
+            if ($idx !== null) {
+                return $tracks[$idx]['display'];
+            }
+            $base = basename($uri);
+            $base = preg_replace('/^[0-9]+_[0-9]+_/', '', $base);
+            $base = preg_replace('/\.[^.]+$/', '', $base);
+
+            return str_replace('_', ' ', $base);
+        }
+    }
+    $port = (int)($estacion['puerto_telnet'] ?? 0);
+    if ($port <= 0) {
+        $port = (int)(defined('LIQUIDSOAP_TELNET_PORT') ? LIQUIDSOAP_TELNET_PORT : 1234) + (int)($estacion['id'] ?? 0);
+    }
+    if ($slug === '') {
+        return '';
+    }
+    $cmds = ["output_{$slug}.metadata", "music_{$slug}.metadata"];
+    foreach ($cmds as $cmd) {
+        $resp = liquidsoapCommand($cmd, $port);
+        if (!$resp) {
+            continue;
+        }
+        $artist = '';
+        if (preg_match('/artist="([^"]+)"/', $resp, $m)) {
+            $artist = trim($m[1]);
+        }
+        if (preg_match('/title="([^"]+)"/', $resp, $m)) {
+            $title = trim($m[1]);
+            if ($title !== '' && $artist !== '' && stripos($title, $artist) === false) {
+                return $artist . ' - ' . $title;
+            }
+            return $title;
+        }
+        if (preg_match('/filename="([^"]+)"/', $resp, $m)) {
+            $base = basename($m[1]);
+            $base = preg_replace('/^[0-9]+_[0-9]+_/', '', $base);
+            $base = preg_replace('/\.[^.]+$/', '', $base);
+            return str_replace('_', ' ', $base);
+        }
+        if (preg_match('#/media/[^\s"]+#', $resp, $m)) {
+            $base = basename($m[0]);
+            $base = preg_replace('/^[0-9]+_[0-9]+_/', '', $base);
+            $base = preg_replace('/\.[^.]+$/', '', $base);
+            return str_replace('_', ' ', $base);
+        }
+    }
+    return '';
+}
+
 /**
  * Enviar comando a Liquidsoap via telnet
  */
@@ -355,14 +513,19 @@ function liquidsoapCommand(string $command, int $port = null): ?string {
 
     $response = '';
     while (!feof($fp)) {
-        $line = fgets($fp, 1024);
-        if ($line === false || trim($line) === 'END') break;
+        $line = fgets($fp, 4096);
+        if ($line === false) {
+            break;
+        }
         $response .= $line;
+        if (preg_match('/^END\s*$/m', $response)) {
+            break;
+        }
     }
     fwrite($fp, "quit\n");
     fclose($fp);
 
-    return trim($response);
+    return trim(preg_replace('/\r?\nEND\s*$/', '', $response));
 }
 
 /**
@@ -420,6 +583,118 @@ function getEmisionLog(int $estacionId, int $limit = 50, ?string $tipo = null): 
         $stmt->execute($params);
         return $stmt->fetchAll();
     } catch (PDOException $e) { return []; }
+}
+
+/**
+ * SHOUTcast family server types
+ */
+function isShoutcastServerType(?string $serverType): bool {
+    return in_array($serverType ?? '', ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'], true);
+}
+
+/**
+ * Stream URL for in-panel HTML5 players (Quick Control, widgets preview).
+ * Uses the same host:port as the panel (e.g. :8080) and HTTP when the page is HTTP,
+ * so audio works on test VPS without SSL on :443.
+ */
+/**
+ * Panel base URL reachable from Liquidsoap (host network / Docker on same machine).
+ */
+function castpanelInternalPanelUrl(): string {
+    $port = 80;
+    try {
+        $stmt = getDB()->prepare("SELECT valor FROM configuracion WHERE clave = 'site_url'");
+        $stmt->execute();
+        $site = trim((string)$stmt->fetchColumn());
+        if ($site !== '' && ($u = parse_url($site))) {
+            $port = (int)($u['port'] ?? 0);
+            if ($port <= 0) {
+                $port = (($u['scheme'] ?? 'http') === 'https') ? 443 : 80;
+            }
+        }
+    } catch (Throwable $e) {
+        // ignore
+    }
+    if ($port === 443) {
+        return 'http://127.0.0.1';
+    }
+    return $port === 80 ? 'http://127.0.0.1' : ('http://127.0.0.1:' . $port);
+}
+
+/** Scheme + host (+ port) for links shown to users (players, M3U, DJ help text). */
+function castpanelPublicPageOrigin(): string {
+    if (!empty($_SERVER['HTTP_HOST'])) {
+        $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+
+        return $scheme . '://' . $_SERVER['HTTP_HOST'];
+    }
+    try {
+        $stmt = getDB()->prepare("SELECT valor FROM configuracion WHERE clave = 'site_url'");
+        $stmt->execute();
+        $site = trim((string)$stmt->fetchColumn());
+        if ($site !== '') {
+            return rtrim($site, '/');
+        }
+    } catch (Throwable $e) {
+        // ignore
+    }
+    $host = defined('SSL_DOMAIN') ? (string)SSL_DOMAIN : 'localhost';
+
+    return 'http://' . $host;
+}
+
+function castpanelStreamPlaybackUrl(array $estacion): string {
+    $origin = castpanelPublicPageOrigin();
+    $slug = rawurlencode($estacion['slug'] ?? '');
+    if (isShoutcastServerType($estacion['server_type'] ?? '')) {
+        return "{$origin}/shoutcast/{$slug}";
+    }
+
+    return "{$origin}/live/{$slug}";
+}
+
+/** Public hostname for encoders (no panel port suffix like :8080). */
+function castpanelPublicHost(): string {
+    $host = '';
+    if (defined('SSL_DOMAIN') && SSL_DOMAIN !== '' && SSL_DOMAIN !== '__DOMAIN__') {
+        $host = (string)SSL_DOMAIN;
+    }
+    if ($host === '' && defined('SERVER_IP') && SERVER_IP !== '') {
+        $host = (string)SERVER_IP;
+    }
+    if ($host === '' && !empty($_SERVER['HTTP_HOST'])) {
+        $host = (string)$_SERVER['HTTP_HOST'];
+    }
+    $host = preg_replace('/:\d+$/', '', trim($host));
+
+    return $host !== '' ? $host : 'localhost';
+}
+
+/** DJ Control Center login URL (Apache vhost on DJ_PORT, default 2080 — not the cliente panel port). */
+function castpanelDjPortalUrl(): string {
+    $djPort = defined('DJ_PORT') ? (int)DJ_PORT : 2080;
+    $host = castpanelPublicHost();
+    $scheme = 'http';
+    if (defined('SSL_ENABLED') && SSL_ENABLED && $djPort === 443) {
+        $scheme = 'https';
+    }
+    try {
+        $stmt = getDB()->prepare("SELECT valor FROM configuracion WHERE clave = 'dj_portal_scheme'");
+        $stmt->execute();
+        $cfg = strtolower(trim((string)$stmt->fetchColumn()));
+        if ($cfg === 'https' || $cfg === 'http') {
+            $scheme = $cfg;
+        }
+    } catch (Throwable $e) {
+        // optional
+    }
+    $base = $scheme . '://' . $host;
+    if ($djPort !== 80 && $djPort !== 443) {
+        $base .= ':' . $djPort;
+    }
+
+    // Apache DJ vhost uses DocumentRoot = PANEL_DIR/dj — login is at :2080/ not :2080/dj/
+    return rtrim($base, '/') . '/';
 }
 
 /**

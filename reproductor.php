@@ -33,12 +33,7 @@ $bitrate   = (int)($estacion['bitrate'] ?? 128);
 $formato   = strtoupper($estacion['formato'] ?? 'MP3');
 $serverType = $estacion['server_type'] ?? 'icecast';
 
-// URL del stream via reverse proxy HTTPS
-if (in_array($serverType, ['shoutcast_v1', 'shoutcast_v2', 'shoutcast_v25'])) {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/shoutcast/' . $slug;
-} else {
-    $streamUrl = 'https://' . SSL_DOMAIN . '/live/' . $slug;
-}
+$streamUrl = castpanelStreamPlaybackUrl($estacion);
 
 // Logo
 $logoFile = $estacion['logo'] ?? '';

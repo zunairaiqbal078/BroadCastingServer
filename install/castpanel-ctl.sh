@@ -13,6 +13,7 @@
 #
 #   start-shoutcast-<slug>   stop-shoutcast-<slug>
 #   start-liquidsoap-<slug>  stop-liquidsoap-<slug>  restart-liquidsoap-<slug>
+#   liquidsoap-status-<slug>
 #   start-icecast            stop-icecast            update-shoutcast-proxy
 #   firewall_open <port[-port]/tcp|udp | http|https|ssh>
 #   firewall_close <port[-port]/tcp|udp>   firewall_reload   firewall_info
@@ -25,7 +26,7 @@
 IPC_DIR="/var/run/castpanel"
 WEB_USER=""
 LIQUIDSOAP_IMAGE="savonet/liquidsoap:v2.2.5"
-LIQUIDSOAP_CONF_DIR="/etc/liquidsoap/stations"
+LIQUIDSOAP_CONF_DIR="/var/castpanel/liquidsoap/stations"
 LIQUIDSOAP_LOG_DIR="/var/log/liquidsoap"
 MEDIA_DIR="/var/castpanel/media"
 ANUNCIOS_DIR="/var/castpanel/anuncios"
@@ -117,7 +118,9 @@ start_liquidsoap() {
     [ -f "$conf" ] || { fail "Liquidsoap config not found: $conf"; return; }
     command -v docker >/dev/null 2>&1 || { fail "docker is not installed"; return; }
     mkdir -p "$MEDIA_DIR/$slug" "$ANUNCIOS_DIR/$slug" "$LIQUIDSOAP_LOG_DIR"
-    chmod 1777 "$LIQUIDSOAP_LOG_DIR"          # container user must be able to write its log
+    chmod 1777 "$LIQUIDSOAP_LOG_DIR"          # sticky: container user can create its own log file
+    # Do not truncate the log as root — Liquidsoap (uid 10000) cannot open root-owned files here.
+    rm -f "$LIQUIDSOAP_LOG_DIR/$slug.log"
     docker rm -f "$name" >/dev/null 2>&1
     # host network: reaches SHOUTcast/Icecast on 127.0.0.1, exposes harbor + telnet ports
     if ! out=$(docker run -d --name "$name" --restart unless-stopped --network host \
@@ -129,6 +132,8 @@ start_liquidsoap() {
         fail "docker run failed: $out"; return
     fi
     sleep 4   # let Liquidsoap parse the config; a bad config exits right away
+    # Liquidsoap creates the log as uid 10000; panel (www-data) needs read for “Prepared …” track detection.
+    [ -f "$LIQUIDSOAP_LOG_DIR/$slug.log" ] && chmod 644 "$LIQUIDSOAP_LOG_DIR/$slug.log" 2>/dev/null || true
     state=$(docker inspect -f '{{.State.Running}}' "$name" 2>/dev/null)
     if [ "$state" = "true" ]; then
         ok "\"output\":\"$name\""
@@ -142,7 +147,33 @@ stop_liquidsoap() {
     ok
 }
 
+liquidsoap_log_chmod() {
+    local slug="$1"
+    [ -f "$LIQUIDSOAP_LOG_DIR/$slug.log" ] && chmod 644 "$LIQUIDSOAP_LOG_DIR/$slug.log" 2>/dev/null || true
+    ok
+}
+
+status_liquidsoap() {
+    local slug="$1" name="liquidsoap-$1"
+    local state
+    state=$(docker inspect -f '{{.State.Running}}' "$name" 2>/dev/null) || state="false"
+    if [ "$state" = "true" ]; then
+        ok "\"running\":true,\"container\":\"$name\""
+    else
+        ok "\"running\":false,\"container\":\"$name\""
+    fi
+}
+
 # ---------- Apache ----------
+update_shoutcast_proxy() {
+    local inc="/etc/apache2/shoutcast-proxy-rules.inc"
+    [ -d /etc/httpd ] && inc="/etc/httpd/shoutcast-proxy-rules.inc"
+  if [ -f /tmp/castpanel-shoutcast-proxy.conf ]; then
+        install -m 644 /tmp/castpanel-shoutcast-proxy.conf "$inc"
+    fi
+    reload_apache
+}
+
 reload_apache() {
     local svc ctl
     svc=$(resolve_service httpd)
@@ -227,9 +258,11 @@ handle() {
         start-liquidsoap-*)  s="${cmd#start-liquidsoap-}";  valid_slug "$s" && start_liquidsoap "$s" || fail "invalid station: $s" ;;
         stop-liquidsoap-*)   s="${cmd#stop-liquidsoap-}";   valid_slug "$s" && stop_liquidsoap "$s"  || fail "invalid station: $s" ;;
         restart-liquidsoap-*) s="${cmd#restart-liquidsoap-}"; valid_slug "$s" && start_liquidsoap "$s" || fail "invalid station: $s" ;;
+        liquidsoap-status-*) s="${cmd#liquidsoap-status-}"; valid_slug "$s" && status_liquidsoap "$s" || fail "invalid station: $s" ;;
+        liquidsoap-log-chmod-*) s="${cmd#liquidsoap-log-chmod-}"; valid_slug "$s" && liquidsoap_log_chmod "$s" || fail "invalid station: $s" ;;
         start-icecast)       service_action start icecast ;;
         stop-icecast)        service_action stop icecast ;;
-        update-shoutcast-proxy) reload_apache ;;
+        update-shoutcast-proxy) update_shoutcast_proxy ;;
         firewall_open)       firewall_open "$arg" ;;
         firewall_close)      firewall_close "$arg" ;;
         firewall_reload)     firewall_reload ;;
@@ -265,9 +298,12 @@ while true; do
     [ -d "$IPC_DIR" ] || prepare_ipc
     if [ -f "$IPC_DIR/command" ]; then
         sleep 0.1                                   # let PHP finish writing the file
-        line=$(head -c 512 "$IPC_DIR/command" | tr -d '\r' | head -n 1)
+        line=$(head -c 512 "$IPC_DIR/command" 2>/dev/null | tr -d '\r' | head -n 1)
         rm -f "$IPC_DIR/command"
         read -r cmd arg extra <<< "$line"
+        if [ -z "$cmd" ]; then
+            continue
+        fi
         if [ -n "$extra" ]; then
             fail "too many arguments"
         else
