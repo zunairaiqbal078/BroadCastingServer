@@ -1925,3 +1925,127 @@ Memorija
 Prikaži detalje
 Brze akcije
 {n}% · {n} jezgara
+Sačuvaj izmene
+Nova lozinka: {x}
+Neispravan email.
+Sesija je istekla, osvežite stranicu.
+URL mora počinjati sa http:// ili https://
+Snimak je obrisan.
+Snimak nije moguće obrisati.
+Obrisati ovaj snimak?
+Raspored je sačuvan.
+Relej '{x}' je kreiran.
+Rotacija '{x}' je kreirana.
+Jezik panela
+Pretraži jezik...
+Ovaj jezik važi za vaš panel. Svaki korisnik može izabrati svoj jezik.
+Koristi i kao podrazumevani jezik (stranica za prijavu i novi nalozi)
+Primeni
+Jezik
+Dobro došli, {x}
+Upravljaj AutoDJ-om
+Otpremi muziku
+Sada svira
+▶ Slušaj
+Slušaoci sada
+Vrh 24h: {n}
+{n} reklama u biblioteci
+Folder u etru
+{n} pesama
+{n} pesma
+od {n}
+DJ nalozi
+Prilagodi plejer
+SSL linkovi
+Status radija
+Istorija pesama
+— stanje strima i slušaoci. Ovde pokrenite/zaustavite celu stanicu (ne pojedinačne pesme).
+Nema informacija o numeri
+Sada svira: {x}
+Nedavno puštene pesme na stanici (ažurira se samo).
+Još nema pesama — pokrenite AutoDJ i pustite muziku.
+Pokreni AutoDJ
+Izmeni detalje
+Plejlista u etru
+Pusti ovu listu
+Promenite folder ovde — puštaju se samo numere izabrane liste.
+Ne slušate
+● Slušate (plejer Status radija)
+▶ pušta/pauzira plejer
+— jedan strim za celu stranicu.
+— pokrenite/zaustavite robota i vidite šta svira. Lista radi sama. Koristite
+samo za slušaoce.
+U etru
+Van etra
+Svira sada
+{n} u folderu · {n} ukupno
+Muzički folderi
+Podešavanja AutoDJ
+Raspored
+Rotacija foldera
+Ime novog foldera
+Napravi folder
+Pusti u etar
+Ovaj folder je prazan.
+Pretraži pesme ili izvođače…
+Kad se završi poslednja pesma, AutoDJ kreće folder ispočetka.
+Napravite folder levo i otpremite muziku u njega.
+Još nema foldera — napravite ga iznad.
+Izvor muzike
+…ili napravite novi folder
+Ime foldera
+— Nijedan (tišina) —
+Izaberite folder i enkoder i pritisnite
+Sačuvaj izmene
+— AutoDJ ga odmah pušta u petlji, bez restarta stanice.
+Kodiranje strima
+Radi svuda
+Bolji zvuk pri niskom bitrate-u
+Vaš paket dozvoljava do {n} kbps.
+Reprodukcija
+Režim reprodukcije
+Normalno (redosled foldera)
+Nasumično
+Strogo redom
+Isključeno
+{n} sekundi
+Nazivi pesama
+Prikaži
+Sakrij
+Informacije o stanici
+Naziv radija
+Veb sajt
+DJ uživo
+DJ port (automatski)
+DJ-evi se povezuju ovde; zvuk uživo zamenjuje AutoDJ dok se ne odjave.
+Snimaj emisije uživo
+Kvalitet snimka
+Izmene važe čim sačuvate.
+Server / Host
+DJ kontrolni centar
+Vidžet uživo
+Pokreni radio
+sluša
+Uživo — podaci za povezivanje
+promeni
+Protokol
+Lozinka za mobilne aplikacije
+Kako emitovati
+Poruka stanice
+Alati stanice
+Otvorite svoj program
+— RadioCaster, BUTT, SAM, Mixxx ili mobilna aplikacija.
+Izaberite SHOUTcast v1
+kao tip servera (čak i ako stanica koristi SHOUTcast v2 ili Icecast).
+Unesite server, port i lozinku
+sa kartice levo.
+— vaša emisija uživo odmah zamenjuje AutoDJ, koji se vraća kad se odjavite.
+Pokreni
+Zaustavi
+Restartuj
+Pesme
+Prostor
+Statistika
+Da
+Žanr
+AutoDJ je isključen

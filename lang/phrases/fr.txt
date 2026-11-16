@@ -1925,3 +1925,127 @@ Mémoire
 Voir les détails
 Accès rapides
 {n}% · {n} cœurs
+Enregistrer les modifications
+Nouveau mot de passe : {x}
+E-mail invalide.
+Session expirée, rechargez la page.
+L'URL doit commencer par http:// ou https://
+Enregistrement supprimé.
+Impossible de supprimer l'enregistrement.
+Supprimer cet enregistrement ?
+Programmation enregistrée.
+Relais '{x}' créé.
+Rotation '{x}' créée.
+Langue du panneau
+Rechercher une langue...
+Cette langue s'applique à votre panneau. Chaque utilisateur peut choisir sa propre langue.
+Utiliser aussi comme langue par défaut (page de connexion et nouveaux comptes)
+Appliquer
+Langue
+Bienvenue, {x}
+Gérer l'AutoDJ
+Téléverser de la musique
+En cours de lecture
+▶ Écouter
+Auditeurs maintenant
+Pic 24h : {n}
+{n} annonces dans la bibliothèque
+Dossier à l'antenne
+{n} titres
+{n} titre
+sur {n}
+Comptes DJ
+Personnaliser le lecteur
+Liens SSL
+État de la radio
+Historique des titres
+— état du flux et auditeurs. Démarrez/arrêtez toute la station ici (pas les titres).
+Aucune info de titre
+En cours : {x}
+Titres récents de votre station (mise à jour automatique).
+Aucun titre enregistré — démarrez l'AutoDJ et lancez la musique.
+Démarrer l'AutoDJ
+Modifier les détails
+Playlist à l'antenne
+Lire cette liste
+Changez de dossier ici — seuls les titres de la liste choisie passent à l'antenne.
+Pas d'écoute
+● Écoute (lecteur État de la radio)
+▶ lit/met en pause le lecteur
+— un seul flux pour toute la page.
+— démarrez/arrêtez le robot et voyez ce qui passe. La liste tourne seule. Utilisez
+uniquement pour les auditeurs.
+À l'antenne
+Hors antenne
+En cours
+{n} dans le dossier · {n} au total
+Dossiers musicaux
+Réglages de l'AutoDJ
+Programmation
+Rotation de dossiers
+Nom du nouveau dossier
+Créer un dossier
+Mettre à l'antenne
+Ce dossier est vide.
+Rechercher titres ou artistes…
+À la fin du dernier titre, l'AutoDJ reprend le dossier depuis le début.
+Créez un dossier à gauche, puis téléversez-y de la musique.
+Aucun dossier — créez-en un ci-dessus.
+Source musicale
+…ou créez un nouveau dossier
+Nom du dossier
+— Aucun (silence) —
+Choisissez un dossier et l'encodeur, puis cliquez sur
+Enregistrer les modifications
+— l'AutoDJ le joue aussitôt en boucle, sans redémarrer la station.
+Encodage du flux
+Fonctionne partout
+Meilleur son à faible débit
+Votre forfait autorise jusqu'à {n} kbps.
+Lecture
+Mode de lecture
+Normal (ordre du dossier)
+Aléatoire
+Séquentiel strict
+Désactivé
+{n} secondes
+Titres des morceaux
+Afficher
+Masquer
+Infos de la station
+Titre de la radio
+Site web
+DJ en direct
+Port DJ (automatique)
+Les DJ se connectent ici ; le direct remplace l'AutoDJ jusqu'à leur déconnexion.
+Enregistrer les émissions en direct
+Qualité d'enregistrement
+Les modifications s'appliquent dès l'enregistrement.
+Serveur / Hôte
+Centre de contrôle DJ
+Widget en direct
+Démarrer la radio
+à l'écoute
+Passer en direct — infos de connexion
+modifier
+Protocole
+Mot de passe des applis mobiles
+Comment diffuser
+Message de la station
+Outils de la station
+Ouvrez votre logiciel
+— RadioCaster, BUTT, SAM, Mixxx ou une appli mobile.
+Choisissez SHOUTcast v1
+comme type de serveur (même si la station utilise SHOUTcast v2 ou Icecast).
+Saisissez le serveur, le port et le mot de passe
+depuis la carte de gauche.
+— votre direct remplace aussitôt l'AutoDJ, qui revient à la déconnexion.
+Démarrer
+Arrêter
+Redémarrer
+Titres
+Stockage
+Statistiques
+Oui
+Genre
+L'AutoDJ est arrêté

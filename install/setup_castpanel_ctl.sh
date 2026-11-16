@@ -48,6 +48,7 @@ LIQUIDSOAP_IMAGE="${LIQUIDSOAP_IMAGE:-savonet/liquidsoap:v2.2.5}"
 LIQUIDSOAP_CONF_DIR="${LIQUIDSOAP_CONF_DIR:-/var/castpanel/liquidsoap/stations}"
 MEDIA_DIR="${MEDIA_DIR:-/var/castpanel/media}"
 ANUNCIOS_DIR="${ANUNCIOS_DIR:-/var/castpanel/anuncios}"
+RECORDINGS_DIR="$PANEL_DIR/storage"
 CONFEOF
 else
     if grep -q '^LIQUIDSOAP_CONF_DIR=' /etc/castpanel/ctl.conf; then

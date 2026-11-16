@@ -228,8 +228,11 @@ function provisionStation(int $estacionId): array {
             } else {
                 $log[] = 'AVISO: SHOUTcast config: ' . ($gen['error'] ?? 'unknown');
             }
-            addShoutcastProxyRule($estacion['slug'], $puertoStream);
-            $log[] = "Proxy Apache configurado: /shoutcast/{$estacion['slug']}";
+            if (!castpanelSyncShoutcastProxyWithRetry(3) || !castpanelProxyIncludesSlug($estacion['slug'])) {
+                $log[] = 'ERROR: Proxy Apache no sincronizado (reintento al iniciar estación)';
+            } else {
+                $log[] = "Proxy Apache configurado: /shoutcast/{$estacion['slug']}";
+            }
         }
 
         // 4. Playlist por defecto (antes de Liquidsoap — active.m3u la necesita)
@@ -273,6 +276,11 @@ function provisionStation(int $estacionId): array {
                     $log[] = 'AVISO: No se pudo iniciar la estación: ' . ($startResult['error'] ?? 'error');
                 }
             }
+        }
+
+        $estacion = loadStationWithPackage($estacionId) ?: $estacion;
+        if (isShoutcastType($estacion['server_type'] ?? '') && !castpanelEnsureStationStreamReady($estacion)) {
+            $log[] = 'ERROR: El stream /shoutcast/' . $estacion['slug'] . ' no respondió — ejecute sync proxy en admin';
         }
 
         return ['success' => true, 'log' => $log, 'puerto' => $puertoStream, 'telnet' => $puertoTelnet];
@@ -501,6 +509,11 @@ function generateLiquidsoapConfig(array $estacion): array {
     $bitrate = $estacion['bitrate'] ?: 128;
     $samplerate = $estacion['samplerate'] ?: 44100;
     $codec = $estacion['codec'] ?: 'mp3';
+    // SHOUTcast only carries MP3/AAC: an Ogg setting (from a package or an
+    // older form) would leave a new station silent, so fall back to MP3.
+    if (isShoutcastType($estacion['server_type'] ?? '') && !in_array($codec, ['mp3', 'aac'], true)) {
+        $codec = 'mp3';
+    }
     $crossfade = $estacion['crossfade_seconds'] ?? 0;
 
     // Rutas dentro del contenedor Docker (los volúmenes montan host→contenedor):
@@ -518,8 +531,11 @@ function generateLiquidsoapConfig(array $estacion): array {
     $playMode = ($modoRep === 'aleatorio') ? 'randomize' : 'normal';
 
     // Construir bloque de encoding según codec
+    // HE-AAC v2 only works up to ~48 kbps and HE-AAC up to ~64 kbps; asking
+    // fdkaac for more stops Liquidsoap, so pick the AAC profile by bitrate.
+    $aacProfile = $bitrate <= 48 ? 'mpeg4_he_aac_v2' : ($bitrate <= 64 ? 'mpeg4_he_aac' : 'mpeg4_aac_lc');
     $encodingBlock = match($codec) {
-        'aac' => "%fdkaac(channels=2, samplerate=$samplerate, bitrate=$bitrate, afterburner=true, aot=\"mpeg4_he_aac_v2\")",
+        'aac' => "%fdkaac(channels=2, samplerate=$samplerate, bitrate=$bitrate, afterburner=true, aot=\"$aacProfile\")",
         'ogg' => "%vorbis(channels=2, samplerate=$samplerate, quality=0.6)",
         default => "%mp3(bitrate=$bitrate, samplerate=$samplerate, stereo=true)",
     };
@@ -588,9 +604,11 @@ settings.log.level.set(3)
 # === FUENTES DE AUDIO ===
 
 # Playlist principal (solo canciones de la playlist activa — active.m3u)
+# loop=true: after the last song the list starts again from the top, forever
 music_src = playlist(
     id="music_{$slug}",
-    mode="{$playMode}",
+    mode="normal",   # order comes from active.m3u (the panel shuffles it in shuffle mode, and builds rotations)
+    loop=true,
     reload=10,
     reload_mode="watch",
     "{$playlistUri}"
@@ -604,31 +622,40 @@ def m3u_stream_meta(m) =
 end
 music_src = map_metadata(m3u_stream_meta, music_src)
 
-# Anuncios (spots publicitarios)
+# Anuncios (spots publicitarios). The panel writes the ads allowed right now
+# (Schedule Ads) to active_ads.m3u and "<songs between blocks> <ads per block>"
+# to ads.conf; both are re-read without a restart.
 ads_src = playlist(
     id="ads_{$slug}",
     mode="randomize",
-    reload=30,
-    reload_mode="rounds",
-    "$anunciosDir"
+    reload_mode="watch",
+    "{$anunciosDir}/active_ads.m3u"
 )
+def ads_conf(i, dflt) =
+    p = "{$anunciosDir}/ads.conf"
+    parts = if file.exists(p) then string.split(separator=" ", string.trim(file.contents(p))) else [] end
+    int_of_string(default=dflt, list.nth(default=string_of(dflt), parts, i))
+end
 
 # Silencio como fallback final (tono a -50dB para indicar stream activo)
 silence = blank(id="silence_{$slug}")
 
 # === PROCESAMIENTO ===
 
-# Envolver fuentes fallibles con fallback a silencio
-# Esto evita que un directorio vacio detenga toda la cadena
-music = fallback(id="music_safe_{$slug}", track_sensitive=false, [music_src, silence])
-ads = fallback(id="ads_safe_{$slug}", track_sensitive=false, [ads_src, silence])
-
-# Insertar anuncios cada 5 canciones
+# Insertar anuncios cada 5 canciones.
+# rotate() only uses sources that are ready, so with no ads it just keeps
+# playing music. Silence must NOT be inside the rotation: blank() is one
+# endless track, so once rotate switched to it (e.g. an empty ads folder)
+# the playlist never came back and the station went silent after a song.
 radio = rotate(
     id="radio_{$slug}",
-    weights=[5, 1],
-    [music, ads]
+    weights=[{ads_conf(0, 5)}, {ads_conf(1, 1)}],
+    [music_src, ads_src]
 )
+
+# Silence only while nothing is ready (empty folder, next song loading);
+# track_sensitive=false switches back to music as soon as it is ready.
+radio = fallback(id="music_safe_{$slug}", track_sensitive=false, [radio, silence])
 
 LIQ;
 
@@ -687,12 +714,32 @@ live_dj = input.harbor(
 $harborAuthBlock
 )
 
-# DJ en vivo tiene prioridad sobre AutoDJ
+# Relay Redirect: the panel writes the URL to relay now into relay.url
+# (empty = no relay). Checked every 5 s; no restart needed.
+def relay_url() =
+    p = "/media/relay.url"
+    if file.exists(p) then string.trim(file.contents(p)) else "" end
+end
+relay = input.http(id="relay_{$slug}", start=false, poll_delay=5., relay_url)
+relay_current = ref("")
+thread.run(every=5., fun () -> begin
+    u = relay_url()
+    if u != relay_current() then
+        relay_current := u
+        relay.stop()
+        if u != "" then
+            log("Relay: " ^ u)
+            relay.start()
+        end
+    end
+end)
+
+# Live DJ first, then a scheduled relay, then AutoDJ
 radio = fallback(
     id="fallback_{$slug}",
     track_sensitive=false,
-    transitions=[fun(a,b) -> b, fun(a,b) -> b],
-    [live_dj, radio, silence]
+    transitions=[fun(a,b) -> b, fun(a,b) -> b, fun(a,b) -> b],
+    [live_dj, relay, radio, silence]
 )
 
 LIQ;
@@ -718,6 +765,29 @@ end
 radio.on_metadata(on_metadata)
 
 LIQ;
+
+    // "Record live shows" (Manage AutoDJ): one MP3 per live DJ session in
+    // /recordings (= storage/<slug>/recordings, listed under DJ Shows)
+    if (!empty($estacion['grabar_dj'])) {
+        $recBitrate = in_array((int)($estacion['calidad_grabacion'] ?? 320), [128, 192, 256, 320], true) ? (int)$estacion['calidad_grabacion'] : 320;
+        $config .= <<<LIQ
+
+# Grabación de shows DJ en vivo (un archivo por sesión, nombre = fecha/hora de inicio)
+def rec_path() =
+    t = time.local()
+    def p2(n) = if n < 10 then "0#{n}" else "#{n}" end end
+    "/recordings/#{t.year}-#{p2(t.month)}-#{p2(t.day)}_#{p2(t.hour)}-#{p2(t.min)}-#{p2(t.sec)}.mp3"
+end
+output.file(
+    id="rec_{$slug}",
+    %mp3(bitrate=$recBitrate, samplerate=44100, stereo=true),
+    fallible=true,
+    rec_path,
+    live_dj
+)
+
+LIQ;
+    }
 
     $config .= <<<LIQ
 
@@ -969,6 +1039,11 @@ function createAccountWithStation(array $params): array {
 
         // Aprovisionar estación
         $provision = provisionStation($stationId);
+        $estFull = loadStationWithPackage($stationId);
+        $streamReady = $estFull ? castpanelEnsureStationStreamReady($estFull) : false;
+        if (!$streamReady && !empty($provision['log'])) {
+            $provision['log'][] = 'AVISO: Stream URL /shoutcast/' . $slug . ' no verificado';
+        }
 
         return [
             'success' => true,
@@ -980,6 +1055,7 @@ function createAccountWithStation(array $params): array {
             'source_password' => $sourcePass,
             'puerto' => $provision['puerto'] ?? null,
             'provision_log' => $provision['log'] ?? [],
+            'stream_ready' => $streamReady,
         ];
 
     } catch (Exception $e) {
@@ -1189,6 +1265,116 @@ function stopShoutcastService(array $estacion): array {
 }
 
 /**
+ * Path to generated Apache ProxyPass rules for /shoutcast/{slug}.
+ */
+function castpanelShoutcastProxyIncPath(): string {
+    if (is_dir('/etc/apache2')) {
+        return '/etc/apache2/shoutcast-proxy-rules.inc';
+    }
+    return '/etc/httpd/shoutcast-proxy-rules.inc';
+}
+
+/** Station count from the generated proxy include header. */
+function castpanelProxyIncStationCount(): int {
+    $inc = castpanelShoutcastProxyIncPath();
+    if (!is_readable($inc)) {
+        return 0;
+    }
+    clearstatcache(true, $inc);
+    if (preg_match('/# Total estaciones:\s*(\d+)/', (string)file_get_contents($inc), $m)) {
+        return (int)$m[1];
+    }
+    return 0;
+}
+
+/** Whether the live proxy include contains a rule for this station slug. */
+function castpanelProxyIncludesSlug(string $slug): bool {
+    $slug = preg_replace('/[^a-z0-9\-]/', '', strtolower($slug));
+    if ($slug === '') {
+        return false;
+    }
+    $inc = castpanelShoutcastProxyIncPath();
+    if (!is_readable($inc)) {
+        return false;
+    }
+    clearstatcache(true, $inc);
+  $content = (string)file_get_contents($inc);
+    return str_contains($content, "ProxyPass /shoutcast/$slug ");
+}
+
+/** Quick check that the panel can reach the proxied stream (not 404). */
+function castpanelStreamProxyHttpOk(string $slug): bool {
+    $slug = preg_replace('/[^a-z0-9\-]/', '', strtolower($slug));
+    if ($slug === '' || !function_exists('curl_init')) {
+        return false;
+    }
+    $url = 'http://127.0.0.1:8080/shoutcast/' . $slug;
+    $ch = curl_init($url);
+    if ($ch === false) {
+        return false;
+    }
+    curl_setopt_array($ch, [
+        CURLOPT_NOBODY => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 8,
+        CURLOPT_CONNECTTIMEOUT => 4,
+        CURLOPT_FOLLOWLOCATION => false,
+    ]);
+    curl_exec($ch);
+    $code = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    return $code >= 200 && $code < 400;
+}
+
+/**
+ * Regenerate proxy rules and verify the station slug is present (retries on failure).
+ */
+function castpanelSyncShoutcastProxyWithRetry(int $maxAttempts = 3): bool {
+    $maxAttempts = max(1, $maxAttempts);
+    for ($i = 0; $i < $maxAttempts; $i++) {
+        if (updateShoutcastProxyConfig()) {
+            return true;
+        }
+        usleep(400000);
+    }
+    return false;
+}
+
+/**
+ * After create/start: Apache must expose /shoutcast/{slug} or players show errors with AutoDJ online.
+ */
+function castpanelEnsureStationStreamReady(array $estacion): bool {
+    $slug = (string)($estacion['slug'] ?? '');
+    if ($slug === '' || !isShoutcastType($estacion['server_type'] ?? '')) {
+        return true;
+    }
+
+    for ($attempt = 0; $attempt < 4; $attempt++) {
+        if (!castpanelProxyIncludesSlug($slug)) {
+            if (!castpanelSyncShoutcastProxyWithRetry(2)) {
+                usleep(600000);
+                continue;
+            }
+            clearstatcache(true, castpanelShoutcastProxyIncPath());
+        }
+        if (!castpanelProxyIncludesSlug($slug)) {
+            continue;
+        }
+        for ($h = 0; $h < 6; $h++) {
+            if (castpanelStreamProxyHttpOk($slug)) {
+                return true;
+            }
+            usleep(500000);
+        }
+        // Apache rule exists — /shoutcast/{slug} will not 404; SHOUTcast may still be starting.
+        return true;
+    }
+
+    error_log('CastPanel: stream proxy not ready for slug ' . $slug);
+    return false;
+}
+
+/**
  * Regenerar reglas ProxyPass SHOUTcast e instalar vía castpanel-ctl (root escribe en /etc/apache2).
  */
 function updateShoutcastProxyConfig(): bool {
@@ -1218,18 +1404,35 @@ function updateShoutcastProxyConfig(): bool {
         $content .= "ProxyPassReverse /shoutcast/$slug http://127.0.0.1:$port/stream/1/\n\n";
     }
 
-    $tmpFile = '/tmp/castpanel-shoutcast-proxy.conf';
+    $ipcDir = '/var/run/castpanel';
+    if (!is_dir($ipcDir)) {
+        @mkdir($ipcDir, 0755, true);
+    }
+    $tmpFile = $ipcDir . '/shoutcast-proxy-pending.conf';
     if (@file_put_contents($tmpFile, $content) === false) {
-        error_log("CastPanel: No se pudo escribir $tmpFile");
-        return false;
+        $tmpFile = '/tmp/castpanel-shoutcast-proxy.conf';
+        if (@file_put_contents($tmpFile, $content) === false) {
+            error_log("CastPanel: No se pudo escribir rules proxy ($tmpFile)");
+            return false;
+        }
     }
     @chmod($tmpFile, 0644);
+
+    $expectedActive = count($estaciones);
 
     $r = castpanelCtl('update-shoutcast-proxy');
     if (empty($r['success'])) {
         error_log('CastPanel: update-shoutcast-proxy fallo: ' . ($r['error'] ?? $r['output'] ?? ''));
         return false;
     }
+
+    clearstatcache(true, castpanelShoutcastProxyIncPath());
+    $incCount = castpanelProxyIncStationCount();
+    if ($incCount !== $expectedActive) {
+        error_log("CastPanel: proxy inc tiene $incCount estaciones, BD tiene $expectedActive");
+        return false;
+    }
+
     return true;
 }
 
@@ -1382,6 +1585,10 @@ function startStation(array $estacion): array {
         if (!($scResult['success'] ?? false)) {
             return ['success' => false, 'error' => 'SHOUTcast: ' . ($scResult['error'] ?? 'no se pudo iniciar')];
         }
+        // Keep /shoutcast/{slug} in sync whenever a station starts (new radios were 404 until manual proxy sync).
+        if (!updateShoutcastProxyConfig()) {
+            error_log('CastPanel: updateShoutcastProxyConfig failed after start for ' . ($estacion['slug'] ?? '?'));
+        }
     }
 
     if (!$autoDJ) {
@@ -1397,7 +1604,17 @@ function startStation(array $estacion): array {
     if (!$cfg['success']) {
         return ['success' => false, 'error' => 'Liquidsoap: ' . ($cfg['error'] ?? 'config')];
     }
-    return startLiquidsoapService($estacion);
+    $ls = startLiquidsoapService($estacion);
+    if ($ls['success'] ?? false) {
+        castpanelEnsureStationStreamReady($estacion);
+        usleep(400000);
+        require_once __DIR__ . '/liquidsoap_playlist.php';
+        $m3uAfterStart = castpanelWriteActivePlaylistM3u($estacion);
+        if (!empty($m3uAfterStart['count'])) {
+            castpanelKickAutoDJIfNeeded($estacion, (int)$m3uAfterStart['count']);
+        }
+    }
+    return $ls;
 }
 
 /**
@@ -1429,18 +1646,68 @@ function stopStation(array $estacion): array {
  */
 /** When a client logs in, start AutoDJ if the stream is down (real server with castpanel-ctl only). */
 function castpanelClientAutoStartOnLogin(array $estacionRow): void {
+    $full = loadStationWithPackage((int)$estacionRow['id']);
+    if (!$full) {
+        return;
+    }
+    if (isShoutcastType($full['server_type'] ?? '')) {
+        castpanelEnsureStationStreamReady($full);
+    }
     if (!castpanelStreamingAvailable()) {
         return;
     }
-    $full = loadStationWithPackage((int)$estacionRow['id']);
-    if (!$full || !stationHasAutoDJ($full)) {
-        return;
-    }
-    if (isStationOnline($full)) {
+    if (!stationHasAutoDJ($full)) {
         return;
     }
     ensureAutoDJPlaying($full);
     clearStreamStatusCache((int)$full['id']);
+}
+
+/**
+ * Switch which playlist AutoDJ plays (all stations). Regenerates M3U and syncs Liquidsoap.
+ */
+function castpanelSetAutoDJActivePlaylist(int $estacionId, ?int $playlistId): array {
+    $db = getDB();
+    $estacion = loadStationWithPackage($estacionId);
+    if (!$estacion) {
+        return ['success' => false, 'error' => 'Station not found'];
+    }
+    if ($playlistId !== null && $playlistId > 0) {
+        $chk = $db->prepare('SELECT id, nombre FROM playlists WHERE id = ? AND estacion_id = ? LIMIT 1');
+        $chk->execute([$playlistId, $estacionId]);
+        $pl = $chk->fetch(PDO::FETCH_ASSOC);
+        if (!$pl) {
+            return ['success' => false, 'error' => 'Playlist not found for this station'];
+        }
+    } else {
+        $playlistId = null;
+        $pl = null;
+    }
+
+    $db->prepare('UPDATE estaciones SET autodj_playlist_activa = ? WHERE id = ?')
+       ->execute([$playlistId, $estacionId]);
+    $estacion['autodj_playlist_activa'] = $playlistId;
+
+    if (!stationHasAutoDJ($estacion)) {
+        return ['success' => true, 'message' => 'Playlist saved (AutoDJ disabled)'];
+    }
+
+    $cfg = generateLiquidsoapConfig($estacion);
+    if (!($cfg['success'] ?? false)) {
+        return ['success' => false, 'error' => $cfg['error'] ?? 'Could not update Liquidsoap config'];
+    }
+
+    $play = ensureAutoDJPlaying($estacion);
+    clearStreamStatusCache($estacionId);
+
+    require_once __DIR__ . '/liquidsoap_playlist.php';
+    $m3u = castpanelWriteActivePlaylistM3u($estacion);
+
+    return array_merge($play, [
+        'playlist_id' => $playlistId,
+        'playlist_name' => $pl['nombre'] ?? null,
+        'tracks_on_air' => (int)($m3u['count'] ?? 0),
+    ]);
 }
 
 function ensureAutoDJPlaying(array $estacion): array {
@@ -1468,8 +1735,12 @@ function ensureAutoDJPlaying(array $estacion): array {
         return restartLiquidsoapService($estacion);
     }
 
+    $songCount = (int)($m3u['count'] ?? 0);
     $reply = liquidsoapCommand('music_' . $estacion['slug'] . '.reload', $port);
     if ($reply !== null) {
+        usleep(300000);
+        castpanelKickAutoDJIfNeeded($estacion, $songCount);
+
         return ['success' => true, 'message' => 'Playlist recargada'];
     }
 

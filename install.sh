@@ -1109,6 +1109,25 @@ setup_castpanel_ctl() {
         || log_warning "castpanel-ctl no se pudo instalar (las estaciones no arrancaran)"
 }
 
+# ---- CRON: LIMITES + ESTADISTICAS DE OYENTES ----
+# cron/enforce_limits.php records listener statistics (Statistics page) and
+# enforces package limits. It was never scheduled, so stats stayed empty.
+setup_cron() {
+    log_step "CONFIGURANDO CRON DE CASTPANEL"
+    mkdir -p /var/log/castpanel
+    chown "$WEB_USER:$WEB_USER" /var/log/castpanel
+    local php_bin
+    php_bin="$(command -v php || echo /usr/bin/php)"
+    cat > /etc/cron.d/castpanel <<CRONEOF
+# CastPanel: package limits + listener statistics (every minute)
+* * * * * $WEB_USER $php_bin $PANEL_DIR/cron/enforce_limits.php >> /var/log/castpanel/enforce.log 2>&1
+# CastPanel: AutoDJ schedule, folder rotation, ad schedule, relay redirect (every minute)
+* * * * * $WEB_USER $php_bin $PANEL_DIR/cron/scheduler.php >> /var/log/castpanel/scheduler.log 2>&1
+CRONEOF
+    chmod 644 /etc/cron.d/castpanel
+    log_success "Cron instalado: /etc/cron.d/castpanel"
+}
+
 # ---- DJ CONTROL CENTER (PUERTO 2080) ----
 
 setup_dj_portal() {
@@ -1420,6 +1439,7 @@ setup_apache
 # 9. Permisos sudo para PHP
 setup_sudoers
 setup_castpanel_ctl
+setup_cron
 
 # 10. SSL
 setup_ssl

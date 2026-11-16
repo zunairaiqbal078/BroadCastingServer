@@ -8,11 +8,17 @@ require_once __DIR__ . '/../includes/layout_header.php';
 
 if (!$estacion) { echo '<div class="alert alert-warning">Sin estación asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
 
-$domain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['HTTP_HOST'] ?? 'localhost');
+$domain = castpanelPublicHost();
 $slug = $estacion['slug'] ?? '';
-$port = $estacion['icecast_port'] ?? 8000;
-$baseStream = "https://$domain/live/$slug";
-$baseStreamHttp = "http://$domain:$port" . ($estacion['icecast_mount'] ?? '/stream');
+$isShout = isShoutcastServerType($estacion['server_type'] ?? '');
+// SHOUTcast listens on the station's own port; icecast_port defaults to 8000
+$port = $isShout ? ((int)($estacion['puerto_stream'] ?? 0) ?: 8000) : ((int)($estacion['icecast_port'] ?? 0) ?: 8000);
+$proxyPath = ($isShout ? '/shoutcast/' : '/live/') . rawurlencode($slug);
+// HTTPS through the panel's proxy when a domain has SSL; otherwise the same
+// proxied URL the panel player uses (works without a certificate)
+$hasSsl = defined('SSL_DOMAIN') && SSL_DOMAIN !== '' && SSL_DOMAIN !== '__DOMAIN__';
+$baseStream = $hasSsl ? 'https://' . SSL_DOMAIN . $proxyPath : castpanelStreamPlaybackUrl($estacion);
+$baseStreamHttp = "http://$domain:$port" . ($isShout ? '/stream' : ($estacion['icecast_mount'] ?? '/stream'));
 $appUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? $domain) . (defined('BASE_URL') ? BASE_URL : '');
 ?>
 
@@ -29,7 +35,7 @@ $appUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTT
         <div class="form-group">
             <label>Stream HTTPS Principal</label>
             <div class="copy-field">
-                <input type="text" value="<?= $baseStream ?>" readonly id="url1">
+                <input type="text" value="<?= htmlspecialchars($baseStream) ?>" readonly id="url1">
                 <button class="btn-copy" onclick="copyToClipboard(document.getElementById('url1').value, this)"><?= cpIcon('copy',14) ?> Copiar</button>
             </div>
         </div>
@@ -37,7 +43,7 @@ $appUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTT
         <div class="form-group">
             <label>Stream HTTP (sin SSL)</label>
             <div class="copy-field">
-                <input type="text" value="<?= $baseStreamHttp ?>" readonly id="url2">
+                <input type="text" value="<?= htmlspecialchars($baseStreamHttp) ?>" readonly id="url2">
                 <button class="btn-copy" onclick="copyToClipboard(document.getElementById('url2').value, this)"><?= cpIcon('copy',14) ?> Copiar</button>
             </div>
         </div>

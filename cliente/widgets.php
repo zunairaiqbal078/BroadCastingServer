@@ -11,7 +11,7 @@ if (!$estacion) { echo '<div class="alert alert-warning">Sin estación asignada.
 
 $_baseUrl = defined('BASE_URL') ? BASE_URL : '';
 $streamUrl = castpanelStreamPlaybackUrl($estacion);
-$baseHost = castpanelPublicPageOrigin() . $_baseUrl;
+$baseHost = castpanelPanelOrigin() . $_baseUrl;
 $apiUrl = $baseHost . '/api/nowplaying.php?estacion=' . (int)$estacion['id'];
 $radioName = htmlspecialchars(($estacion['titulo_radio'] ?? '') ?: ($estacion['nombre'] ?? 'Radio'));
 $slugEnc = rawurlencode($estacion['slug'] ?? '');
@@ -264,30 +264,16 @@ function selectTheme(theme, el) {
 }
 
 function copyToClipboard(text, btn) {
-    navigator.clipboard.writeText(text).then(function(){
-        var orig = btn.innerHTML;
-        btn.innerHTML = '&#x2705; Copiado';
-        btn.classList.add('copied');
-        setTimeout(function(){
-            btn.innerHTML = orig;
-            btn.classList.remove('copied');
-        }, 2000);
-    }).catch(function(){
-        // Fallback
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        var orig = btn.innerHTML;
-        btn.innerHTML = '&#x2705; Copiado';
-        btn.classList.add('copied');
-        setTimeout(function(){
-            btn.innerHTML = orig;
-            btn.classList.remove('copied');
-        }, 2000);
-    });
+    if (typeof castpanelCopyText === 'function') {
+        castpanelCopyText(text, btn);
+        return;
+    }
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
 }
 </script>
 

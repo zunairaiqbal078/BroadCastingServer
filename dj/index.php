@@ -10,7 +10,7 @@ if (isset($_SESSION['dj_id'])) {
     exit;
 }
 
-require_once '/var/www/castpanel/config/database.php';
+require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/i18n.php';
 cpI18nStart();
 

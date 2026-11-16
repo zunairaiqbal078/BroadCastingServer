@@ -17,7 +17,7 @@ $_procConfig = [];
 $_procPresets = [];
 $_procCurrentPreset = 'standard';
 try {
-    require_once '/var/www/castpanel/includes/audio_processor.php';
+    require_once __DIR__ . '/../includes/audio_processor.php';
     $_procConfig = getProcessorConfig($dj['estacion_id']);
     $_procPresets = getProcessorPresets();
     $_procCurrentPreset = $_procConfig['preset'] ?? 'standard';
@@ -25,7 +25,7 @@ try {
     // audio_processor table may not exist yet - graceful fallback
 }
 
-require_once '/var/www/castpanel/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 // Connection info (harbor IP = public host, not :2080 DJ portal host)
 $connIP = castpanelPublicHost();
@@ -50,57 +50,171 @@ try {
     // ignore
 }
 if ($pageOrigin === '') {
-    $pageOrigin = castpanelPublicPageOrigin();
+    // This page is served on the DJ port (2080), which has no /api or
+    // /shoutcast: use the main panel address (same one the CSS comes from)
+    $pageOrigin = $djAssetsBase ?: castpanelPublicPageOrigin();
 }
 $slugEnc = rawurlencode($dj['slug'] ?? '');
 $streamUrl = isShoutcastServerType($dj['server_type'] ?? '')
     ? ($pageOrigin . '/shoutcast/' . $slugEnc)
     : ($pageOrigin . '/live/' . $slugEnc);
 $npUrl = $pageOrigin . '/api/nowplaying.php?estacion=' . (int)$dj['estacion_id'];
+
+$estRow = $db->prepare('SELECT * FROM estaciones WHERE id = ?');
+$estRow->execute([(int)$dj['estacion_id']]);
+$estacionDj = $estRow->fetch(PDO::FETCH_ASSOC) ?: [];
+$streamSt = $estacionDj ? getStreamStatus($estacionDj) : ['online' => false, 'oyentes' => 0];
+$streamOnline = !empty($streamSt['online']);
 ?>
 
-<!-- ═══ DJ INFORMATION ═══ -->
+<div class="dj2-hero" id="djHero">
+    <div class="dj2-hero-top">
+        <div class="dj2-id">
+            <img src="<?= $djPhoto ?>" alt="" class="dj2-avatar">
+            <div>
+                <div class="dj2-kicker">DJ Control Center</div>
+                <h2><?= htmlspecialchars($dj['nombre'] ?: $dj['username']) ?></h2>
+                <div class="dj2-sub"><?= $stationName ?></div>
+            </div>
+        </div>
+        <div class="dj2-actions">
+            <?php if ($dj['perm_start_stop']): ?>
+            <button type="button" class="dj2-btn" onclick="radioControl('start')" id="btnStart">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg> Start radio</button>
+            <button type="button" class="dj2-btn" onclick="radioControl('stop')" id="btnStop">
+                <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg> Stop</button>
+            <?php endif; ?>
+            <a href="widget.php" class="dj2-btn solid">
+                <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> Live widget</a>
+        </div>
+    </div>
+
+    <div class="dj2-np">
+        <button type="button" class="dj2-listen" id="djListenBtn" onclick="djListen()" title="Listen to the station" aria-label="Listen to the station">
+            <svg viewBox="0 0 24 24" id="djListenIcon"><polygon points="7 4 20 12 7 20 7 4"/></svg>
+        </button>
+        <div class="dj2-np-main">
+            <div class="dj2-np-label">Now playing</div>
+            <div class="dj2-np-title" id="npTitle">—</div>
+        </div>
+        <div class="dj2-np-side">
+            <span class="dj2-pill <?= $streamOnline ? 'on' : '' ?>" id="radioStatus"><span class="dot"></span><span class="txt"><?= $streamOnline ? 'On air' : 'Offline' ?></span></span>
+            <span class="dj2-listeners"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg>
+                <strong id="djStatListeners"><?= (int)($streamSt['oyentes'] ?? 0) ?></strong> listening</span>
+        </div>
+        <audio id="audioPlayer" preload="none" playsinline></audio>
+    </div>
+</div>
+
+<?php if (trim((string)($estacionDj['mensaje_dj'] ?? '')) !== ''): ?>
+<!-- Message from the station owner (Panel cliente > DJ Panel Message) -->
+<div class="dj2-msg">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <div><strong>Message from the station</strong><p><?= nl2br(htmlspecialchars(trim($estacionDj['mensaje_dj']))) ?></p></div>
+</div>
+<?php endif; ?>
+
+<div class="dj2-grid">
+    <!-- Connection details -->
+    <div class="section-card dj2-conn">
+        <div class="section-header">
+            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+            Go live — connection details
+        </div>
+        <div class="section-body">
+            <div class="dj2-fields">
+                <div class="dj2-field"><small>Server</small><code><?= htmlspecialchars($connIP) ?></code>
+                    <button type="button" onclick="djCopy(this, <?= htmlspecialchars(json_encode($connIP), ENT_QUOTES) ?>)">Copy</button></div>
+                <div class="dj2-field"><small>Port</small><code><?= (int)$connPort ?></code>
+                    <button type="button" onclick="djCopy(this, '<?= (int)$connPort ?>')">Copy</button></div>
+                <div class="dj2-field"><small>Username</small><code><?= htmlspecialchars($djConnUser) ?></code>
+                    <button type="button" onclick="djCopy(this, <?= htmlspecialchars(json_encode($djConnUser), ENT_QUOTES) ?>)">Copy</button></div>
+                <div class="dj2-field"><small>Password <a href="account.php">change</a></small>
+                    <code class="dj2-secret" data-secret="<?= htmlspecialchars($djPassword) ?>">••••••••</code>
+                    <span class="dj2-two">
+                        <button type="button" onclick="djReveal(this)">Show</button>
+                        <button type="button" onclick="djCopy(this, this.closest('.dj2-field').querySelector('.dj2-secret').dataset.secret)">Copy</button>
+                    </span></div>
+                <div class="dj2-field"><small>Protocol</small><code>SHOUTcast v1</code><span></span></div>
+                <div class="dj2-field"><small>Mobile apps password</small>
+                    <code class="dj2-secret" data-secret="<?= htmlspecialchars($djConnUser . ':' . $djPassword) ?>">user:••••••</code>
+                    <span class="dj2-two">
+                        <button type="button" onclick="djReveal(this)">Show</button>
+                        <button type="button" onclick="djCopy(this, this.closest('.dj2-field').querySelector('.dj2-secret').dataset.secret)">Copy</button>
+                    </span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How to broadcast -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            How to broadcast
+        </div>
+        <div class="section-body">
+            <ol class="dj2-steps">
+                <li><strong>Open your software</strong> — RadioCaster, BUTT, SAM, Mixxx or a mobile app.</li>
+                <li><strong>Choose SHOUTcast v1</strong> as the server type (even if the station uses SHOUTcast v2 or Icecast).</li>
+                <li><strong>Enter the server, port and password</strong> from the card on the left.</li>
+                <li><strong>Connect</strong> — your live show replaces <?= $autodj ? 'AutoDJ' : 'the stream' ?> right away<?= $autodj ? ', and AutoDJ comes back when you disconnect' : '' ?>.</li>
+            </ol>
+            <p class="dj2-note">Mobile apps often have no username field: use the <em>mobile apps password</em> (<code>user:password</code>).</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ QUICK CONTROL ═══ -->
 <div class="section-card">
     <div class="section-header">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        Información del DJ
+        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Station tools
     </div>
-    <div class="tabs" data-tab-group="djinfo">
-        <button class="tab-btn active" data-tab="tab-account">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Cuenta DJ
+    <div class="tabs" data-tab-group="control">
+        <?php if ($dj['perm_autodj']): ?>
+        <button class="tab-btn" data-tab="tab-autodj">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            AutoDJ
+        </button>
+        <?php endif; ?>
+        <button class="tab-btn active" data-tab="tab-history">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Historial
+        </button>
+        <button class="tab-btn" data-tab="tab-processor">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><line x1="12" y1="6" x2="12.01" y2="6"/></svg>
+            Procesador
         </button>
         <button class="tab-btn" data-tab="tab-social">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Social
         </button>
-        <button class="tab-btn" data-tab="tab-howto">
-            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            ¿Cómo Transmitir?
-        </button>
     </div>
 
-    <!-- Tab: Cuenta DJ -->
-    <div class="tab-panel active" id="tab-account">
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Usuario DJ:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($djConnUser) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Contraseña de Conexión:
-                    <a href="account.php" style="color:var(--primary);font-size:12px;margin-left:6px;">✏️ Cambiar</a>
-                </label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($djPassword) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>IP de Conexión:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($connIP) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Puerto de Conexión:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($connPort) ?>" readonly>
-            </div>
+    <!-- Tab: AutoDJ -->
+    <?php if ($dj['perm_autodj']): ?>
+    <div class="tab-panel" id="tab-autodj">
+        <div class="alert alert-info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>El AutoDJ reproduce música automáticamente cuando no hay DJ conectado. Puedes iniciar o detener el AutoDJ desde aquí.</div>
+        </div>
+        <div style="display:flex;gap:12px;">
+            <button class="btn btn-success" onclick="autodjControl('start')">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Iniciar AutoDJ
+            </button>
+            <button class="btn btn-dark" onclick="autodjControl('stop')">
+                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+                Detener AutoDJ
+            </button>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- Tab: Historial -->
+    <div class="tab-panel active" id="tab-history">
+        <div id="songHistory" style="min-height:60px;">
+            <p style="color:var(--text-secondary);font-size:13px;">Cargando historial...</p>
         </div>
     </div>
 
@@ -126,154 +240,6 @@ $npUrl = $pageOrigin . '/api/nowplaying.php?estacion=' . (int)$dj['estacion_id']
                 Guardar Cambios
             </button>
         </form>
-    </div>
-
-    <!-- Tab: ¿Cómo Transmitir? -->
-    <div class="tab-panel" id="tab-howto">
-        <div class="alert alert-info">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <div>
-                Los DJs deben elegir el protocolo <strong>SHOUTcast v1</strong> en su programa de transmisión.
-                Aunque el sistema use IceCast o SCV2, siempre elige <strong>Shoutcast v1</strong> o Shoutcast en la configuración.
-                Puedes usar <strong>usuario:contraseña</strong> como contraseña, especialmente para aplicaciones móviles.
-                En programas de PC solo usa la contraseña y el puerto DJ para conectar.
-            </div>
-        </div>
-
-        <h4 style="margin:16px 0 12px;font-size:15px;">📻 Configuración para PC (BUTT, SAM, Winamp, etc.)</h4>
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Servidor:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($connIP) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Puerto:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($connPort) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Contraseña:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($djPassword) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Protocolo:</label>
-                <input type="text" class="form-control" value="SHOUTcast v1" readonly>
-            </div>
-        </div>
-
-        <h4 style="margin:16px 0 12px;font-size:15px;">📱 Configuración para Móvil (BroadcastMyself, iCast, etc.)</h4>
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Servidor:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($connIP) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Puerto:</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($connPort) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Contraseña (user:pass):</label>
-                <input type="text" class="form-control" value="<?= htmlspecialchars($djConnUser . ':' . $djPassword) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label>Protocolo:</label>
-                <input type="text" class="form-control" value="SHOUTcast v1" readonly>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ═══ QUICK CONTROL ═══ -->
-<div class="section-card">
-    <div class="section-header">
-        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        Control Rápido
-    </div>
-    <div class="tabs" data-tab-group="control">
-        <button class="tab-btn active" data-tab="tab-status">
-            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Estado de Radio
-        </button>
-        <?php if ($dj['perm_autodj']): ?>
-        <button class="tab-btn" data-tab="tab-autodj">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-            AutoDJ
-        </button>
-        <?php endif; ?>
-        <button class="tab-btn" data-tab="tab-history">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Historial
-        </button>
-        <button class="tab-btn" data-tab="tab-processor">
-            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><line x1="12" y1="6" x2="12.01" y2="6"/></svg>
-            Procesador
-        </button>
-    </div>
-
-    <!-- Tab: Estado de Radio -->
-    <div class="tab-panel active" id="tab-status">
-        <?php if ($dj['perm_start_stop']): ?>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-            <button class="btn btn-success" onclick="radioControl('start')" id="btnStart">
-                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Iniciar
-            </button>
-            <button class="btn btn-dark" onclick="radioControl('stop')" id="btnStop">
-                <svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-                Detener
-            </button>
-        </div>
-        <?php endif; ?>
-
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-            <span style="font-weight:600;">Estado de Radio:</span>
-            <span class="status-badge" id="radioStatus">
-                <span class="dot" style="width:8px;height:8px;border-radius:50%;display:inline-block;"></span>
-                Verificando...
-            </span>
-        </div>
-
-        <!-- Mini Player -->
-        <div class="mini-player">
-            <div class="album-art" id="albumArt">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            </div>
-            <div class="player-controls">
-                <div class="now-playing">
-                    <span class="np-label">Reproduciendo: </span>
-                    <span id="npTitle">—</span>
-                </div>
-                <audio id="audioPlayer" preload="none" style="width:100%;height:32px;">
-                    <source src="<?= htmlspecialchars($streamUrl) ?>" type="audio/mpeg">
-                </audio>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tab: AutoDJ -->
-    <?php if ($dj['perm_autodj']): ?>
-    <div class="tab-panel" id="tab-autodj">
-        <div class="alert alert-info">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <div>El AutoDJ reproduce música automáticamente cuando no hay DJ conectado. Puedes iniciar o detener el AutoDJ desde aquí.</div>
-        </div>
-        <div style="display:flex;gap:12px;">
-            <button class="btn btn-success" onclick="autodjControl('start')">
-                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Iniciar AutoDJ
-            </button>
-            <button class="btn btn-dark" onclick="autodjControl('stop')">
-                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
-                Detener AutoDJ
-            </button>
-        </div>
-    </div>
-    <?php endif; ?>
-
-    <!-- Tab: Historial -->
-    <div class="tab-panel" id="tab-history">
-        <div id="songHistory" style="min-height:60px;">
-            <p style="color:var(--text-secondary);font-size:13px;">Cargando historial...</p>
-        </div>
     </div>
 
     <!-- Tab: Procesador de Audio -->
@@ -370,36 +336,60 @@ const STATION_ID = <?= (int)$dj['estacion_id'] ?>;
 const NP_URL = '<?= $npUrl ?>';
 const STREAM_URL = '<?= htmlspecialchars($streamUrl) ?>';
 
+function djEsc(t) {
+    return String(t == null ? '' : t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function djSetLive(on) {
+    const pill = document.getElementById('radioStatus');
+    pill.classList.toggle('on', !!on);
+    pill.querySelector('.txt').textContent = on ? 'On air' : 'Offline';
+    document.getElementById('djHero').classList.toggle('is-on', !!on);
+}
 // Fetch now playing
 function fetchNowPlaying() {
     fetch(NP_URL)
         .then(r => r.json())
         .then(data => {
             const np = data.now_playing || {};
-            const title = (typeof np === 'object' ? np.title : np) || '—';
-            document.getElementById('npTitle').textContent = title;
-
-            const statusEl = document.getElementById('radioStatus');
+            document.getElementById('npTitle').textContent = (typeof np === 'object' ? np.title : np) || '—';
             const live = data.live || {};
-            if (live.online) {
-                statusEl.className = 'status-badge status-online';
-                statusEl.innerHTML = '<span class="dot" style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#10b981;"></span> Online';
-            } else {
-                statusEl.className = 'status-badge status-offline';
-                statusEl.innerHTML = '<span class="dot" style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#ef4444;"></span> Offline';
-            }
-
-            if (np.cover) {
-                document.getElementById('albumArt').innerHTML = '<img src="' + np.cover + '" alt="Art">';
-            }
+            const ls = document.getElementById('djStatListeners');
+            if (ls && live.listeners !== undefined) ls.textContent = live.listeners;
+            djSetLive(live.online);
         })
-        .catch(() => {
-            document.getElementById('radioStatus').className = 'status-badge status-offline';
-            document.getElementById('radioStatus').innerHTML = '<span class="dot" style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#ef4444;"></span> Offline';
-        });
+        .catch(() => djSetLive(false));
 }
 fetchNowPlaying();
 setInterval(fetchNowPlaying, 15000);
+
+// Listen to the station (one stream)
+const djAudio = document.getElementById('audioPlayer');
+function djListenIcon(playing) {
+    document.getElementById('djListenIcon').innerHTML = playing
+        ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>'
+        : '<polygon points="7 4 20 12 7 20 7 4"/>';
+}
+function djListen() {
+    if (!djAudio.paused) { djAudio.pause(); djAudio.removeAttribute('src'); djAudio.load(); djListenIcon(false); return; }
+    djAudio.src = STREAM_URL + (STREAM_URL.indexOf('?') >= 0 ? '&' : '?') + '_=' + Date.now();
+    djAudio.play().then(() => djListenIcon(true)).catch(() => { djListenIcon(false); showToast('Could not play the stream — is the radio on air?', 'error'); });
+}
+djAudio.addEventListener('pause', () => djListenIcon(false));
+djAudio.addEventListener('playing', () => djListenIcon(true));
+
+function djCopy(btn, text) {
+    const done = () => { const t = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => btn.textContent = t, 1200); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done); return; }
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } finally { ta.remove(); }
+}
+function djReveal(btn) {
+    const code = btn.closest('.dj2-field').querySelector('.dj2-secret');
+    const shown = btn.textContent === 'Hide';
+    if (!code.dataset.mask) code.dataset.mask = code.textContent;
+    code.textContent = shown ? code.dataset.mask : code.dataset.secret;
+    btn.textContent = shown ? 'Show' : 'Hide';
+}
 
 // Radio control
 function radioControl(action) {
@@ -466,7 +456,7 @@ function loadHistory() {
             html += '<thead><tr style="border-bottom:2px solid var(--border);"><th style="text-align:left;padding:8px;">Canción</th><th style="text-align:right;padding:8px;">Hora</th></tr></thead><tbody>';
             hist.forEach(h => {
                 const hTime = (h.played_at || h.time || '').replace(/^\d{4}-\d{2}-\d{2}\s/, '');
-                html += '<tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">' + (h.title || h.song || '—') + (h.artist ? ' — ' + h.artist : '') + '</td><td style="text-align:right;padding:8px;color:var(--text-secondary);">' + hTime + '</td></tr>';
+                html += '<tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">' + djEsc(h.title || h.song || '—') + (h.artist ? ' — ' + djEsc(h.artist) : '') + '</td><td style="text-align:right;padding:8px;color:var(--text-secondary);">' + djEsc(hTime) + '</td></tr>';
             });
             html += '</tbody></table>';
             el.innerHTML = html;

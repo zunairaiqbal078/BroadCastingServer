@@ -408,6 +408,39 @@ function castpanelLiquidsoapLogTail(string $slug, int $maxBytes = 65536): ?strin
 }
 
 /** Last decoded file URI from Liquidsoap log (“Prepared …”) — not affected by bad ID3 tags. */
+/** True when Liquidsoap is on silence/blank instead of a real track (common after first start or upload without restart). */
+function castpanelLiquidsoapShouldKickMusic(string $slug, int $playlistSongCount): bool {
+    if ($playlistSongCount < 1 || $slug === '') {
+        return false;
+    }
+    $uri = castpanelLiquidsoapLastPreparedUri($slug);
+    if ($uri === null || $uri === '') {
+        return true;
+    }
+    if (!str_starts_with($uri, '/media/')) {
+        return true;
+    }
+    $ext = strtolower(pathinfo($uri, PATHINFO_EXTENSION));
+    if ($ext === 'm3u') {
+        return true;
+    }
+
+    return !in_array($ext, ['mp3', 'ogg', 'aac', 'flac', 'wav', 'm4a', 'opus'], true);
+}
+
+/** After playlist changes: skip forward so the first song plays (reload alone often leaves silence on-air). */
+function castpanelKickAutoDJIfNeeded(array $estacion, int $songCount): void {
+    if ($songCount < 1) {
+        return;
+    }
+    $slug = (string)($estacion['slug'] ?? '');
+    if (!castpanelLiquidsoapShouldKickMusic($slug, $songCount)) {
+        return;
+    }
+    require_once __DIR__ . '/autodj_player.php';
+    castpanelLiquidsoapSkipNext($estacion);
+}
+
 function castpanelLiquidsoapLastPreparedUri(string $slug): ?string {
     $chunk = castpanelLiquidsoapLogTail($slug);
     if ($chunk === null) {
@@ -695,6 +728,34 @@ function castpanelDjPortalUrl(): string {
 
     // Apache DJ vhost uses DocumentRoot = PANEL_DIR/dj — login is at :2080/ not :2080/dj/
     return rtrim($base, '/') . '/';
+}
+
+/** Panel base URL for widgets/API (prefers configuracion.site_url over :2080 DJ host). */
+function castpanelPanelOrigin(): string {
+    try {
+        $stmt = getDB()->prepare("SELECT valor FROM configuracion WHERE clave = 'site_url'");
+        $stmt->execute();
+        $site = trim((string)$stmt->fetchColumn());
+        if ($site !== '') {
+            return rtrim($site, '/');
+        }
+    } catch (Throwable $e) {
+        // optional
+    }
+
+    return rtrim(castpanelPublicPageOrigin(), '/');
+}
+
+/** @return array{full:string,single:string} */
+function castpanelWidgetPlayerUrls(array $estacion): array {
+    $basePath = defined('BASE_URL') ? (string)BASE_URL : '';
+    $prefix = castpanelPanelOrigin() . $basePath;
+    $slug = rawurlencode($estacion['slug'] ?? '');
+
+    return [
+        'full' => $prefix . '/widgets/player/?slug=' . $slug,
+        'single' => $prefix . '/widgets/player/single/?slug=' . $slug,
+    ];
 }
 
 /**

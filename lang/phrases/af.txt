@@ -1925,3 +1925,127 @@ Geheue
 Sien besonderhede
 Vinnige aksies
 {n}% · {n} kerns
+Stoor veranderinge
+Nuwe wagwoord: {x}
+Ongeldige e-pos.
+Sessie het verval, herlaai die bladsy.
+Die URL moet met http:// of https:// begin
+Opname uitgevee.
+Kon nie die opname uitvee nie.
+Vee hierdie opname uit?
+Skedule gestoor.
+Relay '{x}' geskep.
+Rotasie '{x}' geskep.
+Paneeltaal
+Soek taal...
+Hierdie taal geld vir jou paneel. Elke gebruiker kan sy eie taal kies.
+Gebruik ook as verstektaal (aanmeldbladsy en nuwe rekeninge)
+Pas toe
+Taal
+Welkom, {x}
+Bestuur AutoDJ
+Laai musiek op
+Speel nou
+▶ Luister
+Luisteraars nou
+Piek 24h: {n}
+{n} advertensies in biblioteek
+Vouer op lug
+{n} liedjies
+{n} liedjie
+van {n}
+DJ-rekeninge
+Pas speler aan
+SSL-skakels
+Radiostatus
+Liedjiegeskiedenis
+— stroomstatus en luisteraars. Begin/stop die hele stasie hier (nie individuele liedjies nie).
+Geen snitinligting
+Speel nou: {x}
+Onlangs gespeelde liedjies op jou stasie (werk outomaties by).
+Nog geen liedjies — begin AutoDJ en speel musiek.
+Begin AutoDJ
+Wysig besonderhede
+Snitlys op lug
+Speel hierdie lys
+Wissel vouer hier — net snitte in die gekose lys speel.
+Luister nie
+● Luister (Radiostatus-speler)
+▶ speel/pouseer die speler
+— een stroom vir die hele bladsy.
+— begin/stop die robot en sien wat speel. Die lys loop vanself. Gebruik
+net vir luisteraars.
+Op lug
+Van lug af
+Speel nou
+{n} in vouer · {n} totaal
+Musiekvouers
+AutoDJ-instellings
+Skedule
+Vouerrotasie
+Naam van nuwe vouer
+Skep vouer
+Sit op lug
+Hierdie vouer is leeg.
+Soek liedjies of kunstenaars…
+Ná die laaste liedjie begin AutoDJ die vouer weer van voor af.
+Skep links 'n vouer en laai musiek daarin op.
+Nog geen vouers — skep een hierbo.
+Musiekbron
+…of skep 'n nuwe vouer
+Vouernaam
+— Geen (stilte) —
+Kies 'n vouer en enkodeerder en druk
+Stoor veranderinge
+— AutoDJ speel dit dadelik in 'n lus, sonder om die stasie te herbegin.
+Stroomkodering
+Speel oral
+Beter klank by lae bitrate
+Jou pakket laat tot {n} kbps toe.
+Terugspeel
+Speelmodus
+Normaal (vouervolgorde)
+Skommel
+Streng opeenvolgend
+Af
+{n} sekondes
+Liedjietitels
+Wys
+Versteek
+Stasie-inligting
+Radiotitel
+Webwerf
+Lewendige DJ
+DJ-poort (outomaties)
+DJ's koppel hier; lewendige klank vervang AutoDJ totdat hulle ontkoppel.
+Neem lewendige programme op
+Opnamegehalte
+Veranderinge geld sodra jy stoor.
+Bediener / Gasheer
+DJ-beheersentrum
+Lewendige widget
+Begin radio
+luister
+Gaan lewendig — verbindingsbesonderhede
+verander
+Protokol
+Wagwoord vir selfoonprogramme
+Hoe om uit te saai
+Boodskap van die stasie
+Stasiegereedskap
+Maak jou sagteware oop
+— RadioCaster, BUTT, SAM, Mixxx of 'n selfoonprogram.
+Kies SHOUTcast v1
+as bedienertipe (selfs as die stasie SHOUTcast v2 of Icecast gebruik).
+Voer die bediener, poort en wagwoord in
+uit die kaart aan die linkerkant.
+— jou lewendige program vervang AutoDJ dadelik, en AutoDJ kom terug wanneer jy ontkoppel.
+Begin
+Stop
+Herbegin
+Liedjies
+Berging
+Statistieke
+Ja
+Genre
+AutoDJ is af

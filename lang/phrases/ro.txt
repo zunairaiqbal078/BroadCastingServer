@@ -1925,3 +1925,127 @@ Memorie
 Vezi detalii
 Acțiuni rapide
 {n}% · {n} nuclee
+Salvează modificările
+Parolă nouă: {x}
+E-mail invalid.
+Sesiunea a expirat, reîncărcați pagina.
+URL-ul trebuie să înceapă cu http:// sau https://
+Înregistrare ștearsă.
+Înregistrarea nu a putut fi ștearsă.
+Ștergeți această înregistrare?
+Programare salvată.
+Relay '{x}' creat.
+Rotația '{x}' a fost creată.
+Limba panoului
+Caută limba...
+Această limbă se aplică panoului tău. Fiecare utilizator își poate alege propria limbă.
+Folosește și ca limbă implicită (pagina de autentificare și conturi noi)
+Aplică
+Limbă
+Bun venit, {x}
+Gestionează AutoDJ
+Încarcă muzică
+Se redă acum
+▶ Ascultă
+Ascultători acum
+Vârf 24h: {n}
+{n} reclame în bibliotecă
+Dosar în emisie
+{n} melodii
+{n} melodie
+din {n}
+Conturi DJ
+Personalizează playerul
+Linkuri SSL
+Stare radio
+Istoric melodii
+— starea fluxului și ascultătorii. Porniți/opriți aici întreaga stație (nu melodii individuale).
+Fără informații despre piesă
+Se redă acum: {x}
+Melodii redate recent pe stație (se actualizează automat).
+Nicio melodie înregistrată — porniți AutoDJ și redați muzică.
+Pornește AutoDJ
+Editează detalii
+Listă în emisie
+Redă această listă
+Schimbați dosarul aici — se redau doar piesele din lista aleasă.
+Nu ascultați
+● Ascultați (player Stare radio)
+▶ redă/pune pauză playerului
+— un singur flux pentru toată pagina.
+— porniți/opriți robotul și vedeți ce se redă. Lista rulează singură. Folosiți
+doar pentru ascultători.
+În emisie
+În afara emisiei
+Se redă acum
+{n} în dosar · {n} total
+Dosare muzicale
+Setări AutoDJ
+Program
+Rotație dosare
+Nume dosar nou
+Creează dosar
+Pune în emisie
+Acest dosar este gol.
+Caută melodii sau artiști…
+După ultima melodie, AutoDJ reia dosarul de la început.
+Creați un dosar în stânga, apoi încărcați muzică.
+Niciun dosar — creați unul mai sus.
+Sursa muzicii
+…sau creați un dosar nou
+Nume dosar
+— Niciunul (liniște) —
+Alegeți un dosar și encoderul și apăsați
+Salvează modificările
+— AutoDJ îl redă imediat în buclă, fără repornirea stației.
+Codificarea fluxului
+Merge peste tot
+Sunet mai bun la bitrate mic
+Pachetul permite până la {n} kbps.
+Redare
+Mod de redare
+Normal (ordinea dosarului)
+Aleator
+Secvențial strict
+Oprit
+{n} secunde
+Titluri melodii
+Afișează
+Ascunde
+Informații stație
+Titlu radio
+Site web
+DJ live
+Port DJ (automat)
+DJ-ii se conectează aici; audio live înlocuiește AutoDJ până la deconectare.
+Înregistrează emisiunile live
+Calitatea înregistrării
+Modificările se aplică imediat ce salvați.
+Server / Gazdă
+Centru de control DJ
+Widget live
+Pornește radio
+ascultă
+Intră live — detalii conexiune
+schimbă
+Protocol
+Parolă aplicații mobile
+Cum transmiteți
+Mesaj de la stație
+Instrumente stație
+Deschideți programul
+— RadioCaster, BUTT, SAM, Mixxx sau o aplicație mobilă.
+Alegeți SHOUTcast v1
+ca tip de server (chiar dacă stația folosește SHOUTcast v2 sau Icecast).
+Introduceți serverul, portul și parola
+din cardul din stânga.
+— emisiunea live înlocuiește imediat AutoDJ, care revine la deconectare.
+Pornește
+Oprește
+Repornește
+Melodii
+Stocare
+Statistici
+Da
+Gen
+AutoDJ este oprit

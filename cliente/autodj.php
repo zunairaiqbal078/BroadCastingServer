@@ -5,11 +5,36 @@ ob_start();
  * Rediseno estilo SonicPanel - modulo unico plano
  * Incluye modulo de Listas de Reproduccion integrado
  */
-$pageTitle = 'Manage AutoDJ';
+$pageTitle = 'Administrar AutoDJ';
 $pageIcon = 'gear';
+
+// Before layout: sync playlist when opening AutoDJ (stream may be “online” but playing silence).
+if ($_SERVER['REQUEST_METHOD'] === 'GET'
+    && !(defined('CASTPANEL_STREAMING_DISABLED') && CASTPANEL_STREAMING_DISABLED)) {
+    require_once __DIR__ . '/../includes/auth.php';
+    requireLogin();
+    $estPre = getCurrentStation();
+    if ($estPre) {
+        require_once __DIR__ . '/../includes/provisioning.php';
+        $estFull = loadStationWithPackage((int)$estPre['id']);
+        if ($estFull && stationHasAutoDJ($estFull)) {
+            ensureAutoDJPlaying($estFull);
+            clearStreamStatusCache((int)$estPre['id']);
+        }
+    }
+}
+
 require_once __DIR__ . '/../includes/layout_header.php';
 
-if (!$estacion) { echo '<div class="alert alert-warning">Sin estaci' . chr(243) . 'n asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
+// Apply schedules/rotation/relay/ads right after a change (runs after the redirect)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($estacion['id'])) {
+    require_once __DIR__ . '/../includes/autodj_schedule.php';
+    $cpSchedStation = (int)$estacion['id'];
+    register_shutdown_function(static function () use ($cpSchedStation) { castpanelApplyStationScheduleById($cpSchedStation); });
+}
+require_once __DIR__ . '/../includes/provisioning.php';
+
+if (!$estacion) { echo '<div class="alert alert-warning">Sin estación asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
 
 if (defined('CASTPANEL_STREAMING_DISABLED') && CASTPANEL_STREAMING_DISABLED) {
     echo '<div class="alert alert-warning" style="margin-bottom:16px">'
@@ -43,12 +68,55 @@ try {
     $programaciones = $stmt->fetchAll();
 } catch (PDOException $e) { /* tabla no existe aun */ }
 
+/**
+ * Create a music folder (playlist) for the station and return its id.
+ * Reuses a folder with the same name; slugs are made unique.
+ */
+function cpAutodjCreateFolder(PDO $db, int $estacionId, string $nombre): int {
+    $nombre = mb_substr(trim($nombre), 0, 128);
+    $q = $db->prepare('SELECT id FROM playlists WHERE estacion_id = ? AND nombre = ? LIMIT 1');
+    $q->execute([$estacionId, $nombre]);
+    if ($id = (int)$q->fetchColumn()) return $id;
+    $base = substr(slugify($nombre), 0, 56) ?: 'folder';
+    $slug = $base;
+    $chk = $db->prepare('SELECT 1 FROM playlists WHERE estacion_id = ? AND slug = ?');
+    for ($i = 2; $chk->execute([$estacionId, $slug]) && $chk->fetchColumn(); $i++) {
+        $slug = $base . '-' . $i;
+    }
+    $db->prepare('INSERT INTO playlists (estacion_id, nombre, slug, activa) VALUES (?, ?, ?, 1)')
+       ->execute([$estacionId, $nombre, $slug]);
+    return (int)$db->lastInsertId();
+}
+
 // Procesar acciones
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
     $action = $_POST['action'] ?? '';
 
     try {
         if ($action === 'update_config') {
+            // SonicPanel flow: pick (or create) the music folder, pick the
+            // encoder, Save -> AutoDJ plays that folder right away.
+            $isShout = isShoutcastType($estacion['server_type'] ?? '');
+            $codec = $_POST['codec'] ?? 'mp3';
+            $allowedCodecs = $isShout ? ['mp3', 'aac'] : ['mp3', 'aac', 'ogg']; // SHOUTcast cannot carry Ogg
+            if (!in_array($codec, $allowedCodecs, true)) $codec = 'mp3';
+            $bitrate = (int)($_POST['bitrate'] ?? 128);
+            if (!in_array($bitrate, [64, 96, 128, 192, 256, 320], true)) $bitrate = 128;
+            $maxBr = (int)($estacion['max_bitrate'] ?? 0);
+            if ($maxBr > 0 && $bitrate > $maxBr) $bitrate = $maxBr;
+            $modo = in_array($_POST['modo_reproduccion'] ?? '', ['normal', 'aleatorio', 'secuencial'], true) ? $_POST['modo_reproduccion'] : 'normal';
+
+            // Folder: an existing one, or a new one typed in the form
+            $playlistActiva = (int)($_POST['playlist_activa'] ?? 0) ?: null;
+            $newFolder = trim((string)($_POST['new_folder'] ?? ''));
+            if ($newFolder !== '') {
+                $playlistActiva = cpAutodjCreateFolder($db, (int)$estacion['id'], $newFolder);
+            } elseif ($playlistActiva) {
+                $chk = $db->prepare('SELECT id FROM playlists WHERE id = ? AND estacion_id = ?');
+                $chk->execute([$playlistActiva, $estacion['id']]);
+                if (!$chk->fetchColumn()) $playlistActiva = null;
+            }
+
             $stmt = $db->prepare("UPDATE estaciones SET
                 codec = ?, bitrate = ?, modo_reproduccion = ?, crossfade_seconds = ?,
                 titulo_radio = ?, url_web = ?, mostrar_titulos = ?,
@@ -56,26 +124,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                 autodj_playlist_activa = ?
                 WHERE id = ?");
             $stmt->execute([
-                $_POST['codec'], (int)$_POST['bitrate'],
-                $_POST['modo_reproduccion'], (int)$_POST['crossfade'],
-                $_POST['titulo_radio'], $_POST['url_web'],
-                isset($_POST['mostrar_titulos']) ? 1 : 0,
-                isset($_POST['grabar_dj']) ? 1 : 0,
-                (int)$_POST['calidad_grabacion'], (int)$_POST['buffer_dj_delay'],
-                $_POST['playlist_activa'] ?: null,
+                $codec, $bitrate, $modo, max(0, min(10, (int)($_POST['crossfade'] ?? 0))),
+                trim((string)($_POST['titulo_radio'] ?? '')), trim((string)($_POST['url_web'] ?? '')),
+                // these selects send "1"/"0"; isset() made "No" mean Yes
+                !empty($_POST['mostrar_titulos']) ? 1 : 0,
+                !empty($_POST['grabar_dj']) ? 1 : 0,
+                (int)($_POST['calidad_grabacion'] ?? 320), (int)($_POST['buffer_dj_delay'] ?? ($estacion['buffer_dj_delay'] ?? 0)),
+                $playlistActiva,
                 $estacion['id']
             ]);
 
-            // Regenerar config y reiniciar Liquidsoap automaticamente
             require_once __DIR__ . '/../includes/provisioning.php';
             require_once __DIR__ . '/../includes/liquidsoap_playlist.php';
             $estacionActualizada = loadStationWithPackage((int)$estacion['id']);
             if ($estacionActualizada && stationHasAutoDJ($estacionActualizada)) {
-                castpanelWriteActivePlaylistM3u($estacionActualizada);
-                restartStation($estacionActualizada);
+                // Encoder, bitrate, crossfade and play mode live in the .liq
+                // file: when it changed, Liquidsoap must restart to use it.
+                // A folder change alone is applied by reloading the playlist.
+                $cfgPath = getLiquidsoapConfigPath($estacionActualizada['slug']);
+                $before = is_readable($cfgPath) ? md5_file($cfgPath) : null;
+                $gen = generateLiquidsoapConfig($estacionActualizada);
+                $after = is_readable($cfgPath) ? md5_file($cfgPath) : null;
+                if (!($gen['success'] ?? true)) {
+                    $playResult = ['success' => false, 'error' => $gen['error'] ?? 'config'];
+                } elseif ($before !== null && $before !== $after && liquidsoapContainerIsRunning($estacionActualizada['slug'])) {
+                    $playResult = restartLiquidsoapService($estacionActualizada);
+                    castpanelWriteActivePlaylistM3u($estacionActualizada);
+                } else {
+                    // Not running -> starts SHOUTcast + Liquidsoap; running -> reloads the folder
+                    $playResult = ensureAutoDJPlaying($estacionActualizada);
+                }
+                clearStreamStatusCache((int)$estacion['id']);
+                if (!($playResult['success'] ?? false)) {
+                    setFlash('error', 'Settings saved but AutoDJ could not start: ' . ($playResult['error'] ?? 'unknown'));
+                    header('Location: autodj.php?tab=config');
+                    exit;
+                }
+                $cnt = 0;
+                if ($playlistActiva) {
+                    $c = $db->prepare('SELECT COUNT(*) FROM canciones WHERE playlist_id = ? AND estacion_id = ? AND activa = 1');
+                    $c->execute([$playlistActiva, $estacion['id']]);
+                    $cnt = (int)$c->fetchColumn();
+                }
+                if (!$playlistActiva) {
+                    setFlash('warning', 'Settings saved. Pick a music folder so AutoDJ has something to play.');
+                } elseif ($cnt === 0) {
+                    setFlash('warning', 'Settings saved and AutoDJ is running, but this folder has no songs yet — upload music into it and it will start playing.');
+                } else {
+                    setFlash('success', 'Saved. AutoDJ is now playing this folder (' . $cnt . ' song' . ($cnt === 1 ? '' : 's') . ').');
+                }
+            } else {
+                setFlash('success', 'Settings saved.');
             }
-
-            setFlash('success', 'AutoDJ settings saved and the service was restarted.');
             header('Location: autodj.php?tab=config');
             exit;
         }
@@ -89,7 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             // before Liquidsoap, otherwise AutoDJ has nowhere to send audio
             // and the station stays Offline.
             if ($cmd === 'iniciar') {
-                $resultado = startStation($estacion);
+                $resultado = ensureAutoDJPlaying($estacion);
             } elseif ($cmd === 'detener') {
                 $resultado = stopLiquidsoapService($estacion);
             } elseif ($cmd === 'reiniciar') {
@@ -125,14 +225,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             foreach ($dias as $dia) {
                 $stmtIns->execute([$estacion['id'], $playlistId, $dia, $horaInicio, $horaFin, $prioridad, $estado]);
             }
-            setFlash('success', 'Programaci' . chr(243) . 'n guardada.');
+            setFlash('success', 'Programación guardada.');
             header('Location: autodj.php?tab=programacion');
             exit;
         }
 
         if ($action === 'delete_schedule') {
             $db->prepare("DELETE FROM programacion_playlists WHERE id = ? AND estacion_id = ?")->execute([(int)$_POST['schedule_id'], $estacion['id']]);
-            setFlash('success', 'Programaci' . chr(243) . 'n eliminada.');
+            setFlash('success', 'Programación eliminada.');
             header('Location: autodj.php?tab=programacion');
             exit;
         }
@@ -148,9 +248,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
         if ($action === 'create_playlist') {
             $nombre = trim($_POST['nombre'] ?? '');
             if ($nombre !== '') {
-                $slug = slugify($nombre);
-                $db->prepare("INSERT INTO playlists (estacion_id, nombre, slug, activa) VALUES (?, ?, ?, 1)")->execute([$estacion['id'], $nombre, $slug]);
-                setFlash('success', 'Lista de reproducci' . chr(243) . 'n creada: ' . htmlspecialchars($nombre));
+                $newId = cpAutodjCreateFolder($db, (int)$estacion['id'], $nombre);
+                setFlash('success', 'Lista de reproducción creada: ' . htmlspecialchars($nombre));
+                header('Location: autodj.php?tab=listas&pl=' . $newId);
+                exit;
             }
             header('Location: autodj.php?tab=listas');
             exit;
@@ -162,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             $db->prepare("DELETE FROM canciones WHERE playlist_id = ? AND estacion_id = ?")->execute([$plId, $estacion['id']]);
             // Borrar la playlist
             $db->prepare("DELETE FROM playlists WHERE id = ? AND estacion_id = ?")->execute([$plId, $estacion['id']]);
-            setFlash('success', 'Lista de reproducci' . chr(243) . 'n eliminada.');
+            setFlash('success', 'Lista de reproducción eliminada.');
             header('Location: autodj.php?tab=listas');
             exit;
         }
@@ -179,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                 $filePath = $musicDir . $cancion['nombre_original'];
                 if (file_exists($filePath)) { @unlink($filePath); }
                 $db->prepare("DELETE FROM canciones WHERE id = ? AND estacion_id = ?")->execute([$songId, $estacion['id']]);
-                setFlash('success', 'Canci' . chr(243) . 'n eliminada.');
+                setFlash('success', 'Canción eliminada.');
             }
             header('Location: autodj.php?tab=listas&pl=' . $plId);
             exit;
@@ -211,7 +312,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             });
             $stmtOrd = $db->prepare("UPDATE canciones SET orden = ? WHERE id = ?");
             foreach ($items as $i => $c) { $stmtOrd->execute([$i, $c['id']]); }
-            setFlash('success', 'Canciones ordenadas por n' . chr(250) . 'meros.');
+            setFlash('success', 'Canciones ordenadas por números.');
             header('Location: autodj.php?tab=listas&pl=' . $plId);
             exit;
         }
@@ -232,12 +333,26 @@ try {
     $playlists = $stmt->fetchAll();
 } catch (PDOException $e) {}
 
+$playlistTrackCounts = [];
+try {
+    $stmt = $db->prepare(
+        'SELECT playlist_id, COUNT(*) AS cnt FROM canciones WHERE estacion_id = ? AND activa = 1 AND playlist_id IS NOT NULL GROUP BY playlist_id'
+    );
+    $stmt->execute([$estacion['id']]);
+    foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+        $playlistTrackCounts[(int)$row['playlist_id']] = (int)$row['cnt'];
+    }
+} catch (PDOException $e) {}
+
 // Subtabs
 $subtab = $_GET['tab'] ?? 'listas';
 if (in_array($subtab, ['manage', 'admin', 'administrar'], true)) {
     $subtab = 'config';
 }
 $selectedPl = isset($_GET['pl']) ? (int)$_GET['pl'] : 0;
+if ($subtab === 'listas' && $selectedPl <= 0 && $playlists) {
+    $selectedPl = (int)($estacion['autodj_playlist_activa'] ?? 0) ?: (int)$playlists[0]['id'];
+}
 
 // Cargar canciones si hay playlist seleccionada
 $canciones = [];
@@ -255,394 +370,477 @@ if ($subtab === 'listas' && $selectedPl > 0) {
         }
     } catch (PDOException $e) {}
 }
-?>
 
-<style>
-/* SonicPanel-style AutoDJ */
-.sp-tabs { display:flex; gap:0; border-bottom:2px solid #e5e7eb; margin-bottom:20px; flex-wrap:wrap; }
-.sp-tab { padding:10px 18px; font-size:13px; color:#6b7280; text-decoration:none; border-bottom:2px solid transparent; margin-bottom:-2px; display:flex; align-items:center; gap:6px; white-space:nowrap; }
-.sp-tab:hover { color:#1e40af; background:#f0f4ff; }
-.sp-tab.active { color:#1e40af; border-bottom-color:#1e40af; font-weight:600; }
-
-.sp-controls { display:flex; align-items:center; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
-.sp-btn-start { background:#10b981; color:#fff; border:none; padding:8px 18px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; }
-.sp-btn-stop { background:#6b7280; color:#fff; border:none; padding:8px 18px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; }
-.sp-btn-restart { background:#0ea5e9; color:#fff; border:none; padding:8px 18px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; }
-.sp-btn-delete { background:#ef4444; color:#fff; border:none; padding:8px 18px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; margin-left:auto; }
-.sp-btn-start:hover { background:#059669; }
-.sp-btn-stop:hover { background:#4b5563; }
-.sp-btn-restart:hover { background:#0284c7; }
-.sp-btn-delete:hover { background:#dc2626; }
-
-.sp-status { font-size:13px; margin-left:8px; color:#6b7280; }
-.sp-status-val { font-weight:700; }
-.sp-status-val.online { color:#10b981; }
-.sp-status-val.offline { color:#ef4444; }
-
-.sp-form-card { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:24px; }
-.sp-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-@media(max-width:768px) { .sp-form-grid { grid-template-columns:1fr; } }
-.sp-field label { display:block; font-size:13px; font-weight:600; color:#374151; margin-bottom:6px; }
-.sp-field label .sp-help { display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; border-radius:50%; background:#0ea5e9; color:#fff; font-size:10px; font-weight:700; margin-left:4px; cursor:help; }
-.sp-field select, .sp-field input[type="text"], .sp-field input[type="url"], .sp-field input[type="number"] {
-    width:100%; padding:8px 12px; border:1px solid #d1d5db; border-radius:6px; font-size:14px; color:#111827; background:#fff;
-    box-sizing:border-box;
-}
-.sp-field select:focus, .sp-field input:focus { outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,0.1); }
-.sp-field input:disabled { background:#f9fafb; color:#6b7280; }
-
-.sp-save-bar { display:flex; align-items:center; justify-content:space-between; margin-top:20px; padding:14px 18px; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; }
-.sp-save-bar .sp-warn { font-size:13px; color:#92400e; display:flex; align-items:center; gap:6px; }
-.sp-save-btn { background:#3b82f6; color:#fff; border:none; padding:10px 24px; border-radius:6px; font-size:14px; font-weight:600; cursor:pointer; }
-.sp-save-btn:hover { background:#2563eb; }
-
-/* Playlist module - SonicPanel style */
-.sp-pl-header { display:flex; gap:12px; align-items:center; margin-bottom:20px; flex-wrap:wrap; }
-.sp-pl-header select { flex:1; min-width:200px; padding:9px 14px; border:1px solid #d1d5db; border-radius:8px; font-size:14px; color:#111827; background:#fff; }
-.sp-pl-header select:focus { outline:none; border-color:#14b8a6; box-shadow:0 0 0 3px rgba(20,184,166,0.15); }
-.sp-pl-header input[type="text"] { flex:0 1 200px; padding:9px 14px; border:1px solid #d1d5db; border-radius:8px; font-size:14px; color:#111827; background:#fff; }
-.sp-pl-header input[type="text"]:focus { outline:none; border-color:#14b8a6; box-shadow:0 0 0 3px rgba(20,184,166,0.15); }
-.sp-pl-create-btn { background:#14b8a6; color:#fff; border:none; padding:9px 20px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; }
-.sp-pl-create-btn:hover { background:#0d9488; }
-
-.sp-pl-actions { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
-.sp-pl-action-btn { background:#0ea5e9; color:#fff; border:none; padding:8px 16px; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:5px; text-decoration:none; }
-.sp-pl-action-btn:hover { background:#0284c7; }
-.sp-pl-action-btn.btn-red { background:#ef4444; }
-.sp-pl-action-btn.btn-red:hover { background:#dc2626; }
-
-.sp-pl-info { font-size:13px; color:#6b7280; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
-.sp-pl-info i { color:#0ea5e9; }
-
-.sp-pl-search { width:100%; padding:10px 14px 10px 38px; border:1px solid #d1d5db; border-radius:8px; font-size:14px; color:#111827; background:#fff; margin-bottom:16px; box-sizing:border-box; }
-.sp-pl-search:focus { outline:none; border-color:#14b8a6; box-shadow:0 0 0 3px rgba(20,184,166,0.15); }
-.sp-pl-search-wrap { position:relative; margin-bottom:16px; }
-.sp-pl-search-wrap .search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#9ca3af; }
-
-.sp-song-list { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
-.sp-song-item { display:flex; align-items:center; padding:12px 16px; border-bottom:1px solid #e5e7eb; cursor:pointer; transition:background 0.15s; }
-.sp-song-item:last-child { border-bottom:none; }
-.sp-song-item:hover { background:#f0fdfa; }
-.sp-song-expand { color:#14b8a6; margin-right:10px; font-size:16px; transition:transform 0.2s; }
-.sp-song-title { flex:1; font-size:14px; color:#14b8a6; font-weight:500; }
-.sp-song-actions { display:flex; gap:8px; }
-.sp-song-action { background:none; border:none; cursor:pointer; font-size:16px; padding:4px; }
-.sp-song-action.edit-btn { color:#3b82f6; }
-.sp-song-action.edit-btn:hover { color:#1d4ed8; }
-.sp-song-action.del-btn { color:#ef4444; }
-.sp-song-action.del-btn:hover { color:#dc2626; }
-
-.sp-song-details { display:none; padding:8px 16px 16px 42px; background:#f9fafb; border-bottom:1px solid #e5e7eb; font-size:13px; color:#6b7280; }
-.sp-song-details.open { display:block; }
-.sp-song-details table { width:100%; }
-.sp-song-details table td { padding:3px 8px; }
-.sp-song-details table td:first-child { font-weight:600; color:#374151; width:120px; }
-
-.sp-pl-empty { text-align:center; padding:40px; color:#9ca3af; font-size:14px; }
-.sp-pl-count { font-size:13px; color:#6b7280; margin-bottom:12px; }
-</style>
-
-<!-- Tabs estilo SonicPanel -->
-<div class="sp-tabs">
-    <a href="autodj.php?tab=listas" class="sp-tab <?= $subtab === 'listas' ? 'active' : '' ?>"><?= cpIcon('music',14) ?> Listas de Reproducci&oacute;n</a>
-    <a href="autodj.php?tab=programacion" class="sp-tab <?= $subtab === 'programacion' ? 'active' : '' ?>"><?= cpIcon('clock',14) ?> Lista Programada</a>
-    <a href="<?= BASE_URL ?>/cliente/rotacion_carpetas.php" class="sp-tab"><?= cpIcon('refresh',14) ?> Playlist Intervals</a>
-    <a href="autodj.php?tab=config" class="sp-tab <?= $subtab === 'config' ? 'active' : '' ?>"><?= cpIcon('gear',14) ?> Administrar AutoDJ</a>
-</div>
-
-<?php if ($subtab === 'listas'): ?>
-
-<!-- ======= TAB: Listas de Reproduccion - Estilo SonicPanel ======= -->
-
-<!-- Selector de playlist + crear nueva -->
-<form method="POST" action="autodj.php?tab=listas" id="formCreatePl" style="display:inline">
-    <?= csrfField() ?>
-    <input type="hidden" name="action" value="create_playlist">
-    <div class="sp-pl-header">
-        <select id="plSelector" onchange="if(this.value) window.location='autodj.php?tab=listas&pl='+this.value">
-            <option value="">Seleccionar una lista de reproducci&oacute;n</option>
-            <?php foreach ($playlists as $pl): ?>
-                <option value="<?= $pl['id'] ?>" <?= $selectedPl == $pl['id'] ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($pl['nombre']) ?><?= $pl['activa'] ? ' (Active)' : '' ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <input type="text" name="nombre" placeholder="Ingresar Nombre" required id="newPlName">
-        <button type="submit" class="sp-pl-create-btn">+ Crear Nueva Lista de Reproducci&oacute;n</button>
-    </div>
-</form>
-
-<?php if ($playlistSeleccionada): ?>
-    <!-- Botones de accion de la playlist -->
-    <div class="sp-pl-actions">
-        <a href="<?= BASE_URL ?>/cliente/subir_musica.php?playlist=<?= $playlistSeleccionada['id'] ?>" class="sp-pl-action-btn">
-            <?= cpIcon('upload',14) ?> Subir Archivos MP3
-        </a>
-        <a href="autodj.php?tab=programacion" class="sp-pl-action-btn">
-            <?= cpIcon('clock',14) ?> Horario
-        </a>
-        <a href="autodj.php?tab=listas&pl=<?= $playlistSeleccionada['id'] ?>" class="sp-pl-action-btn">
-            <?= cpIcon('refresh',14) ?> Actualizar
-        </a>
-        <form method="POST" style="display:inline">
-            <?= csrfField() ?>
-            <input type="hidden" name="action" value="sort_by_prefix">
-            <input type="hidden" name="playlist_id" value="<?= $playlistSeleccionada['id'] ?>">
-            <button type="submit" class="sp-pl-action-btn"><?= cpIcon('list',14) ?> Ordenar Por Prefijo</button>
-        </form>
-        <form method="POST" style="display:inline">
-            <?= csrfField() ?>
-            <input type="hidden" name="action" value="sort_by_number">
-            <input type="hidden" name="playlist_id" value="<?= $playlistSeleccionada['id'] ?>">
-            <button type="submit" class="sp-pl-action-btn"><?= cpIcon('hash',14) ?> Ordenar Por N&uacute;meros</button>
-        </form>
-        <a href="<?= BASE_URL ?>/cliente/listas.php" class="sp-pl-action-btn">
-            <?= cpIcon('music',14) ?> Biblioteca de M&uacute;sica
-        </a>
-        <form method="POST" style="display:inline" onsubmit="return confirm('&iquest;Eliminar la lista &quot;<?= htmlspecialchars($playlistSeleccionada['nombre'], ENT_QUOTES) ?>&quot; y todas sus canciones?')">
-            <?= csrfField() ?>
-            <input type="hidden" name="action" value="delete_playlist">
-            <input type="hidden" name="playlist_id" value="<?= $playlistSeleccionada['id'] ?>">
-            <button type="submit" class="sp-pl-action-btn btn-red"><?= cpIcon('trash',14) ?> Eliminar</button>
-        </form>
-    </div>
-
-    <!-- Info -->
-    <div class="sp-pl-info">
-        <?= cpIcon('info',14) ?> Arrastre y Suelte pistas para cambiar el orden de reproducci&oacute;n (AutoDJ comenzar&aacute; a reproducir desde el inicio de la lista despu&eacute;s de que termine la pista actual.)
-    </div>
-    <div class="sp-pl-info">
-        <?= cpIcon('info',14) ?> Haga clic en pistas para editar/previsualizar.
-    </div>
-
-    <!-- Buscador -->
-    <div class="sp-pl-search-wrap">
-        <span class="search-icon"><?= cpIcon('search',16) ?></span>
-        <input type="text" class="sp-pl-search" placeholder="Buscar, artistas, nombres de canciones..." id="songSearch" onkeyup="filterSongs()">
-    </div>
-
-    <!-- Contador -->
-    <div class="sp-pl-count"><?= count($canciones) ?> cancion<?= count($canciones) !== 1 ? 'es' : '' ?> en esta lista</div>
-
-    <!-- Lista de canciones -->
-    <?php if (empty($canciones)): ?>
-        <div class="sp-pl-empty">
-            <p>No hay canciones en esta lista.</p>
-            <a href="<?= BASE_URL ?>/cliente/subir_musica.php?playlist=<?= $playlistSeleccionada['id'] ?>" class="sp-pl-action-btn" style="display:inline-flex;margin-top:12px">
-                <?= cpIcon('upload',14) ?> Subir Archivos MP3
-            </a>
-        </div>
-    <?php else: ?>
-        <div class="sp-song-list" id="songList">
-            <?php foreach ($canciones as $idx => $cancion): ?>
-                <div class="sp-song-item" data-title="<?= htmlspecialchars(strtolower($cancion['titulo'] . ' ' . ($cancion['artista'] ?? ''))) ?>" onclick="toggleSongDetails(<?= $idx ?>)">
-                    <span class="sp-song-expand" id="arrow-<?= $idx ?>">&#9654;</span>
-                    <span class="sp-song-title"><?= htmlspecialchars(($cancion['orden'] ?? $idx) . ' - ' . ($cancion['titulo'] ?: $cancion['nombre_original'])) ?></span>
-                    <span class="sp-song-actions" onclick="event.stopPropagation()">
-                        <button class="sp-song-action edit-btn" onclick="toggleSongDetails(<?= $idx ?>)" title="Editar/Ver">&#9998;</button>
-                        <form method="POST" style="display:inline" onsubmit="return confirm('&iquest;Eliminar esta canci&oacute;n?')">
-                            <?= csrfField() ?>
-                            <input type="hidden" name="action" value="delete_song">
-                            <input type="hidden" name="song_id" value="<?= $cancion['id'] ?>">
-                            <input type="hidden" name="playlist_id" value="<?= $playlistSeleccionada['id'] ?>">
-                            <button type="submit" class="sp-song-action del-btn" title="Eliminar">&times;</button>
-                        </form>
-                    </span>
-                </div>
-                <div class="sp-song-details" id="details-<?= $idx ?>">
-                    <table>
-                        <tr><td>T&iacute;tulo:</td><td><?= htmlspecialchars($cancion['titulo'] ?: '-') ?></td></tr>
-                        <tr><td>Artista:</td><td><?= htmlspecialchars($cancion['artista'] ?? '-') ?></td></tr>
-                        <tr><td>Archivo:</td><td><?= htmlspecialchars($cancion['nombre_original'] ?? '-') ?></td></tr>
-                        <tr><td>Duraci&oacute;n:</td><td><?= isset($cancion['duracion_segundos']) ? formatDuration($cancion['duracion_segundos']) : '-' ?></td></tr>
-                        <tr><td>Tama&ntilde;o:</td><td><?= isset($cancion['tamano_bytes']) ? formatBytes($cancion['tamano_bytes']) : '-' ?></td></tr>
-                    </table>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-
-<?php else: ?>
-    <!-- Sin playlist seleccionada -->
-    <div class="sp-pl-empty">
-        <p>Seleccione una lista de reproducci&oacute;n del men&uacute; desplegable para ver y administrar sus canciones.</p>
-    </div>
-<?php endif; ?>
-
-<script>
-function toggleSongDetails(idx) {
-    var details = document.getElementById('details-' + idx);
-    var arrow = document.getElementById('arrow-' + idx);
-    if (details.classList.contains('open')) {
-        details.classList.remove('open');
-        arrow.innerHTML = '&#9654;';
-    } else {
-        details.classList.add('open');
-        arrow.innerHTML = '&#9660;';
+$totalCancionesAd = 0;
+try {
+    $stmt = $db->prepare("SELECT COUNT(*) FROM canciones WHERE estacion_id = ?");
+    $stmt->execute([$estacion['id']]);
+    $totalCancionesAd = (int)$stmt->fetchColumn();
+} catch (PDOException $e) {}
+$autodjOnline = ($estacion['autodj_estado'] ?? 'offline') === 'online';
+$playlistCount = count($playlists);
+$activePlName = null;
+foreach ($playlists as $pl) {
+    if (!empty($pl['activa'])) {
+        $activePlName = $pl['nombre'];
+        break;
     }
 }
+if ($activePlName === null && !empty($estacion['autodj_playlist_activa'])) {
+    foreach ($playlists as $pl) {
+        if ((int)$pl['id'] === (int)$estacion['autodj_playlist_activa']) {
+            $activePlName = $pl['nombre'];
+            break;
+        }
+    }
+}
+?>
 
+<?php
+$onAirId = (int)($estacion['autodj_playlist_activa'] ?? 0);
+$onAirName = null;
+foreach ($playlists as $pl) {
+    if ((int)$pl['id'] === $onAirId) { $onAirName = $pl['nombre']; break; }
+}
+$onAirCount = $onAirId ? ($playlistTrackCounts[$onAirId] ?? 0) : 0;
+// What actually plays right now (a schedule or rotation overrides the default folder)
+require_once __DIR__ . '/../includes/autodj_schedule.php';
+$nowSource = castpanelResolveMusicSource($estacion);
+$nowRelay = castpanelResolveRelay($estacion);
+$nowLabel = $nowRelay ? 'Relay: ' . $nowRelay['nombre']
+    : ($nowSource['type'] === 'rotation' ? 'Rotation: ' . $nowSource['name']
+    : ($nowSource['type'] === 'schedule' ? 'Schedule: ' . $nowSource['name'] : ($onAirName ?? 'None selected')));
+$codecLabel = strtoupper($estacion['codec'] ?: 'mp3');
+$modeLabels = ['normal' => 'Normal', 'aleatorio' => 'Shuffle', 'secuencial' => 'Sequential'];
+$modeLabel = $modeLabels[$estacion['modo_reproduccion'] ?? 'normal'] ?? 'Normal';
+$harborPort = (int)($estacion['puerto_stream'] ?: ($estacion['icecast_port'] ?? 8000)) + 5;
+$isShoutStation = isShoutcastType($estacion['server_type'] ?? '');
+$curCodec = $estacion['codec'] ?: 'mp3';
+?>
+<style>
+/* ===== AutoDJ (redesign) ===== */
+.adj-hero{position:relative;overflow:hidden;border-radius:18px;padding:24px 26px;margin-bottom:18px;color:#fff;
+  background:linear-gradient(135deg,var(--primary) 0%,#0f5f66 58%,#0b3d6e 100%);box-shadow:0 14px 34px rgba(15,40,80,.20)}
+.adj-hero::before,.adj-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
+.adj-hero::before{width:260px;height:260px;right:-80px;top:-110px;background:rgba(255,255,255,.18)}
+.adj-hero::after{width:200px;height:200px;left:30%;bottom:-130px;background:rgba(255,255,255,.10)}
+.adj-hero>*{position:relative;z-index:1}
+.adj-hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.adj-kicker{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;opacity:.75;font-weight:700}
+.adj-hero h2{font-size:24px;font-weight:800;margin:4px 0 2px;color:#fff}
+.adj-hero .adj-sub{font-size:13px;opacity:.8}
+.adj-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:30px;font-size:12px;font-weight:700;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25)}
+.adj-pill .dot{width:8px;height:8px;border-radius:50%;background:#9ca3af}
+.adj-pill.on .dot{background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:adjPulse 1.8s infinite}
+@keyframes adjPulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.adj-actions{display:flex;gap:8px;flex-wrap:wrap}
+.adj-actions form{display:inline}
+.adj-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;cursor:pointer;text-decoration:none;transition:background .2s,transform .2s}
+.adj-btn:hover{background:rgba(255,255,255,.24);color:#fff;transform:translateY(-1px)}
+.adj-btn.solid{background:#fff;color:var(--primary);border-color:#fff}
+.adj-btn.solid:hover{background:rgba(255,255,255,.88);color:var(--primary)}
+.adj-np{margin-top:20px;display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16)}
+.adj-eq{display:flex;align-items:flex-end;gap:3px;height:26px;width:28px;flex-shrink:0}
+.adj-eq span{display:block;width:4px;border-radius:2px;background:#fff;opacity:.85;height:30%}
+.adj-hero.is-on .adj-eq span{animation:adjEq 1s ease-in-out infinite}
+.adj-hero.is-on .adj-eq span:nth-child(2){animation-delay:.2s}.adj-hero.is-on .adj-eq span:nth-child(3){animation-delay:.4s}.adj-hero.is-on .adj-eq span:nth-child(4){animation-delay:.1s}
+@keyframes adjEq{0%,100%{height:25%}50%{height:100%}}
+.adj-np-main{flex:1;min-width:0}
+.adj-np-label{font-size:11px;opacity:.7;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.adj-np-title{font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adj-np-bar{height:4px;border-radius:4px;background:rgba(255,255,255,.2);margin-top:8px;overflow:hidden}
+.adj-np-bar span{display:block;height:100%;width:0;background:#fff;border-radius:4px;transition:width 1s linear}
+.adj-np-time{font-size:12px;opacity:.8;font-variant-numeric:tabular-nums;white-space:nowrap}
+.adj-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+@media(max-width:800px){.adj-meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.adj-meta div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.08)}
+.adj-meta small{display:block;font-size:11px;opacity:.7;text-transform:uppercase;letter-spacing:.6px}
+.adj-meta strong{display:block;font-size:14px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.adj-tabs{display:inline-flex;gap:4px;padding:4px;border-radius:12px;background:var(--card-bg);border:1px solid var(--border);margin-bottom:16px;flex-wrap:wrap;box-shadow:var(--shadow)}
+.adj-tabs a{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:9px;font-size:13px;font-weight:600;color:var(--text-secondary);text-decoration:none;transition:var(--transition)}
+.adj-tabs a:hover{color:var(--primary);background:var(--primary-bg)}
+.adj-tabs a.active{background:var(--primary);color:#fff;box-shadow:0 4px 10px rgba(108,60,224,.25)}
+
+.adj-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+.adj-card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.adj-card-h h3{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;margin:0}
+.adj-card-h h3 .ic{width:30px;height:30px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;background:var(--primary-bg);color:var(--primary)}
+.adj-card-b{padding:18px}
+
+/* Folders */
+.adj-lib{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
+@media(max-width:900px){.adj-lib{grid-template-columns:1fr}}
+.adj-newfolder{display:flex;gap:6px;padding:14px;border-bottom:1px solid var(--border)}
+.adj-newfolder input{flex:1;min-width:0;padding:9px 12px;border:1px solid var(--border);border-radius:9px;font-size:13px;background:var(--card-bg);color:var(--text-primary)}
+.adj-newfolder input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(108,60,224,.12)}
+.adj-newfolder button{border:none;border-radius:9px;background:var(--primary);color:#fff;padding:0 12px;cursor:pointer;display:inline-flex;align-items:center}
+.adj-folder-list{padding:8px;max-height:520px;overflow:auto}
+.adj-folder{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;color:var(--text-primary);text-decoration:none;transition:var(--transition);margin-bottom:2px}
+.adj-folder:hover{background:var(--hover);color:var(--text-primary)}
+.adj-folder.sel{background:var(--primary-bg)}
+.adj-folder .fi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--hover);color:var(--text-secondary);flex-shrink:0}
+.adj-folder.sel .fi{background:var(--primary);color:#fff}
+.adj-folder .fn{flex:1;min-width:0}
+.adj-folder .fn strong{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adj-folder .fn small{font-size:12px;color:var(--text-secondary)}
+.adj-onair{font-size:10px;font-weight:800;letter-spacing:.6px;padding:3px 7px;border-radius:6px;background:#d1fae5;color:#065f46;white-space:nowrap}
+.adj-empty{padding:40px 20px;text-align:center;color:var(--text-secondary);font-size:14px}
+.adj-empty .big{width:56px;height:56px;border-radius:16px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;background:var(--primary-bg);color:var(--primary)}
+.adj-toolbar{display:flex;gap:6px;flex-wrap:wrap}
+.adj-toolbar form{display:inline}
+.adj-tbtn{display:inline-flex;align-items:center;gap:5px;padding:7px 11px;border-radius:9px;font-size:12.5px;font-weight:600;border:1px solid var(--border);background:var(--card-bg);color:var(--text-primary);cursor:pointer;text-decoration:none;transition:var(--transition)}
+.adj-tbtn:hover{border-color:var(--primary);color:var(--primary)}
+.adj-tbtn.primary{background:var(--primary);border-color:var(--primary);color:#fff}
+.adj-tbtn.primary:hover{background:var(--primary-dark);color:#fff}
+.adj-tbtn.danger:hover{border-color:var(--danger);color:var(--danger)}
+.adj-tbtn[disabled]{opacity:.55;cursor:default}
+.adj-search{position:relative;margin-bottom:12px}
+.adj-search input{width:100%;padding:10px 12px 10px 36px;border:1px solid var(--border);border-radius:10px;font-size:13.5px;background:var(--card-bg);color:var(--text-primary);box-sizing:border-box}
+.adj-search input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(108,60,224,.12)}
+.adj-search .si{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-secondary);display:flex}
+.adj-songs{border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.adj-song{display:grid;grid-template-columns:34px minmax(0,1fr) 70px 34px;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:13.5px;transition:background .15s}
+.adj-song:last-child{border-bottom:none}
+.adj-song:hover{background:var(--hover)}
+.adj-song .n{color:var(--text-secondary);font-variant-numeric:tabular-nums;font-size:12px}
+.adj-song .t strong{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adj-song .t small{display:block;font-size:12px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adj-song .d{color:var(--text-secondary);font-size:12px;text-align:right;font-variant-numeric:tabular-nums}
+.adj-song .x{border:none;background:none;color:var(--text-secondary);cursor:pointer;border-radius:8px;width:30px;height:30px;display:flex;align-items:center;justify-content:center}
+.adj-song .x:hover{background:#fee2e2;color:var(--danger)}
+.adj-hint{font-size:12px;color:var(--text-secondary);margin:10px 2px 0;display:flex;gap:6px;align-items:center}
+
+/* Settings */
+.adj-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media(max-width:900px){.adj-settings{grid-template-columns:1fr}}
+.adj-settings .full{grid-column:1/-1}
+.adj-field{margin-bottom:14px}
+.adj-field:last-child{margin-bottom:0}
+.adj-field label{display:block;font-size:12.5px;font-weight:600;color:var(--text-primary);margin-bottom:6px}
+.adj-field select,.adj-field input[type=text]{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:9px;font-size:13.5px;background:var(--card-bg);color:var(--text-primary);box-sizing:border-box}
+.adj-field select:focus,.adj-field input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(108,60,224,.12)}
+.adj-field input:disabled{background:var(--hover);color:var(--text-secondary)}
+.adj-field .help{font-size:12px;color:var(--text-secondary);margin-top:6px}
+.adj-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.adj-row2{grid-template-columns:1fr}}
+.adj-codecs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.adj-codec{position:relative;display:block;cursor:pointer}
+.adj-codec input{position:absolute;opacity:0;pointer-events:none}
+.adj-codec span{display:block;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;transition:var(--transition)}
+.adj-codec strong{display:block;font-size:15px}
+.adj-codec small{display:block;font-size:11.5px;color:var(--text-secondary);margin-top:2px}
+.adj-codec input:checked+span{border-color:var(--primary);background:var(--primary-bg);box-shadow:0 0 0 3px rgba(108,60,224,.10)}
+.adj-codec input:focus-visible+span{outline:2px solid var(--primary);outline-offset:2px}
+.adj-savebar{position:sticky;bottom:12px;z-index:5;margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-radius:14px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.10)}
+.adj-savebar span{font-size:13px;color:var(--text-secondary);display:flex;gap:6px;align-items:center}
+.adj-save{border:none;border-radius:10px;background:var(--primary);color:#fff;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.adj-save:hover{background:var(--primary-dark)}
+/* schedule tab uses the panel's cards: round them to match */
+.adj-wrap .two-cols-equal .card{border-radius:16px}
+</style>
+
+<div class="adj-wrap">
+
+<!-- ===== Hero: status, now playing, controls ===== -->
+<div class="adj-hero <?= $autodjOnline ? 'is-on' : '' ?>" id="adjHero">
+    <div class="adj-hero-top">
+        <div>
+            <div class="adj-kicker">AutoDJ</div>
+            <h2><?= htmlspecialchars($estacion['nombre']) ?></h2>
+            <span class="adj-pill <?= $autodjOnline ? 'on' : '' ?>" id="adjPill"><span class="dot"></span><span id="adjPillText"><?= $autodjOnline ? 'On air' : 'Off air' ?></span></span>
+        </div>
+        <div class="adj-actions">
+            <form method="POST"><?= csrfField() ?><input type="hidden" name="action" value="autodj_control"><input type="hidden" name="cmd" value="iniciar">
+                <button type="submit" class="adj-btn"><?= cpIcon('play', 14) ?> Start</button></form>
+            <form method="POST"><?= csrfField() ?><input type="hidden" name="action" value="autodj_control"><input type="hidden" name="cmd" value="detener">
+                <button type="submit" class="adj-btn"><?= cpIcon('stop', 14) ?> Stop</button></form>
+            <form method="POST"><?= csrfField() ?><input type="hidden" name="action" value="autodj_control"><input type="hidden" name="cmd" value="reiniciar">
+                <button type="submit" class="adj-btn"><?= cpIcon('refresh', 14) ?> Restart</button></form>
+            <a href="<?= BASE_URL ?>/cliente/subir_musica.php<?= $onAirId ? '?playlist=' . $onAirId : '' ?>" class="adj-btn solid"><?= cpIcon('upload', 14) ?> Upload music</a>
+        </div>
+    </div>
+
+    <div class="adj-np">
+        <div class="adj-eq"><span></span><span></span><span></span><span></span></div>
+        <div class="adj-np-main">
+            <div class="adj-np-label">Now playing</div>
+            <div class="adj-np-title" id="adjNpTitle"><?= $autodjOnline ? '…' : 'AutoDJ is off' ?></div>
+            <div class="adj-np-bar"><span id="adjNpBar"></span></div>
+        </div>
+        <div class="adj-np-time" id="adjNpTime">--:-- / --:--</div>
+    </div>
+
+    <div class="adj-meta">
+        <div><small><?= $nowSource['type'] === 'default' && !$nowRelay ? 'Folder on air' : 'Playing now' ?></small><strong title="<?= htmlspecialchars($nowLabel) ?>"><?= htmlspecialchars($nowLabel) ?></strong></div>
+        <div><small>Songs</small><strong><?= $onAirCount ?> in folder · <?= $totalCancionesAd ?> total</strong></div>
+        <div><small>Encoder</small><strong><?= $codecLabel ?> · <?= (int)($estacion['bitrate'] ?: 128) ?> kbps</strong></div>
+        <div><small>Play mode</small><strong><?= $modeLabel ?><?= ($estacion['crossfade_seconds'] ?? 0) > 0 ? ' · ' . (int)$estacion['crossfade_seconds'] . 's fade' : '' ?></strong></div>
+    </div>
+</div>
+
+<!-- ===== Tabs ===== -->
+<nav class="adj-tabs">
+    <a href="autodj.php?tab=listas" class="<?= $subtab === 'listas' ? 'active' : '' ?>"><?= cpIcon('folder', 15) ?> Music folders</a>
+    <a href="autodj.php?tab=config" class="<?= $subtab === 'config' ? 'active' : '' ?>"><?= cpIcon('gear', 15) ?> AutoDJ settings</a>
+    <a href="autodj.php?tab=programacion" class="<?= $subtab === 'programacion' ? 'active' : '' ?>"><?= cpIcon('clock', 15) ?> Schedule</a>
+    <a href="<?= BASE_URL ?>/cliente/rotacion_carpetas.php"><?= cpIcon('refresh', 15) ?> Folder rotation</a>
+</nav>
+
+<?php if ($subtab === 'listas'): ?>
+<!-- ===== Music folders ===== -->
+<div class="adj-lib">
+    <aside class="adj-card">
+        <form method="POST" action="autodj.php?tab=listas" class="adj-newfolder">
+            <?= csrfField() ?>
+            <input type="hidden" name="action" value="create_playlist">
+            <input type="text" name="nombre" maxlength="128" placeholder="New folder name" required aria-label="New folder name">
+            <button type="submit" title="Create folder" aria-label="Create folder"><?= cpIcon('plus', 16) ?></button>
+        </form>
+        <div class="adj-folder-list">
+            <?php if (!$playlists): ?>
+                <div class="adj-empty" style="padding:24px 10px">No folders yet — create one above.</div>
+            <?php endif; ?>
+            <?php foreach ($playlists as $pl):
+                $cnt = $playlistTrackCounts[(int)$pl['id']] ?? 0;
+                $isSel = (int)$pl['id'] === (int)$selectedPl;
+            ?>
+            <a class="adj-folder <?= $isSel ? 'sel' : '' ?>" href="autodj.php?tab=listas&pl=<?= (int)$pl['id'] ?>">
+                <span class="fi"><?= cpIcon('folder', 17) ?></span>
+                <span class="fn"><strong><?= htmlspecialchars($pl['nombre']) ?></strong><small><?= $cnt ?> song<?= $cnt === 1 ? '' : 's' ?></small></span>
+                <?php if ((int)$pl['id'] === $onAirId): ?><span class="adj-onair">ON AIR</span><?php endif; ?>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </aside>
+
+    <section class="adj-card">
+    <?php if ($playlistSeleccionada): $plId = (int)$playlistSeleccionada['id']; ?>
+        <div class="adj-card-h">
+            <h3><span class="ic"><?= cpIcon('folder', 16) ?></span> <?= htmlspecialchars($playlistSeleccionada['nombre']) ?>
+                <small style="font-weight:500;color:var(--text-secondary)">· <?= count($canciones) ?> song<?= count($canciones) === 1 ? '' : 's' ?></small></h3>
+            <div class="adj-toolbar">
+                <?php if ($plId === $onAirId): ?>
+                    <button type="button" class="adj-tbtn" disabled><?= cpIcon('check', 14) ?> On air</button>
+                <?php else: ?>
+                    <button type="button" class="adj-tbtn primary" onclick="adjPlayFolder(<?= $plId ?>, this)"><?= cpIcon('play', 14) ?> Play on air</button>
+                <?php endif; ?>
+                <a href="<?= BASE_URL ?>/cliente/subir_musica.php?playlist=<?= $plId ?>" class="adj-tbtn"><?= cpIcon('upload', 14) ?> Upload</a>
+                <form method="POST"><?= csrfField() ?><input type="hidden" name="action" value="sort_by_prefix"><input type="hidden" name="playlist_id" value="<?= $plId ?>">
+                    <button type="submit" class="adj-tbtn" title="Sort by name prefix"><?= cpIcon('list', 14) ?> A–Z</button></form>
+                <form method="POST"><?= csrfField() ?><input type="hidden" name="action" value="sort_by_number"><input type="hidden" name="playlist_id" value="<?= $plId ?>">
+                    <button type="submit" class="adj-tbtn" title="Sort by number"><?= cpIcon('list', 14) ?> 1–9</button></form>
+                <form method="POST" onsubmit="return confirm('Delete the folder &quot;<?= htmlspecialchars($playlistSeleccionada['nombre'], ENT_QUOTES) ?>&quot; and all its songs?')">
+                    <?= csrfField() ?><input type="hidden" name="action" value="delete_playlist"><input type="hidden" name="playlist_id" value="<?= $plId ?>">
+                    <button type="submit" class="adj-tbtn danger"><?= cpIcon('trash', 14) ?> Delete</button></form>
+            </div>
+        </div>
+        <div class="adj-card-b">
+            <?php if (empty($canciones)): ?>
+                <div class="adj-empty">
+                    <div class="big"><?= cpIcon('music', 24) ?></div>
+                    <p>This folder is empty.</p>
+                    <a href="<?= BASE_URL ?>/cliente/subir_musica.php?playlist=<?= $plId ?>" class="adj-tbtn primary" style="margin-top:12px"><?= cpIcon('upload', 14) ?> Upload music</a>
+                </div>
+            <?php else: ?>
+                <div class="adj-search">
+                    <span class="si"><?= cpIcon('search', 15) ?></span>
+                    <input type="text" placeholder="Search songs or artists…" id="songSearch" oninput="filterSongs()">
+                </div>
+                <div class="adj-songs" id="songList">
+                    <?php foreach ($canciones as $idx => $cancion): ?>
+                    <div class="adj-song" data-title="<?= htmlspecialchars(mb_strtolower(($cancion['titulo'] ?: $cancion['nombre_original']) . ' ' . ($cancion['artista'] ?? ''))) ?>">
+                        <span class="n"><?= $idx + 1 ?></span>
+                        <span class="t"><strong><?= htmlspecialchars($cancion['titulo'] ?: $cancion['nombre_original']) ?></strong>
+                            <small><?= htmlspecialchars($cancion['artista'] ?: $cancion['nombre_original']) ?> · <?= isset($cancion['tamano_bytes']) ? formatBytes((int)$cancion['tamano_bytes'], 1) : '' ?></small></span>
+                        <span class="d"><?= !empty($cancion['duracion_segundos']) ? formatDuration((int)$cancion['duracion_segundos']) : '--:--' ?></span>
+                        <form method="POST" onsubmit="return confirm('Delete this song?')">
+                            <?= csrfField() ?><input type="hidden" name="action" value="delete_song">
+                            <input type="hidden" name="song_id" value="<?= (int)$cancion['id'] ?>"><input type="hidden" name="playlist_id" value="<?= $plId ?>">
+                            <button type="submit" class="x" title="Delete song" aria-label="Delete song"><?= cpIcon('trash', 14) ?></button>
+                        </form>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <p class="adj-hint"><?= cpIcon('info', 13) ?> When the last song ends, AutoDJ starts this folder again from the top.</p>
+            <?php endif; ?>
+        </div>
+    <?php else: ?>
+        <div class="adj-empty">
+            <div class="big"><?= cpIcon('folder', 24) ?></div>
+            <p>Create a folder on the left, then upload music into it.</p>
+        </div>
+    <?php endif; ?>
+    </section>
+</div>
+
+<script>
 function filterSongs() {
-    var query = document.getElementById('songSearch').value.toLowerCase();
-    var items = document.querySelectorAll('.sp-song-item');
-    var details = document.querySelectorAll('.sp-song-details');
-    items.forEach(function(item, i) {
-        var title = item.getAttribute('data-title') || '';
-        var show = title.indexOf(query) !== -1;
-        item.style.display = show ? '' : 'none';
-        if (details[i]) details[i].style.display = show && details[i].classList.contains('open') ? 'block' : 'none';
+    var q = document.getElementById('songSearch').value.toLowerCase();
+    document.querySelectorAll('#songList .adj-song').forEach(function (row) {
+        row.style.display = (row.getAttribute('data-title') || '').indexOf(q) !== -1 ? '' : 'none';
     });
+}
+function adjPlayFolder(id, btn) {
+    btn.disabled = true;
+    var body = new URLSearchParams({ action: 'set_active_playlist', playlist_id: id, ajax: '1',
+        csrf_token: <?= json_encode(csrfToken()) ?> });
+    fetch(<?= json_encode((BASE_URL ?: '') . '/cliente/quick_control_api.php') ?>, { method: 'POST', credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+            if (!d.success) { btn.disabled = false; alert(d.error || 'Could not switch folder'); return; }
+            location.reload();
+        })
+        .catch(function () { btn.disabled = false; alert('Network error — try again.'); });
 }
 </script>
 
 <?php elseif ($subtab === 'config'): ?>
+<!-- ===== AutoDJ settings ===== -->
+<form method="POST">
+    <?= csrfField() ?>
+    <input type="hidden" name="action" value="update_config">
 
-<!-- Controles AutoDJ - estilo SonicPanel -->
-<div class="sp-controls">
-    <form method="POST" style="display:inline">
-        <?= csrfField() ?>
-        <input type="hidden" name="action" value="autodj_control">
-        <input type="hidden" name="cmd" value="iniciar">
-        <button type="submit" class="sp-btn-start"><?= cpIcon('play',14) ?> Start</button>
-    </form>
-    <form method="POST" style="display:inline">
-        <?= csrfField() ?>
-        <input type="hidden" name="action" value="autodj_control">
-        <input type="hidden" name="cmd" value="detener">
-        <button type="submit" class="sp-btn-stop"><?= cpIcon('x',14) ?> Stop</button>
-    </form>
-    <form method="POST" style="display:inline">
-        <?= csrfField() ?>
-        <input type="hidden" name="action" value="autodj_control">
-        <input type="hidden" name="cmd" value="reiniciar">
-        <button type="submit" class="sp-btn-restart"><?= cpIcon('refresh',14) ?> Restart</button>
-    </form>
-    <span class="sp-status">AutoDJ status:
-        <span class="sp-status-val <?= ($estacion['autodj_estado'] ?? 'offline') === 'online' ? 'online' : 'offline' ?>">
-            <?= ($estacion['autodj_estado'] ?? 'offline') === 'online' ? 'Online' : 'Offline' ?>
-        </span>
-    </span>
-    <form method="POST" style="display:inline;margin-left:auto" onsubmit="return confirm('&iquest;Est&aacute;s seguro de eliminar el AutoDJ? Esta acci&oacute;n detendr&aacute; el servicio.')">
-        <?= csrfField() ?>
-        <input type="hidden" name="action" value="autodj_control">
-        <input type="hidden" name="cmd" value="detener">
-        <button type="submit" class="sp-btn-delete"><?= cpIcon('trash',14) ?> Eliminar</button>
-    </form>
-</div>
-
-<!-- Formulario unico plano estilo SonicPanel -->
-<div class="sp-form-card">
-    <form method="POST">
-        <?= csrfField() ?>
-        <input type="hidden" name="action" value="update_config">
-
-        <div class="sp-form-grid">
-
-            <div class="sp-field">
-                <label>Activo Lista de Reproducci&oacute;n:</label>
-                <select name="playlist_activa">
-                    <option value="">-- Ninguna --</option>
-                    <?php foreach ($playlists as $pl): ?>
-                        <option value="<?= $pl['id'] ?>" <?= ($estacion['autodj_playlist_activa'] ?? '') == $pl['id'] ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($pl['nombre']) ?><?= $pl['activa'] ? ' (Activo)' : '' ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+    <div class="adj-settings">
+        <div class="adj-card full">
+            <div class="adj-card-h"><h3><span class="ic"><?= cpIcon('folder', 16) ?></span> Music source</h3></div>
+            <div class="adj-card-b">
+                <div class="adj-row2">
+                    <div class="adj-field">
+                        <label for="adjFolder">Folder on air</label>
+                        <select name="playlist_activa" id="adjFolder">
+                            <option value="">— None (silence) —</option>
+                            <?php foreach ($playlists as $pl):
+                                $cnt = $playlistTrackCounts[(int)$pl['id']] ?? 0; ?>
+                                <option value="<?= (int)$pl['id'] ?>" <?= (int)$pl['id'] === $onAirId ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($pl['nombre']) ?> — <?= $cnt ?> song<?= $cnt === 1 ? '' : 's' ?><?= $cnt === 0 ? ' (empty)' : '' ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="adj-field">
+                        <label for="cpNewFolder">…or create a new folder</label>
+                        <input type="text" name="new_folder" id="cpNewFolder" maxlength="128" placeholder="Folder name">
+                    </div>
+                </div>
+                <p class="help" style="font-size:12px;color:var(--text-secondary);margin:4px 0 0">
+                    Pick a folder, choose the encoder and press <strong>Save changes</strong> — AutoDJ plays it right away and loops it, no station restart needed.
+                    <a href="subir_musica.php">Upload music</a>
+                </p>
             </div>
-
-            <div class="sp-field">
-                <label>Codificador: <span class="sp-help" title="Formato de codificaci&oacute;n de audio para la transmisi&oacute;n">?</span></label>
-                <select name="codec">
-                    <option value="mp3" <?= ($estacion['codec'] ?? '') === 'mp3' ? 'selected' : '' ?>>MP3</option>
-                    <option value="aac" <?= ($estacion['codec'] ?? '') === 'aac' ? 'selected' : '' ?>>AAC</option>
-                    <option value="ogg" <?= ($estacion['codec'] ?? '') === 'ogg' ? 'selected' : '' ?>>OGG Vorbis</option>
-                </select>
-            </div>
-
-            <div class="sp-field">
-                <label>T&iacute;tulo de la Radio:</label>
-                <input type="text" name="titulo_radio" value="<?= htmlspecialchars($estacion['titulo_radio'] ?? '') ?>">
-            </div>
-
-            <div class="sp-field">
-                <label>URL de la Radio:</label>
-                <input type="text" name="url_web" value="<?= htmlspecialchars($estacion['url_web'] ?? '') ?>" placeholder="https://tuweb.com">
-            </div>
-
-            <div class="sp-field">
-                <label>Modo de Reproducci&oacute;n:</label>
-                <select name="modo_reproduccion">
-                    <option value="normal" <?= ($estacion['modo_reproduccion'] ?? '') === 'normal' ? 'selected' : '' ?>>Reproducir en Modo Normal</option>
-                    <option value="aleatorio" <?= ($estacion['modo_reproduccion'] ?? '') === 'aleatorio' ? 'selected' : '' ?>>Modo Aleatorio (Shuffle)</option>
-                    <option value="secuencial" <?= ($estacion['modo_reproduccion'] ?? '') === 'secuencial' ? 'selected' : '' ?>>Secuencial Estricto</option>
-                </select>
-            </div>
-
-            <div class="sp-field">
-                <label>Crossfade (AutoMix):</label>
-                <select name="crossfade">
-                    <option value="0" <?= ($estacion['crossfade_seconds'] ?? 0) == 0 ? 'selected' : '' ?>>Desactivado</option>
-                    <option value="2" <?= ($estacion['crossfade_seconds'] ?? 0) == 2 ? 'selected' : '' ?>>2 Seconds</option>
-                    <option value="3" <?= ($estacion['crossfade_seconds'] ?? 0) == 3 ? 'selected' : '' ?>>3 Seconds</option>
-                    <option value="4" <?= ($estacion['crossfade_seconds'] ?? 0) == 4 ? 'selected' : '' ?>>4 Seconds</option>
-                    <option value="5" <?= ($estacion['crossfade_seconds'] ?? 0) == 5 ? 'selected' : '' ?>>5 Seconds</option>
-                    <option value="8" <?= ($estacion['crossfade_seconds'] ?? 0) == 8 ? 'selected' : '' ?>>8 Seconds</option>
-                    <option value="10" <?= ($estacion['crossfade_seconds'] ?? 0) == 10 ? 'selected' : '' ?>>10 Seconds</option>
-                </select>
-            </div>
-
-            <div class="sp-field">
-                <label>L&iacute;mite M&aacute;ximo de Tasa de Bits:</label>
-                <select name="bitrate">
-                    <?php foreach ([64,96,128,192,256,320] as $br): ?>
-                        <option value="<?= $br ?>" <?= ($estacion['bitrate'] ?? 128) == $br ? 'selected' : '' ?>><?= $br ?> KBPS</option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="sp-field">
-                <label>Puerto DJ (Auto): <span class="sp-help" title="Puerto harbor para conexi&oacute;n DJ en vivo (puerto stream + 5)">?</span></label>
-                <input type="text" value="<?= (int)($estacion['puerto_stream'] ?: ($estacion['icecast_port'] ?? 8000)) + 5 ?>" disabled>
-            </div>
-
-            <div class="sp-field">
-                <label>Grabar Shows DJ En Vivo: <span class="sp-help" title="Graba autom&aacute;ticamente las transmisiones de DJs en vivo">?</span></label>
-                <select name="grabar_dj">
-                    <option value="0" <?= !($estacion['grabar_dj'] ?? 0) ? 'selected' : '' ?>>No</option>
-                    <option value="1" <?= ($estacion['grabar_dj'] ?? 0) ? 'selected' : '' ?>>S&iacute;</option>
-                </select>
-            </div>
-
-            <div class="sp-field">
-                <label>Calidad MP3 de Grabaci&oacute;n En Vivo:</label>
-                <select name="calidad_grabacion">
-                    <?php foreach ([128,192,256,320] as $br): ?>
-                        <option value="<?= $br ?>" <?= ($estacion['calidad_grabacion'] ?? 320) == $br ? 'selected' : '' ?>><?= $br ?> KBPS</option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="sp-field">
-                <label>Configuraciones de T&iacute;tulo de Canci&oacute;n:</label>
-                <select name="mostrar_titulos">
-                    <option value="1" <?= ($estacion['mostrar_titulos'] ?? 1) ? 'selected' : '' ?>>Mostrar T&iacute;tulos de Canciones (Predeterminado)</option>
-                    <option value="0" <?= !($estacion['mostrar_titulos'] ?? 1) ? 'selected' : '' ?>>Ocultar T&iacute;tulos</option>
-                </select>
-            </div>
-
-            <div class="sp-field">
-                <label>G&eacute;nero:</label>
-                <input type="text" value="<?= htmlspecialchars($estacion['genero'] ?? 'various') ?>" disabled>
-            </div>
-
         </div>
 
-        <div class="sp-save-bar">
-            <span class="sp-warn"><?= cpIcon('warning',14) ?> Los cambios se aplican de forma inmediata al guardar.</span>
-            <button type="submit" class="sp-save-btn"><?= cpIcon('save',14) ?> Save changes</button>
+        <div class="adj-card">
+            <div class="adj-card-h"><h3><span class="ic"><?= cpIcon('signal', 16) ?></span> Stream encoding</h3></div>
+            <div class="adj-card-b">
+                <div class="adj-field">
+                    <label>Encoder</label>
+                    <div class="adj-codecs">
+                        <label class="adj-codec"><input type="radio" name="codec" value="mp3" <?= $curCodec === 'mp3' ? 'checked' : '' ?>><span><strong>MP3</strong><small>Plays everywhere</small></span></label>
+                        <label class="adj-codec"><input type="radio" name="codec" value="aac" <?= $curCodec === 'aac' ? 'checked' : '' ?>><span><strong>AAC</strong><small>Better sound at low bitrate</small></span></label>
+                        <?php if (!$isShoutStation): /* SHOUTcast only carries MP3/AAC */ ?>
+                        <label class="adj-codec"><input type="radio" name="codec" value="ogg" <?= $curCodec === 'ogg' ? 'checked' : '' ?>><span><strong>OGG</strong><small>Vorbis (Icecast)</small></span></label>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="adj-field">
+                    <label for="adjBitrate">Bitrate</label>
+                    <select name="bitrate" id="adjBitrate">
+                        <?php foreach ([64, 96, 128, 192, 256, 320] as $br): ?>
+                            <option value="<?= $br ?>" <?= (int)($estacion['bitrate'] ?? 128) === $br ? 'selected' : '' ?>><?= $br ?> kbps</option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?php if (!empty($estacion['max_bitrate'])): ?><div class="help">Your package allows up to <?= (int)$estacion['max_bitrate'] ?> kbps.</div><?php endif; ?>
+                </div>
+            </div>
         </div>
-    </form>
-</div>
+
+        <div class="adj-card">
+            <div class="adj-card-h"><h3><span class="ic"><?= cpIcon('music', 16) ?></span> Playback</h3></div>
+            <div class="adj-card-b">
+                <div class="adj-field">
+                    <label for="adjMode">Play mode</label>
+                    <select name="modo_reproduccion" id="adjMode">
+                        <option value="normal" <?= ($estacion['modo_reproduccion'] ?? '') === 'normal' ? 'selected' : '' ?>>Normal (folder order)</option>
+                        <option value="aleatorio" <?= ($estacion['modo_reproduccion'] ?? '') === 'aleatorio' ? 'selected' : '' ?>>Shuffle</option>
+                        <option value="secuencial" <?= ($estacion['modo_reproduccion'] ?? '') === 'secuencial' ? 'selected' : '' ?>>Strict sequential</option>
+                    </select>
+                </div>
+                <div class="adj-row2">
+                    <div class="adj-field">
+                        <label for="adjFade">Crossfade</label>
+                        <select name="crossfade" id="adjFade">
+                            <?php foreach ([0, 2, 3, 4, 5, 8, 10] as $cf): ?>
+                                <option value="<?= $cf ?>" <?= (int)($estacion['crossfade_seconds'] ?? 0) === $cf ? 'selected' : '' ?>><?= $cf ? $cf . ' seconds' : 'Off' ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="adj-field">
+                        <label for="adjTitles">Song titles</label>
+                        <select name="mostrar_titulos" id="adjTitles">
+                            <option value="1" <?= ($estacion['mostrar_titulos'] ?? 1) ? 'selected' : '' ?>>Show</option>
+                            <option value="0" <?= !($estacion['mostrar_titulos'] ?? 1) ? 'selected' : '' ?>>Hide</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="adj-card">
+            <div class="adj-card-h"><h3><span class="ic"><?= cpIcon('radio', 16) ?></span> Station info</h3></div>
+            <div class="adj-card-b">
+                <div class="adj-field">
+                    <label for="adjTitle">Radio title</label>
+                    <input type="text" name="titulo_radio" id="adjTitle" value="<?= htmlspecialchars($estacion['titulo_radio'] ?? '') ?>">
+                </div>
+                <div class="adj-row2">
+                    <div class="adj-field">
+                        <label for="adjUrl">Website</label>
+                        <input type="text" name="url_web" id="adjUrl" value="<?= htmlspecialchars($estacion['url_web'] ?? '') ?>" placeholder="https://yourradio.com">
+                    </div>
+                    <div class="adj-field">
+                        <label>Genre</label>
+                        <input type="text" value="<?= htmlspecialchars($estacion['genero'] ?? 'various') ?>" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="adj-card">
+            <div class="adj-card-h"><h3><span class="ic"><?= cpIcon('microphone', 16) ?></span> Live DJ</h3></div>
+            <div class="adj-card-b">
+                <div class="adj-field">
+                    <label>DJ port (automatic)</label>
+                    <input type="text" value="<?= $harborPort ?>" disabled>
+                    <div class="help">DJs connect here; live audio replaces AutoDJ until they disconnect.</div>
+                </div>
+                <div class="adj-row2">
+                    <div class="adj-field">
+                        <label for="adjRec">Record live shows</label>
+                        <select name="grabar_dj" id="adjRec">
+                            <option value="0" <?= !($estacion['grabar_dj'] ?? 0) ? 'selected' : '' ?>>No</option>
+                            <option value="1" <?= ($estacion['grabar_dj'] ?? 0) ? 'selected' : '' ?>>Yes</option>
+                        </select>
+                    </div>
+                    <div class="adj-field">
+                        <label for="adjRecQ">Recording quality</label>
+                        <select name="calidad_grabacion" id="adjRecQ">
+                            <?php foreach ([128, 192, 256, 320] as $br): ?>
+                                <option value="<?= $br ?>" <?= (int)($estacion['calidad_grabacion'] ?? 320) === $br ? 'selected' : '' ?>><?= $br ?> kbps</option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="adj-savebar">
+        <span><?= cpIcon('info', 14) ?> Changes go live as soon as you save.</span>
+        <button type="submit" class="adj-save"><?= cpIcon('save', 15) ?> Save changes</button>
+    </div>
+</form>
 
 <?php elseif ($subtab === 'programacion'): ?>
 <!-- ======= TAB: Programacion ======= -->
@@ -775,5 +973,39 @@ function filterSongs() {
 </div>
 
 <?php endif; ?>
+
+</div><!-- .adj-wrap -->
+
+<script>
+// Live "now playing" in the AutoDJ header
+(function () {
+    var api = <?= json_encode((BASE_URL ?: '') . '/api/autodj_player.php?estacion=' . (int)$estacion['id'] . '&action=status') ?>;
+    var st = { elapsed: 0, duration: 0, on: false };
+    function fmt(s) { s = Math.max(0, Math.floor(s || 0)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+    function paint() {
+        var bar = document.getElementById('adjNpBar'), tm = document.getElementById('adjNpTime');
+        if (!bar) return;
+        if (st.on && st.duration > 1) {
+            bar.style.width = Math.min(100, st.elapsed / st.duration * 100) + '%';
+            tm.textContent = fmt(st.elapsed) + ' / ' + fmt(st.duration);
+        } else { bar.style.width = '0'; tm.textContent = '--:-- / --:--'; }
+    }
+    function poll() {
+        fetch(api, { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (d) {
+            if (!d || !d.success || !d.player) return;
+            var p = d.player, on = !!p.online;
+            st = { elapsed: p.elapsed || 0, duration: p.duration || 0, on: on };
+            document.getElementById('adjNpTitle').textContent = p.title || (on ? 'Streaming…' : 'AutoDJ is off');
+            document.getElementById('adjHero').classList.toggle('is-on', on);
+            document.getElementById('adjPill').classList.toggle('on', on);
+            document.getElementById('adjPillText').textContent = on ? 'On air' : 'Off air';
+            paint();
+        }).catch(function () {});
+    }
+    poll();
+    setInterval(poll, 5000);
+    setInterval(function () { if (st.on && st.duration > 0 && st.elapsed < st.duration) { st.elapsed++; paint(); } }, 1000);
+})();
+</script>
 
 <?php require_once __DIR__ . '/../includes/layout_footer.php'; ?>

@@ -543,19 +543,18 @@ if (isset($_GET['edit'])) {
 <script>
 function cpCopy(id) {
     var input = document.getElementById(id);
+    if (!input) return;
+    var val = input.value !== undefined ? input.value : (input.textContent || '');
+    var btn = input.parentElement && input.parentElement.querySelector('.cp-copy-btn');
+    if (typeof castpanelCopyText === 'function') {
+        castpanelCopyText(val, btn);
+        return;
+    }
     var origType = input.type;
     input.type = 'text';
     input.select();
     document.execCommand('copy');
     input.type = origType;
-    // Visual feedback
-    var btn = input.parentElement.querySelector('.cp-copy-btn:last-child');
-    if (btn) {
-        var orig = btn.innerHTML;
-        btn.innerHTML = '<?= cpIcon("check",14) ?> Copiado';
-        btn.style.color = '#059669';
-        setTimeout(function() { btn.innerHTML = orig; btn.style.color = ''; }, 1500);
-    }
 }
 </script>
 

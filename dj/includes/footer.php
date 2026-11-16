@@ -2,6 +2,14 @@
 </div><!-- .dj-content -->
 </main>
 
+<?php
+if (!function_exists('castpanelPanelOrigin')) {
+    require_once __DIR__ . '/../../includes/functions.php';
+}
+// Same main-panel address the header loads style.css from (the DJ port has no /assets/js)
+$djPanelJsBase = !empty($djAssetsBase) ? $djAssetsBase : castpanelPanelOrigin();
+?>
+<script src="<?= htmlspecialchars($djPanelJsBase) ?>/assets/js/app.js"></script>
 <script>
 function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('open');

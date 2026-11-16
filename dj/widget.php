@@ -5,17 +5,24 @@
  */
 $pageTitle = 'Widget en Vivo';
 require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/../includes/functions.php';
 
-$sslDomain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['HTTP_HOST'] ?? 'localhost');
-$port = $dj['puerto_stream'] ?? 8000;
+$estacionRow = [
+    'slug' => $dj['slug'] ?? '',
+    'server_type' => $dj['server_type'] ?? 'shoutcast_v2',
+];
+$widgetUrls = castpanelWidgetPlayerUrls($estacionRow);
+$playerFullUrl = $widgetUrls['full'];
+$playerSingleUrl = $widgetUrls['single'];
+// Without a site_url the helper returns this page's origin, i.e. the DJ
+// port (2080), where /widgets does not exist: use the main panel address.
+if (!empty($djAssetsBase) && str_starts_with($playerFullUrl, castpanelPublicPageOrigin() . '/')) {
+    $slugQ = rawurlencode($estacionRow['slug']);
+    $playerFullUrl = $djAssetsBase . '/widgets/player/?slug=' . $slugQ;
+    $playerSingleUrl = $djAssetsBase . '/widgets/player/single/?slug=' . $slugQ;
+}
 
-// Build widget URLs
-$baseUrl = 'https://' . $sslDomain;
-$playerFullUrl = $baseUrl . '/widgets/player/?p=' . $port;
-$playerSingleUrl = $baseUrl . '/widgets/player/single/?p=' . $port;
-
-// Available effects
-$effects = ['rain','snow','stars','wave','equalizer','lightning','none'];
+$effects = ['rain', 'snow', 'stars', 'wave', 'equalizer', 'lightning', 'none'];
 ?>
 
 <div class="section-card">
@@ -30,7 +37,6 @@ $effects = ['rain','snow','stars','wave','equalizer','lightning','none'];
             <div>Copia el código HTML de abajo y pégalo en tu sitio web para mostrar el reproductor de tu emisora en vivo.</div>
         </div>
 
-        <!-- Effect selector -->
         <div class="form-group">
             <label>Efecto visual del reproductor:</label>
             <select class="form-control" id="effectSelect" onchange="updateEmbedCodes()" style="max-width:300px;">
@@ -40,51 +46,29 @@ $effects = ['rain','snow','stars','wave','equalizer','lightning','none'];
             </select>
         </div>
 
-        <!-- Full Player -->
-        <h4 style="font-size:15px;font-weight:700;margin:24px 0 8px;">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Reproductor Completo
-        </h4>
+        <h4 style="font-size:15px;font-weight:700;margin:24px 0 8px;">Reproductor Completo</h4>
         <p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px;">Tamaño recomendado: 400 x 550px</p>
         <div style="position:relative;">
-            <textarea class="form-control" id="embedFull" rows="4" readonly style="font-family:monospace;font-size:12px;background:#f8fafc;resize:vertical;"></textarea>
-            <button class="btn btn-sm btn-primary" onclick="copyCode('embedFull')" style="position:absolute;top:8px;right:8px;">
-                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                Copiar
-            </button>
+            <textarea class="form-control" id="embedFull" rows="4" readonly style="font-family:monospace;font-size:12px;background:#f8fafc;resize:vertical;padding-right:88px;"></textarea>
+            <button type="button" class="btn btn-sm btn-primary" onclick="copyCode('embedFull', this)" style="position:absolute;top:8px;right:8px;">Copiar</button>
         </div>
 
-        <!-- Single/Mini Player -->
-        <h4 style="font-size:15px;font-weight:700;margin:24px 0 8px;">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"/></svg>
-            Reproductor Mini (barra)
-        </h4>
+        <h4 style="font-size:15px;font-weight:700;margin:24px 0 8px;">Reproductor Mini (barra)</h4>
         <p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px;">Tamaño recomendado: 400 x 120px</p>
         <div style="position:relative;">
-            <textarea class="form-control" id="embedSingle" rows="4" readonly style="font-family:monospace;font-size:12px;background:#f8fafc;resize:vertical;"></textarea>
-            <button class="btn btn-sm btn-primary" onclick="copyCode('embedSingle')" style="position:absolute;top:8px;right:8px;">
-                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                Copiar
-            </button>
+            <textarea class="form-control" id="embedSingle" rows="4" readonly style="font-family:monospace;font-size:12px;background:#f8fafc;resize:vertical;padding-right:88px;"></textarea>
+            <button type="button" class="btn btn-sm btn-primary" onclick="copyCode('embedSingle', this)" style="position:absolute;top:8px;right:8px;">Copiar</button>
         </div>
 
-        <!-- Direct link -->
-        <h4 style="font-size:15px;font-weight:700;margin:24px 0 8px;">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            Link Directo
-        </h4>
+        <h4 style="font-size:15px;font-weight:700;margin:24px 0 8px;">Link Directo</h4>
         <div style="position:relative;">
             <input class="form-control" id="directLink" readonly style="font-family:monospace;font-size:13px;background:#f8fafc;padding-right:80px;">
-            <button class="btn btn-sm btn-primary" onclick="copyCode('directLink')" style="position:absolute;top:6px;right:6px;">
-                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                Copiar
-            </button>
+            <button type="button" class="btn btn-sm btn-primary" onclick="copyCode('directLink', this)" style="position:absolute;top:6px;right:6px;">Copiar</button>
         </div>
 
-        <!-- Preview -->
         <h4 style="font-size:15px;font-weight:700;margin:24px 0 8px;">Vista Previa</h4>
-        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:420px;">
-            <iframe id="previewFrame" width="100%" height="500" frameborder="0" style="display:block;"></iframe>
+        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:420px;background:#0a0a12;">
+            <iframe id="previewFrame" width="100%" height="500" frameborder="0" style="display:block;" allow="autoplay"></iframe>
         </div>
     </div>
 </div>
@@ -95,7 +79,7 @@ const BASE_SINGLE = <?= json_encode($playerSingleUrl) ?>;
 
 function updateEmbedCodes() {
     const effect = document.getElementById('effectSelect').value;
-    const suffix = effect !== 'none' ? '&type=' + effect : '';
+    const suffix = effect !== 'none' ? '&type=' + encodeURIComponent(effect) : '';
     const fullUrl = BASE_FULL + suffix;
     const singleUrl = BASE_SINGLE + suffix;
 
@@ -109,19 +93,18 @@ function updateEmbedCodes() {
     document.getElementById('previewFrame').src = fullUrl;
 }
 
-function copyCode(id) {
+function copyCode(id, btn) {
     const el = document.getElementById(id);
-    const text = el.value || el.textContent;
-    navigator.clipboard.writeText(text).then(() => {
-        showToast('Código copiado al portapapeles', 'success');
-    }).catch(() => {
+    const text = el.value || el.textContent || '';
+    if (typeof castpanelCopyText === 'function') {
+        castpanelCopyText(text, btn);
+    } else {
         el.select();
         document.execCommand('copy');
-        showToast('Código copiado', 'success');
-    });
+    }
+    showToast('Código copiado al portapapeles', 'success');
 }
 
-// Init
 updateEmbedCodes();
 </script>
 

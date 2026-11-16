@@ -14,8 +14,21 @@ if (!$estacion) {
     exit;
 }
 
-// Buscar grabaciones
-$showsDir = '/var/www/castpanel/storage/' . ($estacion['slug'] ?? 'unknown') . '/recordings';
+// Grabaciones: Liquidsoap writes one MP3 per live DJ session here
+// (castpanel-ctl mounts <panel>/storage/<slug>/recordings as /recordings)
+$showsDir = BASE_PATH . '/storage/' . ($estacion['slug'] ?? 'unknown') . '/recordings';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_show' && verifyCsrf()) {
+    $f = basename((string)($_POST['file'] ?? ''));
+    if (preg_match('/^[\w.-]+\.mp3$/', $f) && is_file("$showsDir/$f") && @unlink("$showsDir/$f")) {
+        setFlash('success', 'Grabación eliminada.');
+    } else {
+        setFlash('error', 'No se pudo eliminar la grabación.');
+    }
+    header('Location: shows_dj.php');
+    exit;
+}
+
 $shows = [];
 if (is_dir($showsDir)) {
     $files = scandir($showsDir, SCANDIR_SORT_DESCENDING);
@@ -76,6 +89,12 @@ if (is_dir($showsDir)) {
                            class="btn btn-sm btn-outline" download>
                             <?= cpIcon('download', 14) ?> Descargar
                         </a>
+                        <form method="POST" style="display:inline" onsubmit="return confirm('¿Eliminar esta grabación?')">
+                            <?= csrfField() ?>
+                            <input type="hidden" name="action" value="delete_show">
+                            <input type="hidden" name="file" value="<?= htmlspecialchars($show['file']) ?>">
+                            <button type="submit" class="btn btn-sm btn-danger" title="Eliminar"><?= cpIcon('trash', 14) ?></button>
+                        </form>
                     </td>
                 </tr>
                 <?php endforeach; ?>

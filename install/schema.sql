@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `max_estaciones` int(10) unsigned NOT NULL DEFAULT 0,
   `max_clientes` int(10) unsigned NOT NULL DEFAULT 0,
   `activo` tinyint(1) NOT NULL DEFAULT 1,
+  `idioma` varchar(8) DEFAULT NULL,
   `ultimo_login` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),

@@ -1925,3 +1925,127 @@ Memoria
 Ver detalles
 Accesos Rápidos
 {n}% · {n} núcleos
+Guardar cambios
+Nueva contraseña: {x}
+Email no válido.
+Sesión expirada, recargue la página.
+La URL debe empezar por http:// o https://
+Grabación eliminada.
+No se pudo eliminar la grabación.
+¿Eliminar esta grabación?
+Programación guardada.
+Relay '{x}' creado.
+Rotación '{x}' creada.
+Idioma del panel
+Buscar idioma...
+Este idioma se aplica a tu panel. Cada usuario puede elegir su propio idioma.
+Usar también como idioma predeterminado (página de inicio de sesión y cuentas nuevas)
+Aplicar
+Idioma
+Welcome, {x}
+Manage AutoDJ
+Upload music
+Now playing
+▶ Listen
+Listeners now
+Peak 24h: {n}
+{n} ads in library
+Folder on air
+{n} songs
+{n} song
+of {n}
+DJ accounts
+Customize player
+SSL links
+Radio status
+Song history
+— stream online state and listeners. Start/stop the whole station here (not individual songs).
+No track info
+Now playing: {x}
+Recent songs played on your station (updates automatically).
+No songs logged yet — start AutoDJ and play music.
+Start AutoDJ
+Edit details
+On-air playlist
+Play this list
+Switch folder here — only tracks in the selected list play on air.
+Not listening
+● Listening (Radio status player)
+▶ plays/pauses the
+player — one stream for the whole page.
+— start/stop the robot and see now playing. Playlist runs automatically. Use
+for listeners only.
+On air
+Off air
+Playing now
+{n} in folder · {n} total
+Music folders
+AutoDJ settings
+Schedule
+Folder rotation
+New folder name
+Create folder
+Play on air
+This folder is empty.
+Search songs or artists…
+When the last song ends, AutoDJ starts this folder again from the top.
+Create a folder on the left, then upload music into it.
+No folders yet — create one above.
+Music source
+…or create a new folder
+Folder name
+— None (silence) —
+Pick a folder, choose the encoder and press
+Save changes
+— AutoDJ plays it right away and loops it, no station restart needed.
+Stream encoding
+Plays everywhere
+Better sound at low bitrate
+Your package allows up to {n} kbps.
+Playback
+Play mode
+Normal (folder order)
+Shuffle
+Strict sequential
+Off
+{n} seconds
+Song titles
+Show
+Hide
+Station info
+Radio title
+Website
+Live DJ
+DJ port (automatic)
+DJs connect here; live audio replaces AutoDJ until they disconnect.
+Record live shows
+Recording quality
+Changes go live as soon as you save.
+Server / Host
+DJ Control Center
+Live widget
+Start radio
+listening
+Go live — connection details
+change
+Protocol
+Mobile apps password
+How to broadcast
+Message from the station
+Station tools
+Open your software
+— RadioCaster, BUTT, SAM, Mixxx or a mobile app.
+Choose SHOUTcast v1
+as the server type (even if the station uses SHOUTcast v2 or Icecast).
+Enter the server, port and password
+from the card on the left.
+— your live show replaces AutoDJ right away, and AutoDJ comes back when you disconnect.
+Start
+Stop
+Restart
+Songs
+Storage
+Statistics
+Yes
+Genre
+AutoDJ is off

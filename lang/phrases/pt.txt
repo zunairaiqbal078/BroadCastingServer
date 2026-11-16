@@ -1925,3 +1925,127 @@ Memória
 Ver detalhes
 Acessos rápidos
 {n}% · {n} núcleos
+Salvar alterações
+Nova senha: {x}
+E-mail inválido.
+Sessão expirada, recarregue a página.
+A URL deve começar com http:// ou https://
+Gravação excluída.
+Não foi possível excluir a gravação.
+Excluir esta gravação?
+Programação salva.
+Relay '{x}' criado.
+Rotação '{x}' criada.
+Idioma do painel
+Buscar idioma...
+Este idioma se aplica ao seu painel. Cada usuário pode escolher seu próprio idioma.
+Usar também como idioma padrão (página de login e novas contas)
+Aplicar
+Idioma
+Bem-vindo, {x}
+Gerenciar AutoDJ
+Enviar música
+Tocando agora
+▶ Ouvir
+Ouvintes agora
+Pico 24h: {n}
+{n} anúncios na biblioteca
+Pasta no ar
+{n} músicas
+{n} música
+de {n}
+Contas de DJ
+Personalizar player
+Links SSL
+Status da rádio
+Histórico de músicas
+— estado do stream e ouvintes. Inicie/pare toda a estação aqui (não músicas individuais).
+Sem informação da faixa
+Tocando agora: {x}
+Músicas recentes da sua estação (atualiza sozinho).
+Nenhuma música registrada — inicie o AutoDJ e toque música.
+Iniciar AutoDJ
+Editar detalhes
+Lista no ar
+Tocar esta lista
+Troque de pasta aqui — só tocam as faixas da lista escolhida.
+Sem ouvir
+● Ouvindo (player de Status da rádio)
+▶ toca/pausa o player de
+— um único stream para a página inteira.
+— inicie/pare o robô e veja o que toca. A lista roda sozinha. Use
+apenas para os ouvintes.
+No ar
+Fora do ar
+Tocando agora
+{n} na pasta · {n} no total
+Pastas de música
+Configurações do AutoDJ
+Programação
+Rotação de pastas
+Nome da nova pasta
+Criar pasta
+Colocar no ar
+Esta pasta está vazia.
+Buscar músicas ou artistas…
+Quando a última música termina, o AutoDJ recomeça a pasta do início.
+Crie uma pasta à esquerda e envie música para ela.
+Ainda não há pastas — crie uma acima.
+Origem da música
+…ou crie uma nova pasta
+Nome da pasta
+— Nenhuma (silêncio) —
+Escolha uma pasta e o codificador e clique em
+Salvar alterações
+— o AutoDJ toca na hora e em loop, sem reiniciar a estação.
+Codificação do stream
+Toca em qualquer lugar
+Som melhor em bitrate baixo
+Seu pacote permite até {n} kbps.
+Reprodução
+Modo de reprodução
+Normal (ordem da pasta)
+Aleatório
+Sequencial estrito
+Desligado
+{n} segundos
+Títulos das músicas
+Mostrar
+Ocultar
+Informações da estação
+Título da rádio
+Site
+DJ ao vivo
+Porta do DJ (automática)
+Os DJs se conectam aqui; o áudio ao vivo substitui o AutoDJ até se desconectarem.
+Gravar shows ao vivo
+Qualidade da gravação
+As alterações valem assim que você salva.
+Servidor / Host
+Centro de controle DJ
+Widget ao vivo
+Iniciar rádio
+ouvindo
+Entrar ao vivo — dados de conexão
+alterar
+Protocolo
+Senha para apps móveis
+Como transmitir
+Mensagem da estação
+Ferramentas da estação
+Abra seu programa
+— RadioCaster, BUTT, SAM, Mixxx ou um app móvel.
+Escolha SHOUTcast v1
+como tipo de servidor (mesmo que a estação use SHOUTcast v2 ou Icecast).
+Informe o servidor, a porta e a senha
+do cartão à esquerda.
+— seu show ao vivo substitui o AutoDJ na hora, e o AutoDJ volta ao desconectar.
+Iniciar
+Parar
+Reiniciar
+Músicas
+Armazenamento
+Estatísticas
+Sim
+Gênero
+O AutoDJ está desligado

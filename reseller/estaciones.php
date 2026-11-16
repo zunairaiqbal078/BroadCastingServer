@@ -96,9 +96,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                         $serverType, $icecastMount, $icecastPort, $icecastPassword,
                         $shoutcastSid, $codec, $bitrate
                     ]);
+                    $newStationId = (int)$db->lastInsertId();
+                    require_once __DIR__ . '/../includes/provisioning.php';
+                    $prov = provisionStation($newStationId);
+                    if (!($prov['success'] ?? false)) {
+                        $msg = "Estación creada pero aprovisionamiento incompleto: " . ($prov['error'] ?? 'error');
+                        $msgType = 'warning';
+                    } else {
+                        $estFull = loadStationWithPackage($newStationId);
+                        if ($estFull) {
+                            castpanelEnsureStationStreamReady($estFull);
+                        }
+                        $msg = "Estación '$nombre' creada para el cliente";
+                        $msgType = 'success';
+                    }
                     $estacionesActuales++;
-                    $msg = "Estación '$nombre' creada para el cliente";
-                    $msgType = 'success';
                 }
             }
         }

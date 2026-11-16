@@ -17,14 +17,12 @@ function loadTranslations(?string $lang = null): void {
     global $_TRANSLATIONS, $_CURRENT_LANG;
 
     if ($lang === null) {
-        // Obtener idioma de la BD
-        try {
-            $db = getDB();
-            $row = $db->query("SELECT valor FROM configuracion WHERE clave = 'default_language'")->fetch();
-            $lang = $row ? $row['valor'] : 'es';
-        } catch (\Throwable $e) {
-            $lang = 'es';
-        }
+        // 1) the signed-in user's own choice (floating language panel)
+        $lang = cpUserLanguage();
+    }
+    if ($lang === null) {
+        // 2) the panel default (admin), also used on the login page
+        $lang = cpDefaultLanguage();
     }
 
     $_CURRENT_LANG = $lang;
@@ -173,8 +171,51 @@ $_PHRASES = null;
 define('CP_NEUTRAL_PHRASE', '/^(AAC\\+|AIza\\.\\.\\.|API (Identifier|JSON|Key|Secret|Now Playing)|API JSON - CastPanel|Apache.*|Blesta|ClientExec|Cron.*|Docker.*|Fail2ban|Firewalld|Favicon|Facebook Live.*|Instagram Live|TikTok Live.*|YouTube Live|InnoDB|Kernel|Knee|Node\\.js|PHP Configuration|PLS Playlist|M3U Playlist|XSPF Playlist|MP3 128k|Swap|Uptime|SELinux|SC v2\\.6|SID 1|IceCast v2|Icecast.*|SHOUTcast v[0-9.]+|ShoutCast.*|Shoutcast.*|Slug|Timezone|TuneIn \\/ Radio\\.net|VLC Media Player|WinAmp \\/ AIMP|iTunes \\/ Apple Music|phpMyAdmin.*|Release|Peak|Ratio|Load Average|Collation|Cores|Engine|Encoder|Endpoint|Hostname|Codec|Bitrate|Sample Rate|DJs|DJ Panel|AutoDJ|Admin|Reseller|Jingles|Promos|Premium|Rock \\/ Pop|Facebook:|Instagram:|RadioCaster:|Mount \\/ SID|Mounts|Relay|Ads|Media|Warning|Fatal error|HTTP\\/1\\.1 403 Forbidden|Sync Proxy|Reset Pass|Change Logos\\/Titles|Source IP|[A-Z]{2} · .+|English|Español|Deutsch|Français|Italiano|Português|\\| SHOUTcast:|↑ TX:|↓ RX:|● ONLINE|○ OFFLINE|now_playing\\..*|paquete_id is required|Facebook can|Instagram can|TikTok can|Firewall|Firewall \\(firewalld\\)|Online|Offline|Dashboard|Email|Email:|Host:|Status:|Station not found|Username|Branding|Social|Software|Total|Total Streams|Stream \\/ Source List.*|Widgets & Players)$/u');
 $_PHRASE_PATTERNS = [];
 
+/** Language codes the panel ships (lang/<code>.php). */
+function cpLanguageCodes(): array {
+    return ['es', 'en', 'pt', 'fr', 'de', 'it', 'nl', 'tr', 'pl', 'ro', 'cs', 'sr', 'el', 'af', 'fa'];
+}
+
+/** Panel default language (admin setting; login page and new accounts). */
+function cpDefaultLanguage(): string {
+    try {
+        $row = getDB()->query("SELECT valor FROM configuracion WHERE clave = 'default_language'")->fetch();
+        $lang = $row ? (string)$row['valor'] : 'es';
+    } catch (\Throwable $e) {
+        $lang = 'es';
+    }
+    return in_array($lang, cpLanguageCodes(), true) ? $lang : 'es';
+}
+
+/** Language chosen by the signed-in panel user (admin, reseller or client), or null. */
+function cpUserLanguage(): ?string {
+    $uid = (int)($_SESSION['user_id'] ?? 0);
+    $rol = $_SESSION['user_rol'] ?? '';
+    if ($uid <= 0 || !in_array($rol, ['admin', 'reseller', 'cliente'], true)) return null;
+    try {
+        $st = getDB()->prepare('SELECT idioma FROM usuarios WHERE id = ?');
+        $st->execute([$uid]);
+        $lang = $st->fetchColumn();
+    } catch (\Throwable $e) {
+        return null; // column not created yet: nobody has chosen a language
+    }
+    return is_string($lang) && in_array($lang, cpLanguageCodes(), true) ? $lang : null;
+}
+
+/** Save a user's language (adds the column on older databases). */
+function cpSaveUserLanguage(int $userId, ?string $lang): bool {
+    if ($lang !== null && !in_array($lang, cpLanguageCodes(), true)) return false;
+    $db = getDB();
+    try {
+        $db->query('SELECT idioma FROM usuarios LIMIT 0');
+    } catch (\Throwable $e) {
+        $db->exec('ALTER TABLE usuarios ADD COLUMN idioma VARCHAR(8) DEFAULT NULL');
+    }
+    return $db->prepare('UPDATE usuarios SET idioma = ? WHERE id = ?')->execute([$lang, $userId]);
+}
+
 /**
- * Pick the active language (global panel setting) and start translating
+ * Pick the active language (user choice, else panel default) and start translating
  * the page output. Call once, before any HTML is printed.
  */
 function cpI18nStart(): void {
@@ -199,14 +240,19 @@ function cpPhrases(): array {
     $loadedFor = $_CURRENT_LANG;
     $_PHRASES = [];
     $_PHRASE_PATTERNS = [];
-    if ($_CURRENT_LANG === 'es') return $_PHRASES;
-    // lang/phrases/es.txt holds one Spanish phrase per line; <lang>.txt holds
-    // the translation on the same line number (empty line = not translated).
+    // lang/phrases/es.txt holds one source phrase per line (mostly Spanish; some
+    // newer screens use English text); <lang>.txt holds the translation on the
+    // same line number (empty line = not translated). es-tr.txt gives Spanish
+    // for the English source lines, so Spanish users get those screens in Spanish.
     $dir = __DIR__ . '/../lang/phrases/';
     $src = @file($dir . 'es.txt', FILE_IGNORE_NEW_LINES);
     if (!$src) return $_PHRASES;
     // English is the fallback for phrases a language has not translated yet
-    $chain = $_CURRENT_LANG === 'en' ? ['en'] : ['en', $_CURRENT_LANG];
+    $chain = match ($_CURRENT_LANG) {
+        'es' => ['es-tr'],
+        'en' => ['en'],
+        default => ['en', $_CURRENT_LANG],
+    };
     foreach ($chain as $code) {
         $tr = @file($dir . basename($code) . '.txt', FILE_IGNORE_NEW_LINES);
         if (!$tr) continue;
@@ -330,7 +376,7 @@ function cpTranslateScript(string $js, array $p): string {
 /** Output-buffer callback: translate a whole HTML document. */
 function cpTranslateOutput(string $html, int $phase = 0): string {
     global $_CURRENT_LANG;
-    if ($_CURRENT_LANG === 'es' || $html === '') return $html;
+    if ($html === '') return $html;
     // Leave JSON / non-HTML responses alone
     foreach (headers_list() as $h) {
         if (stripos($h, 'content-type:') === 0 && stripos($h, 'text/html') === false) return $html;
@@ -350,9 +396,11 @@ function cpTranslateOutput(string $html, int $phase = 0): string {
         '/(<!--.*?-->|<script\b[^>]*>.*?<\/script>|<style\b[^>]*>.*?<\/style>|<textarea\b[^>]*>.*?<\/textarea>|<[^>]+>)/is',
         $html, -1, PREG_SPLIT_DELIM_CAPTURE
     );
+    $skipText = false; // text right inside an element marked translate="no" (e.g. language names)
     foreach ($parts as $i => $part) {
         if ($part === '') continue;
         if ($i % 2 === 0) {
+            if ($skipText) { $skipText = false; continue; }
             $parts[$i] = cpTranslateTextSegment($part, $p);
         } elseif (stripos($part, '<script') === 0) {
             if (preg_match('/^(<script\b[^>]*>)(.*)(<\/script>)$/is', $part, $m) && !preg_match('/\bsrc\s*=/i', $m[1])) {
@@ -361,6 +409,7 @@ function cpTranslateOutput(string $html, int $phase = 0): string {
         } elseif (stripos($part, '<textarea') === 0) {
             $parts[$i] = preg_replace_callback('/^<textarea\b[^>]*>/i', fn($m) => cpTranslateTag($m[0], $p), $part);
         } elseif ($part[0] === '<' && $part[1] !== '!' && stripos($part, '<style') !== 0) {
+            $skipText = (bool)preg_match('/\btranslate\s*=\s*["\']?no\b/i', $part);
             $parts[$i] = cpTranslateTag($part, $p);
         }
     }

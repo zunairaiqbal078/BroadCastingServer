@@ -1925,3 +1925,127 @@ Arbeitsspeicher
 Details anzeigen
 Schnellzugriff
 {n}% · {n} Kerne
+Änderungen speichern
+Neues Passwort: {x}
+Ungültige E-Mail.
+Sitzung abgelaufen, Seite neu laden.
+Die URL muss mit http:// oder https:// beginnen
+Aufnahme gelöscht.
+Aufnahme konnte nicht gelöscht werden.
+Diese Aufnahme löschen?
+Zeitplan gespeichert.
+Relay '{x}' erstellt.
+Rotation '{x}' erstellt.
+Panelsprache
+Sprache suchen...
+Diese Sprache gilt für Ihr Panel. Jeder Benutzer kann seine eigene Sprache wählen.
+Auch als Standardsprache verwenden (Anmeldeseite und neue Konten)
+Übernehmen
+Sprache
+Willkommen, {x}
+AutoDJ verwalten
+Musik hochladen
+Läuft gerade
+▶ Anhören
+Hörer jetzt
+Spitze 24h: {n}
+{n} Werbespots in der Bibliothek
+Ordner auf Sendung
+{n} Titel
+{n} Titel
+von {n}
+DJ-Konten
+Player anpassen
+SSL-Links
+Radiostatus
+Titelverlauf
+— Stream-Status und Hörer. Hier die ganze Station starten/stoppen (nicht einzelne Titel).
+Keine Titelinfo
+Läuft gerade: {x}
+Zuletzt gespielte Titel Ihrer Station (aktualisiert automatisch).
+Noch keine Titel protokolliert — AutoDJ starten und Musik abspielen.
+AutoDJ starten
+Details bearbeiten
+Playlist auf Sendung
+Diese Liste spielen
+Ordner hier wechseln — nur Titel der gewählten Liste laufen.
+Nicht am Hören
+● Hört zu (Radiostatus-Player)
+▶ spielt/pausiert den Player
+— ein Stream für die ganze Seite.
+— Roboter starten/stoppen und sehen, was läuft. Die Liste läuft automatisch. Nutzen Sie
+nur für Hörer.
+Auf Sendung
+Nicht auf Sendung
+Läuft jetzt
+{n} im Ordner · {n} gesamt
+Musikordner
+AutoDJ-Einstellungen
+Zeitplan
+Ordnerrotation
+Name des neuen Ordners
+Ordner erstellen
+Auf Sendung schalten
+Dieser Ordner ist leer.
+Titel oder Künstler suchen…
+Nach dem letzten Titel startet AutoDJ den Ordner wieder von vorn.
+Links einen Ordner erstellen und Musik hineinladen.
+Noch keine Ordner — oben einen erstellen.
+Musikquelle
+…oder neuen Ordner erstellen
+Ordnername
+— Keiner (Stille) —
+Ordner und Encoder wählen und drücken Sie
+Änderungen speichern
+— AutoDJ spielt ihn sofort in Schleife, ohne Neustart der Station.
+Stream-Kodierung
+Läuft überall
+Besserer Klang bei niedriger Bitrate
+Ihr Paket erlaubt bis zu {n} kbps.
+Wiedergabe
+Wiedergabemodus
+Normal (Ordner-Reihenfolge)
+Zufällig
+Streng sequenziell
+Aus
+{n} Sekunden
+Songtitel
+Anzeigen
+Ausblenden
+Stationsinfo
+Radiotitel
+Webseite
+Live-DJ
+DJ-Port (automatisch)
+DJs verbinden sich hier; Live-Audio ersetzt AutoDJ bis zur Trennung.
+Live-Shows aufnehmen
+Aufnahmequalität
+Änderungen gelten sofort nach dem Speichern.
+Server / Host
+DJ-Kontrollzentrum
+Live-Widget
+Radio starten
+hören zu
+Live gehen — Verbindungsdaten
+ändern
+Protokoll
+Passwort für Mobil-Apps
+So senden Sie
+Nachricht der Station
+Stationswerkzeuge
+Öffnen Sie Ihre Software
+— RadioCaster, BUTT, SAM, Mixxx oder eine Mobil-App.
+Wählen Sie SHOUTcast v1
+als Servertyp (auch wenn die Station SHOUTcast v2 oder Icecast nutzt).
+Server, Port und Passwort eingeben
+aus der Karte links.
+— Ihre Live-Show ersetzt AutoDJ sofort; AutoDJ kehrt nach der Trennung zurück.
+Starten
+Stoppen
+Neustart
+Titel
+Speicher
+Statistiken
+Ja
+Genre
+AutoDJ ist aus

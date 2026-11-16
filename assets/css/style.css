@@ -238,11 +238,25 @@ a:hover { color: var(--primary-dark); }
 }
 
 /* ---- STAT CARDS ---- */
-.stats-grid {
+.stats-grid,
+.cp-client-stats,
+.cp-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
     margin-bottom: 24px;
+    width: 100%;
+    align-items: stretch;
+}
+.stats-grid a.stat-card,
+.cp-client-stats a.stat-card,
+.cp-stats a.stat-card {
+    color: #fff;
+}
+.stats-grid a.stat-card:hover,
+.cp-client-stats a.stat-card:hover,
+.cp-stats a.stat-card:hover {
+    color: #fff;
 }
 
 .stat-card {
@@ -251,6 +265,10 @@ a:hover { color: var(--primary-dark); }
     color: #fff;
     position: relative;
     overflow: hidden;
+    display: block;
+    text-decoration: none;
+    box-sizing: border-box;
+    min-height: 112px;
 }
 
 .stat-card::after {
@@ -1069,7 +1087,9 @@ textarea.form-control { resize: vertical; min-height: 80px; }
     .main-content {
         margin-left: 0;
     }
-    .stats-grid {
+    .stats-grid,
+    .cp-client-stats,
+    .cp-stats {
         grid-template-columns: 1fr 1fr;
     }
     .config-grid, .two-cols-equal {
@@ -1084,7 +1104,9 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 }
 
 @media (max-width: 480px) {
-    .stats-grid {
+    .stats-grid,
+    .cp-client-stats,
+    .cp-stats {
         grid-template-columns: 1fr;
     }
 }
@@ -1257,7 +1279,210 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 }
 
 /* ============================================================
-   SONICPANEL-STYLE DASHBOARD
+   CLIENT DASHBOARD (aligned with admin panel)
+   ============================================================ */
+.cp-client-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+.cp-client-hero h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+.cp-client-hero p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.cp-client-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.cp-client-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+.cp-client-hero-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.cp-client-stats .stat-card,
+.cp-stats .stat-card {
+    box-shadow: var(--shadow-md);
+    transition: transform .2s, box-shadow .2s;
+}
+.cp-client-stats a.stat-card:hover,
+.cp-stats a.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+.cp-mini-bar {
+    height: 6px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.25);
+    margin-top: 12px;
+    overflow: hidden;
+}
+.cp-mini-bar span {
+    display: block;
+    height: 100%;
+    background: #fff;
+    border-radius: 6px;
+}
+.cp-tab-hint {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0 0 14px;
+    line-height: 1.5;
+}
+.cp-control-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+.cp-control-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.cp-control-actions form {
+    display: inline;
+}
+.cp-control-status {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+.cp-control-status strong {
+    font-weight: 700;
+}
+.cp-control-status strong.is-on { color: var(--success); }
+.cp-control-status strong.is-off { color: var(--danger); }
+.cp-embed-player {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+    background: var(--card-bg);
+}
+.cp-embed-player-main {
+    display: flex;
+    align-items: stretch;
+    background: var(--hover);
+}
+.cp-embed-cover {
+    width: 96px;
+    min-height: 76px;
+    background: var(--purple-gradient);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 8px;
+}
+.cp-embed-cover span {
+    color: #fff;
+    font-size: 9px;
+    margin-top: 4px;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 84px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cp-embed-controls {
+    flex: 1;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.cp-embed-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.cp-embed-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.cp-embed-btn:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+.cp-embed-seek {
+    flex: 1;
+    min-width: 80px;
+    height: 4px;
+    accent-color: var(--primary);
+}
+.cp-embed-seek[disabled] {
+    cursor: default;
+}
+.cp-embed-time {
+    font-size: 11px;
+    color: var(--text-secondary);
+    min-width: 40px;
+    text-align: right;
+    white-space: nowrap;
+}
+.cp-embed-np {
+    background: var(--purple-gradient);
+    color: #fff;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.cp-embed-footnote {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 8px 0 0;
+}
+.cp-audio-err {
+    display: none;
+    font-size: 12px;
+    color: var(--danger);
+    margin: 8px 0 0;
+}
+
+/* ============================================================
+   SONICPANEL-STYLE DASHBOARD (client cards)
    ============================================================ */
 .sp-dashboard {
     display: flex;
@@ -1273,60 +1498,67 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 
 /* ---- SP CARD ---- */
 .sp-card {
-    background: #fff;
+    background: var(--card-bg);
     border-radius: var(--radius);
-    border: 1px solid #e0e4ea;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
 .sp-card-header {
-    background: linear-gradient(135deg, #00897b 0%, #00acc1 100%);
-    padding: 14px 20px;
-    color: #fff;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-primary);
 }
 
 .sp-card-header h3 {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     display: flex;
     align-items: center;
     gap: 8px;
     margin: 0;
+    color: var(--text-primary);
+}
+
+.sp-card-header h3 svg,
+.sp-card-header h3 .cp-icon {
+    color: var(--primary);
 }
 
 /* ---- SP TABS ---- */
 .sp-card-tabs {
     display: flex;
-    background: #f5f7fa;
-    border-bottom: 1px solid #e0e4ea;
+    background: var(--hover);
+    border-bottom: 1px solid var(--border);
     overflow-x: auto;
 }
 
-.sp-tab {
+.sp-card-tabs .sp-tab {
     padding: 10px 16px;
     border: none;
     background: transparent;
     font-size: 12.5px;
     font-weight: 600;
-    color: #6b7a8d;
+    color: var(--text-secondary);
     cursor: pointer;
     white-space: nowrap;
     border-bottom: 2px solid transparent;
     transition: all .15s ease;
 }
 
-.sp-tab:hover {
-    color: #00897b;
-    background: rgba(0,137,123,.05);
+.sp-card-tabs .sp-tab:hover {
+    color: var(--primary);
+    background: var(--primary-bg);
 }
 
-.sp-tab.active {
-    color: #00897b;
-    border-bottom-color: #00897b;
-    background: #fff;
+.sp-card-tabs .sp-tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: var(--card-bg);
 }
 
 /* ---- SP TAB CONTENT ---- */
@@ -1360,7 +1592,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .sp-info-label {
     font-size: 11.5px;
     font-weight: 600;
-    color: #8896a7;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: .4px;
 }
@@ -1368,7 +1600,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .sp-info-value {
     font-size: 14px;
     font-weight: 600;
-    color: #2d3748;
+    color: var(--text-primary);
 }
 
 /* ---- SP COPY FIELD ---- */
@@ -1701,7 +1933,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .sp-bar {
     width: 100%;
     min-height: 3px;
-    background: linear-gradient(to top, #00897b, #26c6da);
+    background: linear-gradient(to top, var(--primary-light), var(--primary));
     border-radius: 4px 4px 0 0;
     position: relative;
     transition: height .3s ease;
@@ -1714,7 +1946,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
     transform: translateX(-50%);
     font-size: 10px;
     font-weight: 700;
-    color: #00897b;
+    color: var(--primary);
     white-space: nowrap;
 }
 
@@ -1737,20 +1969,20 @@ textarea.form-control { resize: vertical; min-height: 80px; }
     align-items: center;
     gap: 6px;
     padding: 8px 14px;
-    background: #f5f7fa;
-    border: 1px solid #e0e4ea;
-    border-radius: 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     font-size: 12.5px;
     font-weight: 600;
-    color: #4a5568;
+    color: var(--text-primary);
     text-decoration: none;
-    transition: all .15s;
+    transition: var(--transition);
 }
 
 .sp-qa:hover {
-    background: #e8f5e9;
-    border-color: #a5d6a7;
-    color: #2e7d32;
+    background: var(--primary-bg);
+    border-color: var(--primary-light);
+    color: var(--primary);
 }
 
 /* ---- SP GAUGES ---- */

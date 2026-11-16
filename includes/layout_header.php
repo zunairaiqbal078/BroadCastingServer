@@ -9,6 +9,13 @@ require_once __DIR__ . '/icons.php';
 require_once __DIR__ . '/i18n.php';
 cpI18nStart(); // translate the whole page into the panel language
 requireLogin();
+// Check the role before any HTML is sent, so a wrong role is redirected
+// to its own panel instead of getting "Acceso denegado" halfway down a page.
+if (!empty($isAdmin)) {
+    requireRole('admin');
+} elseif (!empty($isReseller)) {
+    requireRole('reseller');
+}
 
 $estacion = getCurrentStation();
 $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
@@ -24,7 +31,8 @@ $brand = getCurrentBranding();
     <?= brandingFavicon($brand) ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="<?= BASE_URL ?>/assets/css/style.css" rel="stylesheet">
+    <?php $cpStyleVer = @filemtime(BASE_PATH . '/assets/css/style.css') ?: time(); ?>
+    <link href="<?= BASE_URL ?>/assets/css/style.css?v=<?= (int)$cpStyleVer ?>" rel="stylesheet">
     <style>
         .nav-icon { font-style: normal; display:inline-flex; align-items:center; }
         <?php if (!empty($brand['primary_color'])): ?>
@@ -158,7 +166,7 @@ $brand = getCurrentBranding();
             <li><a href="<?= BASE_URL ?>/admin/api_billing.php" class="<?= $currentPage === 'api_billing' ? 'active' : '' ?>">
                 <span class="nav-icon"><?= cpIcon('dollar', 16) ?></span> Facturaci&oacute;n y API
             </a></li>
-            <li><a href="<?= BASE_URL ?>/admin/idioma.php" class="<?= $currentPage === 'idioma' ? 'active' : '' ?>">
+            <li><a href="<?= BASE_URL ?>/admin/idioma.php" onclick="return cpLangOpen();" class="<?= $currentPage === 'idioma' ? 'active' : '' ?>">
                 <span class="nav-icon"><?= cpIcon('languages', 16) ?></span> Cambiar Idioma
             </a></li>
             <li><a href="<?= BASE_URL ?>/admin/phpmyadmin.php" class="<?= $currentPage === 'phpmyadmin' ? 'active' : '' ?>">
@@ -348,16 +356,21 @@ $brand = getCurrentBranding();
                 </div>
             </div>
             <div class="topbar-actions">
+                <button type="button" class="cp-lang-btn" onclick="cpLangOpen()" title="Idioma" aria-label="Idioma">
+                    <?= cpIcon('globe', 15) ?><span translate="no"><?= strtoupper(htmlspecialchars(getCurrentLang())) ?></span>
+                </button>
                 <a href="<?= BASE_URL ?>/cliente/index.php" class="btn btn-outline btn-sm" onclick="location.reload();return false;"><?= cpIcon('refresh', 14) ?> Actualizar</a>
-                <a href="<?= BASE_URL ?>/logout.php" class="btn btn-outline btn-sm"><?= cpIcon('logout', 14) ?> Cerrar Sesi&oacute;n</a>
+                <a href="<?= BASE_URL ?>/logout.php?rol=<?= urlencode($_SESSION['user_rol'] ?? '') ?>" class="btn btn-outline btn-sm"><?= cpIcon('logout', 14) ?> Cerrar Sesi&oacute;n</a>
             </div>
         </header>
+
+        <?php require __DIR__ . '/language_panel.php'; /* floating language panel */ ?>
 
         <!-- PAGE CONTENT -->
         <div class="page-content">
 
 <?php if ($flash): ?>
     <div class="alert alert-<?= $flash['type'] ?>">
-        <?= htmlspecialchars($flash['message']) ?>
+        <?= htmlspecialchars(html_entity_decode((string)$flash['message'], ENT_QUOTES | ENT_HTML5, 'UTF-8')) /* some messages carry &oacute; etc. */ ?>
     </div>
 <?php endif; ?>

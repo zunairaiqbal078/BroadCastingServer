@@ -57,8 +57,19 @@ $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStora
                     <?php if (empty($playlists)): ?>
                         <option value="">-- Sin lista --</option>
                     <?php else: ?>
-                        <?php foreach ($playlists as $i => $pl): ?>
-                            <option value="<?= $pl['id'] ?>" <?= $i === 0 ? 'selected' : '' ?>><?= htmlspecialchars($pl['nombre']) ?><?= !empty($pl['activa']) ? ' (Active)' : '' ?></option>
+                        <?php
+                        $activePlId = (int)($estacion['autodj_playlist_activa'] ?? 0);
+                        // Folder chosen with "Upload" from a folder (?playlist=ID) wins;
+                        // otherwise the on-air folder, otherwise "General".
+                        $wantedPlId = (int)($_GET['playlist'] ?? 0);
+                        if ($wantedPlId && !in_array($wantedPlId, array_map('intval', array_column($playlists, 'id')), true)) {
+                            $wantedPlId = 0;
+                        }
+                        $selPlId = $wantedPlId ?: $activePlId;
+                        foreach ($playlists as $pl):
+                            $sel = ($selPlId > 0 && (int)$pl['id'] === $selPlId) || ($selPlId === 0 && ($pl['slug'] ?? '') === 'general');
+                        ?>
+                            <option value="<?= $pl['id'] ?>" <?= $sel ? 'selected' : '' ?>><?= htmlspecialchars($pl['nombre']) ?><?= (int)$pl['id'] === $activePlId ? ' (AutoDJ active)' : '' ?></option>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </select>

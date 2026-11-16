@@ -1,3 +1,9 @@
+# Dynamic /shoutcast/{slug} when Apache ProxyPass was not synced yet (new stations)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^shoutcast/([a-z0-9][a-z0-9_-]*)/?$ shoutcast/index.php?slug=$1 [L,QSA,NC]
+</IfModule>
+
 # CastPanel - PHP Upload Settings (Apache)
 <IfModule mod_php.c>
     php_value upload_max_filesize 200M

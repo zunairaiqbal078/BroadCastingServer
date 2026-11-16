@@ -9,7 +9,7 @@ if (!isset($_SESSION['dj_id'])) {
     exit;
 }
 
-require_once '/var/www/castpanel/config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../includes/i18n.php';
 cpI18nStart(); // translate the DJ portal into the panel language
 
@@ -41,14 +41,27 @@ try {
     $brand = [];
 }
 
-$panelName   = htmlspecialchars($brand['nombre_panel'] ?? 'CastPanel');
-$sidebarColor = htmlspecialchars($brand['sidebar_color'] ?? '#1a2332');
-$primaryColor = htmlspecialchars($brand['primary_color'] ?? '#27917e');
+$panelName   = htmlspecialchars($brand['nombre_panel'] ?? $brand['panel_title'] ?? 'CastPanel');
+$sidebarColor = htmlspecialchars($brand['sidebar_color'] ?? '#1e1b2e');
+$primaryColor = htmlspecialchars($brand['primary_color'] ?? '#6c3ce0');
+$djAssetsBase = '';
+try {
+    $stmtBase = $db->query("SELECT valor FROM configuracion WHERE clave = 'site_url' LIMIT 1");
+    $djAssetsBase = rtrim(trim((string)$stmtBase->fetchColumn()), '/');
+} catch (Exception $e) {}
+if ($djAssetsBase === '') {
+    $hostOnly = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    if (str_contains($hostOnly, ':')) {
+        $hostOnly = explode(':', $hostOnly, 2)[0];
+    }
+    $djAssetsBase = 'http://' . $hostOnly . ':8080';
+}
+$djStyleVer = @filemtime(__DIR__ . '/../../assets/css/style.css') ?: time();
 $_page        = basename($_SERVER['PHP_SELF'], '.php');
 
 // DJ photo
 $djPhoto = 'data:image/svg+xml,' . rawurlencode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect fill="#ddd" width="80" height="80"/><text x="40" y="48" text-anchor="middle" font-size="32" fill="#999" font-family="sans-serif">' . strtoupper(substr($dj['nombre'] ?? 'D', 0, 1)) . '</text></svg>');
-if (!empty($dj['foto']) && file_exists('/var/www/castpanel/dj/uploads/' . $dj['foto'])) {
+if (!empty($dj['foto']) && file_exists(__DIR__ . '/../uploads/' . $dj['foto'])) {
     $djPhoto = 'uploads/' . htmlspecialchars($dj['foto']);
 }
 
@@ -62,12 +75,14 @@ $stationName = htmlspecialchars($dj['estacion_nombre'] ?? $dj['titulo_radio'] ??
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= $pageTitle ?? 'Dashboard' ?> — <?= $panelName ?> DJ</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="<?= htmlspecialchars($djAssetsBase) ?>/assets/css/style.css?v=<?= (int)$djStyleVer ?>" rel="stylesheet">
 <style>
 :root {
     --sidebar-bg: <?= $sidebarColor ?>;
     --primary: <?= $primaryColor ?>;
-    --primary-hover: <?= $primaryColor ?>dd;
-    --content-bg: #f0f2f5;
+    --primary-hover: <?= $primaryColor ?>cc;
+    --primary-bg: #f3f0ff;
+    --content-bg: #f5f6fa;
     --card-bg: #fff;
     --text-dark: #1f2937;
     --text-secondary: #6b7280;
@@ -274,27 +289,80 @@ body {
     margin: 0 auto;
 }
 
+/* ═══ DJ DASHBOARD HERO (aligned with client panel) ═══ */
+.dj-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+.dj-hero h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+.dj-hero p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.dj-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.dj-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+.dj-hero-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.dj-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+.dj-stats .stat-card {
+    box-shadow: 0 4px 6px rgba(0,0,0,.07);
+}
+
 /* ═══ CARDS & SECTIONS ═══ */
 .section-card {
     background: var(--card-bg);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     margin-bottom: 24px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px rgba(0,0,0,.07);
 }
 .section-header {
-    background: var(--primary);
-    color: #fff;
-    padding: 12px 20px;
-    font-size: 15px;
+    background: var(--card-bg);
+    color: var(--text-dark);
+    padding: 16px 20px;
+    font-size: 16px;
     font-weight: 700;
     display: flex;
     align-items: center;
     gap: 8px;
+    border-bottom: 1px solid var(--border);
 }
 .section-header svg {
     width: 18px; height: 18px;
-    fill: none; stroke: currentColor;
+    fill: none; stroke: var(--primary);
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -304,17 +372,18 @@ body {
 /* ═══ TABS ═══ */
 .tabs {
     display: flex;
-    border-bottom: 2px solid var(--border);
-    padding: 0 20px;
-    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 12px;
+    background: #f5f6fa;
+    overflow-x: auto;
 }
 .tab-btn {
     padding: 12px 16px;
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    font-size: 13.5px;
+    margin-bottom: -1px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-secondary);
     cursor: pointer;
@@ -325,10 +394,11 @@ body {
     font-family: inherit;
     white-space: nowrap;
 }
-.tab-btn:hover { color: var(--primary); }
+.tab-btn:hover { color: var(--primary); background: var(--primary-bg); }
 .tab-btn.active {
     color: var(--primary);
     border-bottom-color: var(--primary);
+    background: var(--card-bg);
 }
 .tab-btn svg {
     width: 15px; height: 15px;
@@ -459,7 +529,7 @@ body {
 
 /* ═══ PLAYER MINI ═══ */
 .mini-player {
-    background: #f9fafb;
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 14px;
@@ -467,6 +537,7 @@ body {
     align-items: center;
     gap: 14px;
     margin-top: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
 }
 .mini-player .album-art {
     width: 60px; height: 60px;
@@ -552,6 +623,69 @@ body {
     }
     .sidebar-overlay.show { display: block; }
 }
+
+/* ═══ Redesign (shared by every DJ page) ═══ */
+.section-card{border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.section-header{font-size:15px;padding:16px 20px;}
+.section-header svg{box-sizing:content-box;padding:7px;border-radius:9px;background:var(--primary-bg);}
+.tabs{background:transparent;padding:10px 14px 0;gap:4px;border-bottom:1px solid var(--border);}
+.tab-btn{border-radius:9px 9px 0 0;}
+.tab-btn.active{background:var(--primary-bg);}
+.form-control{border-radius:9px;}
+.btn{border-radius:10px;}
+
+.dj2-hero{position:relative;overflow:hidden;border-radius:18px;padding:24px 26px;margin-bottom:20px;color:#fff;
+  background:linear-gradient(135deg,<?= $primaryColor ?> 0%,#0f5f66 58%,#0b3d6e 100%);box-shadow:0 14px 34px rgba(15,40,80,.20);}
+.dj2-hero::before,.dj2-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none;}
+.dj2-hero::before{width:260px;height:260px;right:-80px;top:-110px;background:rgba(255,255,255,.18);}
+.dj2-hero::after{width:200px;height:200px;left:30%;bottom:-130px;background:rgba(255,255,255,.10);}
+.dj2-hero>*{position:relative;z-index:1;}
+.dj2-hero-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.dj2-id{display:flex;align-items:center;gap:16px;min-width:0;}
+.dj2-avatar{width:64px;height:64px;border-radius:18px;object-fit:cover;border:2px solid rgba(255,255,255,.4);background:#fff;flex-shrink:0;}
+.dj2-kicker{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;opacity:.75;font-weight:700;}
+.dj2-hero h2{font-size:24px;font-weight:800;margin:2px 0;color:#fff;}
+.dj2-sub{font-size:13px;opacity:.8;}
+.dj2-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.dj2-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:10px;font-size:13px;font-weight:600;font-family:inherit;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;cursor:pointer;text-decoration:none;transition:background .2s,transform .2s;}
+.dj2-btn:hover{background:rgba(255,255,255,.24);color:#fff;transform:translateY(-1px);}
+.dj2-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.dj2-btn.solid{background:#fff;color:<?= $primaryColor ?>;border-color:#fff;}
+.dj2-btn.solid:hover{background:rgba(255,255,255,.88);color:<?= $primaryColor ?>;}
+.dj2-btn[disabled]{opacity:.6;cursor:default;}
+.dj2-np{margin-top:20px;display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);flex-wrap:wrap;}
+.dj2-listen{width:48px;height:48px;border-radius:50%;border:none;background:#fff;color:<?= $primaryColor ?>;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:transform .2s;}
+.dj2-listen:hover{transform:scale(1.06);}
+.dj2-listen svg{width:20px;height:20px;fill:currentColor;}
+.dj2-np-main{flex:1;min-width:160px;}
+.dj2-np-label{font-size:11px;opacity:.7;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+.dj2-np-title{font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dj2-np-side{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.dj2-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:30px;font-size:12px;font-weight:700;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);}
+.dj2-pill .dot{width:8px;height:8px;border-radius:50%;background:#fca5a5;}
+.dj2-pill.on .dot{background:#34d399;animation:dj2Pulse 1.8s infinite;}
+@keyframes dj2Pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.dj2-listeners{display:inline-flex;align-items:center;gap:6px;font-size:13px;opacity:.9;}
+.dj2-listeners svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;}
+
+.dj2-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:20px;margin-bottom:4px;}
+@media(max-width:960px){.dj2-grid{grid-template-columns:1fr;}}
+.dj2-grid .section-card{margin-bottom:20px;}
+.dj2-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+@media(max-width:560px){.dj2-fields{grid-template-columns:1fr;}}
+.dj2-field{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;align-items:center;column-gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--body-bg,#f5f6fa);}
+.dj2-field small{grid-column:1/-1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-secondary);}
+.dj2-field small a{text-transform:none;letter-spacing:0;font-weight:600;margin-left:4px;}
+.dj2-field code{font-size:14px;font-weight:600;color:var(--text-dark);background:none;padding:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+.dj2-field button{border:1px solid var(--border);background:var(--card-bg);border-radius:8px;padding:4px 9px;font-size:12px;font-weight:600;font-family:inherit;color:var(--text-dark);cursor:pointer;}
+.dj2-field button:hover{border-color:var(--primary);color:var(--primary);}
+.dj2-two{display:inline-flex;gap:4px;}
+.dj2-steps{margin:0;padding-left:20px;font-size:13.5px;line-height:1.55;color:var(--text-dark);}
+.dj2-steps li{margin-bottom:8px;}
+.dj2-msg{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;margin-bottom:20px;border-radius:14px;background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:13.5px;}
+.dj2-msg svg{width:20px;height:20px;flex-shrink:0;fill:none;stroke:#d97706;stroke-width:2;margin-top:1px;}
+.dj2-msg p{margin:4px 0 0;line-height:1.5;}
+.dj2-note{font-size:12.5px;color:var(--text-secondary);margin:10px 0 0;}
 </style>
 </head>
 <body>
@@ -565,7 +699,7 @@ body {
         <div class="logo-icon">
             <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
         </div>
-        <span>DJ Panel</span>
+        <span><?= $panelName ?> DJ</span>
     </div>
 
     <div class="sidebar-menu">

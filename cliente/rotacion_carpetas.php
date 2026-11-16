@@ -8,6 +8,13 @@ $pageTitle = 'Rotación de Carpetas';
 $pageIcon = 'refresh';
 require_once __DIR__ . '/../includes/layout_header.php';
 
+// Apply schedules/rotation/relay/ads right after a change (runs after the redirect)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($estacion['id'])) {
+    require_once __DIR__ . '/../includes/autodj_schedule.php';
+    $cpSchedStation = (int)$estacion['id'];
+    register_shutdown_function(static function () use ($cpSchedStation) { castpanelApplyStationScheduleById($cpSchedStation); });
+}
+
 if (!$estacion) { echo '<div class="alert alert-warning">Sin estaci&oacute;n asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
 
 $db = getDB();

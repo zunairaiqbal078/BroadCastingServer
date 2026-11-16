@@ -1925,3 +1925,127 @@ Paměť
 Zobrazit podrobnosti
 Rychlé akce
 {n}% · {n} jader
+Uložit změny
+Nové heslo: {x}
+Neplatný e-mail.
+Relace vypršela, obnovte stránku.
+URL musí začínat http:// nebo https://
+Nahrávka smazána.
+Nahrávku nelze smazat.
+Smazat tuto nahrávku?
+Plán uložen.
+Relay '{x}' vytvořen.
+Rotace '{x}' vytvořena.
+Jazyk panelu
+Hledat jazyk...
+Tento jazyk platí pro váš panel. Každý uživatel si může zvolit vlastní jazyk.
+Použít také jako výchozí jazyk (přihlašovací stránka a nové účty)
+Použít
+Jazyk
+Vítejte, {x}
+Spravovat AutoDJ
+Nahrát hudbu
+Právě hraje
+▶ Poslechnout
+Posluchači nyní
+Špička 24h: {n}
+{n} reklam v knihovně
+Složka ve vysílání
+{n} skladeb
+{n} skladba
+z {n}
+DJ účty
+Upravit přehrávač
+SSL odkazy
+Stav rádia
+Historie skladeb
+— stav streamu a posluchači. Zde spustíte/zastavíte celou stanici (ne jednotlivé skladby).
+Žádné info o skladbě
+Právě hraje: {x}
+Nedávno hrané skladby stanice (aktualizuje se samo).
+Zatím žádné skladby — spusťte AutoDJ a pusťte hudbu.
+Spustit AutoDJ
+Upravit podrobnosti
+Playlist ve vysílání
+Přehrát tento seznam
+Zde změňte složku — hrají jen skladby vybraného seznamu.
+Neposloucháte
+● Posloucháte (přehrávač Stav rádia)
+▶ přehraje/pozastaví přehrávač
+— jeden stream pro celou stránku.
+— spusťte/zastavte robota a uvidíte, co hraje. Seznam běží sám. Použijte
+jen pro posluchače.
+Ve vysílání
+Mimo vysílání
+Hraje nyní
+{n} ve složce · {n} celkem
+Hudební složky
+Nastavení AutoDJ
+Plán
+Rotace složek
+Název nové složky
+Vytvořit složku
+Pustit do vysílání
+Tato složka je prázdná.
+Hledat skladby nebo interprety…
+Po poslední skladbě AutoDJ spustí složku znovu od začátku.
+Vlevo vytvořte složku a nahrajte do ní hudbu.
+Zatím žádné složky — vytvořte výše.
+Zdroj hudby
+…nebo vytvořte novou složku
+Název složky
+— Žádná (ticho) —
+Vyberte složku a kodér a stiskněte
+Uložit změny
+— AutoDJ ji hned přehrává dokola, bez restartu stanice.
+Kódování streamu
+Hraje všude
+Lepší zvuk při nízkém bitrate
+Váš balíček umožňuje až {n} kbps.
+Přehrávání
+Režim přehrávání
+Normální (pořadí složky)
+Náhodně
+Přísně postupně
+Vypnuto
+{n} sekund
+Názvy skladeb
+Zobrazit
+Skrýt
+Informace o stanici
+Název rádia
+Web
+Živý DJ
+Port DJ (automatický)
+DJ se připojují sem; živý zvuk nahradí AutoDJ až do odpojení.
+Nahrávat živé pořady
+Kvalita nahrávky
+Změny platí hned po uložení.
+Server / Hostitel
+DJ ovládací centrum
+Živý widget
+Spustit rádio
+poslouchá
+Vysílat živě — údaje o připojení
+změnit
+Protokol
+Heslo pro mobilní aplikace
+Jak vysílat
+Zpráva od stanice
+Nástroje stanice
+Otevřete svůj program
+— RadioCaster, BUTT, SAM, Mixxx nebo mobilní aplikace.
+Zvolte SHOUTcast v1
+jako typ serveru (i když stanice používá SHOUTcast v2 nebo Icecast).
+Zadejte server, port a heslo
+z karty vlevo.
+— živý pořad hned nahradí AutoDJ, který se vrátí po odpojení.
+Spustit
+Zastavit
+Restartovat
+Skladby
+Úložiště
+Statistiky
+Ano
+Žánr
+AutoDJ je vypnutý

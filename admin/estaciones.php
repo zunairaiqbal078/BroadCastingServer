@@ -70,6 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
 
                 if ($result['success']) {
                     $msg = "Radio creada exitosamente &mdash; Usuario: {$result['username']}, Puerto: {$result['puerto']}, Mount: {$result['mount']}";
+                    if (empty($result['stream_ready']) && !empty($result['slug'])) {
+                        $msg .= " &mdash; <strong>Stream:</strong> compruebe /shoutcast/{$result['slug']} (proxy sincronizado automáticamente; si falla, use Sync proxy)";
+                    }
                     $msgType = 'success';
 
                     if ($sendEmail && $clientEmail && function_exists('sendAccountEmail')) {

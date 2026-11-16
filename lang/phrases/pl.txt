@@ -1925,3 +1925,127 @@ Pamięć
 Zobacz szczegóły
 Szybkie akcje
 {n}% · {n} rdzeni
+Zapisz zmiany
+Nowe hasło: {x}
+Nieprawidłowy e-mail.
+Sesja wygasła, odśwież stronę.
+URL musi zaczynać się od http:// lub https://
+Nagranie usunięte.
+Nie można usunąć nagrania.
+Usunąć to nagranie?
+Harmonogram zapisany.
+Relay '{x}' utworzony.
+Rotacja '{x}' utworzona.
+Język panelu
+Szukaj języka...
+Ten język dotyczy Twojego panelu. Każdy użytkownik może wybrać własny język.
+Użyj również jako języka domyślnego (strona logowania i nowe konta)
+Zastosuj
+Język
+Witaj, {x}
+Zarządzaj AutoDJ
+Prześlij muzykę
+Teraz gra
+▶ Słuchaj
+Słuchacze teraz
+Szczyt 24h: {n}
+{n} reklam w bibliotece
+Folder na antenie
+{n} utworów
+{n} utwór
+z {n}
+Konta DJ
+Dostosuj odtwarzacz
+Linki SSL
+Status radia
+Historia utworów
+— stan strumienia i słuchacze. Uruchom/zatrzymaj tu całą stację (nie pojedyncze utwory).
+Brak informacji o utworze
+Teraz gra: {x}
+Ostatnio grane utwory stacji (aktualizuje się samo).
+Brak zapisanych utworów — uruchom AutoDJ i odtwarzaj muzykę.
+Uruchom AutoDJ
+Edytuj szczegóły
+Playlista na antenie
+Odtwórz tę listę
+Zmień folder tutaj — grają tylko utwory z wybranej listy.
+Nie słuchasz
+● Słuchasz (odtwarzacz Status radia)
+▶ odtwarza/wstrzymuje odtwarzacz
+— jeden strumień dla całej strony.
+— uruchom/zatrzymaj robota i zobacz, co gra. Lista działa sama. Użyj
+tylko dla słuchaczy.
+Na antenie
+Poza anteną
+Gra teraz
+{n} w folderze · {n} łącznie
+Foldery muzyczne
+Ustawienia AutoDJ
+Harmonogram
+Rotacja folderów
+Nazwa nowego folderu
+Utwórz folder
+Puść na antenę
+Ten folder jest pusty.
+Szukaj utworów lub wykonawców…
+Po ostatnim utworze AutoDJ zaczyna folder od początku.
+Utwórz folder po lewej i prześlij do niego muzykę.
+Brak folderów — utwórz powyżej.
+Źródło muzyki
+…lub utwórz nowy folder
+Nazwa folderu
+— Brak (cisza) —
+Wybierz folder i koder, a potem kliknij
+Zapisz zmiany
+— AutoDJ od razu odtwarza go w pętli, bez restartu stacji.
+Kodowanie strumienia
+Działa wszędzie
+Lepszy dźwięk przy niskim bitrate
+Twój pakiet pozwala do {n} kbps.
+Odtwarzanie
+Tryb odtwarzania
+Normalny (kolejność folderu)
+Losowo
+Ściśle sekwencyjny
+Wyłączone
+{n} sekund
+Tytuły utworów
+Pokaż
+Ukryj
+Informacje o stacji
+Tytuł radia
+Strona WWW
+DJ na żywo
+Port DJ (automatyczny)
+DJ-e łączą się tutaj; dźwięk na żywo zastępuje AutoDJ do rozłączenia.
+Nagrywaj audycje na żywo
+Jakość nagrania
+Zmiany działają od razu po zapisaniu.
+Serwer / Host
+Centrum sterowania DJ
+Widżet na żywo
+Uruchom radio
+słucha
+Wejdź na żywo — dane połączenia
+zmień
+Protokół
+Hasło do aplikacji mobilnych
+Jak nadawać
+Wiadomość od stacji
+Narzędzia stacji
+Otwórz swój program
+— RadioCaster, BUTT, SAM, Mixxx lub aplikacja mobilna.
+Wybierz SHOUTcast v1
+jako typ serwera (nawet jeśli stacja używa SHOUTcast v2 lub Icecast).
+Wpisz serwer, port i hasło
+z karty po lewej.
+— Twoja audycja na żywo od razu zastępuje AutoDJ, który wraca po rozłączeniu.
+Start
+Stop
+Uruchom ponownie
+Utwory
+Miejsce
+Statystyki
+Tak
+Gatunek
+AutoDJ jest wyłączony

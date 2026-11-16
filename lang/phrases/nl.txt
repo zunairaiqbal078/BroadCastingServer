@@ -1925,3 +1925,127 @@ Geheugen
 Details bekijken
 Snelle acties
 {n}% · {n} kernen
+Wijzigingen opslaan
+Nieuw wachtwoord: {x}
+Ongeldig e-mailadres.
+Sessie verlopen, laad de pagina opnieuw.
+De URL moet beginnen met http:// of https://
+Opname verwijderd.
+Kon de opname niet verwijderen.
+Deze opname verwijderen?
+Planning opgeslagen.
+Relay '{x}' aangemaakt.
+Rotatie '{x}' aangemaakt.
+Paneeltaal
+Taal zoeken...
+Deze taal geldt voor uw paneel. Elke gebruiker kan zijn eigen taal kiezen.
+Ook als standaardtaal gebruiken (inlogpagina en nieuwe accounts)
+Toepassen
+Taal
+Welkom, {x}
+AutoDJ beheren
+Muziek uploaden
+Nu speelt
+▶ Luisteren
+Luisteraars nu
+Piek 24u: {n}
+{n} advertenties in bibliotheek
+Map in de lucht
+{n} nummers
+{n} nummer
+van {n}
+DJ-accounts
+Speler aanpassen
+SSL-links
+Radiostatus
+Nummergeschiedenis
+— streamstatus en luisteraars. Start/stop hier het hele station (geen losse nummers).
+Geen nummerinfo
+Nu speelt: {x}
+Recent gespeelde nummers op uw station (automatisch bijgewerkt).
+Nog geen nummers gelogd — start AutoDJ en speel muziek.
+AutoDJ starten
+Details bewerken
+Afspeellijst in de lucht
+Deze lijst afspelen
+Wissel hier van map — alleen nummers van de gekozen lijst worden gespeeld.
+Niet aan het luisteren
+● Luisteren (Radiostatus-speler)
+▶ speelt/pauzeert de speler
+— één stream voor de hele pagina.
+— start/stop de robot en zie wat er speelt. De lijst loopt vanzelf. Gebruik
+alleen voor luisteraars.
+In de lucht
+Uit de lucht
+Speelt nu
+{n} in map · {n} totaal
+Muziekmappen
+AutoDJ-instellingen
+Planning
+Maprotatie
+Naam nieuwe map
+Map maken
+In de lucht zetten
+Deze map is leeg.
+Nummers of artiesten zoeken…
+Na het laatste nummer begint AutoDJ de map opnieuw.
+Maak links een map en upload er muziek in.
+Nog geen mappen — maak er hierboven een.
+Muziekbron
+…of maak een nieuwe map
+Mapnaam
+— Geen (stilte) —
+Kies een map en encoder en druk op
+Wijzigingen opslaan
+— AutoDJ speelt hem direct in een lus, zonder herstart van het station.
+Streamcodering
+Speelt overal
+Beter geluid bij lage bitrate
+Uw pakket staat tot {n} kbps toe.
+Afspelen
+Afspeelmodus
+Normaal (mapvolgorde)
+Willekeurig
+Strikt opeenvolgend
+Uit
+{n} seconden
+Nummertitels
+Tonen
+Verbergen
+Stationsinfo
+Radiotitel
+Website
+Live-DJ
+DJ-poort (automatisch)
+DJ's verbinden hier; live audio vervangt AutoDJ tot ze verbreken.
+Liveshows opnemen
+Opnamekwaliteit
+Wijzigingen gelden zodra u opslaat.
+Server / Host
+DJ-controlecentrum
+Live-widget
+Radio starten
+luisteren
+Live gaan — verbindingsgegevens
+wijzigen
+Protocol
+Wachtwoord voor mobiele apps
+Zo zendt u uit
+Bericht van het station
+Stationstools
+Open uw software
+— RadioCaster, BUTT, SAM, Mixxx of een mobiele app.
+Kies SHOUTcast v1
+als servertype (ook als het station SHOUTcast v2 of Icecast gebruikt).
+Vul server, poort en wachtwoord in
+uit de kaart links.
+— uw liveshow vervangt AutoDJ direct en AutoDJ komt terug na verbreken.
+Starten
+Stoppen
+Herstarten
+Nummers
+Opslag
+Statistieken
+Ja
+Genre
+AutoDJ staat uit

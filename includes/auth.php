@@ -30,11 +30,108 @@ function requireLogin(): void {
  */
 function requireRole(string ...$roles): void {
     requireLogin();
-    if (!in_array($_SESSION['user_rol'], $roles)) {
-        header('HTTP/1.1 403 Forbidden');
-        exit('Acceso denegado');
+    if (in_array($_SESSION['user_rol'] ?? '', $roles, true)) {
+        return;
+    }
+    // Another tab of this browser may have switched the session to a
+    // different account (e.g. admin "Login as user" opens the client panel).
+    // If this browser is still signed in with a role this page accepts,
+    // switch back to that identity instead of refusing access.
+    foreach ($roles as $rol) {
+        if (cpAuthSwitchTo($rol)) {
+            return;
+        }
+    }
+    $isAjax = ($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET'
+        || strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest'
+        || str_contains($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json');
+    if (!$isAjax && !headers_sent()) {
+        // Signed in, but not with a role for this page: go to your own panel
+        header('Location: ' . cpAuthHomeUrl($_SESSION['user_rol'] ?? ''));
+        exit;
+    }
+    header('HTTP/1.1 403 Forbidden');
+    exit('Acceso denegado');
+}
+
+/* ----------------------------------------------------------------------
+ * Several accounts in one browser
+ * ----------------------------------------------------------------------
+ * All panel tabs of a browser share one PHP session. Before this, signing
+ * in as a client (or admin "Login as user") overwrote the admin identity,
+ * so refreshing an admin tab showed "Acceso denegado". Each role that
+ * signed in is now remembered in $_SESSION['cp_ctx'][role], and a page
+ * switches the active identity to the role it needs.
+ */
+const CP_AUTH_KEYS = ['user_id', 'user_username', 'user_nombre', 'user_rol', 'user_email',
+                      'estacion_id', 'estacion_nombre', 'estacion_slug'];
+
+/** Remember the identity that is active right now under its role. */
+function cpAuthRemember(): void {
+    $rol = $_SESSION['user_rol'] ?? '';
+    if ($rol === '' || empty($_SESSION['user_id'])) return;
+    $ctx = [];
+    foreach (CP_AUTH_KEYS as $k) {
+        if (array_key_exists($k, $_SESSION)) $ctx[$k] = $_SESSION[$k];
+    }
+    $_SESSION['cp_ctx'][$rol] = $ctx;
+}
+
+/** Make a remembered identity the active one. */
+function cpAuthSwitchTo(string $rol): bool {
+    $ctx = $_SESSION['cp_ctx'][$rol] ?? null;
+    if (!is_array($ctx) || empty($ctx['user_id'])) return false;
+    if (($_SESSION['user_rol'] ?? '') === $rol && (int)($_SESSION['user_id'] ?? 0) === (int)$ctx['user_id']) {
+        return true;
+    }
+    foreach (['user_id', 'user_username', 'user_nombre', 'user_rol', 'user_email'] as $k) {
+        if (array_key_exists($k, $ctx)) $_SESSION[$k] = $ctx[$k]; else unset($_SESSION[$k]);
+    }
+    // A client identity carries its station; admin/reseller keep whatever
+    // station the client tab uses, so that tab keeps working too.
+    if (isset($ctx['estacion_id'])) {
+        foreach (['estacion_id', 'estacion_nombre', 'estacion_slug'] as $k) {
+            $_SESSION[$k] = $ctx[$k] ?? null;
+        }
+    }
+    return true;
+}
+
+/** Forget one remembered identity. */
+function cpAuthForget(string $rol): void {
+    unset($_SESSION['cp_ctx'][$rol]);
+}
+
+function cpAuthHomeUrl(string $rol): string {
+    return BASE_URL . match ($rol) {
+        'admin'    => '/admin/index.php',
+        'reseller' => '/reseller/index.php',
+        'cliente'  => '/cliente/index.php',
+        default    => '/index.php',
+    };
+}
+
+/**
+ * Pages under /admin/, /reseller/ and /cliente/ need that role. Switch to it
+ * (when this browser is signed in with it) before the page reads $_SESSION.
+ */
+function cpAuthSelectForCurrentArea(): void {
+    if (empty($_SESSION['cp_ctx'])) {
+        // Sessions created before this change: remember the active identity
+        if (!empty($_SESSION['user_id'])) cpAuthRemember();
+        return;
+    }
+    $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+    // admin/cuentas_dj.php is shared by every role; it uses the active identity
+    if (str_ends_with($script, '/admin/cuentas_dj.php')) return;
+    foreach (['/admin/' => 'admin', '/reseller/' => 'reseller', '/cliente/' => 'cliente'] as $dir => $rol) {
+        if (str_contains($script, $dir)) {
+            if (($_SESSION['user_rol'] ?? '') !== $rol) cpAuthSwitchTo($rol);
+            return;
+        }
     }
 }
+cpAuthSelectForCurrentArea();
 
 /**
  * Login de usuario
@@ -61,6 +158,7 @@ function loginUser(string $username, string $password): array {
 
     // Cargar estación si es cliente
     if ($user['rol'] === 'cliente') {
+        unset($_SESSION['estacion_id'], $_SESSION['estacion_nombre'], $_SESSION['estacion_slug']);
         $stmt = $db->prepare("SELECT * FROM estaciones WHERE usuario_id = ? LIMIT 1");
         $stmt->execute([$user['id']]);
         $estacion = $stmt->fetch();
@@ -72,6 +170,8 @@ function loginUser(string $username, string $password): array {
             castpanelClientAutoStartOnLogin($estacion);
         }
     }
+
+    cpAuthRemember();
 
     // Determinar URL de redirección según el rol
     $redirect = BASE_URL . '/cliente/index.php';
@@ -111,6 +211,7 @@ function loginDJ(string $username, string $password): array {
     $_SESSION['estacion_id'] = $dj['estacion_id'];
     $_SESSION['estacion_nombre'] = $dj['estacion_nombre'];
     $_SESSION['estacion_slug'] = $dj['estacion_slug'];
+    cpAuthRemember();
 
     return ['success' => true];
 }
@@ -119,6 +220,27 @@ function loginDJ(string $username, string $password): array {
  * Cerrar sesión
  */
 function logout(): void {
+    // Signed in with more than one account in this browser (e.g. admin used
+    // "Login as user"): log out only the active one and go back to the other.
+    // The logout link says which account its tab was using
+    $asked = (string)($_GET['rol'] ?? '');
+    if ($asked !== '' && ($_SESSION['user_rol'] ?? '') !== $asked) {
+        cpAuthSwitchTo($asked);
+    }
+    $rol = $_SESSION['user_rol'] ?? '';
+    if ($rol !== '' && !empty($_SESSION['cp_ctx'])) {
+        cpAuthForget($rol);
+        if ($rol === 'cliente') {
+            unset($_SESSION['estacion_id'], $_SESSION['estacion_nombre'], $_SESSION['estacion_slug']);
+        }
+        foreach (['admin', 'reseller', 'cliente', 'dj'] as $other) {
+            if (cpAuthSwitchTo($other)) {
+                unset($_SESSION['admin_impersonator_id'], $_SESSION['admin_impersonator_rol']);
+                header('Location: ' . cpAuthHomeUrl($other));
+                exit;
+            }
+        }
+    }
     session_destroy();
     header('Location: ' . BASE_URL . '/index.php');
     exit;
@@ -130,6 +252,11 @@ function logout(): void {
 function castpanelAdminLoginAsCliente(int $clientUserId): bool {
     if (!isLoggedIn() || $clientUserId <= 0) {
         return false;
+    }
+    // /cliente/ pages switch the session to a remembered client identity;
+    // "Login as user" is an admin/reseller action, so use that identity.
+    if (!in_array($_SESSION['user_rol'] ?? '', ['admin', 'reseller'], true)) {
+        cpAuthSwitchTo('admin') || cpAuthSwitchTo('reseller');
     }
     $rol = $_SESSION['user_rol'] ?? '';
     if (!in_array($rol, ['admin', 'reseller'], true)) {
@@ -147,6 +274,7 @@ function castpanelAdminLoginAsCliente(int $clientUserId): bool {
         return false;
     }
 
+    cpAuthRemember(); // keep the admin/reseller identity for its own tabs
     if (!isset($_SESSION['admin_impersonator_id'])) {
         $_SESSION['admin_impersonator_id'] = (int)$_SESSION['user_id'];
         $_SESSION['admin_impersonator_rol'] = $rol;
@@ -171,6 +299,7 @@ function castpanelAdminLoginAsCliente(int $clientUserId): bool {
     $_SESSION['estacion_id'] = (int)$est['id'];
     $_SESSION['estacion_nombre'] = $est['nombre'];
     $_SESSION['estacion_slug'] = $est['slug'];
+    cpAuthRemember();
     require_once __DIR__ . '/provisioning.php';
     castpanelClientAutoStartOnLogin(['id' => (int)$est['id']]);
     return true;

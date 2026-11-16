@@ -125,7 +125,8 @@ while ($est = $stmt->fetch()) {
         continue;
     }
 
-    if (!$status || !$status['en_linea']) {
+    // Icecast branch sets en_linea, getStreamStatus() (SHOUTcast) sets online
+    if (!$status || !($status['en_linea'] ?? $status['online'] ?? false)) {
         continue;
     }
 
@@ -154,7 +155,7 @@ while ($est = $stmt->fetch()) {
                 stopLiquidsoapService($est);
                 $db->prepare("UPDATE estaciones SET servicio_estado = 'stopped', autodj_estado = 'offline' WHERE id = ?")
                    ->execute([$est['id']]);
-                logEnforcement($est['id'], 'max_oyentes', "Servicio detenido: $currentListeners/$maxListeners oyentes (${porcentaje}%)", $currentListeners, $maxListeners, 'stop_service');
+                logEnforcement($est['id'], 'max_oyentes', "Servicio detenido: $currentListeners/$maxListeners oyentes ({$porcentaje}%)", $currentListeners, $maxListeners, 'stop_service');
                 $stats['acciones']++;
 
                 if ($verbose) {

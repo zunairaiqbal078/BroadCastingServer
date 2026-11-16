@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             } else {
                 $db->prepare("INSERT INTO configuracion (clave, valor) VALUES ('default_language', ?)")->execute([$lang]);
             }
+            cpSaveUserLanguage((int)$_SESSION['user_id'], $lang); // admin's own panel too
             // Reload the page so it (and its flash message) renders in the new language
             loadTranslations($lang);
             setFlash('success', __('language_changed') . " {$availableLanguages[$lang]['name']}");

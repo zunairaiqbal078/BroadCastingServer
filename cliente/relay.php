@@ -8,6 +8,13 @@ $pageTitle = 'Relay Redireccionamiento';
 $pageIcon = 'satellite';
 require_once __DIR__ . '/../includes/layout_header.php';
 
+// Apply schedules/rotation/relay/ads right after a change (runs after the redirect)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($estacion['id'])) {
+    require_once __DIR__ . '/../includes/autodj_schedule.php';
+    $cpSchedStation = (int)$estacion['id'];
+    register_shutdown_function(static function () use ($cpSchedStation) { castpanelApplyStationScheduleById($cpSchedStation); });
+}
+
 if (!$estacion) { echo '<div class="alert alert-warning">Sin estaci&oacute;n asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
 
 $db = getDB();
@@ -22,9 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             $url_fuente = trim($_POST['url_fuente']);
             if (!$nombre || !$url_fuente) { setFlash('error', 'Nombre y URL son obligatorios.'); header('Location: relay.php'); exit; }
 
-            $tipo_horario = $_POST['tipo_horario'] ?? '24x7';
+            if (!preg_match('#^https?://\S+$#i', $url_fuente)) { setFlash('error', 'La URL debe empezar por http:// o https://'); header('Location: relay.php'); exit; }
+            $tipo_horario = in_array($_POST['tipo_horario'] ?? '', ['24x7', 'semanal', 'fecha_unica'], true) ? $_POST['tipo_horario'] : '24x7';
             $dias = ($tipo_horario === 'semanal') ? implode(',', $_POST['dias'] ?? []) : '';
-            $fecha_unica = ($tipo_horario === 'fecha_unica') ? ($_POST['fecha_unica'] ?? '') : '';
+            $fecha_unica = ($tipo_horario === 'fecha_unica' && preg_match('/^\d{4}-\d{2}-\d{2}$/', $_POST['fecha_unica'] ?? '')) ? $_POST['fecha_unica'] : null; // DATE column: '' is not allowed
             $hora_inicio = $_POST['hora_inicio'] ?? '00:00';
             $hora_fin    = $_POST['hora_fin'] ?? '23:59';
             $prioridad   = (int)($_POST['prioridad'] ?? 0);
@@ -53,9 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             $id = (int)$_POST['relay_id'];
             $nombre = trim($_POST['nombre']);
             $url_fuente = trim($_POST['url_fuente']);
-            $tipo_horario = $_POST['tipo_horario'] ?? '24x7';
+            if (!preg_match('#^https?://\S+$#i', $url_fuente)) { setFlash('error', 'La URL debe empezar por http:// o https://'); header('Location: relay.php'); exit; }
+            $tipo_horario = in_array($_POST['tipo_horario'] ?? '', ['24x7', 'semanal', 'fecha_unica'], true) ? $_POST['tipo_horario'] : '24x7';
             $dias = ($tipo_horario === 'semanal') ? implode(',', $_POST['dias'] ?? []) : '';
-            $fecha_unica = ($tipo_horario === 'fecha_unica') ? ($_POST['fecha_unica'] ?? '') : '';
+            $fecha_unica = ($tipo_horario === 'fecha_unica' && preg_match('/^\d{4}-\d{2}-\d{2}$/', $_POST['fecha_unica'] ?? '')) ? $_POST['fecha_unica'] : null; // DATE column: '' is not allowed
             $hora_inicio = $_POST['hora_inicio'] ?? '00:00';
             $hora_fin    = $_POST['hora_fin'] ?? '23:59';
             $prioridad   = (int)($_POST['prioridad'] ?? 0);

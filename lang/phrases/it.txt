@@ -1925,3 +1925,127 @@ Memoria
 Vedi dettagli
 Accesso rapido
 {n}% · {n} core
+Salva modifiche
+Nuova password: {x}
+Email non valida.
+Sessione scaduta, ricarica la pagina.
+L'URL deve iniziare con http:// o https://
+Registrazione eliminata.
+Impossibile eliminare la registrazione.
+Eliminare questa registrazione?
+Programmazione salvata.
+Relay '{x}' creato.
+Rotazione '{x}' creata.
+Lingua del pannello
+Cerca lingua...
+Questa lingua si applica al tuo pannello. Ogni utente può scegliere la propria lingua.
+Usa anche come lingua predefinita (pagina di accesso e nuovi account)
+Applica
+Lingua
+Benvenuto, {x}
+Gestisci AutoDJ
+Carica musica
+In riproduzione
+▶ Ascolta
+Ascoltatori ora
+Picco 24h: {n}
+{n} annunci in libreria
+Cartella in onda
+{n} brani
+{n} brano
+di {n}
+Account DJ
+Personalizza player
+Link SSL
+Stato radio
+Cronologia brani
+— stato dello stream e ascoltatori. Avvia/ferma qui l'intera stazione (non i singoli brani).
+Nessuna info brano
+In riproduzione: {x}
+Brani recenti della tua stazione (si aggiorna da solo).
+Nessun brano registrato — avvia l'AutoDJ e riproduci musica.
+Avvia AutoDJ
+Modifica dettagli
+Playlist in onda
+Riproduci questa lista
+Cambia cartella qui — vanno in onda solo i brani della lista scelta.
+Non in ascolto
+● In ascolto (player Stato radio)
+▶ riproduce/mette in pausa il player
+— un solo stream per tutta la pagina.
+— avvia/ferma il robot e guarda cosa suona. La lista va da sola. Usa
+solo per gli ascoltatori.
+In onda
+Fuori onda
+In onda ora
+{n} nella cartella · {n} in totale
+Cartelle musicali
+Impostazioni AutoDJ
+Programmazione
+Rotazione cartelle
+Nome nuova cartella
+Crea cartella
+Manda in onda
+Questa cartella è vuota.
+Cerca brani o artisti…
+Finito l'ultimo brano, l'AutoDJ riparte dall'inizio della cartella.
+Crea una cartella a sinistra e caricaci musica.
+Nessuna cartella — creane una sopra.
+Sorgente musicale
+…o crea una nuova cartella
+Nome cartella
+— Nessuna (silenzio) —
+Scegli una cartella e l'encoder e premi
+Salva modifiche
+— l'AutoDJ la riproduce subito in loop, senza riavviare la stazione.
+Codifica dello stream
+Funziona ovunque
+Suono migliore a bitrate basso
+Il tuo pacchetto consente fino a {n} kbps.
+Riproduzione
+Modalità di riproduzione
+Normale (ordine cartella)
+Casuale
+Sequenziale rigoroso
+Disattivato
+{n} secondi
+Titoli dei brani
+Mostra
+Nascondi
+Info stazione
+Titolo radio
+Sito web
+DJ dal vivo
+Porta DJ (automatica)
+I DJ si collegano qui; l'audio dal vivo sostituisce l'AutoDJ finché non si disconnettono.
+Registra gli show dal vivo
+Qualità registrazione
+Le modifiche valgono appena salvi.
+Server / Host
+Centro di controllo DJ
+Widget dal vivo
+Avvia radio
+in ascolto
+Vai in diretta — dati di connessione
+cambia
+Protocollo
+Password per app mobili
+Come trasmettere
+Messaggio della stazione
+Strumenti della stazione
+Apri il tuo programma
+— RadioCaster, BUTT, SAM, Mixxx o un'app mobile.
+Scegli SHOUTcast v1
+come tipo di server (anche se la stazione usa SHOUTcast v2 o Icecast).
+Inserisci server, porta e password
+dalla scheda a sinistra.
+— il tuo show dal vivo sostituisce subito l'AutoDJ, che torna quando ti disconnetti.
+Avvia
+Ferma
+Riavvia
+Brani
+Spazio
+Statistiche
+Sì
+Genere
+L'AutoDJ è spento

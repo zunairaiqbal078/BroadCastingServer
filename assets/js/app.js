@@ -8,42 +8,61 @@ function toggleSidebar() {
     document.getElementById('sidebarOverlay').classList.toggle('show');
 }
 
-// Copiar al portapapeles
-function copyToClipboard(text, btn) {
-    // Si text es un ID de input, copiar su valor
-    if (typeof text === 'string' && !btn) {
-        const el = document.getElementById(text);
-        if (el) text = el.value || el.textContent;
+// Copy — works on HTTP (no secure context) via textarea fallback
+function castpanelCopyText(text, btn) {
+    function markCopied() {
+        if (!btn) return;
+        const origHtml = btn.innerHTML;
+        const origBg = btn.style.background;
+        const origColor = btn.style.color;
+        btn.innerHTML = '&#x2705; Copiado';
+        btn.classList.add('copied');
+        btn.style.background = '#059669';
+        btn.style.color = '#fff';
+        setTimeout(function () {
+            btn.innerHTML = origHtml;
+            btn.classList.remove('copied');
+            btn.style.background = origBg;
+            btn.style.color = origColor;
+        }, 1800);
     }
-    if (typeof text === 'string' && btn) {
-        navigator.clipboard.writeText(text).then(() => {
-            const original = btn.textContent;
-            btn.textContent = 'Copiado!';
-            btn.style.background = '#059669';
-            setTimeout(() => {
-                btn.textContent = original;
-                btn.style.background = '';
-            }, 1500);
-        });
+    function fallbackCopy() {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+            document.execCommand('copy');
+            markCopied();
+        } catch (e) {
+            /* ignore */
+        }
+        document.body.removeChild(ta);
+    }
+    if (!text) return;
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(markCopied).catch(fallbackCopy);
+    } else {
+        fallbackCopy();
     }
 }
 
-// Copiar valor de un input por su ID
+function copyToClipboard(text, btn) {
+    if (typeof text === 'string' && document.getElementById(text)) {
+        const el = document.getElementById(text);
+        text = el.value !== undefined ? el.value : el.textContent;
+    }
+    castpanelCopyText(text, btn);
+}
+
 function copyField(inputId, btnEl) {
     const el = document.getElementById(inputId);
     if (!el) return;
-    const text = el.value || el.textContent;
-    navigator.clipboard.writeText(text).then(() => {
-        const original = btnEl.textContent;
-        btnEl.textContent = '✓ Copiado';
-        btnEl.style.background = '#059669';
-        btnEl.style.color = '#fff';
-        setTimeout(() => {
-            btnEl.textContent = original;
-            btnEl.style.background = '';
-            btnEl.style.color = '';
-        }, 1500);
-    });
+    castpanelCopyText(el.value !== undefined ? el.value : el.textContent, btnEl);
 }
 
 // Toast notification

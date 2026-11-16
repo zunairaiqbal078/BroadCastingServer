@@ -25,6 +25,16 @@ if ($slug) {
 $estacion = $stmt->fetch();
 if (!$estacion) die('Estación no encontrada');
 
+// Accent colour from "Customize Player" (was ignored: blue was hard-coded)
+$cpAccent = '#2196F3';
+try {
+    $acStmt = $db->prepare("SELECT accent_color FROM player_config WHERE estacion_id = ?");
+    $acStmt->execute([$estacion['id']]);
+    $acVal = trim((string)$acStmt->fetchColumn());
+    if (preg_match('/^#[0-9a-fA-F]{6}$/', $acVal)) $cpAccent = $acVal;
+} catch (Throwable $e) {}
+$cpAccentRgb = implode(',', array_map('hexdec', str_split(substr($cpAccent, 1), 2)));
+
 $streamUrl = castpanelStreamPlaybackUrl($estacion);
 $fallbackUrl = isShoutcastServerType($estacion['server_type'] ?? '')
     ? preg_replace('#/shoutcast/#', '/live/', $streamUrl)
@@ -72,8 +82,8 @@ $radioName = htmlspecialchars($estacion['titulo_radio'] ?: $estacion['nombre']);
     .sp-cover .ph{font-size:30px;opacity:.3}
     /* Glow cuando reproduce */
     .sp-cover.playing{
-        border-color:#2196F3;
-        box-shadow:0 3px 16px rgba(33,150,243,.2);
+        border-color:<?= $cpAccent ?>;
+        box-shadow:0 3px 16px rgba(<?= $cpAccentRgb ?>,.2);
     }
 
     /* Info */
@@ -107,7 +117,7 @@ $radioName = htmlspecialchars($estacion['titulo_radio'] ?: $estacion['nombre']);
     .mini-eq.on{opacity:1}
     .mini-eq .mb{
         width:3px;border-radius:1.5px;
-        background:#2196F3;
+        background:<?= $cpAccent ?>;
         animation:mEq .8s ease-in-out infinite;
     }
     .mini-eq .mb:nth-child(1){height:5px;animation-delay:0s}
@@ -142,16 +152,16 @@ $radioName = htmlspecialchars($estacion['titulo_radio'] ?: $estacion['nombre']);
     .sp-play{
         width:48px;height:48px;border-radius:50%;
         background:#fff;
-        border:2px solid #2196F3;
-        color:#2196F3;
+        border:2px solid <?= $cpAccent ?>;
+        color:<?= $cpAccent ?>;
         font-size:18px;cursor:pointer;
         display:flex;align-items:center;justify-content:center;
         transition:all .2s;
-        box-shadow:0 2px 8px rgba(33,150,243,.15);
+        box-shadow:0 2px 8px rgba(<?= $cpAccentRgb ?>,.15);
     }
-    .sp-play:hover{background:#2196F3;color:#fff}
+    .sp-play:hover{background:<?= $cpAccent ?>;color:#fff}
     .sp-play:active{transform:scale(.92)}
-    .sp-play.playing{background:#2196F3;color:#fff}
+    .sp-play.playing{background:<?= $cpAccent ?>;color:#fff}
 
     .sp-vol{
         display:flex;align-items:center;gap:4px;
@@ -164,7 +174,7 @@ $radioName = htmlspecialchars($estacion['titulo_radio'] ?: $estacion['nombre']);
         display:flex;align-items:center;justify-content:center;
         line-height:0;
     }
-    .sp-vol-icon:hover{color:#2196F3}
+    .sp-vol-icon:hover{color:<?= $cpAccent ?>}
     .sp-vol-icon svg{display:block}
     .sp-vol-slider{
         width:56px;height:3px;
@@ -175,11 +185,11 @@ $radioName = htmlspecialchars($estacion['titulo_radio'] ?: $estacion['nombre']);
     .sp-vol-slider::-webkit-slider-thumb{
         -webkit-appearance:none;
         width:10px;height:10px;border-radius:50%;
-        background:#2196F3;cursor:pointer;
+        background:<?= $cpAccent ?>;cursor:pointer;
     }
     .sp-vol-slider::-moz-range-thumb{
         width:10px;height:10px;border-radius:50%;
-        background:#2196F3;border:none;cursor:pointer;
+        background:<?= $cpAccent ?>;border:none;cursor:pointer;
     }
     </style>
 </head>

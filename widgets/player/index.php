@@ -32,6 +32,16 @@ $pcStmt = $db->prepare("SELECT * FROM player_config WHERE estacion_id = ?");
 $pcStmt->execute([$estacion['id']]);
 $pc = $pcStmt->fetch();
 
+// Accent colour from "Customize Player" (was ignored: blue was hard-coded)
+$cpAccent = '#2196F3';
+try {
+    $acStmt = $db->prepare("SELECT accent_color FROM player_config WHERE estacion_id = ?");
+    $acStmt->execute([$estacion['id']]);
+    $acVal = trim((string)$acStmt->fetchColumn());
+    if (preg_match('/^#[0-9a-fA-F]{6}$/', $acVal)) $cpAccent = $acVal;
+} catch (Throwable $e) {}
+$cpAccentRgb = implode(',', array_map('hexdec', str_split(substr($cpAccent, 1), 2)));
+
 // Defaults
 $bgImage = $pc['bg_image'] ?? null;
 $coverImage = $pc['cover_image'] ?? null;
@@ -118,7 +128,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     .loader {
         width:40px; height:40px;
         border:3px solid #e0e0e0;
-        border-top:3px solid #2196F3;
+        border-top:3px solid <?= $cpAccent ?>;
         border-radius:50%;
         animation: spin 0.8s linear infinite;
     }
@@ -162,7 +172,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
         position:absolute;
         width:80px; height:80px;
         border-radius:50%;
-        background:linear-gradient(135deg, #2196F3, #03A9F4);
+        background:linear-gradient(135deg, <?= $cpAccent ?>, <?= $cpAccent ?>);
         box-shadow: 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 16px rgba(255,255,255,0.05);
     }
     .default-art::after {
@@ -244,9 +254,9 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     .btn-play {
         width:48px; height:48px;
         border-radius:50%;
-        border:2px solid #2196F3;
+        border:2px solid <?= $cpAccent ?>;
         background:#fff;
-        color:#2196F3;
+        color:<?= $cpAccent ?>;
         font-size:20px;
         cursor:pointer;
         display:flex;
@@ -257,14 +267,14 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
         margin-right:12px;
     }
     .btn-play:hover {
-        background:#2196F3;
+        background:<?= $cpAccent ?>;
         color:#fff;
     }
     .btn-play:active {
         transform:scale(0.92);
     }
     .btn-play.playing {
-        background:#2196F3;
+        background:<?= $cpAccent ?>;
         color:#fff;
     }
 
@@ -315,7 +325,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
         display:flex; align-items:center; justify-content:center;
         line-height:0;
     }
-    .vol-btn:hover { color:#2196F3; }
+    .vol-btn:hover { color:<?= $cpAccent ?>; }
     .vol-btn svg { display:block; }
     .vol-range {
         width:70px; height:4px;
@@ -328,14 +338,14 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
         -webkit-appearance:none;
         width:14px; height:14px;
         border-radius:50%;
-        background:#2196F3;
+        background:<?= $cpAccent ?>;
         cursor:pointer;
         box-shadow:0 1px 4px rgba(0,0,0,.2);
     }
     .vol-range::-moz-range-thumb {
         width:14px; height:14px;
         border-radius:50%;
-        background:#2196F3;
+        background:<?= $cpAccent ?>;
         border:none;
         cursor:pointer;
     }
@@ -343,7 +353,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     /* Progress/EQ bar at bottom of player */
     .player-eq-bar {
         height:4px;
-        background: linear-gradient(90deg, #2196F3, #03A9F4, #00BCD4, #2196F3);
+        background: linear-gradient(90deg, <?= $cpAccent ?>, <?= $cpAccent ?>, #00BCD4, <?= $cpAccent ?>);
         background-size:300% 100%;
         animation: eqSlide 3s linear infinite;
         opacity:0;
@@ -391,11 +401,11 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
         transition:all 0.2s;
     }
     .social-link:hover {
-        background:#2196F3;
-        border-color:#2196F3;
+        background:<?= $cpAccent ?>;
+        border-color:<?= $cpAccent ?>;
         color:#fff;
         transform:translateY(-2px);
-        box-shadow: 0 4px 12px rgba(33,150,243,0.3);
+        box-shadow: 0 4px 12px rgba(<?= $cpAccentRgb ?>,0.3);
     }
     .social-link svg { width:14px; height:14px; }
 
@@ -428,7 +438,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     .h-item:last-child { border-bottom:none; }
     .h-num {
         width:22px; height:22px; border-radius:50%;
-        background:rgba(33,150,243,0.15);
+        background:rgba(<?= $cpAccentRgb ?>,0.15);
         display:flex; align-items:center; justify-content:center;
         font-size:10px; font-weight:700; color:#4FC3F7; flex-shrink:0;
     }
@@ -552,16 +562,13 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
         <div class="player-eq-bar" id="eqBar"></div>
     </div>
 
-    <!-- Status bar -->
+    <?php if ($genre !== ''): ?>
     <div class="status-bar">
         <div class="listeners-info">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;vertical-align:middle;margin-right:4px"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
-            <span id="radioGenre"><?= $genre ?: 'Radio Online' ?></span>
-        </div>
-        <div class="codec-info">
-            <span id="streamStatus" class="status-ready"><svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" style="vertical-align:middle;margin-right:4px"><circle cx="4" cy="4" r="4"/></svg>REPRODUCIENDO</span>
+            <span id="radioGenre"><?= htmlspecialchars($genre) ?></span>
         </div>
     </div>
+    <?php endif; ?>
 
     <!-- Social links -->
     <?php if (!empty($socials)): ?>
@@ -727,10 +734,12 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
             else da.classList.remove('spinning');
         }
 
-        ss.innerHTML = on
-            ? '<svg width="8" height="8" viewBox="0 0 8 8" fill="#4CAF50" style="vertical-align:middle;margin-right:4px"><circle cx="4" cy="4" r="4"/></svg>REPRODUCIENDO'
-            : '<svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" style="vertical-align:middle;margin-right:4px"><circle cx="4" cy="4" r="4"/></svg>Listo';
-        ss.style.color = on ? '#4CAF50' : 'rgba(255,255,255,0.5)';
+        if (ss) {
+            ss.innerHTML = on
+                ? '<svg width="8" height="8" viewBox="0 0 8 8" fill="#4CAF50" style="vertical-align:middle;margin-right:4px"><circle cx="4" cy="4" r="4"/></svg>'
+                : '';
+            ss.style.color = on ? '#4CAF50' : 'rgba(255,255,255,0.5)';
+        }
     }
 
     function tryStream(url, canFallback){
@@ -929,7 +938,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
 
                 case 'wave':
                     var yOff = Math.sin(t*2 + p.offset + p.x*0.005) * p.amplitude;
-                    ctx.fillStyle = 'rgba(33,150,243,'+p.opacity+')';
+                    ctx.fillStyle = 'rgba(<?= $cpAccentRgb ?>,'+p.opacity+')';
                     ctx.beginPath();
                     ctx.arc(p.x, p.baseY + yOff, p.r, 0, Math.PI*2);
                     ctx.fill();
@@ -937,7 +946,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
 
                 case 'equalizer':
                     var h = (Math.sin(t*3 + p.offset) * 0.5 + 0.5) * p.maxH;
-                    ctx.fillStyle = 'rgba(33,150,243,'+p.opacity+')';
+                    ctx.fillStyle = 'rgba(<?= $cpAccentRgb ?>,'+p.opacity+')';
                     ctx.fillRect(p.x, H - h, p.barW > 1 ? p.barW : 2, h);
                     break;
             }

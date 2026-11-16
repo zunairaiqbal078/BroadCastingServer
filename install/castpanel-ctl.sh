@@ -30,6 +30,7 @@ LIQUIDSOAP_CONF_DIR="/var/castpanel/liquidsoap/stations"
 LIQUIDSOAP_LOG_DIR="/var/log/liquidsoap"
 MEDIA_DIR="/var/castpanel/media"
 ANUNCIOS_DIR="/var/castpanel/anuncios"
+RECORDINGS_DIR="/var/www/castpanel/storage"   # DJ show recordings: <dir>/<slug>/recordings
 SHOUTCAST_DIR="/opt/shoutcast"
 SHOUTCAST_LOG_DIR="/var/log/shoutcast"
 [ -f /etc/castpanel/ctl.conf ] && . /etc/castpanel/ctl.conf
@@ -118,7 +119,13 @@ start_liquidsoap() {
     [ -f "$conf" ] || { fail "Liquidsoap config not found: $conf"; return; }
     command -v docker >/dev/null 2>&1 || { fail "docker is not installed"; return; }
     mkdir -p "$MEDIA_DIR/$slug" "$ANUNCIOS_DIR/$slug" "$LIQUIDSOAP_LOG_DIR"
+    # The panel (web user) writes active.m3u, active_ads.m3u, ads.conf and relay.url here
+    chown "$WEB_USER:$WEB_USER" "$MEDIA_DIR/$slug" "$ANUNCIOS_DIR/$slug" 2>/dev/null
     chmod 1777 "$LIQUIDSOAP_LOG_DIR"          # sticky: container user can create its own log file
+    local rec="$RECORDINGS_DIR/$slug/recordings"
+    # Liquidsoap (uid 10000) writes DJ show recordings here; not sticky, so
+    # the panel (web user) can delete them from DJ Shows
+    mkdir -p "$rec" && chmod 0777 "$rec"
     # Do not truncate the log as root — Liquidsoap (uid 10000) cannot open root-owned files here.
     rm -f "$LIQUIDSOAP_LOG_DIR/$slug.log"
     docker rm -f "$name" >/dev/null 2>&1
@@ -127,6 +134,7 @@ start_liquidsoap() {
             -v "$LIQUIDSOAP_CONF_DIR:/config:ro" \
             -v "$MEDIA_DIR/$slug:/media:ro" \
             -v "$ANUNCIOS_DIR/$slug:/anuncios:ro" \
+            -v "$rec:/recordings" \
             -v "$LIQUIDSOAP_LOG_DIR:$LIQUIDSOAP_LOG_DIR" \
             "$LIQUIDSOAP_IMAGE" liquidsoap "/config/$slug.liq" 2>&1); then
         fail "docker run failed: $out"; return
@@ -167,10 +175,17 @@ status_liquidsoap() {
 # ---------- Apache ----------
 update_shoutcast_proxy() {
     local inc="/etc/apache2/shoutcast-proxy-rules.inc"
+    local tmp=""
     [ -d /etc/httpd ] && inc="/etc/httpd/shoutcast-proxy-rules.inc"
-  if [ -f /tmp/castpanel-shoutcast-proxy.conf ]; then
-        install -m 644 /tmp/castpanel-shoutcast-proxy.conf "$inc"
+    for candidate in /var/run/castpanel/shoutcast-proxy-pending.conf /tmp/castpanel-shoutcast-proxy.conf; do
+        [ -f "$candidate" ] && tmp="$candidate" && break
+    done
+    if [ -z "$tmp" ]; then
+        fail "missing proxy rules file (expected in /var/run/castpanel or /tmp)"
+        return
     fi
+    install -m 644 "$tmp" "$inc" || { fail "could not install proxy rules to $inc"; return; }
+    rm -f "$tmp" /tmp/castpanel-shoutcast-proxy.conf /var/run/castpanel/shoutcast-proxy-pending.conf 2>/dev/null || true
     reload_apache
 }
 

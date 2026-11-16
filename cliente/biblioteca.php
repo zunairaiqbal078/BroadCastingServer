@@ -57,6 +57,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                     $db->prepare("UPDATE playlists SET total_canciones = total_canciones + 1 WHERE id = ?")->execute([$playlistId]);
                 }
                 setFlash('success', 'Canci&oacute;n movida.');
+                require_once __DIR__ . '/../includes/provisioning.php';
+                $estacionFresh = loadStationWithPackage((int)$estacion['id']);
+                if ($estacionFresh && stationHasAutoDJ($estacionFresh)) {
+                    $active = (int)($estacionFresh['autodj_playlist_activa'] ?? 0);
+                    if ($active > 0 && ($active === (int)$playlistId || $active === (int)$old['playlist_id'])) {
+                        ensureAutoDJPlaying($estacionFresh);
+                        clearStreamStatusCache((int)$estacion['id']);
+                    }
+                }
             }
             header('Location: biblioteca.php'); exit;
         }

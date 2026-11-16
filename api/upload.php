@@ -119,7 +119,13 @@ for ($i = 0; $i < count($files['name']); $i++) {
             $coverUrl = BASE_URL . '/assets/covers/' . basename($coverFile);
         }
 
-        $playlistId = ($_POST['playlist_id'] ?? null) ?: null;
+        $playlistId = (int)($_POST['playlist_id'] ?? 0) ?: null;
+        // Only a folder of this station (never another station's folder)
+        if ($playlistId) {
+            $chk = $db->prepare('SELECT id FROM playlists WHERE id = ? AND estacion_id = ?');
+            $chk->execute([$playlistId, $estacionId]);
+            if (!$chk->fetchColumn()) $playlistId = null;
+        }
         // Uploads without a playlist only appear in Music Library, not in AutoDJ playlists
         if (!$playlistId) {
             $activePl = $estacion['autodj_playlist_activa'] ?? null;
@@ -163,6 +169,11 @@ for ($i = 0; $i < count($files['name']); $i++) {
 }
 
 // Si se subieron archivos exitosamente, regenerar config y reiniciar Liquidsoap
+if ($uploaded > 0 && $tipo === 'anuncio') {
+    // new ad files: refresh active_ads.m3u (Schedule Ads)
+    require_once __DIR__ . '/../includes/autodj_schedule.php';
+    castpanelApplyStationScheduleById((int)$estacionId);
+}
 if ($uploaded > 0) {
     try {
         require_once __DIR__ . '/../includes/provisioning.php';

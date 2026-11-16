@@ -28,9 +28,11 @@ try {
 
 // Guardar mensaje
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_message') {
-    verifyCsrf();
     $nuevoMsg = trim($_POST['mensaje_dj'] ?? '');
     try {
+        if (!verifyCsrf()) {
+            throw new RuntimeException('Sesión expirada, recargue la página.');
+        }
         $stmt = $db->prepare("UPDATE estaciones SET mensaje_dj = ? WHERE id = ?");
         $stmt->execute([$nuevoMsg ?: null, $estacion['id']]);
         $successMsg = 'Mensaje actualizado correctamente.';
@@ -39,8 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $stmt->execute([$estacion['id']]);
         $row = $stmt->fetch();
         $msg = $row['mensaje_dj'] ?? '';
-    } catch (PDOException $e) {
+    } catch (Throwable $e) {
         $errorMsg = 'Error al guardar: ' . $e->getMessage();
+        $msg = $nuevoMsg;
     }
 } else {
     // Cargar mensaje actual

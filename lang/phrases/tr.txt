@@ -1925,3 +1925,127 @@ Bellek
 Ayrıntıları gör
 Hızlı işlemler
 {n}% · {n} çekirdek
+Değişiklikleri kaydet
+Yeni şifre: {x}
+Geçersiz e-posta.
+Oturum süresi doldu, sayfayı yenileyin.
+URL http:// veya https:// ile başlamalıdır
+Kayıt silindi.
+Kayıt silinemedi.
+Bu kayıt silinsin mi?
+Program kaydedildi.
+Relay '{x}' oluşturuldu.
+Rotasyon '{x}' oluşturuldu.
+Panel dili
+Dil ara...
+Bu dil panelinize uygulanır. Her kullanıcı kendi dilini seçebilir.
+Varsayılan dil olarak da kullan (giriş sayfası ve yeni hesaplar)
+Uygula
+Dil
+Hoş geldiniz, {x}
+AutoDJ yönet
+Müzik yükle
+Şimdi çalıyor
+▶ Dinle
+Şu an dinleyen
+24s zirve: {n}
+Kütüphanede {n} reklam
+Yayındaki klasör
+{n} şarkı
+{n} şarkı
+/ {n}
+DJ hesapları
+Oynatıcıyı özelleştir
+SSL bağlantıları
+Radyo durumu
+Şarkı geçmişi
+— yayın durumu ve dinleyiciler. Tüm istasyonu buradan başlatın/durdurun (tek şarkı değil).
+Parça bilgisi yok
+Şimdi çalıyor: {x}
+İstasyonunuzda son çalınan şarkılar (otomatik güncellenir).
+Henüz şarkı yok — AutoDJ'yi başlatın ve müzik çalın.
+AutoDJ başlat
+Ayrıntıları düzenle
+Yayındaki liste
+Bu listeyi çal
+Klasörü buradan değiştirin — yalnızca seçili listenin parçaları çalar.
+Dinlenmiyor
+● Dinleniyor (Radyo durumu oynatıcısı)
+▶ oynatıcıyı çalar/duraklatır:
+— tüm sayfa için tek yayın.
+— robotu başlatın/durdurun, çalanı görün. Liste otomatik çalar. Kullanın:
+yalnızca dinleyiciler için.
+Yayında
+Yayın dışı
+Şimdi çalıyor
+Klasörde {n} · toplam {n}
+Müzik klasörleri
+AutoDJ ayarları
+Program
+Klasör rotasyonu
+Yeni klasör adı
+Klasör oluştur
+Yayına al
+Bu klasör boş.
+Şarkı veya sanatçı ara…
+Son şarkı bitince AutoDJ klasörü baştan başlatır.
+Soldan bir klasör oluşturun ve içine müzik yükleyin.
+Henüz klasör yok — yukarıdan oluşturun.
+Müzik kaynağı
+…veya yeni klasör oluşturun
+Klasör adı
+— Yok (sessizlik) —
+Bir klasör ve kodlayıcı seçip basın:
+Değişiklikleri kaydet
+— AutoDJ hemen ve döngüde çalar, istasyonu yeniden başlatmaya gerek yok.
+Yayın kodlaması
+Her yerde çalar
+Düşük bitrate'te daha iyi ses
+Paketiniz en fazla {n} kbps'ye izin verir.
+Oynatma
+Çalma modu
+Normal (klasör sırası)
+Karışık
+Katı sıralı
+Kapalı
+{n} saniye
+Şarkı başlıkları
+Göster
+Gizle
+İstasyon bilgisi
+Radyo başlığı
+Web sitesi
+Canlı DJ
+DJ portu (otomatik)
+DJ'ler buraya bağlanır; canlı ses bağlantı kesilene kadar AutoDJ'nin yerini alır.
+Canlı yayınları kaydet
+Kayıt kalitesi
+Değişiklikler kaydeder kaydetmez uygulanır.
+Sunucu / Ana bilgisayar
+DJ kontrol merkezi
+Canlı widget
+Radyoyu başlat
+dinliyor
+Canlı yayına geç — bağlantı bilgileri
+değiştir
+Protokol
+Mobil uygulama şifresi
+Nasıl yayın yapılır
+İstasyondan mesaj
+İstasyon araçları
+Yazılımınızı açın
+— RadioCaster, BUTT, SAM, Mixxx veya bir mobil uygulama.
+SHOUTcast v1 seçin
+sunucu türü olarak (istasyon SHOUTcast v2 veya Icecast kullansa bile).
+Sunucu, port ve şifreyi girin
+soldaki karttan.
+— canlı yayınınız AutoDJ'nin yerini hemen alır; bağlantıyı kesince AutoDJ geri gelir.
+Başlat
+Durdur
+Yeniden başlat
+Şarkılar
+Depolama
+İstatistikler
+Evet
+Tür
+AutoDJ kapalı
