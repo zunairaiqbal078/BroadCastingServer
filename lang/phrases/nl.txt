@@ -2056,3 +2056,7 @@ Gebruikte ruimte: {n} van {n}
 Bestand groter dan de serverlimiet (upload_max_filesize)
 Upload onderbroken, probeer opnieuw
 De server kon het bestand niet opslaan
+Onbeperkt
+Gebruikte ruimte: {n} (onbeperkt)
+{n} — Onbeperkt
+De server heeft geen vrije schijfruimte

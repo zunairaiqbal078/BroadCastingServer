@@ -251,7 +251,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
         <a class="cp2-metric" href="<?= BASE_URL ?>/cliente/estadisticas.php"><small>Listeners now</small><strong><?= (int)$oyentesAhora ?></strong><em>Peak 24h: <?= (int)$picoOyentes ?></em></a>
         <a class="cp2-metric" href="<?= BASE_URL ?>/cliente/biblioteca.php"><small>Songs</small><strong><?= (int)$totalCanciones ?></strong><em><?= (int)$totalAnuncios ?> ads in library</em></a>
         <a class="cp2-metric" href="<?= BASE_URL ?>/cliente/autodj.php"><small>Folder on air</small><strong style="font-size:17px;margin-top:6px"><?= htmlspecialchars($playlistActiva['nombre'] ?? 'None') ?></strong><em><?= (int)$activePlaylistSongCount ?> songs</em></a>
-        <div class="cp2-metric"><small>Storage</small><strong style="font-size:17px;margin-top:6px"><?= number_format($storageUsedMB, 1) ?> MB</strong><em>of <?= number_format($maxStorageMB) ?> MB</em><div class="cp2-bar"><span style="width:<?= $storagePercent ?>%"></span></div></div>
+        <div class="cp2-metric"><small>Storage</small><strong style="font-size:17px;margin-top:6px"><?= number_format($storageUsedMB, 1) ?> MB</strong><em>Ilimitado</em></div>
     </div>
 </div>
 
@@ -345,7 +345,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                 <div class="sp-info-grid">
                     <div class="sp-info-item">
                         <span class="sp-info-label">Almacenamiento M&aacute;ximo</span>
-                        <span class="sp-info-value"><?= number_format($maxStorageMB) ?> MB</span>
+                        <span class="sp-info-value">Ilimitado</span>
                     </div>
                     <div class="sp-info-item">
                         <span class="sp-info-label">Bitrate M&aacute;ximo</span>
@@ -666,7 +666,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                     <?php
                     $gauges = [
                         ['label' => 'Oyentes', 'value' => $oyentesAhora, 'max' => $maxOyentes, 'pct' => $oyentesPercent, 'color' => '#00897b', 'unit' => ''],
-                        ['label' => 'Uso de Disco', 'value' => $storageUsedMB, 'max' => $maxStorageMB, 'pct' => $storagePercent, 'color' => '#1e88e5', 'unit' => ' MB'],
+                        ['label' => 'Uso de Disco', 'value' => $storageUsedMB, 'max' => 0, 'pct' => 0, 'pctText' => '∞', 'color' => '#1e88e5', 'unit' => ' MB'],
                         ['label' => 'Pico 24h', 'value' => $picoOyentes, 'max' => $maxOyentes, 'pct' => $maxOyentes > 0 ? min(round(($picoOyentes / $maxOyentes) * 100, 1), 100) : 0, 'color' => '#f4511e', 'unit' => ''],
                         ['label' => 'Bitrate', 'value' => $estacion['bitrate'], 'max' => $maxBitrate, 'pct' => $bitratePercent, 'color' => '#8e24aa', 'unit' => ' kbps'],
                         ['label' => 'Canciones', 'value' => $totalCanciones, 'max' => 999, 'pct' => min(round(($totalCanciones / max(1, 999)) * 100, 1), 100), 'color' => '#fb8c00', 'unit' => ''],
@@ -685,7 +685,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                                     stroke-linecap="round" transform="rotate(-90 50 50)"
                                     class="sp-gauge-fill"/>
                             <text x="50" y="45" text-anchor="middle" font-size="15" font-weight="700" fill="#333"><?= $g['value'] ?></text>
-                            <text x="50" y="60" text-anchor="middle" font-size="7" fill="#999"><?= round($g['pct']) ?>%</text>
+                            <text x="50" y="60" text-anchor="middle" font-size="7" fill="#999"><?= $g['pctText'] ?? (round($g['pct']) . '%') ?></text>
                         </svg>
                         <div class="sp-gauge-label"><?= $g['label'] ?></div>
                         <div class="sp-gauge-detail"><?= $g['value'] . $g['unit'] ?> / <?= $g['max'] . $g['unit'] ?></div>

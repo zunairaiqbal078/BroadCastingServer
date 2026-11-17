@@ -39,9 +39,9 @@ if (empty($_FILES['archivos'])) {
     jsonResponse(['error' => 'No se recibieron archivos'], 400);
 }
 
-// Verificar almacenamiento
-$storageUsed = getStorageUsed($estacionId);
-$maxStorage = ($estacion['max_storage_mb'] ?? 5500) * 1024 * 1024;
+// AutoDJ storage is unlimited (no plan quota). Only refuse a file when the
+// server's own disk would be left almost full, so the server keeps working.
+$diskReserve = 200 * 1024 * 1024;
 
 $results = [];
 $uploaded = 0;
@@ -70,10 +70,10 @@ for ($i = 0; $i < count($files['name']); $i++) {
         continue;
     }
 
-    // Verificar espacio
-    $storageUsed += $fileSize;
-    if ($storageUsed > $maxStorage) {
-        $results[] = ['file' => $originalName, 'ok' => false, 'error' => 'Sin espacio de almacenamiento'];
+    // Espacio libre en el disco del servidor (no hay límite por plan)
+    $diskFree = @disk_free_space($tipo === 'anuncio' ? ANUNCIOS_PATH : MEDIA_PATH);
+    if ($diskFree !== false && $diskFree - $fileSize < $diskReserve) {
+        $results[] = ['file' => $originalName, 'ok' => false, 'error' => 'El servidor no tiene espacio libre en disco'];
         continue;
     }
 

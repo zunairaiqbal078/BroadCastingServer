@@ -2056,3 +2056,7 @@ Využité místo: {n} z {n}
 Soubor je větší než limit serveru (upload_max_filesize)
 Nahrávání přerušeno, zkuste znovu
 Server nemohl uložit soubor
+Neomezeně
+Využité místo: {n} (neomezeně)
+{n} — Neomezeně
+Server nemá volné místo na disku

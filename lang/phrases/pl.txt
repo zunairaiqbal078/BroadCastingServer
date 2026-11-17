@@ -2056,3 +2056,7 @@ Wykorzystane miejsce: {n} z {n}
 Plik większy niż limit serwera (upload_max_filesize)
 Przesyłanie przerwane, spróbuj ponownie
 Serwer nie mógł zapisać pliku
+Bez limitu
+Wykorzystane miejsce: {n} (bez limitu)
+{n} — Bez limitu
+Serwer nie ma wolnego miejsca na dysku

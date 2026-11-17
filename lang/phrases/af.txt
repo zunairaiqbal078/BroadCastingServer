@@ -2056,3 +2056,7 @@ Spasie gebruik: {n} van {n}
 Lêer groter as die bediener se limiet (upload_max_filesize)
 Oplaai onderbreek, probeer weer
 Die bediener kon nie die lêer stoor nie
+Onbeperk
+Spasie gebruik: {n} (onbeperk)
+{n} — Onbeperk
+Die bediener het geen vrye skyfspasie nie

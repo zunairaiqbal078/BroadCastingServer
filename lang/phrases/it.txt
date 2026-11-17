@@ -2056,3 +2056,7 @@ Spazio usato: {n} di {n}
 File più grande del limite del server (upload_max_filesize)
 Caricamento interrotto, riprova
 Il server non ha potuto salvare il file
+Illimitato
+Spazio usato: {n} (illimitato)
+{n} — Illimitato
+Il server non ha spazio libero su disco

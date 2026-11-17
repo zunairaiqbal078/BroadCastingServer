@@ -2056,3 +2056,7 @@ Spațiu folosit: {n} din {n}
 Fișier mai mare decât limita serverului (upload_max_filesize)
 Încărcare întreruptă, încercați din nou
 Serverul nu a putut salva fișierul
+Nelimitat
+Spațiu folosit: {n} (nelimitat)
+{n} — Nelimitat
+Serverul nu are spațiu liber pe disc

@@ -35,10 +35,7 @@ $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStora
     <div class="card-body">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <span style="font-weight:600">Almacenamiento AutoDJ</span>
-            <span style="font-size:13px;color:var(--text-secondary)"><?= formatMB($storageUsedMB) ?> / <?= number_format($maxStorageMB) ?> MB</span>
-        </div>
-        <div class="storage-bar">
-            <div class="storage-bar-fill <?= $storagePercent > 90 ? 'danger' : ($storagePercent > 70 ? 'warning' : '') ?>" style="width:<?= $storagePercent ?>%"></div>
+            <span style="font-size:13px;color:var(--text-secondary)"><?= formatMB($storageUsedMB) ?> — Ilimitado</span>
         </div>
     </div>
 </div>
@@ -80,12 +77,7 @@ $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStora
                 <div class="upload-title">Arrastra tus archivos aquí</div>
                 <div class="upload-hint">o haz clic para seleccionar</div>
                 <div class="upload-formats">Formatos: MP3, OGG, AAC, M4A, WAV, FLAC — sin límite de cantidad de archivos</div>
-                <?php
-                $cpQuotaMb = (int)($estacion['max_storage_mb'] ?? 0);
-                $cpUsedMb = round(getStorageUsed((int)$estacion['id']) / 1048576, 1);
-                if ($cpQuotaMb > 0): ?>
-                <div class="upload-formats">Espacio usado: <?= number_format($cpUsedMb, 1) ?> MB de <?= number_format($cpQuotaMb) ?> MB</div>
-                <?php endif; ?>
+                <div class="upload-formats">Espacio usado: <?= number_format($storageUsedMB, 1) ?> MB (ilimitado)</div>
                 <input type="file" id="fileInput" accept=".mp3,.ogg,.aac,.m4a,.wav,.flac" multiple style="display:none">
             </div>
         </form>

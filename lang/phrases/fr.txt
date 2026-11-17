@@ -2056,3 +2056,7 @@ Espace utilisé : {n} sur {n}
 Fichier plus grand que la limite du serveur (upload_max_filesize)
 Envoi interrompu, réessayez
 Le serveur n'a pas pu enregistrer le fichier
+Illimité
+Espace utilisé : {n} (illimité)
+{n} — Illimité
+Le serveur n'a plus d'espace disque

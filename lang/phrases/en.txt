@@ -2056,3 +2056,7 @@ Space used: {n} of {n}
 File larger than the server limit (upload_max_filesize)
 Upload interrupted, try again
 The server could not save the file
+Unlimited
+Space used: {n} (unlimited)
+{n} — Unlimited
+The server has no free disk space

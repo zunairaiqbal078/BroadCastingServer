@@ -2056,3 +2056,7 @@ Iskorišćen prostor: {n} od {n}
 Fajl je veći od ograničenja servera (upload_max_filesize)
 Otpremanje prekinuto, pokušajte ponovo
 Server nije mogao da sačuva fajl
+Neograničeno
+Iskorišćen prostor: {n} (neograničeno)
+{n} — Neograničeno
+Server nema slobodnog prostora na disku

@@ -2056,3 +2056,7 @@ Kullanılan alan: {n} / {n}
 Dosya sunucu sınırından büyük (upload_max_filesize)
 Yükleme kesildi, tekrar deneyin
 Sunucu dosyayı kaydedemedi
+Sınırsız
+Kullanılan alan: {n} (sınırsız)
+{n} — Sınırsız
+Sunucuda boş disk alanı yok

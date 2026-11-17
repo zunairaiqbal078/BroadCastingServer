@@ -2056,3 +2056,7 @@ Espacio usado: {n} de {n}
 Archivo mayor que el límite del servidor (upload_max_filesize)
 Subida interrumpida, intente de nuevo
 El servidor no pudo guardar el archivo
+Ilimitado
+Espacio usado: {n} (ilimitado)
+{n} — Ilimitado
+El servidor no tiene espacio libre en disco

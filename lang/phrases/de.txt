@@ -2056,3 +2056,7 @@ Belegter Speicher: {n} von {n}
 Datei größer als das Serverlimit (upload_max_filesize)
 Upload unterbrochen, bitte erneut versuchen
 Der Server konnte die Datei nicht speichern
+Unbegrenzt
+Belegter Speicher: {n} (unbegrenzt)
+{n} — Unbegrenzt
+Der Server hat keinen freien Speicherplatz
