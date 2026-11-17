@@ -2060,3 +2060,7 @@ Nelimitat
 Spațiu folosit: {n} (nelimitat)
 {n} — Nelimitat
 Serverul nu are spațiu liber pe disc
+din {n}
+Spațiul planului epuizat ({x})
+Stocare (GB)
+Spațiu pentru muzica AutoDJ a fiecărui radio din acest plan. 0 = nelimitat.

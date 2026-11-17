@@ -48,8 +48,10 @@ $oyentesAhora = $iceStatus['oyentes'];
 $picoOyentes = getPeakListeners($estacion['id'], 24);
 $storageUsedBytes = getStorageUsed($estacion['id']);
 $storageUsedMB = round($storageUsedBytes / (1024 * 1024), 1);
-$maxStorageMB = $estacion['max_storage_mb'] ?? 5500;
+// Storage contracted in the plan (Add Radio Package); 0 = unlimited
+$maxStorageMB = (int)($estacion['max_storage_mb'] ?? 0);
 $storagePercent = $maxStorageMB > 0 ? min(round(($storageUsedMB / $maxStorageMB) * 100, 1), 100) : 0;
+$storageCapLabel = $maxStorageMB > 0 ? formatMB($maxStorageMB) : 'Ilimitado';
 $maxOyentes = $estacion['max_oyentes'] ?? 500;
 $oyentesPercent = $maxOyentes > 0 ? min(round(($oyentesAhora / $maxOyentes) * 100, 1), 100) : 0;
 $maxBitrate = $estacion['max_bitrate'] ?? 320;
@@ -251,7 +253,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
         <a class="cp2-metric" href="<?= BASE_URL ?>/cliente/estadisticas.php"><small>Listeners now</small><strong><?= (int)$oyentesAhora ?></strong><em>Peak 24h: <?= (int)$picoOyentes ?></em></a>
         <a class="cp2-metric" href="<?= BASE_URL ?>/cliente/biblioteca.php"><small>Songs</small><strong><?= (int)$totalCanciones ?></strong><em><?= (int)$totalAnuncios ?> ads in library</em></a>
         <a class="cp2-metric" href="<?= BASE_URL ?>/cliente/autodj.php"><small>Folder on air</small><strong style="font-size:17px;margin-top:6px"><?= htmlspecialchars($playlistActiva['nombre'] ?? 'None') ?></strong><em><?= (int)$activePlaylistSongCount ?> songs</em></a>
-        <div class="cp2-metric"><small>Storage</small><strong style="font-size:17px;margin-top:6px"><?= number_format($storageUsedMB, 1) ?> MB</strong><em>Ilimitado</em></div>
+        <div class="cp2-metric"><small>Storage</small><strong style="font-size:17px;margin-top:6px"><?= number_format($storageUsedMB, 1) ?> MB</strong><em><?= $maxStorageMB > 0 ? 'de ' . htmlspecialchars($storageCapLabel) : 'Ilimitado' ?></em><?php if ($maxStorageMB > 0): ?><div class="cp2-bar"><span style="width:<?= $storagePercent ?>%;<?= $storagePercent > 90 ? 'background:#fca5a5' : '' ?>"></span></div><?php endif; ?></div>
     </div>
 </div>
 
@@ -345,7 +347,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                 <div class="sp-info-grid">
                     <div class="sp-info-item">
                         <span class="sp-info-label">Almacenamiento M&aacute;ximo</span>
-                        <span class="sp-info-value">Ilimitado</span>
+                        <span class="sp-info-value"><?= htmlspecialchars($storageCapLabel) ?></span>
                     </div>
                     <div class="sp-info-item">
                         <span class="sp-info-label">Bitrate M&aacute;ximo</span>
@@ -468,33 +470,66 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                     </span>
                 </div>
 
-                <div class="cp-embed-player">
-                    <div class="cp-embed-player-main">
-                        <div class="cp-embed-cover">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-                            <span id="stCoverTitle"><?= htmlspecialchars(mb_substr($cancionActual, 0, 30)) ?: $npEmptyLabel ?></span>
+                <!-- Radio status player (the page's one stream) -->
+                <div class="cp3-player" id="stPlayerCard">
+                    <div class="cp3-art"><div class="cp3-vinyl"><span></span></div></div>
+                    <div class="cp3-body">
+                        <div class="cp3-top">
+                            <span class="cp3-live"><span class="dot"></span> LIVE</span>
+                            <span class="cp3-time" id="stAudioTime">00:00</span>
                         </div>
-                        <div class="cp-embed-controls">
-                            <div class="cp-embed-row">
-                                <button type="button" class="cp-embed-btn" onclick="stAudioPlay()" title="Reproducir">
-                                    <svg id="stPlayIcon" width="16" height="16" viewBox="0 0 24 24" fill="#555"><polygon points="5,3 19,12 5,21"/></svg>
-                                </button>
-                                <button type="button" class="cp-embed-btn" onclick="stAudioStop()" title="Detener">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#555"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
-                                </button>
-                                <input type="range" class="cp-embed-seek" id="stSeekBar" min="0" max="100" value="0" disabled>
-                                <span class="cp-embed-time" id="stAudioTime">00:00</span>
-                            </div>
-                            <div class="cp-embed-row">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19"/></svg>
-                                <input type="range" id="stVolume" min="0" max="100" value="80" style="width:100px;height:4px;accent-color:var(--primary)" oninput="stSetVolume(this.value)">
+                        <div class="cp3-label">Now playing</div>
+                        <div class="cp3-title" id="stNowPlayingBar"><?= htmlspecialchars($cancionActual ?: $npEmptyLabel) ?></div>
+                        <span id="stCoverTitle" hidden></span>
+                        <input type="range" class="cp3-progress" id="stSeekBar" min="0" max="100" value="0" disabled aria-label="Progress">
+                        <div class="cp3-ctrl">
+                            <button type="button" class="cp3-play" onclick="stAudioPlay()" title="Reproducir" aria-label="Play">
+                                <svg id="stPlayIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                            </button>
+                            <button type="button" class="cp3-stop" onclick="stAudioStop()" title="Detener" aria-label="Stop">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+                            </button>
+                            <div class="cp3-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                            <div class="cp3-vol">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+                                <input type="range" id="stVolume" min="0" max="100" value="80" oninput="stSetVolume(this.value)" aria-label="Volume">
                             </div>
                         </div>
-                    </div>
-                    <div class="cp-embed-np">
-                        <?= cpIcon('music', 14) ?> <span id="stNowPlayingBar"><?= $npBarPrefix ?><?= htmlspecialchars($cancionActual ?: $npEmptyLabel) ?></span>
                     </div>
                 </div>
+                <style>
+                .cp3-player{display:flex;gap:18px;align-items:center;padding:18px;border-radius:18px;color:#fff;
+                  background:linear-gradient(135deg,var(--primary) 0%,#0f5f66 60%,#0b3d6e 100%);box-shadow:0 12px 30px rgba(15,40,80,.22);position:relative;overflow:hidden}
+                .cp3-player::before{content:'';position:absolute;width:220px;height:220px;right:-70px;top:-90px;border-radius:50%;background:rgba(255,255,255,.14);filter:blur(30px);pointer-events:none}
+                .cp3-art{flex-shrink:0;position:relative;z-index:1}
+                .cp3-vinyl{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,#fff 0 9%,var(--primary) 9.5% 22%,#111 22.5% 24%,transparent 24.5%),repeating-radial-gradient(circle,#111 0 2px,#222 2px 4px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+                .cp3-player.is-playing .cp3-vinyl{animation:cp3spin 4s linear infinite}
+                @keyframes cp3spin{to{transform:rotate(360deg)}}
+                .cp3-body{flex:1;min-width:0;position:relative;z-index:1}
+                .cp3-top{display:flex;justify-content:space-between;align-items:center}
+                .cp3-live{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.15)}
+                .cp3-live .dot{width:7px;height:7px;border-radius:50%;background:#cbd5e1}
+                .cp3-player.is-playing .cp3-live .dot{background:#ef4444;animation:cp3pulse 1.6s infinite}
+                @keyframes cp3pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.7)}70%{box-shadow:0 0 0 7px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+                .cp3-time{font-size:12px;opacity:.85;font-variant-numeric:tabular-nums}
+                .cp3-label{margin-top:8px;font-size:10.5px;text-transform:uppercase;letter-spacing:1px;opacity:.7;font-weight:700}
+                .cp3-title{font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+                .cp3-progress{width:100%;margin:10px 0 8px;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:rgba(255,255,255,.25);accent-color:#fff;pointer-events:none}
+                .cp3-progress::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:#fff}
+                .cp3-ctrl{display:flex;align-items:center;gap:10px}
+                .cp3-play{width:48px;height:48px;border-radius:50%;border:none;background:#fff;color:var(--primary);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25);transition:transform .2s}
+                .cp3-play:hover{transform:scale(1.07)}
+                .cp3-stop{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+                .cp3-stop:hover{background:rgba(255,255,255,.22)}
+                .cp3-eq{display:flex;align-items:flex-end;gap:3px;height:22px;margin-left:4px}
+                .cp3-eq span{width:3px;height:20%;border-radius:2px;background:#fff;opacity:.55}
+                .cp3-player.is-playing .cp3-eq span{opacity:1;animation:cp3eq 1s ease-in-out infinite}
+                .cp3-player.is-playing .cp3-eq span:nth-child(2n){animation-duration:.75s}.cp3-player.is-playing .cp3-eq span:nth-child(3n){animation-duration:1.2s}
+                @keyframes cp3eq{0%,100%{height:20%}50%{height:100%}}
+                .cp3-vol{margin-left:auto;display:flex;align-items:center;gap:6px;opacity:.9}
+                .cp3-vol input{width:90px;accent-color:#fff}
+                @media(max-width:560px){.cp3-player{flex-direction:column;text-align:center}.cp3-top,.cp3-ctrl{justify-content:center}.cp3-vol{margin-left:0}}
+                </style>
 
                 <audio id="stAudioPlayer" preload="none" playsinline></audio>
                 <p id="cpAudioErr" class="cp-audio-err"></p>
@@ -666,7 +701,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                     <?php
                     $gauges = [
                         ['label' => 'Oyentes', 'value' => $oyentesAhora, 'max' => $maxOyentes, 'pct' => $oyentesPercent, 'color' => '#00897b', 'unit' => ''],
-                        ['label' => 'Uso de Disco', 'value' => $storageUsedMB, 'max' => 0, 'pct' => 0, 'pctText' => '∞', 'color' => '#1e88e5', 'unit' => ' MB'],
+                        ['label' => 'Uso de Disco', 'value' => $storageUsedMB, 'max' => $maxStorageMB, 'pct' => $storagePercent, 'pctText' => $maxStorageMB > 0 ? null : '∞', 'color' => '#1e88e5', 'unit' => ' MB'],
                         ['label' => 'Pico 24h', 'value' => $picoOyentes, 'max' => $maxOyentes, 'pct' => $maxOyentes > 0 ? min(round(($picoOyentes / $maxOyentes) * 100, 1), 100) : 0, 'color' => '#f4511e', 'unit' => ''],
                         ['label' => 'Bitrate', 'value' => $estacion['bitrate'], 'max' => $maxBitrate, 'pct' => $bitratePercent, 'color' => '#8e24aa', 'unit' => ' kbps'],
                         ['label' => 'Canciones', 'value' => $totalCanciones, 'max' => 999, 'pct' => min(round(($totalCanciones / max(1, 999)) * 100, 1), 100), 'color' => '#fb8c00', 'unit' => ''],
@@ -810,6 +845,8 @@ function cpSyncPlayButtons() {
     });
     var st = document.getElementById('cpListenState');
     if (st) st.textContent = stIsPlaying ? '● Listening (Radio status player)' : 'Not listening';
+    var card = document.getElementById('stPlayerCard');
+    if (card) card.classList.toggle('is-playing', stIsPlaying);
 }
 
 function cpSetStreamSrc(el, bustCache) {
@@ -1016,7 +1053,7 @@ function cpApplyPlayer(p) {
     var barTitle = cpNpPrefix + title;
     var stBar = document.getElementById('stNowPlayingBar');
     var cpBar = document.getElementById('cpNowPlayingBar');
-    if (stBar) stBar.textContent = barTitle;
+    if (stBar) stBar.textContent = title; // "Now playing" label is above the title
     if (cpBar) cpBar.textContent = barTitle;
     var pos = document.getElementById('cpPlaylistPos');
     if (pos && p.playlist_total > 0 && typeof p.playlist_index === 'number' && p.playlist_index >= 0) {

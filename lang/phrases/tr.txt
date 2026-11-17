@@ -2060,3 +2060,7 @@ Sınırsız
 Kullanılan alan: {n} (sınırsız)
 {n} — Sınırsız
 Sunucuda boş disk alanı yok
+/ {n}
+Paket alanı doldu ({x})
+Depolama (GB)
+Bu paketteki her radyonun AutoDJ müziği için alan. 0 = sınırsız.

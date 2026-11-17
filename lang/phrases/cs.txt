@@ -2060,3 +2060,7 @@ Neomezeně
 Využité místo: {n} (neomezeně)
 {n} — Neomezeně
 Server nemá volné místo na disku
+z {n}
+Místo v tarifu vyčerpáno ({x})
+Úložiště (GB)
+Místo pro hudbu AutoDJ každého rádia v tomto tarifu. 0 = neomezeně.

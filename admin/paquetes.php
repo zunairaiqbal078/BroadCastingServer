@@ -47,7 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             $defaultHostname    = trim($_POST['default_hostname'] ?? '');
             $socialStream       = (int)($_POST['social_stream_enabled'] ?? 0);
             $mountPoints        = (int)($_POST['mount_points_enabled'] ?? 1);
-            $maxStorageMb       = (int)($_POST['max_storage_mb'] ?? 5500);
+            // storage is entered in GB (stored in MB); 0 = unlimited
+            $maxStorageMb       = isset($_POST['max_storage_gb'])
+                ? (int)round(max(0, (float)str_replace(',', '.', (string)$_POST['max_storage_gb'])) * 1024)
+                : (int)($_POST['max_storage_mb'] ?? 5120);
             $maxBitrate         = (int)($_POST['max_bitrate'] ?? 128);
             $maxOyentes         = (int)($_POST['max_oyentes'] ?? 999);
             $maxDj              = (int)($_POST['max_dj'] ?? 3);
@@ -240,8 +243,9 @@ if ($serverIp === '0.0.0.0' || $serverIp === '::1') {
             <!-- Fila 6: Almacenamiento + Max DJs -->
             <div class="form-grid-2">
                 <div class="form-group" id="storage-group">
-                    <label>Almacenamiento (MB):</label>
-                    <input type="number" name="max_storage_mb" class="form-control" min="0" value="<?= $editPkg['max_storage_mb'] ?? 5500 ?>">
+                    <label>Almacenamiento (GB):</label>
+                    <input type="number" name="max_storage_gb" class="form-control" min="0" step="0.5" value="<?= rtrim(rtrim(number_format(((int)($editPkg['max_storage_mb'] ?? 5120)) / 1024, 2, '.', ''), '0'), '.') ?>">
+                    <small class="text-muted">Espacio para la música del AutoDJ de cada radio con este plan. 0 = ilimitado.</small>
                 </div>
                 <div id="maxdj-group" class="form-group">
                     <label>Max. Cuentas DJ:</label>
@@ -324,7 +328,7 @@ if ($serverIp === '0.0.0.0' || $serverIp === '::1') {
                                 <span class="badge badge-<?= $sBadge ?>" style="font-size:10px"><?= $sLabels[$sType] ?? $sType ?></span>
                             </td>
                             <td style="font-size:11px"><?= htmlspecialchars($p['default_hostname'] ?? '') ?: '<span style="color:#999">—</span>' ?></td>
-                            <td><?= formatMB($p['max_storage_mb']) ?></td>
+                            <td><?= (int)$p['max_storage_mb'] > 0 ? formatMB($p['max_storage_mb']) : 'Ilimitado' ?></td>
                             <td><?= $p['max_bitrate'] ?> kbps</td>
                             <td><?= $p['max_oyentes'] ?: '&infin;' ?></td>
                             <td><?= $p['max_dj'] ?></td>

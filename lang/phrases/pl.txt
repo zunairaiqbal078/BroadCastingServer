@@ -2060,3 +2060,7 @@ Bez limitu
 Wykorzystane miejsce: {n} (bez limitu)
 {n} — Bez limitu
 Serwer nie ma wolnego miejsca na dysku
+z {n}
+Miejsce w planie wyczerpane ({x})
+Miejsce (GB)
+Miejsce na muzykę AutoDJ każdego radia w tym planie. 0 = bez limitu.

@@ -65,6 +65,22 @@ $estRow->execute([(int)$dj['estacion_id']]);
 $estacionDj = $estRow->fetch(PDO::FETCH_ASSOC) ?: [];
 $streamSt = $estacionDj ? getStreamStatus($estacionDj) : ['online' => false, 'oyentes' => 0];
 $streamOnline = !empty($streamSt['online']);
+
+// Station storage from its package (Add Radio Package): same numbers the client sees
+$djPlanName = '';
+$djStorageCapMb = 0;   // 0 = unlimited
+$djStorageUsedMb = 0.0;
+try {
+    $pst = $db->prepare('SELECT p.nombre, p.max_storage_mb FROM estaciones e LEFT JOIN paquetes p ON p.id = e.paquete_id WHERE e.id = ?');
+    $pst->execute([(int)$dj['estacion_id']]);
+    $plan = $pst->fetch(PDO::FETCH_ASSOC) ?: [];
+    $djPlanName = (string)($plan['nombre'] ?? '');
+    $djStorageCapMb = (int)($plan['max_storage_mb'] ?? 0);
+    $ust = $db->prepare('SELECT (SELECT COALESCE(SUM(tamano_bytes),0) FROM canciones WHERE estacion_id = ?) + (SELECT COALESCE(SUM(tamano_bytes),0) FROM anuncios WHERE estacion_id = ?)');
+    $ust->execute([(int)$dj['estacion_id'], (int)$dj['estacion_id']]);
+    $djStorageUsedMb = round((int)$ust->fetchColumn() / 1048576, 1);
+} catch (Throwable $e) {}
+$djStoragePct = $djStorageCapMb > 0 ? min(100, round($djStorageUsedMb / $djStorageCapMb * 100, 1)) : 0;
 ?>
 
 <div class="dj2-hero" id="djHero">
@@ -113,6 +129,21 @@ $streamOnline = !empty($streamSt['online']);
     <div><strong>Message from the station</strong><p><?= nl2br(htmlspecialchars(trim($estacionDj['mensaje_dj']))) ?></p></div>
 </div>
 <?php endif; ?>
+
+<!-- Station plan storage (same as the client panel) -->
+<div class="dj2-plan">
+    <div class="dj2-plan-ic"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+    <div class="dj2-plan-main">
+        <div class="dj2-plan-top">
+            <strong>Almacenamiento</strong>
+            <span><?= formatMB($djStorageUsedMb) ?> <?= $djStorageCapMb > 0 ? 'de ' . formatMB($djStorageCapMb) : '— Ilimitado' ?></span>
+        </div>
+        <?php if ($djStorageCapMb > 0): ?>
+        <div class="dj2-plan-bar"><span style="width:<?= $djStoragePct ?>%;<?= $djStoragePct > 90 ? 'background:var(--danger)' : '' ?>"></span></div>
+        <?php endif; ?>
+        <?php if ($djPlanName !== ''): ?><small>Plan: <span translate="no"><?= htmlspecialchars($djPlanName) ?></span></small><?php endif; ?>
+    </div>
+</div>
 
 <div class="dj2-grid">
     <!-- Connection details -->

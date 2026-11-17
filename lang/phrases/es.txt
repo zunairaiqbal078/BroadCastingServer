@@ -2060,3 +2060,7 @@ Ilimitado
 Espacio usado: {n} (ilimitado)
 {n} — Ilimitado
 El servidor no tiene espacio libre en disco
+de {n}
+Espacio del plan agotado ({x})
+Almacenamiento (GB)
+Espacio para la música del AutoDJ de cada radio con este plan. 0 = ilimitado.

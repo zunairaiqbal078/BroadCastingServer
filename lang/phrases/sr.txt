@@ -2060,3 +2060,7 @@ Neograničeno
 Iskorišćen prostor: {n} (neograničeno)
 {n} — Neograničeno
 Server nema slobodnog prostora na disku
+od {n}
+Prostor paketa je potrošen ({x})
+Prostor (GB)
+Prostor za AutoDJ muziku svakog radija u ovom paketu. 0 = neograničeno.

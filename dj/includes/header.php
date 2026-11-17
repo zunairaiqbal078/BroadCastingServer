@@ -685,6 +685,15 @@ body {
 .dj2-msg{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;margin-bottom:20px;border-radius:14px;background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:13.5px;}
 .dj2-msg svg{width:20px;height:20px;flex-shrink:0;fill:none;stroke:#d97706;stroke-width:2;margin-top:1px;}
 .dj2-msg p{margin:4px 0 0;line-height:1.5;}
+.dj2-plan{display:flex;gap:14px;align-items:center;padding:14px 18px;margin-bottom:20px;border-radius:16px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.dj2-plan-ic{width:40px;height:40px;border-radius:12px;background:var(--primary-bg);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.dj2-plan-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;}
+.dj2-plan-main{flex:1;min-width:0;}
+.dj2-plan-top{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;flex-wrap:wrap;}
+.dj2-plan-top span{color:var(--text-secondary);font-variant-numeric:tabular-nums;}
+.dj2-plan-bar{height:7px;border-radius:7px;background:var(--body-bg,#eef0f4);margin-top:8px;overflow:hidden;}
+.dj2-plan-bar span{display:block;height:100%;border-radius:7px;background:var(--primary);}
+.dj2-plan small{display:block;margin-top:6px;font-size:12px;color:var(--text-secondary);}
 .dj2-note{font-size:12.5px;color:var(--text-secondary);margin:10px 0 0;}
 </style>
 </head>

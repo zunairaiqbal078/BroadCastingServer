@@ -2060,3 +2060,7 @@ Unbegrenzt
 Belegter Speicher: {n} (unbegrenzt)
 {n} — Unbegrenzt
 Der Server hat keinen freien Speicherplatz
+von {n}
+Speicher des Pakets voll ({x})
+Speicher (GB)
+Speicher für die AutoDJ-Musik jedes Radios mit diesem Paket. 0 = unbegrenzt.

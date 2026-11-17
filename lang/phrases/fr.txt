@@ -2060,3 +2060,7 @@ Illimité
 Espace utilisé : {n} (illimité)
 {n} — Illimité
 Le serveur n'a plus d'espace disque
+sur {n}
+Espace du forfait épuisé ({x})
+Stockage (Go)
+Espace pour la musique AutoDJ de chaque radio de ce forfait. 0 = illimité.

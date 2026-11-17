@@ -787,7 +787,7 @@ function populateModal(data) {
     document.getElementById('md_puerto').value = s.puerto_stream || s.icecast_port;
     document.getElementById('md_max_oyentes').value = p.max_oyentes + ' oyentes';
     document.getElementById('md_max_bitrate').value = p.max_bitrate + ' kbps';
-    document.getElementById('md_max_storage').value = p.max_storage_mb + ' MB';
+    document.getElementById('md_max_storage').value = (+p.max_storage_mb > 0) ? (p.max_storage_mb >= 1024 ? (Math.round(p.max_storage_mb / 102.4) / 10) + ' GB' : p.max_storage_mb + ' MB') : 'Ilimitado';
     document.getElementById('md_ssl_url').value = data.ssl_url;
     document.getElementById('md_server_ip').value = data.server_ip;
     document.getElementById('md_codec').value = s.codec;

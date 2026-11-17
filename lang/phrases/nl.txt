@@ -2060,3 +2060,7 @@ Onbeperkt
 Gebruikte ruimte: {n} (onbeperkt)
 {n} — Onbeperkt
 De server heeft geen vrije schijfruimte
+van {n}
+Opslag van het pakket vol ({x})
+Opslag (GB)
+Ruimte voor de AutoDJ-muziek van elke radio met dit pakket. 0 = onbeperkt.

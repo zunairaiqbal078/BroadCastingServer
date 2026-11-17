@@ -2060,3 +2060,7 @@ Onbeperk
 Spasie gebruik: {n} (onbeperk)
 {n} — Onbeperk
 Die bediener het geen vrye skyfspasie nie
+van {n}
+Pakketspasie is vol ({x})
+Berging (GB)
+Spasie vir die AutoDJ-musiek van elke radio op hierdie pakket. 0 = onbeperk.

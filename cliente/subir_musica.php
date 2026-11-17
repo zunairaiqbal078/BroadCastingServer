@@ -22,7 +22,7 @@ try {
 
 $storageUsedBytes = getStorageUsed($estacion['id']);
 $storageUsedMB = round($storageUsedBytes / (1024 * 1024), 1);
-$maxStorageMB = $estacion['max_storage_mb'] ?? 5500;
+$maxStorageMB = (int)($estacion['max_storage_mb'] ?? 0); // plan storage, 0 = unlimited
 $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStorageMB) * 100, 1)) : 0;
 ?>
 
@@ -35,8 +35,13 @@ $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStora
     <div class="card-body">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <span style="font-weight:600">Almacenamiento AutoDJ</span>
-            <span style="font-size:13px;color:var(--text-secondary)"><?= formatMB($storageUsedMB) ?> — Ilimitado</span>
+            <span style="font-size:13px;color:var(--text-secondary)"><?= $maxStorageMB > 0 ? formatMB($storageUsedMB) . ' / ' . formatMB($maxStorageMB) : formatMB($storageUsedMB) . ' — Ilimitado' ?></span>
         </div>
+        <?php if ($maxStorageMB > 0): ?>
+        <div class="storage-bar">
+            <div class="storage-bar-fill <?= $storagePercent > 90 ? 'danger' : ($storagePercent > 70 ? 'warning' : '') ?>" style="width:<?= $storagePercent ?>%"></div>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -77,7 +82,7 @@ $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStora
                 <div class="upload-title">Arrastra tus archivos aquí</div>
                 <div class="upload-hint">o haz clic para seleccionar</div>
                 <div class="upload-formats">Formatos: MP3, OGG, AAC, M4A, WAV, FLAC — sin límite de cantidad de archivos</div>
-                <div class="upload-formats">Espacio usado: <?= number_format($storageUsedMB, 1) ?> MB (ilimitado)</div>
+                <div class="upload-formats"><?= $maxStorageMB > 0 ? 'Espacio usado: ' . formatMB($storageUsedMB) . ' de ' . formatMB($maxStorageMB) : 'Espacio usado: ' . formatMB($storageUsedMB) . ' (ilimitado)' ?></div>
                 <input type="file" id="fileInput" accept=".mp3,.ogg,.aac,.m4a,.wav,.flac" multiple style="display:none">
             </div>
         </form>

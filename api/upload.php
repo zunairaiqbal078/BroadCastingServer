@@ -39,8 +39,12 @@ if (empty($_FILES['archivos'])) {
     jsonResponse(['error' => 'No se recibieron archivos'], 400);
 }
 
-// AutoDJ storage is unlimited (no plan quota). Only refuse a file when the
-// server's own disk would be left almost full, so the server keeps working.
+// Storage contracted in the plan (Add Radio Package, 0 = unlimited) applies
+// to music + ads; a file is also refused when the server's own disk would be
+// left almost full, so the server keeps working.
+$storageUsed = getStorageUsed($estacionId);
+$maxStorageMb = (int)($estacion['max_storage_mb'] ?? 0);
+$maxStorage = $maxStorageMb > 0 ? $maxStorageMb * 1024 * 1024 : 0;
 $diskReserve = 200 * 1024 * 1024;
 
 $results = [];
@@ -70,7 +74,12 @@ for ($i = 0; $i < count($files['name']); $i++) {
         continue;
     }
 
-    // Espacio libre en el disco del servidor (no hay límite por plan)
+    // Espacio del plan
+    if ($maxStorage > 0 && $storageUsed + $fileSize > $maxStorage) {
+        $results[] = ['file' => $originalName, 'ok' => false, 'error' => 'Espacio del plan agotado (' . formatMB($maxStorageMb) . ')'];
+        continue;
+    }
+    // Espacio libre en el disco del servidor
     $diskFree = @disk_free_space($tipo === 'anuncio' ? ANUNCIOS_PATH : MEDIA_PATH);
     if ($diskFree !== false && $diskFree - $fileSize < $diskReserve) {
         $results[] = ['file' => $originalName, 'ok' => false, 'error' => 'El servidor no tiene espacio libre en disco'];
@@ -170,6 +179,7 @@ for ($i = 0; $i < count($files['name']); $i++) {
         }
     }
 
+    $storageUsed += $fileSize;
     $uploaded++;
     $results[] = ['file' => $originalName, 'ok' => true];
 }

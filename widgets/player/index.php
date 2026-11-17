@@ -83,401 +83,119 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
-    /* === RESET === */
+    /* ===== Full-page player (redesign) ===== */
+    :root { --ac: <?= $cpAccent ?>; --ac-rgb: <?= $cpAccentRgb ?>; }
     * { margin:0; padding:0; box-sizing:border-box; }
-    html, body {
-        height:100%; overflow:hidden;
-        font-family:'Open Sans', Arial, sans-serif;
-        color:#333;
-    }
-
-    /* === BODY BACKGROUND === */
+    html, body { height:100%; }
     body {
-        background: #1a1a2e;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        position:relative;
+        font-family:'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color:#fff; background:#0b1020; overflow-x:hidden;
+        display:flex; min-height:100vh;
     }
-    /* Imagen de fondo real */
     .bg-layer {
-        position:fixed; inset:0; z-index:0;
-        background-size:cover;
-        background-position:center center;
-        background-repeat:no-repeat;
-        transition: opacity 2s ease-in-out;
-        <?php if ($bgBlur > 0): ?>
-        filter: blur(<?= $bgBlur ?>px);
-        transform: scale(1.05); /* evitar bordes blancos del blur */
-        <?php endif; ?>
+        position:fixed; inset:-40px; z-index:-2;
+        background-size:cover; background-position:center;
+        filter: blur(<?= max(18, $bgBlur) ?>px) saturate(1.2);
+        transform:scale(1.08); transition:background .8s ease;
     }
-    /* Overlay oscuro sobre el fondo */
     .bg-overlay {
-        position:fixed; inset:0; z-index:0;
-        background: rgba(0,0,0,<?= $bgOverlay ?>);
+        position:fixed; inset:0; z-index:-1;
+        background:
+            radial-gradient(circle at 20% 15%, rgba(var(--ac-rgb),.35), transparent 45%),
+            radial-gradient(circle at 85% 90%, rgba(var(--ac-rgb),.25), transparent 50%),
+            rgba(5,8,20,<?= $bgOverlay ?>);
     }
-
-    /* === PRELOADER === */
-    .se-pre-con {
-        position:fixed; inset:0; z-index:9999;
-        background:#fff;
-        display:flex; align-items:center; justify-content:center;
-        transition: opacity 0.6s;
-    }
+    /* preloader */
+    .se-pre-con { position:fixed; inset:0; z-index:99; background:#0b1020; display:flex; align-items:center; justify-content:center; transition:opacity .5s; }
     .se-pre-con.hidden { opacity:0; pointer-events:none; }
-    .loader {
-        width:40px; height:40px;
-        border:3px solid #e0e0e0;
-        border-top:3px solid <?= $cpAccent ?>;
-        border-radius:50%;
-        animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+    .loader { width:44px; height:44px; border-radius:50%; border:3px solid rgba(255,255,255,.15); border-top-color:var(--ac); animation:spin 1s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
 
-    /* === MAIN CONTAINER === */
-    .main-container {
-        position:relative; z-index:1;
-        display:block;
-        margin:0 auto;
-        max-width:600px;
-        width:100%;
-        padding:20px;
+    .main-container { position:relative; z-index:1; width:100%; max-width:440px; padding:28px 18px; margin:auto; /* centred, never cut off on short screens */ }
+    .glass {
+        background:linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.05));
+        border:1px solid rgba(255,255,255,.16);
+        -webkit-backdrop-filter:blur(22px); backdrop-filter:blur(22px);
+        border-radius:28px; box-shadow:0 30px 80px rgba(0,0,0,.45);
+        padding:26px 24px 22px;
     }
+    /* top line */
+    .pl-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:20px; }
+    .pl-brand { font-size:12px; letter-spacing:2px; text-transform:uppercase; opacity:.7; font-weight:700; }
+    .live-pill { display:inline-flex; align-items:center; gap:7px; padding:5px 12px; border-radius:30px; font-size:11px; font-weight:800; letter-spacing:1px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); }
+    .live-dot { width:8px; height:8px; border-radius:50%; background:#94a3b8; display:inline-block; }
+    .live-dot.on { background:#ef4444; box-shadow:0 0 0 0 rgba(239,68,68,.7); animation:pulse 1.6s infinite; }
+    @keyframes pulse { 70% { box-shadow:0 0 0 9px rgba(239,68,68,0); } 100% { box-shadow:0 0 0 0 rgba(239,68,68,0); } }
 
-    /* === ALBUM ART === */
-    .art-container {
-        text-align:center;
-        margin-bottom:12px;
-    }
-    .art-container img {
-        max-width:280px;
-        width:100%;
-        border-radius:12px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-        transition: transform 0.3s ease;
-    }
-    /* Default art (animated disc) */
+    /* cover */
+    .art-container { position:relative; width:100%; aspect-ratio:1/1; max-width:300px; margin:0 auto 22px; }
+    .art-container::after { content:''; position:absolute; inset:12% 8% -6%; z-index:-1; border-radius:30px; background:var(--ac); filter:blur(40px); opacity:.45; }
+    .art-container img { width:100%; height:100%; object-fit:cover; border-radius:24px; display:block; box-shadow:0 20px 50px rgba(0,0,0,.5); }
     .default-art {
-        width:280px; height:280px;
-        margin:0 auto;
-        border-radius:50%;
-        background: radial-gradient(circle at 50% 50%, #555 0%, #333 30%, #222 50%, #111 70%, #000 100%);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-        display:flex; align-items:center; justify-content:center;
-        position:relative;
-        overflow:hidden;
+        width:100%; height:100%; border-radius:50%;
+        background:
+            radial-gradient(circle, var(--ac) 0 13%, #0b1020 13.5% 15%, transparent 15.5%),
+            repeating-radial-gradient(circle, #111827 0 2px, #1f2937 2px 4px);
+        box-shadow:0 20px 50px rgba(0,0,0,.55), inset 0 0 0 6px rgba(255,255,255,.04);
     }
-    .default-art::before {
-        content:'';
-        position:absolute;
-        width:80px; height:80px;
-        border-radius:50%;
-        background:linear-gradient(135deg, <?= $cpAccent ?>, <?= $cpAccent ?>);
-        box-shadow: 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 16px rgba(255,255,255,0.05);
-    }
-    .default-art::after {
-        content:'';
-        position:absolute; inset:10px;
-        border-radius:50%;
-        border:1px solid rgba(255,255,255,0.06);
-        background: repeating-radial-gradient(
-            circle at center,
-            transparent 0px,
-            transparent 8px,
-            rgba(255,255,255,0.03) 8px,
-            rgba(255,255,255,0.03) 9px
-        );
-    }
-    .default-art.spinning {
-        animation: vinylSpin 4s linear infinite;
-    }
-    @keyframes vinylSpin { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+    .default-art.spinning { animation:spin 6s linear infinite; }
 
-    /* === NOW PLAYING BAR === */
-    .nowplay-bar {
-        background: rgba(0,0,0,0.55);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius:10px;
-        padding:10px 16px;
-        margin-bottom:8px;
-        display:flex;
-        align-items:center;
-        gap:10px;
-        min-height:48px;
-    }
-    .nowplay-icon {
-        flex-shrink:0;
-    }
-    .nowplay-icon img,
-    .nowplay-icon svg {
-        vertical-align:middle;
-    }
-    .nowplay-text {
-        flex:1;
-        min-width:0;
-        color:#fff;
-        font-size:13px;
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
-    }
-    .nowplay-text b {
-        color:#4FC3F7;
-        font-weight:700;
-    }
-    .nowplay-text .np-song {
-        font-weight:400;
-        color:#e0e0e0;
-    }
+    /* titles */
+    .pl-titles { text-align:center; margin-bottom:16px; }
+    .player-station { font-size:22px; font-weight:800; line-height:1.2; }
+    .nowplay-text { margin-top:6px; font-size:14px; opacity:.85; min-height:20px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .np-label { opacity:.6; }
+    .player-meta { margin-top:8px; display:flex; justify-content:center; flex-wrap:wrap; gap:8px; font-size:12px; opacity:.7; }
 
-    /* === FLATIE JPLAYER SKIN (Light) - Recreado en CSS puro === */
-    .audio-player {
-        background: #f5f5f5;
-        border-radius:10px;
-        padding:0;
-        overflow:hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        border:1px solid #e0e0e0;
-    }
+    /* equalizer */
+    .player-eq-bar { display:flex; align-items:flex-end; justify-content:center; gap:4px; height:28px; margin:4px 0 16px; }
+    .player-eq-bar span { width:4px; height:15%; border-radius:3px; background:linear-gradient(to top, var(--ac), #fff); opacity:.5; transition:height .3s; }
+    .player-eq-bar.active span { opacity:1; animation:eq 1s ease-in-out infinite; }
+    .player-eq-bar.active span:nth-child(2n) { animation-duration:.8s; }
+    .player-eq-bar.active span:nth-child(3n) { animation-duration:1.25s; }
+    .player-eq-bar.active span:nth-child(4n) { animation-duration:.65s; }
+    @keyframes eq { 0%,100% { height:15%; } 50% { height:100%; } }
 
-    /* Player top row */
-    .player-controls {
-        display:flex;
-        align-items:center;
-        gap:0;
-        padding:8px 12px;
-        background:#fff;
-    }
-
-    /* Play button */
+    /* controls */
+    .player-controls { display:flex; align-items:center; justify-content:center; gap:22px; }
     .btn-play {
-        width:48px; height:48px;
-        border-radius:50%;
-        border:2px solid <?= $cpAccent ?>;
-        background:#fff;
-        color:<?= $cpAccent ?>;
-        font-size:20px;
-        cursor:pointer;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        flex-shrink:0;
-        transition:all 0.2s;
-        margin-right:12px;
+        width:78px; height:78px; border-radius:50%; border:none; cursor:pointer; color:#fff;
+        background:linear-gradient(145deg, var(--ac), rgba(var(--ac-rgb),.7));
+        box-shadow:0 12px 30px rgba(var(--ac-rgb),.55), inset 0 1px 0 rgba(255,255,255,.35);
+        display:flex; align-items:center; justify-content:center; position:relative; transition:transform .2s;
     }
-    .btn-play:hover {
-        background:<?= $cpAccent ?>;
-        color:#fff;
-    }
-    .btn-play:active {
-        transform:scale(0.92);
-    }
-    .btn-play.playing {
-        background:<?= $cpAccent ?>;
-        color:#fff;
-    }
+    .btn-play:hover { transform:scale(1.06); }
+    .btn-play svg { width:30px; height:30px; }
+    .btn-play::before { content:''; position:absolute; inset:-8px; border-radius:50%; border:2px solid rgba(var(--ac-rgb),.5); opacity:0; }
+    .btn-play.playing::before { animation:ring 1.8s ease-out infinite; }
+    @keyframes ring { 0% { transform:scale(.9); opacity:.8; } 100% { transform:scale(1.35); opacity:0; } }
+    .player-volume { display:flex; align-items:center; gap:10px; margin-top:18px; padding:10px 14px; border-radius:16px; background:rgba(255,255,255,.08); }
+    .vol-btn { background:none; border:none; color:#fff; cursor:pointer; opacity:.8; display:flex; }
+    .vol-btn:hover { opacity:1; color:var(--ac); }
+    .vol-range { flex:1; -webkit-appearance:none; appearance:none; height:5px; border-radius:5px; background:rgba(255,255,255,.25); outline:none; accent-color:var(--ac); }
+    .vol-range::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:#fff; box-shadow:0 0 0 4px rgba(var(--ac-rgb),.5); cursor:pointer; }
+    .vol-range::-moz-range-thumb { width:16px; height:16px; border:none; border-radius:50%; background:#fff; cursor:pointer; }
 
-    /* Station info in player */
-    .player-info {
-        flex:1;
-        min-width:0;
-    }
-    .player-station {
-        font-size:14px;
-        font-weight:700;
-        color:#333;
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
-        line-height:1.3;
-    }
-    .player-meta {
-        font-size:11px;
-        color:#999;
-        display:flex;
-        align-items:center;
-        gap:8px;
-    }
-    .player-meta .live-dot {
-        width:6px; height:6px;
-        border-radius:50%;
-        display:inline-block;
-    }
-    .player-meta .live-dot.on { background:#4CAF50; animation:blink 1.5s infinite; }
-    .player-meta .live-dot.off { background:#ccc; }
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
-    /* Volume section */
-    .player-volume {
-        display:flex;
-        align-items:center;
-        gap:6px;
-        flex-shrink:0;
-        margin-left:8px;
-    }
-    .vol-btn {
-        background:none; border:none;
-        color:#888;
-        cursor:pointer;
-        padding:4px;
-        transition:color 0.2s;
-        display:flex; align-items:center; justify-content:center;
-        line-height:0;
-    }
-    .vol-btn:hover { color:<?= $cpAccent ?>; }
-    .vol-btn svg { display:block; }
-    .vol-range {
-        width:70px; height:4px;
-        -webkit-appearance:none; appearance:none;
-        background:#e0e0e0;
-        border-radius:4px;
-        outline:none;
-    }
-    .vol-range::-webkit-slider-thumb {
-        -webkit-appearance:none;
-        width:14px; height:14px;
-        border-radius:50%;
-        background:<?= $cpAccent ?>;
-        cursor:pointer;
-        box-shadow:0 1px 4px rgba(0,0,0,.2);
-    }
-    .vol-range::-moz-range-thumb {
-        width:14px; height:14px;
-        border-radius:50%;
-        background:<?= $cpAccent ?>;
-        border:none;
-        cursor:pointer;
-    }
-
-    /* Progress/EQ bar at bottom of player */
-    .player-eq-bar {
-        height:4px;
-        background: linear-gradient(90deg, <?= $cpAccent ?>, <?= $cpAccent ?>, #00BCD4, <?= $cpAccent ?>);
-        background-size:300% 100%;
-        animation: eqSlide 3s linear infinite;
-        opacity:0;
-        transition:opacity 0.3s;
-    }
-    .player-eq-bar.active { opacity:1; }
-    @keyframes eqSlide {
-        0%{background-position:0% 50%}
-        100%{background-position:300% 50%}
-    }
-
-    /* === STATUS BAR === */
-    .status-bar {
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        padding:8px 4px;
-        font-size:11px;
-        color:rgba(255,255,255,0.5);
-    }
-    .status-bar .listeners-info {
-        display:flex; align-items:center; gap:4px;
-    }
-    .status-bar .codec-info {
-        text-transform:uppercase;
-        letter-spacing:0.5px;
-    }
-
-    /* === SOCIAL LINKS === */
-    .social-links {
-        display:flex;
-        justify-content:center;
-        gap:8px;
-        margin-top:10px;
-    }
-    .social-link {
-        width:36px; height:36px;
-        border-radius:50%;
-        background:rgba(255,255,255,0.1);
-        border:1px solid rgba(255,255,255,0.15);
-        display:flex; align-items:center; justify-content:center;
-        color:rgba(255,255,255,0.6);
-        text-decoration:none;
-        font-size:12px; font-weight:700;
-        transition:all 0.2s;
-    }
-    .social-link:hover {
-        background:<?= $cpAccent ?>;
-        border-color:<?= $cpAccent ?>;
-        color:#fff;
-        transform:translateY(-2px);
-        box-shadow: 0 4px 12px rgba(<?= $cpAccentRgb ?>,0.3);
-    }
-    .social-link svg { width:14px; height:14px; }
-
-    /* === HISTORY === */
-    .history-section {
-        margin-top:10px;
-        background:rgba(0,0,0,0.4);
-        backdrop-filter:blur(10px);
-        -webkit-backdrop-filter:blur(10px);
-        border-radius:10px;
-        overflow:hidden;
-    }
-    .history-btn {
-        width:100%; padding:10px;
-        background:none; border:none;
-        color:rgba(255,255,255,0.5);
-        font-size:12px; font-weight:600;
-        cursor:pointer;
-        font-family:'Open Sans',sans-serif;
-        transition:color 0.2s;
-    }
-    .history-btn:hover { color:rgba(255,255,255,0.8); }
-    .history-list { display:none; padding:0 14px 14px; }
+    /* extras */
+    .listeners-info { text-align:center; font-size:12px; opacity:.7; margin-top:12px; }
+    .social-links { display:flex; justify-content:center; gap:10px; margin-top:16px; }
+    .social-link { width:38px; height:38px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.14); transition:all .2s; }
+    .social-link:hover { background:var(--ac); border-color:var(--ac); transform:translateY(-2px); }
+    .social-link svg { width:17px; height:17px; }
+    .history-section { margin-top:16px; border-radius:16px; background:rgba(0,0,0,.18); overflow:hidden; }
+    .history-btn { width:100%; padding:11px 14px; border:none; background:none; color:rgba(255,255,255,.75); font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; }
+    .history-btn:hover { color:#fff; }
+    .history-list { display:none; padding:0 14px 12px; max-height:220px; overflow:auto; }
     .history-list.open { display:block; }
-    .h-item {
-        display:flex; align-items:center; gap:10px;
-        padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.05);
-        font-size:12px;
-    }
+    .h-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.06); font-size:12.5px; }
     .h-item:last-child { border-bottom:none; }
-    .h-num {
-        width:22px; height:22px; border-radius:50%;
-        background:rgba(<?= $cpAccentRgb ?>,0.15);
-        display:flex; align-items:center; justify-content:center;
-        font-size:10px; font-weight:700; color:#4FC3F7; flex-shrink:0;
-    }
+    .h-num { width:24px; height:24px; border-radius:8px; background:rgba(var(--ac-rgb),.25); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; }
     .h-info { flex:1; min-width:0; }
-    .h-title { color:rgba(255,255,255,0.7); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .h-artist { color:rgba(255,255,255,0.35); font-size:11px; }
-
-    /* === POWERED BY === */
-    .powered-by {
-        text-align:center;
-        margin-top:12px;
-        font-size:10px;
-        color:rgba(255,255,255,0.3);
-        letter-spacing:0.5px;
-    }
-    .powered-by a { color:rgba(255,255,255,0.4); text-decoration:none; }
-    .powered-by a:hover { color:rgba(255,255,255,0.7); }
-
-    /* === ANIMATIONS === */
-    @keyframes fadeInCover {
-        from { opacity:0; transform:scale(0.95); }
-        to { opacity:1; transform:scale(1); }
-    }
-
-    /* === RESPONSIVE === */
-    @media(max-width:480px){
-        .main-container { padding:15px; }
-        .art-container img { max-width:220px; }
-        .default-art { width:220px; height:220px; }
-        .default-art::before { width:60px; height:60px; }
-        .nowplay-text { font-size:12px; }
-        .player-station { font-size:13px; }
-        .vol-range { width:50px; }
-    }
-    @media(max-width:360px){
-        .art-container img { max-width:180px; }
-        .default-art { width:180px; height:180px; }
-        .default-art::before { width:50px; height:50px; }
-    }
+    .h-title { font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .h-artist { opacity:.55; font-size:11px; }
+    .powered-by { text-align:center; margin-top:14px; font-size:10.5px; opacity:.45; letter-spacing:.5px; }
+    .powered-by a { color:#fff; text-decoration:none; }
+    @media (max-width:420px) { .glass { padding:22px 16px 18px; border-radius:24px; } .player-station { font-size:19px; } .btn-play { width:68px; height:68px; } }
     </style>
 </head>
 <body>
@@ -499,78 +217,48 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     <div class="loader"></div>
 </div>
 
-<!-- Main Container (estilo SonicPanel: centrado, max 600px) -->
+<!-- Main Container -->
 <div class="main-container">
+  <div class="glass">
+    <div class="pl-top">
+        <span class="pl-brand"><?= $radioName ?></span>
+        <span class="live-pill"><span class="live-dot off" id="liveDot"></span><span id="liveStatus">Conectando...</span></span>
+    </div>
 
-    <!-- Album Art -->
+    <!-- Cover -->
     <div class="art-container" id="artContainer">
         <?php if ($coverImage): ?>
         <img src="<?= htmlspecialchars($coverImage) ?>" alt="<?= $radioName ?>" id="artImg" class="animate__animated">
         <?php else: ?>
-        <div class="default-art" id="defaultArt">
-        </div>
+        <div class="default-art" id="defaultArt"></div>
         <?php endif; ?>
     </div>
 
-    <!-- Now Playing bar (como SonicPanel) -->
-    <div class="nowplay-bar">
-        <div class="nowplay-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18V5l12-2v13" stroke="#4FC3F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="6" cy="18" r="3" fill="#4FC3F7"/>
-                <circle cx="18" cy="16" r="3" fill="#4FC3F7"/>
-            </svg>
-        </div>
-        <div class="nowplay-text">
-            <b>Now Playing:</b> <span class="np-song" id="nowPlayText">Cargando...</span>
+    <div class="pl-titles">
+        <div class="player-station" id="playerStation"><?= $radioName ?></div>
+        <div class="nowplay-text"><span class="np-song" id="nowPlayText">Cargando...</span></div>
+        <div class="player-meta">
+            <?php if ($showListeners): ?><span id="listenersInfo">-</span><span>&bull;</span><?php endif; ?>
+            <span><?= strtoupper($estacion['codec'] ?: 'MP3') ?> <?= (int)$estacion['bitrate'] ?> kbps</span>
+            <?php if ($genre !== ''): ?><span>&bull;</span><span id="radioGenre"><?= $genre ?></span><?php endif; ?>
         </div>
     </div>
 
-    <!-- Audio Player (Flatie Light Style) -->
-    <div class="audio-player">
-        <div class="player-controls">
-            <!-- Play Button -->
-            <button class="btn-play" id="btnPlay" onclick="togglePlay()">
-                <span id="playIcon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-            </button>
+    <div class="player-eq-bar" id="eqBar"><?= str_repeat('<span></span>', 18) ?></div>
 
-            <!-- Station Info -->
-            <div class="player-info">
-                <div class="player-station" id="playerStation"><?= $radioName ?></div>
-                <div class="player-meta">
-                    <span class="live-dot off" id="liveDot"></span>
-                    <span id="liveStatus">Conectando...</span>
-                    <?php if ($showListeners): ?>
-                    <span>&bull;</span>
-                    <span id="listenersInfo">-</span>
-                    <?php endif; ?>
-                    <span>&bull;</span>
-                    <span><?= strtoupper($estacion['codec'] ?: 'MP3') ?> <?= $estacion['bitrate'] ?>kbps</span>
-                </div>
-            </div>
-
-            <!-- Volume -->
-            <div class="player-volume">
-                <button class="vol-btn" id="volBtn" onclick="toggleMute()">
-                    <svg id="volIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                </button>
-                <input type="range" class="vol-range" id="volRange" min="0" max="100" value="80" oninput="setVol(this.value)">
-            </div>
-        </div>
-
-        <!-- EQ progress bar -->
-        <div class="player-eq-bar" id="eqBar"></div>
+    <div class="player-controls">
+        <button class="btn-play" id="btnPlay" onclick="togglePlay()" aria-label="Play">
+            <span id="playIcon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        </button>
     </div>
 
-    <?php if ($genre !== ''): ?>
-    <div class="status-bar">
-        <div class="listeners-info">
-            <span id="radioGenre"><?= htmlspecialchars($genre) ?></span>
-        </div>
+    <div class="player-volume">
+        <button class="vol-btn" id="volBtn" onclick="toggleMute()" aria-label="Mute">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </button>
+        <input type="range" class="vol-range" id="volRange" min="0" max="100" value="80" oninput="setVol(this.value)" aria-label="Volume">
     </div>
-    <?php endif; ?>
 
-    <!-- Social links -->
     <?php if (!empty($socials)): ?>
     <div class="social-links">
         <?php foreach ($socials as $s): ?>
@@ -589,22 +277,18 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     </div>
     <?php endif; ?>
 
-    <!-- History -->
     <?php if ($showHistory): ?>
     <div class="history-section">
         <button class="history-btn" onclick="toggleHistory()" id="histBtn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Historial <span id="histArrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle"><path d="M7 10l5 5 5-5z"/></svg></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Historial <span id="histArrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg></span>
         </button>
         <div class="history-list" id="histList"></div>
     </div>
     <?php endif; ?>
-
-    <div class="powered-by">
-        Powered by <a href="#">CastPanel</a>
-    </div>
+  </div>
+  <div class="powered-by">Powered by <a href="#">CastPanel</a></div>
 </div>
-
 <script>
 (function(){
     // === CONFIG ===
@@ -616,11 +300,11 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     var lastSong = '';
 
     // === PRELOADER (como SonicPanel) ===
-    window.addEventListener('load', function(){
-        setTimeout(function(){
-            document.getElementById('preloader').classList.add('hidden');
-        }, 800);
-    });
+    // hide the loader as soon as the page is usable (window "load" waits for web fonts)
+    function hidePre(){ var p = document.getElementById('preloader'); if (p) p.classList.add('hidden'); }
+    if (document.readyState !== 'loading') setTimeout(hidePre, 300);
+    else document.addEventListener('DOMContentLoaded', function(){ setTimeout(hidePre, 300); });
+    setTimeout(hidePre, 1500);
 
     // === BACKGROUND ===
     <?php if (!$bgImage): ?>
@@ -634,6 +318,7 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     ];
     var currentBg = 0;
     function nextBg(){
+        if (window._coverBg) return; // background follows the song cover
         currentBg = (currentBg + 1) % backgrounds.length;
         document.getElementById('bgLayer').style.background = backgrounds[currentBg];
         setTimeout(nextBg, 20000);
@@ -668,6 +353,10 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
 
                 // Album art update con animación (como SonicPanel)
                 var coverSrc = d.now_playing.cover || defaultCover;
+                if(coverSrc && songText !== lastSong && !<?= $bgImage ? 'true' : 'false' ?>){
+                    document.getElementById('bgLayer').style.background = 'center/cover no-repeat url("' + coverSrc.replace(/"/g, '') + '")';
+                    window._coverBg = true;
+                }
                 if(coverSrc && songText !== lastSong){
                     var ac = document.getElementById('artContainer');
                     ac.innerHTML = '<img src="'+esc(coverSrc)+'" alt="cover" id="artImg" class="animate__animated animate__jello">';
