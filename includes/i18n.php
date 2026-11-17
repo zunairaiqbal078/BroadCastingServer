@@ -187,19 +187,40 @@ function cpDefaultLanguage(): string {
     return in_array($lang, cpLanguageCodes(), true) ? $lang : 'es';
 }
 
-/** Language chosen by the signed-in panel user (admin, reseller or client), or null. */
+/** Language chosen by the signed-in user (panel user or DJ), or null. */
 function cpUserLanguage(): ?string {
     $uid = (int)($_SESSION['user_id'] ?? 0);
     $rol = $_SESSION['user_rol'] ?? '';
-    if ($uid <= 0 || !in_array($rol, ['admin', 'reseller', 'cliente'], true)) return null;
+    if (!empty($_SESSION['dj_id'])) {            // DJ portal (port 2080)
+        $sql = 'SELECT panel_lang FROM cuentas_dj WHERE id = ?';
+        $uid = (int)$_SESSION['dj_id'];
+    } elseif ($uid > 0 && $rol === 'dj') {       // DJ signed in on the main login page
+        $sql = 'SELECT panel_lang FROM cuentas_dj WHERE id = ?';
+    } elseif ($uid > 0 && in_array($rol, ['admin', 'reseller', 'cliente'], true)) {
+        $sql = 'SELECT idioma FROM usuarios WHERE id = ?';
+    } else {
+        return null;
+    }
     try {
-        $st = getDB()->prepare('SELECT idioma FROM usuarios WHERE id = ?');
+        $st = getDB()->prepare($sql);
         $st->execute([$uid]);
         $lang = $st->fetchColumn();
     } catch (\Throwable $e) {
         return null; // column not created yet: nobody has chosen a language
     }
     return is_string($lang) && in_array($lang, cpLanguageCodes(), true) ? $lang : null;
+}
+
+/** Save a DJ's language (adds the column on older databases). */
+function cpSaveDjLanguage(int $djId, ?string $lang): bool {
+    if ($lang !== null && !in_array($lang, cpLanguageCodes(), true)) return false;
+    $db = getDB();
+    try {
+        $db->query('SELECT panel_lang FROM cuentas_dj LIMIT 0');
+    } catch (\Throwable $e) {
+        $db->exec('ALTER TABLE cuentas_dj ADD COLUMN panel_lang VARCHAR(8) DEFAULT NULL'); // old `idioma` defaults to es
+    }
+    return $db->prepare('UPDATE cuentas_dj SET panel_lang = ? WHERE id = ?')->execute([$lang, $djId]);
 }
 
 /** Save a user's language (adds the column on older databases). */

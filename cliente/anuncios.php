@@ -154,7 +154,7 @@ try {
                 <div class="upload-icon"><?= cpIcon('megaphone',24) ?></div>
                 <div class="upload-title">Arrastra tus spots aquí</div>
                 <div class="upload-hint">o haz clic para seleccionar</div>
-                <div class="upload-formats">Formatos: MP3, OGG, AAC — Máx. 20 MB por archivo</div>
+                <div class="upload-formats">Formatos: MP3, OGG, AAC — sin límite de cantidad de archivos</div>
                 <input type="file" id="adFileInput" accept=".mp3,.ogg,.aac,.m4a" multiple style="display:none">
             </div>
         </form>

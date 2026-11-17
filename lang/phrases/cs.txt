@@ -2049,3 +2049,10 @@ Statistiky
 Ano
 Žánr
 AutoDJ je vypnutý
+Kopírovat
+Formáty: MP3, OGG, AAC, M4A, WAV, FLAC — bez omezení počtu souborů
+Formáty: MP3, OGG, AAC — bez omezení počtu souborů
+Využité místo: {n} z {n}
+Soubor je větší než limit serveru (upload_max_filesize)
+Nahrávání přerušeno, zkuste znovu
+Server nemohl uložit soubor

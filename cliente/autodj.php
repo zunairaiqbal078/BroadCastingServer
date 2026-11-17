@@ -68,6 +68,16 @@ try {
     $programaciones = $stmt->fetchAll();
 } catch (PDOException $e) { /* tabla no existe aun */ }
 
+/** Remove a song's audio file (only inside this station's media folder) and its cover. */
+function cpAutodjDeleteSongFiles(array $cancion, array $estacion): void {
+    $mediaDir = rtrim(defined('MEDIA_PATH') ? MEDIA_PATH : '/var/castpanel/media', '/') . '/' . $estacion['slug'] . '/';
+    $file = (string)($cancion['ruta_archivo'] ?? '');
+    $real = $file !== '' ? realpath($file) : false;
+    $base = realpath($mediaDir);
+    if ($real && $base && str_starts_with($real, $base . '/')) @unlink($real);
+    if (!empty($cancion['caratula'])) @unlink(BASE_PATH . '/assets/covers/' . basename($cancion['caratula']));
+}
+
 /**
  * Create a music folder (playlist) for the station and return its id.
  * Reuses a folder with the same name; slugs are made unique.
@@ -259,7 +269,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
 
         if ($action === 'delete_playlist') {
             $plId = (int)$_POST['playlist_id'];
-            // Borrar canciones de la playlist
+            // Borrar canciones de la playlist (files too: they count against the plan's storage)
+            $st = $db->prepare("SELECT ruta_archivo, caratula FROM canciones WHERE playlist_id = ? AND estacion_id = ?");
+            $st->execute([$plId, $estacion['id']]);
+            foreach ($st->fetchAll() as $c) cpAutodjDeleteSongFiles($c, $estacion);
             $db->prepare("DELETE FROM canciones WHERE playlist_id = ? AND estacion_id = ?")->execute([$plId, $estacion['id']]);
             // Borrar la playlist
             $db->prepare("DELETE FROM playlists WHERE id = ? AND estacion_id = ?")->execute([$plId, $estacion['id']]);
@@ -272,14 +285,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             $songId = (int)$_POST['song_id'];
             $plId = (int)$_POST['playlist_id'];
             // Obtener info de la cancion para borrar archivo
-            $stmtSong = $db->prepare("SELECT nombre_original FROM canciones WHERE id = ? AND estacion_id = ?");
+            $stmtSong = $db->prepare("SELECT ruta_archivo, caratula, playlist_id FROM canciones WHERE id = ? AND estacion_id = ?");
             $stmtSong->execute([$songId, $estacion['id']]);
             $cancion = $stmtSong->fetch();
             if ($cancion) {
-                $musicDir = '/var/www/castpanel/storage/music/' . $estacion['slug'] . '/';
-                $filePath = $musicDir . $cancion['nombre_original'];
-                if (file_exists($filePath)) { @unlink($filePath); }
+                // the old code looked in storage/music/ and never removed the real file
+                cpAutodjDeleteSongFiles($cancion, $estacion);
                 $db->prepare("DELETE FROM canciones WHERE id = ? AND estacion_id = ?")->execute([$songId, $estacion['id']]);
+                if ($cancion['playlist_id']) {
+                    $db->prepare("UPDATE playlists SET total_canciones = total_canciones - 1 WHERE id = ? AND total_canciones > 0")->execute([$cancion['playlist_id']]);
+                }
                 setFlash('success', 'Canción eliminada.');
             }
             header('Location: autodj.php?tab=listas&pl=' . $plId);

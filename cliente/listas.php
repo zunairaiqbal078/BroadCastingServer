@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
 
         if ($action === 'delete') {
             $id = (int)$_POST['playlist_id'];
-            $db->prepare("UPDATE canciones SET playlist_id = NULL WHERE playlist_id = ?")->execute([$id]);
+            $db->prepare("UPDATE canciones SET playlist_id = NULL WHERE playlist_id = ? AND estacion_id = ?")->execute([$id, $estacion['id']]);
             $db->prepare("DELETE FROM playlists WHERE id = ? AND estacion_id = ?")->execute([$id, $estacion['id']]);
             setFlash('success', 'Lista eliminada. Las canciones quedaron sin lista asignada.');
             header('Location: listas.php'); exit;

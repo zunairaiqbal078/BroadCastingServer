@@ -114,41 +114,52 @@ function initDropZone(dropZone, fileInput, onFiles) {
 }
 
 // Upload de archivos con progreso
-async function uploadFiles(url, files, playlistField, playlistValue, onProgress, onComplete) {
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-        formData.append('archivos[]', files[i]);
-    }
-    if (playlistField && playlistValue) {
-        formData.append(playlistField, playlistValue);
-    }
-    // CSRF
+/**
+ * Upload many files: one request per file (2 at a time) so 10–100 songs work
+ * without hitting the server's request size / time limits. Only the plan's
+ * storage quota limits how much can be uploaded.
+ * onComplete gets {success, uploaded, total, results[]} with results in the
+ * same order as `files`; onFileDone(index, result) is optional.
+ */
+async function uploadFiles(url, files, playlistField, playlistValue, onProgress, onComplete, onFileDone) {
+    const list = Array.from(files || []);
     const csrfInput = document.querySelector('input[name="csrf_token"]');
-    if (csrfInput) formData.append('csrf_token', csrfInput.value);
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', url);
-
-    xhr.upload.onprogress = (e) => {
-        if (e.lengthComputable && onProgress) {
-            onProgress(Math.round((e.loaded / e.total) * 100));
-        }
+    const totalBytes = list.reduce((n, f) => n + (f.size || 0), 0) || 1;
+    const loaded = new Array(list.length).fill(0);
+    const results = new Array(list.length);
+    let next = 0;
+    const report = () => {
+        if (onProgress) onProgress(Math.min(100, Math.round(loaded.reduce((a, b) => a + b, 0) / totalBytes * 100)));
     };
-
-    xhr.onload = () => {
-        try {
-            const resp = JSON.parse(xhr.responseText);
-            onComplete(resp);
-        } catch (e) {
-            onComplete({ success: false, error: 'Error de servidor' });
-        }
-    };
-
-    xhr.onerror = () => {
-        onComplete({ success: false, error: 'Error de conexión' });
-    };
-
-    xhr.send(formData);
+    const sendOne = (i) => new Promise((resolve) => {
+        const f = list[i];
+        const fd = new FormData();
+        fd.append('archivos[]', f);
+        if (playlistField && playlistValue) fd.append(playlistField, playlistValue);
+        if (csrfInput) fd.append('csrf_token', csrfInput.value);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.upload.onprogress = (e) => { if (e.lengthComputable) { loaded[i] = e.loaded / e.total * (f.size || 0); report(); } };
+        const done = (r) => { loaded[i] = f.size || 0; report(); results[i] = r; if (onFileDone) onFileDone(i, r); resolve(); };
+        xhr.onload = () => {
+            let r;
+            try {
+                const resp = JSON.parse(xhr.responseText);
+                r = (resp.results && resp.results[0]) || { file: f.name, ok: !!resp.success, error: resp.error };
+                if (!resp.success && resp.error && r.ok === undefined) r = { file: f.name, ok: false, error: resp.error };
+            } catch (e) {
+                r = { file: f.name, ok: false, error: xhr.status === 413 ? 'File too large for the server' : 'Server error (' + xhr.status + ')' };
+            }
+            done(r);
+        };
+        xhr.onerror = () => done({ file: f.name, ok: false, error: 'Connection error' });
+        xhr.send(fd);
+    });
+    const worker = async () => { while (next < list.length) { await sendOne(next++); } };
+    await Promise.all([worker(), worker()]);
+    const uploaded = results.filter(r => r && r.ok).length;
+    const firstError = (results.find(r => r && !r.ok) || {}).error;
+    onComplete({ success: uploaded > 0, uploaded, total: list.length, results, error: uploaded ? undefined : (firstError || 'Upload failed') });
 }
 
 // Reordenar (mover arriba/abajo)

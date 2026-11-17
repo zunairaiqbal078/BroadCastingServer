@@ -2049,3 +2049,10 @@ Statistici
 Da
 Gen
 AutoDJ este oprit
+Copiază
+Formate: MP3, OGG, AAC, M4A, WAV, FLAC — fără limită de fișiere
+Formate: MP3, OGG, AAC — fără limită de fișiere
+Spațiu folosit: {n} din {n}
+Fișier mai mare decât limita serverului (upload_max_filesize)
+Încărcare întreruptă, încercați din nou
+Serverul nu a putut salva fișierul

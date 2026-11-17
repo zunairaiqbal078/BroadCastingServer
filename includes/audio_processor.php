@@ -265,14 +265,17 @@ function generateProcessorLiquidsoap(array $proc): string {
 
         $liq .= "# Ecualizador 3 Bandas\n";
 
+        // Liquidsoap 2.2 has no filter.iir.eq.low_shelf/high_shelf (and its
+        // lowshelf/highshelf take no gain): the old names stopped Liquidsoap,
+        // taking the station offline. A wide peak filter boosts/cuts the band.
         if ($lowGain != 0.0) {
-            $liq .= "radio = filter.iir.eq.low_shelf(frequency=" . liqFloat($lowFreq) . ", q=1., gain=" . liqFloat($lowGain) . ", radio)\n";
+            $liq .= "radio = filter.iir.eq.peak(frequency=" . liqFloat($lowFreq) . ", q=0.7, gain=" . liqFloat($lowGain) . ", radio)\n";
         }
         if ($midGain != 0.0) {
             $liq .= "radio = filter.iir.eq.peak(frequency=" . liqFloat($midFreq) . ", q=" . liqFloat($midQ) . ", gain=" . liqFloat($midGain) . ", radio)\n";
         }
         if ($highGain != 0.0) {
-            $liq .= "radio = filter.iir.eq.high_shelf(frequency=" . liqFloat($highFreq) . ", q=1., gain=" . liqFloat($highGain) . ", radio)\n";
+            $liq .= "radio = filter.iir.eq.peak(frequency=" . liqFloat($highFreq) . ", q=0.7, gain=" . liqFloat($highGain) . ", radio)\n";
         }
         $liq .= "\n";
     }

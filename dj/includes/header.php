@@ -745,6 +745,10 @@ body {
         </div>
     </div>
     <div class="topbar-right">
+        <button type="button" class="cp-lang-btn" onclick="cpLangOpen()" title="Idioma" aria-label="Idioma">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span translate="no"><?= strtoupper(htmlspecialchars(getCurrentLang())) ?></span>
+        </button>
         <div class="topbar-user">
             <img src="<?= $djPhoto ?>" alt="DJ">
             <span class="name"><?= $djName ?></span>
@@ -752,6 +756,12 @@ body {
         <a href="logout.php" class="btn-logout">Cerrar Sesión</a>
     </div>
 </header>
+<?php
+// Floating language panel: each DJ picks the language of their own portal
+$cpLangEndpoint = 'api/set_language.php';
+$cpLangRole = 'dj';
+require __DIR__ . '/../../includes/language_panel.php';
+?>
 
 <!-- MAIN -->
 <main class="dj-main">

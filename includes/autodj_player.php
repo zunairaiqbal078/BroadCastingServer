@@ -147,14 +147,18 @@ function castpanelLiquidsoapSkipNext(array $estacion): bool {
     $before = castpanelLiquidsoapLastPreparedUri($slug);
     $metaBefore = trim(castpanelLiquidsoapMetadata($estacion)['title'] ?? '');
     castpanelResetTrackTiming((int)$estacion['id']);
-    // Advance playlist (music) and on-air chain (output). Either alone can return OK without a new song.
-    $outMusic = liquidsoapCommand("music_{$slug}.skip", $port);
-    $outOutput = liquidsoapCommand("output_{$slug}.skip", $port);
-    $ok = castpanelLiquidsoapTelnetOk($outMusic) || castpanelLiquidsoapTelnetOk($outOutput);
-    if (!$ok) {
-        return false;
+    // Skip once. Sending music.skip AND output.skip together skipped two songs
+    // per click; output.skip is only the fallback when the playlist skip did
+    // not move on.
+    $ok = castpanelLiquidsoapTelnetOk(liquidsoapCommand("music_{$slug}.skip", $port));
+    $afterUri = $ok ? castpanelLiquidsoapWaitPreparedUri($slug, $before, 2.5) : null;
+    if (!$ok || $afterUri === null || $afterUri === $before) {
+        $ok = castpanelLiquidsoapTelnetOk(liquidsoapCommand("output_{$slug}.skip", $port)) || $ok;
+        if (!$ok) {
+            return false;
+        }
+        $afterUri = castpanelLiquidsoapWaitPreparedUri($slug, $before, 4.0);
     }
-    $afterUri = castpanelLiquidsoapWaitPreparedUri($slug, $before, 4.0);
     $metaAfter = trim(castpanelLiquidsoapMetadata($estacion)['title'] ?? '');
     if ($afterUri !== null && $afterUri !== $before) {
         return true;

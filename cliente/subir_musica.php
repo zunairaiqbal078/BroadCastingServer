@@ -79,7 +79,13 @@ $storagePercent = $maxStorageMB > 0 ? min(100, round(($storageUsedMB / $maxStora
                 <div class="upload-icon"><?= cpIcon('upload',24) ?></div>
                 <div class="upload-title">Arrastra tus archivos aquí</div>
                 <div class="upload-hint">o haz clic para seleccionar</div>
-                <div class="upload-formats">Formatos: MP3, OGG, AAC, M4A, WAV, FLAC — Máx. 50 MB por archivo</div>
+                <div class="upload-formats">Formatos: MP3, OGG, AAC, M4A, WAV, FLAC — sin límite de cantidad de archivos</div>
+                <?php
+                $cpQuotaMb = (int)($estacion['max_storage_mb'] ?? 0);
+                $cpUsedMb = round(getStorageUsed((int)$estacion['id']) / 1048576, 1);
+                if ($cpQuotaMb > 0): ?>
+                <div class="upload-formats">Espacio usado: <?= number_format($cpUsedMb, 1) ?> MB de <?= number_format($cpQuotaMb) ?> MB</div>
+                <?php endif; ?>
                 <input type="file" id="fileInput" accept=".mp3,.ogg,.aac,.m4a,.wav,.flac" multiple style="display:none">
             </div>
         </form>
@@ -127,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="song-item" id="file-${i}">
                     <span class="song-icon">&#x1F3B5;</span>
                     <div class="song-info">
-                        <div class="song-title">${f.name}</div>
+                        <div class="song-title">${f.name.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}</div>
                         <div class="song-meta">${size} MB</div>
                     </div>
                     <span class="badge" id="status-${i}">Pendiente</span>
@@ -148,19 +154,18 @@ document.addEventListener('DOMContentLoaded', () => {
             (resp) => {
                 btnStart.disabled = false;
                 btnStart.textContent = '⬆ Subir Todos';
-                if (resp.success) {
-                    showToast(`${resp.uploaded} archivo(s) subido(s) correctamente`);
-                    if (resp.results) {
-                        resp.results.forEach((r, i) => {
-                            const el = document.getElementById(`status-${i}`);
-                            if (el) {
-                                el.className = r.ok ? 'badge badge-success' : 'badge badge-danger';
-                                el.textContent = r.ok ? 'Subido ✓' : (r.error || 'Error');
-                            }
-                        });
-                    }
+                const failed = resp.total - resp.uploaded;
+                if (resp.uploaded > 0) {
+                    showToast(`${resp.uploaded} archivo(s) subido(s) correctamente` + (failed ? ` — ${failed} con error` : ''), failed ? 'warning' : 'success');
                 } else {
                     showToast(resp.error || 'Error al subir', 'error');
+                }
+            },
+            (i, r) => { // each file as soon as it is done
+                const el = document.getElementById(`status-${i}`);
+                if (el) {
+                    el.className = r.ok ? 'badge badge-success' : 'badge badge-danger';
+                    el.textContent = r.ok ? 'Subido ✓' : (r.error || 'Error');
                 }
             }
         );

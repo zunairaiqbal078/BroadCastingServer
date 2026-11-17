@@ -2049,3 +2049,10 @@ Statistiken
 Ja
 Genre
 AutoDJ ist aus
+Kopieren
+Formate: MP3, OGG, AAC, M4A, WAV, FLAC — beliebig viele Dateien
+Formate: MP3, OGG, AAC — beliebig viele Dateien
+Belegter Speicher: {n} von {n}
+Datei größer als das Serverlimit (upload_max_filesize)
+Upload unterbrochen, bitte erneut versuchen
+Der Server konnte die Datei nicht speichern

@@ -2049,3 +2049,10 @@ Statistiques
 Oui
 Genre
 L'AutoDJ est arrêté
+Copier
+Formats : MP3, OGG, AAC, M4A, WAV, FLAC — nombre de fichiers illimité
+Formats : MP3, OGG, AAC — nombre de fichiers illimité
+Espace utilisé : {n} sur {n}
+Fichier plus grand que la limite du serveur (upload_max_filesize)
+Envoi interrompu, réessayez
+Le serveur n'a pas pu enregistrer le fichier

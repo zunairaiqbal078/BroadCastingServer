@@ -2049,3 +2049,10 @@ Statystyki
 Tak
 Gatunek
 AutoDJ jest wyłączony
+Kopiuj
+Formaty: MP3, OGG, AAC, M4A, WAV, FLAC — bez limitu liczby plików
+Formaty: MP3, OGG, AAC — bez limitu liczby plików
+Wykorzystane miejsce: {n} z {n}
+Plik większy niż limit serwera (upload_max_filesize)
+Przesyłanie przerwane, spróbuj ponownie
+Serwer nie mógł zapisać pliku

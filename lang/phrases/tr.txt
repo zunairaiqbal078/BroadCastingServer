@@ -2049,3 +2049,10 @@ Depolama
 Evet
 Tür
 AutoDJ kapalı
+Kopyala
+Biçimler: MP3, OGG, AAC, M4A, WAV, FLAC — dosya sayısı sınırı yok
+Biçimler: MP3, OGG, AAC — dosya sayısı sınırı yok
+Kullanılan alan: {n} / {n}
+Dosya sunucu sınırından büyük (upload_max_filesize)
+Yükleme kesildi, tekrar deneyin
+Sunucu dosyayı kaydedemedi

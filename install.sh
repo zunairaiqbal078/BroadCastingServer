@@ -1109,6 +1109,30 @@ setup_castpanel_ctl() {
         || log_warning "castpanel-ctl no se pudo instalar (las estaciones no arrancaran)"
 }
 
+# ---- PHP: LIMITES DE SUBIDA ----
+# Uploads go one file per request; this only has to fit one song. The plan's
+# storage quota (GB) is what limits the total.
+setup_php_limits() {
+    log_step "CONFIGURANDO LIMITES PHP (SUBIDA DE MUSICA)"
+    local ini='; CastPanel: music uploads
+upload_max_filesize = 512M
+post_max_size = 520M
+max_file_uploads = 200
+max_execution_time = 600
+max_input_time = 600
+memory_limit = 256M'
+    local wrote=0
+    if [ -d /etc/php.d ]; then echo "$ini" > /etc/php.d/99-castpanel.ini; wrote=1; fi
+    for d in /etc/php/*/apache2/conf.d /etc/php/*/fpm/conf.d /etc/php/*/cli/conf.d; do
+        [ -d "$d" ] && echo "$ini" > "$d/99-castpanel.ini" && wrote=1
+    done
+    [ "$wrote" = 1 ] || log_warning "No se encontro el directorio de configuracion de PHP"
+    systemctl restart php-fpm 2>/dev/null || true
+    for v in /etc/php/*/fpm; do [ -d "$v" ] && systemctl restart "php$(basename "$(dirname "$v")")-fpm" 2>/dev/null; done
+    systemctl reload "$WEB_SERVICE" 2>/dev/null || true
+    log_success "PHP: hasta 512 MB por archivo, 200 archivos por envio"
+}
+
 # ---- CRON: LIMITES + ESTADISTICAS DE OYENTES ----
 # cron/enforce_limits.php records listener statistics (Statistics page) and
 # enforces package limits. It was never scheduled, so stats stayed empty.
@@ -1440,6 +1464,7 @@ setup_apache
 setup_sudoers
 setup_castpanel_ctl
 setup_cron
+setup_php_limits
 
 # 10. SSL
 setup_ssl

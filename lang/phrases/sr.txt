@@ -2049,3 +2049,10 @@ Statistika
 Da
 Žanr
 AutoDJ je isključen
+Kopiraj
+Formati: MP3, OGG, AAC, M4A, WAV, FLAC — bez ograničenja broja fajlova
+Formati: MP3, OGG, AAC — bez ograničenja broja fajlova
+Iskorišćen prostor: {n} od {n}
+Fajl je veći od ograničenja servera (upload_max_filesize)
+Otpremanje prekinuto, pokušajte ponovo
+Server nije mogao da sačuva fajl

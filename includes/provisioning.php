@@ -1727,26 +1727,24 @@ function ensureAutoDJPlaying(array $estacion): array {
         return startStation($estacion);
     }
 
-    $port = (int)($estacion['puerto_telnet'] ?: (LIQUIDSOAP_TELNET_PORT + $estacion['id']));
-    require_once __DIR__ . '/liquidsoap_playlist.php';
-    $m3u = castpanelWriteActivePlaylistM3u($estacion);
-    if (!$m3u['success']) {
+    // Running: bring the playlist files up to date. The playlist is only
+    // reloaded when its content really changed — a reload starts the list
+    // from the first song again, so reloading on every dashboard visit made
+    // AutoDJ play the first two songs over and over.
+    require_once __DIR__ . '/autodj_schedule.php';
+    $applied = castpanelApplyStationSchedule($estacion);
+    if (empty($applied['music']['ok'])) {
         generateLiquidsoapConfig($estacion);
         return restartLiquidsoapService($estacion);
     }
 
-    $songCount = (int)($m3u['count'] ?? 0);
-    $reply = liquidsoapCommand('music_' . $estacion['slug'] . '.reload', $port);
-    if ($reply !== null) {
-        usleep(300000);
-        castpanelKickAutoDJIfNeeded($estacion, $songCount);
-
-        return ['success' => true, 'message' => 'Playlist recargada'];
+    // Is Liquidsoap really alive? (harmless telnet command)
+    $port = (int)($estacion['puerto_telnet'] ?: (LIQUIDSOAP_TELNET_PORT + $estacion['id']));
+    if (liquidsoapCommand('uptime', $port) === null) {
+        generateLiquidsoapConfig($estacion);
+        return restartLiquidsoapService($estacion);
     }
-
-    // Telnet not reachable: Liquidsoap is not really running -> restart it
-    generateLiquidsoapConfig($estacion);
-    return restartLiquidsoapService($estacion);
+    return ['success' => true, 'message' => !empty($applied['music']['changed']) ? 'Playlist recargada' : 'AutoDJ en ejecución'];
 }
 
 /**

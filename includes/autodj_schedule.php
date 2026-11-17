@@ -182,9 +182,15 @@ function castpanelWriteMusicM3u(array $estacion, ?array $source = null): array {
     }
     $mediaRoot = defined('MEDIA_PATH') ? MEDIA_PATH : '/var/castpanel/media';
     $path = rtrim($mediaRoot, '/') . '/' . $slug . '/active.m3u';
+    $prevCount = 0; // songs in the list Liquidsoap had before this write
+    if (is_file($path)) {
+        foreach ((array)@file($path, FILE_IGNORE_NEW_LINES) as $l) {
+            if ($l !== '' && $l[0] !== '#') $prevCount++;
+        }
+    }
     $changed = cpSchedWriteIfChanged($path, implode("\n", $lines) . "\n");
     $ok = is_file($path);
-    return ['changed' => $changed, 'count' => $count, 'path' => $path, 'ok' => $ok, 'source' => $source];
+    return ['changed' => $changed, 'count' => $count, 'prev_count' => $prevCount, 'path' => $path, 'ok' => $ok, 'source' => $source];
 }
 
 /**
@@ -285,7 +291,25 @@ function castpanelApplyStationSchedule(array $estacion, ?DateTimeInterface $now 
     $music = castpanelWriteMusicM3u($estacion, castpanelResolveMusicSource($estacion, $now));
     $ads = castpanelWriteAdsFiles($estacion, $now);
     $relay = castpanelWriteRelayFile($estacion, $now);
+    // Tell a running Liquidsoap about changed playlists (only then: a reload
+    // restarts the list from its first song). relay.url / ads.conf are re-read
+    // by Liquidsoap on its own.
+    // kick (skip to the first song) only when the list was empty, i.e. on silence
+    if ($music['changed']) cpSchedLiquidsoapReload($estacion, 'music', $music['prev_count'] === 0 ? $music['count'] : 0);
+    if ($ads['changed']) cpSchedLiquidsoapReload($estacion, 'ads', 0);
     return ['success' => true, 'music' => $music, 'ads' => $ads, 'relay' => $relay];
+}
+
+function cpSchedLiquidsoapReload(array $estacion, string $source, int $songCount): void {
+    if (defined('CASTPANEL_STREAMING_DISABLED') && CASTPANEL_STREAMING_DISABLED) return;
+    if (!function_exists('liquidsoapCommand')) return;
+    $port = (int)(($estacion['puerto_telnet'] ?? 0) ?: (LIQUIDSOAP_TELNET_PORT + (int)$estacion['id']));
+    $reply = liquidsoapCommand($source . '_' . $estacion['slug'] . '.reload', $port);
+    // A list that was empty is on silence: move on to its first song now
+    if ($reply !== null && $source === 'music' && $songCount > 0 && function_exists('castpanelKickAutoDJIfNeeded')) {
+        usleep(300000);
+        castpanelKickAutoDJIfNeeded($estacion, $songCount);
+    }
 }
 
 /** Convenience for panel pages: apply right after a save (never breaks the page). */

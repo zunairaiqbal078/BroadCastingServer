@@ -15,9 +15,14 @@ $cpLangs = [
     'el' => ['🇬🇷', 'Ελληνικά', 'Greek'],     'af' => ['🇿🇦', 'Afrikaans', 'Afrikaans'],
     'fa' => ['🇮🇷', 'فارسی', 'Persian'],
 ];
+if (!function_exists('cpIcon')) require_once __DIR__ . '/icons.php';
+if (!function_exists('csrfToken')) require_once __DIR__ . '/functions.php';
+// The DJ portal includes this panel with its own endpoint (see dj/includes/header.php)
+$cpLangEndpoint = $cpLangEndpoint ?? ((defined('BASE_URL') ? BASE_URL : '') . '/api/set_language.php');
+$cpLangRole = $cpLangRole ?? ($_SESSION['user_rol'] ?? '');
 $cpLangNow = function_exists('getCurrentLang') ? getCurrentLang() : 'es';
 if (!isset($cpLangs[$cpLangNow])) $cpLangNow = 'es';
-$cpLangIsAdmin = ($_SESSION['user_rol'] ?? '') === 'admin';
+$cpLangIsAdmin = empty($_SESSION['dj_id']) && ($_SESSION['user_rol'] ?? '') === 'admin';
 $cpLangDefault = function_exists('cpDefaultLanguage') ? cpDefaultLanguage() : 'es';
 ?>
 <style>
@@ -138,8 +143,8 @@ $cpLangDefault = function_exists('cpDefaultLanguage') ? cpDefaultLanguage() : 'e
         var def = document.getElementById('cpLangDefault');
         btn.disabled = true; err.style.display = 'none';
         var body = new URLSearchParams({ lang: picked, csrf_token: <?= json_encode(csrfToken()) ?>,
-            rol: <?= json_encode($_SESSION['user_rol'] ?? '') ?>, make_default: def && def.checked ? '1' : '' });
-        fetch(<?= json_encode((BASE_URL ?: '') . '/api/set_language.php') ?>, { method: 'POST', credentials: 'same-origin',
+            rol: <?= json_encode($cpLangRole) ?>, make_default: def && def.checked ? '1' : '' });
+        fetch(<?= json_encode($cpLangEndpoint) ?>, { method: 'POST', credentials: 'same-origin',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
             .then(function (r) { return r.json(); })
             .then(function (d) {

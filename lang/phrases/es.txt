@@ -2049,3 +2049,10 @@ Statistics
 Yes
 Genre
 AutoDJ is off
+Copy
+Formatos: MP3, OGG, AAC, M4A, WAV, FLAC — sin límite de cantidad de archivos
+Formatos: MP3, OGG, AAC — sin límite de cantidad de archivos
+Espacio usado: {n} de {n}
+Archivo mayor que el límite del servidor (upload_max_filesize)
+Subida interrumpida, intente de nuevo
+El servidor no pudo guardar el archivo

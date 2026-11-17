@@ -54,7 +54,13 @@ for ($i = 0; $i < count($files['name']); $i++) {
     $error = $files['error'][$i];
 
     if ($error !== UPLOAD_ERR_OK) {
-        $results[] = ['file' => $originalName, 'ok' => false, 'error' => 'Error de subida: ' . $error];
+        $why = match ($error) {
+            UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE => 'Archivo mayor que el límite del servidor (upload_max_filesize)',
+            UPLOAD_ERR_PARTIAL => 'Subida interrumpida, intente de nuevo',
+            UPLOAD_ERR_NO_TMP_DIR, UPLOAD_ERR_CANT_WRITE => 'El servidor no pudo guardar el archivo',
+            default => 'Error de subida: ' . $error,
+        };
+        $results[] = ['file' => $originalName, 'ok' => false, 'error' => $why];
         continue;
     }
 

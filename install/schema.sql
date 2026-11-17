@@ -260,6 +260,7 @@ CREATE TABLE IF NOT EXISTS `cuentas_dj` (
   `foto` varchar(255) DEFAULT NULL,
   `idioma` varchar(10) DEFAULT 'es',
   `activo` tinyint(1) NOT NULL DEFAULT 1,
+  `panel_lang` varchar(8) DEFAULT NULL,
   `ultimo_login` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `perm_transmitir` tinyint(1) NOT NULL DEFAULT 1,

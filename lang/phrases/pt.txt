@@ -2049,3 +2049,10 @@ Estatísticas
 Sim
 Gênero
 O AutoDJ está desligado
+Copiar
+Formatos: MP3, OGG, AAC, M4A, WAV, FLAC — sem limite de quantidade de arquivos
+Formatos: MP3, OGG, AAC — sem limite de quantidade de arquivos
+Espaço usado: {n} de {n}
+Arquivo maior que o limite do servidor (upload_max_filesize)
+Envio interrompido, tente novamente
+O servidor não conseguiu salvar o arquivo
