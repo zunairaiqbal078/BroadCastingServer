@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
 
     try {
         if ($action === 'create') {
-            if ($totalDJ >= $maxDJ) {
+            if ($maxDJ > 0 && $totalDJ >= $maxDJ) {
                 setFlash('error', "L&iacute;mite de $maxDJ cuentas DJ alcanzado.");
                 header('Location: cuenta_dj.php'); exit;
             }
@@ -269,11 +269,11 @@ if (isset($_GET['edit'])) {
         <div style="font-size:12px;color:rgba(255,255,255,.85)">Cuentas DJ</div>
     </div>
     <div class="card" style="padding:14px 16px;text-align:center;background:linear-gradient(135deg,#2563eb,#3b82f6)">
-        <div style="font-size:22px;font-weight:700;color:#fff"><?= $maxDJ ?></div>
+        <div style="font-size:22px;font-weight:700;color:#fff"><?= $maxDJ > 0 ? $maxDJ : 'Ilimitado' ?></div>
         <div style="font-size:12px;color:rgba(255,255,255,.85)">M&aacute;ximo Permitido</div>
     </div>
     <div class="card" style="padding:14px 16px;text-align:center;background:linear-gradient(135deg,#d97706,#f59e0b)">
-        <div style="font-size:22px;font-weight:700;color:#fff"><?= max(0, $maxDJ - $totalDJ) ?></div>
+        <div style="font-size:22px;font-weight:700;color:#fff"><?= $maxDJ > 0 ? max(0, $maxDJ - $totalDJ) : '∞' ?></div>
         <div style="font-size:12px;color:rgba(255,255,255,.85)">Disponibles</div>
     </div>
     <div class="card" style="padding:14px 16px;text-align:center;background:linear-gradient(135deg,<?= $totalDJ > 0 ? '#059669,#10b981' : '#6b7280,#9ca3af' ?>)">
@@ -304,7 +304,7 @@ if (isset($_GET['edit'])) {
                 <?php endif; ?>
             </div>
             <div class="card-body">
-                <?php if (!$editDJ && $totalDJ >= $maxDJ): ?>
+                <?php if (!$editDJ && $maxDJ > 0 && $totalDJ >= $maxDJ): ?>
                     <div class="alert alert-warning">
                         Has alcanzado el l&iacute;mite de <?= $maxDJ ?> cuentas DJ. Contacta al administrador para ampliar tu plan.
                     </div>
@@ -458,7 +458,7 @@ if (isset($_GET['edit'])) {
         <div class="card">
             <div class="card-header">
                 <h3><?= cpIcon('users',18) ?> Cuentas DJ Registradas</h3>
-                <span class="badge"><?= $totalDJ ?> de <?= $maxDJ ?></span>
+                <span class="badge"><?= $totalDJ ?><?= $maxDJ > 0 ? ' de ' . $maxDJ : '' ?></span>
             </div>
             <div class="card-body no-padding">
                 <?php if (empty($djAccounts)): ?>

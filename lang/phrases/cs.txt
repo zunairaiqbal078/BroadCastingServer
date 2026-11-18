@@ -2064,3 +2064,10 @@ z {n}
 Místo v tarifu vyčerpáno ({x})
 Úložiště (GB)
 Místo pro hudbu AutoDJ každého rádia v tomto tarifu. 0 = neomezeně.
+Moje nastavení
+Nastavení přehrávače
+Efekt a pozadí z Přizpůsobit přehrávač
+Živý náhled
+Neuložené změny: klikněte na „Uložit nastavení“
+Seznamy skladeb (M3U / PLS / XSPF)
+Soubory seznamů pro otevření rádia ve VLC, WinAmp, AIMP, foobar2000, iTunes a katalozích jako TuneIn nebo Radio.net.

@@ -2064,3 +2064,10 @@ de {n}
 Espaço do plano esgotado ({x})
 Armazenamento (GB)
 Espaço para a música do AutoDJ de cada rádio deste plano. 0 = ilimitado.
+Minhas configurações
+Configurações do player
+Efeito e fundo de Personalizar Player
+Pré-visualização ao vivo
+Alterações não salvas: clique em "Salvar configuração"
+Listas de reprodução (M3U / PLS / XSPF)
+Arquivos de lista para abrir a rádio no VLC, WinAmp, AIMP, foobar2000, iTunes e diretórios como TuneIn ou Radio.net.

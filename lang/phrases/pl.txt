@@ -2064,3 +2064,10 @@ z {n}
 Miejsce w planie wyczerpane ({x})
 Miejsce (GB)
 Miejsce na muzykę AutoDJ każdego radia w tym planie. 0 = bez limitu.
+Moje ustawienia
+Ustawienia odtwarzacza
+Efekt i tło z Dostosuj odtwarzacz
+Podgląd na żywo
+Niezapisane zmiany: kliknij „Zapisz konfigurację”
+Listy odtwarzania (M3U / PLS / XSPF)
+Pliki list do otwierania radia w VLC, WinAmp, AIMP, foobar2000, iTunes i katalogach takich jak TuneIn lub Radio.net.

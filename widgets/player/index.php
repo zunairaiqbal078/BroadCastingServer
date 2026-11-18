@@ -14,6 +14,12 @@ $db = getDB();
 $slug = $_GET['slug'] ?? $_GET['station'] ?? '';
 $port = (int)($_GET['p'] ?? 0);
 $typeOverride = $_GET['type'] ?? null;
+if ($typeOverride !== null && !in_array($typeOverride, ['rain', 'stars', 'wave', 'equalizer', 'snow', 'none'], true)) $typeOverride = null;
+// Live preview from "Customize Player": unsaved overlay/blur values (visual only)
+$previewOverlay = isset($_GET['ov']) && is_numeric($_GET['ov']) ? (float)$_GET['ov'] : null;
+$previewBlur = isset($_GET['blur']) && is_numeric($_GET['blur']) ? (int)$_GET['blur'] : null;
+// Always serve the current saved settings (no stale cached copy after "Save")
+header('Cache-Control: no-store, no-cache, must-revalidate');
 
 if ($slug) {
     $stmt = $db->prepare("SELECT * FROM estaciones WHERE slug = ? AND activa = 1");
@@ -46,7 +52,12 @@ $cpAccentRgb = implode(',', array_map('hexdec', str_split(substr($cpAccent, 1), 
 $bgImage = $pc['bg_image'] ?? null;
 $coverImage = $pc['cover_image'] ?? null;
 $bgOverlay = isset($pc['bg_overlay_opacity']) ? floatval($pc['bg_overlay_opacity']) : 0.60;
+if ($previewOverlay !== null) $bgOverlay = $previewOverlay;
+if ($bgOverlay > 1) $bgOverlay /= 100;           // older saves stored the % (60)
+$bgOverlay = max(0, min(1, $bgOverlay));
 $bgBlur = isset($pc['bg_blur']) ? intval($pc['bg_blur']) : 0;
+if ($previewBlur !== null) $bgBlur = $previewBlur;
+$bgBlur = max(0, min(20, $bgBlur));
 $effectType = $typeOverride ?? ($pc['effect_type'] ?? 'rain');
 $showHistory = ($pc['show_history'] ?? 1) ? true : false;
 $showListeners = ($pc['show_listeners'] ?? 1) ? true : false;
@@ -95,14 +106,14 @@ $genre = htmlspecialchars($estacion['genero'] ?? '');
     .bg-layer {
         position:fixed; inset:-40px; z-index:-2;
         background-size:cover; background-position:center;
-        filter: blur(<?= max(18, $bgBlur) ?>px) saturate(1.2);
+        filter: blur(<?= (int)$bgBlur ?>px) saturate(1.15); /* blur set in Customize Player (image or song cover) */
         transform:scale(1.08); transition:background .8s ease;
     }
     .bg-overlay {
         position:fixed; inset:0; z-index:-1;
         background:
-            radial-gradient(circle at 20% 15%, rgba(var(--ac-rgb),.35), transparent 45%),
-            radial-gradient(circle at 85% 90%, rgba(var(--ac-rgb),.25), transparent 50%),
+            radial-gradient(circle at 20% 15%, rgba(var(--ac-rgb),<?= $bgImage ? '.15' : '.35' ?>), transparent 45%),
+            radial-gradient(circle at 85% 90%, rgba(var(--ac-rgb),<?= $bgImage ? '.10' : '.25' ?>), transparent 50%),
             rgba(5,8,20,<?= $bgOverlay ?>);
     }
     /* preloader */

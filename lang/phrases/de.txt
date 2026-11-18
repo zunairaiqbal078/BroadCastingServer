@@ -2064,3 +2064,10 @@ von {n}
 Speicher des Pakets voll ({x})
 Speicher (GB)
 Speicher für die AutoDJ-Musik jedes Radios mit diesem Paket. 0 = unbegrenzt.
+Meine Einstellungen
+Player-Einstellungen
+Effekt und Hintergrund aus Player anpassen
+Live-Vorschau
+Ungespeicherte Änderungen: Klicken Sie auf „Konfiguration speichern“
+Playlists (M3U / PLS / XSPF)
+Playlist-Dateien, um das Radio in VLC, WinAmp, AIMP, foobar2000, iTunes und Verzeichnissen wie TuneIn oder Radio.net zu öffnen.

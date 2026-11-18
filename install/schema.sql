@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `paquetes` (
   `max_bitrate` int(10) unsigned NOT NULL DEFAULT 320,
   `max_oyentes` int(10) unsigned NOT NULL DEFAULT 500,
   `autodj_enabled` tinyint(1) NOT NULL DEFAULT 1,
-  `max_dj` int(10) unsigned NOT NULL DEFAULT 5,
+  `max_dj` int(10) unsigned NOT NULL DEFAULT 0,
   `anuncios_enabled` tinyint(1) NOT NULL DEFAULT 1,
   `ssl_enabled` tinyint(1) NOT NULL DEFAULT 1,
   `descripcion` varchar(255) DEFAULT NULL,

@@ -2064,3 +2064,10 @@ od {n}
 Prostor paketa je potrošen ({x})
 Prostor (GB)
 Prostor za AutoDJ muziku svakog radija u ovom paketu. 0 = neograničeno.
+Moja podešavanja
+Podešavanja plejera
+Efekat i pozadina iz Prilagodi plejer
+Pregled uživo
+Nesačuvane izmene: kliknite „Sačuvaj podešavanja“
+Plejliste (M3U / PLS / XSPF)
+Fajlovi plejliste za otvaranje radija u VLC, WinAmp, AIMP, foobar2000, iTunes i direktorijumima kao što su TuneIn ili Radio.net.

@@ -76,7 +76,12 @@ $playerSingleUrl = $baseHost . '/widgets/player/single/?slug=' . $slugEnc;
         <!-- Selector de tema -->
         <label style="font-weight:700;margin-bottom:8px;display:block">Selecciona el efecto visual:</label>
         <div class="theme-grid">
-            <div class="theme-card active" onclick="selectTheme('rain',this)">
+            <div class="theme-card active" onclick="selectTheme('',this)">
+                <div class="theme-icon"><?= cpIcon('palette',28) ?></div>
+                <div class="theme-name">Mis ajustes</div>
+                <div class="theme-desc">Efecto y fondo de Personalizar Reproductor</div>
+            </div>
+            <div class="theme-card" onclick="selectTheme('rain',this)">
                 <div class="theme-icon"><?= cpIcon('signal',28) ?></div>
                 <div class="theme-name">Lluvia</div>
                 <div class="theme-desc">Gotas de lluvia animadas</div>
@@ -101,14 +106,14 @@ $playerSingleUrl = $baseHost . '/widgets/player/single/?slug=' . $slugEnc;
         <!-- Preview -->
         <label style="font-weight:700;margin-bottom:8px;display:block">Vista previa:</label>
         <div class="preview-frame">
-            <iframe id="previewFull" src="<?= $playerFullUrl ?>&type=rain" height="420" loading="lazy"></iframe>
+            <iframe id="previewFull" src="<?= $playerFullUrl ?>" height="420" loading="lazy"></iframe>
         </div>
 
         <!-- Código -->
         <div class="form-group">
             <label>Enlace directo (para compartir en redes, web, etc.)</label>
             <div class="copy-field">
-                <input type="text" id="fullPlayerUrl" class="form-control" readonly value="<?= $playerFullUrl ?>&type=rain">
+                <input type="text" id="fullPlayerUrl" class="form-control" readonly value="<?= $playerFullUrl ?>">
                 <button class="btn-copy" onclick="copyToClipboard(document.getElementById('fullPlayerUrl').value, this)"><?= cpIcon('copy',14) ?> Copiar</button>
             </div>
         </div>
@@ -116,7 +121,7 @@ $playerSingleUrl = $baseHost . '/widgets/player/single/?slug=' . $slugEnc;
         <div class="form-group">
             <label>Código iframe (para embeber en tu web)</label>
             <div class="copy-field" style="align-items:flex-start">
-                <textarea id="fullPlayerIframe" class="form-control" rows="3" readonly style="font-family:monospace;font-size:12px">&lt;iframe src="<?= $playerFullUrl ?>&amp;type=rain" width="100%" height="600" frameborder="0" allow="autoplay" style="border:none;border-radius:12px"&gt;&lt;/iframe&gt;</textarea>
+                <textarea id="fullPlayerIframe" class="form-control" rows="3" readonly style="font-family:monospace;font-size:12px">&lt;iframe src="<?= $playerFullUrl ?>" width="100%" height="600" frameborder="0" allow="autoplay" style="border:none;border-radius:12px"&gt;&lt;/iframe&gt;</textarea>
                 <button class="btn-copy" onclick="copyToClipboard(document.getElementById('fullPlayerIframe').value, this)"><?= cpIcon('copy',14) ?> Copiar</button>
             </div>
         </div>
@@ -124,7 +129,7 @@ $playerSingleUrl = $baseHost . '/widgets/player/single/?slug=' . $slugEnc;
         <div class="form-group">
             <label>Código Popup (botón que abre ventana)</label>
             <div class="copy-field" style="align-items:flex-start">
-                <textarea id="fullPlayerPopup" class="form-control" rows="3" readonly style="font-family:monospace;font-size:12px">&lt;a href="javascript:window.open('<?= $playerFullUrl ?>&amp;type=rain','CastPlayer','width=500,height=750')" style="display:inline-block;background:#6c3ce0;color:#fff;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px"&gt;&#x1F3B5; Escuchar <?= $radioName ?>&lt;/a&gt;</textarea>
+                <textarea id="fullPlayerPopup" class="form-control" rows="3" readonly style="font-family:monospace;font-size:12px">&lt;a href="javascript:window.open('<?= $playerFullUrl ?>','CastPlayer','width=500,height=750')" style="display:inline-block;background:#6c3ce0;color:#fff;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px"&gt;&#x1F3B5; Escuchar <?= $radioName ?>&lt;/a&gt;</textarea>
                 <button class="btn-copy" onclick="copyToClipboard(document.getElementById('fullPlayerPopup').value, this)"><?= cpIcon('copy',14) ?> Copiar</button>
             </div>
         </div>
@@ -248,7 +253,7 @@ $playerSingleUrl = $baseHost . '/widgets/player/single/?slug=' . $slugEnc;
 </div>
 
 <script>
-var selectedTheme = 'rain';
+var selectedTheme = '';
 var playerBaseUrl = '<?= $playerFullUrl ?>';
 
 function selectTheme(theme, el) {
@@ -256,7 +261,7 @@ function selectTheme(theme, el) {
     document.querySelectorAll('.theme-card').forEach(function(c){ c.classList.remove('active'); });
     el.classList.add('active');
 
-    var fullUrl = playerBaseUrl + '&type=' + theme;
+    var fullUrl = theme ? playerBaseUrl + '&type=' + theme : playerBaseUrl; // '' = saved player settings
     document.getElementById('previewFull').src = fullUrl;
     document.getElementById('fullPlayerUrl').value = fullUrl;
     document.getElementById('fullPlayerIframe').value = '<iframe src="' + fullUrl.replace(/&/g,'&amp;') + '" width="100%" height="600" frameborder="0" allow="autoplay" style="border:none;border-radius:12px"></iframe>';

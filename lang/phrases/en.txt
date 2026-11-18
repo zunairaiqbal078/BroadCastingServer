@@ -2064,3 +2064,10 @@ of {n}
 Plan storage is full ({x})
 Storage (GB)
 Space for the AutoDJ music of each radio on this plan. 0 = unlimited.
+My settings
+Player settings
+Effect and background from Customize Player
+Live preview
+Unsaved changes: click "Save Settings"
+Playlists (M3U / PLS / XSPF)
+Playlist files to open the radio in VLC, WinAmp, AIMP, foobar2000, iTunes and directories such as TuneIn or Radio.net.

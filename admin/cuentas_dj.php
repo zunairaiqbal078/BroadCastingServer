@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                         $countStmt->execute([$stationId]);
                         $currentCount = (int)$countStmt->fetchColumn();
 
-                        if ($currentCount >= $maxDj) {
+                        if ($maxDj > 0 && $currentCount >= $maxDj) {
                             $msg = "Limite de cuentas DJ alcanzado ($maxDj). Actualice el paquete.";
                             $msgType = 'error';
                         } else {
@@ -611,9 +611,9 @@ function changeStation(id) {
         <h3 style="margin:0;display:flex;align-items:center;gap:8px">
             <?= cpIcon('users', 20) ?>
             Cuentas DJ
-            <span class="badge badge-<?= count($djs) >= $maxDj ? 'danger' : 'info' ?>"><?= count($djs) ?>/<?= $maxDj ?></span>
+            <span class="badge badge-<?= $maxDj > 0 && count($djs) >= $maxDj ? 'danger' : 'info' ?>"><?= count($djs) ?>/<?= $maxDj > 0 ? $maxDj : '∞' ?></span>
         </h3>
-        <?php if (count($djs) < $maxDj): ?>
+        <?php if ($maxDj <= 0 || count($djs) < $maxDj): ?>
         <a href="?station=<?= $stationId ?>&action=create" class="btn btn-primary btn-sm">
             <?= cpIcon('plus', 14) ?> Crear Cuenta DJ
         </a>

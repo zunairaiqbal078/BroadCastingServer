@@ -2064,3 +2064,10 @@ din {n}
 Spațiul planului epuizat ({x})
 Stocare (GB)
 Spațiu pentru muzica AutoDJ a fiecărui radio din acest plan. 0 = nelimitat.
+Setările mele
+Setări player
+Efect și fundal din Personalizare player
+Previzualizare live
+Modificări nesalvate: apăsați „Salvează configurația”
+Liste de redare (M3U / PLS / XSPF)
+Fișiere listă pentru a deschide radioul în VLC, WinAmp, AIMP, foobar2000, iTunes și directoare precum TuneIn sau Radio.net.

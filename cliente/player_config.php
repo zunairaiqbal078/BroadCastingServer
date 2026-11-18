@@ -140,7 +140,10 @@ if (!$_tableError && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf
 
                 $accent = preg_match('/^#[0-9a-fA-F]{6}$/', $_POST['accent_color'] ?? '') ? $_POST['accent_color'] : '#6c3ce0';
                 $textColor = preg_match('/^#[0-9a-fA-F]{6}$/', $_POST['text_color'] ?? '') ? $_POST['text_color'] : '#ffffff';
-                $overlayOp = max(0, min(1, floatval($_POST['bg_overlay_opacity'] ?? 0.6)));
+                // the slider sends 0-100 (%); min(1, 60) used to save 1 = solid black, hiding the background
+                $overlayOp = floatval($_POST['bg_overlay_opacity'] ?? 60);
+                if ($overlayOp > 1) $overlayOp /= 100;
+                $overlayOp = max(0, min(1, $overlayOp));
                 $bgBlur = max(0, min(20, intval($_POST['bg_blur'] ?? 0)));
 
                 $showHistory = isset($_POST['show_history']) ? 1 : 0;
@@ -203,7 +206,8 @@ if (!$_tableError && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf
 // Generar CSRF
 if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-$playerUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? SSL_DOMAIN) . BASE_URL . '/widgets/player/?p=' . (int)$estacion['puerto_stream'] . '&type=' . urlencode($config['effect_type'] ?? 'rain');
+// no &type= here: the player must show what is saved on this page
+$playerUrl = castpanelWidgetPlayerUrls($estacion)['full'];
 ?>
 
 <?php if ($_tableError): ?>
@@ -216,6 +220,9 @@ $playerUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['
 
 <style>
 .config-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pc-preview-frame{width:100%;height:620px;border:0;border-radius:14px;background:#0b1020;display:block}
+.pc-unsaved{display:none;margin-left:auto;font-size:12px;font-weight:700;color:#b45309;background:#fef3c7;padding:5px 10px;border-radius:8px}
+.pc-unsaved.show{display:inline-block}
 @media(max-width:768px){.config-grid{grid-template-columns:1fr}}
 .img-upload-zone{
     border:2px dashed rgba(108,60,224,.3);
@@ -287,6 +294,17 @@ $playerUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['
             <div style="font-size:12px;color:var(--text-secondary);word-break:break-all"><?= htmlspecialchars($playerUrl) ?></div>
         </div>
         <a href="<?= htmlspecialchars($playerUrl) ?>" target="_blank" class="preview-btn"><?= cpIcon('eye',14) ?> Ver Reproductor</a>
+    </div>
+</div>
+
+<!-- Vista previa en vivo -->
+<div class="card" style="margin-bottom:20px">
+    <div class="card-header" style="display:flex;align-items:center;gap:10px">
+        <h3><?= cpIcon('eye',18) ?> Vista previa en vivo</h3>
+        <span class="pc-unsaved" id="pcUnsaved">Cambios sin guardar: pulsa "Guardar Configuración"</span>
+    </div>
+    <div class="card-body">
+        <iframe id="pcPreview" class="pc-preview-frame" src="<?= htmlspecialchars($playerUrl) ?>" title="Vista previa" loading="lazy"></iframe>
     </div>
 </div>
 
@@ -482,5 +500,27 @@ $playerUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['
 </div>
 
 </form>
+
+<script>
+(function () {
+    var base = <?= json_encode($playerUrl) ?>, frame = document.getElementById('pcPreview'), timer = null;
+    var form = frame.closest('form') || document.querySelector('form[enctype]');
+    function val(n) { var el = form.querySelector('[name="' + n + '"]:checked') || form.querySelector('[name="' + n + '"]'); return el ? el.value : ''; }
+    function refresh() {
+        document.getElementById('pcUnsaved').classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            var u = base + (base.indexOf('?') === -1 ? '?' : '&') + 'type=' + encodeURIComponent(val('effect_type'))
+                + '&ov=' + (parseInt(val('bg_overlay_opacity'), 10) / 100) + '&blur=' + parseInt(val('bg_blur'), 10) + '&_=' + Date.now();
+            frame.src = u;
+        }, 350);
+    }
+    ['effect_type', 'bg_overlay_opacity', 'bg_blur'].forEach(function (n) {
+        form.querySelectorAll('[name="' + n + '"]').forEach(function (el) {
+            el.addEventListener(el.type === 'range' ? 'input' : 'change', refresh);
+        });
+    });
+})();
+</script>
 
 <?php require_once __DIR__ . '/../includes/layout_footer.php'; ?>

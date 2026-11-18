@@ -121,7 +121,7 @@ try {
 
 // Cuentas DJ
 $totalDJ = 0;
-$maxDJ = $estacion['max_dj'] ?? 5;
+$maxDJ = (int)($estacion['max_dj'] ?? 0); // 0 = unlimited
 try {
     $stmt = $db->prepare("SELECT COUNT(*) FROM cuentas_dj WHERE estacion_id = ?");
     $stmt->execute([$estacion['id']]);
@@ -359,7 +359,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                     </div>
                     <div class="sp-info-item">
                         <span class="sp-info-label">Cuentas DJ M&aacute;ximo</span>
-                        <span class="sp-info-value"><?= $maxDJ ?></span>
+                        <span class="sp-info-value"><?= $maxDJ > 0 ? $maxDJ : 'Ilimitado' ?></span>
                     </div>
                     <div class="sp-info-item">
                         <span class="sp-info-label">AutoDJ</span>
@@ -571,34 +571,36 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                     <p style="font-size:11px;color:var(--text-secondary);margin:8px 0 0">Switch folder here — only tracks in the selected list play on air.</p>
                 </div>
 
-                <!-- Now playing (display only). Listening is done by the single
-                     player in the "Radio status" tab, so switching tabs never
-                     stops playback or opens a second stream. -->
-                <div class="cp-embed-player">
-                    <div class="cp-embed-player-main">
-                        <div class="cp-embed-cover">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-                            <span id="cpCoverTitle"><?= htmlspecialchars(mb_substr($cancionActual, 0, 30)) ?: $npEmptyLabel ?></span>
+                <!-- Same player as "Radio status". It drives the page's single
+                     stream, so switching tabs never stops playback or opens a
+                     second one. -->
+                <div class="cp3-player" id="cpPlayerCard">
+                    <div class="cp3-art"><div class="cp3-vinyl"><span></span></div></div>
+                    <div class="cp3-body">
+                        <div class="cp3-top">
+                            <span class="cp3-live"><span class="dot"></span> AutoDJ</span>
+                            <span class="cp3-time" id="cpAudioTime">00:00 / 00:00</span>
                         </div>
-                        <div class="cp-embed-controls">
-                            <div class="cp-embed-row">
-                                <button type="button" class="cp-embed-btn" id="cpListenBtn" onclick="cpListenFromAutodj()" title="Listen (Radio status player)">
-                                    <svg id="cpPlayIcon" width="16" height="16" viewBox="0 0 24 24" fill="#555"><polygon points="5,3 19,12 5,21"/></svg>
-                                </button>
-                                <input type="range" class="cp-embed-seek" id="cpSeekBar" min="0" max="100" value="0" readonly tabindex="-1" style="pointer-events:none">
-                                <span class="cp-embed-time" style="min-width:72px" id="cpAudioTime">00:00 / 00:00</span>
-                            </div>
-                            <div class="cp-embed-row" style="font-size:12px;color:var(--text-secondary)">
-                                <span id="cpListenState">Not listening</span>
+                        <div class="cp3-label">Now playing <span id="cpPlaylistPos" style="text-transform:none;letter-spacing:0;opacity:.85"></span></div>
+                        <div class="cp3-title" id="cpNowPlayingBar"><?= htmlspecialchars($cancionActual ?: $npEmptyLabel) ?></div>
+                        <span id="cpCoverTitle" hidden></span>
+                        <input type="range" class="cp3-progress" id="cpSeekBar" min="0" max="100" value="0" disabled aria-label="Progress">
+                        <div class="cp3-ctrl">
+                            <button type="button" class="cp3-play" id="cpListenBtn" onclick="cpListenFromAutodj()" title="Reproducir" aria-label="Play">
+                                <svg id="cpPlayIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                            </button>
+                            <button type="button" class="cp3-stop" onclick="stAudioStop()" title="Detener" aria-label="Stop">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+                            </button>
+                            <div class="cp3-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                            <div class="cp3-vol">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+                                <input type="range" id="cpVolume" min="0" max="100" value="80" oninput="stSetVolume(this.value)" aria-label="Volume">
                             </div>
                         </div>
-                    </div>
-                    <div class="cp-embed-np">
-                        <span><?= cpIcon('music', 14) ?> <span id="cpNowPlayingBar"><?= $npBarPrefix ?><?= htmlspecialchars($cancionActual ?: $npEmptyLabel) ?></span></span>
-                        <span id="cpPlaylistPos" style="font-size:11px;opacity:.9;font-weight:500"></span>
+                        <span id="cpListenState" hidden>Not listening</span>
                     </div>
                 </div>
-                <p class="cp-embed-footnote">▶ plays/pauses the <strong>Radio status</strong> player — one stream for the whole page.</p>
             </div>
             <?php endif; /* autodj_enabled */ ?>
 
@@ -705,7 +707,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                         ['label' => 'Pico 24h', 'value' => $picoOyentes, 'max' => $maxOyentes, 'pct' => $maxOyentes > 0 ? min(round(($picoOyentes / $maxOyentes) * 100, 1), 100) : 0, 'color' => '#f4511e', 'unit' => ''],
                         ['label' => 'Bitrate', 'value' => $estacion['bitrate'], 'max' => $maxBitrate, 'pct' => $bitratePercent, 'color' => '#8e24aa', 'unit' => ' kbps'],
                         ['label' => 'Canciones', 'value' => $totalCanciones, 'max' => 999, 'pct' => min(round(($totalCanciones / max(1, 999)) * 100, 1), 100), 'color' => '#fb8c00', 'unit' => ''],
-                        ['label' => 'Cuentas DJ', 'value' => $totalDJ, 'max' => $maxDJ, 'pct' => $maxDJ > 0 ? min(round(($totalDJ / $maxDJ) * 100, 1), 100) : 0, 'color' => '#43a047', 'unit' => ''],
+                        ['label' => 'Cuentas DJ', 'value' => $totalDJ, 'max' => $maxDJ > 0 ? $maxDJ : '∞', 'pct' => $maxDJ > 0 ? min(round(($totalDJ / $maxDJ) * 100, 1), 100) : 0, 'pctText' => $maxDJ > 0 ? null : '∞', 'color' => '#43a047', 'unit' => ''],
                     ];
                     foreach ($gauges as $g):
                         $circumference = 2 * M_PI * 36;
@@ -774,7 +776,7 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
             </div>
             <div style="display:flex;align-items:center;gap:8px;background:#f8f9fa;border:1px solid #e0e0e0;border-radius:8px;padding:10px 14px;margin-bottom:22px">
                 <span style="color:#8e24aa;flex-shrink:0"><?= cpIcon('circle-dot', 14) ?></span>
-                <input type="text" value="<?= htmlspecialchars($cpWidgetUrl . '&type=' . $playerEffect) ?>" readonly id="cpPlayer" style="flex:1;border:none;background:transparent;font-size:13px;color:#1565c0;font-weight:600;outline:none;font-family:monospace">
+                <input type="text" value="<?= htmlspecialchars($cpWidgetUrl) ?>" readonly id="cpPlayer" style="flex:1;border:none;background:transparent;font-size:13px;color:#1565c0;font-weight:600;outline:none;font-family:monospace">
                 <button onclick="cpCopy('cpPlayer',this)" style="background:#00897b;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px"><?= cpIcon('copy', 12) ?> Copiar</button>
             </div>
 
@@ -845,8 +847,10 @@ function cpSyncPlayButtons() {
     });
     var st = document.getElementById('cpListenState');
     if (st) st.textContent = stIsPlaying ? '● Listening (Radio status player)' : 'Not listening';
-    var card = document.getElementById('stPlayerCard');
-    if (card) card.classList.toggle('is-playing', stIsPlaying);
+    ['stPlayerCard', 'cpPlayerCard'].forEach(function(id) {
+        var card = document.getElementById(id);
+        if (card) card.classList.toggle('is-playing', stIsPlaying);
+    });
 }
 
 function cpSetStreamSrc(el, bustCache) {
@@ -909,6 +913,10 @@ function stAudioStop() {
 
 function stSetVolume(val) {
     if (stAudioEl) stAudioEl.volume = val / 100;
+    ['stVolume', 'cpVolume'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.value != val) el.value = val;
+    });
 }
 
 // After a start/restart the stream source changes: reconnect only if the
@@ -1054,12 +1062,12 @@ function cpApplyPlayer(p) {
     var stBar = document.getElementById('stNowPlayingBar');
     var cpBar = document.getElementById('cpNowPlayingBar');
     if (stBar) stBar.textContent = title; // "Now playing" label is above the title
-    if (cpBar) cpBar.textContent = barTitle;
+    if (cpBar) cpBar.textContent = title;
     var pos = document.getElementById('cpPlaylistPos');
     if (pos && p.playlist_total > 0 && typeof p.playlist_index === 'number' && p.playlist_index >= 0) {
-        pos.textContent = 'Track ' + (p.playlist_index + 1) + ' of ' + p.playlist_total;
+        pos.textContent = '· Track ' + (p.playlist_index + 1) + ' of ' + p.playlist_total;
     } else if (pos && p.playlist_total > 0) {
-        pos.textContent = p.playlist_total + ' tracks in playlist';
+        pos.textContent = '· ' + p.playlist_total + ' tracks in playlist';
     } else if (pos) {
         pos.textContent = '';
     }

@@ -2064,3 +2064,10 @@ sur {n}
 Espace du forfait épuisé ({x})
 Stockage (Go)
 Espace pour la musique AutoDJ de chaque radio de ce forfait. 0 = illimité.
+Mes réglages
+Réglages du lecteur
+Effet et arrière-plan de Personnaliser le lecteur
+Aperçu en direct
+Modifications non enregistrées : cliquez sur « Enregistrer la configuration »
+Listes de lecture (M3U / PLS / XSPF)
+Fichiers de liste pour ouvrir la radio dans VLC, WinAmp, AIMP, foobar2000, iTunes et des annuaires comme TuneIn ou Radio.net.

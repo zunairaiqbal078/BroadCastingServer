@@ -40,6 +40,7 @@ $effects = ['rain', 'snow', 'stars', 'wave', 'equalizer', 'lightning', 'none'];
         <div class="form-group">
             <label>Efecto visual del reproductor:</label>
             <select class="form-control" id="effectSelect" onchange="updateEmbedCodes()" style="max-width:300px;">
+                <option value="" selected>Ajustes del reproductor</option>
                 <?php foreach ($effects as $fx): ?>
                 <option value="<?= $fx ?>"><?= ucfirst($fx) ?></option>
                 <?php endforeach; ?>
@@ -79,7 +80,8 @@ const BASE_SINGLE = <?= json_encode($playerSingleUrl) ?>;
 
 function updateEmbedCodes() {
     const effect = document.getElementById('effectSelect').value;
-    const suffix = effect !== 'none' ? '&type=' + encodeURIComponent(effect) : '';
+    // '' = the effect saved in Customize Player (client panel)
+    const suffix = effect ? '&type=' + encodeURIComponent(effect) : '';
     const fullUrl = BASE_FULL + suffix;
     const singleUrl = BASE_SINGLE + suffix;
 

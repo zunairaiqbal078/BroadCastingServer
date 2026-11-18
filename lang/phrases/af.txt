@@ -2064,3 +2064,10 @@ van {n}
 Pakketspasie is vol ({x})
 Berging (GB)
 Spasie vir die AutoDJ-musiek van elke radio op hierdie pakket. 0 = onbeperk.
+My instellings
+Spelerinstellings
+Effek en agtergrond van Pas speler aan
+Lewendige voorskou
+Ongestoorde veranderinge: klik "Stoor instellings"
+Snitlyste (M3U / PLS / XSPF)
+Lyslêers om die radio in VLC, WinAmp, AIMP, foobar2000, iTunes en gidse soos TuneIn of Radio.net oop te maak.

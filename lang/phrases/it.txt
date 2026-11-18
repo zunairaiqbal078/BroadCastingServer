@@ -2064,3 +2064,10 @@ di {n}
 Spazio del piano esaurito ({x})
 Spazio (GB)
 Spazio per la musica AutoDJ di ogni radio con questo piano. 0 = illimitato.
+Le mie impostazioni
+Impostazioni del player
+Effetto e sfondo da Personalizza player
+Anteprima dal vivo
+Modifiche non salvate: fai clic su "Salva configurazione"
+Playlist (M3U / PLS / XSPF)
+File playlist per aprire la radio in VLC, WinAmp, AIMP, foobar2000, iTunes e directory come TuneIn o Radio.net.

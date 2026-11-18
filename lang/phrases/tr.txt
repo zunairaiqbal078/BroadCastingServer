@@ -2064,3 +2064,10 @@ Sunucuda boş disk alanı yok
 Paket alanı doldu ({x})
 Depolama (GB)
 Bu paketteki her radyonun AutoDJ müziği için alan. 0 = sınırsız.
+Ayarlarım
+Oynatıcı ayarları
+Oynatıcıyı Özelleştir'deki efekt ve arka plan
+Canlı önizleme
+Kaydedilmemiş değişiklikler: "Yapılandırmayı Kaydet"e tıklayın
+Çalma listeleri (M3U / PLS / XSPF)
+Radyoyu VLC, WinAmp, AIMP, foobar2000, iTunes ve TuneIn veya Radio.net gibi dizinlerde açmak için liste dosyaları.

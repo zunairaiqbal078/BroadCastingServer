@@ -2064,3 +2064,10 @@ van {n}
 Opslag van het pakket vol ({x})
 Opslag (GB)
 Ruimte voor de AutoDJ-muziek van elke radio met dit pakket. 0 = onbeperkt.
+Mijn instellingen
+Spelerinstellingen
+Effect en achtergrond uit Speler aanpassen
+Live voorbeeld
+Niet-opgeslagen wijzigingen: klik op "Configuratie opslaan"
+Afspeellijsten (M3U / PLS / XSPF)
+Afspeellijstbestanden om de radio te openen in VLC, WinAmp, AIMP, foobar2000, iTunes en gidsen zoals TuneIn of Radio.net.
