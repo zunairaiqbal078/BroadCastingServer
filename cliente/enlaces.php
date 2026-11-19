@@ -13,11 +13,9 @@ $slug = $estacion['slug'] ?? '';
 $isShout = isShoutcastServerType($estacion['server_type'] ?? '');
 // SHOUTcast listens on the station's own port; icecast_port defaults to 8000
 $port = $isShout ? ((int)($estacion['puerto_stream'] ?? 0) ?: 8000) : ((int)($estacion['icecast_port'] ?? 0) ?: 8000);
-$proxyPath = ($isShout ? '/shoutcast/' : '/live/') . rawurlencode($slug);
-// HTTPS through the panel's proxy when a domain has SSL; otherwise the same
-// proxied URL the panel player uses (works without a certificate)
-$hasSsl = defined('SSL_DOMAIN') && SSL_DOMAIN !== '' && SSL_DOMAIN !== '__DOMAIN__';
-$baseStream = $hasSsl ? 'https://' . SSL_DOMAIN . $proxyPath : castpanelStreamPlaybackUrl($estacion);
+// SonicPanel format: https://domain/PORT/stream (and /PORT/; for TuneIn and directories)
+$baseStream = castpanelSslStreamUrl($estacion);
+$tuneinStream = castpanelSslStreamUrl($estacion, ';');
 $baseStreamHttp = "http://$domain:$port" . ($isShout ? '/stream' : ($estacion['icecast_mount'] ?? '/stream'));
 $appUrl = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? $domain) . (defined('BASE_URL') ? BASE_URL : '');
 ?>
@@ -30,6 +28,9 @@ $sslSections = [
     ['title' => 'URL de Reproducción SSL Directa', 'color' => '#00897b',
      'note' => 'URL SSL directa para reproductores HTML5, apps móviles, plugins WordPress y players personalizados. Funciona con HTTPS en el puerto de la estación.',
      'links' => [[null, $baseStream]]],
+    ['title' => 'Configuración SSL para TuneIn, Radio.es y directorios', 'color' => '#0277bd',
+     'note' => 'Use este enlace al registrar su radio en TuneIn, Radio.es, Radio Garden y otros directorios, o en apps y reproductores que piden la URL del stream SHOUTcast. También funciona en reproductores HTML5.',
+     'links' => [[null, $tuneinStream]]],
     ['title' => 'URL HTTP Directa (Sin SSL)', 'color' => '#1565c0',
      'note' => 'URL directa sin SSL para software de radio como SAM Broadcaster, BUTT, Mixxx, RadioBOSS y otros encoders. Use esta URL con el puerto indicado para transmisión directa.',
      'links' => [[null, $baseStreamHttp]]],

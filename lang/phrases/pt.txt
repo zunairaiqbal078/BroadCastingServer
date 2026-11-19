@@ -2071,3 +2071,92 @@ Pré-visualização ao vivo
 Alterações não salvas: clique em "Salvar configuração"
 Listas de reprodução (M3U / PLS / XSPF)
 Arquivos de lista para abrir a rádio no VLC, WinAmp, AIMP, foobar2000, iTunes e diretórios como TuneIn ou Radio.net.
+Configuração SSL para TuneIn, Radio.es e diretórios
+Use este link para cadastrar sua rádio no TuneIn, Radio.es, Radio Garden e outros diretórios, ou em apps e players que pedem a URL do stream SHOUTcast. Também funciona em players HTML5.
+Regras de mixagem
+Não repetir artista em (min)
+Não repetir música em (min)
+Seleção de músicas
+Seguir o modo do AutoDJ (normal / aleatório)
+Ordem da pasta
+Aleatória
+Aleatória por peso (prioridade de cada música)
+0 = sem regra. Se uma pasta pequena (vinhetas, promos) não puder cumprir a regra, usa-se a música que está há mais tempo sem tocar. O peso de cada música (1 a 5) é alterado na Biblioteca de Música.
+Artista: {n} min
+Música: {n} min
+Em ordem
+Por peso
+Peso
+Muito baixa
+Normal
+Muito alta
+Definir peso
+Peso atualizado em {n} músicas.
+Eventos Programados
+Eventos Programados - CastPanel
+Eventos
+Os eventos tocam um arquivo, uma pasta (programa gravado, notícias, bloco comercial) ou o anúncio da hora num minuto exato. Ao terminar, o AutoDJ continua sozinho. Se houver um DJ ao vivo ou um relay no ar, o evento é ignorado.
+Novo evento
+Editar evento
+Nome do evento *
+Ex: Notícias da manhã
+O que vai tocar?
+Pasta / programa
+Anúncio da hora
+Pasta
+Envie para esta pasta um áudio por hora com a hora no nome (ex: 08.mp3, hora 8.mp3, 20.mp3). É usado o da hora atual.
+Músicas a tocar
+0 = pasta inteira
+Ordem
+Repetição
+Uma só vez (data)
+Todos os dias
+Dias da semana
+A cada hora
+Hora exata
+Minuto de cada hora
+0 = hora certa (8:00, 9:00, 10:00...)
+Ao chegar a hora
+Esperar
+Começa quando termina a música que está tocando.
+Cortar
+Corta a música e começa no minuto exato.
+Criar evento
+Eventos configurados
+Não há eventos programados.
+Crie um com o formulário.
+{n} músicas
+pasta inteira
+A cada hora, minuto
+Espera a música
+Corta a música
+Próximo
+Última execução
+1 arquivo enviado
+{n} arquivos enviados
+Ignorado: DJ ao vivo no ar
+Ignorado: relay no ar
+Sem arquivos para tocar
+AutoDJ desligado (sem conexão)
+Reinicie o AutoDJ uma vez para ativar os eventos
+Evento criado.
+Evento atualizado.
+Evento excluído.
+Evento enviado ao ar: {x}.
+Escolha o arquivo a tocar.
+Escolha a pasta.
+Escolha a data do evento.
+Escolha pelo menos um dia.
+Executar agora
+Ativar
+Eventos programados
+Ano
+Ano de lançamento
+Ler ano/BPM
+Ano e BPM das etiquetas ID3 do arquivo
+Etiquetas lidas: ano/BPM encontrados em {n} músicas.
+Filtro por ano / BPM
+de
+até
+A lupa filtra a pasta por ano de lançamento e BPM (ex: só 2010–2026, ou 100–130 BPM). As músicas sem esse dado ficam fora do filtro; complete-as na Biblioteca de Música.
+{n} músicas excluídas.

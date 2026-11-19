@@ -47,6 +47,20 @@ $addColumn('estaciones', "ADD COLUMN `mensaje_dj` TEXT DEFAULT NULL");
 $addColumn('paquetes', "ADD COLUMN `default_hostname` VARCHAR(255) NOT NULL DEFAULT ''");
 $addColumn('paquetes', "ADD COLUMN `social_stream_enabled` TINYINT(1) NOT NULL DEFAULT 0");
 $addColumn('paquetes', "ADD COLUMN `mount_points_enabled` TINYINT(1) NOT NULL DEFAULT 1");
+// Rotation rules (artist/track separation, selection mode) and song weight
+$addColumn('rotacion_carpetas', "ADD COLUMN `sep_artista_min` INT UNSIGNED NOT NULL DEFAULT 0");
+$addColumn('rotacion_carpetas', "ADD COLUMN `sep_cancion_min` INT UNSIGNED NOT NULL DEFAULT 0");
+$addColumn('rotacion_carpetas', "ADD COLUMN `seleccion` VARCHAR(16) NOT NULL DEFAULT 'auto'");
+$addColumn('canciones', "ADD COLUMN `peso` TINYINT UNSIGNED NOT NULL DEFAULT 3");
+$addColumn('canciones', "ADD COLUMN `anio` SMALLINT UNSIGNED DEFAULT NULL");
+$addColumn('canciones', "ADD COLUMN `bpm` SMALLINT UNSIGNED DEFAULT NULL");
+foreach (['anio_min', 'anio_max', 'bpm_min', 'bpm_max'] as $c) {
+    $addColumn('rotacion_carpetas_secuencia', "ADD COLUMN `$c` SMALLINT UNSIGNED DEFAULT NULL");
+}
+// Scheduled events (Programming > Events)
+require_once __DIR__ . '/../includes/autodj_events.php';
+castpanelEnsureEventsTable();
+$log[] = 'OK table: eventos_programados';
 
 // DJ UI language: keep panel_lang in sync with legacy idioma where panel_lang is empty
 if ($columnExists('cuentas_dj', 'panel_lang') && $columnExists('cuentas_dj', 'idioma')) {

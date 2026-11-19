@@ -3,7 +3,8 @@
  * CastPanel — Cron: AutoDJ scheduler (run every minute)
  *
  * Applies, for every active AutoDJ station: AutoDJ Schedule, Folder Rotation,
- * Schedule Ads and Relay Redirect (see includes/autodj_schedule.php). Only the
+ * Schedule Ads, Relay Redirect (see includes/autodj_schedule.php) and
+ * scheduled events (includes/autodj_events.php). Only the
  * files whose content changed are rewritten; Liquidsoap picks them up itself.
  *
  *   * * * * * <web user> php /var/www/castpanel/cron/scheduler.php
@@ -19,6 +20,7 @@ require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../includes/provisioning.php';
 require_once __DIR__ . '/../includes/autodj_schedule.php';
+require_once __DIR__ . '/../includes/autodj_events.php';
 
 $verbose = in_array('--verbose', $argv, true);
 
@@ -48,6 +50,8 @@ foreach ($ids as $id) {
         }
         if ($r['ads']['changed']) $changes[] = "ads={$r['ads']['count']} every {$r['ads']['every']} songs";
         if ($r['relay']['changed']) $changes[] = 'relay=' . ($r['relay']['relay']['name'] ?? 'off');
+        // Scheduled events (file / folder / time announcement at an exact minute)
+        foreach (castpanelRunStationEvents($est) as $line) $changes[] = $line;
         if ($changes || $verbose) {
             echo date('Y-m-d H:i:s') . " {$est['slug']}: " . ($changes ? implode('; ', $changes) : 'no change') . "\n";
         }

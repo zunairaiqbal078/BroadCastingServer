@@ -155,6 +155,9 @@ CREATE TABLE IF NOT EXISTS `canciones` (
   `ruta_archivo` varchar(512) NOT NULL,
   `caratula` varchar(512) DEFAULT NULL,
   `orden` int(10) unsigned NOT NULL DEFAULT 0,
+  `peso` tinyint(3) unsigned NOT NULL DEFAULT 3,
+  `anio` smallint(5) unsigned DEFAULT NULL,
+  `bpm` smallint(5) unsigned DEFAULT NULL,
   `activa` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
@@ -493,6 +496,9 @@ CREATE TABLE IF NOT EXISTS `rotacion_carpetas` (
   `hora_inicio` time NOT NULL DEFAULT '00:00:00',
   `hora_fin` time NOT NULL DEFAULT '23:59:00',
   `prioridad` int(10) unsigned NOT NULL DEFAULT 0,
+  `sep_artista_min` int(10) unsigned NOT NULL DEFAULT 0,
+  `sep_cancion_min` int(10) unsigned NOT NULL DEFAULT 0,
+  `seleccion` varchar(16) NOT NULL DEFAULT 'auto',
   `activa` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -510,6 +516,10 @@ CREATE TABLE IF NOT EXISTS `rotacion_carpetas_secuencia` (
   `playlist_id` int(10) unsigned NOT NULL,
   `cantidad` int(10) unsigned NOT NULL DEFAULT 1,
   `orden` int(10) unsigned NOT NULL DEFAULT 0,
+  `anio_min` smallint(5) unsigned DEFAULT NULL,
+  `anio_max` smallint(5) unsigned DEFAULT NULL,
+  `bpm_min` smallint(5) unsigned DEFAULT NULL,
+  `bpm_max` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `playlist_id` (`playlist_id`),
   KEY `idx_rotacion` (`rotacion_id`),
@@ -710,3 +720,28 @@ INSERT INTO `email_templates` (`slug`, `nombre`, `asunto`, `cuerpo_html`, `varia
 ('suspension', 'Suspension', 'Tu cuenta ha sido suspendida - {{panel_name}}', '<h2>Cuenta Suspendida</h2><p>Hola {{username}},</p><p>Tu cuenta ha sido suspendida.</p>', '["panel_name","username","email"]', 1),
 ('reactivation', 'Reactivacion', 'Tu cuenta ha sido reactivada - {{panel_name}}', '<h2>Cuenta Reactivada</h2><p>Hola {{username}},</p><p>Tu cuenta ha sido reactivada.</p>', '["panel_name","username","email"]', 1),
 ('account_station', 'Cuenta y Estacion', 'Tu cuenta y radio han sido creadas - {{panel_name}}', '<h2>Bienvenido a {{panel_name}}</h2><p>Hola {{username}},</p><p>Tu cuenta y estacion <strong>{{station_name}}</strong> han sido creadas.</p><p><strong>Datos de acceso:</strong></p><ul><li>Usuario: {{username}}</li><li>Contrasena: {{password}}</li><li>Puerto: {{port}}</li><li>URL Panel: {{panel_url}}</li></ul>', '["panel_name","username","password","station_name","port","panel_url"]', 1);
+
+-- ============================================================
+-- EVENTOS PROGRAMADOS (Programming > Events)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS `eventos_programados` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `estacion_id` int(10) unsigned NOT NULL,
+  `nombre` varchar(128) NOT NULL,
+  `tipo` varchar(16) NOT NULL DEFAULT 'archivo',
+  `cancion_id` int(10) unsigned DEFAULT NULL,
+  `playlist_id` int(10) unsigned DEFAULT NULL,
+  `cantidad` int(10) unsigned NOT NULL DEFAULT 0,
+  `aleatorio` tinyint(1) NOT NULL DEFAULT 0,
+  `repeticion` varchar(16) NOT NULL DEFAULT 'semanal',
+  `fecha` date DEFAULT NULL,
+  `dias` varchar(128) NOT NULL DEFAULT '',
+  `hora` time NOT NULL DEFAULT '08:00:00',
+  `modo` varchar(8) NOT NULL DEFAULT 'esperar',
+  `activo` tinyint(1) NOT NULL DEFAULT 1,
+  `ultima_ejecucion` datetime DEFAULT NULL,
+  `ultimo_resultado` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_estacion` (`estacion_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

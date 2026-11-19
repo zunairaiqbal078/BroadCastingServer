@@ -2071,3 +2071,92 @@ Pregled uživo
 Nesačuvane izmene: kliknite „Sačuvaj podešavanja“
 Plejliste (M3U / PLS / XSPF)
 Fajlovi plejliste za otvaranje radija u VLC, WinAmp, AIMP, foobar2000, iTunes i direktorijumima kao što su TuneIn ili Radio.net.
+SSL podešavanje za TuneIn, Radio.es i direktorijume
+Koristite ovaj link za registraciju radija na TuneIn, Radio.es, Radio Garden i drugim direktorijumima, ili u aplikacijama i plejerima koji traže URL SHOUTcast strima. Radi i u HTML5 plejerima.
+Pravila miksa
+Ne ponavljaj izvođača u roku od (min)
+Ne ponavljaj pesmu u roku od (min)
+Izbor pesama
+Prema AutoDJ režimu (normalno / nasumično)
+Redosled foldera
+Nasumično
+Nasumično po težini (prioritet pesme)
+0 = bez pravila. Ako mali folder (džinglovi, promo) ne može da ispuni pravilo, koristi se pesma koja najduže nije puštena. Težina svake pesme (1 do 5) menja se u Muzičkoj biblioteci.
+Izvođač: {n} min
+Pesma: {n} min
+Redom
+Po težini
+Težina
+Veoma niska
+Normalna
+Veoma visoka
+Postavi težinu
+Težina ažurirana za {n} pesama.
+Zakazani događaji
+Zakazani događaji - CastPanel
+Događaji
+Događaji puštaju fajl, folder (snimljena emisija, vesti, reklamni blok) ili najavu vremena u tačan minut. Kada se završe, AutoDJ nastavlja sam. Ako je uživo DJ ili relay u eteru, događaj se preskače.
+Novi događaj
+Izmeni događaj
+Naziv događaja *
+Npr: Jutarnje vesti
+Šta se pušta?
+Folder / emisija
+Najava vremena
+Folder
+Otpremite u ovaj folder po jedan audio za svaki sat sa satom u nazivu (npr. 08.mp3, sat 8.mp3, 20.mp3). Koristi se onaj za trenutni sat.
+Pesme za puštanje
+0 = ceo folder
+Redosled
+Ponavljanje
+Jednom (datum)
+Svaki dan
+Dani u nedelji
+Svakog sata
+Tačno vreme
+Minut svakog sata
+0 = tačno na sat (8:00, 9:00, 10:00...)
+U zakazano vreme
+Sačekaj
+Počinje kada se završi pesma koja svira.
+Prekini
+Prekida pesmu i počinje u tačan minut.
+Kreiraj događaj
+Podešeni događaji
+Nema zakazanih događaja.
+Napravite jedan pomoću obrasca.
+{n} pesama
+ceo folder
+Svakog sata, minut
+Čeka pesmu
+Prekida pesmu
+Sledeći
+Poslednje pokretanje
+Poslat 1 fajl
+Poslato fajlova: {n}
+Preskočeno: DJ uživo u eteru
+Preskočeno: relay u eteru
+Nema fajlova za puštanje
+AutoDJ isključen (nema veze)
+Ponovo pokrenite AutoDJ jednom da biste aktivirali događaje
+Događaj kreiran.
+Događaj ažuriran.
+Događaj obrisan.
+Događaj poslat u eter: {x}.
+Izaberite fajl za puštanje.
+Izaberite folder.
+Izaberite datum događaja.
+Izaberite bar jedan dan.
+Pokreni sada
+Aktiviraj
+Zakazani događaji
+Godina
+Godina izdanja
+Učitaj godinu/BPM
+Godina i BPM iz ID3 oznaka fajla
+Oznake učitane: godina/BPM pronađeni u {n} pesama.
+Filter po godini / BPM
+od
+do
+Lupa filtrira folder po godini izdanja i BPM-u (npr. samo 2010–2026 ili 100–130 BPM). Pesme bez tog podatka ostaju van filtera; dopunite ih u Muzičkoj biblioteci.
+Obrisano pesama: {n}.

@@ -135,7 +135,7 @@ $streamUrl = castpanelStreamPlaybackUrl($estacion);
 $cpIsShout = isShoutcastServerType($estacion['server_type'] ?? '');
 $cpStationPort = $cpIsShout ? ((int)($estacion['puerto_stream'] ?? 0) ?: 8000) : ((int)($estacion['icecast_port'] ?? 0) ?: 8000);
 $cpHasSsl = defined('SSL_DOMAIN') && SSL_DOMAIN !== '' && SSL_DOMAIN !== '__DOMAIN__';
-$cpSecureUrl = $cpHasSsl ? 'https://' . SSL_DOMAIN . ($cpIsShout ? '/shoutcast/' : '/live/') . rawurlencode($estacion['slug']) : $streamUrl;
+$cpSecureUrl = castpanelSslStreamUrl($estacion); // SonicPanel format: https://domain/PORT/stream
 $cpDirectUrl = 'http://' . castpanelPublicHost() . ':' . $cpStationPort . ($cpIsShout ? '/stream' : ($estacion['icecast_mount'] ?? '/stream'));
 $cpWidgetUrl = castpanelWidgetPlayerUrls($estacion)['full'];
 

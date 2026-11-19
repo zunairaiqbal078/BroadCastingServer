@@ -2071,3 +2071,92 @@ Anteprima dal vivo
 Modifiche non salvate: fai clic su "Salva configurazione"
 Playlist (M3U / PLS / XSPF)
 File playlist per aprire la radio in VLC, WinAmp, AIMP, foobar2000, iTunes e directory come TuneIn o Radio.net.
+Configurazione SSL per TuneIn, Radio.es e directory
+Usa questo link per registrare la tua radio su TuneIn, Radio.es, Radio Garden e altre directory, o in app e player che chiedono l'URL dello stream SHOUTcast. Funziona anche nei player HTML5.
+Regole di mixaggio
+Non ripetere l'artista entro (min)
+Non ripetere il brano entro (min)
+Selezione dei brani
+Secondo la modalità AutoDJ (normale / casuale)
+Ordine della cartella
+Casuale
+Casuale per peso (priorità di ogni brano)
+0 = nessuna regola. Se una cartella piccola (jingle, promo) non può rispettare la regola, si usa il brano che non suona da più tempo. Il peso di ogni brano (da 1 a 5) si cambia nella Libreria musicale.
+Artista: {n} min
+Brano: {n} min
+In ordine
+Per peso
+Peso
+Molto bassa
+Normale
+Molto alta
+Imposta peso
+Peso aggiornato su {n} brani.
+Eventi programmati
+Eventi programmati - CastPanel
+Eventi
+Gli eventi riproducono un file, una cartella (programma registrato, notiziario, blocco pubblicitario) o l'annuncio dell'ora a un minuto esatto. Al termine, l'AutoDJ continua da solo. Se è in onda un DJ dal vivo o un relay, l'evento viene saltato.
+Nuovo evento
+Modifica evento
+Nome dell'evento *
+Es: Notiziario del mattino
+Cosa si riproduce?
+Cartella / programma
+Annuncio dell'ora
+Cartella
+Carica in questa cartella un audio per ogni ora con l'ora nel nome (es: 08.mp3, ora 8.mp3, 20.mp3). Si usa quello dell'ora attuale.
+Brani da riprodurre
+0 = tutta la cartella
+Ordine
+Ripetizione
+Una sola volta (data)
+Tutti i giorni
+Giorni della settimana
+Ogni ora
+Ora esatta
+Minuto di ogni ora
+0 = in punto (8:00, 9:00, 10:00...)
+All'ora prevista
+Attendere
+Inizia quando finisce il brano in onda.
+Interrompere
+Interrompe il brano e inizia al minuto esatto.
+Crea evento
+Eventi configurati
+Nessun evento programmato.
+Creane uno con il modulo.
+{n} brani
+tutta la cartella
+Ogni ora, minuto
+Attende il brano
+Interrompe il brano
+Prossimo
+Ultima esecuzione
+1 file inviato
+{n} file inviati
+Saltato: DJ dal vivo in onda
+Saltato: relay in onda
+Nessun file da riprodurre
+AutoDJ spento (nessuna connessione)
+Riavvia l'AutoDJ una volta per attivare gli eventi
+Evento creato.
+Evento aggiornato.
+Evento eliminato.
+Evento mandato in onda: {x}.
+Scegli il file da riprodurre.
+Scegli la cartella.
+Scegli la data dell'evento.
+Scegli almeno un giorno.
+Esegui ora
+Attiva
+Eventi programmati
+Anno
+Anno di uscita
+Leggi anno/BPM
+Anno e BPM dai tag ID3 del file
+Tag letti: anno/BPM trovati in {n} brani.
+Filtro per anno / BPM
+da
+a
+La lente filtra la cartella per anno di uscita e BPM (es: solo 2010–2026, o 100–130 BPM). I brani senza quel dato restano fuori dal filtro; completali nella Libreria musicale.
+{n} brani eliminati.

@@ -168,6 +168,18 @@ for ($i = 0; $i < count($files['name']); $i++) {
                 $info['artista'], $info['album'], $info['duracion'],
                 $fileSize, $destFile, $coverUrl, $orden
             ]);
+        $newSongId = (int)$db->lastInsertId();
+        // Release year and BPM from the tags (used by Folder Rotation filters)
+        if (($info['anio'] ?? null) || ($info['bpm'] ?? null)) {
+            try {
+                require_once __DIR__ . '/../includes/autodj_schedule.php';
+                castpanelEnsureRotationRuleColumns();
+                $db->prepare('UPDATE canciones SET anio = ?, bpm = ? WHERE id = ?')
+                   ->execute([$info['anio'] ?? null, $info['bpm'] ?? null, $newSongId]);
+            } catch (Throwable $e) {
+                error_log('CastPanel: year/BPM not saved: ' . $e->getMessage());
+            }
+        }
 
         if ($playlistId) {
             $db->prepare("UPDATE playlists SET total_canciones = total_canciones + 1 WHERE id = ?")->execute([$playlistId]);

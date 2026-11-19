@@ -2071,3 +2071,92 @@ Efekt a pozadí z Přizpůsobit přehrávač
 Neuložené změny: klikněte na „Uložit nastavení“
 Seznamy skladeb (M3U / PLS / XSPF)
 Soubory seznamů pro otevření rádia ve VLC, WinAmp, AIMP, foobar2000, iTunes a katalozích jako TuneIn nebo Radio.net.
+Nastavení SSL pro TuneIn, Radio.es a katalogy
+Tento odkaz použijte při registraci rádia v TuneIn, Radio.es, Radio Garden a dalších katalozích nebo v aplikacích a přehrávačích, které žádají URL streamu SHOUTcast. Funguje i v HTML5 přehrávačích.
+Pravidla mixu
+Neopakovat interpreta během (min)
+Neopakovat skladbu během (min)
+Výběr skladeb
+Podle režimu AutoDJ (normální / náhodný)
+Pořadí složky
+Náhodně
+Náhodně podle váhy (priorita skladby)
+0 = bez pravidla. Pokud malá složka (znělky, promo) pravidlo nesplní, použije se skladba, která nehrála nejdéle. Váhu každé skladby (1–5) změníte v Hudební knihovně.
+Interpret: {n} min
+Skladba: {n} min
+Popořadě
+Podle váhy
+Váha
+Velmi nízká
+Normální
+Velmi vysoká
+Nastavit váhu
+Váha aktualizována u {n} skladeb.
+Naplánované události
+Naplánované události - CastPanel
+Události
+Události přehrají soubor, složku (nahraný pořad, zprávy, reklamní blok) nebo hlášení času v přesnou minutu. Po skončení AutoDJ pokračuje sám. Pokud vysílá živý DJ nebo relay, událost se přeskočí.
+Nová událost
+Upravit událost
+Název události *
+Např.: Ranní zprávy
+Co se přehraje?
+Složka / pořad
+Hlášení času
+Složka
+Nahrajte do této složky jeden zvuk pro každou hodinu s hodinou v názvu (např. 08.mp3, hodina 8.mp3, 20.mp3). Použije se ten pro aktuální hodinu.
+Skladby k přehrání
+0 = celá složka
+Pořadí
+Opakování
+Jednou (datum)
+Každý den
+Dny v týdnu
+Každou hodinu
+Přesný čas
+Minuta každé hodiny
+0 = v celou (8:00, 9:00, 10:00...)
+V naplánovaný čas
+Počkat
+Začne, když skončí právě hraná skladba.
+Přerušit
+Přeruší skladbu a začne v přesnou minutu.
+Vytvořit událost
+Nastavené události
+Žádné naplánované události.
+Vytvořte ji pomocí formuláře.
+{n} skladeb
+celá složka
+Každou hodinu, minuta
+Čeká na skladbu
+Přeruší skladbu
+Příští
+Poslední spuštění
+Odeslán 1 soubor
+Odesláno souborů: {n}
+Přeskočeno: živý DJ ve vysílání
+Přeskočeno: relay ve vysílání
+Žádné soubory k přehrání
+AutoDJ vypnutý (bez spojení)
+Jednou restartujte AutoDJ, aby se události aktivovaly
+Událost vytvořena.
+Událost aktualizována.
+Událost smazána.
+Událost odeslána do vysílání: {x}.
+Vyberte soubor k přehrání.
+Vyberte složku.
+Vyberte datum události.
+Vyberte alespoň jeden den.
+Spustit nyní
+Aktivovat
+Naplánované události
+Rok
+Rok vydání
+Načíst rok/BPM
+Rok a BPM ze štítků ID3 souboru
+Štítky načteny: rok/BPM nalezen u {n} skladeb.
+Filtr podle roku / BPM
+od
+do
+Lupa filtruje složku podle roku vydání a BPM (např. jen 2010–2026 nebo 100–130 BPM). Skladby bez této hodnoty filtr vynechá; doplňte je v Hudební knihovně.
+Smazáno skladeb: {n}.

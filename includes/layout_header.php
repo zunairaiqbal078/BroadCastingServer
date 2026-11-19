@@ -276,6 +276,9 @@ $brand = getCurrentBranding();
             <li><a href="<?= BASE_URL ?>/cliente/rotacion_carpetas.php" class="<?= $currentPage === 'rotacion_carpetas' ? 'active' : '' ?>">
                 <span class="nav-icon"><?= cpIcon('refresh', 16) ?></span> Rotaci&oacute;n de Carpetas
             </a></li>
+            <li><a href="<?= BASE_URL ?>/cliente/eventos.php" class="<?= $currentPage === 'eventos' ? 'active' : '' ?>">
+                <span class="nav-icon"><?= cpIcon('zap', 16) ?></span> Eventos Programados
+            </a></li>
             <li><a href="<?= BASE_URL ?>/cliente/relay.php" class="<?= $currentPage === 'relay' ? 'active' : '' ?>">
                 <span class="nav-icon"><?= cpIcon('satellite', 16) ?></span> Relay Redireccionamiento
             </a></li>

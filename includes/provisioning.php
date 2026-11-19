@@ -657,6 +657,14 @@ radio = rotate(
 # track_sensitive=false switches back to music as soon as it is ready.
 radio = fallback(id="music_safe_{$slug}", track_sensitive=false, [radio, silence])
 
+# Scheduled events (Programming > Events). The panel pushes the files at the
+# programmed minute: evwait_ starts when the current song ends, evnow_ cuts
+# the song right away. When the queue is empty the AutoDJ continues.
+ev_wait = request.queue(id="evwait_{$slug}")
+ev_now = request.queue(id="evnow_{$slug}")
+radio = fallback(id="events_{$slug}", track_sensitive=true, [ev_wait, radio])
+radio = fallback(id="eventsnow_{$slug}", track_sensitive=false, [ev_now, radio])
+
 LIQ;
 
     // Agregar crossfade si está configurado
@@ -763,6 +771,11 @@ def on_metadata(m) =
     )
 end
 radio.on_metadata(on_metadata)
+
+# Scheduler tick: every minute the panel applies Folder Rotation, AutoDJ
+# Schedule, ads, relay and scheduled events for this station, so they switch
+# on time even when the system cron is not installed.
+thread.run(delay=20., every=60., fun () -> ignore(http.get(timeout=25., "$panelUrl/api/scheduler_tick.php?station=$slug")))
 
 LIQ;
 
@@ -1401,7 +1414,12 @@ function updateShoutcastProxyConfig(): bool {
         }
         $content .= "# Estacion: $slug (puerto $port)\n";
         $content .= "ProxyPass /shoutcast/$slug http://127.0.0.1:$port/stream/1/ retry=1 flushpackets=on\n";
-        $content .= "ProxyPassReverse /shoutcast/$slug http://127.0.0.1:$port/stream/1/\n\n";
+        $content .= "ProxyPassReverse /shoutcast/$slug http://127.0.0.1:$port/stream/1/\n";
+        // SonicPanel-style SSL links: https://domain/PORT/stream and https://domain/PORT/;
+        $content .= "ProxyPass /$port/stream http://127.0.0.1:$port/stream/1/ retry=1 flushpackets=on\n";
+        $content .= "ProxyPassReverse /$port/stream http://127.0.0.1:$port/stream/1/\n";
+        $content .= "ProxyPass /$port/; http://127.0.0.1:$port/stream/1/ retry=1 flushpackets=on\n";
+        $content .= "ProxyPassReverse /$port/; http://127.0.0.1:$port/stream/1/\n\n";
     }
 
     $ipcDir = '/var/run/castpanel';

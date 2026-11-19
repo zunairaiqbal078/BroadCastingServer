@@ -17,7 +17,13 @@ if ($slug === '' && !empty($_SERVER['REQUEST_URI'])) {
     }
 }
 
-if ($slug === '') {
+$byPort = (int)($_GET['port'] ?? 0);
+if ($slug === '' && $byPort <= 0 && !empty($_SERVER['REQUEST_URI'])
+    && preg_match('#/([0-9]{4,5})/(stream|;)#', (string)$_SERVER['REQUEST_URI'], $m)) {
+    $byPort = (int)$m[1];
+}
+
+if ($slug === '' && $byPort <= 0) {
     http_response_code(404);
     header('Content-Type: text/plain; charset=UTF-8');
     echo 'Station not found';
@@ -25,10 +31,18 @@ if ($slug === '') {
 }
 
 $db = getDB();
-$stmt = $db->prepare(
-    "SELECT slug, puerto_stream, server_type, activa FROM estaciones WHERE slug = ? LIMIT 1"
-);
-$stmt->execute([$slug]);
+if ($slug !== '') {
+    $stmt = $db->prepare(
+        "SELECT slug, puerto_stream, server_type, activa FROM estaciones WHERE slug = ? LIMIT 1"
+    );
+    $stmt->execute([$slug]);
+} else {
+    // Only ports that belong to a station are proxied
+    $stmt = $db->prepare(
+        "SELECT slug, puerto_stream, server_type, activa FROM estaciones WHERE puerto_stream = ? LIMIT 1"
+    );
+    $stmt->execute([$byPort]);
+}
 $estacion = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$estacion || empty($estacion['activa']) || !isShoutcastServerType($estacion['server_type'] ?? '')) {

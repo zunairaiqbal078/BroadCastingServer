@@ -2071,3 +2071,92 @@ Aperçu en direct
 Modifications non enregistrées : cliquez sur « Enregistrer la configuration »
 Listes de lecture (M3U / PLS / XSPF)
 Fichiers de liste pour ouvrir la radio dans VLC, WinAmp, AIMP, foobar2000, iTunes et des annuaires comme TuneIn ou Radio.net.
+Configuration SSL pour TuneIn, Radio.es et annuaires
+Utilisez ce lien pour inscrire votre radio sur TuneIn, Radio.es, Radio Garden et d'autres annuaires, ou dans les apps et lecteurs qui demandent l'URL du flux SHOUTcast. Il fonctionne aussi dans les lecteurs HTML5.
+Règles de mixage
+Ne pas répéter l'artiste avant (min)
+Ne pas répéter la chanson avant (min)
+Sélection des chansons
+Selon le mode AutoDJ (normal / aléatoire)
+Ordre du dossier
+Aléatoire
+Aléatoire par poids (priorité de chaque chanson)
+0 = aucune règle. Si un petit dossier (jingles, promos) ne peut pas respecter la règle, la chanson diffusée il y a le plus longtemps est utilisée. Le poids de chaque chanson (1 à 5) se modifie dans la Bibliothèque musicale.
+Artiste : {n} min
+Chanson : {n} min
+Dans l'ordre
+Par poids
+Poids
+Très faible
+Normal
+Très élevé
+Définir le poids
+Poids mis à jour sur {n} chansons.
+Événements programmés
+Événements programmés - CastPanel
+Événements
+Les événements lancent un fichier, un dossier (émission enregistrée, infos, bloc publicitaire) ou l'annonce de l'heure à une minute précise. À la fin, l'AutoDJ reprend seul. Si un DJ en direct ou un relais est à l'antenne, l'événement est ignoré.
+Nouvel événement
+Modifier l'événement
+Nom de l'événement *
+Ex : Infos du matin
+Que diffuser ?
+Dossier / émission
+Annonce de l'heure
+Dossier
+Placez dans ce dossier un audio par heure avec l'heure dans le nom (ex : 08.mp3, heure 8.mp3, 20.mp3). Celui de l'heure actuelle est utilisé.
+Chansons à diffuser
+0 = tout le dossier
+Ordre
+Répétition
+Une seule fois (date)
+Tous les jours
+Jours de la semaine
+Toutes les heures
+Heure exacte
+Minute de chaque heure
+0 = heure pile (8:00, 9:00, 10:00...)
+À l'heure prévue
+Attendre
+Commence à la fin de la chanson en cours.
+Couper
+Coupe la chanson et commence à la minute exacte.
+Créer l'événement
+Événements configurés
+Aucun événement programmé.
+Créez-en un avec le formulaire.
+{n} chansons
+tout le dossier
+Toutes les heures, minute
+Attend la chanson
+Coupe la chanson
+Prochain
+Dernière exécution
+1 fichier envoyé
+{n} fichiers envoyés
+Ignoré : DJ en direct à l'antenne
+Ignoré : relais à l'antenne
+Aucun fichier à diffuser
+AutoDJ arrêté (pas de connexion)
+Redémarrez l'AutoDJ une fois pour activer les événements
+Événement créé.
+Événement mis à jour.
+Événement supprimé.
+Événement envoyé à l'antenne : {x}.
+Choisissez le fichier à diffuser.
+Choisissez le dossier.
+Choisissez la date de l'événement.
+Choisissez au moins un jour.
+Exécuter maintenant
+Activer
+Événements programmés
+Année
+Année de sortie
+Lire année/BPM
+Année et BPM depuis les balises ID3 du fichier
+Balises lues : année/BPM trouvés dans {n} chansons.
+Filtre par année / BPM
+de
+à
+La loupe filtre le dossier par année de sortie et BPM (ex : seulement 2010–2026, ou 100–130 BPM). Les chansons sans cette donnée sont exclues ; complétez-les dans la Bibliothèque musicale.
+{n} chansons supprimées.

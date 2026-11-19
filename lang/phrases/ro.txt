@@ -2071,3 +2071,92 @@ Previzualizare live
 Modificări nesalvate: apăsați „Salvează configurația”
 Liste de redare (M3U / PLS / XSPF)
 Fișiere listă pentru a deschide radioul în VLC, WinAmp, AIMP, foobar2000, iTunes și directoare precum TuneIn sau Radio.net.
+Configurare SSL pentru TuneIn, Radio.es și directoare
+Folosiți acest link pentru a înregistra radioul pe TuneIn, Radio.es, Radio Garden și alte directoare, sau în aplicații și playere care cer URL-ul stream-ului SHOUTcast. Funcționează și în playere HTML5.
+Reguli de mixare
+Nu repeta artistul timp de (min)
+Nu repeta piesa timp de (min)
+Selecția pieselor
+După modul AutoDJ (normal / aleatoriu)
+Ordinea folderului
+Aleatoriu
+Aleatoriu după pondere (prioritatea fiecărei piese)
+0 = fără regulă. Dacă un folder mic (jingle-uri, promo) nu poate respecta regula, se folosește piesa care nu a mai fost difuzată de cel mai mult timp. Ponderea fiecărei piese (1-5) se schimbă în Biblioteca muzicală.
+Artist: {n} min
+Piesă: {n} min
+În ordine
+După pondere
+Pondere
+Foarte mică
+Normală
+Foarte mare
+Setează ponderea
+Ponderea a fost actualizată pentru {n} piese.
+Evenimente programate
+Evenimente programate - CastPanel
+Evenimente
+Evenimentele redau un fișier, un folder (emisiune înregistrată, știri, calup publicitar) sau anunțul orei la un minut exact. La final, AutoDJ continuă singur. Dacă un DJ live sau un relay este în emisie, evenimentul este omis.
+Eveniment nou
+Editează evenimentul
+Numele evenimentului *
+Ex: Știrile de dimineață
+Ce se redă?
+Folder / emisiune
+Anunțul orei
+Folder
+Încărcați în acest folder câte un audio pentru fiecare oră, cu ora în nume (ex: 08.mp3, ora 8.mp3, 20.mp3). Se folosește cel al orei curente.
+Piese de redat
+0 = tot folderul
+Ordine
+Repetare
+O singură dată (dată)
+În fiecare zi
+Zilele săptămânii
+În fiecare oră
+Ora exactă
+Minutul fiecărei ore
+0 = fix (8:00, 9:00, 10:00...)
+La ora programată
+Așteaptă
+Începe când se termină piesa curentă.
+Întrerupe
+Întrerupe piesa și începe la minutul exact.
+Creează evenimentul
+Evenimente configurate
+Nu există evenimente programate.
+Creați unul cu formularul.
+{n} piese
+tot folderul
+În fiecare oră, minutul
+Așteaptă piesa
+Întrerupe piesa
+Următorul
+Ultima rulare
+1 fișier trimis
+{n} fișiere trimise
+Omis: DJ live în emisie
+Omis: relay în emisie
+Niciun fișier de redat
+AutoDJ oprit (fără conexiune)
+Reporniți AutoDJ o dată pentru a activa evenimentele
+Eveniment creat.
+Eveniment actualizat.
+Eveniment șters.
+Eveniment trimis în emisie: {x}.
+Alegeți fișierul de redat.
+Alegeți folderul.
+Alegeți data evenimentului.
+Alegeți cel puțin o zi.
+Rulează acum
+Activează
+Evenimente programate
+An
+Anul lansării
+Citește anul/BPM
+Anul și BPM din etichetele ID3 ale fișierului
+Etichete citite: an/BPM găsite în {n} piese.
+Filtru după an / BPM
+de la
+până la
+Lupa filtrează folderul după anul lansării și BPM (ex: doar 2010–2026 sau 100–130 BPM). Piesele fără această valoare rămân în afara filtrului; completați-le în Biblioteca muzicală.
+{n} piese șterse.

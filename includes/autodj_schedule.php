@@ -27,16 +27,22 @@ function cpSchedDayKey(DateTimeInterface $now): string {
     return CP_DAY_KEYS[(int)$now->format('N')];
 }
 
-/** Is $now inside [start, end]? Windows that cross midnight (22:00–02:00) count too. */
+/**
+ * Is $now inside [start, end)? The end minute belongs to the next block, so
+ * 10:00–11:00 then 11:00–12:00 switch exactly at 11:00. An end of 23:59 means
+ * "until midnight" (whole minute included). Windows that cross midnight
+ * (22:00–02:00) count too; start = end means all day.
+ */
 function cpSchedTimeIn(DateTimeInterface $now, string $start, string $end): bool {
-    // minute precision, end minute included (12:00–12:59 includes 12:59:40)
     $t = $now->format('H:i');
     $start = substr($start, 0, 5);
     $end = substr($end, 0, 5);
-    if ($start <= $end) {
-        return $t >= $start && $t <= $end;
+    if ($start === $end) return true;
+    $beforeEnd = $end === '23:59' ? $t <= $end : $t < $end;
+    if ($start < $end) {
+        return $t >= $start && $beforeEnd;
     }
-    return $t >= $start || $t <= $end;
+    return $t >= $start || $beforeEnd;
 }
 
 /** "lunes,martes" / "todos" / "" → does it include today? */
@@ -55,6 +61,24 @@ function castpanelResolveMusicSource(array $estacion, ?DateTimeInterface $now = 
     $db = getDB();
     $id = (int)$estacion['id'];
     $best = null; // [prioridad, rank, result]
+    // A block whose folders have no songs is skipped (it used to put the station on silence)
+    $hasSongs = static function (string $type, int $srcId) use ($db, $id): bool {
+        try {
+            if ($type === 'schedule') {
+                $st = $db->prepare('SELECT 1 FROM canciones WHERE estacion_id = ? AND playlist_id = ? AND activa = 1 LIMIT 1');
+                $st->execute([$id, $srcId]);
+                return (bool)$st->fetchColumn();
+            }
+            $st = $db->prepare('SELECT * FROM rotacion_carpetas_secuencia WHERE rotacion_id = ?');
+            $st->execute([$srcId]);
+            foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $row) {
+                if (cpSchedFolderSongs($id, (int)$row['playlist_id'], $row)) return true;
+            }
+            return false;
+        } catch (PDOException $e) {
+            return true;
+        }
+    };
 
     try {
         $st = $db->prepare('SELECT * FROM rotacion_carpetas WHERE estacion_id = ? AND activa = 1');
@@ -63,6 +87,7 @@ function castpanelResolveMusicSource(array $estacion, ?DateTimeInterface $now = 
             if (!cpSchedDaysMatch((string)$r['dias'], $now, true)) continue;
             if (!cpSchedTimeIn($now, (string)$r['hora_inicio'], (string)$r['hora_fin'])) continue;
             $cand = [(int)$r['prioridad'], 2, ['type' => 'rotation', 'id' => (int)$r['id'], 'name' => $r['nombre']]];
+            if (($best === null || [$cand[0], $cand[1]] > [$best[0], $best[1]]) && !$hasSongs('rotation', (int)$r['id'])) continue;
             if ($best === null || [$cand[0], $cand[1]] > [$best[0], $best[1]]) $best = $cand;
         }
     } catch (PDOException $e) {}
@@ -74,6 +99,7 @@ function castpanelResolveMusicSource(array $estacion, ?DateTimeInterface $now = 
         foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $r) {
             if (!cpSchedTimeIn($now, (string)$r['hora_inicio'], (string)$r['hora_fin'])) continue;
             $cand = [(int)$r['prioridad'], 1, ['type' => 'schedule', 'id' => (int)$r['playlist_id'], 'name' => $r['nombre']]];
+            if (($best === null || [$cand[0], $cand[1]] > [$best[0], $best[1]]) && !$hasSongs('schedule', (int)$r['playlist_id'])) continue;
             if ($best === null || [$cand[0], $cand[1]] > [$best[0], $best[1]]) $best = $cand;
         }
     } catch (PDOException $e) {}
@@ -83,19 +109,66 @@ function castpanelResolveMusicSource(array $estacion, ?DateTimeInterface $now = 
     return ['type' => 'default', 'id' => $pl ?: null, 'name' => null];
 }
 
-/** Songs of one folder (or the whole library when $playlistId is null). */
-function cpSchedFolderSongs(int $estacionId, ?int $playlistId): array {
+/**
+ * Rotation rules: artist/track separation, song weight, release year and
+ * BPM (song columns + per-step filters).
+ * Adds the columns on first use so existing installs need no manual migration.
+ */
+function castpanelEnsureRotationRuleColumns(): void {
+    static $done = false;
+    if ($done) return;
+    $done = true;
     $db = getDB();
-    if ($playlistId) {
-        $st = $db->prepare('SELECT ruta_archivo, titulo, artista, duracion_segundos FROM canciones
-                            WHERE estacion_id = ? AND playlist_id = ? AND activa = 1 ORDER BY orden ASC, id ASC');
-        $st->execute([$estacionId, $playlistId]);
-    } else {
-        $st = $db->prepare('SELECT ruta_archivo, titulo, artista, duracion_segundos FROM canciones
-                            WHERE estacion_id = ? AND activa = 1 ORDER BY orden ASC, id ASC');
-        $st->execute([$estacionId]);
+    $cols = [
+        ['rotacion_carpetas', 'sep_artista_min', 'INT UNSIGNED NOT NULL DEFAULT 0'],
+        ['rotacion_carpetas', 'sep_cancion_min', 'INT UNSIGNED NOT NULL DEFAULT 0'],
+        ['rotacion_carpetas', 'seleccion', "VARCHAR(16) NOT NULL DEFAULT 'auto'"],
+        ['canciones', 'peso', 'TINYINT UNSIGNED NOT NULL DEFAULT 3'],
+        // Phase 3: release year and BPM per song, filters per rotation step
+        ['canciones', 'anio', 'SMALLINT UNSIGNED DEFAULT NULL'],
+        ['canciones', 'bpm', 'SMALLINT UNSIGNED DEFAULT NULL'],
+        ['rotacion_carpetas_secuencia', 'anio_min', 'SMALLINT UNSIGNED DEFAULT NULL'],
+        ['rotacion_carpetas_secuencia', 'anio_max', 'SMALLINT UNSIGNED DEFAULT NULL'],
+        ['rotacion_carpetas_secuencia', 'bpm_min', 'SMALLINT UNSIGNED DEFAULT NULL'],
+        ['rotacion_carpetas_secuencia', 'bpm_max', 'SMALLINT UNSIGNED DEFAULT NULL'],
+    ];
+    foreach ($cols as [$table, $col, $ddl]) {
+        try {
+            $st = $db->prepare('SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND COLUMN_NAME = ?');
+            $st->execute([$table, $col]);
+            if (!$st->fetchColumn()) $db->exec("ALTER TABLE `$table` ADD COLUMN `$col` $ddl");
+        } catch (PDOException $e) {
+            error_log("CastPanel: could not add $table.$col: " . $e->getMessage());
+        }
     }
+}
+
+/**
+ * Songs of one folder (or the whole library when $playlistId is null).
+ * $filter (rotation step): anio_min/anio_max/bpm_min/bpm_max; a song without
+ * the value is left out when that filter is set.
+ */
+function cpSchedFolderSongs(int $estacionId, ?int $playlistId, array $filter = []): array {
+    $db = getDB();
+    castpanelEnsureRotationRuleColumns();
+    $sql = 'SELECT ruta_archivo, titulo, artista, duracion_segundos, peso, anio, bpm FROM canciones WHERE estacion_id = ? AND activa = 1';
+    $args = [$estacionId];
+    if ($playlistId) { $sql .= ' AND playlist_id = ?'; $args[] = $playlistId; }
+    foreach (['anio_min' => 'anio >= ?', 'anio_max' => 'anio <= ?', 'bpm_min' => 'bpm >= ?', 'bpm_max' => 'bpm <= ?'] as $k => $cond) {
+        if (isset($filter[$k]) && $filter[$k] !== null && $filter[$k] !== '' && (int)$filter[$k] > 0) {
+            $sql .= ' AND ' . $cond;
+            $args[] = (int)$filter[$k];
+        }
+    }
+    $st = $db->prepare($sql . ' ORDER BY orden ASC, id ASC');
+    $st->execute($args);
     return $st->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/** Does a rotation step have a year/BPM filter? */
+function cpSchedStepHasFilter(array $row): bool {
+    foreach (['anio_min', 'anio_max', 'bpm_min', 'bpm_max'] as $k) if ((int)($row[$k] ?? 0) > 0) return true;
+    return false;
 }
 
 /** Shuffle mode: a new random order every hour (stable within the hour). */
@@ -123,12 +196,27 @@ function castpanelBuildMusicTracks(array $estacion, array $source): array {
         return $shuffle ? cpSchedShuffle($songs, $estacion['slug'] . ':' . $source['id']) : $songs;
     }
 
-    $st = getDB()->prepare('SELECT playlist_id, cantidad FROM rotacion_carpetas_secuencia WHERE rotacion_id = ? ORDER BY orden ASC, id ASC');
+    // Rotation rules: separation (minutes) and selection mode
+    $rules = ['sep_artista_min' => 0, 'sep_cancion_min' => 0, 'seleccion' => 'auto'];
+    try {
+        $rs = getDB()->prepare('SELECT sep_artista_min, sep_cancion_min, seleccion FROM rotacion_carpetas WHERE id = ?');
+        $rs->execute([$source['id']]);
+        $rules = array_merge($rules, $rs->fetch(PDO::FETCH_ASSOC) ?: []);
+    } catch (PDOException $e) {}
+    $mode = (string)$rules['seleccion'];
+    if (!in_array($mode, ['orden', 'aleatorio', 'peso'], true)) $mode = $shuffle ? 'aleatorio' : 'orden';
+    if ((int)$rules['sep_artista_min'] > 0 || (int)$rules['sep_cancion_min'] > 0 || $mode === 'peso'
+        || ($mode === 'orden' && $shuffle) || ($mode === 'aleatorio' && !$shuffle)) {
+        return cpSchedBuildRotationWithRules($estacion, (int)$source['id'], $mode,
+            (int)$rules['sep_artista_min'] * 60, (int)$rules['sep_cancion_min'] * 60);
+    }
+
+    $st = getDB()->prepare('SELECT * FROM rotacion_carpetas_secuencia WHERE rotacion_id = ? ORDER BY orden ASC, id ASC');
     $st->execute([$source['id']]);
     $steps = [];
     foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $row) {
-        $songs = cpSchedFolderSongs($id, (int)$row['playlist_id']);
-        if (!$songs) continue; // empty folder: skip its turn
+        $songs = cpSchedFolderSongs($id, (int)$row['playlist_id'], $row);
+        if (!$songs) continue; // empty folder (or nothing matches its year/BPM filter): skip its turn
         if ($shuffle) $songs = cpSchedShuffle($songs, $estacion['slug'] . ':' . $row['playlist_id']);
         $steps[] = ['songs' => $songs, 'n' => max(1, (int)$row['cantidad']), 'pos' => 0, 'wrapped' => false];
     }
@@ -147,6 +235,99 @@ function castpanelBuildMusicTracks(array $estacion, array $source): array {
         unset($s);
         if (!array_filter($steps, fn($s) => !$s['wrapped'])) break; // every folder came round
     }
+    return $out;
+}
+
+/**
+ * Rotation with mixing rules. Builds about one day of audio (the list is
+ * rebuilt every day, Liquidsoap loops it):
+ *  - the cycle (N songs from folder A, M from folder B, ...) repeats in order;
+ *  - a song is not repeated within $sepSong seconds and an artist within
+ *    $sepArtist seconds (time measured with each song's duration);
+ *  - $mode: orden = folder order, aleatorio = random, peso = random weighted
+ *    by each song's weight (1-5).
+ * When a small folder (jingles, promos) cannot meet a rule, the song that
+ * played longest ago is used, so the cycle never stops.
+ */
+function cpSchedBuildRotationWithRules(array $estacion, int $rotationId, string $mode, int $sepArtist, int $sepSong): array {
+    $id = (int)$estacion['id'];
+    $st = getDB()->prepare('SELECT * FROM rotacion_carpetas_secuencia WHERE rotacion_id = ? ORDER BY orden ASC, id ASC');
+    $st->execute([$rotationId]);
+    $steps = [];
+    foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $row) {
+        $songs = cpSchedFolderSongs($id, (int)$row['playlist_id'], $row);
+        if ($songs) $steps[] = ['songs' => $songs, 'n' => max(1, (int)$row['cantidad']), 'ptr' => 0];
+    }
+    if (!$steps) return [];
+
+    mt_srand(crc32($estacion['slug'] . ':rot' . $rotationId . ':' . date('Y-m-d')));
+    $lastSong = [];   // ruta => time it started (seconds from list start)
+    $lastArtist = []; // normalised artist => time
+    $t = 0;
+    $out = [];
+    $targetSeconds = 26 * 3600;
+    $artistKey = static fn(array $s): string => mb_strtolower(trim((string)($s['artista'] ?? '')));
+
+    while ($t < $targetSeconds && count($out) < 3000) {
+        foreach ($steps as &$step) {
+            for ($k = 0; $k < $step['n']; $k++) {
+                $songs = $step['songs'];
+                $ok = static function (array $s, bool $checkArtist) use ($t, $sepSong, $sepArtist, $lastSong, $lastArtist, $artistKey): bool {
+                    $r = $s['ruta_archivo'];
+                    if ($sepSong > 0 && isset($lastSong[$r]) && $t - $lastSong[$r] < $sepSong) return false;
+                    if ($checkArtist && $sepArtist > 0) {
+                        $a = $artistKey($s);
+                        if ($a !== '' && isset($lastArtist[$a]) && $t - $lastArtist[$a] < $sepArtist) return false;
+                    }
+                    return true;
+                };
+                // Indexes that meet both rules; relax the artist rule, then fall back to the least recently played
+                $eligible = array_keys(array_filter($songs, fn($s) => $ok($s, true)));
+                if (!$eligible) $eligible = array_keys(array_filter($songs, fn($s) => $ok($s, false)));
+                if (!$eligible) {
+                    $best = 0; $bestT = PHP_INT_MAX;
+                    foreach ($songs as $i => $s) {
+                        $lt = $lastSong[$s['ruta_archivo']] ?? -1;
+                        if ($lt < $bestT) { $bestT = $lt; $best = $i; }
+                    }
+                    $eligible = [$best];
+                }
+
+                if ($mode === 'orden') {
+                    // first eligible song at or after the folder pointer
+                    $cnt = count($songs);
+                    $pick = $eligible[0];
+                    $set = array_flip($eligible);
+                    for ($j = 0; $j < $cnt; $j++) {
+                        $idx = ($step['ptr'] + $j) % $cnt;
+                        if (isset($set[$idx])) { $pick = $idx; break; }
+                    }
+                    $step['ptr'] = ($pick + 1) % $cnt;
+                } elseif ($mode === 'peso') {
+                    $total = 0;
+                    foreach ($eligible as $i) $total += max(1, min(5, (int)($songs[$i]['peso'] ?? 3)));
+                    $roll = mt_rand(1, $total);
+                    $pick = $eligible[0];
+                    foreach ($eligible as $i) {
+                        $roll -= max(1, min(5, (int)($songs[$i]['peso'] ?? 3)));
+                        if ($roll <= 0) { $pick = $i; break; }
+                    }
+                } else {
+                    $pick = $eligible[mt_rand(0, count($eligible) - 1)];
+                }
+
+                $song = $songs[$pick];
+                $out[] = $song;
+                $lastSong[$song['ruta_archivo']] = $t;
+                $a = $artistKey($song);
+                if ($a !== '') $lastArtist[$a] = $t;
+                $dur = (int)($song['duracion_segundos'] ?? 0);
+                $t += $dur > 0 ? $dur : 210;
+            }
+        }
+        unset($step);
+    }
+    mt_srand();
     return $out;
 }
 

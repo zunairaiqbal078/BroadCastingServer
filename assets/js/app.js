@@ -257,6 +257,8 @@ function searchTable(inputOrValue, tableId) {
     if (!table) return;
 
     const input = typeof inputOrValue === 'string' ? document.getElementById(inputOrValue) : null;
+    // An input id that does not exist on the page must not be used as filter text (it hid every row)
+    if (!input && typeof inputOrValue === 'string' && /^[A-Za-z][\w-]*(Input|_input|-input)$/.test(inputOrValue)) return;
     if (input) {
         input.addEventListener('input', () => {
             const filter = input.value.toLowerCase();

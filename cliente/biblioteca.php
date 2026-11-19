@@ -10,17 +10,70 @@ require_once __DIR__ . '/../includes/layout_header.php';
 if (!$estacion) { echo '<div class="alert alert-warning">Sin estaci&oacute;n asignada.</div>'; require_once __DIR__ . '/../includes/layout_footer.php'; exit; }
 
 $db = getDB();
+require_once __DIR__ . '/../includes/autodj_schedule.php';
+castpanelEnsureRotationRuleColumns();
+$cpWeightLabels = [1 => 'Muy baja', 2 => 'Baja', 3 => 'Normal', 4 => 'Alta', 5 => 'Muy alta'];
 
 // Procesar acciones
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
     $action = $_POST['action'] ?? '';
+
+    // Re-read release year and BPM from the files' tags (selected songs)
+    if ($action === 'read_tags') {
+        $ids = array_map('intval', (array)($_POST['selected_ids'] ?? []));
+        $found = 0;
+        if ($ids) {
+            $in = implode(',', array_fill(0, count($ids), '?'));
+            $st = $db->prepare("SELECT id, ruta_archivo FROM canciones WHERE estacion_id = ? AND id IN ($in)");
+            $st->execute(array_merge([$estacion['id']], $ids));
+            $up = $db->prepare('UPDATE canciones SET anio = COALESCE(?, anio), bpm = COALESCE(?, bpm) WHERE id = ?');
+            foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $row) {
+                if (!is_file($row['ruta_archivo'])) continue;
+                $tags = getMP3Info($row['ruta_archivo']);
+                if ($tags['anio'] || $tags['bpm']) { $up->execute([$tags['anio'], $tags['bpm'], $row['id']]); $found++; }
+            }
+        }
+        $cpSchedStation = (int)$estacion['id'];
+        register_shutdown_function(static function () use ($cpSchedStation) { castpanelApplyStationScheduleById($cpSchedStation); });
+        setFlash('success', "Etiquetas leídas: año/BPM encontrados en $found canciones.");
+        $back = preg_replace('/[^A-Za-z0-9_=&%.+-]/', '', (string)($_POST['return_qs'] ?? ''));
+        header('Location: biblioteca.php' . ($back !== '' ? '?' . $back : '')); exit;
+    }
+
+    // Song weight (rotation "random by weight"): one song via fetch, or the selected ones
+    if ($action === 'set_weight' || $action === 'weight_selected') {
+        $peso = max(1, min(5, (int)($_POST['peso'] ?? 3)));
+        $ids = $action === 'set_weight' ? [(int)($_POST['cancion_id'] ?? 0)] : array_map('intval', (array)($_POST['selected_ids'] ?? []));
+        $n = 0;
+        if ($ids) {
+            $in = implode(',', array_fill(0, count($ids), '?'));
+            $st = $db->prepare("UPDATE canciones SET peso = ? WHERE estacion_id = ? AND id IN ($in)");
+            $st->execute(array_merge([$peso, $estacion['id']], $ids));
+            $n = $st->rowCount();
+        }
+        $cpSchedStation = (int)$estacion['id'];
+        register_shutdown_function(static function () use ($cpSchedStation) { castpanelApplyStationScheduleById($cpSchedStation); });
+        if ($action === 'set_weight') {
+            while (ob_get_level() > 0) ob_end_clean(); // drop the page/translator buffers
+            header('Content-Type: application/json');
+            echo json_encode(['success' => true, 'peso' => $peso]);
+            exit;
+        }
+        setFlash('success', "Peso actualizado en $n canciones.");
+        $back = preg_replace('/[^A-Za-z0-9_=&%.+-]/', '', (string)($_POST['return_qs'] ?? ''));
+        header('Location: biblioteca.php' . ($back !== '' ? '?' . $back : '')); exit;
+    }
 
     try {
         if ($action === 'rename') {
             $id = (int)$_POST['cancion_id'];
             $titulo = trim($_POST['titulo']);
             $artista = trim($_POST['artista']);
-            $db->prepare("UPDATE canciones SET titulo = ?, artista = ? WHERE id = ? AND estacion_id = ?")->execute([$titulo, $artista, $id, $estacion['id']]);
+            $anio = castpanelParseYear($_POST['anio'] ?? null);
+            $bpm = castpanelParseBpm($_POST['bpm'] ?? null);
+            $db->prepare("UPDATE canciones SET titulo = ?, artista = ?, anio = ?, bpm = ? WHERE id = ? AND estacion_id = ?")->execute([$titulo, $artista, $anio, $bpm, $id, $estacion['id']]);
+            $cpSchedStation = (int)$estacion['id'];
+            register_shutdown_function(static function () use ($cpSchedStation) { castpanelApplyStationScheduleById($cpSchedStation); });
             setFlash('success', 'Canci&oacute;n actualizada.');
             header('Location: biblioteca.php'); exit;
         }
@@ -230,6 +283,9 @@ try {
                                 <th>Artista</th>
                                 <th>Lista</th>
                                 <th>Duraci&oacute;n</th>
+                                <th>A&ntilde;o</th>
+                                <th>BPM</th>
+                                <th title="Prioridad de reproducci&oacute;n en rotaciones &laquo;Aleatoria por peso&raquo;">Peso</th>
                                 <th>Tama&ntilde;o</th>
                                 <th style="width:100px">Acciones</th>
                             </tr>
@@ -260,6 +316,16 @@ try {
                                         <?php endif; ?>
                                     </td>
                                     <td style="font-size:13px"><?= $c['duracion_segundos'] ? formatDuration($c['duracion_segundos']) : '—' ?></td>
+                                    <td style="font-size:13px" translate="no"><?= !empty($c['anio']) ? (int)$c['anio'] : '—' ?></td>
+                                    <td style="font-size:13px" translate="no"><?= !empty($c['bpm']) ? (int)$c['bpm'] : '—' ?></td>
+                                    <td>
+                                        <?php $pw = max(1, min(5, (int)($c['peso'] ?? 3))); ?>
+                                        <select class="cp-weight w<?= $pw ?>" data-id="<?= (int)$c['id'] ?>" onchange="cpSetWeight(this)" aria-label="Peso">
+                                            <?php foreach ($cpWeightLabels as $wv => $wl): ?>
+                                                <option value="<?= $wv ?>" <?= $wv === $pw ? 'selected' : '' ?>><?= $wl ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </td>
                                     <td style="font-size:13px"><?= formatBytes($c['tamano_bytes']) ?></td>
                                     <td>
                                         <div style="display:flex;gap:3px">
@@ -276,7 +342,17 @@ try {
 
                 <!-- Bulk actions bar -->
                 <div style="padding:10px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar las canciones seleccionadas?')"><?= cpIcon('trash',14) ?> Eliminar Seleccionadas</button>
+                    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="this.form.action.value='delete_selected';return confirm('¿Eliminar las canciones seleccionadas?')"><?= cpIcon('trash',14) ?> Eliminar Seleccionadas</button>
+                        <input type="hidden" name="return_qs" value="<?= htmlspecialchars($_SERVER['QUERY_STRING'] ?? '') ?>">
+                        <select name="peso" class="form-control" style="width:auto;height:31px;padding:2px 8px;font-size:12.5px" aria-label="Peso">
+                            <?php foreach ($cpWeightLabels as $wv => $wl): ?>
+                                <option value="<?= $wv ?>" <?= $wv === 3 ? 'selected' : '' ?>><?= $wl ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" class="btn btn-outline btn-sm" onclick="if(!document.querySelector('.song-check:checked')){alert('Selecciona canciones primero');return false;}this.form.action.value='weight_selected'"><?= cpIcon('star',14) ?> Asignar peso</button>
+                        <button type="submit" class="btn btn-outline btn-sm" title="A&ntilde;o y BPM desde las etiquetas ID3 del archivo" onclick="if(!document.querySelector('.song-check:checked')){alert('Selecciona canciones primero');return false;}this.form.action.value='read_tags'"><?= cpIcon('refresh',14) ?> Leer a&ntilde;o/BPM</button>
+                    </div>
                     <div style="font-size:12px;color:var(--text-secondary)">
                         Selecciona canciones con las casillas para acciones masivas
                     </div>
@@ -332,6 +408,16 @@ try {
                     <label>Artista</label>
                     <input type="text" name="artista" class="form-control" value="<?= htmlspecialchars($c['artista'] ?? '') ?>">
                 </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                    <div class="form-group">
+                        <label>A&ntilde;o de lanzamiento</label>
+                        <input type="number" name="anio" class="form-control" min="1900" max="<?= (int)date('Y') + 1 ?>" placeholder="2024" value="<?= !empty($c['anio']) ? (int)$c['anio'] : '' ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>BPM</label>
+                        <input type="number" name="bpm" class="form-control" min="30" max="300" placeholder="120" value="<?= !empty($c['bpm']) ? (int)$c['bpm'] : '' ?>">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline" onclick="closeModal('editModal-<?= $c['id'] ?>')">Cancelar</button>
@@ -372,11 +458,30 @@ try {
 </div>
 <?php endforeach; ?>
 
+<style>
+.cp-weight{border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:12px;font-family:inherit;background:var(--card-bg);color:var(--text-primary);cursor:pointer}
+.cp-weight.w1,.cp-weight.w2{color:#64748b}
+.cp-weight.w4{color:#d97706;font-weight:600}
+.cp-weight.w5{color:#dc2626;font-weight:700}
+.cp-weight.saved{border-color:#10b981;box-shadow:0 0 0 2px rgba(16,185,129,.2)}
+</style>
 <script>
+function cpSetWeight(sel) {
+    var body = new URLSearchParams({ action: 'set_weight', cancion_id: sel.dataset.id, peso: sel.value,
+        csrf_token: <?= json_encode(csrfToken()) ?> });
+    fetch('biblioteca.php', { method: 'POST', credentials: 'same-origin', body: body })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+            if (!d.success) throw new Error();
+            sel.className = 'cp-weight w' + d.peso + ' saved';
+            setTimeout(function () { sel.classList.remove('saved'); }, 1200);
+        })
+        .catch(function () { alert('No se pudo guardar el peso'); });
+}
 document.addEventListener('DOMContentLoaded', function() {
-    if (typeof searchTable === 'function') {
-        searchTable('searchInput', 'tablaBiblioteca');
-    }
+    // Search and folder filter run on the server (?q=&playlist=). The old
+    // searchTable('searchInput', ...) call had no #searchInput element, so it
+    // filtered by the word "searchInput" and hid every row.
 });
 </script>
 

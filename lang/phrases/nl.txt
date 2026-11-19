@@ -2071,3 +2071,92 @@ Live voorbeeld
 Niet-opgeslagen wijzigingen: klik op "Configuratie opslaan"
 Afspeellijsten (M3U / PLS / XSPF)
 Afspeellijstbestanden om de radio te openen in VLC, WinAmp, AIMP, foobar2000, iTunes en gidsen zoals TuneIn of Radio.net.
+SSL-instelling voor TuneIn, Radio.es en gidsen
+Gebruik deze link om je radio te registreren bij TuneIn, Radio.es, Radio Garden en andere gidsen, of in apps en spelers die om de SHOUTcast-stream-URL vragen. Werkt ook in HTML5-spelers.
+Mixregels
+Artiest niet herhalen binnen (min)
+Nummer niet herhalen binnen (min)
+Nummerselectie
+Volgens AutoDJ-modus (normaal / willekeurig)
+Mapvolgorde
+Willekeurig
+Willekeurig op gewicht (prioriteit per nummer)
+0 = geen regel. Als een kleine map (jingles, promo's) de regel niet kan halen, wordt het nummer gebruikt dat het langst niet heeft gespeeld. Het gewicht van elk nummer (1 tot 5) stel je in de Muziekbibliotheek in.
+Artiest: {n} min
+Nummer: {n} min
+Op volgorde
+Op gewicht
+Gewicht
+Zeer laag
+Normaal
+Zeer hoog
+Gewicht instellen
+Gewicht bijgewerkt voor {n} nummers.
+Geplande evenementen
+Geplande evenementen - CastPanel
+Evenementen
+Evenementen spelen een bestand, een map (opgenomen programma, nieuws, reclameblok) of de tijdmelding op een exacte minuut. Daarna gaat de AutoDJ vanzelf verder. Als er een live-DJ of relay in de lucht is, wordt het evenement overgeslagen.
+Nieuw evenement
+Evenement bewerken
+Naam van het evenement *
+Bijv.: Ochtendnieuws
+Wat wordt er afgespeeld?
+Map / programma
+Tijdmelding
+Map
+Upload naar deze map één audio per uur met het uur in de naam (bijv. 08.mp3, uur 8.mp3, 20.mp3). Die van het huidige uur wordt gebruikt.
+Af te spelen nummers
+0 = hele map
+Volgorde
+Herhaling
+Eenmalig (datum)
+Elke dag
+Dagen van de week
+Elk uur
+Exacte tijd
+Minuut van elk uur
+0 = op het hele uur (8:00, 9:00, 10:00...)
+Op het geplande tijdstip
+Wachten
+Start wanneer het huidige nummer afgelopen is.
+Afbreken
+Breekt het nummer af en start op de exacte minuut.
+Evenement maken
+Ingestelde evenementen
+Geen geplande evenementen.
+Maak er een met het formulier.
+{n} nummers
+hele map
+Elk uur, minuut
+Wacht op het nummer
+Breekt het nummer af
+Volgende
+Laatste uitvoering
+1 bestand verzonden
+{n} bestanden verzonden
+Overgeslagen: live-DJ in de lucht
+Overgeslagen: relay in de lucht
+Geen bestanden om af te spelen
+AutoDJ uit (geen verbinding)
+Herstart de AutoDJ één keer om evenementen te activeren
+Evenement gemaakt.
+Evenement bijgewerkt.
+Evenement verwijderd.
+Evenement naar de lucht gestuurd: {x}.
+Kies het bestand om af te spelen.
+Kies de map.
+Kies de datum van het evenement.
+Kies minstens één dag.
+Nu uitvoeren
+Activeren
+Geplande evenementen
+Jaar
+Jaar van uitgave
+Jaar/BPM lezen
+Jaar en BPM uit de ID3-tags van het bestand
+Tags gelezen: jaar/BPM gevonden in {n} nummers.
+Filter op jaar / BPM
+van
+tot
+Het vergrootglas filtert de map op jaar van uitgave en BPM (bijv. alleen 2010–2026, of 100–130 BPM). Nummers zonder die waarde vallen buiten het filter; vul ze aan in de Muziekbibliotheek.
+{n} nummers verwijderd.

@@ -2071,3 +2071,92 @@ Live-Vorschau
 Ungespeicherte Änderungen: Klicken Sie auf „Konfiguration speichern“
 Playlists (M3U / PLS / XSPF)
 Playlist-Dateien, um das Radio in VLC, WinAmp, AIMP, foobar2000, iTunes und Verzeichnissen wie TuneIn oder Radio.net zu öffnen.
+SSL-Einrichtung für TuneIn, Radio.es und Verzeichnisse
+Verwenden Sie diesen Link, um Ihr Radio bei TuneIn, Radio.es, Radio Garden und anderen Verzeichnissen anzumelden, oder in Apps und Playern, die die SHOUTcast-Stream-URL verlangen. Er funktioniert auch in HTML5-Playern.
+Mischregeln
+Interpret nicht wiederholen innerhalb (Min.)
+Titel nicht wiederholen innerhalb (Min.)
+Titelauswahl
+Wie AutoDJ-Modus (normal / zufällig)
+Ordnerreihenfolge
+Zufällig
+Zufällig nach Gewicht (Priorität je Titel)
+0 = keine Regel. Kann ein kleiner Ordner (Jingles, Promos) die Regel nicht erfüllen, wird der am längsten nicht gespielte Titel verwendet. Das Gewicht jedes Titels (1 bis 5) wird in der Musikbibliothek eingestellt.
+Interpret: {n} Min.
+Titel: {n} Min.
+Der Reihe nach
+Nach Gewicht
+Gewicht
+Sehr niedrig
+Normal
+Sehr hoch
+Gewicht setzen
+Gewicht bei {n} Titeln aktualisiert.
+Geplante Ereignisse
+Geplante Ereignisse - CastPanel
+Ereignisse
+Ereignisse spielen eine Datei, einen Ordner (aufgezeichnete Sendung, Nachrichten, Werbeblock) oder die Zeitansage zu einer exakten Minute. Danach läuft der AutoDJ von selbst weiter. Ist ein Live-DJ oder ein Relay auf Sendung, wird das Ereignis übersprungen.
+Neues Ereignis
+Ereignis bearbeiten
+Name des Ereignisses *
+Z. B.: Morgennachrichten
+Was wird gespielt?
+Ordner / Sendung
+Zeitansage
+Ordner
+Laden Sie pro Stunde eine Audiodatei mit der Stunde im Namen in diesen Ordner (z. B. 08.mp3, stunde 8.mp3, 20.mp3). Es wird die der aktuellen Stunde verwendet.
+Zu spielende Titel
+0 = ganzer Ordner
+Reihenfolge
+Wiederholung
+Einmalig (Datum)
+Jeden Tag
+Wochentage
+Jede Stunde
+Genaue Uhrzeit
+Minute jeder Stunde
+0 = zur vollen Stunde (8:00, 9:00, 10:00...)
+Zur geplanten Zeit
+Warten
+Startet, wenn der laufende Titel endet.
+Unterbrechen
+Unterbricht den Titel und startet zur exakten Minute.
+Ereignis erstellen
+Eingerichtete Ereignisse
+Keine geplanten Ereignisse.
+Erstellen Sie eines mit dem Formular.
+{n} Titel
+ganzer Ordner
+Jede Stunde, Minute
+Wartet auf den Titel
+Unterbricht den Titel
+Nächstes
+Letzte Ausführung
+1 Datei gesendet
+{n} Dateien gesendet
+Übersprungen: Live-DJ auf Sendung
+Übersprungen: Relay auf Sendung
+Keine Dateien zum Abspielen
+AutoDJ aus (keine Verbindung)
+Starten Sie den AutoDJ einmal neu, um Ereignisse zu aktivieren
+Ereignis erstellt.
+Ereignis aktualisiert.
+Ereignis gelöscht.
+Ereignis auf Sendung geschickt: {x}.
+Wählen Sie die abzuspielende Datei.
+Wählen Sie den Ordner.
+Wählen Sie das Datum des Ereignisses.
+Wählen Sie mindestens einen Tag.
+Jetzt ausführen
+Aktivieren
+Geplante Ereignisse
+Jahr
+Erscheinungsjahr
+Jahr/BPM lesen
+Jahr und BPM aus den ID3-Tags der Datei
+Tags gelesen: Jahr/BPM in {n} Titeln gefunden.
+Filter nach Jahr / BPM
+von
+bis
+Die Lupe filtert den Ordner nach Erscheinungsjahr und BPM (z. B. nur 2010–2026 oder 100–130 BPM). Titel ohne diesen Wert werden ausgeschlossen; ergänzen Sie sie in der Musikbibliothek.
+{n} Titel gelöscht.

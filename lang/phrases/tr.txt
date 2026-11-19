@@ -2071,3 +2071,92 @@ Canlı önizleme
 Kaydedilmemiş değişiklikler: "Yapılandırmayı Kaydet"e tıklayın
 Çalma listeleri (M3U / PLS / XSPF)
 Radyoyu VLC, WinAmp, AIMP, foobar2000, iTunes ve TuneIn veya Radio.net gibi dizinlerde açmak için liste dosyaları.
+TuneIn, Radio.es ve dizinler için SSL ayarı
+Radyonuzu TuneIn, Radio.es, Radio Garden ve diğer dizinlere kaydederken ya da SHOUTcast yayın URL'si isteyen uygulama ve oynatıcılarda bu bağlantıyı kullanın. HTML5 oynatıcılarda da çalışır.
+Karışım kuralları
+Sanatçıyı şu süre içinde tekrarlama (dk)
+Şarkıyı şu süre içinde tekrarlama (dk)
+Şarkı seçimi
+AutoDJ moduna göre (normal / rastgele)
+Klasör sırası
+Rastgele
+Ağırlığa göre rastgele (her şarkının önceliği)
+0 = kural yok. Küçük bir klasör (jingle, tanıtım) kurala uyamazsa en uzun süredir çalmayan şarkı kullanılır. Her şarkının ağırlığı (1-5) Müzik Kütüphanesi'nden değiştirilir.
+Sanatçı: {n} dk
+Şarkı: {n} dk
+Sırayla
+Ağırlığa göre
+Ağırlık
+Çok düşük
+Normal
+Çok yüksek
+Ağırlık ata
+{n} şarkının ağırlığı güncellendi.
+Zamanlanmış Etkinlikler
+Zamanlanmış Etkinlikler - CastPanel
+Etkinlikler
+Etkinlikler tam bir dakikada bir dosya, bir klasör (kayıtlı program, haberler, reklam kuşağı) veya saat anonsu çalar. Bitince AutoDJ kendiliğinden devam eder. Canlı DJ veya relay yayındaysa etkinlik atlanır.
+Yeni etkinlik
+Etkinliği düzenle
+Etkinlik adı *
+Örn: Sabah haberleri
+Ne çalınacak?
+Klasör / program
+Saat anonsu
+Klasör
+Bu klasöre her saat için adında saat olan bir ses yükleyin (örn: 08.mp3, saat 8.mp3, 20.mp3). Geçerli saatinki kullanılır.
+Çalınacak şarkılar
+0 = tüm klasör
+Sıra
+Tekrar
+Bir kez (tarih)
+Her gün
+Haftanın günleri
+Her saat
+Tam saat
+Her saatin dakikası
+0 = tam saatte (8:00, 9:00, 10:00...)
+Saat geldiğinde
+Bekle
+Çalan şarkı bitince başlar.
+Kes
+Şarkıyı keser ve tam dakikada başlar.
+Etkinlik oluştur
+Yapılandırılmış etkinlikler
+Zamanlanmış etkinlik yok.
+Formu kullanarak bir tane oluşturun.
+{n} şarkı
+tüm klasör
+Her saat, dakika
+Şarkıyı bekler
+Şarkıyı keser
+Sonraki
+Son çalıştırma
+1 dosya gönderildi
+{n} dosya gönderildi
+Atlandı: canlı DJ yayında
+Atlandı: relay yayında
+Çalınacak dosya yok
+AutoDJ kapalı (bağlantı yok)
+Etkinlikleri etkinleştirmek için AutoDJ'yi bir kez yeniden başlatın
+Etkinlik oluşturuldu.
+Etkinlik güncellendi.
+Etkinlik silindi.
+Etkinlik yayına gönderildi: {x}.
+Çalınacak dosyayı seçin.
+Klasörü seçin.
+Etkinlik tarihini seçin.
+En az bir gün seçin.
+Şimdi çalıştır
+Etkinleştir
+Zamanlanmış etkinlikler
+Yıl
+Çıkış yılı
+Yıl/BPM oku
+Dosyanın ID3 etiketlerinden yıl ve BPM
+Etiketler okundu: {n} şarkıda yıl/BPM bulundu.
+Yıl / BPM filtresi
+başlangıç
+bitiş
+Büyüteç klasörü çıkış yılına ve BPM'e göre filtreler (örn: yalnızca 2010–2026 veya 100–130 BPM). Bu bilgisi olmayan şarkılar filtre dışında kalır; Müzik Kütüphanesi'nden doldurun.
+{n} şarkı silindi.

@@ -2071,3 +2071,92 @@ Lewendige voorskou
 Ongestoorde veranderinge: klik "Stoor instellings"
 Snitlyste (M3U / PLS / XSPF)
 Lyslêers om die radio in VLC, WinAmp, AIMP, foobar2000, iTunes en gidse soos TuneIn of Radio.net oop te maak.
+SSL-opstelling vir TuneIn, Radio.es en gidse
+Gebruik hierdie skakel om jou radio by TuneIn, Radio.es, Radio Garden en ander gidse te registreer, of in toepassings en spelers wat die SHOUTcast-stroom-URL vra. Dit werk ook in HTML5-spelers.
+Mengreëls
+Moenie kunstenaar herhaal binne (min)
+Moenie liedjie herhaal binne (min)
+Liedjiekeuse
+Volgens AutoDJ-modus (normaal / willekeurig)
+Gidsvolgorde
+Willekeurig
+Willekeurig volgens gewig (elke liedjie se prioriteit)
+0 = geen reël. As 'n klein gids (jingles, promo's) nie aan die reël kan voldoen nie, word die liedjie gebruik wat die langste nie gespeel het nie. Elke liedjie se gewig (1 tot 5) word in die Musiekbiblioteek verander.
+Kunstenaar: {n} min
+Liedjie: {n} min
+In volgorde
+Volgens gewig
+Gewig
+Baie laag
+Normaal
+Baie hoog
+Stel gewig
+Gewig opgedateer vir {n} liedjies.
+Geskeduleerde gebeure
+Geskeduleerde gebeure - CastPanel
+Gebeure
+Gebeure speel 'n lêer, 'n gids (opgeneemde program, nuus, advertensieblok) of die tydaankondiging op 'n presiese minuut. Daarna gaan die AutoDJ self voort. As 'n regstreekse DJ of relay op die lug is, word die gebeurtenis oorgeslaan.
+Nuwe gebeurtenis
+Wysig gebeurtenis
+Naam van gebeurtenis *
+Bv.: Oggendnuus
+Wat speel?
+Gids / program
+Tydaankondiging
+Gids
+Laai een klanklêer per uur in hierdie gids op met die uur in die naam (bv. 08.mp3, uur 8.mp3, 20.mp3). Die een vir die huidige uur word gebruik.
+Liedjies om te speel
+0 = hele gids
+Volgorde
+Herhaling
+Een keer (datum)
+Elke dag
+Dae van die week
+Elke uur
+Presiese tyd
+Minuut van elke uur
+0 = op die uur (8:00, 9:00, 10:00...)
+Op die geskeduleerde tyd
+Wag
+Begin wanneer die huidige liedjie klaar is.
+Onderbreek
+Onderbreek die liedjie en begin op die presiese minuut.
+Skep gebeurtenis
+Opgestelde gebeure
+Geen geskeduleerde gebeure nie.
+Skep een met die vorm.
+{n} liedjies
+hele gids
+Elke uur, minuut
+Wag vir die liedjie
+Onderbreek die liedjie
+Volgende
+Laaste uitvoering
+1 lêer gestuur
+{n} lêers gestuur
+Oorgeslaan: regstreekse DJ op die lug
+Oorgeslaan: relay op die lug
+Geen lêers om te speel nie
+AutoDJ af (geen verbinding nie)
+Herbegin die AutoDJ een keer om gebeure te aktiveer
+Gebeurtenis geskep.
+Gebeurtenis opgedateer.
+Gebeurtenis geskrap.
+Gebeurtenis na die lug gestuur: {x}.
+Kies die lêer om te speel.
+Kies die gids.
+Kies die datum van die gebeurtenis.
+Kies ten minste een dag.
+Voer nou uit
+Aktiveer
+Geskeduleerde gebeure
+Jaar
+Vrystellingsjaar
+Lees jaar/BPM
+Jaar en BPM uit die lêer se ID3-etikette
+Etikette gelees: jaar/BPM in {n} liedjies gevind.
+Filter volgens jaar / BPM
+van
+tot
+Die vergrootglas filter die gids volgens vrystellingsjaar en BPM (bv. net 2010–2026, of 100–130 BPM). Liedjies sonder daardie waarde word uitgelaat; vul dit in die Musiekbiblioteek in.
+{n} liedjies geskrap.

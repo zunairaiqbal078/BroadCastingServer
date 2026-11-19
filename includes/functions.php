@@ -52,7 +52,7 @@ function sanitizeFilename(string $filename): string {
  * Obtener metadatos de archivo MP3 usando ffprobe
  */
 function getMP3Info(string $filepath): array {
-    $info = ['duracion' => 0, 'titulo' => null, 'artista' => null, 'album' => null];
+    $info = ['duracion' => 0, 'titulo' => null, 'artista' => null, 'album' => null, 'anio' => null, 'bpm' => null];
 
     $cmd = sprintf(
         'ffprobe -v quiet -print_format json -show_format %s 2>/dev/null',
@@ -68,10 +68,84 @@ function getMP3Info(string $filepath): array {
             $info['titulo'] = $tags['title'] ?? $tags['TITLE'] ?? null;
             $info['artista'] = $tags['artist'] ?? $tags['ARTIST'] ?? null;
             $info['album'] = $tags['album'] ?? $tags['ALBUM'] ?? null;
+            $tl = array_change_key_case($tags, CASE_LOWER);
+            $info['anio'] = castpanelParseYear($tl['date'] ?? $tl['year'] ?? $tl['tyer'] ?? $tl['originaldate'] ?? null);
+            $info['bpm'] = castpanelParseBpm($tl['tbpm'] ?? $tl['bpm'] ?? null);
         }
+    }
+    // ffprobe missing or no tags: read the ID3v2 frames directly
+    if ($info['anio'] === null || $info['bpm'] === null) {
+        $id3 = castpanelReadId3YearBpm($filepath);
+        $info['anio'] = $info['anio'] ?? $id3['anio'];
+        $info['bpm'] = $info['bpm'] ?? $id3['bpm'];
     }
 
     return $info;
+}
+
+/** Release year from a tag value ("2019", "2019-05-01", ...), or null. */
+function castpanelParseYear($v): ?int {
+    if ($v === null || !preg_match('/(19|20)\d{2}/', (string)$v, $m)) return null;
+    $y = (int)$m[0];
+    return ($y >= 1900 && $y <= (int)date('Y') + 1) ? $y : null;
+}
+
+/** BPM from a tag value ("128", "127.6"), or null when missing/unrealistic. */
+function castpanelParseBpm($v): ?int {
+    if ($v === null || !is_numeric(trim((string)$v))) return null;
+    $b = (int)round((float)$v);
+    return ($b >= 30 && $b <= 300) ? $b : null;
+}
+
+/**
+ * Year (TYER/TDRC/TDOR, v2.2 TYE) and BPM (TBPM, v2.2 TBP) from an MP3's
+ * ID3v2 tag, without external tools.
+ * @return array{anio:?int,bpm:?int}
+ */
+function castpanelReadId3YearBpm(string $path): array {
+    $out = ['anio' => null, 'bpm' => null];
+    $fp = @fopen($path, 'rb');
+    if (!$fp) return $out;
+    $head = fread($fp, 10);
+    if (strlen($head) < 10 || substr($head, 0, 3) !== 'ID3') { fclose($fp); return $out; }
+    $ver = ord($head[3]);
+    $size = (ord($head[6]) << 21) | (ord($head[7]) << 14) | (ord($head[8]) << 7) | ord($head[9]);
+    $data = $size > 0 ? (string)fread($fp, min($size, 4 * 1024 * 1024)) : '';
+    fclose($fp);
+    if (ord($head[5]) & 0x40 && $ver >= 3 && strlen($data) >= 4) { // extended header
+        $ext = $ver === 4
+            ? (ord($data[0]) << 21) | (ord($data[1]) << 14) | (ord($data[2]) << 7) | ord($data[3])
+            : unpack('N', substr($data, 0, 4))[1] + 4;
+        $data = (string)substr($data, $ext);
+    }
+    $idLen = $ver === 2 ? 3 : 4;
+    $hdrLen = $ver === 2 ? 6 : 10;
+    $want = $ver === 2 ? ['TYE' => 'anio', 'TBP' => 'bpm'] : ['TYER' => 'anio', 'TDRC' => 'anio', 'TDOR' => 'anio', 'TBPM' => 'bpm'];
+    $pos = 0;
+    $len = strlen($data);
+    while ($pos + $hdrLen <= $len) {
+        $id = substr($data, $pos, $idLen);
+        if (!preg_match('/^[A-Z0-9]+$/', $id)) break; // padding
+        if ($ver === 2) {
+            $fs = (ord($data[$pos + 3]) << 16) | (ord($data[$pos + 4]) << 8) | ord($data[$pos + 5]);
+        } elseif ($ver === 4) {
+            $fs = (ord($data[$pos + 4]) << 21) | (ord($data[$pos + 5]) << 14) | (ord($data[$pos + 6]) << 7) | ord($data[$pos + 7]);
+        } else {
+            $fs = unpack('N', substr($data, $pos + 4, 4))[1];
+        }
+        if ($fs <= 0 || $pos + $hdrLen + $fs > $len) break;
+        if (isset($want[$id])) {
+            $raw = substr($data, $pos + $hdrLen, $fs);
+            $enc = ord($raw[0]);
+            $txt = substr($raw, 1);
+            if ($enc === 1 || $enc === 2) $txt = (string)@mb_convert_encoding($txt, 'UTF-8', $enc === 1 ? 'UTF-16' : 'UTF-16BE');
+            $txt = trim(str_replace("\0", '', $txt));
+            $key = $want[$id];
+            if ($out[$key] === null) $out[$key] = $key === 'anio' ? castpanelParseYear($txt) : castpanelParseBpm($txt);
+        }
+        $pos += $hdrLen + $fs;
+    }
+    return $out;
 }
 
 /**
@@ -684,6 +758,22 @@ function castpanelStreamPlaybackUrl(array $estacion): string {
     }
 
     return "{$origin}/live/{$slug}";
+}
+
+/**
+ * SonicPanel-style SSL listener link: https://domain/PORT/stream (or /PORT/; for
+ * TuneIn and radio directories). Icecast stations keep the /live/{slug} path.
+ */
+function castpanelSslStreamUrl(array $estacion, string $suffix = 'stream'): string {
+    if (!isShoutcastServerType($estacion['server_type'] ?? '')) {
+        return castpanelStreamPlaybackUrl($estacion);
+    }
+    $port = (int)($estacion['puerto_stream'] ?? 0);
+    if ($port <= 0) return castpanelStreamPlaybackUrl($estacion);
+    $origin = (defined('SSL_DOMAIN') && SSL_DOMAIN !== '' && SSL_DOMAIN !== '__DOMAIN__')
+        ? 'https://' . SSL_DOMAIN
+        : castpanelPublicPageOrigin();
+    return $origin . '/' . $port . '/' . ($suffix === ';' ? ';' : 'stream');
 }
 
 /** Public hostname for encoders (no panel port suffix like :8080). */

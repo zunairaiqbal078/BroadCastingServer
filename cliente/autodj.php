@@ -600,6 +600,7 @@ $curCodec = $estacion['codec'] ?: 'mp3';
     <a href="autodj.php?tab=config" class="<?= $subtab === 'config' ? 'active' : '' ?>"><?= cpIcon('gear', 15) ?> AutoDJ settings</a>
     <a href="autodj.php?tab=programacion" class="<?= $subtab === 'programacion' ? 'active' : '' ?>"><?= cpIcon('clock', 15) ?> Schedule</a>
     <a href="<?= BASE_URL ?>/cliente/rotacion_carpetas.php"><?= cpIcon('refresh', 15) ?> Folder rotation</a>
+    <a href="<?= BASE_URL ?>/cliente/eventos.php"><?= cpIcon('zap', 15) ?> Scheduled events</a>
 </nav>
 
 <?php if ($subtab === 'listas'): ?>

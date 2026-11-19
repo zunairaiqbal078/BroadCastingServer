@@ -2071,3 +2071,92 @@ Podgląd na żywo
 Niezapisane zmiany: kliknij „Zapisz konfigurację”
 Listy odtwarzania (M3U / PLS / XSPF)
 Pliki list do otwierania radia w VLC, WinAmp, AIMP, foobar2000, iTunes i katalogach takich jak TuneIn lub Radio.net.
+Konfiguracja SSL dla TuneIn, Radio.es i katalogów
+Użyj tego linku, aby zarejestrować radio w TuneIn, Radio.es, Radio Garden i innych katalogach lub w aplikacjach i odtwarzaczach, które proszą o URL strumienia SHOUTcast. Działa też w odtwarzaczach HTML5.
+Zasady miksowania
+Nie powtarzaj wykonawcy przez (min)
+Nie powtarzaj utworu przez (min)
+Wybór utworów
+Wg trybu AutoDJ (normalny / losowy)
+Kolejność folderu
+Losowo
+Losowo wg wagi (priorytet utworu)
+0 = brak zasady. Jeśli mały folder (dżingle, promocje) nie może spełnić zasady, użyty zostanie utwór, który najdłużej nie grał. Wagę utworu (1–5) zmienia się w Bibliotece muzyki.
+Wykonawca: {n} min
+Utwór: {n} min
+Po kolei
+Wg wagi
+Waga
+Bardzo niska
+Normalna
+Bardzo wysoka
+Ustaw wagę
+Zaktualizowano wagę {n} utworów.
+Zaplanowane wydarzenia
+Zaplanowane wydarzenia - CastPanel
+Wydarzenia
+Wydarzenia odtwarzają plik, folder (nagrana audycja, wiadomości, blok reklamowy) lub komunikat godziny w dokładnej minucie. Po zakończeniu AutoDJ gra dalej sam. Jeśli na antenie jest DJ na żywo lub relay, wydarzenie jest pomijane.
+Nowe wydarzenie
+Edytuj wydarzenie
+Nazwa wydarzenia *
+Np.: Wiadomości poranne
+Co ma być odtwarzane?
+Folder / audycja
+Komunikat godziny
+Folder
+Wgraj do tego folderu jedno audio na każdą godzinę, z godziną w nazwie (np. 08.mp3, godzina 8.mp3, 20.mp3). Używane jest to dla bieżącej godziny.
+Utwory do odtworzenia
+0 = cały folder
+Kolejność
+Powtarzanie
+Jednorazowo (data)
+Codziennie
+Dni tygodnia
+Co godzinę
+Dokładna godzina
+Minuta każdej godziny
+0 = o pełnej godzinie (8:00, 9:00, 10:00...)
+O zaplanowanej godzinie
+Czekaj
+Zaczyna się po zakończeniu bieżącego utworu.
+Przerwij
+Przerywa utwór i zaczyna w dokładnej minucie.
+Utwórz wydarzenie
+Skonfigurowane wydarzenia
+Brak zaplanowanych wydarzeń.
+Utwórz je za pomocą formularza.
+{n} utworów
+cały folder
+Co godzinę, minuta
+Czeka na utwór
+Przerywa utwór
+Następne
+Ostatnie uruchomienie
+Wysłano 1 plik
+Wysłano plików: {n}
+Pominięto: DJ na żywo na antenie
+Pominięto: relay na antenie
+Brak plików do odtworzenia
+AutoDJ wyłączony (brak połączenia)
+Uruchom ponownie AutoDJ raz, aby włączyć wydarzenia
+Wydarzenie utworzone.
+Wydarzenie zaktualizowane.
+Wydarzenie usunięte.
+Wydarzenie wysłane na antenę: {x}.
+Wybierz plik do odtworzenia.
+Wybierz folder.
+Wybierz datę wydarzenia.
+Wybierz co najmniej jeden dzień.
+Uruchom teraz
+Włącz
+Zaplanowane wydarzenia
+Rok
+Rok wydania
+Odczytaj rok/BPM
+Rok i BPM z tagów ID3 pliku
+Odczytano tagi: rok/BPM znaleziono w {n} utworach.
+Filtr wg roku / BPM
+od
+do
+Lupa filtruje folder wg roku wydania i BPM (np. tylko 2010–2026 lub 100–130 BPM). Utwory bez tej wartości są pomijane; uzupełnij je w Bibliotece muzyki.
+Usunięto utworów: {n}.

@@ -2071,3 +2071,92 @@ Live preview
 Unsaved changes: click "Save Settings"
 Playlists (M3U / PLS / XSPF)
 Playlist files to open the radio in VLC, WinAmp, AIMP, foobar2000, iTunes and directories such as TuneIn or Radio.net.
+SSL setup for TuneIn, Radio.es and directories
+Use this link to register your radio on TuneIn, Radio.es, Radio Garden and other directories, or in apps and players that ask for the SHOUTcast stream URL. It also works in HTML5 players.
+Mixing rules
+Don't repeat artist within (min)
+Don't repeat song within (min)
+Song selection
+Follow AutoDJ mode (normal / shuffle)
+Folder order
+Random
+Random by weight (each song's priority)
+0 = no rule. If a small folder (jingles, promos) can't meet the rule, the song that hasn't played for the longest time is used. Each song's weight (1 to 5) is set in the Music Library.
+Artist: {n} min
+Song: {n} min
+In order
+By weight
+Weight
+Very low
+Normal
+Very high
+Set weight
+Weight updated on {n} songs.
+Scheduled Events
+Scheduled Events - CastPanel
+Events
+Events play a file, a folder (recorded show, news, commercial block) or the time announcement at an exact minute. When they end, the AutoDJ carries on by itself. If a live DJ or a relay is on air, the event is skipped.
+New event
+Edit event
+Event name *
+E.g.: Morning news
+What plays?
+Folder / show
+Time announcement
+Folder
+Upload one audio per hour to this folder, with the hour in its name (e.g. 08.mp3, hour 8.mp3, 20.mp3). The one for the current hour is used.
+Songs to play
+0 = whole folder
+Order
+Repeat
+Once (date)
+Every day
+Days of the week
+Every hour
+Exact time
+Minute of each hour
+0 = on the hour (8:00, 9:00, 10:00...)
+When the time comes
+Wait
+Starts when the current song ends.
+Cut
+Cuts the song and starts at the exact minute.
+Create event
+Configured events
+No scheduled events.
+Create one with the form.
+{n} songs
+whole folder
+Every hour, minute
+Waits for the song
+Cuts the song
+Next
+Last run
+1 file sent
+{n} files sent
+Skipped: live DJ on air
+Skipped: relay on air
+No files to play
+AutoDJ off (no connection)
+Restart the AutoDJ once to enable events
+Event created.
+Event updated.
+Event deleted.
+Event sent to air: {x}.
+Choose the file to play.
+Choose the folder.
+Choose the event date.
+Choose at least one day.
+Run now
+Enable
+Scheduled events
+Year
+Release year
+Read year/BPM
+Year and BPM from the file's ID3 tags
+Tags read: year/BPM found in {n} songs.
+Filter by year / BPM
+from
+to
+The magnifier filters the folder by release year and BPM (e.g. only 2010–2026, or 100–130 BPM). Songs without that value are left out by the filter; fill them in in the Music Library.
+{n} songs deleted.

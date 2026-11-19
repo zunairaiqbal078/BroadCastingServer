@@ -25,7 +25,7 @@ if (!$estacion) {
     exit;
 }
 
-$streamUrl = castpanelStreamPlaybackUrl($estacion);
+$streamUrl = castpanelSslStreamUrl($estacion); // same SonicPanel-style link as "SSL Streaming Links"
 $radioName = $estacion['titulo_radio'] ?: $estacion['nombre'];
 
 switch ($format) {

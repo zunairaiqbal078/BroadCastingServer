@@ -2,6 +2,8 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule ^shoutcast/([a-z0-9][a-z0-9_-]*)/?$ shoutcast/index.php?slug=$1 [L,QSA,NC]
+# SonicPanel-style links: /{port}/stream and /{port}/; (port of a SHOUTcast station)
+RewriteRule ^([0-9]{4,5})/(stream|;)/?$ shoutcast/index.php?port=$1 [L,QSA]
 </IfModule>
 
 # CastPanel - PHP Upload Settings (Apache)

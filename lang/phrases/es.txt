@@ -2071,3 +2071,92 @@ Vista previa en vivo
 Cambios sin guardar: pulsa "Guardar Configuración"
 Listas de reproducción (M3U / PLS / XSPF)
 Archivos de lista para abrir la radio en VLC, WinAmp, AIMP, foobar2000, iTunes y directorios como TuneIn o Radio.net.
+Configuración SSL para TuneIn, Radio.es y directorios
+Use este enlace al registrar su radio en TuneIn, Radio.es, Radio Garden y otros directorios, o en apps y reproductores que piden la URL del stream SHOUTcast. También funciona en reproductores HTML5.
+Reglas de mezcla
+No repetir artista en (min)
+No repetir canción en (min)
+Selección de canciones
+Según el modo del AutoDJ (normal / aleatorio)
+En orden de la carpeta
+Aleatoria
+Aleatoria por peso (prioridad de cada canción)
+0 = sin regla. Si una carpeta pequeña (jingles, promos) no puede cumplir la regla, se usa la canción que hace más tiempo que no suena. El peso de cada canción (1 a 5) se cambia en la Biblioteca de Música.
+Artista: {n} min
+Canción: {n} min
+En orden
+Por peso
+Peso
+Muy baja
+Normal
+Muy alta
+Asignar peso
+Peso actualizado en {n} canciones.
+Eventos Programados
+Eventos Programados - CastPanel
+Eventos
+Los eventos lanzan un archivo, una carpeta (programa grabado, noticias, bloque comercial) o el anuncio de la hora en un minuto exacto. Al terminar, el AutoDJ continúa solo. Si hay un DJ en vivo o un relay al aire, el evento se omite.
+Nuevo evento
+Editar evento
+Nombre del evento *
+Ej: Noticias de la mañana
+¿Qué se reproduce?
+Carpeta / programa
+Anuncio de la hora
+Carpeta
+Sube a esta carpeta un audio por cada hora con la hora en el nombre (ej: 08.mp3, hora 8.mp3, 20.mp3). Se elige el de la hora actual.
+Canciones a reproducir
+0 = toda la carpeta
+Orden
+Repetición
+Una sola vez (fecha)
+Todos los días
+Días de la semana
+Cada hora
+Hora exacta
+Minuto de cada hora
+0 = en punto (8:00, 9:00, 10:00...)
+Al llegar la hora
+Esperar
+Empieza cuando termina la canción que suena.
+Cortar
+Corta la canción y empieza en el minuto exacto.
+Crear evento
+Eventos configurados
+No hay eventos programados.
+Crea uno con el formulario.
+{n} canciones
+toda la carpeta
+Cada hora, minuto
+Espera la canción
+Corta la canción
+Próximo
+Última ejecución
+1 archivo enviado
+{n} archivos enviados
+Omitido: DJ en vivo al aire
+Omitido: relay al aire
+Sin archivos para reproducir
+AutoDJ apagado (sin conexión)
+Reinicie el AutoDJ una vez para activar los eventos
+Evento creado.
+Evento actualizado.
+Evento eliminado.
+Evento enviado al aire: {x}.
+Elige el archivo a reproducir.
+Elige la carpeta.
+Elige la fecha del evento.
+Elige al menos un día.
+Ejecutar ahora
+Activar
+Scheduled events
+Año
+Año de lanzamiento
+Leer año/BPM
+Año y BPM desde las etiquetas ID3 del archivo
+Etiquetas leídas: año/BPM encontrados en {n} canciones.
+Filtro por año / BPM
+desde
+hasta
+La lupa filtra la carpeta por año de lanzamiento y BPM (ej: solo 2010–2026, o 100–130 BPM). Las canciones sin ese dato quedan fuera del filtro; se completan en la Biblioteca de Música.
+{n} canciones eliminadas.
