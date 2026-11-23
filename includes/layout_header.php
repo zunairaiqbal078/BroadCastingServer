@@ -33,6 +33,8 @@ $brand = getCurrentBranding();
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&display=swap" rel="stylesheet">
     <?php $cpStyleVer = @filemtime(BASE_PATH . '/assets/css/style.css') ?: time(); ?>
     <link href="<?= BASE_URL ?>/assets/css/style.css?v=<?= (int)$cpStyleVer ?>" rel="stylesheet">
+    <?php $cpThemeVer = @filemtime(BASE_PATH . '/assets/css/theme.css') ?: time(); ?>
+    <link href="<?= BASE_URL ?>/assets/css/theme.css?v=<?= (int)$cpThemeVer ?>" rel="stylesheet">
     <style>
         .nav-icon { font-style: normal; display:inline-flex; align-items:center; }
         <?php if (!empty($brand['primary_color'])): ?>
@@ -43,7 +45,8 @@ $brand = getCurrentBranding();
         <?php endif; ?>
     </style>
 </head>
-<body>
+<?php $cpThemeRole = !empty($isAdmin) ? 'admin' : (!empty($isReseller) ? 'reseller' : 'cliente'); /* look only: client vs admin design */ ?>
+<body class="cp-theme cp-role-<?= $cpThemeRole ?>">
 
 <div class="layout">
     <!-- Overlay móvil -->

@@ -1,0 +1,441 @@
+/* ==========================================================================
+   CastPanel — unified design layer (look only, no behaviour)
+   Loaded after style.css by includes/layout_header.php. The <body> carries
+   cp-theme plus cp-role-cliente / cp-role-admin / cp-role-reseller:
+     - client panel  : soft violet, rounded, friendly (matches the new client pages)
+     - admin/reseller: clean slate + indigo, denser, "control room" professional
+   Branding colours set by the admin (primary / sidebar) still win: they are
+   printed in an inline <style> after this file.
+   ========================================================================== */
+
+/* ---------- tokens ---------- */
+.cp-theme {
+    --radius: 14px;
+    --radius-sm: 10px;
+    --ring: 0 0 0 3px rgba(108, 60, 224, .16);
+    --line: #e7e5f0;
+    --line-soft: #f0eef7;
+    --muted-bg: #f7f6fb;
+    --shadow: 0 1px 2px rgba(17, 12, 46, .04), 0 6px 18px -10px rgba(17, 12, 46, .12);
+    --shadow-md: 0 2px 4px rgba(17, 12, 46, .05), 0 12px 28px -14px rgba(17, 12, 46, .22);
+    --shadow-lg: 0 18px 40px -18px rgba(17, 12, 46, .35);
+    --border: var(--line);
+    --hover: var(--muted-bg);
+}
+.cp-role-cliente {
+    --body-bg: #f4f2fa;
+    --sidebar-bg: linear-gradient(185deg, #1d0f5c 0%, #160a45 55%, #120838 100%);
+    --sidebar-hover: rgba(255, 255, 255, .07);
+    --sidebar-text: #c7c0ea;
+    --primary-bg: #efe9ff;
+}
+.cp-role-admin,
+.cp-role-reseller {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --primary-light: #6366f1;
+    --primary-bg: #eef0ff;
+    --body-bg: #f2f4f8;
+    --sidebar-bg: linear-gradient(185deg, #0f172a 0%, #111827 100%);
+    --sidebar-hover: rgba(148, 163, 184, .10);
+    --sidebar-text: #a5b0c4;
+    --line: #e3e7ef;
+    --line-soft: #eef1f6;
+    --muted-bg: #f6f8fb;
+    --ring: 0 0 0 3px rgba(79, 70, 229, .16);
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 2px rgba(15, 23, 42, .05), 0 4px 14px -8px rgba(15, 23, 42, .10);
+    --shadow-md: 0 2px 4px rgba(15, 23, 42, .06), 0 10px 24px -12px rgba(15, 23, 42, .18);
+}
+
+.cp-theme { background: var(--body-bg); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+.cp-theme ::selection { background: var(--primary-bg); }
+
+/* ---------- sidebar ---------- */
+.cp-theme .sidebar {
+    background: var(--sidebar-bg);
+    border-right: 1px solid rgba(255, 255, 255, .04);
+    box-shadow: 6px 0 24px -18px rgba(0, 0, 0, .6);
+}
+.cp-theme .sidebar-logo { padding: 20px 18px 18px; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+.cp-theme .sidebar-section {
+    padding: 18px 20px 6px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    color: rgba(255, 255, 255, .38);
+}
+.cp-theme .sidebar-nav { padding: 0 10px; }
+.cp-theme .sidebar-nav li a {
+    margin: 1px 0;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--sidebar-text);
+    transition: background .15s ease, color .15s ease;
+}
+.cp-theme .sidebar-nav li a:hover { background: var(--sidebar-hover); color: #fff; }
+.cp-theme .sidebar-nav li a .nav-icon { opacity: .85; }
+/* active item: its own accent, so it stands out whatever primary colour the branding sets */
+.cp-theme .sidebar-nav li a.active {
+    background: linear-gradient(90deg, rgba(167, 139, 250, .28), rgba(167, 139, 250, .10));
+    color: #fff;
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 #a78bfa;
+}
+.cp-theme .sidebar-nav li a.active .nav-icon { color: #c4b5fd; opacity: 1; }
+.cp-role-admin .sidebar-nav li a.active,
+.cp-role-reseller .sidebar-nav li a.active {
+    background: rgba(99, 102, 241, .16);
+    color: #fff;
+    box-shadow: inset 3px 0 0 #818cf8;
+}
+.cp-theme .sidebar-footer { border-top: 1px solid rgba(255, 255, 255, .06); }
+
+/* ---------- top bar ---------- */
+.cp-theme .topbar {
+    background: rgba(255, 255, 255, .86);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 28px;
+    min-height: 60px;
+}
+.cp-theme .topbar-title { font-size: 16px; font-weight: 700; letter-spacing: -.1px; }
+.cp-theme .topbar-title .title-icon {
+    width: 34px; height: 34px; border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--primary-bg); color: var(--primary);
+}
+.cp-theme .topbar-actions .btn,
+.cp-theme .topbar-actions .cp-lang-btn { height: 34px; border-radius: 9px; }
+
+/* ---------- page ---------- */
+.cp-theme .page-content { padding: 26px 28px 40px; }
+@media (max-width: 768px) { .cp-theme .page-content { padding: 16px; } .cp-theme .topbar { padding: 10px 14px; } }
+.cp-theme h2, .cp-theme h3, .cp-theme h4 { letter-spacing: -.15px; }
+
+/* ---------- cards ---------- */
+.cp-theme .card,
+.cp-theme .sp-card,
+.cp-theme .section-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.cp-theme .card { overflow: visible; }
+.cp-theme .card + .card { margin-top: 0; }
+.cp-theme .card-header,
+.cp-theme .sp-card-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--line-soft);
+    background: transparent;
+}
+.cp-theme .card-header h3,
+.cp-theme .sp-card-header h3 { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.cp-theme .card-header h3 svg,
+.cp-theme .sp-card-header h3 svg { color: var(--primary); }
+.cp-theme .card-body { padding: 22px; }
+.cp-theme .card-body.no-padding { padding: 0; }
+.cp-theme .card-header .badge { font-variant-numeric: tabular-nums; }
+.cp-theme .two-cols, .cp-theme .two-cols-equal { gap: 22px; }
+.cp-theme .two-cols > div > .card + .card,
+.cp-theme .two-cols-equal > div > .card + .card { margin-top: 22px; }
+
+/* ---------- forms ---------- */
+.cp-theme .form-group { margin-bottom: 16px; }
+.cp-theme .form-group > label,
+.cp-theme label.form-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+.cp-theme .form-control {
+    min-height: 40px;
+    padding: 9px 13px;
+    border: 1px solid #dcd9e8;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    font-size: 13.5px;
+    color: var(--text-primary);
+    box-shadow: 0 1px 1px rgba(17, 12, 46, .03);
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.cp-role-admin .form-control, .cp-role-reseller .form-control { border-color: #d7dde8; }
+.cp-theme .form-control:hover { border-color: #c9c4dd; }
+.cp-theme .form-control:focus { outline: none; border-color: var(--primary); box-shadow: var(--ring); }
+.cp-theme .form-control::placeholder { color: #a3a0b5; }
+.cp-theme textarea.form-control { min-height: 90px; line-height: 1.5; }
+.cp-theme select.form-control { padding-right: 34px; cursor: pointer; }
+.cp-theme .form-control[readonly] { background: var(--muted-bg); }
+.cp-theme small, .cp-theme .hint, .cp-theme .form-text { color: var(--text-secondary); }
+.cp-theme input[type="checkbox"], .cp-theme input[type="radio"] { accent-color: var(--primary); }
+.cp-theme input[type="range"] { accent-color: var(--primary); }
+.cp-theme .check-item {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    transition: border-color .15s ease, background .15s ease;
+}
+.cp-theme .check-item:hover { border-color: var(--primary); background: var(--primary-bg); }
+
+/* ---------- buttons ---------- */
+.cp-theme .btn {
+    min-height: 38px;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1px;
+    line-height: 1.2;
+    justify-content: center;
+    transition: transform .12s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+}
+.cp-theme .btn:active { transform: translateY(1px); }
+.cp-theme .btn:focus-visible { outline: none; box-shadow: var(--ring); }
+.cp-theme .btn-sm { min-height: 32px; padding: 6px 11px; font-size: 12.5px; border-radius: 8px; }
+.cp-theme .btn-lg { min-height: 46px; padding: 12px 22px; font-size: 14.5px; }
+.cp-theme .btn-primary {
+    background: linear-gradient(180deg, var(--primary-light, var(--primary)) -40%, var(--primary) 100%);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(17, 12, 46, .12), 0 6px 14px -8px var(--primary);
+}
+.cp-theme .btn-primary:hover { background: var(--primary-dark); color: #fff; box-shadow: 0 8px 18px -8px var(--primary); }
+.cp-role-admin .btn-primary, .cp-role-reseller .btn-primary { background: var(--primary); }
+.cp-theme .btn-success { background: #0e9f6e; color: #fff; box-shadow: 0 6px 14px -8px #0e9f6e; }
+.cp-theme .btn-success:hover { background: #047857; color: #fff; }
+.cp-theme .btn-danger { background: #ef4444; color: #fff; box-shadow: 0 6px 14px -8px #ef4444; }
+.cp-theme .btn-danger:hover { background: #dc2626; color: #fff; }
+.cp-theme .btn-warning { background: #f59e0b; color: #fff; }
+.cp-theme .btn-warning:hover { background: #d97706; color: #fff; }
+.cp-theme .btn-info { background: #0ea5e9; color: #fff; }
+.cp-theme .btn-info:hover { background: #0284c7; color: #fff; }
+.cp-theme .btn-outline {
+    background: #fff;
+    color: var(--text-primary);
+    border: 1px solid #dcd9e8;
+    box-shadow: 0 1px 1px rgba(17, 12, 46, .04);
+}
+.cp-role-admin .btn-outline, .cp-role-reseller .btn-outline { border-color: #d7dde8; }
+.cp-theme .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+.cp-theme .btn-block { width: 100%; }
+.cp-theme .btn[disabled], .cp-theme .btn.disabled { opacity: .55; cursor: not-allowed; box-shadow: none; }
+
+/* ---------- badges ---------- */
+.cp-theme .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    background: var(--muted-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--line);
+    line-height: 1.4;
+}
+.cp-theme .badge-success { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+.cp-theme .badge-danger  { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+.cp-theme .badge-warning { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+.cp-theme .badge-info    { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.cp-theme .badge-purple  { background: var(--primary-bg); color: var(--primary); border-color: transparent; }
+.cp-theme .badge-orange  { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+
+/* ---------- alerts (block layout: an inline <strong> no longer splits the text into columns) ---------- */
+.cp-theme .alert {
+    display: block;
+    position: relative;
+    padding: 13px 16px 13px 44px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    line-height: 1.55;
+    border: 1px solid transparent;
+    border-left-width: 4px;
+    margin-bottom: 18px;
+}
+.cp-theme .alert > svg:first-child { position: absolute; left: 16px; top: 15px; }
+.cp-theme .alert:not(:has(> svg:first-child)) { padding-left: 16px; }
+.cp-theme .alert strong { font-weight: 700; }
+.cp-theme .alert-info    { background: #f0f6ff; color: #1e3a8a; border-color: #cfe0fd; border-left-color: #3b82f6; }
+.cp-theme .alert-success { background: #effcf6; color: #065f46; border-color: #c4f0dc; border-left-color: #10b981; }
+.cp-theme .alert-warning { background: #fffaeb; color: #854d0e; border-color: #fbe7b0; border-left-color: #f59e0b; }
+.cp-theme .alert-danger,
+.cp-theme .alert-error   { background: #fef3f2; color: #991b1b; border-color: #fbd5d1; border-left-color: #ef4444; }
+
+/* ---------- tables ---------- */
+.cp-theme .table-responsive { border-radius: 0 0 var(--radius) var(--radius); }
+.cp-theme table.table th {
+    background: var(--muted-bg);
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .6px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+.cp-theme table.table td { padding: 12px 16px; border-bottom: 1px solid var(--line-soft); font-size: 13.5px; }
+.cp-theme table.table tbody tr { transition: background .12s ease; }
+.cp-theme table.table tbody tr:hover { background: #faf9fd; }
+.cp-role-admin table.table tbody tr:hover, .cp-role-reseller table.table tbody tr:hover { background: #f8fafc; }
+.cp-role-admin table.table td, .cp-role-reseller table.table td { padding: 11px 16px; }
+
+/* ---------- tabs (module sub-navigation) ---------- */
+.cp-theme .tabs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+    margin-bottom: 20px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+}
+.cp-theme .tab-btn {
+    margin: 0;
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+}
+.cp-theme .tab-btn:hover { color: var(--primary); background: var(--muted-bg); }
+.cp-theme .tab-btn.active { color: #fff; background: var(--primary); border-radius: 9px; box-shadow: 0 6px 14px -8px var(--primary); }
+.cp-theme .sp-tabs, .cp-theme .sp-card-tabs { gap: 4px; }
+.cp-theme .sp-tab { border-radius: 9px; }
+
+/* ---------- stat cards ---------- */
+.cp-theme .stat-card {
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    position: relative;
+}
+.cp-theme .stat-card .stat-label { font-size: 11.5px; font-weight: 700; letter-spacing: .6px; }
+.cp-theme .stat-card .stat-value { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+/* admin & reseller: white cards with a coloured accent instead of full gradients */
+.cp-role-admin .stat-card, .cp-role-reseller .stat-card {
+    background: #fff !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+.cp-role-admin .stat-card::before, .cp-role-reseller .stat-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--sc, var(--primary));
+}
+.cp-role-admin .stat-card.green, .cp-role-reseller .stat-card.green { --sc: #10b981; --scb: #ecfdf5; }
+.cp-role-admin .stat-card.blue, .cp-role-reseller .stat-card.blue { --sc: #3b82f6; --scb: #eff6ff; }
+.cp-role-admin .stat-card.red, .cp-role-reseller .stat-card.red { --sc: #ef4444; --scb: #fef2f2; }
+.cp-role-admin .stat-card.orange, .cp-role-reseller .stat-card.orange { --sc: #f59e0b; --scb: #fffbeb; }
+.cp-role-admin .stat-card.purple, .cp-role-reseller .stat-card.purple { --sc: #6366f1; --scb: #eef0ff; }
+.cp-role-admin .stat-card .stat-label, .cp-role-reseller .stat-card .stat-label { color: var(--text-secondary); opacity: 1; }
+.cp-role-admin .stat-card .stat-value, .cp-role-reseller .stat-card .stat-value { color: var(--text-primary); }
+.cp-role-admin .stat-card .stat-sub, .cp-role-reseller .stat-card .stat-sub { color: var(--text-secondary); opacity: 1; }
+.cp-role-admin .stat-card .stat-badge, .cp-role-reseller .stat-card .stat-badge {
+    background: var(--scb, var(--primary-bg)); color: var(--sc, var(--primary)); border: 0;
+}
+.cp-role-admin .stat-card .stat-icon, .cp-role-reseller .stat-card .stat-icon { color: var(--sc, var(--primary)); opacity: .14; }
+.cp-role-admin .cp-stats a.stat-card:hover, .cp-role-reseller .cp-stats a.stat-card:hover { color: var(--text-primary) !important; border-color: var(--sc, var(--primary)); }
+.cp-role-admin .cp-mini-bar, .cp-role-reseller .cp-mini-bar { background: var(--line-soft); }
+.cp-role-admin .cp-mini-bar span, .cp-role-reseller .cp-mini-bar span { background: var(--sc, var(--primary)); }
+
+/* admin dashboard header */
+.cp-role-admin .cp-hero h2 { font-size: 24px; font-weight: 800; letter-spacing: -.4px; }
+.cp-role-admin .cp-chip { background: #fff; border-color: var(--line); box-shadow: 0 1px 1px rgba(15, 23, 42, .04); }
+
+/* ---------- quick actions / tiles ---------- */
+.cp-theme .quick-action, .cp-theme .sp-qa {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.cp-theme .quick-action:hover, .cp-theme .sp-qa:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+
+/* ---------- copy fields ---------- */
+.cp-theme .copy-field, .cp-theme .sp-copy-field {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--muted-bg);
+    overflow: hidden;
+}
+.cp-theme .copy-field .btn-copy, .cp-theme .sp-copy-field button { border-radius: 8px; }
+
+/* ---------- upload area ---------- */
+.cp-theme .upload-area, .cp-theme .img-upload-zone {
+    border: 2px dashed #d6d1ea;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, #fff, var(--muted-bg));
+    transition: border-color .15s ease, background .15s ease;
+}
+.cp-theme .upload-area:hover, .cp-theme .img-upload-zone:hover { border-color: var(--primary); background: var(--primary-bg); }
+
+/* ---------- empty state ---------- */
+.cp-theme .empty-state { padding: 44px 24px; color: var(--text-secondary); }
+.cp-theme .empty-state svg { color: var(--primary); opacity: .45; }
+
+/* ---------- modals ---------- */
+.cp-theme .modal { background: rgba(15, 12, 40, .45); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.cp-theme .modal-content { border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 30px 60px -20px rgba(15, 12, 40, .45); overflow: hidden; }
+.cp-theme .modal-header { padding: 16px 22px; border-bottom: 1px solid var(--line-soft); }
+.cp-theme .modal-body { padding: 20px 22px; }
+.cp-theme .modal-footer { padding: 14px 22px; border-top: 1px solid var(--line-soft); background: var(--muted-bg); }
+
+/* ---------- toggles, progress, misc ---------- */
+.cp-theme .progress, .cp-theme .storage-bar .bar { border-radius: 999px; background: var(--line-soft); }
+.cp-theme .progress-bar, .cp-theme .storage-bar .bar .fill { border-radius: 999px; }
+.cp-theme .song-item, .cp-theme .playlist-card, .cp-theme .config-panel, .cp-theme .log-row {
+    border-color: var(--line);
+    border-radius: var(--radius-sm);
+}
+.cp-theme .playlist-card { box-shadow: var(--shadow); }
+.cp-theme .filter-btn { border-radius: 999px; }
+.cp-theme .filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.cp-theme hr { border: 0; border-top: 1px solid var(--line); }
+.cp-theme code { background: var(--muted-bg); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .92em; }
+
+/* pagination rows built from .btn-sm keep a tidy gap */
+.cp-theme .card > div[style*="justify-content:center"] .btn-sm { min-width: 34px; }
+
+/* ---------- toast ---------- */
+.cp-theme .toast { border-radius: 12px; box-shadow: var(--shadow-lg); }
+
+/* ---------- page-specific tiles & panels, brought onto the same surface style ---------- */
+.cp-theme .preset-card,
+.cp-theme .theme-card,
+.cp-theme .proc-section,
+.cp-theme .proc-status,
+.cp-theme .widget-section,
+.cp-theme .config-panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.cp-theme .preset-card, .cp-theme .theme-card { transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.cp-theme .preset-card:hover, .cp-theme .theme-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+.cp-theme .preset-card.active, .cp-theme .theme-card.active, .cp-theme .theme-card.selected {
+    border-color: var(--primary);
+    background: var(--primary-bg);
+    box-shadow: 0 0 0 3px rgba(108, 60, 224, .12), var(--shadow);
+}
+.cp-theme .preset-card .preset-icon svg, .cp-theme .theme-card .theme-icon svg { color: var(--primary); }
+.cp-theme .proc-section { overflow: hidden; margin-bottom: 14px; }
+.cp-theme .proc-section-header { padding: 14px 18px; }
+.cp-theme .proc-section-body { border-top: 1px solid var(--line-soft); }
+.cp-theme .control-item { border-radius: var(--radius-sm); }
+.cp-theme .toggle-slider, .cp-theme .switch-slider { box-shadow: inset 0 1px 2px rgba(0, 0, 0, .08); }
+.cp-theme input:checked + .toggle-slider, .cp-theme input:checked + .switch-slider { background: var(--primary); }
