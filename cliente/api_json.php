@@ -15,7 +15,7 @@ $nowplayingUrl = $baseApi . '/api/nowplaying.php?slug=' . $estacion['slug'];
 
 <!-- Endpoint principal -->
 <div class="card" style="margin-bottom:20px;overflow:hidden">
-    <div style="padding:20px;background:linear-gradient(135deg,#2563eb,#1d4ed8)">
+    <div style="padding:20px;background:#1d4ed8">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
             <span style="color:#fff"><?= cpIcon('globe',24) ?></span>
             <div>

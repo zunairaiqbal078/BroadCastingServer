@@ -214,19 +214,19 @@ try {
 
 <!-- Stats Bar -->
 <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
-    <div style="flex:1;min-width:120px;padding:12px 16px;background:linear-gradient(135deg,#3b82f6,#2563eb);border-radius:var(--radius-sm);color:#fff">
+    <div style="flex:1;min-width:120px;padding:12px 16px;background:#2563eb;border-radius:var(--radius-sm);color:#fff">
         <div style="font-size:11px;opacity:.8">Total Archivos</div>
         <div style="font-size:20px;font-weight:700"><?= $totalCanciones ?></div>
     </div>
-    <div style="flex:1;min-width:120px;padding:12px 16px;background:linear-gradient(135deg,#10b981,#059669);border-radius:var(--radius-sm);color:#fff">
+    <div style="flex:1;min-width:120px;padding:12px 16px;background:#059669;border-radius:var(--radius-sm);color:#fff">
         <div style="font-size:11px;opacity:.8">Almacenamiento</div>
         <div style="font-size:20px;font-weight:700"><?= formatBytes($totalSize) ?></div>
     </div>
-    <div style="flex:1;min-width:120px;padding:12px 16px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:var(--radius-sm);color:#fff">
+    <div style="flex:1;min-width:120px;padding:12px 16px;background:#d97706;border-radius:var(--radius-sm);color:#fff">
         <div style="font-size:11px;opacity:.8">Duraci&oacute;n Total</div>
         <div style="font-size:20px;font-weight:700"><?= floor($totalDuration/3600) ?>h <?= floor(($totalDuration%3600)/60) ?>m</div>
     </div>
-    <div style="flex:1;min-width:120px;padding:12px 16px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);border-radius:var(--radius-sm);color:#fff">
+    <div style="flex:1;min-width:120px;padding:12px 16px;background:#7c3aed;border-radius:var(--radius-sm);color:#fff">
         <div style="font-size:11px;opacity:.8">Listas Activas</div>
         <div style="font-size:20px;font-weight:700"><?= count($playlists) ?></div>
     </div>

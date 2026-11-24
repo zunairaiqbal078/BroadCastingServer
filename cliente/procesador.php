@@ -181,7 +181,7 @@ function presetSvgIcon($key) {
     margin-bottom: 24px;
 }
 .proc-status.active {
-    background: linear-gradient(135deg, rgba(34,197,94,.12), rgba(16,185,129,.08));
+    background: rgba(16,185,129,.08);
     border: 1px solid rgba(34,197,94,.25);
 }
 .proc-status.inactive {

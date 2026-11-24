@@ -264,19 +264,19 @@ if (isset($_GET['edit'])) {
 
 <!-- Barra de estado -->
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:16px">
-    <div class="card" style="padding:14px 16px;text-align:center;background:linear-gradient(135deg,#059669,#10b981)">
+    <div class="card" style="padding:14px 16px;text-align:center;background:#10b981">
         <div style="font-size:22px;font-weight:700;color:#fff"><?= $totalDJ ?></div>
         <div style="font-size:12px;color:rgba(255,255,255,.85)">Cuentas DJ</div>
     </div>
-    <div class="card" style="padding:14px 16px;text-align:center;background:linear-gradient(135deg,#2563eb,#3b82f6)">
+    <div class="card" style="padding:14px 16px;text-align:center;background:#3b82f6">
         <div style="font-size:22px;font-weight:700;color:#fff"><?= $maxDJ > 0 ? $maxDJ : 'Ilimitado' ?></div>
         <div style="font-size:12px;color:rgba(255,255,255,.85)">M&aacute;ximo Permitido</div>
     </div>
-    <div class="card" style="padding:14px 16px;text-align:center;background:linear-gradient(135deg,#d97706,#f59e0b)">
+    <div class="card" style="padding:14px 16px;text-align:center;background:#f59e0b">
         <div style="font-size:22px;font-weight:700;color:#fff"><?= $maxDJ > 0 ? max(0, $maxDJ - $totalDJ) : '∞' ?></div>
         <div style="font-size:12px;color:rgba(255,255,255,.85)">Disponibles</div>
     </div>
-    <div class="card" style="padding:14px 16px;text-align:center;background:linear-gradient(135deg,<?= $totalDJ > 0 ? '#059669,#10b981' : '#6b7280,#9ca3af' ?>)">
+    <div class="card" style="padding:14px 16px;text-align:center;background:<?= $totalDJ > 0 ? '#10b981' : '#9ca3af' ?>">
         <div style="font-size:22px;font-weight:700;color:#fff"><?= count(array_filter($djAccounts, fn($d) => $d['activo'])) ?></div>
         <div style="font-size:12px;color:rgba(255,255,255,.85)">DJs Activos</div>
     </div>
@@ -471,7 +471,7 @@ if (isset($_GET['edit'])) {
                     <?php foreach ($djAccounts as $dj): ?>
                         <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px">
                             <!-- Avatar -->
-                            <div style="width:42px;height:42px;border-radius:50%;background:<?= $dj['activo'] ? 'linear-gradient(135deg,#059669,#10b981)' : 'var(--border)' ?>;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                            <div style="width:42px;height:42px;border-radius:50%;background:<?= $dj['activo'] ? '#10b981' : 'var(--border)' ?>;display:flex;align-items:center;justify-content:center;flex-shrink:0">
                                 <span style="color:#fff"><?= cpIcon('headphones',18) ?></span>
                             </div>
                             <!-- Info -->

@@ -107,7 +107,7 @@ $horas = ($musicStats['duracion'] ?? 0) > 0 ? round($musicStats['duracion'] / 36
                     foreach ($historial as $h):
                         $pct = ($h['pico_oyentes'] / $maxVal) * 100;
                     ?>
-                        <div style="flex:1;background:linear-gradient(to top, var(--primary), var(--primary-light));border-radius:3px 3px 0 0;min-height:4px;height:<?= max(4, $pct) ?>%" title="<?= $h['hora'] ?> — <?= $h['pico_oyentes'] ?> oyentes"></div>
+                        <div style="flex:1;background:var(--primary-light);border-radius:3px 3px 0 0;min-height:4px;height:<?= max(4, $pct) ?>%" title="<?= $h['hora'] ?> — <?= $h['pico_oyentes'] ?> oyentes"></div>
                     <?php endforeach; ?>
                 </div>
                 <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-secondary);margin-top:4px">

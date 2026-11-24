@@ -172,7 +172,7 @@ $cpServerLabel = match ($estacion['server_type'] ?? '') {
 <style>
 /* ===== Client dashboard (redesign) ===== */
 .cp2-hero{position:relative;overflow:hidden;border-radius:18px;padding:24px 26px;margin-bottom:18px;color:#fff;
-  background:linear-gradient(135deg,var(--primary) 0%,#0f5f66 58%,#0b3d6e 100%);box-shadow:0 14px 34px rgba(15,40,80,.20)}
+  background:#1e293b;box-shadow:0 14px 34px rgba(15,40,80,.20)}
 .cp2-hero::before,.cp2-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
 .cp2-hero::before{width:280px;height:280px;right:-90px;top:-120px;background:rgba(255,255,255,.18)}
 .cp2-hero::after{width:220px;height:220px;left:28%;bottom:-140px;background:rgba(255,255,255,.10)}
@@ -499,10 +499,12 @@ a.cp2-metric:hover{background:rgba(255,255,255,.16);color:#fff}
                 </div>
                 <style>
                 .cp3-player{display:flex;gap:18px;align-items:center;padding:18px;border-radius:18px;color:#fff;
-                  background:linear-gradient(135deg,var(--primary) 0%,#0f5f66 60%,#0b3d6e 100%);box-shadow:0 12px 30px rgba(15,40,80,.22);position:relative;overflow:hidden}
+                  background:#1e293b;box-shadow:0 12px 30px rgba(15,40,80,.22);position:relative;overflow:hidden}
                 .cp3-player::before{content:'';position:absolute;width:220px;height:220px;right:-70px;top:-90px;border-radius:50%;background:rgba(255,255,255,.14);filter:blur(30px);pointer-events:none}
                 .cp3-art{flex-shrink:0;position:relative;z-index:1}
-                .cp3-vinyl{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,#fff 0 9%,var(--primary) 9.5% 22%,#111 22.5% 24%,transparent 24.5%),repeating-radial-gradient(circle,#111 0 2px,#222 2px 4px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+                .cp3-vinyl{position:relative;width:96px;height:96px;border-radius:50%;background:#111;border:4px solid #262626;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+                .cp3-vinyl::before{content:'';position:absolute;inset:28%;border-radius:50%;background:#4f46e5}
+                .cp3-vinyl::after{content:'';position:absolute;inset:44%;border-radius:50%;background:#fff}
                 .cp3-player.is-playing .cp3-vinyl{animation:cp3spin 4s linear infinite}
                 @keyframes cp3spin{to{transform:rotate(360deg)}}
                 .cp3-body{flex:1;min-width:0;position:relative;z-index:1}

@@ -22,11 +22,11 @@
     --danger: #ef4444;
     --info: #3b82f6;
     --orange: #f97316;
-    --green-gradient: linear-gradient(135deg, #10b981, #059669);
-    --blue-gradient: linear-gradient(135deg, #3b82f6, #2563eb);
-    --red-gradient: linear-gradient(135deg, #ef4444, #dc2626);
-    --orange-gradient: linear-gradient(135deg, #f97316, #ea580c);
-    --purple-gradient: linear-gradient(135deg, #6c3ce0, #5a2dc5);
+    --green-gradient: #059669;
+    --blue-gradient: #2563eb;
+    --red-gradient: #dc2626;
+    --orange-gradient: #ea580c;
+    --purple-gradient: #4f46e5;
     --radius: 12px;
     --radius-sm: 8px;
     --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
@@ -1659,13 +1659,13 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 }
 
 .sp-status-badge.online {
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    background: #c8e6c9;
     color: #2e7d32;
     border: 1px solid #a5d6a7;
 }
 
 .sp-status-badge.offline {
-    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    background: #ffcdd2;
     color: #c62828;
     border: 1px solid #ef9a9a;
 }
@@ -1680,7 +1680,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .sp-btn-start {
     flex: 1;
     padding: 10px 20px;
-    background: linear-gradient(135deg, #43a047, #2e7d32);
+    background: #2e7d32;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -1692,14 +1692,14 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 }
 
 .sp-btn-start:hover {
-    background: linear-gradient(135deg, #388e3c, #1b5e20);
+    background: #1b5e20;
     box-shadow: 0 3px 8px rgba(46,125,50,.35);
 }
 
 .sp-btn-stop {
     flex: 1;
     padding: 10px 20px;
-    background: linear-gradient(135deg, #e53935, #c62828);
+    background: #c62828;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -1711,14 +1711,14 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 }
 
 .sp-btn-stop:hover {
-    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    background: #b71c1c;
     box-shadow: 0 3px 8px rgba(198,40,40,.35);
 }
 
 .sp-btn-restart {
     flex: 1;
     padding: 10px 20px;
-    background: linear-gradient(135deg, #fb8c00, #ef6c00);
+    background: #ef6c00;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -1733,7 +1733,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
     box-shadow: 0 2px 6px rgba(239,108,0,.25);
 }
 .sp-btn-restart:hover {
-    background: linear-gradient(135deg, #f57c00, #e65100);
+    background: #e65100;
     box-shadow: 0 3px 8px rgba(239,108,0,.35);
 }
 
@@ -1752,7 +1752,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .sp-np-cover {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, #00897b, #00acc1);
+    background: #00acc1;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -1933,7 +1933,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .sp-bar {
     width: 100%;
     min-height: 3px;
-    background: linear-gradient(to top, var(--primary-light), var(--primary));
+    background: var(--primary);
     border-radius: 4px 4px 0 0;
     position: relative;
     transition: height .3s ease;

@@ -96,7 +96,7 @@ $sidebarColor = $cpHex6($sidebarColor, '#004d40');
         .login-card {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, <?= htmlspecialchars($sidebarColor) ?>e6 0%, #00695ccc 50%, <?= htmlspecialchars($accentColor) ?>e6 100%);
+            background: #0b1f4a; /* solid (Admin > Branding sets the colour) */
             -webkit-backdrop-filter: blur(18px);
             backdrop-filter: blur(18px);
             border: 1px solid rgba(255,255,255,.25);

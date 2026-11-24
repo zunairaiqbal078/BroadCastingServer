@@ -260,7 +260,7 @@ $diasSemana = ['lunes'=>'Lun','martes'=>'Mar','miercoles'=>'Mi&eacute;','jueves'
                         <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
                             <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px">
                                 <div style="display:flex;align-items:center;gap:10px">
-                                    <div style="width:38px;height:38px;border-radius:50%;background:<?= $relay['activo'] ? 'linear-gradient(135deg,#059669,#10b981)' : 'var(--border)' ?>;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                    <div style="width:38px;height:38px;border-radius:50%;background:<?= $relay['activo'] ? '#10b981' : 'var(--border)' ?>;display:flex;align-items:center;justify-content:center;flex-shrink:0">
                                         <span style="color:#fff"><?= cpIcon('satellite',16) ?></span>
                                     </div>
                                     <div>

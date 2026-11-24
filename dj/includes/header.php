@@ -78,11 +78,12 @@ $stationName = htmlspecialchars($dj['estacion_nombre'] ?? $dj['titulo_radio'] ??
 <link href="<?= htmlspecialchars($djAssetsBase) ?>/assets/css/style.css?v=<?= (int)$djStyleVer ?>" rel="stylesheet">
 <style>
 :root {
-    --sidebar-bg: <?= $sidebarColor ?>;
-    --primary: <?= $primaryColor ?>;
-    --primary-hover: <?= $primaryColor ?>cc;
-    --primary-bg: #f3f0ff;
-    --content-bg: #f5f6fa;
+    /* same colours as the admin panel (slate + indigo), no gradients */
+    --sidebar-bg: #0f172a;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-bg: #eef0ff;
+    --content-bg: #f2f4f8;
     --card-bg: #fff;
     --text-dark: #1f2937;
     --text-secondary: #6b7280;
@@ -635,8 +636,8 @@ body {
 .btn{border-radius:10px;}
 
 .dj2-hero{position:relative;overflow:hidden;border-radius:18px;padding:24px 26px;margin-bottom:20px;color:#fff;
-  background:linear-gradient(135deg,<?= $primaryColor ?> 0%,#0f5f66 58%,#0b3d6e 100%);box-shadow:0 14px 34px rgba(15,40,80,.20);}
-.dj2-hero::before,.dj2-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none;}
+  background:#1e293b;box-shadow:0 12px 28px -14px rgba(15,23,42,.45);}
+.dj2-hero::before,.dj2-hero::after{display:none;}
 .dj2-hero::before{width:260px;height:260px;right:-80px;top:-110px;background:rgba(255,255,255,.18);}
 .dj2-hero::after{width:200px;height:200px;left:30%;bottom:-130px;background:rgba(255,255,255,.10);}
 .dj2-hero>*{position:relative;z-index:1;}
@@ -650,11 +651,11 @@ body {
 .dj2-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:10px;font-size:13px;font-weight:600;font-family:inherit;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;cursor:pointer;text-decoration:none;transition:background .2s,transform .2s;}
 .dj2-btn:hover{background:rgba(255,255,255,.24);color:#fff;transform:translateY(-1px);}
 .dj2-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.dj2-btn.solid{background:#fff;color:<?= $primaryColor ?>;border-color:#fff;}
-.dj2-btn.solid:hover{background:rgba(255,255,255,.88);color:<?= $primaryColor ?>;}
+.dj2-btn.solid{background:#fff;color:var(--primary);border-color:#fff;}
+.dj2-btn.solid:hover{background:rgba(255,255,255,.88);color:var(--primary);}
 .dj2-btn[disabled]{opacity:.6;cursor:default;}
 .dj2-np{margin-top:20px;display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);flex-wrap:wrap;}
-.dj2-listen{width:48px;height:48px;border-radius:50%;border:none;background:#fff;color:<?= $primaryColor ?>;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:transform .2s;}
+.dj2-listen{width:48px;height:48px;border-radius:50%;border:none;background:#fff;color:var(--primary);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:transform .2s;}
 .dj2-listen:hover{transform:scale(1.06);}
 .dj2-listen svg{width:20px;height:20px;fill:currentColor;}
 .dj2-np-main{flex:1;min-width:160px;}

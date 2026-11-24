@@ -114,7 +114,7 @@ if (!empty($brand['logo_login'])) {
     .login-card {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, <?= $bgColor ?>e6 0%, #00695ccc 50%, <?= $btnColor ?>e6 100%);
+        background: #0b1f4a; /* solid (Admin > Branding sets the colour) */
         -webkit-backdrop-filter: blur(18px);
         backdrop-filter: blur(18px);
         border: 1px solid rgba(255,255,255,.25);

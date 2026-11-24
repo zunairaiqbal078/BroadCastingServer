@@ -22,21 +22,13 @@
     --border: var(--line);
     --hover: var(--muted-bg);
 }
-.cp-role-cliente {
-    --body-bg: #f4f2fa;
-    --sidebar-bg: linear-gradient(185deg, #1d0f5c 0%, #160a45 55%, #120838 100%);
-    --sidebar-hover: rgba(255, 255, 255, .07);
-    --sidebar-text: #c7c0ea;
-    --primary-bg: #efe9ff;
-}
-.cp-role-admin,
-.cp-role-reseller {
+.cp-theme {
     --primary: #4f46e5;
     --primary-dark: #4338ca;
     --primary-light: #6366f1;
     --primary-bg: #eef0ff;
     --body-bg: #f2f4f8;
-    --sidebar-bg: linear-gradient(185deg, #0f172a 0%, #111827 100%);
+    --sidebar-bg: #0f172a;
     --sidebar-hover: rgba(148, 163, 184, .10);
     --sidebar-text: #a5b0c4;
     --line: #e3e7ef;
@@ -58,6 +50,7 @@
 .cp-theme .sidebar {
     background: var(--sidebar-bg);
     border-right: 1px solid rgba(255, 255, 255, .04);
+    background-image: none;
     box-shadow: 6px 0 24px -18px rgba(0, 0, 0, .6);
 }
 .cp-theme .sidebar-logo { padding: 20px 18px 18px; border-bottom: 1px solid rgba(255, 255, 255, .06); }
@@ -82,14 +75,14 @@
 .cp-theme .sidebar-nav li a .nav-icon { opacity: .85; }
 /* active item: its own accent, so it stands out whatever primary colour the branding sets */
 .cp-theme .sidebar-nav li a.active {
-    background: linear-gradient(90deg, rgba(167, 139, 250, .28), rgba(167, 139, 250, .10));
+    background: rgba(99, 102, 241, .16);
     color: #fff;
     font-weight: 600;
-    box-shadow: inset 3px 0 0 #a78bfa;
+    box-shadow: inset 3px 0 0 #818cf8;
 }
-.cp-theme .sidebar-nav li a.active .nav-icon { color: #c4b5fd; opacity: 1; }
-.cp-role-admin .sidebar-nav li a.active,
-.cp-role-reseller .sidebar-nav li a.active {
+.cp-theme .sidebar-nav li a.active .nav-icon { color: #a5b4fc; opacity: 1; }
+.cp-theme .sidebar-nav li a.active,
+.cp-theme .sidebar-nav li a.active {
     background: rgba(99, 102, 241, .16);
     color: #fff;
     box-shadow: inset 3px 0 0 #818cf8;
@@ -167,7 +160,7 @@
     box-shadow: 0 1px 1px rgba(17, 12, 46, .03);
     transition: border-color .15s ease, box-shadow .15s ease;
 }
-.cp-role-admin .form-control, .cp-role-reseller .form-control { border-color: #d7dde8; }
+.cp-theme .form-control, .cp-theme .form-control { border-color: #d7dde8; }
 .cp-theme .form-control:hover { border-color: #c9c4dd; }
 .cp-theme .form-control:focus { outline: none; border-color: var(--primary); box-shadow: var(--ring); }
 .cp-theme .form-control::placeholder { color: #a3a0b5; }
@@ -202,12 +195,12 @@
 .cp-theme .btn-sm { min-height: 32px; padding: 6px 11px; font-size: 12.5px; border-radius: 8px; }
 .cp-theme .btn-lg { min-height: 46px; padding: 12px 22px; font-size: 14.5px; }
 .cp-theme .btn-primary {
-    background: linear-gradient(180deg, var(--primary-light, var(--primary)) -40%, var(--primary) 100%);
+    background: var(--primary);
     color: #fff;
     box-shadow: 0 1px 2px rgba(17, 12, 46, .12), 0 6px 14px -8px var(--primary);
 }
 .cp-theme .btn-primary:hover { background: var(--primary-dark); color: #fff; box-shadow: 0 8px 18px -8px var(--primary); }
-.cp-role-admin .btn-primary, .cp-role-reseller .btn-primary { background: var(--primary); }
+.cp-theme .btn-primary, .cp-theme .btn-primary { background: var(--primary); }
 .cp-theme .btn-success { background: #0e9f6e; color: #fff; box-shadow: 0 6px 14px -8px #0e9f6e; }
 .cp-theme .btn-success:hover { background: #047857; color: #fff; }
 .cp-theme .btn-danger { background: #ef4444; color: #fff; box-shadow: 0 6px 14px -8px #ef4444; }
@@ -222,7 +215,7 @@
     border: 1px solid #dcd9e8;
     box-shadow: 0 1px 1px rgba(17, 12, 46, .04);
 }
-.cp-role-admin .btn-outline, .cp-role-reseller .btn-outline { border-color: #d7dde8; }
+.cp-theme .btn-outline, .cp-theme .btn-outline { border-color: #d7dde8; }
 .cp-theme .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
 .cp-theme .btn-block { width: 100%; }
 .cp-theme .btn[disabled], .cp-theme .btn.disabled { opacity: .55; cursor: not-allowed; box-shadow: none; }
@@ -284,8 +277,8 @@
 .cp-theme table.table td { padding: 12px 16px; border-bottom: 1px solid var(--line-soft); font-size: 13.5px; }
 .cp-theme table.table tbody tr { transition: background .12s ease; }
 .cp-theme table.table tbody tr:hover { background: #faf9fd; }
-.cp-role-admin table.table tbody tr:hover, .cp-role-reseller table.table tbody tr:hover { background: #f8fafc; }
-.cp-role-admin table.table td, .cp-role-reseller table.table td { padding: 11px 16px; }
+.cp-theme table.table tbody tr:hover, .cp-theme table.table tbody tr:hover { background: #f8fafc; }
+.cp-theme table.table td, .cp-theme table.table td { padding: 11px 16px; }
 
 /* ---------- tabs (module sub-navigation) ---------- */
 .cp-theme .tabs {
@@ -326,34 +319,34 @@
 .cp-theme .stat-card .stat-label { font-size: 11.5px; font-weight: 700; letter-spacing: .6px; }
 .cp-theme .stat-card .stat-value { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
 /* admin & reseller: white cards with a coloured accent instead of full gradients */
-.cp-role-admin .stat-card, .cp-role-reseller .stat-card {
+.cp-theme .stat-card, .cp-theme .stat-card {
     background: #fff !important;
     color: var(--text-primary) !important;
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
 }
-.cp-role-admin .stat-card::before, .cp-role-reseller .stat-card::before {
+.cp-theme .stat-card::before, .cp-theme .stat-card::before {
     content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--sc, var(--primary));
 }
-.cp-role-admin .stat-card.green, .cp-role-reseller .stat-card.green { --sc: #10b981; --scb: #ecfdf5; }
-.cp-role-admin .stat-card.blue, .cp-role-reseller .stat-card.blue { --sc: #3b82f6; --scb: #eff6ff; }
-.cp-role-admin .stat-card.red, .cp-role-reseller .stat-card.red { --sc: #ef4444; --scb: #fef2f2; }
-.cp-role-admin .stat-card.orange, .cp-role-reseller .stat-card.orange { --sc: #f59e0b; --scb: #fffbeb; }
-.cp-role-admin .stat-card.purple, .cp-role-reseller .stat-card.purple { --sc: #6366f1; --scb: #eef0ff; }
-.cp-role-admin .stat-card .stat-label, .cp-role-reseller .stat-card .stat-label { color: var(--text-secondary); opacity: 1; }
-.cp-role-admin .stat-card .stat-value, .cp-role-reseller .stat-card .stat-value { color: var(--text-primary); }
-.cp-role-admin .stat-card .stat-sub, .cp-role-reseller .stat-card .stat-sub { color: var(--text-secondary); opacity: 1; }
-.cp-role-admin .stat-card .stat-badge, .cp-role-reseller .stat-card .stat-badge {
+.cp-theme .stat-card.green, .cp-theme .stat-card.green { --sc: #10b981; --scb: #ecfdf5; }
+.cp-theme .stat-card.blue, .cp-theme .stat-card.blue { --sc: #3b82f6; --scb: #eff6ff; }
+.cp-theme .stat-card.red, .cp-theme .stat-card.red { --sc: #ef4444; --scb: #fef2f2; }
+.cp-theme .stat-card.orange, .cp-theme .stat-card.orange { --sc: #f59e0b; --scb: #fffbeb; }
+.cp-theme .stat-card.purple, .cp-theme .stat-card.purple { --sc: #6366f1; --scb: #eef0ff; }
+.cp-theme .stat-card .stat-label, .cp-theme .stat-card .stat-label { color: var(--text-secondary); opacity: 1; }
+.cp-theme .stat-card .stat-value, .cp-theme .stat-card .stat-value { color: var(--text-primary); }
+.cp-theme .stat-card .stat-sub, .cp-theme .stat-card .stat-sub { color: var(--text-secondary); opacity: 1; }
+.cp-theme .stat-card .stat-badge, .cp-theme .stat-card .stat-badge {
     background: var(--scb, var(--primary-bg)); color: var(--sc, var(--primary)); border: 0;
 }
-.cp-role-admin .stat-card .stat-icon, .cp-role-reseller .stat-card .stat-icon { color: var(--sc, var(--primary)); opacity: .14; }
-.cp-role-admin .cp-stats a.stat-card:hover, .cp-role-reseller .cp-stats a.stat-card:hover { color: var(--text-primary) !important; border-color: var(--sc, var(--primary)); }
-.cp-role-admin .cp-mini-bar, .cp-role-reseller .cp-mini-bar { background: var(--line-soft); }
-.cp-role-admin .cp-mini-bar span, .cp-role-reseller .cp-mini-bar span { background: var(--sc, var(--primary)); }
+.cp-theme .stat-card .stat-icon, .cp-theme .stat-card .stat-icon { color: var(--sc, var(--primary)); opacity: .14; }
+.cp-theme .cp-stats a.stat-card:hover, .cp-theme .cp-stats a.stat-card:hover { color: var(--text-primary) !important; border-color: var(--sc, var(--primary)); }
+.cp-theme .cp-mini-bar, .cp-theme .cp-mini-bar { background: var(--line-soft); }
+.cp-theme .cp-mini-bar span, .cp-theme .cp-mini-bar span { background: var(--sc, var(--primary)); }
 
 /* admin dashboard header */
-.cp-role-admin .cp-hero h2 { font-size: 24px; font-weight: 800; letter-spacing: -.4px; }
-.cp-role-admin .cp-chip { background: #fff; border-color: var(--line); box-shadow: 0 1px 1px rgba(15, 23, 42, .04); }
+.cp-theme .cp-hero h2 { font-size: 24px; font-weight: 800; letter-spacing: -.4px; }
+.cp-theme .cp-chip { background: #fff; border-color: var(--line); box-shadow: 0 1px 1px rgba(15, 23, 42, .04); }
 
 /* ---------- quick actions / tiles ---------- */
 .cp-theme .quick-action, .cp-theme .sp-qa {
@@ -378,7 +371,7 @@
 .cp-theme .upload-area, .cp-theme .img-upload-zone {
     border: 2px dashed #d6d1ea;
     border-radius: var(--radius);
-    background: linear-gradient(180deg, #fff, var(--muted-bg));
+    background: var(--muted-bg);
     transition: border-color .15s ease, background .15s ease;
 }
 .cp-theme .upload-area:hover, .cp-theme .img-upload-zone:hover { border-color: var(--primary); background: var(--primary-bg); }
@@ -451,17 +444,14 @@
     margin-bottom: 20px;
     border-radius: 18px;
     color: #fff;
-    background: linear-gradient(135deg, var(--primary) 0%, #0f5f66 58%, #0b3d6e 100%);
-    box-shadow: 0 14px 34px rgba(15, 40, 80, .20);
+    background: #1e293b;
+    box-shadow: 0 12px 28px -14px rgba(15, 23, 42, .45);
 }
-.cp-mod-hero::before, .cp-mod-hero::after { content: ''; position: absolute; border-radius: 50%; filter: blur(40px); pointer-events: none; }
-.cp-mod-hero::before { width: 260px; height: 260px; right: -80px; top: -120px; background: rgba(255, 255, 255, .18); }
-.cp-mod-hero::after { width: 200px; height: 200px; left: 35%; bottom: -140px; background: rgba(255, 255, 255, .10); }
 .cp-mod-hero > * { position: relative; z-index: 1; }
 .cp-mod-hero-icon {
     width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .25);
+    background: #4f46e5; border: 1px solid rgba(255, 255, 255, .12);
 }
 .cp-mod-hero-text { flex: 1; min-width: 0; }
 .cp-mod-kicker { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; opacity: .75; font-weight: 700; }
@@ -470,147 +460,20 @@
 .cp-mod-hero-chip {
     display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px; border-radius: 30px;
     font-size: 12px; font-weight: 700; white-space: nowrap;
-    background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .25);
+    background: rgba(255, 255, 255, .10); border: 1px solid rgba(255, 255, 255, .16);
 }
 @media (max-width: 640px) { .cp-mod-hero { flex-wrap: wrap; padding: 18px; } .cp-mod-hero-chip { order: 3; } }
 
-/* ==========================================================================
-   Client panel — "wow" layer: colourful mesh background, gradient icon chips,
-   glowing buttons, glass tabs and a soft entrance animation (look only).
-   ========================================================================== */
-.cp-role-cliente {
-    --cx-a: #7c3aed;   /* violet  */
-    --cx-b: #4f46e5;   /* indigo  */
-    --cx-c: #06b6d4;   /* cyan    */
-    --cx-d: #ec4899;   /* pink    */
-    --cx-grad: linear-gradient(135deg, var(--cx-a) 0%, var(--cx-b) 55%, var(--cx-c) 100%);
+/* ---------- one solid look for every panel (no gradients) ---------- */
+.cp-theme .adj-hero,
+.cp-theme .cp3-player,
+.cp-theme .cp-client-hero,
+.cp-theme .cp-embed-player {
+    background: #1e293b !important;
+    box-shadow: 0 12px 28px -14px rgba(15, 23, 42, .45) !important;
 }
-.cp-role-cliente .main-content {
-    background:
-        radial-gradient(900px 520px at 100% -10%, rgba(124, 58, 237, .13), transparent 60%),
-        radial-gradient(700px 480px at -10% 30%, rgba(6, 182, 212, .10), transparent 60%),
-        radial-gradient(800px 600px at 60% 110%, rgba(236, 72, 153, .08), transparent 60%),
-        var(--body-bg);
-    background-attachment: fixed;
-}
-
-/* sidebar: deeper glow + brand area */
-.cp-role-cliente .sidebar {
-    background:
-        radial-gradient(420px 260px at 0% 0%, rgba(124, 58, 237, .45), transparent 70%),
-        radial-gradient(360px 300px at 100% 100%, rgba(6, 182, 212, .18), transparent 70%),
-        linear-gradient(185deg, #1a0d52 0%, #12083d 60%, #0d062c 100%);
-}
-.cp-role-cliente .sidebar-logo .logo-icon,
-.cp-role-cliente .sidebar-logo > div:first-child:not(.logo-text) {
-    background: var(--cx-grad) !important;
-    box-shadow: 0 8px 20px -6px rgba(124, 58, 237, .7);
-}
-.cp-role-cliente .sidebar-nav li a.active {
-    background: linear-gradient(90deg, rgba(167, 139, 250, .32), rgba(6, 182, 212, .10));
-    box-shadow: inset 3px 0 0 #a78bfa, 0 8px 20px -12px rgba(124, 58, 237, .9);
-}
-
-/* top bar: glass */
-.cp-role-cliente .topbar { background: rgba(255, 255, 255, .72); border-bottom-color: rgba(124, 58, 237, .10); }
-.cp-role-cliente .topbar-title .title-icon { background: var(--cx-grad); color: #fff; box-shadow: 0 6px 14px -6px rgba(124, 58, 237, .8); }
-
-/* cards: crisp white, a thin gradient line on top, icon chips in the titles */
-.cp-role-cliente .card,
-.cp-role-cliente .sp-card {
-    position: relative;
-    background: rgba(255, 255, 255, .94);
-    border-color: rgba(124, 58, 237, .10);
-    box-shadow: 0 1px 2px rgba(17, 12, 46, .04), 0 14px 34px -18px rgba(76, 29, 149, .28);
-    transition: box-shadow .2s ease, transform .2s ease;
-}
-.cp-role-cliente .card::before,
-.cp-role-cliente .sp-card::before {
-    content: ''; position: absolute; left: 18px; right: 18px; top: 0; height: 2px;
-    border-radius: 0 0 4px 4px; background: var(--cx-grad); opacity: .55;
-}
-.cp-role-cliente .card:hover,
-.cp-role-cliente .sp-card:hover { box-shadow: 0 1px 2px rgba(17, 12, 46, .05), 0 20px 44px -20px rgba(76, 29, 149, .38); }
-.cp-role-cliente .card-header h3 > svg:first-child,
-.cp-role-cliente .sp-card-header h3 > svg:first-child {
-    box-sizing: content-box;
-    padding: 6px;
-    border-radius: 9px;
-    background: var(--cx-grad);
-    color: #fff !important;
-    box-shadow: 0 6px 14px -6px rgba(124, 58, 237, .75);
-    flex-shrink: 0;
-}
-
-/* buttons: gradient + glow */
-.cp-role-cliente .btn-primary {
-    background: linear-gradient(135deg, var(--cx-a) 0%, var(--cx-b) 100%);
-    box-shadow: 0 10px 22px -10px rgba(79, 70, 229, .9);
-}
-.cp-role-cliente .btn-primary:hover { background: linear-gradient(135deg, #6d28d9 0%, #4338ca 100%); box-shadow: 0 14px 28px -10px rgba(79, 70, 229, 1); transform: translateY(-1px); }
-.cp-role-cliente .btn-success {
-    background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
-    box-shadow: 0 10px 22px -10px rgba(13, 148, 136, .9);
-}
-.cp-role-cliente .btn-success:hover { background: linear-gradient(135deg, #059669 0%, #0f766e 100%); transform: translateY(-1px); }
-.cp-role-cliente .btn-danger { background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%); box-shadow: 0 10px 22px -10px rgba(225, 29, 72, .9); }
-.cp-role-cliente .btn-warning { background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%); }
-.cp-role-cliente .btn-outline:hover { border-color: var(--cx-a); color: var(--cx-a); background: #f5f3ff; }
-
-/* tabs: glass bar, gradient active pill */
-.cp-role-cliente .tabs {
-    background: rgba(255, 255, 255, .78);
-    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-    border-color: rgba(124, 58, 237, .12);
-}
-.cp-role-cliente .tab-btn.active { background: var(--cx-grad); box-shadow: 0 8px 18px -8px rgba(79, 70, 229, .9); }
-
-/* inputs: soft filled */
-.cp-role-cliente .form-control { background: #fbfaff; border-color: #e2dcf5; }
-.cp-role-cliente .form-control:focus { background: #fff; border-color: var(--cx-a); box-shadow: 0 0 0 4px rgba(124, 58, 237, .14); }
-
-/* tables: tinted header */
-.cp-role-cliente table.table th { background: linear-gradient(180deg, #f8f6ff, #f3f0fd); color: #5b4b8a; }
-.cp-role-cliente table.table tbody tr:hover { background: #faf8ff; }
-
-/* badges */
-.cp-role-cliente .badge-purple, .cp-role-cliente .card-header .badge:not([class*="badge-"]) { background: #f1ecff; color: #6d28d9; border-color: #e4dafe; }
-
-/* module banner: richer gradient + slow light sweep */
-.cp-role-cliente .cp-mod-hero {
-    background:
-        radial-gradient(520px 260px at 85% -30%, rgba(236, 72, 153, .35), transparent 65%),
-        radial-gradient(460px 240px at 10% 130%, rgba(6, 182, 212, .35), transparent 65%),
-        linear-gradient(120deg, #2e1065 0%, #4c1d95 35%, #312e81 70%, #0e7490 100%);
-    box-shadow: 0 22px 44px -22px rgba(76, 29, 149, .85);
-}
-.cp-role-cliente .cp-mod-hero-icon { background: rgba(255, 255, 255, .14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 10px 24px -10px rgba(0, 0, 0, .5); }
-.cp-role-cliente .cp-mod-hero::after {
-    width: 140%; height: 100%; left: -140%; top: 0; bottom: auto; border-radius: 0; filter: none;
-    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, .10) 45%, transparent 70%);
-    animation: cpHeroSweep 7s ease-in-out infinite;
-}
-@keyframes cpHeroSweep { 0%, 55% { transform: translateX(0); } 100% { transform: translateX(170%); } }
-
-/* entrance animation: banner and cards fade up one after another */
-/* movement only (never opacity): if a browser freezes animations, the content is still fully visible */
-@keyframes cpRise { from { transform: translateY(14px); } to { transform: none; } }
-.cp-role-cliente .page-content > .cp-mod-hero,
-.cp-role-cliente .page-content > .tabs,
-.cp-role-cliente .page-content > .alert,
-.cp-role-cliente .page-content > .card,
-.cp-role-cliente .page-content > .two-cols > div,
-.cp-role-cliente .page-content > .two-cols-equal > div,
-.cp-role-cliente .page-content > div > .card {
-    animation: cpRise .55s cubic-bezier(.2, .7, .2, 1) backwards;
-}
-.cp-role-cliente .page-content > .tabs { animation-delay: .06s; }
-.cp-role-cliente .page-content > .alert { animation-delay: .10s; }
-.cp-role-cliente .page-content > .card,
-.cp-role-cliente .page-content > .two-cols > div:first-child,
-.cp-role-cliente .page-content > .two-cols-equal > div:first-child { animation-delay: .14s; }
-.cp-role-cliente .page-content > .two-cols > div:nth-child(2),
-.cp-role-cliente .page-content > .two-cols-equal > div:nth-child(2) { animation-delay: .22s; }
-@media (prefers-reduced-motion: reduce) {
-    .cp-role-cliente .page-content *, .cp-role-cliente .cp-mod-hero::after { animation: none !important; }
-}
+.cp-theme .adj-hero::before, .cp-theme .adj-hero::after,
+.cp-theme .cp3-player::before, .cp-theme .cp3-player::after,
+.cp-theme .cp2-hero::before, .cp-theme .cp2-hero::after { display: none !important; }
+.cp-theme .cp2-hero { background: #1e293b !important; box-shadow: 0 12px 28px -14px rgba(15, 23, 42, .45) !important; }
+.cp-theme .stat-card { background-image: none !important; }
