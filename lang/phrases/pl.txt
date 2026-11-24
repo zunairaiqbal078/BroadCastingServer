@@ -2160,3 +2160,78 @@ od
 do
 Lupa filtruje folder wg roku wydania i BPM (np. tylko 2010–2026 lub 100–130 BPM). Utwory bez tej wartości są pomijane; uzupełnij je w Bibliotece muzyki.
 Usunięto utworów: {n}.
+Wgraj muzykę do folderów AutoDJ.
+Wszystkie utwory radia: szukaj, edytuj i porządkuj.
+Twórz i porządkuj foldery (playlisty) AutoDJ.
+Dostosuj brzmienie radia dla AutoDJ i transmisji na żywo.
+Wgraj spoty i uporządkuj je w listy reklam.
+Zdecyduj, kiedy i co ile utworów grają reklamy.
+Miksuj foldery według godzin z zasadami rotacji.
+Audycje, wiadomości i komunikaty godziny w dokładnej minucie.
+Retransmituj inne radio w wybranych godzinach.
+Twórz konta dla prezenterów i DJ-ów.
+Zarządzaj kontami DJ radia.
+Nagrania audycji na żywo Twoich DJ-ów.
+Wiadomość, którą DJ-e zobaczą w panelu.
+Wygląd, tło i efekty publicznego odtwarzacza.
+Odtwarzacze i kody do osadzenia na stronie.
+Linki SSL do słuchania, playlisty i publiczny odtwarzacz.
+Dane radia w JSON dla aplikacji i stron.
+Słuchacze i aktywność radia.
+Transmituj radio do mediów społecznościowych.
+Transmituj radio na żywo na Facebooku.
+Transmituj radio na żywo na YouTube.
+Transmituj radio na żywo na TikToku.
+Transmituj radio na żywo na Instagramie.
+Dostęp zablokowany (wykryto skaner)
+Dostęp zablokowany (logowanie bez przeglądarki)
+Zbyt wiele nieudanych prób. Twoje IP jest zablokowane na {n} minut.
+{x} (pozostało prób przed blokadą: {n})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

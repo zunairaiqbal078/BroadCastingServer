@@ -2160,3 +2160,78 @@ de
 até
 A lupa filtra a pasta por ano de lançamento e BPM (ex: só 2010–2026, ou 100–130 BPM). As músicas sem esse dado ficam fora do filtro; complete-as na Biblioteca de Música.
 {n} músicas excluídas.
+Envie músicas para as pastas do seu AutoDJ.
+Todas as músicas da sua rádio: busque, edite e organize.
+Crie e ordene as pastas (playlists) do seu AutoDJ.
+Ajuste o som da sua rádio para AutoDJ e transmissões ao vivo.
+Envie seus spots e organize-os em listas de anúncios.
+Decida quando e a cada quantas músicas seus anúncios tocam.
+Misture suas pastas por horário com regras de rotação.
+Programas, notícias e anúncios da hora num minuto exato.
+Retransmita outra rádio no horário que escolher.
+Crie contas para seus locutores e DJs.
+Gerencie as contas DJ da sua rádio.
+Gravações dos programas ao vivo dos seus DJs.
+Mensagem que seus DJs verão no painel.
+Design, fundo e efeitos do seu player público.
+Players e códigos para inserir no seu site.
+Links de escuta SSL, playlists e player público.
+Dados da sua rádio em JSON para apps e sites.
+Ouvintes e atividade da sua rádio.
+Transmita sua rádio para suas redes sociais.
+Transmita sua rádio ao vivo no Facebook.
+Transmita sua rádio ao vivo no YouTube.
+Transmita sua rádio ao vivo no TikTok.
+Transmita sua rádio ao vivo no Instagram.
+Acesso bloqueado (scanner de segurança detectado)
+Acesso bloqueado (login sem navegador)
+Muitas tentativas falhas. Seu IP está bloqueado por {n} minutos.
+{x} ({n} tentativa(s) restante(s) antes do bloqueio)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

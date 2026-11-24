@@ -356,6 +356,7 @@ $sslDomain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['SERVER_NAME'] ?? 'l
                         <th>Codec</th>
                         <th>Estado</th>
                         <th>Oyentes</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -399,6 +400,10 @@ $sslDomain = defined('SSL_DOMAIN') ? SSL_DOMAIN : ($_SERVER['SERVER_NAME'] ?? 'l
                                     } catch (Exception $ex) { echo 0; }
                                 }
                             ?></td>
+                            <td style="white-space:nowrap" translate="no" title="<?= htmlspecialchars((string)$e['created_at']) ?>">
+                                <?php $cpCreated = strtotime((string)($e['created_at'] ?? '')); ?>
+                                <?= $cpCreated ? '<strong style="font-weight:600">' . date('d/m/Y', $cpCreated) . '</strong><div style="font-size:11px;color:var(--text-secondary)">' . date('H:i', $cpCreated) . '</div>' : '—' ?>
+                            </td>
                             <td>
                                 <div style="display:flex;gap:5px;flex-wrap:wrap">
                                     <button type="button" class="btn btn-sm btn-outline" onclick="openStationModal(<?= $e['id'] ?>)"><?= cpIcon('pencil', 14) ?> Editar</button>

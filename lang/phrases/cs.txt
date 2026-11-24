@@ -2160,3 +2160,78 @@ od
 do
 Lupa filtruje složku podle roku vydání a BPM (např. jen 2010–2026 nebo 100–130 BPM). Skladby bez této hodnoty filtr vynechá; doplňte je v Hudební knihovně.
 Smazáno skladeb: {n}.
+Nahrajte hudbu do složek AutoDJ.
+Všechny skladby rádia: hledejte, upravujte a třiďte.
+Vytvářejte a řaďte složky (playlisty) AutoDJ.
+Nastavte zvuk rádia pro AutoDJ a živé vysílání.
+Nahrajte spoty a uspořádejte je do reklamních seznamů.
+Rozhodněte, kdy a po kolika skladbách hrají reklamy.
+Míchejte složky podle času s pravidly rotace.
+Pořady, zprávy a hlášení času v přesnou minutu.
+Přenášejte jiné rádio v časech, které zvolíte.
+Vytvořte účty pro moderátory a DJ.
+Spravujte účty DJ rádia.
+Záznamy živých pořadů vašich DJ.
+Zpráva, kterou DJ uvidí ve svém panelu.
+Vzhled, pozadí a efekty veřejného přehrávače.
+Přehrávače a kódy pro vložení na web.
+Odkazy SSL k poslechu, playlisty a veřejný přehrávač.
+Data rádia ve formátu JSON pro aplikace a weby.
+Posluchači a aktivita rádia.
+Vysílejte rádio na sociální sítě.
+Vysílejte rádio živě na Facebook.
+Vysílejte rádio živě na YouTube.
+Vysílejte rádio živě na TikTok.
+Vysílejte rádio živě na Instagram.
+Přístup zablokován (zjištěn bezpečnostní skener)
+Přístup zablokován (přihlášení bez prohlížeče)
+Příliš mnoho neúspěšných pokusů. Vaše IP je blokována na {n} minut.
+{x} (zbývá {n} pokus(ů) do zablokování)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2160,3 +2160,78 @@ van
 tot
 Het vergrootglas filtert de map op jaar van uitgave en BPM (bijv. alleen 2010–2026, of 100–130 BPM). Nummers zonder die waarde vallen buiten het filter; vul ze aan in de Muziekbibliotheek.
 {n} nummers verwijderd.
+Upload muziek naar de mappen van je AutoDJ.
+Alle nummers van je radio: zoeken, bewerken en ordenen.
+Maak en orden de mappen (playlists) van je AutoDJ.
+Stem het geluid van je radio af voor AutoDJ en live-uitzendingen.
+Upload je spots en orden ze in advertentielijsten.
+Bepaal wanneer en na hoeveel nummers je advertenties spelen.
+Mix je mappen per tijdslot met rotatieregels.
+Programma's, nieuws en tijdmeldingen op de exacte minuut.
+Herzend een andere radio op de tijden die je kiest.
+Maak accounts voor je presentatoren en DJ's.
+Beheer de DJ-accounts van je radio.
+Opnames van de live-shows van je DJ's.
+Bericht dat je DJ's in hun paneel zien.
+Ontwerp, achtergrond en effecten van je openbare speler.
+Spelers en insluitcodes voor je website.
+SSL-luisterlinks, afspeellijsten en openbare speler.
+Gegevens van je radio in JSON voor apps en websites.
+Luisteraars en activiteit van je radio.
+Stream je radio naar je sociale netwerken.
+Stream je radio live naar Facebook.
+Stream je radio live naar YouTube.
+Stream je radio live naar TikTok.
+Stream je radio live naar Instagram.
+Toegang geblokkeerd (beveiligingsscanner gedetecteerd)
+Toegang geblokkeerd (inloggen zonder browser)
+Te veel mislukte pogingen. Je IP is {n} minuten geblokkeerd.
+{x} (nog {n} poging(en) voor de blokkade)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

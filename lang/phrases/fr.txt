@@ -2160,3 +2160,78 @@ de
 à
 La loupe filtre le dossier par année de sortie et BPM (ex : seulement 2010–2026, ou 100–130 BPM). Les chansons sans cette donnée sont exclues ; complétez-les dans la Bibliothèque musicale.
 {n} chansons supprimées.
+Ajoutez de la musique aux dossiers de votre AutoDJ.
+Toutes les chansons de votre radio : recherchez, modifiez et organisez.
+Créez et triez les dossiers (playlists) de votre AutoDJ.
+Réglez le son de votre radio pour l'AutoDJ et le direct.
+Ajoutez vos spots et organisez-les en listes de publicités.
+Choisissez quand et toutes les combien de chansons vos pubs passent.
+Mélangez vos dossiers par créneau avec des règles de rotation.
+Émissions, infos et annonces de l'heure à la minute près.
+Relayez une autre radio aux horaires de votre choix.
+Créez des comptes pour vos animateurs et DJ.
+Gérez les comptes DJ de votre radio.
+Enregistrements des émissions en direct de vos DJ.
+Message que vos DJ verront dans leur panneau.
+Design, arrière-plan et effets de votre lecteur public.
+Lecteurs et codes à intégrer à votre site web.
+Liens d'écoute SSL, playlists et lecteur public.
+Données de votre radio en JSON pour apps et sites.
+Auditeurs et activité de votre radio.
+Diffusez votre radio sur vos réseaux sociaux.
+Diffusez votre radio en direct sur Facebook.
+Diffusez votre radio en direct sur YouTube.
+Diffusez votre radio en direct sur TikTok.
+Diffusez votre radio en direct sur Instagram.
+Accès bloqué (scanner de sécurité détecté)
+Accès bloqué (connexion sans navigateur)
+Trop de tentatives échouées. Votre IP est bloquée pendant {n} minutes.
+{x} ({n} tentative(s) restante(s) avant le blocage)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

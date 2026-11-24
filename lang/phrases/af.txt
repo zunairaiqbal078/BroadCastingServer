@@ -2160,3 +2160,78 @@ van
 tot
 Die vergrootglas filter die gids volgens vrystellingsjaar en BPM (bv. net 2010–2026, of 100–130 BPM). Liedjies sonder daardie waarde word uitgelaat; vul dit in die Musiekbiblioteek in.
 {n} liedjies geskrap.
+Laai musiek op na jou AutoDJ-gidse.
+Al jou radio se liedjies: soek, wysig en orden.
+Skep en orden jou AutoDJ-gidse (snitlyste).
+Stel jou radio se klank vir AutoDJ en regstreekse uitsendings.
+Laai jou advertensies op en orden hulle in lyste.
+Kies wanneer en na hoeveel liedjies jou advertensies speel.
+Meng jou gidse volgens tyd met rotasiereëls.
+Programme, nuus en tydaankondigings op die presiese minuut.
+Herbeeldsend 'n ander radio op die tye wat jy kies.
+Skep rekeninge vir jou aanbieders en DJ's.
+Bestuur jou radio se DJ-rekeninge.
+Opnames van jou DJ's se regstreekse programme.
+Boodskap wat jou DJ's in hul paneel sal sien.
+Ontwerp, agtergrond en effekte van jou openbare speler.
+Spelers en inbedkodes vir jou webwerf.
+SSL-luisterskakels, snitlyste en die openbare speler.
+Jou radio se data in JSON vir toepassings en webwerwe.
+Jou radio se luisteraars en aktiwiteit.
+Stroom jou radio na jou sosiale netwerke.
+Stroom jou radio regstreeks na Facebook.
+Stroom jou radio regstreeks na YouTube.
+Stroom jou radio regstreeks na TikTok.
+Stroom jou radio regstreeks na Instagram.
+Toegang geblokkeer (sekuriteitskandeerder bespeur)
+Toegang geblokkeer (aanmelding sonder blaaier)
+Te veel mislukte pogings. Jou IP is vir {n} minute geblokkeer.
+{x} ({n} poging(s) oor voor die blokkering)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

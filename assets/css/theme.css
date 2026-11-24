@@ -439,3 +439,37 @@
 .cp-theme .control-item { border-radius: var(--radius-sm); }
 .cp-theme .toggle-slider, .cp-theme .switch-slider { box-shadow: inset 0 1px 2px rgba(0, 0, 0, .08); }
 .cp-theme input:checked + .toggle-slider, .cp-theme input:checked + .switch-slider { background: var(--primary); }
+
+/* ---------- client module header banner (same look as Manage AutoDJ) ---------- */
+.cp-mod-hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    border-radius: 18px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary) 0%, #0f5f66 58%, #0b3d6e 100%);
+    box-shadow: 0 14px 34px rgba(15, 40, 80, .20);
+}
+.cp-mod-hero::before, .cp-mod-hero::after { content: ''; position: absolute; border-radius: 50%; filter: blur(40px); pointer-events: none; }
+.cp-mod-hero::before { width: 260px; height: 260px; right: -80px; top: -120px; background: rgba(255, 255, 255, .18); }
+.cp-mod-hero::after { width: 200px; height: 200px; left: 35%; bottom: -140px; background: rgba(255, 255, 255, .10); }
+.cp-mod-hero > * { position: relative; z-index: 1; }
+.cp-mod-hero-icon {
+    width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .25);
+}
+.cp-mod-hero-text { flex: 1; min-width: 0; }
+.cp-mod-kicker { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; opacity: .75; font-weight: 700; }
+.cp-mod-hero h2 { font-size: 22px; font-weight: 800; margin: 3px 0 2px; color: #fff; }
+.cp-mod-hero p { margin: 0; font-size: 13px; opacity: .85; }
+.cp-mod-hero-chip {
+    display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px; border-radius: 30px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .25);
+}
+@media (max-width: 640px) { .cp-mod-hero { flex-wrap: wrap; padding: 18px; } .cp-mod-hero-chip { order: 3; } }

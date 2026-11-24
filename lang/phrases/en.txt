@@ -2160,3 +2160,78 @@ from
 to
 The magnifier filters the folder by release year and BPM (e.g. only 2010–2026, or 100–130 BPM). Songs without that value are left out by the filter; fill them in in the Music Library.
 {n} songs deleted.
+Upload music to your AutoDJ folders.
+All your radio's songs: search, edit and organise.
+Create and order your AutoDJ folders (playlists).
+Tune your radio's sound for AutoDJ and live broadcasts.
+Upload your spots and organise them into ad lists.
+Choose when and every how many songs your ads play.
+Mix your folders by time slot with rotation rules.
+Shows, news and time announcements at an exact minute.
+Relay another station at the times you choose.
+Create accounts for your presenters and DJs.
+Manage your radio's DJ accounts.
+Recordings of your DJs' live shows.
+Message your DJs will see in their panel.
+Design, background and effects of your public player.
+Players and embed codes for your website.
+SSL listening links, playlists and the public player.
+Your radio's data in JSON for apps and websites.
+Your radio's listeners and activity.
+Stream your radio to your social networks.
+Stream your radio live to Facebook.
+Stream your radio live to YouTube.
+Stream your radio live to TikTok.
+Stream your radio live to Instagram.
+Access blocked (security scanner detected)
+Access blocked (login without a browser)
+Too many failed attempts. Your IP is blocked for {n} minutes.
+{x} ({n} attempt(s) left before the block)
+Brute Force Protection
+Brute Force Protection - CastPanel
+ON
+OFF
+Protects panel, DJ portal and API logins against brute force attacks. An IP that exceeds {n} failed attempts within {n} minutes is blocked for {n} minutes. You can unblock it earlier from this page.
+IPs blocked now
+Failed attempts (24 h)
+Your IP (never blocked manually)
+Failed attempts
+Within (minutes)
+Ban (minutes)
+Other security protections
+Login without a browser
+Refuses logins and API calls without a User-Agent (scripts and bots).
+Sqlmap and other scanners
+Blocks sqlmap, nikto, wpscan, nmap, acunetix and similar tools.
+Blocked
+Allow
+Block
+Global WordPress attacks
+wp-login.php, xmlrpc.php and wp-admin return 403.
+MySQL connection without a password
+The panel connects to the database with a password.
+Disabled
+Check
+Remote MySQL connection
+Enabled (check)
+Blocked IPs
+Unblock all
+No blocked IPs.
+Reason
+Until
+Unblock
+Block an IP
+Minutes
+Latest failed attempts
+No failed attempts.
+Area
+Manual block (administrator)
+Brute force: {n} failed attempts ({x})
+Brute Force Protection updated.
+Settings saved.
+Protection updated.
+IP unblocked.
+All IPs were unblocked.
+Invalid IP.
+You can't block your own IP or the server's.
+IP blocked.

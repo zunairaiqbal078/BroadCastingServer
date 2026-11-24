@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                         $paqStmt = $db->prepare("SELECT p.max_dj FROM paquetes p JOIN estaciones e ON e.paquete_id = p.id WHERE e.id = ?");
                         $paqStmt->execute([$stationId]);
                         $paqRow = $paqStmt->fetch(PDO::FETCH_ASSOC);
-                        if ($paqRow) $maxDj = (int)$paqRow['max_dj'];
+                        $maxDj = 0; // DJ accounts are always unlimited
 
                         $countStmt = $db->prepare("SELECT COUNT(*) FROM cuentas_dj WHERE estacion_id = ?");
                         $countStmt->execute([$stationId]);
@@ -603,7 +603,7 @@ function changeStation(id) {
     $paqStmt = $db->prepare("SELECT p.max_dj FROM paquetes p JOIN estaciones e ON e.paquete_id = p.id WHERE e.id = ?");
     $paqStmt->execute([$stationId]);
     $paqRow = $paqStmt->fetch(PDO::FETCH_ASSOC);
-    if ($paqRow) $maxDj = (int)$paqRow['max_dj'];
+    $maxDj = 0; // DJ accounts are always unlimited
 ?>
 
 <div class="section-card">

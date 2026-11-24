@@ -2160,3 +2160,78 @@ de la
 până la
 Lupa filtrează folderul după anul lansării și BPM (ex: doar 2010–2026 sau 100–130 BPM). Piesele fără această valoare rămân în afara filtrului; completați-le în Biblioteca muzicală.
 {n} piese șterse.
+Încărcați muzică în folderele AutoDJ.
+Toate piesele radioului: căutați, editați și organizați.
+Creați și ordonați folderele (playlisturile) AutoDJ.
+Reglați sunetul radioului pentru AutoDJ și emisiuni live.
+Încărcați spoturile și organizați-le în liste de reclame.
+Alegeți când și la câte piese rulează reclamele.
+Amestecați folderele pe intervale orare cu reguli de rotație.
+Emisiuni, știri și anunțul orei la minutul exact.
+Retransmiteți alt radio în orele alese.
+Creați conturi pentru prezentatori și DJ.
+Gestionați conturile DJ ale radioului.
+Înregistrările emisiunilor live ale DJ-ilor.
+Mesajul pe care DJ-ii îl vor vedea în panou.
+Designul, fundalul și efectele playerului public.
+Playere și coduri de inserat pe site.
+Linkuri de ascultare SSL, playlisturi și player public.
+Datele radioului în JSON pentru aplicații și site-uri.
+Ascultătorii și activitatea radioului.
+Transmiteți radioul pe rețelele sociale.
+Transmiteți radioul live pe Facebook.
+Transmiteți radioul live pe YouTube.
+Transmiteți radioul live pe TikTok.
+Transmiteți radioul live pe Instagram.
+Acces blocat (scaner de securitate detectat)
+Acces blocat (autentificare fără browser)
+Prea multe încercări eșuate. IP-ul este blocat {n} minute.
+{x} ({n} încercare/încercări rămase până la blocare)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

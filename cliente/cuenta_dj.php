@@ -15,12 +15,12 @@ if (!$estacion) { echo '<div class="alert alert-warning">Sin estaci&oacute;n asi
 $db = getDB();
 
 // Límite de cuentas DJ
-$maxDJ = 5;
+$maxDJ = 0;
 try {
     $stmt = $db->prepare("SELECT p.max_dj FROM paquetes p JOIN estaciones e ON e.paquete_id = p.id WHERE e.id = ?");
     $stmt->execute([$estacion['id']]);
     $pkg = $stmt->fetch();
-    if ($pkg) $maxDJ = (int)$pkg['max_dj'];
+    $maxDJ = 0; // DJ accounts are always unlimited (package limit removed)
 } catch (PDOException $e) {}
 
 $totalDJ = 0;

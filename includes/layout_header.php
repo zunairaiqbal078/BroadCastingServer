@@ -166,6 +166,9 @@ $brand = getCurrentBranding();
             <li><a href="<?= BASE_URL ?>/admin/firewall.php" class="<?= $currentPage === 'firewall' ? 'active' : '' ?>">
                 <span class="nav-icon"><?= cpIcon('shield', 16) ?></span> Seguridad y Firewall
             </a></li>
+            <li><a href="<?= BASE_URL ?>/admin/seguridad.php" class="<?= $currentPage === 'seguridad' ? 'active' : '' ?>">
+                <span class="nav-icon"><?= cpIcon('shield', 16) ?></span> Protecci&oacute;n Brute Force
+            </a></li>
             <li><a href="<?= BASE_URL ?>/admin/api_billing.php" class="<?= $currentPage === 'api_billing' ? 'active' : '' ?>">
                 <span class="nav-icon"><?= cpIcon('dollar', 16) ?></span> Facturaci&oacute;n y API
             </a></li>
@@ -374,6 +377,48 @@ $brand = getCurrentBranding();
 
         <!-- PAGE CONTENT -->
         <div class="page-content">
+<?php
+// Client modules share one header banner (same look as Manage AutoDJ). Look only:
+// pages that already draw their own banner (dashboard, AutoDJ) are skipped.
+$cpModInfo = [
+    'subir_musica'       => ['Gestión de AutoDJ', 'Sube música a las carpetas de tu AutoDJ.'],
+    'biblioteca'         => ['Gestión de AutoDJ', 'Todas las canciones de tu radio: busca, edita y organiza.'],
+    'listas'             => ['Gestión de AutoDJ', 'Crea y ordena las carpetas (playlists) de tu AutoDJ.'],
+    'procesador'         => ['Procesador de Audio', 'Ajusta el sonido de tu radio para AutoDJ y transmisiones en vivo.'],
+    'anuncios'           => ['Gestión de Anuncios', 'Sube tus spots y organízalos en listas de anuncios.'],
+    'programar_anuncios' => ['Gestión de Anuncios', 'Decide cuándo y cada cuántas canciones suenan tus anuncios.'],
+    'rotacion_carpetas'  => ['Automatización', 'Mezcla tus carpetas por horario con reglas de rotación.'],
+    'eventos'            => ['Automatización', 'Programas, noticias y anuncios de la hora en un minuto exacto.'],
+    'relay'              => ['Automatización', 'Retransmite otra radio en el horario que elijas.'],
+    'cuenta_dj'          => ['Centro de Control DJ', 'Crea cuentas para tus locutores y DJs.'],
+    'listar_dj'          => ['Centro de Control DJ', 'Administra las cuentas DJ de tu radio.'],
+    'shows_dj'           => ['Centro de Control DJ', 'Grabaciones de los programas en vivo de tus DJs.'],
+    'mensaje_dj'         => ['Centro de Control DJ', 'Mensaje que verán tus DJs en su panel.'],
+    'player_config'      => ['Reproductor Público', 'Diseño, fondo y efectos de tu reproductor público.'],
+    'widgets'            => ['Reproductor Público', 'Reproductores y códigos para insertar en tu sitio web.'],
+    'enlaces'            => ['Integraciones y API', 'Enlaces de escucha SSL, listas de reproducción y reproductor público.'],
+    'api_json'           => ['Integraciones y API', 'Datos de tu radio en formato JSON para apps y sitios web.'],
+    'estadisticas'       => ['Estadísticas y Cuenta', 'Oyentes y actividad de tu radio.'],
+    'retransmisiones'    => ['Integraciones y API', 'Transmite tu radio a tus redes sociales.'],
+    'facebook_live'      => ['Integraciones y API', 'Transmite tu radio en vivo a Facebook.'],
+    'youtube_live'       => ['Integraciones y API', 'Transmite tu radio en vivo a YouTube.'],
+    'tiktok_live'        => ['Integraciones y API', 'Transmite tu radio en vivo a TikTok.'],
+    'instagram_live'     => ['Integraciones y API', 'Transmite tu radio en vivo a Instagram.'],
+];
+if ($cpThemeRole === 'cliente' && isset($cpModInfo[$currentPage])):
+    [$cpModSection, $cpModDesc] = $cpModInfo[$currentPage]; ?>
+    <section class="cp-mod-hero">
+        <div class="cp-mod-hero-icon"><?= cpIcon($pageIcon ?? 'radio', 24) ?></div>
+        <div class="cp-mod-hero-text">
+            <div class="cp-mod-kicker"><?= htmlspecialchars($cpModSection) ?></div>
+            <h2><?= htmlspecialchars($pageTitle ?? '') ?></h2>
+            <p><?= htmlspecialchars($cpModDesc) ?></p>
+        </div>
+        <?php if ($estacion): ?>
+        <div class="cp-mod-hero-chip" translate="no"><?= cpIcon('radio', 14) ?> <?= htmlspecialchars($estacion['nombre'] ?? $estacion['slug']) ?></div>
+        <?php endif; ?>
+    </section>
+<?php endif; ?>
 
 <?php if ($flash): ?>
     <div class="alert alert-<?= $flash['type'] ?>">

@@ -1,6 +1,8 @@
 # Dynamic /shoutcast/{slug} when Apache ProxyPass was not synced yet (new stations)
 <IfModule mod_rewrite.c>
 RewriteEngine On
+# Security: global WordPress attacks (this panel has no WordPress)
+RewriteRule (^|/)(wp-login\.php|xmlrpc\.php|wp-admin|wp-includes|wp-content)(/|$) - [F,L,NC]
 RewriteRule ^shoutcast/([a-z0-9][a-z0-9_-]*)/?$ shoutcast/index.php?slug=$1 [L,QSA,NC]
 # SonicPanel-style links: /{port}/stream and /{port}/; (port of a SHOUTcast station)
 RewriteRule ^([0-9]{4,5})/(stream|;)/?$ shoutcast/index.php?port=$1 [L,QSA]

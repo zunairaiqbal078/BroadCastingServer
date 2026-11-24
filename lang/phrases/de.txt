@@ -2160,3 +2160,78 @@ von
 bis
 Die Lupe filtert den Ordner nach Erscheinungsjahr und BPM (z. B. nur 2010–2026 oder 100–130 BPM). Titel ohne diesen Wert werden ausgeschlossen; ergänzen Sie sie in der Musikbibliothek.
 {n} Titel gelöscht.
+Laden Sie Musik in die Ordner Ihres AutoDJ hoch.
+Alle Titel Ihres Radios: suchen, bearbeiten, ordnen.
+Erstellen und sortieren Sie Ihre AutoDJ-Ordner (Playlists).
+Passen Sie den Klang Ihres Radios für AutoDJ und Live-Sendungen an.
+Laden Sie Ihre Spots hoch und ordnen Sie sie in Werbelisten.
+Legen Sie fest, wann und nach wie vielen Titeln Ihre Werbung läuft.
+Mischen Sie Ihre Ordner nach Zeitplan mit Rotationsregeln.
+Sendungen, Nachrichten und Zeitansagen zur exakten Minute.
+Übertragen Sie ein anderes Radio zu Ihren Wunschzeiten.
+Erstellen Sie Konten für Ihre Moderatoren und DJs.
+Verwalten Sie die DJ-Konten Ihres Radios.
+Aufnahmen der Live-Sendungen Ihrer DJs.
+Nachricht, die Ihre DJs in ihrem Panel sehen.
+Design, Hintergrund und Effekte Ihres öffentlichen Players.
+Player und Einbettungscodes für Ihre Website.
+SSL-Hörlinks, Playlists und öffentlicher Player.
+Daten Ihres Radios als JSON für Apps und Websites.
+Hörer und Aktivität Ihres Radios.
+Streamen Sie Ihr Radio in Ihre sozialen Netzwerke.
+Streamen Sie Ihr Radio live auf Facebook.
+Streamen Sie Ihr Radio live auf YouTube.
+Streamen Sie Ihr Radio live auf TikTok.
+Streamen Sie Ihr Radio live auf Instagram.
+Zugriff blockiert (Sicherheitsscanner erkannt)
+Zugriff blockiert (Anmeldung ohne Browser)
+Zu viele Fehlversuche. Ihre IP ist für {n} Minuten gesperrt.
+{x} (noch {n} Versuch(e) bis zur Sperre)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

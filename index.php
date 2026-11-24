@@ -8,6 +8,7 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/branding.php';
 require_once __DIR__ . '/includes/i18n.php';
+require_once __DIR__ . '/includes/security.php';
 cpI18nStart();
 
 $brand = getLoginBranding();
@@ -31,6 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
+    // Brute Force Protection: banned IP, scanners and logins without a browser stop here
+    $secError = cpSecCheckRequest();
+    if ($secError !== '') {
+        $result = ['success' => false, 'error' => $secError, 'security' => true];
+    } else {
     // Login unificado: primero intenta como usuario (admin/reseller/cliente)
     $result = loginUser($username, $password);
 
@@ -40,6 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($resultDJ['success']) {
             $result = $resultDJ;
         }
+    }
+    if ($result['success']) {
+        cpSecSuccess();
+    } else {
+        $result['error'] = cpSecFailMessage($result['error'], cpSecFail('panel', $username));
+    }
     }
 
     if ($result['success']) {

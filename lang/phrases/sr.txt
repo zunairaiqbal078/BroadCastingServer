@@ -2160,3 +2160,78 @@ od
 do
 Lupa filtrira folder po godini izdanja i BPM-u (npr. samo 2010–2026 ili 100–130 BPM). Pesme bez tog podatka ostaju van filtera; dopunite ih u Muzičkoj biblioteci.
 Obrisano pesama: {n}.
+Otpremite muziku u foldere AutoDJ-a.
+Sve pesme vašeg radija: pretražite, uredite i organizujte.
+Kreirajte i poređajte foldere (plejliste) AutoDJ-a.
+Podesite zvuk radija za AutoDJ i prenose uživo.
+Otpremite spotove i organizujte ih u liste reklama.
+Odlučite kada i na koliko pesama idu reklame.
+Mešajte foldere po terminima uz pravila rotacije.
+Emisije, vesti i najave vremena u tačan minut.
+Reemitujte drugi radio u izabrano vreme.
+Kreirajte naloge za voditelje i DJ-eve.
+Upravljajte DJ nalozima radija.
+Snimci emisija uživo vaših DJ-eva.
+Poruka koju će DJ-evi videti u panelu.
+Dizajn, pozadina i efekti javnog plejera.
+Plejeri i kodovi za ugradnju na sajt.
+SSL linkovi za slušanje, plejliste i javni plejer.
+Podaci radija u JSON formatu za aplikacije i sajtove.
+Slušaoci i aktivnost radija.
+Emitujte radio na društvene mreže.
+Emitujte radio uživo na Facebook.
+Emitujte radio uživo na YouTube.
+Emitujte radio uživo na TikTok.
+Emitujte radio uživo na Instagram.
+Pristup blokiran (otkriven bezbednosni skener)
+Pristup blokiran (prijava bez pregledača)
+Previše neuspešnih pokušaja. Vaša IP je blokirana {n} minuta.
+{x} (preostalo pokušaja do blokade: {n})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

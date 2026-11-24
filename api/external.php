@@ -32,6 +32,13 @@ if ($stmt->fetchColumn() !== '1') {
 }
 
 // ---- AUTENTICACIÓN ----
+require_once __DIR__ . '/../includes/security.php';
+$secError = cpSecCheckRequest(); // Brute Force Protection (banned IP / scanners)
+if ($secError !== '') {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'error' => $secError]);
+    exit;
+}
 $apiKey = $_SERVER['HTTP_X_API_KEY'] ?? $_POST['api_key'] ?? $_GET['api_key'] ?? '';
 $apiSecret = $_SERVER['HTTP_X_API_SECRET'] ?? $_POST['api_secret'] ?? $_GET['api_secret'] ?? '';
 
@@ -49,6 +56,7 @@ if (!$keyData || !password_verify($apiSecret, $keyData['api_secret'])) {
     // Intentar comparación directa por si no está hasheada
     if (!$keyData || $keyData['api_secret'] !== $apiSecret) {
         logApiCall(null, $_POST['action'] ?? 'unknown', '', 'error', 'Credenciales inválidas');
+        cpSecFail('api', (string)$apiKey);
         http_response_code(401);
         echo json_encode(['success' => false, 'error' => 'Credenciales API inválidas']);
         exit;

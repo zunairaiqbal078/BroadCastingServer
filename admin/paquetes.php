@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
                 : (int)($_POST['max_storage_mb'] ?? 5120);
             $maxBitrate         = (int)($_POST['max_bitrate'] ?? 128);
             $maxOyentes         = (int)($_POST['max_oyentes'] ?? 999);
-            $maxDj              = max(0, (int)($_POST['max_dj'] ?? 0)); // 0 = unlimited
+            $maxDj              = 0; // DJ accounts are always unlimited (like SonicPanel)
             $autodj             = (int)($_POST['autodj_enabled'] ?? 1);
             $anuncios           = isset($_POST['anuncios_enabled']) ? 1 : 0;
             $ssl                = isset($_POST['ssl_enabled']) ? 1 : 0;
@@ -247,11 +247,6 @@ if ($serverIp === '0.0.0.0' || $serverIp === '::1') {
                     <input type="number" name="max_storage_gb" class="form-control" min="0" step="0.5" value="<?= rtrim(rtrim(number_format(((int)($editPkg['max_storage_mb'] ?? 5120)) / 1024, 2, '.', ''), '0'), '.') ?>">
                     <small class="text-muted">Espacio para la música del AutoDJ de cada radio con este plan. 0 = ilimitado.</small>
                 </div>
-                <div id="maxdj-group" class="form-group">
-                    <label>Max. Cuentas DJ:</label>
-                    <input type="number" name="max_dj" class="form-control" min="0" value="<?= (int)($editPkg['max_dj'] ?? 0) ?>">
-                    <small class="text-muted">0 = ilimitado</small>
-                </div>
             </div>
 
             <!-- Fila 7: Descripcion -->
@@ -308,7 +303,6 @@ if ($serverIp === '0.0.0.0' || $serverIp === '::1') {
                         <th>Almac.</th>
                         <th>Bitrate</th>
                         <th>Oyentes</th>
-                        <th>DJs</th>
                         <th>Permisos</th>
                         <th>Estaciones</th>
                         <th>Estado</th>
@@ -332,7 +326,6 @@ if ($serverIp === '0.0.0.0' || $serverIp === '::1') {
                             <td><?= (int)$p['max_storage_mb'] > 0 ? formatMB($p['max_storage_mb']) : 'Ilimitado' ?></td>
                             <td><?= $p['max_bitrate'] ?> kbps</td>
                             <td><?= $p['max_oyentes'] ?: '&infin;' ?></td>
-                            <td><?= (int)$p['max_dj'] > 0 ? (int)$p['max_dj'] : 'Ilimitado' ?></td>
                             <td style="font-size:11px">
                                 <?= ($p['autodj_enabled'] ?? 0) ? '<span class="badge badge-success">AutoDJ</span>' : '' ?>
                                 <?= ($p['anuncios_enabled'] ?? 0) ? '<span class="badge badge-info">Ads</span>' : '' ?>

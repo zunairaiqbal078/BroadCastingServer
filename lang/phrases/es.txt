@@ -2160,3 +2160,78 @@ desde
 hasta
 La lupa filtra la carpeta por año de lanzamiento y BPM (ej: solo 2010–2026, o 100–130 BPM). Las canciones sin ese dato quedan fuera del filtro; se completan en la Biblioteca de Música.
 {n} canciones eliminadas.
+Sube música a las carpetas de tu AutoDJ.
+Todas las canciones de tu radio: busca, edita y organiza.
+Crea y ordena las carpetas (playlists) de tu AutoDJ.
+Ajusta el sonido de tu radio para AutoDJ y transmisiones en vivo.
+Sube tus spots y organízalos en listas de anuncios.
+Decide cuándo y cada cuántas canciones suenan tus anuncios.
+Mezcla tus carpetas por horario con reglas de rotación.
+Programas, noticias y anuncios de la hora en un minuto exacto.
+Retransmite otra radio en el horario que elijas.
+Crea cuentas para tus locutores y DJs.
+Administra las cuentas DJ de tu radio.
+Grabaciones de los programas en vivo de tus DJs.
+Mensaje que verán tus DJs en su panel.
+Diseño, fondo y efectos de tu reproductor público.
+Reproductores y códigos para insertar en tu sitio web.
+Enlaces de escucha SSL, listas de reproducción y reproductor público.
+Datos de tu radio en formato JSON para apps y sitios web.
+Oyentes y actividad de tu radio.
+Transmite tu radio a tus redes sociales.
+Transmite tu radio en vivo a Facebook.
+Transmite tu radio en vivo a YouTube.
+Transmite tu radio en vivo a TikTok.
+Transmite tu radio en vivo a Instagram.
+Acceso bloqueado (escáner de seguridad detectado)
+Acceso bloqueado (inicio de sesión sin navegador)
+Demasiados intentos fallidos. Tu IP está bloqueada durante {n} minutos.
+{x} ({n} intento(s) restante(s) antes del bloqueo)
+Protección Brute Force
+Protección Brute Force - CastPanel
+ACTIVA
+DESACTIVADA
+Protege el inicio de sesión del panel, del portal DJ y de la API contra ataques de fuerza bruta. Una IP que supere {n} intentos fallidos en {n} minutos queda bloqueada durante {n} minutos. Puedes desbloquearla antes desde esta página.
+IPs bloqueadas ahora
+Intentos fallidos (24 h)
+Tu IP (nunca se bloquea manualmente)
+Intentos fallidos
+En (minutos)
+Bloqueo (minutos)
+Otras protecciones de seguridad
+Inicio de sesión sin navegador
+Rechaza logins y llamadas API sin User-Agent (scripts y bots).
+Escaneo con sqlmap y otros escáneres
+Bloquea sqlmap, nikto, wpscan, nmap, acunetix y similares.
+Bloqueado
+Permitir
+Bloquear
+Ataques globales a WordPress
+wp-login.php, xmlrpc.php y wp-admin responden 403.
+Conexión MySQL sin contraseña
+El panel se conecta a la base de datos con contraseña.
+Desactivada
+Revisar
+Conexión MySQL remota
+Activa (revisar)
+IPs bloqueadas
+Desbloquear todas
+No hay IPs bloqueadas.
+Motivo
+Hasta
+Desbloquear
+Bloquear una IP
+Minutos
+Últimos intentos fallidos
+Sin intentos fallidos.
+Área
+Bloqueo manual (administrador)
+Brute force: {n} intentos fallidos ({x})
+Protección Brute Force actualizada.
+Configuración guardada.
+Protección actualizada.
+IP desbloqueada.
+Todas las IPs fueron desbloqueadas.
+IP no válida.
+No puedes bloquear tu propia IP ni la del servidor.
+IP bloqueada.

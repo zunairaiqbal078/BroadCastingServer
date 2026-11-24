@@ -61,6 +61,10 @@ foreach (['anio_min', 'anio_max', 'bpm_min', 'bpm_max'] as $c) {
 require_once __DIR__ . '/../includes/autodj_events.php';
 castpanelEnsureEventsTable();
 $log[] = 'OK table: eventos_programados';
+// Brute Force Protection (admin/seguridad.php)
+require_once __DIR__ . '/../includes/security.php';
+cpSecEnsureTables();
+$log[] = 'OK tables: seguridad_intentos, seguridad_bloqueos';
 
 // DJ UI language: keep panel_lang in sync with legacy idioma where panel_lang is empty
 if ($columnExists('cuentas_dj', 'panel_lang') && $columnExists('cuentas_dj', 'idioma')) {

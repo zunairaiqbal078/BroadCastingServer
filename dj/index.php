@@ -12,6 +12,7 @@ if (isset($_SESSION['dj_id'])) {
 
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/i18n.php';
+require_once __DIR__ . '/../includes/security.php';
 cpI18nStart();
 
 $error = '';
@@ -20,7 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    if ($username === '' || $password === '') {
+    $secError = cpSecCheckRequest(); // Brute Force Protection
+    if ($secError !== '') {
+        $error = htmlspecialchars($secError);
+    } elseif ($username === '' || $password === '') {
         $error = 'Ingrese usuario y contrase&ntilde;a';
     } else {
         $db = getDB();
@@ -45,12 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $upd = $db->prepare("UPDATE cuentas_dj SET ultimo_login = NOW() WHERE id = ?");
                 $upd->execute([$dj['id']]);
+                cpSecSuccess();
 
                 header('Location: dashboard.php');
                 exit;
             }
         } else {
-            $error = 'Usuario o contrase&ntilde;a incorrectos';
+            $error = htmlspecialchars(cpSecFailMessage('Usuario o contraseña incorrectos', cpSecFail('dj', $username)));
         }
     }
 }

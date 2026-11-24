@@ -2160,3 +2160,78 @@ başlangıç
 bitiş
 Büyüteç klasörü çıkış yılına ve BPM'e göre filtreler (örn: yalnızca 2010–2026 veya 100–130 BPM). Bu bilgisi olmayan şarkılar filtre dışında kalır; Müzik Kütüphanesi'nden doldurun.
 {n} şarkı silindi.
+AutoDJ klasörlerinize müzik yükleyin.
+Radyonuzun tüm şarkıları: arayın, düzenleyin, organize edin.
+AutoDJ klasörlerini (çalma listeleri) oluşturun ve sıralayın.
+Radyonuzun sesini AutoDJ ve canlı yayın için ayarlayın.
+Spotlarınızı yükleyin ve reklam listelerine düzenleyin.
+Reklamlarınızın ne zaman ve kaç şarkıda bir çalacağını seçin.
+Klasörlerinizi saate göre rotasyon kurallarıyla karıştırın.
+Programlar, haberler ve saat anonsları tam dakikasında.
+Seçtiğiniz saatlerde başka bir radyoyu yeniden yayınlayın.
+Sunucularınız ve DJ'leriniz için hesap oluşturun.
+Radyonuzun DJ hesaplarını yönetin.
+DJ'lerinizin canlı yayın kayıtları.
+DJ'lerinizin panelde göreceği mesaj.
+Genel oynatıcınızın tasarımı, arka planı ve efektleri.
+Web siteniz için oynatıcılar ve yerleştirme kodları.
+SSL dinleme bağlantıları, çalma listeleri ve genel oynatıcı.
+Uygulamalar ve siteler için radyo verileri (JSON).
+Radyonuzun dinleyicileri ve etkinliği.
+Radyonuzu sosyal ağlarınızda yayınlayın.
+Radyonuzu Facebook'ta canlı yayınlayın.
+Radyonuzu YouTube'da canlı yayınlayın.
+Radyonuzu TikTok'ta canlı yayınlayın.
+Radyonuzu Instagram'da canlı yayınlayın.
+Erişim engellendi (güvenlik tarayıcısı algılandı)
+Erişim engellendi (tarayıcısız giriş)
+Çok fazla başarısız deneme. IP'niz {n} dakika engellendi.
+{x} (engellemeden önce {n} deneme kaldı)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

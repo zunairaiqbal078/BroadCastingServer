@@ -2160,3 +2160,78 @@ da
 a
 La lente filtra la cartella per anno di uscita e BPM (es: solo 2010–2026, o 100–130 BPM). I brani senza quel dato restano fuori dal filtro; completali nella Libreria musicale.
 {n} brani eliminati.
+Carica musica nelle cartelle del tuo AutoDJ.
+Tutti i brani della tua radio: cerca, modifica e organizza.
+Crea e ordina le cartelle (playlist) del tuo AutoDJ.
+Regola il suono della tua radio per AutoDJ e dirette.
+Carica i tuoi spot e organizzali in liste di annunci.
+Decidi quando e ogni quanti brani vanno i tuoi annunci.
+Mescola le cartelle per fascia oraria con regole di rotazione.
+Programmi, notiziari e annunci dell'ora al minuto esatto.
+Ritrasmetti un'altra radio negli orari che scegli.
+Crea account per i tuoi speaker e DJ.
+Gestisci gli account DJ della tua radio.
+Registrazioni dei programmi dal vivo dei tuoi DJ.
+Messaggio che i tuoi DJ vedranno nel loro pannello.
+Design, sfondo ed effetti del tuo player pubblico.
+Player e codici da inserire nel tuo sito web.
+Link di ascolto SSL, playlist e player pubblico.
+Dati della tua radio in JSON per app e siti web.
+Ascoltatori e attività della tua radio.
+Trasmetti la tua radio sui tuoi social.
+Trasmetti la tua radio in diretta su Facebook.
+Trasmetti la tua radio in diretta su YouTube.
+Trasmetti la tua radio in diretta su TikTok.
+Trasmetti la tua radio in diretta su Instagram.
+Accesso bloccato (scanner di sicurezza rilevato)
+Accesso bloccato (accesso senza browser)
+Troppi tentativi falliti. Il tuo IP è bloccato per {n} minuti.
+{x} ({n} tentativo/i rimasto/i prima del blocco)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

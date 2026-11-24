@@ -121,7 +121,7 @@ try {
 
 // Cuentas DJ
 $totalDJ = 0;
-$maxDJ = (int)($estacion['max_dj'] ?? 0); // 0 = unlimited
+$maxDJ = 0; // DJ accounts are always unlimited
 try {
     $stmt = $db->prepare("SELECT COUNT(*) FROM cuentas_dj WHERE estacion_id = ?");
     $stmt->execute([$estacion['id']]);
