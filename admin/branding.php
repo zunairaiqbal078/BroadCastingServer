@@ -377,7 +377,7 @@ $logoLabels = [
             </div>
 
             <!-- Mini login preview -->
-            <div style="background:linear-gradient(135deg, <?= htmlspecialchars($brand['sidebar_color'] ?? '#1e1b2e') ?> 0%, <?= htmlspecialchars($brand['primary_color'] ?? '#6c3ce0') ?> 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:24px">
+            <div style="background:#eef2f8;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:24px">
                 <div style="background:var(--card-bg);border-radius:12px;padding:24px;width:240px;text-align:center">
                     <?php if (!empty($brand['logo_login'])): ?>
                         <img src="<?= htmlspecialchars($brand['logo_login']) ?>" alt="Logo"

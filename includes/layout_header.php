@@ -35,7 +35,10 @@ $brand = getCurrentBranding();
     <link href="<?= BASE_URL ?>/assets/css/style.css?v=<?= (int)$cpStyleVer ?>" rel="stylesheet">
     <?php $cpThemeVer = @filemtime(BASE_PATH . '/assets/css/theme.css') ?: time(); ?>
     <link href="<?= BASE_URL ?>/assets/css/theme.css?v=<?= (int)$cpThemeVer ?>" rel="stylesheet">
+    <?php require_once __DIR__ . '/login_theme.php'; ?>
     <style>
+        /* one system colour = the login colour from Admin > Branding (default dark blue) */
+        .cp-theme { --cp-brand: <?= cpLoginColor($brand ?? []) ?>; }
         .nav-icon { font-style: normal; display:inline-flex; align-items:center; }
         <?php if (!empty($brand['primary_color'])): ?>
         :root { --primary: <?= htmlspecialchars($brand['primary_color']) ?>; }

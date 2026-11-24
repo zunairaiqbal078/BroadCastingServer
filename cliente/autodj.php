@@ -435,7 +435,7 @@ $curCodec = $estacion['codec'] ?: 'mp3';
 <style>
 /* ===== AutoDJ (redesign) ===== */
 .adj-hero{position:relative;overflow:hidden;border-radius:18px;padding:24px 26px;margin-bottom:18px;color:#fff;
-  background:#1e293b;box-shadow:0 14px 34px rgba(15,40,80,.20)}
+  background:var(--cp-brand, #0b1f4a);box-shadow:0 14px 34px rgba(11,31,74,.25)}
 .adj-hero::before,.adj-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
 .adj-hero::before{width:260px;height:260px;right:-80px;top:-110px;background:rgba(255,255,255,.18)}
 .adj-hero::after{width:200px;height:200px;left:30%;bottom:-130px;background:rgba(255,255,255,.10)}

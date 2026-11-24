@@ -36,7 +36,7 @@ if (!$dj) {
 
 // Branding
 try {
-    $brand = $db->query("SELECT * FROM branding LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+    $brand = $db->query("SELECT * FROM branding WHERE owner_type = 'global' AND owner_id IS NULL LIMIT 1")->fetch(PDO::FETCH_ASSOC) ?: [];
 } catch (Exception $e) {
     $brand = [];
 }
@@ -44,6 +44,8 @@ try {
 $panelName   = htmlspecialchars($brand['nombre_panel'] ?? $brand['panel_title'] ?? 'CastPanel');
 $sidebarColor = htmlspecialchars($brand['sidebar_color'] ?? '#1e1b2e');
 $primaryColor = htmlspecialchars($brand['primary_color'] ?? '#6c3ce0');
+require_once __DIR__ . '/../../includes/login_theme.php';
+$djBrandColor = cpLoginColor(is_array($brand ?? null) ? $brand : []);
 $djAssetsBase = '';
 try {
     $stmtBase = $db->query("SELECT valor FROM configuracion WHERE clave = 'site_url' LIMIT 1");
@@ -78,11 +80,11 @@ $stationName = htmlspecialchars($dj['estacion_nombre'] ?? $dj['titulo_radio'] ??
 <link href="<?= htmlspecialchars($djAssetsBase) ?>/assets/css/style.css?v=<?= (int)$djStyleVer ?>" rel="stylesheet">
 <style>
 :root {
-    /* same colours as the admin panel (slate + indigo), no gradients */
-    --sidebar-bg: #0f172a;
-    --primary: #4f46e5;
-    --primary-hover: #4338ca;
-    --primary-bg: #eef0ff;
+    /* same system colour as the panel: the login colour from Admin > Branding (default dark blue) */
+    --sidebar-bg: <?= $djBrandColor ?>;
+    --primary: <?= $djBrandColor ?>;
+    --primary-hover: <?= $djBrandColor ?>;
+    --primary-bg: #e8eefa;
     --content-bg: #f2f4f8;
     --card-bg: #fff;
     --text-dark: #1f2937;
@@ -636,7 +638,7 @@ body {
 .btn{border-radius:10px;}
 
 .dj2-hero{position:relative;overflow:hidden;border-radius:18px;padding:24px 26px;margin-bottom:20px;color:#fff;
-  background:#1e293b;box-shadow:0 12px 28px -14px rgba(15,23,42,.45);}
+  background:var(--sidebar-bg);box-shadow:0 12px 28px -14px rgba(11,31,74,.45);}
 .dj2-hero::before,.dj2-hero::after{display:none;}
 .dj2-hero::before{width:260px;height:260px;right:-80px;top:-110px;background:rgba(255,255,255,.18);}
 .dj2-hero::after{width:200px;height:200px;left:30%;bottom:-130px;background:rgba(255,255,255,.10);}

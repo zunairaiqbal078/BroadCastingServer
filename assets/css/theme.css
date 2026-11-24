@@ -12,7 +12,7 @@
 .cp-theme {
     --radius: 14px;
     --radius-sm: 10px;
-    --ring: 0 0 0 3px rgba(108, 60, 224, .16);
+    --ring: 0 0 0 3px rgba(11, 31, 74, .16);
     --line: #e7e5f0;
     --line-soft: #f0eef7;
     --muted-bg: #f7f6fb;
@@ -23,18 +23,19 @@
     --hover: var(--muted-bg);
 }
 .cp-theme {
-    --primary: #4f46e5;
-    --primary-dark: #4338ca;
-    --primary-light: #6366f1;
-    --primary-bg: #eef0ff;
+    /* one system colour: the login colour from Admin > Branding (default dark blue) */
+    --primary: var(--cp-brand, #0b1f4a);
+    --primary-dark: var(--cp-brand, #0b1f4a);
+    --primary-light: #2563eb;
+    --primary-bg: #e8eefa;
     --body-bg: #f2f4f8;
-    --sidebar-bg: #0f172a;
+    --sidebar-bg: var(--cp-brand, #0b1f4a);
     --sidebar-hover: rgba(148, 163, 184, .10);
     --sidebar-text: #a5b0c4;
     --line: #e3e7ef;
     --line-soft: #eef1f6;
     --muted-bg: #f6f8fb;
-    --ring: 0 0 0 3px rgba(79, 70, 229, .16);
+    --ring: 0 0 0 3px rgba(11, 31, 74, .16);
     --text-primary: #0f172a;
     --text-secondary: #64748b;
     --radius: 12px;
@@ -75,17 +76,17 @@
 .cp-theme .sidebar-nav li a .nav-icon { opacity: .85; }
 /* active item: its own accent, so it stands out whatever primary colour the branding sets */
 .cp-theme .sidebar-nav li a.active {
-    background: rgba(99, 102, 241, .16);
+    background: rgba(255, 255, 255, .12);
     color: #fff;
     font-weight: 600;
-    box-shadow: inset 3px 0 0 #818cf8;
+    box-shadow: inset 3px 0 0 #60a5fa;
 }
-.cp-theme .sidebar-nav li a.active .nav-icon { color: #a5b4fc; opacity: 1; }
+.cp-theme .sidebar-nav li a.active .nav-icon { color: #93c5fd; opacity: 1; }
 .cp-theme .sidebar-nav li a.active,
 .cp-theme .sidebar-nav li a.active {
-    background: rgba(99, 102, 241, .16);
+    background: rgba(255, 255, 255, .12);
     color: #fff;
-    box-shadow: inset 3px 0 0 #818cf8;
+    box-shadow: inset 3px 0 0 #60a5fa;
 }
 .cp-theme .sidebar-footer { border-top: 1px solid rgba(255, 255, 255, .06); }
 
@@ -332,7 +333,7 @@
 .cp-theme .stat-card.blue, .cp-theme .stat-card.blue { --sc: #3b82f6; --scb: #eff6ff; }
 .cp-theme .stat-card.red, .cp-theme .stat-card.red { --sc: #ef4444; --scb: #fef2f2; }
 .cp-theme .stat-card.orange, .cp-theme .stat-card.orange { --sc: #f59e0b; --scb: #fffbeb; }
-.cp-theme .stat-card.purple, .cp-theme .stat-card.purple { --sc: #6366f1; --scb: #eef0ff; }
+.cp-theme .stat-card.purple, .cp-theme .stat-card.purple { --sc: #1d4ed8; --scb: #e8eefa; }
 .cp-theme .stat-card .stat-label, .cp-theme .stat-card .stat-label { color: var(--text-secondary); opacity: 1; }
 .cp-theme .stat-card .stat-value, .cp-theme .stat-card .stat-value { color: var(--text-primary); }
 .cp-theme .stat-card .stat-sub, .cp-theme .stat-card .stat-sub { color: var(--text-secondary); opacity: 1; }
@@ -423,7 +424,7 @@
 .cp-theme .preset-card.active, .cp-theme .theme-card.active, .cp-theme .theme-card.selected {
     border-color: var(--primary);
     background: var(--primary-bg);
-    box-shadow: 0 0 0 3px rgba(108, 60, 224, .12), var(--shadow);
+    box-shadow: 0 0 0 3px rgba(11, 31, 74, .12), var(--shadow);
 }
 .cp-theme .preset-card .preset-icon svg, .cp-theme .theme-card .theme-icon svg { color: var(--primary); }
 .cp-theme .proc-section { overflow: hidden; margin-bottom: 14px; }
@@ -444,14 +445,14 @@
     margin-bottom: 20px;
     border-radius: 18px;
     color: #fff;
-    background: #1e293b;
+    background: var(--cp-brand, #0b1f4a);
     box-shadow: 0 12px 28px -14px rgba(15, 23, 42, .45);
 }
 .cp-mod-hero > * { position: relative; z-index: 1; }
 .cp-mod-hero-icon {
     width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    background: #4f46e5; border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .16);
 }
 .cp-mod-hero-text { flex: 1; min-width: 0; }
 .cp-mod-kicker { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; opacity: .75; font-weight: 700; }
@@ -469,11 +470,14 @@
 .cp-theme .cp3-player,
 .cp-theme .cp-client-hero,
 .cp-theme .cp-embed-player {
-    background: #1e293b !important;
+    background: var(--cp-brand, #0b1f4a) !important;
     box-shadow: 0 12px 28px -14px rgba(15, 23, 42, .45) !important;
 }
 .cp-theme .adj-hero::before, .cp-theme .adj-hero::after,
 .cp-theme .cp3-player::before, .cp-theme .cp3-player::after,
 .cp-theme .cp2-hero::before, .cp-theme .cp2-hero::after { display: none !important; }
-.cp-theme .cp2-hero { background: #1e293b !important; box-shadow: 0 12px 28px -14px rgba(15, 23, 42, .45) !important; }
+.cp-theme .cp2-hero { background: var(--cp-brand, #0b1f4a) !important; box-shadow: 0 12px 28px -14px rgba(15, 23, 42, .45) !important; }
 .cp-theme .stat-card { background-image: none !important; }
+
+/* buttons in the system colour: lighter on hover, whatever colour Branding sets */
+.cp-theme .btn-primary:hover, .cp-theme .tab-btn.active:hover { background: var(--primary); filter: brightness(1.35); }

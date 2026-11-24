@@ -243,12 +243,12 @@ function cpDashServerLabel(string $t): string {
 <!-- Accesos rápidos -->
 <h2 class="cp-section-title"><?= cpIcon('zap', 18) ?> Accesos Rápidos</h2>
 <div class="cp-quick">
-    <a href="<?= BASE_URL ?>/admin/estaciones.php?action=new"><span class="qi" style="background:linear-gradient(135deg,#6366f1,#818cf8)"><?= cpIcon('plus', 20) ?></span>Crear Radio</a>
-    <a href="<?= BASE_URL ?>/admin/estaciones.php"><span class="qi" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)"><?= cpIcon('list', 20) ?></span>Listar / Editar Radios</a>
-    <a href="<?= BASE_URL ?>/admin/paquetes.php"><span class="qi" style="background:linear-gradient(135deg,#10b981,#34d399)"><?= cpIcon('package', 20) ?></span>Paquetes</a>
-    <a href="<?= BASE_URL ?>/admin/server_status.php"><span class="qi" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><?= cpIcon('signal', 20) ?></span>Estado del Servidor en Vivo</a>
-    <a href="<?= BASE_URL ?>/admin/restart_services.php"><span class="qi" style="background:linear-gradient(135deg,#ef4444,#f87171)"><?= cpIcon('refresh', 20) ?></span>Reiniciar Servicios</a>
-    <a href="<?= BASE_URL ?>/admin/configuracion.php"><span class="qi" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)"><?= cpIcon('gear', 20) ?></span>Configuración Global</a>
+    <a href="<?= BASE_URL ?>/admin/estaciones.php?action=new"><span class="qi" style="background:var(--primary)"><?= cpIcon('plus', 20) ?></span>Crear Radio</a>
+    <a href="<?= BASE_URL ?>/admin/estaciones.php"><span class="qi" style="background:var(--primary)"><?= cpIcon('list', 20) ?></span>Listar / Editar Radios</a>
+    <a href="<?= BASE_URL ?>/admin/paquetes.php"><span class="qi" style="background:var(--primary)"><?= cpIcon('package', 20) ?></span>Paquetes</a>
+    <a href="<?= BASE_URL ?>/admin/server_status.php"><span class="qi" style="background:var(--primary)"><?= cpIcon('signal', 20) ?></span>Estado del Servidor en Vivo</a>
+    <a href="<?= BASE_URL ?>/admin/restart_services.php"><span class="qi" style="background:var(--primary)"><?= cpIcon('refresh', 20) ?></span>Reiniciar Servicios</a>
+    <a href="<?= BASE_URL ?>/admin/configuracion.php"><span class="qi" style="background:var(--primary)"><?= cpIcon('gear', 20) ?></span>Configuración Global</a>
 </div>
 
 <?php require_once __DIR__ . '/../includes/layout_footer.php'; ?>
