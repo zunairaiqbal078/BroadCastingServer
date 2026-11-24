@@ -473,3 +473,144 @@
     background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .25);
 }
 @media (max-width: 640px) { .cp-mod-hero { flex-wrap: wrap; padding: 18px; } .cp-mod-hero-chip { order: 3; } }
+
+/* ==========================================================================
+   Client panel — "wow" layer: colourful mesh background, gradient icon chips,
+   glowing buttons, glass tabs and a soft entrance animation (look only).
+   ========================================================================== */
+.cp-role-cliente {
+    --cx-a: #7c3aed;   /* violet  */
+    --cx-b: #4f46e5;   /* indigo  */
+    --cx-c: #06b6d4;   /* cyan    */
+    --cx-d: #ec4899;   /* pink    */
+    --cx-grad: linear-gradient(135deg, var(--cx-a) 0%, var(--cx-b) 55%, var(--cx-c) 100%);
+}
+.cp-role-cliente .main-content {
+    background:
+        radial-gradient(900px 520px at 100% -10%, rgba(124, 58, 237, .13), transparent 60%),
+        radial-gradient(700px 480px at -10% 30%, rgba(6, 182, 212, .10), transparent 60%),
+        radial-gradient(800px 600px at 60% 110%, rgba(236, 72, 153, .08), transparent 60%),
+        var(--body-bg);
+    background-attachment: fixed;
+}
+
+/* sidebar: deeper glow + brand area */
+.cp-role-cliente .sidebar {
+    background:
+        radial-gradient(420px 260px at 0% 0%, rgba(124, 58, 237, .45), transparent 70%),
+        radial-gradient(360px 300px at 100% 100%, rgba(6, 182, 212, .18), transparent 70%),
+        linear-gradient(185deg, #1a0d52 0%, #12083d 60%, #0d062c 100%);
+}
+.cp-role-cliente .sidebar-logo .logo-icon,
+.cp-role-cliente .sidebar-logo > div:first-child:not(.logo-text) {
+    background: var(--cx-grad) !important;
+    box-shadow: 0 8px 20px -6px rgba(124, 58, 237, .7);
+}
+.cp-role-cliente .sidebar-nav li a.active {
+    background: linear-gradient(90deg, rgba(167, 139, 250, .32), rgba(6, 182, 212, .10));
+    box-shadow: inset 3px 0 0 #a78bfa, 0 8px 20px -12px rgba(124, 58, 237, .9);
+}
+
+/* top bar: glass */
+.cp-role-cliente .topbar { background: rgba(255, 255, 255, .72); border-bottom-color: rgba(124, 58, 237, .10); }
+.cp-role-cliente .topbar-title .title-icon { background: var(--cx-grad); color: #fff; box-shadow: 0 6px 14px -6px rgba(124, 58, 237, .8); }
+
+/* cards: crisp white, a thin gradient line on top, icon chips in the titles */
+.cp-role-cliente .card,
+.cp-role-cliente .sp-card {
+    position: relative;
+    background: rgba(255, 255, 255, .94);
+    border-color: rgba(124, 58, 237, .10);
+    box-shadow: 0 1px 2px rgba(17, 12, 46, .04), 0 14px 34px -18px rgba(76, 29, 149, .28);
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+.cp-role-cliente .card::before,
+.cp-role-cliente .sp-card::before {
+    content: ''; position: absolute; left: 18px; right: 18px; top: 0; height: 2px;
+    border-radius: 0 0 4px 4px; background: var(--cx-grad); opacity: .55;
+}
+.cp-role-cliente .card:hover,
+.cp-role-cliente .sp-card:hover { box-shadow: 0 1px 2px rgba(17, 12, 46, .05), 0 20px 44px -20px rgba(76, 29, 149, .38); }
+.cp-role-cliente .card-header h3 > svg:first-child,
+.cp-role-cliente .sp-card-header h3 > svg:first-child {
+    box-sizing: content-box;
+    padding: 6px;
+    border-radius: 9px;
+    background: var(--cx-grad);
+    color: #fff !important;
+    box-shadow: 0 6px 14px -6px rgba(124, 58, 237, .75);
+    flex-shrink: 0;
+}
+
+/* buttons: gradient + glow */
+.cp-role-cliente .btn-primary {
+    background: linear-gradient(135deg, var(--cx-a) 0%, var(--cx-b) 100%);
+    box-shadow: 0 10px 22px -10px rgba(79, 70, 229, .9);
+}
+.cp-role-cliente .btn-primary:hover { background: linear-gradient(135deg, #6d28d9 0%, #4338ca 100%); box-shadow: 0 14px 28px -10px rgba(79, 70, 229, 1); transform: translateY(-1px); }
+.cp-role-cliente .btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+    box-shadow: 0 10px 22px -10px rgba(13, 148, 136, .9);
+}
+.cp-role-cliente .btn-success:hover { background: linear-gradient(135deg, #059669 0%, #0f766e 100%); transform: translateY(-1px); }
+.cp-role-cliente .btn-danger { background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%); box-shadow: 0 10px 22px -10px rgba(225, 29, 72, .9); }
+.cp-role-cliente .btn-warning { background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%); }
+.cp-role-cliente .btn-outline:hover { border-color: var(--cx-a); color: var(--cx-a); background: #f5f3ff; }
+
+/* tabs: glass bar, gradient active pill */
+.cp-role-cliente .tabs {
+    background: rgba(255, 255, 255, .78);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border-color: rgba(124, 58, 237, .12);
+}
+.cp-role-cliente .tab-btn.active { background: var(--cx-grad); box-shadow: 0 8px 18px -8px rgba(79, 70, 229, .9); }
+
+/* inputs: soft filled */
+.cp-role-cliente .form-control { background: #fbfaff; border-color: #e2dcf5; }
+.cp-role-cliente .form-control:focus { background: #fff; border-color: var(--cx-a); box-shadow: 0 0 0 4px rgba(124, 58, 237, .14); }
+
+/* tables: tinted header */
+.cp-role-cliente table.table th { background: linear-gradient(180deg, #f8f6ff, #f3f0fd); color: #5b4b8a; }
+.cp-role-cliente table.table tbody tr:hover { background: #faf8ff; }
+
+/* badges */
+.cp-role-cliente .badge-purple, .cp-role-cliente .card-header .badge:not([class*="badge-"]) { background: #f1ecff; color: #6d28d9; border-color: #e4dafe; }
+
+/* module banner: richer gradient + slow light sweep */
+.cp-role-cliente .cp-mod-hero {
+    background:
+        radial-gradient(520px 260px at 85% -30%, rgba(236, 72, 153, .35), transparent 65%),
+        radial-gradient(460px 240px at 10% 130%, rgba(6, 182, 212, .35), transparent 65%),
+        linear-gradient(120deg, #2e1065 0%, #4c1d95 35%, #312e81 70%, #0e7490 100%);
+    box-shadow: 0 22px 44px -22px rgba(76, 29, 149, .85);
+}
+.cp-role-cliente .cp-mod-hero-icon { background: rgba(255, 255, 255, .14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 10px 24px -10px rgba(0, 0, 0, .5); }
+.cp-role-cliente .cp-mod-hero::after {
+    width: 140%; height: 100%; left: -140%; top: 0; bottom: auto; border-radius: 0; filter: none;
+    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, .10) 45%, transparent 70%);
+    animation: cpHeroSweep 7s ease-in-out infinite;
+}
+@keyframes cpHeroSweep { 0%, 55% { transform: translateX(0); } 100% { transform: translateX(170%); } }
+
+/* entrance animation: banner and cards fade up one after another */
+/* movement only (never opacity): if a browser freezes animations, the content is still fully visible */
+@keyframes cpRise { from { transform: translateY(14px); } to { transform: none; } }
+.cp-role-cliente .page-content > .cp-mod-hero,
+.cp-role-cliente .page-content > .tabs,
+.cp-role-cliente .page-content > .alert,
+.cp-role-cliente .page-content > .card,
+.cp-role-cliente .page-content > .two-cols > div,
+.cp-role-cliente .page-content > .two-cols-equal > div,
+.cp-role-cliente .page-content > div > .card {
+    animation: cpRise .55s cubic-bezier(.2, .7, .2, 1) backwards;
+}
+.cp-role-cliente .page-content > .tabs { animation-delay: .06s; }
+.cp-role-cliente .page-content > .alert { animation-delay: .10s; }
+.cp-role-cliente .page-content > .card,
+.cp-role-cliente .page-content > .two-cols > div:first-child,
+.cp-role-cliente .page-content > .two-cols-equal > div:first-child { animation-delay: .14s; }
+.cp-role-cliente .page-content > .two-cols > div:nth-child(2),
+.cp-role-cliente .page-content > .two-cols-equal > div:nth-child(2) { animation-delay: .22s; }
+@media (prefers-reduced-motion: reduce) {
+    .cp-role-cliente .page-content *, .cp-role-cliente .cp-mod-hero::after { animation: none !important; }
+}

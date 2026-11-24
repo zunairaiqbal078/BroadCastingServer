@@ -394,6 +394,8 @@ CREATE TABLE IF NOT EXISTS `branding` (
   `sidebar_color` varchar(7) DEFAULT NULL,
   `custom_css` text DEFAULT NULL,
   `footer_text` varchar(255) DEFAULT NULL,
+  `login_bg_color` varchar(7) DEFAULT NULL,
+  `login_bg_image` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),

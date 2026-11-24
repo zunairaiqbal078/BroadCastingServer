@@ -2235,3 +2235,15 @@ All IPs were unblocked.
 Invalid IP.
 You can't block your own IP or the server's.
 IP blocked.
+Login screen
+Applies to the panel login (admin, reseller and client) and the DJ portal login: solid colour of the login box and a background picture behind it.
+Login box colour
+Solid colour, no gradient. Default: dark blue.
+Save colour
+Background image
+Shown full screen behind the login box. Recommended: 1920×1080px, JPG or PNG, max 5 MB.
+Delete background image
+Preview
+Login screen saved.
+Background image uploaded.
+The file must not exceed {n}MB

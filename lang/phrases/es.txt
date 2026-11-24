@@ -2235,3 +2235,15 @@ Todas las IPs fueron desbloqueadas.
 IP no válida.
 No puedes bloquear tu propia IP ni la del servidor.
 IP bloqueada.
+Pantalla de inicio de sesión
+Se aplica al inicio de sesión del panel (administrador, revendedor y cliente) y al del portal DJ: color sólido del recuadro de acceso e imagen de fondo detrás de él.
+Color del recuadro de acceso
+Color sólido, sin degradado. Por defecto: azul oscuro.
+Guardar color
+Imagen de fondo
+Se muestra detrás del recuadro de acceso, a pantalla completa. Recomendado: 1920×1080px, JPG o PNG, máx. 5 MB.
+Eliminar imagen de fondo
+Vista previa
+Pantalla de inicio de sesión guardada.
+Imagen de fondo subida correctamente.
+El archivo no debe superar {n}MB

@@ -44,13 +44,25 @@ try {
     ];
 }
 
+// Login screen look: solid colour + background picture (added columns)
+if (!$_tableError) {
+    foreach (['login_bg_color' => 'VARCHAR(7) DEFAULT NULL', 'login_bg_image' => 'VARCHAR(255) DEFAULT NULL'] as $cpCol => $cpDdl) {
+        try {
+            $chk = $db->prepare("SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'branding' AND COLUMN_NAME = ?");
+            $chk->execute([$cpCol]);
+            if (!$chk->fetchColumn()) $db->exec("ALTER TABLE branding ADD COLUMN `$cpCol` $cpDdl");
+        } catch (PDOException $e) {}
+    }
+}
+require_once __DIR__ . '/../includes/login_theme.php';
+
 // Procesar formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf() && !$_tableError) {
     try {
         // Eliminar un logo
         if (isset($_POST['delete_logo'])) {
             $type = $_POST['delete_logo'];
-            $allowed = ['logo_login', 'logo_sidebar', 'logo_favicon', 'logo_player'];
+            $allowed = ['logo_login', 'logo_sidebar', 'logo_favicon', 'logo_player', 'login_bg_image'];
             if (in_array($type, $allowed)) {
                 deleteBrandingFile($type, 'global', null);
                 $success = "Logo eliminado. Se restaurar\xC3\xA1 el logo por defecto de CastPanel.";
@@ -92,15 +104,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf() && !$_tableError) {
             $success = "Configuraci\xC3\xB3n de branding guardada. Recargue la p\xC3\xA1gina para ver los cambios.";
         }
 
+        // Login box colour
+        if (isset($_POST['save_login_look'])) {
+            $lc = trim((string)($_POST['login_bg_color'] ?? ''));
+            $lc = preg_match('/^#[0-9a-fA-F]{6}$/', $lc) ? $lc : null;
+            $db->prepare("UPDATE branding SET login_bg_color = ?, updated_at = NOW() WHERE owner_type = 'global' AND owner_id IS NULL")->execute([$lc]);
+            $success = 'Pantalla de inicio de sesión guardada.';
+        }
+
         // Subir UN logo (cada logo tiene su propio form ahora)
-        $logoTypes = ['logo_login', 'logo_sidebar', 'logo_favicon', 'logo_player'];
+        $logoTypes = ['logo_login', 'logo_sidebar', 'logo_favicon', 'logo_player', 'login_bg_image'];
         foreach ($logoTypes as $logoType) {
             if (isset($_FILES[$logoType]) && $_FILES[$logoType]['error'] === UPLOAD_ERR_OK) {
                 $result = uploadBrandingFile($_FILES[$logoType], $logoType, 'global', null);
                 if ($result['success']) {
                     $stmt = $db->prepare("UPDATE branding SET `{$logoType}` = ?, updated_at = NOW() WHERE owner_type = 'global' AND owner_id IS NULL");
-                    $stmt->execute([$result['path']]);
-                    $success = 'Logo subido correctamente.';
+                    // the background keeps one file name: version it so browsers load the new picture
+                    $stmt->execute([$logoType === 'login_bg_image' ? $result['path'] . '?v=' . time() : $result['path']]);
+                    $success = $logoType === 'login_bg_image' ? 'Imagen de fondo subida correctamente.' : 'Logo subido correctamente.';
                 } else {
                     $error = $result['error'];
                 }
@@ -221,6 +242,62 @@ $logoLabels = [
         </form>
     </div>
 </div>
+
+<!-- SECCION: PANTALLA DE INICIO DE SESION (panel + portal DJ) -->
+<?php $cpLoginCol = cpLoginColor($brand ?: []); $cpLoginImg = (string)($brand['login_bg_image'] ?? ''); ?>
+<div class="card" style="margin-bottom:24px">
+    <div class="card-header">
+        <h3 class="card-title"><?= cpIcon('lock', 18) ?> Pantalla de inicio de sesión</h3>
+    </div>
+    <div class="card-body">
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">Se aplica al inicio de sesión del panel (administrador, revendedor y cliente) y al del portal DJ: color sólido del recuadro de acceso e imagen de fondo detrás de él.</p>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:start" class="cp-login-look">
+            <div>
+                <form method="POST" style="margin-bottom:18px">
+                    <?= csrfField() ?>
+                    <input type="hidden" name="save_login_look" value="1">
+                    <div class="form-group">
+                        <label>Color del recuadro de acceso</label>
+                        <div style="display:flex;gap:10px;align-items:center">
+                            <input type="color" name="login_bg_color" value="<?= htmlspecialchars($cpLoginCol) ?>" style="width:54px;height:40px;border:1px solid var(--border);border-radius:8px;padding:2px;cursor:pointer" oninput="document.getElementById('cpLoginPrevCard').style.background=this.value">
+                            <span style="font-size:12px;color:var(--text-secondary)">Color sólido, sin degradado. Por defecto: azul oscuro.</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm"><?= cpIcon('save', 14) ?> Guardar color</button>
+                </form>
+
+                <div class="form-group" style="margin-bottom:8px">
+                    <label>Imagen de fondo</label>
+                    <p style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">Se muestra detrás del recuadro de acceso, a pantalla completa. Recomendado: 1920×1080px, JPG o PNG, máx. 5 MB.</p>
+                    <form method="POST" enctype="multipart/form-data">
+                        <?= csrfField() ?>
+                        <input type="file" name="login_bg_image" accept="image/jpeg,image/png,image/webp,image/gif" style="font-size:12px;width:100%" onchange="this.form.submit()">
+                    </form>
+                </div>
+                <?php if ($cpLoginImg !== ''): ?>
+                <form method="POST">
+                    <?= csrfField() ?>
+                    <input type="hidden" name="delete_logo" value="login_bg_image">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar la imagen de fondo?')"><?= cpIcon('trash', 14) ?> Eliminar imagen de fondo</button>
+                </form>
+                <?php endif; ?>
+            </div>
+            <div>
+                <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px">Vista previa</div>
+                <div style="position:relative;border-radius:12px;overflow:hidden;height:240px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);<?= $cpLoginImg !== '' ? "background:#0b1220 url('" . htmlspecialchars($cpLoginImg, ENT_QUOTES) . "') center/cover no-repeat" : 'background:#eef2f8' ?>">
+                    <?php if ($cpLoginImg !== ''): ?><div style="position:absolute;inset:0;background:rgba(5,12,30,.35)"></div><?php endif; ?>
+                    <div id="cpLoginPrevCard" style="position:relative;width:180px;padding:20px 16px;border-radius:12px;background:<?= htmlspecialchars($cpLoginCol) ?>;color:#fff;text-align:center;box-shadow:0 18px 40px rgba(2,8,23,.45)">
+                        <div style="font-weight:800;font-size:15px"><?= htmlspecialchars($brand['panel_title'] ?? 'CastPanel') ?></div>
+                        <div style="height:22px;border-radius:6px;background:rgba(255,255,255,.14);margin:12px 0 8px"></div>
+                        <div style="height:22px;border-radius:6px;background:rgba(255,255,255,.14);margin-bottom:10px"></div>
+                        <div style="height:24px;border-radius:6px;background:#fff"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>@media (max-width:800px){.cp-login-look{grid-template-columns:1fr !important}}</style>
 
 <!-- SECCION: LOGOS - CADA LOGO CON SU PROPIO FORM (FIX: sin formularios anidados) -->
 <div class="card">

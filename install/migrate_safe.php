@@ -52,6 +52,8 @@ $addColumn('rotacion_carpetas', "ADD COLUMN `sep_artista_min` INT UNSIGNED NOT N
 $addColumn('rotacion_carpetas', "ADD COLUMN `sep_cancion_min` INT UNSIGNED NOT NULL DEFAULT 0");
 $addColumn('rotacion_carpetas', "ADD COLUMN `seleccion` VARCHAR(16) NOT NULL DEFAULT 'auto'");
 $addColumn('canciones', "ADD COLUMN `peso` TINYINT UNSIGNED NOT NULL DEFAULT 3");
+$addColumn('branding', "ADD COLUMN `login_bg_color` VARCHAR(7) DEFAULT NULL");
+$addColumn('branding', "ADD COLUMN `login_bg_image` VARCHAR(255) DEFAULT NULL");
 $addColumn('canciones', "ADD COLUMN `anio` SMALLINT UNSIGNED DEFAULT NULL");
 $addColumn('canciones', "ADD COLUMN `bpm` SMALLINT UNSIGNED DEFAULT NULL");
 foreach (['anio_min', 'anio_max', 'bpm_min', 'bpm_max'] as $c) {

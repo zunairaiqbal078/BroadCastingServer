@@ -9,6 +9,7 @@ require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/branding.php';
 require_once __DIR__ . '/includes/i18n.php';
 require_once __DIR__ . '/includes/security.php';
+require_once __DIR__ . '/includes/login_theme.php';
 cpI18nStart();
 
 $brand = getLoginBranding();
@@ -201,6 +202,7 @@ $sidebarColor = $cpHex6($sidebarColor, '#004d40');
             font-size: 11px;
             color: rgba(255,255,255,.6);
         }
+        <?= cpLoginThemeCss($brand, (string)($brand['login_bg_image'] ?? '')) ?>
     </style>
 </head>
 <body>

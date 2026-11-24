@@ -34,6 +34,8 @@ function getBranding(?int $resellerId = null): array {
         'sidebar_color'  => null,
         'custom_css'     => null,
         'footer_text'    => null,
+        'login_bg_color' => null,
+        'login_bg_image' => null,
     ];
 
     $result = $defaults;
@@ -155,12 +157,13 @@ function uploadBrandingFile(array $file, string $type, string $ownerType = 'glob
     }
 
     // Validar tamaño (max 2MB)
-    if ($file['size'] > 2 * 1024 * 1024) {
-        return ['success' => false, 'error' => 'El archivo no debe superar 2MB'];
+    $maxMb = $type === 'login_bg_image' ? 5 : 2; // full-screen login background may be larger
+    if ($file['size'] > $maxMb * 1024 * 1024) {
+        return ['success' => false, 'error' => 'El archivo no debe superar ' . $maxMb . 'MB'];
     }
 
     // Validar tipo de imagen
-    $allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml', 'image/x-icon', 'image/vnd.microsoft.icon'];
+    $allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml', 'image/x-icon', 'image/vnd.microsoft.icon', 'image/webp'];
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime = finfo_file($finfo, $file['tmp_name']);
     finfo_close($finfo);
@@ -181,7 +184,7 @@ function uploadBrandingFile(array $file, string $type, string $ownerType = 'glob
     $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     if (!$ext || $ext === 'ico') {
         // Mapear MIME a extensión
-        $extMap = ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/gif' => 'gif', 'image/svg+xml' => 'svg', 'image/x-icon' => 'ico', 'image/vnd.microsoft.icon' => 'ico'];
+        $extMap = ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/gif' => 'gif', 'image/svg+xml' => 'svg', 'image/x-icon' => 'ico', 'image/vnd.microsoft.icon' => 'ico', 'image/webp' => 'webp'];
         $ext = $extMap[$mime] ?? 'png';
     }
     $filename = $type . '.' . $ext;

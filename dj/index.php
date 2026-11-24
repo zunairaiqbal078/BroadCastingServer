@@ -13,6 +13,7 @@ if (isset($_SESSION['dj_id'])) {
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/i18n.php';
 require_once __DIR__ . '/../includes/security.php';
+require_once __DIR__ . '/../includes/login_theme.php';
 cpI18nStart();
 
 $error = '';
@@ -63,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Obtener branding (mismos colores que el login principal)
 try {
     $db = getDB();
-    $brand = $db->query("SELECT * FROM branding LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+    $brand = $db->query("SELECT * FROM branding WHERE owner_type = 'global' AND owner_id IS NULL LIMIT 1")->fetch(PDO::FETCH_ASSOC) ?: [];
 } catch (Exception $e) {
     $brand = [];
 }
@@ -77,14 +78,19 @@ $cpHex6 = function ($c, $fallback) {
 $bgColor = $cpHex6($brand['sidebar_color'] ?? '', '#004d40');
 $btnColor = $cpHex6($brand['primary_color'] ?? '', '#00897b');
 
+// The DJ port's document root is dj/, so branding images come through dj/branding_asset.php
+$cpAssetV = static function (string $path): string {
+    return preg_match('/[?&]v=(\d+)/', $path, $m) ? '&v=' . $m[1] : '';
+};
+$loginBgSrc = !empty($brand['login_bg_image']) ? 'branding_asset.php?f=login_bg_image' . $cpAssetV((string)$brand['login_bg_image']) : '';
+
 // Construir URL del logo (el DJ portal corre en puerto 2080, los uploads están en el dominio principal)
 $logoSrc = '';
 if (!empty($brand['logo_login'])) {
     $logoSrc = $brand['logo_login'];
-    // Si no es URL absoluta, construir desde el dominio principal (sin puerto)
+    // Uploaded logo (relative path): served on this port by branding_asset.php
     if (!preg_match('#^https?://#i', $logoSrc)) {
-        $mainHost = preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? 'localhost');
-        $logoSrc = 'https://' . $mainHost . '/' . ltrim($logoSrc, '/');
+        $logoSrc = 'branding_asset.php?f=logo_login';
     }
 }
 ?>
@@ -180,6 +186,7 @@ if (!empty($brand['logo_login'])) {
         text-align: center;
     }
     .login-footer { text-align: center; margin-top: 20px; font-size: 11px; color: rgba(255,255,255,.6); }
+    <?= cpLoginThemeCss($brand ?: [], $loginBgSrc) ?>
 </style>
 </head>
 <body>
